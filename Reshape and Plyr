@@ -1,0 +1,29 @@
+# reshape and plyr
+###############################################################################
+
+
+Reshape
+two functions: melt and cast
+Author: Hadley Wickham
+This package is used to "massage" data
+
+ggally : Extension to ggplot2
+templates for different plits to be combined into a plit matrix as well as a parallel co-ordinate plot function.
+
+Pivot table like functionality ( twitter)
+
+###############################################################################
+
+plyr package tools for splitting, applying and combining data.
+
+split / apply / combine  procedures.
+
+The "apply" family of functions in R (apply, sapply, lapply) is a very powerful suite 
+of tools for iterating through structures of data and returning the combined results of each iteration. 
+
+plyr creates a unified interface for iterating over data in R with a consistent 
+syntax for specifying what the inputs are, and what the outputs should be. 
+
+
+###############################################################################
+
