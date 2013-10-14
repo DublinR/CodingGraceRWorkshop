@@ -21,3 +21,5 @@ search
 which
 grep
 gl
+sub
+gsub
