@@ -12,3 +12,12 @@ source
 dir
 cat
 confint
+complete.cases
+list.files
+nchar
+order
+by
+search
+which
+grep
+gl
