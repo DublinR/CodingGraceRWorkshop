@@ -1,0 +1,10 @@
+#R Class - Sudoku Solver
+#A Sudoku is a puzzle in which several numbers are to be filled into a 9x9 grid of squares (subdivided into nine 3x3 boxes) so that every row, every column, and every 3x3 box contains the numbers 1 through 9.
+
+
+# Create a 9x9 Empty Matrix
+# Implement the Initial Values
+
+matrix(0,nrows=9,ncols=9)
+
+
