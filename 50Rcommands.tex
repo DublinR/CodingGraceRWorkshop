@@ -58,7 +58,11 @@ plot(ecdf(iris[,1]),verticals=TRUE, col.points='red',cex=0.4, col.hor='red', col
 \end{framed}
 %--------------------------------------------------%
 \subsection{\texttt{edit()}}
-\subsection{\texttt{edit()}}
+\subsection{\texttt{cut()}}
+Convert a numeric vector to a factor with "cut", e.g. 
+cut(rnorm(100),3,c("Low","Med","High")) 
+% http://www.inside-r.org/r-doc/base/cut
+
 \subsection{\texttt{jitter()}}
 \subsection{\texttt{merge()}}
 \subsection{\texttt{scan()}}
