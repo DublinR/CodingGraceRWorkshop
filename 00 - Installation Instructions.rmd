@@ -1,0 +1,26 @@
+Installing Packages
+===================================================
+Thanks for your interest in the Coding Grace `R` workshop. 
+
+In order to prepare for the workshop, we ask you to perform the following three steps before the workshop. If you are not able to, we can met up beforehand and do it for you.
+
+### Step 1
+In advance of the workshop, it would be great if you could install R.
+R can be installed for the R website.
+
+### Step 2 - Rstudio
+
+### Step 3 - Important R packages
+
+and also install some `R` packages that we will use on the day.
+
+All you have to do is to open R (making sure that you are connected to the internet), and run the following piece of code ( you can copy aand paste this following code segment)
+
+
+```{r}
+
+install.packages("ggplot2")
+install.packages("dplyr")
+install.packages("nycflights13")
+install.packages("knitr")
+```
