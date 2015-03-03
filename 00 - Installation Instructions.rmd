@@ -8,7 +8,13 @@ In order to prepare for the workshop, we ask you to perform the following three 
 In advance of the workshop, it would be great if you could install R.
 R can be installed for the R website.
 
+http://ftp.heanet.ie/mirrors/cran.r-project.org/
+
 ### Step 2 - Rstudio
+
+You can download Rstudio  from
+
+http://www.rstudio.com/products/rstudio/download/
 
 ### Step 3 - Important R packages
 
