@@ -36,4 +36,6 @@ install.packages("ggplot2")
 install.packages("dplyr")
 install.packages("nycflights13")
 install.packages("knitr")
+install.packages("slidify")
+
 ```
