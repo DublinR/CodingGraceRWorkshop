@@ -39,4 +39,6 @@ install.packages("knitr")
 
 ```
 
+R packages can also be installed from R Studio by clicking on the ***Tools*** menu and selecting install packages. A dialogue will appear.
+
 ![alt text](https://impaulchung.files.wordpress.com/2013/01/packageinstall.png?w=625&h=431)
