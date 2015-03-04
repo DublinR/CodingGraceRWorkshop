@@ -38,3 +38,5 @@ install.packages("nycflights13")
 install.packages("knitr")
 
 ```
+
+![alt text](https://impaulchung.files.wordpress.com/2013/01/packageinstall.png?w=625&h=431)
