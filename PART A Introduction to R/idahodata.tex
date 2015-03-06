@@ -31,10 +31,6 @@ The code book, describing the variable names is here:
 
 \begin{verbatim}
 https://dl.dropbox.com/u/7710864/data/PUMSDataDict06.pdf
-
-or here: 
-
-https://spark-public.s3.amazonaws.com/dataanalysis/PUMSDataDict06.pdf
 \end{verbatim}
 \end{frame}
 %=========================================================================== %
@@ -170,7 +166,8 @@ Use the data you loaded from Question 3.
 	#Rooms on Rows , Bedrooms on Columns
 	#dnn adds dimension names
 	
-	table(idahoData$RMS,idahoData$BDS,dnn=list("RMS","BDS"))
+	table(idahoData$RMS,idahoData$BDS,
+	    dnn=list("RMS","BDS"))
 	
 	\end{verbatim}
 \end{framed}
@@ -184,9 +181,11 @@ Another Way of Doing it
 	# How many households have 3 bedrooms and 4 total rooms?
 	nrow(idahoData[!is.na(idahoData$BDS) & idahoData$BDS==3 &
 	!is.na(idahoData$BDS) & idahoData$RMS==4,])
+	
 	# How many households have 2 bedrooms and 5 total rooms?
 	nrow(idahoData[!is.na(idahoData$BDS) & idahoData$BDS==2 &
 	!is.na(idahoData$BDS) & idahoData$RMS==5,])
+	
 	# How many households have 2 bedrooms and 7 total rooms?
 	nrow(idahoData[!is.na(idahoData$BDS) & idahoData$BDS==2 &
 	!is.na(idahoData$BDS) & idahoData$RMS==7,])
