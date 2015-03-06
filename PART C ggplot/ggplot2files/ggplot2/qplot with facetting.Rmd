@@ -1,0 +1,42 @@
+qplot with facetting
+========================================================
+
+
+```{r fig.width=10, fig.height=4}
+library(ggplot2)
+
+qplot(mpg, wt, data=mtcars, geom="point")
+```
+```{r}
+table(mtcars$cyl,mtcars$gear)
+```
+```{r fig.width=10, fig.height=4}
+# using facets 
+# (hint: bug in margins -> doesn't work)
+qplot(mpg, wt, data=mtcars, facets=.~cyl, geom="point")
+qplot(mpg, wt, data=mtcars, facets=gear~cyl, geom="point")
+# facet_wrap / facet_grid
+```
+```{r fig.width=10, fig.height=4}
+#qplot(mpg, wt, data=mtcars, facets=~cyl, geom="point")
+p.tmp <- ggplot(mtcars, aes(mpg, wt)) + geom_point()
+```
+```{r fig.width=10, fig.height=4}
+p.tmp + facet_wrap(~cyl)
+#qplot(mpg, wt, data=mtcars, facets=~cyl, geom="point")
+p.tmp + facet_wrap(~cyl, ncol=3)
+p.tmp + facet_grid(gear~cyl)
+p.tmp + facet_wrap(~cyl+gear)
+```
+```{r fig.width=10, fig.height=4}
+# controlling scales in facets (default: scales="fixed")
+p.tmp + facet_wrap(~cyl, scales="free")
+p.tmp + facet_wrap(~cyl, scales="free_x")
+p.tmp + facet_wrap(~cyl, scales="fixed")
+```
+```{r fig.width=10, fig.height=8}
+# contstraint on facet_grid (all rows,columns same scale)
+p.tmp + facet_grid(gear~cyl, scales="free_x")
+p.tmp + facet_grid(gear~cyl, scales="free", space="free")
+```
+

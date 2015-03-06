@@ -1,0 +1,60 @@
+Scatterplots
+========================================================
+
+### 1. Preliminaries
+- load **ggplot2**
+- Inspect the ***iris*** data set
+```{r}
+library(ggplot2)
+dim(iris)
+names(iris)
+class(iris)
+table(iris$Species)
+```
+
+### 2. Scatterplots
+- Basic scatterplot - Use `geom_point()`, and map one variable to x and one to y.
+```{r fig.width=7, fig.height=6}
+#plot(iris$Sepal.Length,iris$Petal.Width)
+ggplot(iris, aes(x=Sepal.Length, y=Petal.Width)) + geom_point()
+```
+#### 2.1 Changing Plot Character
+- Change the plot character to triangle (number 17).
+- Change the colour to red.
+- Increase size to 3. (The default value of `size` is 2, whereas default for `cex` is 1.)
+```{r fig.width=7, fig.height=6}
+#plot(iris$Sepal.Length,iris$Petal.Width, pch=17,col="red", cex=1.5)
+ggplot(iris, aes(x=Sepal.Length, y=Petal.Width)) + geom_point(shape=17,col="red",size=3)
+```
+
+### 3. Grouping Data Points by a Variable Using Shape or Colour.
+We can group points on the variable `Species` by mapping specied to one of the aesthetics 
+- colour
+- shape 
+```{r fig.width=7, fig.height=6}
+#ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) 
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, colour= Species)) + geom_point(size=3)
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, shape= Species)) + 
+  geom_point(size=3)
+
+```
+
+Both of these approaches can be used in tandem. Lets use a data set with multiple categorical variables (***diamonds*** and ***tips*** data sets in the **ggplot2** and ***reshape2*** package respectively). The outcome is a bit hard to read.
+
+```{r fig.width=7, fig.height=6}
+ggplot(diamonds, aes(x=price, y=log(z), colour= clarity)) + geom_point(size=3)
+
+ggplot(diamonds, aes(x=price, y=log(z), colour= clarity,shape=cut)) + geom_point(size=3)
+
+```
+
+Easier to look at.
+
+```{r fig.width=7, fig.height=6}
+library(reshape2)
+ggplot(tips, aes(x=total_bill, y=tip, colour= day, shape = smoker)) + geom_point(size=3)
+
+
+```
+
+

@@ -1,8 +1,16 @@
+
 \documentclass[]{article}
-%opening
-\title{}
-\author{}
- \usepackage{framed}
+\voffset=-1.5cm
+\oddsidemargin=0.0cm
+\textwidth = 470pt
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{framed}
+\usepackage{graphicx}
+\usepackage{enumerate}% http://ctan.org/pkg/enumerate
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
 \begin{document}
 	\subsection*{Headers}
 \begin{framed}
@@ -32,8 +40,12 @@ line (or many), and can drone on for hours.
 Here is a Markdown link to [Warped](h\begin{framed}
 \begin{verbatim}
 ttp://warpedvisions.org), and a literal . 
-Now some SimpleLinks, like one to [google] (automagically links to are-you-
-feeling-lucky), a [wiki: test] link to a Wikipedia page, and a link to 
+Now some SimpleLinks, like one to [google] 
+
+(automagically links to are-you-
+feeling-lucky), 
+
+a [wiki: test] link to a Wikipedia page, and a link to 
 [foldoc: CPU]s at foldoc.  
 
 Now some inline markup like _italics_,  **bold**, and `code()`. 
@@ -101,7 +113,6 @@ for things like poems
 \end{verbatim}
 \end{framed}
 
-\newpage
 \begin{framed}
 \begin{verbatim}
 <div class="custom-class" markdown="1">
