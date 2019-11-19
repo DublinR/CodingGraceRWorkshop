@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Introduction to ggplot2</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<style>
+  p {     font-size:16px;
+  }
+</style>
+
+<h1>Introduction to ggplot2</h1>
+
+<p>*** Wickham, Chapter 1***</p>
+
+<p>ggplot2 is an R package for producing statistical, or data, graphics, but it is unlike most other graphics packages because it has a deep underlying grammar. </p>
+
+<p>This grammar, based on the Grammar of Graphics (Wilkinson,
+2005), is composed of a set of independent components that can be composed in many different ways. </p>
+
+<p>This makes ggplot2 very powerful, because you are
+not limited to a set of pre-specified graphics, but you can create new graphicsthat are precisely tailored for your problem. </p>
+
+<p>This may sound overwhelming, but because there is a simple set of core principles and very few special cases, ggplot2 is also easy to learn (although it may take a little time to forget your
+preconceptions from other graphics tools).</p>
+
+<h3>Layering</h3>
+
+<p>ggplot2 is designed to work in a layered fashion, starting with a layer showing the raw data then adding layers of annotations and statistical summaries.</p>
+
+<p>It allows you to produce graphics using the same structured thinking
+that you use to design an analysis, reducing the distance between a plot in your head and one on the page. </p>
+
+<p>It is especially helpful for students who have not yet developed the structured approach to analysis used by experts.</p>
+
+<hr>
+
+<h3>Grammar of Graphics</h3>
+
+<p>The data that you want to visualise and a set of aesthetic mappings
+describing how variables in the data are mapped to aesthetic attributes
+that you can perceive.</p>
+
+<p>Geometric objects, <strong><em>geoms</em></strong> for short, represent what you actually see on
+the plot: points, lines, polygons, etc.</p>
+
+<p>Statistical transformations, <strong><em>stats</em></strong> for short, summarise data in many useful ways. For example, binning and counting observations to create a histogram,
+or summarising a 2d relationship with a linear model. Stats are optional,
+but very useful.</p>
+
+<p>The <strong><em>scales</em></strong> map values in the data space to values in an aesthetic space,
+whether it be colour, or size, or shape. Scales draw a legend or axes, which provide an inverse mapping to make it possible to read the original data values from the graph.</p>
+
+<p>A coordinate system, <strong><em>coord</em></strong> for short, describes how data coordinates are
+mapped to the plane of the graphic. It also provides axes and gridlines to
+make it possible to read the graph. We normally use a Cartesian coordinate
+system, but a number of others are available, including polar coordinates
+and map projections.</p>
+
+<p>A <strong><em>facet</em></strong>ing specification describes how to break up the data into subsets
+and how to display those subsets as small multiples. This is also known as
+conditioning or latticing/trellising.</p>
+
+<hr>
+
+<h3>The <code>ggplot()</code> Command</h3>
+
+<p>The command <code>ggplot()</code> initializes a ggplot object. It can be used to declare the input data frame for a graphic.</p>
+
+<p>It can also be used to specify the set of plot aesthetics intended to be common throughout all subsequent layers (unless specifically overridden).</p>
+
+<p>Important: The actual plots are built with subsequent commands.</p>
+
+<p><code>ggplot()</code> is typically used to construct a plot incrementally, using the <code>+</code> operator to add layers to the existing ggplot object.</p>
+
+<p>This is advantageous in that the code is explicit about which layers are added and the order in which they are added.</p>
+
+<p>We can define common aesthetics using the <code>aes</code> argument for this command.</p>
+
+<hr> 
+
+<h3>Components of Graphics</h3>
+
+<p>To understand ggplot, you need to ask yourself, what are the fundamental parts of every data graph? They are:</p>
+
+<p><strong>Aesthetics</strong> - these are the roles that the variables play in each graph. A variable may control where points appear, the color or shape of a point, the height of a bar and so on.</p>
+
+<p><strong>Geoms</strong> - these are the geometric objects. Do you need bars, points, lines?</p>
+
+<p><strong>Statistics</strong> - these are the functions like linear regression you might need to draw a line.</p>
+
+<p><strong>Scales</strong> - these are legends that show things like circular symbols represent females while circles represent males.</p>
+
+<p><strong>Facets</strong> - these are the groups in your data.For example, faceting by gender would cause the graph to repeat for the two genders.</p>
+
+</body>
+
+</html>
+

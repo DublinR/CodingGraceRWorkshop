@@ -1,0 +1,107 @@
+%=====================================================================================================%
+\begin{frame}[verbatim]
+The dplyr package, plotrix (for the plot at the end), and the FSAdata package (for the data file) must be loaded.
+\begin{framed}
+\begin{verbatim}
+library(dplyr)
+library(FSAdata)
+library(plotrix)
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+%=====================================================================================================%
+\begin{frame}[verbatim]
+The RuffeSLRH92 data frame is then loaded.
+
+\begin{framed}
+\begin{verbatim}
+data(RuffeSLRH92)
+str(RuffeSLRH92)
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+%=======================================================================================================%
+\begin{frame}[verbatim]
+\frametitle{dplyr: Select (columns) Example}
+Columns can be selected from a data.frame with select(), given the original data.frame as the first argument and the variables to select, or include, as further arguments. The following creates a data.frame without the fish.id, species, day and year variables (they are not very useful in this context and will make the output further below easier to read).
+\begin{framed}
+\begin{verbatim}
+RuffeSLRH92 <- select(RuffeSLRH92,-fish.id,-species,-day,-year)
+head(RuffeSLRH92)
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+%=======================================================================================================%
+\begin{frame}[verbatim]
+
+The following creates a data.frame of just the length and weight variables.
+
+\begin{framed}
+\begin{verbatim}
+ruffeLW <- select(RuffeSLRH92,length,weight)
+head(ruffeLW)
+
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+%=======================================================================================================%
+\begin{frame}[verbatim]
+\begin{itemize}
+\item 
+The dplyr package contains a variety of helpers for selecting. 
+\item As one example, the following will select all variables that contains the letter “l”.
+\end{itemize}
+\begin{framed}
+\begin{verbatim}
+ruffeL <- select(RuffeSLRH92,contains("l"))
+str(ruffeL)
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+%=======================================================================================================%
+\begin{frame}
+\frametitle{Filtering Example}
+\begin{itemize}
+\item The filter() function can be used similarly to subset() to select a set of rows from an original data.frame according to some 
+conditioning statement. 
+\item As with subset(), filter() returns an object that maintains a list of the original levels whether those levels exist in the new data.frame or not.
+\item  Use droplevels() to restrict the levels to only those that exist in the data.frame. 
+\item The example below finds just the males from the original data.frame.
+\end{itemize}
+\begin{framed}
+\begin{verbatim}male <- filter(RuffeSLRH92,sex=="male")
+xtabs(~sex,data=male)
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+%=======================================================================================================%
+\begin{frame}[fragile]
+
+\begin{framed}
+\begin{verbatim}
+male <- droplevels(male)
+xtabs(~sex,data=male)
+## sex
+## male 
+##  201
+\end{verbatim}
+\end{framed}
+\end{frame}
+%=======================================================================================================%
+\begin{frame}[fragile]
+Multiple conditioning statements can be strung together as additional arguments to filter(). The example below finds males that are also ripe.
+
+\begin{framed}
+\begin{verbatim}
+maleripe <- filter(RuffeSLRH92,sex=="male",maturity=="ripe")
+xtabs(~sex+maturity,data=maleripe)
+\end{verbatim}
+\end{framed}
+
+\end{frame}
