@@ -1,0 +1,66 @@
+Substrings of a Character Vector
+Description
+Extract or replace substrings in a character vector. 
+
+Usage
+substr(x, start, stop)
+substring(text, first, last = 1000000L)
+substr(x, start, stop) <- value
+substring(text, first, last = 1000000L) <- value
+
+Arguments
+x, text a character vector.
+ 
+start, first integer. The first element to be replaced.
+ 
+stop, last integer. The last element to be replaced.
+ 
+value a character vector, recycled if necessary.
+ 
+
+Details
+substring is compatible with S, with first and last instead of start and stop. For vector arguments, it expands the arguments cyclically to the length of the longest provided none are of zero length. 
+
+When extracting, if start is larger than the string length then "" is returned. 
+
+For the extraction functions, x or text will be converted to a character vector by as.character if it is not already one. 
+
+For the replacement functions, if start is larger than the string length then no replacement is done. If the portion to be replaced is longer than the replacement string, then only the portion the length of the string is replaced. 
+
+If any argument is an NA element, the corresponding element of the answer is NA. 
+
+Elements of the result will be have the encoding declared as that of the current locale (see Encoding if the corresponding input had a declared Latin-1 or UTF-8 encoding and the current locale is either Latin-1 or UTF-8. 
+
+If an input element has declared "bytes" encoding, the subsetting is done in units of bytes not characters. 
+
+Value
+For substr, a character vector of the same length and with the same attributes as x (after possible coercion). 
+
+For substring, a character vector of length the longest of the arguments. This will have names taken from x (if it has any after coercion, repeated as needed), and other attributes copied from x if it is the longest of the arguments). 
+
+Elements of x with a declared encoding (see Encoding) will be returned with the same encoding. 
+
+Note
+The S4 version of substring<- ignores last; this version does not. 
+
+These functions are often used with nchar to truncate a display. That does not really work (you want to limit the width, not the number of characters, so it would be better to use strtrim), but at least make sure you use the default nchar(type = "c"). 
+
+References
+Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) The New S Language. Wadsworth & Brooks/Cole. (substring.) 
+
+See Also
+strsplit, paste, nchar. 
+
+Examples
+substr("abcdef", 2, 4)
+substring("abcdef", 1:6, 1:6)
+## strsplit is more efficient ...
+
+substr(rep("abcdef", 4), 1:4, 4:5)
+x <- c("asfef", "qwerty", "yuiop[", "b", "stuff.blah.yech")
+substr(x, 2, 5)
+substring(x, 2, 4:6)
+
+substring(x, 2) <- c("..", "+++")
+x
+

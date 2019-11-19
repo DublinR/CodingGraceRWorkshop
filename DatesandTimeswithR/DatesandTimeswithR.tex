@@ -1,0 +1,118 @@
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} 
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} 
+
+\usepackage{graphicx} 
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} 
+\usepackage{framed}
+\usepackage{subfig}
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} 
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} 
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape}
+
+\title{Working with Dates and Times with \texttt{R}}
+\author{The Author}
+\begin{document}
+\maketitle
+
+
+\section{System Time and Date}
+
+\begin{framed}
+\begin{verbatim}
+> Sys.time()
+[1] "2014-06-17 11:04:46 BST"
+> ## print with possibly greater accuracy:
+> op <- options(digits.secs=6)
+> Sys.time()
+[1] "2014-06-17 11:04:46.641917 BST"
+> options(op)
+> 
+> ## locale-specific version of date()
+> format(Sys.time(), "%a %b %d %X %Y")
+[1] "Tue Jun 17 11:04:46 2014"
+> 
+> Sys.Date()
+[1] "2014-06-17"
+> Sys.time()
+[1] "2014-06-17 11:05:06 BST"
+\end{verbatim}
+\end{framed}
+%----------------------------------------------------------------------------------------------%
+\newpage
+\section{Date-Time Classes}
+
+
+Description of the classes \texttt{POSIXlt} and \texttt{POSIXct} representing calendar dates and times (to the nearest second).
+
+\subsection{A subsection}
+
+\begin{framed}
+\begin{verbatim}
+> (z <- Sys.time())             # the current date, as class "POSIXct"
+[1] "2014-06-17 10:54:24 BST"
+> 
+> Sys.time() - 3600             # an hour ago
+[1] "2014-06-17 09:54:25 BST"
+> 
+> as.POSIXlt(Sys.time(), "GMT") # the current time in GMT
+[1] "2014-06-17 09:54:25 GMT"
+\end{verbatim}
+\end{framed}
+\newpage
+\begin{framed}
+\begin{verbatim}
+> format(.leap.seconds)         # all 24 leap seconds in your timezone
+ [1] "1972-07-01 01:00:00" "1973-01-01 00:00:00" "1974-01-01 00:00:00"
+ [4] "1975-01-01 00:00:00" "1976-01-01 00:00:00" "1977-01-01 00:00:00"
+ [7] "1978-01-01 00:00:00" "1979-01-01 00:00:00" "1980-01-01 00:00:00"
+[10] "1981-07-01 01:00:00" "1982-07-01 01:00:00" "1983-07-01 01:00:00"
+[13] "1985-07-01 01:00:00" "1988-01-01 00:00:00" "1990-01-01 00:00:00"
+[16] "1991-01-01 00:00:00" "1992-07-01 01:00:00" "1993-07-01 01:00:00"
+[19] "1994-07-01 01:00:00" "1996-01-01 00:00:00" "1997-07-01 01:00:00"
+[22] "1999-01-01 00:00:00" "2006-01-01 00:00:00" "2009-01-01 00:00:00"
+\end{verbatim}
+\end{framed}
+
+\begin{framed}
+\begin{verbatim}
+> print(.leap.seconds, tz="PST8PDT")  # and in Seattle's
+ [1] "1972-07-01 01:00:00 BST" "1973-01-01 00:00:00 GMT"
+ [3] "1974-01-01 00:00:00 GMT" "1975-01-01 00:00:00 GMT"
+ [5] "1976-01-01 00:00:00 GMT" "1977-01-01 00:00:00 GMT"
+ [7] "1978-01-01 00:00:00 GMT" "1979-01-01 00:00:00 GMT"
+ [9] "1980-01-01 00:00:00 GMT" "1981-07-01 01:00:00 BST"
+[11] "1982-07-01 01:00:00 BST" "1983-07-01 01:00:00 BST"
+[13] "1985-07-01 01:00:00 BST" "1988-01-01 00:00:00 GMT"
+[15] "1990-01-01 00:00:00 GMT" "1991-01-01 00:00:00 GMT"
+[17] "1992-07-01 01:00:00 BST" "1993-07-01 01:00:00 BST"
+[19] "1994-07-01 01:00:00 BST" "1996-01-01 00:00:00 GMT"
+[21] "1997-07-01 01:00:00 BST" "1999-01-01 00:00:00 GMT"
+[23] "2006-01-01 00:00:00 GMT" "2009-01-01 00:00:00 GMT"
+> 
+> ## look at *internal* representation of "POSIXlt" :
+> leapS <- as.POSIXlt(.leap.seconds)
+> names(leapS) ; is.list(leapS)
+NULL
+[1] TRUE
+> utils::str(unclass(leapS), vec.len = 7)
+\end{verbatim}
+\end{framed}
+
+
+\end{document}

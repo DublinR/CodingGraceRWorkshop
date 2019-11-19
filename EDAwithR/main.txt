@@ -1,0 +1,71 @@
+Westmeath 2002 16.2
+Westmeath 1997 15.9
+Westmeath 1992 17.4
+Tipp South 2011 14.7
+Tipp South 2007 15.8
+Tipp South 2002 20.1
+Tipp South 1997 16.1
+Dublin NC 2011 15.4
+Dublin NC 2007 14.2
+Dublin NC 1977 12.4
+Dublin NC 1957 14.5
+Dublin NC 1954 7.1
+
+
+
+% http://www.renzeconsulting.com/presentations/exploratory-data-analysis-with-r.pdf
+%======================================================================================%
+Motivation
+The ability to take data—to be able to understand it, to
+process it, to extract value from it, to visualize it, to
+communicate it—that’s going to be a hugely important
+skill in the next decades, … because now we really do
+have essentially free and ubiquitous data. So the
+complimentary scarce factor is the ability to understand
+that data and extract value from it.
+Hal Varian, Google’s Chief Economist
+The McKinsey Quarterly, Jan 2009
+%======================================================================================%
+Exploratory Data Analysis (EDA)
+\item One of many approaches to 
+data analysis
+\item Objectives:
+\item Discover patterns
+\item Identify anomalies
+\item Suggest hypotheses
+\item Check assumptions
+\item Promoted by John Tukey
+%======================================================================================%
+
+Confirmatory vs. 
+Exploratory Data Analysis
+Confirmatory
+\item Start with hypothesis
+\item Test the null hypothesis
+\item Uses statistical models
+Exploratory
+\item No hypothesis at first
+\item Generating hypothesis
+\item Uses graphical methods
+%======================================================================================%
+
+Problems with EDA
+\item Not rigorous like formal statistical methods
+\item Susceptible to specific types of statistical biases
+\item Not useful for inference or prediction
+\item Not efficient for massive data sets
+Note: There are ways to avoid some of these issues
+
+
+Data Visualization
+\item Representation of data 
+via visual means
+\item Human brain is 
+exceptionally good at 
+visual pattern recognition
+\item Map dimensions of data 
+to visual characteristics:
+\item Location
+\item Size
+\item Color
+\item Shape
