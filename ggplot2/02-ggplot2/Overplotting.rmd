@@ -1,0 +1,21 @@
+Dealing with Overplotting
+==========================================
+```{r}
+DFnorm<- data.frame(x=rnorm(3000), y=rnorm(32000))
+p.norm <- ggplot(DFnorm, aes(x,y))
+```
+```{r}
+p.norm + geom_point()
+```
+```{r}
+p.norm + geom_point(shape = 1)
+```
+```{r}
+p.norm + geom_point(shape = ".")
+```
+#### Hollow Glyphs / Narrow Glyphs
+The 
+Transparency (alpha blending)
+```{r}
+p. norm + geom_point(alpha=(0.25),colour="blue")
+```

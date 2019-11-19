@@ -1,0 +1,36 @@
+### Barplots and Histograms
+```{r}
+qplot(factor(cyl), data=mtcars, geom="bar")
+```
+### Barplots: Fill argument
+```{r}
+qplot(factor(cyl), data=mtcars, geom="bar", fill=factor(cyl))
+```
+### Barplots: Colour argument (border colouring)
+
+```{r}
+qplot(factor(cyl), data=mtcars, geom="bar", colour=factor(cyl))
+```
+### Flipping a plot onto its side
+(Bringing in the notion of additive layering)
+```{r}
+qplot(factor(cyl), data=mtcars, geom="bar" ,colour=factor(cyl))+ coord_flip()
+```
+### Scatterplots (using Geoms)
+```{r}
+qplot(wt, mpg, data=mtcars, geom="point")
+```
+Smoothing on a Scatterplot (with loess smoothing)
+```{r}
+qplot(wt, mpg, data=mtcars,geom=c("point", "smooth"))
+```
+Removing the standard error from the plot
+```{r}qplot(wt, mpg, data=mtcars,
+geom=c("point", "smooth"), se=FALSE)
+```
+
+#### Linear Regression Models
+Applying a simple linear regression model to data
+```{r}
+ qplot(wt, mpg, data=mtcars, geom=c("point", "smooth"), method="lm")
+```

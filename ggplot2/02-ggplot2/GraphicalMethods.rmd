@@ -1,0 +1,110 @@
+```{r}
+
+library(ggplot2)
+#make some example data
+```
+
+####Boxplots
+```{r}
+p <- ggplot(mtcars, aes(factor(cyl), mpg))
+p + geom_boxplot()
+qplot(factor(cyl), mpg, data = mtcars, geom = "boxplot")
+p + geom_boxplot(aes(fill = cyl))
+```
+#### Density Functions
+```{r}
+
+response <- c(rnorm(100), rnorm(100, mean=2, sd=2))
+mygroup <- factor(c(rep('group a', 100), rep('group b', 100)))
+```
+```{r}
+d <- data.frame(response, mygroup)
+rm(response, mygroup)
+```
+```{r}
+g <- ggplot(d, aes(x=response)) + geom_density()
+g
+```
+```{r}
+g <- ggplot(d, aes(x=response)) + geom_density() + geom_rug()
+g
+```
+####Histograms
+```{r}
+
+qplot(Sepal.Length, data=iris, geom="histogram")
+# Warning Message:
+# stat_bin: binwidth defaulted to range/30.
+# Use 'binwidth = x' to adjust this.
+
+```
+#### Linear regression Example
+```{r}
+ddf <- data.frame(x = 1:10, y = 0.4 + 0.6 * (1:10) + rnorm(10))
+# Find the linear model coefficients
+lmc <- coef(lm(y ~ x, data = ddf))
+```
+```{r}
+# Create a function to produce the fitted line
+lmeq <- function(x) lmc[1] + lmc[2] * x
+# Construct the ggplot() and use stat_function():
+ggplot(ddf, aes(x = x, y = y)) +
+geom_point() +
+stat_function(fun = lmeq, colour = 'red', size = 1)
+```
+Stat_function
+stat_function is designed to overlay the same function in every panel. (There's no obvious way
+tomatch up the parameters of the function with the different panels).
+```{r}
+
+dd<-data.frame(matrix(rnorm(144, mean=2,
+sd=2),72,2),c(rep("A",24),rep("B",24),rep("C",24)))
+colnames(dd) <- c("x_value", "Predicted_value", "State_CD")
+#This works
+```
+```{r}
+pg <- ggplot(dd) + geom_density(aes(x=Predicted_value)) +
+facet_wrap(~State_CD)
+print(pg)
+
+```
+#### Plotting distributions
+```{r}
+set.seed(1234)
+df <- data.frame(cond = factor( rep(c("A","B"), each=200) ),
+ rating = c(rnorm(200),rnorm(200, mean=.8)))
+ ```
+```{r}
+# Basic histogram from the vector "rating". Each bin is .5 wide.
+# These both do the same thing:
+qplot(df$rating, binwidth=.5)
+ggplot(df, aes(x=rating)) + geom_histogram(binwidth=.5)
+```
+```{r}
+# Draw with black outline, white fill
+ggplot(df, aes(x=rating)) + geom_histogram(binwidth=.5, colour="black",
+fill="white")
+```
+```{r}
+# Density curve
+ggplot(df, aes(x=rating)) + geom_density()
+```
+```{r}
+# Histogram overlaid with kernel density curve
+ggplot(df, aes(x=rating)) +
+ geom_histogram(aes(y=..density..), # Histogram with density instead of count on y-axis
+ binwidth=.5,
+colour="black", fill="white") +
+ geom_density(alpha=.2, fill="#FF6666") # Overlay with transparent density plot
+
+```
+Histogram and density plots with multiple groups
+```{r}
+# Overlaid histograms
+ggplot(df, aes(x=rating, fill=cond)) + geom_histogram(binwidth=.5,
+alpha=.5, position="identity")
+```
+```{r}
+# Density plots with semi-transparent fill
+ggplot(df, aes(x=rating, fill=cond)) + geom_density(alpha=.3)
+```
