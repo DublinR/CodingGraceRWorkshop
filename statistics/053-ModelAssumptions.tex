@@ -1,31 +1,4 @@
-documentclass[a4paper,12pt]{article}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-usepackage{eurosym}
-usepackage{vmargin}
-usepackage{amsmath}
-usepackage{graphics}
-usepackage{epsfig}
-usepackage{subfigure}
-usepackage{fancyhdr}
-%usepackage{listings}
-usepackage{framed}
-usepackage{graphicx}
 
-setcounter{MaxMatrixCols}{10}
-%TCIDATA{OutputFilter=LATEX.DLL}
-%TCIDATA{Version=5.00.0.2570}
-%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
-%TCIDATA{LastRevised=Wednesday, February 23, 2011 13:24:34}
-%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
-%TCIDATA{Language=American English}
-
-pagestyle{fancy}
-setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
-lhead{MS4024} rhead{Mr. Kevin O'Brien}
-chead{Numerical Computation}
-%input{tcilatex}
-
-begin{document}
 
 <p>
 ### {Diagnosing a Linear Regression}
@@ -70,9 +43,11 @@ Largest |rstudent|:
 132  2.79155          0.0059429      0.89143
 
 </code>
-<p>
+
+Influence Measures
+============================================
 #### {Influence Measures}
-Finally, identify any overly influential observations by using the texttt{textbf{influence.measures()}} 
+Finally, identify any overly influential observations by using the ***influence.measures()***
 function.
 If an observation is considered influential, it will be indicated with an asterisk on the right hand side. Interpretation of the individual statistics, such as textit{DFFITS} and textit{DFBETA} are beyond the scope of this course.
 
@@ -82,5 +57,3 @@ influence.measures(Fit1)
 </code> 
 </pre>
 <p>
-
-end{document}
