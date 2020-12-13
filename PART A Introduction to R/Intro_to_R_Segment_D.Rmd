@@ -1,20 +1,4 @@
-documentclass{article}
-% http://www.dummies.com/how-to/content/how-to-use-regular-expressions-in-r.html
-usepackage[english]{babel}
-usepackage{framed}
-usepackage{times}
 
-topmargin = 0pt
-marginparwidth = 6pt
-textwidth = 445pt
-oddsidemargin = 10pt
-textheight = 632pt
-
-title{Introduction to R Programming - Part B}
-date{vspace{-5ex}}
-begin{document}
-maketitle
-tableofcontents
 
 <p>
 ### {Basic R editing – Script Editor and texttt{edit()}}
@@ -182,7 +166,7 @@ To list all         * s in an texttt{R} environment, we use the texttt{ls()} fun
 
  
 <p>
-### {Removing         * s}
+### {Removing  items}
 Sometimes it is desirable to save a subset of your workspace instead of the entire workspace. One option is to use the texttt{rm()} function to remove unwanted objects right before exiting your texttt{R} session; another possibility is to use the save function. 
 
 The save function accepts multiple arguments to specify the objects you wish to save, or, alternatively, a character vector with the names of the objects can be passed to save through the texttt{list=} argument. 
@@ -208,5 +192,3 @@ So one method for saving your work is to always save your workspace image at the
 <p>
 ### {Quitting the R environment}
 As the front page text indicates – all you have to do to quite the workspace is to type in texttt{q()}. You will then be prompted to save your work.
-%-----------------------------------------------------------------------------%
-end{document}
