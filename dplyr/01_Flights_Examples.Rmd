@@ -1,0 +1,114 @@
+MAM: Why are you presenting this data set? It looks like you are using the New York city data set not the Huston data sets?
+\subsection*{The hflights data set}
+hflights is a dataset contains information about flights that departed Houston in 2011. In the description the author writes:
+\begin{quote}
+This dataset contains all flights departing from Houston airports IAH (George Bush Intercontinental) and HOU (Houston Hobby). The data comes from the Research and Innovation Technology Administration at the Bureau of Transportation statistics:
+\end{quote}
+\begin{verbatim}
+      http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0
+\end{verbatim}
+================================================================================ 
+
+\section{Worked Examples}
+
+\subsection{Data Sets}
+MAM: This list is confusing here, maybe present them when you need them (in text?).
+\begin{description}
+* [airlines]
+* [airports]
+* [flights]
+* [planes] 
+* [weather]
+\end{description}
+\subsection{New York Flights Exercise}
+
+To explore the basic data manipulation verbs of dplyr, we'll start with the built-in \textit{nycflights13} data frame. This dataset comes from the US Bureau of Transporation Statistics contains information on flights that departed from New York City in 2013. 
+
+
+
+\begin{verbatim}
+library(dplyr) # for functions
+library(nycflights13) # for data
+data(flights)
+\end{verbatim}
+
+
+\subsubsection*{Preliminary Exercises}
+Using simple data inspection functions, answer the following questions. MAM: Do you mean using simple dplyr inspection functions or any? I would actually list the functions that should be used  in the question.
+\begin{itemize}
+*  How many columns (i.e. variables) are there in this data set?
+*  How many rows (i.e. cases) are there?
+*  Which column has the most missing values?
+*  What are names of the last three variables?
+*  What type of data object is ``flights"?
+\end{itemize}
+
+
+\begin{verbatim}
+#>    year month day dep_time dep_delay arr_time arr_delay carrier tailnum
+#> 1  2013     1   1      517         2      830        11      UA  N14228
+#> 2  2013     1   1      533         4      850        20      UA  N24211
+#> 3  2013     1   1      542         2      923        33      AA  N619AA
+#> 4  2013     1   1      544        -1     1004       -18      B6  N804JB
+#> ..  ...   ... ...      ...       ...      ...       ...     ...     ...
+\end{verbatim}
+
+
+\subsection{Converting to tbl}
+
+The dataset flights is of class \texttt{tbl_df}, which is a wrapper around a data frame. \texttt{tbl_df} prevents the€™ accidental printing of large dataset to the screen. While \textbf{dplyr} can work with data frames as is, if you're dealing with large data it'€™s worth converting them to a \texttt{tbl_df} using the function \texttt{as.tbl()}.
+
+
+
+=================================================================================== 
+\subsection{Filter rows with \texttt{filter()}}
+
+\texttt{filter()} allows you to select a subset of the rows of a data frame. The first argument is the name of the data frame, and the second and subsequent are filtering expressions evaluated in the context of that data frame:
+For example, we can select all flights on January 1st (New Years Day) with:
+
+
+\begin{verbatim}
+> flightsNYD = filter(flights, month == 1, day == 1)
+> dim(flightsNYD)
+[1] 842  16
+\end{verbatim}
+
+
+
+
+\subsection{ \texttt{group_by()}}
+
+The \texttt{tbl} also comes in a grouped variant which allows you to easily perform operations ``by group". Suppose we wish to group by carrier.
+
+
+\begin{verbatim}
+> carriersDF  <- group_by(flights, carrier)
+\end{verbatim}
+
+
+What type of object is \texttt{carriersDF}? (multiple answers)
+
+
+\begin{verbatim}
+> by_tailnum <- group_by(flights, tailnum)
+> delay <- summarise(by_tailnum,
+count = n(), 
+dist = mean(distance, na.rm = TRUE),
+delay = mean(arr_delay, na.rm = TRUE))
+> delay <- filter(delay, count > 20, dist < 2000)
+\end{verbatim}
+
+
+======================================================================================================== 
+\section{Weather data set}
+\begin{itemize}
+*  \texttt{origin}: Weather station. Named origin to facilitate merging with flights data
+*  \texttt{year,month,day,hour}: Time of recording
+*  \texttt{temp,dewp}: Temperature and dewpoint in F
+*  \texttt{humid}: Relative humidity
+*  \texttt{wind_dir,wind_speed,wind_gust}: Wind direction (in degrees), speed and gust speed (in mph)
+*  \texttt{precip}: Precipitation, in inches
+*  \texttt{pressure}: Sea level pressure in millibars
+*  \texttt{visib}: Visibility in miles
+\end{itemize}
+\end{document}
