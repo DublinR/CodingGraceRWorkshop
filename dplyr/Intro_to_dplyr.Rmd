@@ -1,0 +1,136 @@
+
+%- http://renkun.me/pipeR-tutorial/Examples/dplyr.html
+% - https://rpubs.com/justmarkham/dplyr-tutorial
+\begin{document}
+
+\tableofcontents
+\begin{framed}
+This is the draft document for in-session slides.
+\end{framed}
+\textbf{Pre-requisites}
+
+*  Downloading and installing R packages
+*  What is a data frame
+*  Principles of Tidy Data
+
+\newpage
+
+
+
+
+\section{dplyr : Grammar of data manipulation}
+
+*  dplyr  is mainly authored by Hadley Wickham and Romain Francois. It is designed to be intuitive and easy to learn, thereby making data manipulations€ in \texttt{R} more user friendly.
+*  dplyr is a new package which provides a set of tools for efficiently manipulating datasets in \texttt{R}.
+*  dplyr is the next iteration of plyr, focussing on only data frames. *  dplyr is faster, has a more consistent API and should be easier to use. 
+
+
+
+\subsection{dplyr : abstract by Hadley Wickham}
+
+\begin{framed}
+
+
+There are three key ideas that underlie dplyr:
+
+\begin{enumerate}
+*  Your time is important, so Romain Francois has written the key pieces in Rcpp to provide blazing fast performance. Performance will only get better over time, especially once we figure out the best way to make the most of multiple processors. 
+
+*  Tabular data is tabular data regardless of where it lives, so you should use the same functions to work with it. 
+
+With dplyr, anything you can do to a local data frame you can also do to a remote database table. PostgreSQL, MySQL, SQLite and Google bigquery support is built-in; adding a new backend is a matter of implementing a handful of S3 methods. 
+
+*  The bottleneck in most data analyses is the time it takes for you to figure out what to do with your data, and dplyr makes this easier by having individual functions that correspond to the most common operations  (group\_by, summarise, mutate, filter, select and arrange). Each function does one only thing, but does it well.
+\end{enumerate}
+Author: Hadley Wickham
+\end{framed}
+
+
+\subsection{Working with dplyr} \textbf{dplyr} focussed on tools for working with data frames (hence the d in the name). \textbf{dplyr} has three main goals:
+
+
+
+*  Identify the most important data manipulation tools needed for data analysis and make them easy to use from \texttt{R}.
+
+*  Provide very fast performance for in-memory data by writing key pieces in C++.
+
+*  Use the same interface to work with data no matter where it's stored, whether in a data frame, a data table or database.
+
+\subsection{Installing dplyr}
+You can install the latest released version from CRAN with the code below.
+You can also install and load the data packages used in most examples: 
+\begin{framed}
+\begin{verbatim}
+install.packages("dplyr")
+install.packages(c("nycflights13", "Lahman"))
+
+library(dplyr) # for functions
+library(nycflights13) # for data
+\end{verbatim}
+\end{framed}
+
+### Tidy Data
+To make the most of dplyr, Hadley Wickham recommends that you familiarise yourself with the \textbf{principles of tidy data}. This will help you get your data into a form that works well with \textbf{dplyr}, \textbf{ggplot2} and \texttt{R}'s many modelling functions.\\
+\bigskip
+
+\begin{framed}
+Three Principles from Hadley Wickham's paper
+
+* [1.] Each variable forms a column, 
+* [2.] Each observation forms a row, 
+* [3.] Each table/file stores data about one kind of observation.
+
+\end{framed}
+\textbf{Remark:}  The paper ``\textit{\textbf{Tidy data}}" by Hadley Wickham (RStudio) can be downloaded from 
+\begin{verbatim}
+http://vita.had.co.nz/papers/tidy-data.pdf
+\end{verbatim}
+
+%=================================================================== %
+
+\subsection{Key data structures}
+
+The key object in \textbf{dplyr} is a \texttt{tbl}, a representation of a tabular data structure. Currently dplyr supports:
+
+
+*  data frames - the  most commonly encountered R data structure. 
+*  data tables - a data structure that is designed for intensive data analysis.
+
+
+For this workshop, we will concentrate mostly on \textbf{dplyr} exercises with data frames. However, learning to work with data tables can be quite useful.\\
+
+For advanced users, \textbf{dplyr} also supports the following databases: \textit{SQLite, PostgreSQL, Redshift, MySQL/MariaDB, Bigquery, MonetDB} and data cubes with arrays (partial implementation). We will not cover those topics in this workshop.
+
+
+
+
+%======================================================================================%
+
+order\_by 
+
+A helper function for ordering window function output.
+
+Description
+
+This is a useful function to control the order of window functions in R that don’t have a specific
+ordering parameter. When translated to SQL it will modify the order clause of the OVER function.
+
+%======================================================================================%
+
+src_mysql
+src_sqllite
+src_postgres
+src_monetdb
+src_bigquery
+
+%====================================================================================== %
+
+idaho2 = select(idaho,
+contains("AX"),
+starts_with("FK"),
+starts_with("SM"),
+ends_with("SP"),
+num_range("wgtp",11:16,width=2)
+)
+
+%======================================================================================= %
