@@ -17,24 +17,24 @@ alternative hypothesis: two-sided
 
 <p>
 ### {Weighted and Unweighted Regression}
-begin{ }
-	 *           Unweighted regression requires that the variability of the
+
+*  Unweighted regression requires that the variability of the
 	residuals is constant over the measured range of values.
 	(This is called homoskedasticity).
 	
-	 *           Weighted regression does not have this requirement.
+*  Weighted regression does not have this requirement.
 	There may be differing variability over the range of values.
 	(This is called heteroskedasticity).
 	
-	 *           Weighted regression requires extra information on the standard deviations of the responses so as to compute the weights.
+*  Weighted regression requires extra information on the standard deviations of the responses so as to compute the weights.
 	
-	 *           Unweighted regression does not need or use any information on the response standard deviations.
+*  Unweighted regression does not need or use any information on the response standard deviations.
 	
-	 *           Weighted regression is preferable if heteroskedasticity evident in the data
+*  Weighted regression is preferable if heteroskedasticity evident in the data
 	
-	 *           (If there is not constant variance for the residuals over the range of values)
+*  (If there is not constant variance for the residuals over the range of values)
 	
-end{ }
+
 
 
 <p>
@@ -93,17 +93,14 @@ than $R^2$.
 
 
 
-newpage
-
-
 <p>
 ### {Advanced Regression}
 
-begin{enumerate}
-	 *           Multiple Linear regression
-	 *           Deming regression
-	 *           Weighted Linear Regression
-end{enumerate}
+
+*  Multiple Linear regression
+*  Deming regression
+*  Weighted Linear Regression
+
 
 
 <p>
@@ -119,15 +116,15 @@ end{equation}
 
 
 noindent Examples where multiple linear regression may be used include:
-begin{ }
-	 *           Trying to predict an individual’s income given several socio-economic
+
+*  Trying to predict an individual’s income given several socio-economic
 	characteristics.
-	 *           Trying to predict the overall examination performance of pupils in ‘A’ levels, given
+*  Trying to predict the overall examination performance of pupils in ‘A’ levels, given
 	the values of a set of exam scores at age 16.
-	 *           Trying to estimate systolic or diastolic blood pressure, given a variety of socioeconomic
+*  Trying to estimate systolic or diastolic blood pressure, given a variety of socioeconomic
 	and behavioural characteristics (occupation, drinking smoking, age
 	etc).
-end{ }
+
 
 <p>
 ### {Deming regression}
@@ -144,15 +141,15 @@ Whereas the ordinary linear regression method assumes that only the $Y$ measurem
 <p>
 ### {SLR Diagnostics}
 
-begin{ }
-	 *           Once the model has been fitted, we must check the residuals.
-	 *           The residuals should be independent and normally distributed with
+
+*  Once the model has been fitted, we must check the residuals.
+*  The residuals should be independent and normally distributed with
 	mean of 0 .
-	 *           Use a histogram of the residuals
-	 *           Can also use a Q-Q plot.
-	 *           The residuals should must have constant variance.
-	 *           Use a plot of fitted values vs residuals.
-end{ }
+*  Use a histogram of the residuals
+*  Can also use a Q-Q plot.
+*  The residuals should must have constant variance.
+*  Use a plot of fitted values vs residuals.
+
 <p>
 ### {Regression: R-Square}
 
