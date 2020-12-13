@@ -1,6 +1,10 @@
-4) Outlier tests
- 
-The most common test for outliers is the Grubbs' test . This test is used to detect a single outlier (only one) in a univariate data set that follows an approximately normal distribution.
+Outlier tests
+============================
+
+### Outlier Tests
+
+The most common test for outliers is the Grubbs' test. 
+This test is used to detect a single outlier (only one) in a univariate data set that follows an approximately normal distribution.
  
 Grubbs' test is defined for the  hypothesis:
  
