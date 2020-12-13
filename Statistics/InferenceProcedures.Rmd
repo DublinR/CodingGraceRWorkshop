@@ -1,120 +1,112 @@
 
+<p>
+### Test for Equality of Variance and Means}
+
+
+*  Test for Equality of Test (``var.test()``)
+*  Welch Two Sample t-test (``t.test()``)
+*  Independent Two Sample t-test (``t.test(var.equal=TRUE)})
 
 
 
 <p>
-### {Test for Equality of Variance and Means}
-
-begin{ }
-         * Test for Equality of Test (texttt{var.test()})
-         * Welch Two Sample emph{t-}test (texttt{t.test()})
-         * Independent Two Sample emph{t-}test (texttt{t.test(var.equal=TRUE)})
-
-end{ }
-
-<p>
-#### {Bartlett's test for Homogeneity of Variances}
+#### Bartlett's test for Homogeneity of Variances}
  
 
 Equal variances across samples is called homogeneity of variances. Bartlett's test is used to test if multiple samples have equal variances. 
 
 Some statistical tests, such as the analysis of variance, assume that variances are equal across groups or samples.  The Bartlett test can be used to verify that assumption.
 
-begin{ }
-         * The null hypothesis is that each of the samples have equal variance.
-         * The alternative hypothesis states that at least one sample has a significantly different variance.
-end{ }
+
+*  The null hypothesis is that each of the samples have equal variance.
+*  The alternative hypothesis states that at least one sample has a significantly different variance.
+
 
 %----------------------------------------------------------------------------------------------------------------- %
 newpage
 <p>
-### {Outliers}
+### Outliers}
 <p>
-#### {Grubb's Test for Outliers}
+#### Grubb's Test for Outliers}
 <pre>
-	<code>
-	library(outliers)
-	grubbs.test(X)
-	</code>
+<code>
+library(outliers)
+grubbs.test(X)
+</code>
 </pre>
 <p>
 <p>
-#### {Dixon Test for Outliers}
+#### Dixon Test for Outliers
 <p>
-#### {Outliers on Boxplots}
+#### Outliers on Boxplots
 Boxplots can used to determine an outlie (we will refer to them as ``boxplot outliers")
 <pre>
-	<code>
-	boxplot(X, horizontal = TRUE)
-	</code>
+<code>
+boxplot(X, horizontal = TRUE)
+</code>
 </pre>
 <p>
 
-newpage
+
 
 <p>
-### {Inference Procedures}
+### Inference Procedures
 <p>
-#### {Confidence Interval }
+#### Confidence Interval 
 A confidence interval gives an estimated range of values which is likely to include an unknown population parameter, the estimated range being calculated from a given set of sample data. If independent samples are taken repeatedly from the same population, and a confidence interval calculated for each sample, then a certain percentage (confidence level) of the intervals will include the unknown population parameter. 
 
 Confidence intervals are usually calculated so that this percentage is $95%$, but we can produce $90%$, $99%$, $99.9%$ (or whatever) confidence intervals for the unknown parameter. The width of the confidence interval gives us some idea about how uncertain we are about the unknown parameter. A very wide interval may indicate that more data should be collected before anything very definite can be said about the parameter.
 <p>
-#### {Power }
+#### Power }
 The power of a statistical hypothesis test measures the test's ability to reject the null hypothesis when it is actually false - that is, to make a correct decision. In other words, the power of a hypothesis test is the probability of not committing a type II error. It is calculated by subtracting the probability of a type II error from 1, usually expressed as: 
 [mbox{Power} = 1 - mbox{P(type II error) } = 1- beta ]The maximum power a test can have is 1, the minimum is 0. Ideally we want a test to have high power, close to 1.
 
 <p>
-### {Single Sample Inference Procedures}
+### Single Sample Inference Procedures}
 If we have a single sample we might want to answer several
 questions:
-begin{ }
-	         * What is the mean value?          * Is the mean value
-	significantly different from current theory? (Hypothesis test)
-	         * What is the level of uncertainty associated with our
-	estimate of the mean value? (Confidence interval)
-end{ }
 
-begin{ }
-	         * (Last week : confidence interval for a mean)          * Revision:
-	For large samples ($n > 30$) and/or if the population standard
-	deviation ($sigma$) is known, the usual test statistic is given
-	by: [Z =frac{bar{X} - mu}{SE(bar{X})}]
-	
-	         * $S.E.(bar{X}) = { sigma over sqrt{n}} $ or ${s over sqrt{n}}$. 
-	         * For small samples, use the $t-$distribution with $n-1$ degrees of freedom.
-	         * Critical value from tables.
-	         * Compare test statistics and critical values.
-end{ }
+*  What is the mean value? *  Is the mean value
+significantly different from current theory? (Hypothesis test)
+*  What is the level of uncertainty associated with our
+estimate of the mean value? (Confidence interval)
+
+
+
+*  (Last week : confidence interval for a mean) *  Revision:
+For large samples ($n > 30$) and/or if the population standard
+deviation ($sigma$) is known, the usual test statistic is given
+by: [Z =frac{bar{X} - mu}{SE(bar{X})}]
+
+*  $S.E.(bar{X}) = { sigma over sqrt{n}} $ or ${s over sqrt{n}}$. 
+*  For small samples, use the $t-$distribution with $n-1$ degrees of freedom.
+*  Critical value from tables.
+*  Compare test statistics and critical values.
+
 
 To ensure that our analysis is correct we need to check for
 outliers in the data (i.e. boxplots) and we also need to check
 whether the data are normally distributed or not.
 
 <pre>
-	<code>
-	> t.test(X,mu=10)
-	
-	One Sample t-test
-	
-	data:  X 
-	t = 14.1421, df = 4, p-value = 0.0001451
-	alternative hypothesis: true mean is not equal to 10 
-	95 percent confidence interval:
-	10.08037 10.11963 
-	sample estimates:
-	mean of x 
-	10.1 
-	</code>
+<code>
+> t.test(X,mu=10)
+
+One Sample t-test
+
+data:  X 
+t = 14.1421, df = 4, p-value = 0.0001451
+alternative hypothesis: true mean is not equal to 10 
+95 percent confidence interval:
+10.08037 10.11963 
+sample estimates:
+mean of x 
+10.1 
+</code>
 </pre>
 <p>
 
 
-%--------------------------------------------------------------------------------------------------%
-
-
-%--------------------------------------------------------------------------%
-newpage
 %<p>
 ###  9 Inference Procedures
 
@@ -122,18 +114,18 @@ newpage
 
 
 <p>
-#### {Hypothesis test of Proportion}
+#### Hypothesis test of Proportion
 This procedure is used to assess whether an assumed proportion is supported by evidence. For two tailed tests, the null hypothesis states that the population proportion  π has a specified value, with the alternative stating that π has a different value. 
 
 The hypotheses are typically as follows:   
 
-begin{ }
-	        * [Ho] : $pi = 0.50$
-	        * [Ha] : $pi neq 0.50$
-end{ }
+
+        * [Ho] : $pi = 0.50$
+        * [Ha] : $pi \neq 0.50$
+
 
 sub<p>
-#### {Example}
+#### Example
 A manufacturer is interested in whether people can tell the difference between a new formulation of a soft drink and the original formulation. The new formulation is cheaper to produce so if people cannot tell the difference, the new formulation will be manufactured. 
 
 A sample of 100 people is taken. Each person is given a taste of both formulations and asked to identify the original. Sixty-two percent of the subjects correctly identified the new formulation. Is this proportion significantly different from $50%$? 
@@ -162,13 +154,13 @@ Since the effect is significant, the null hypothesis is rejected. It is conclude
 This result might be described in a report as follows: 
 
 begin{quote}
-	The proportion of subjects choosing the original formulation (0.62) was significantly greater than 0.50, with p-value = 0.021.
+The proportion of subjects choosing the original formulation (0.62) was significantly greater than 0.50, with p-value = 0.021.
 end{quote}  
 
-%----------------------------------------------------%
-
+Chi SQuare Test
+================================================
 sub<p>
-#### {Chi-squared Test}
+#### Chi-squared Test}
 
 A $chi^2$ test is carried out on tabular data containing counts, e.g. the
 number of animals that died, the number of days of rain, the
@@ -184,13 +176,84 @@ The data are presented in a contingency table:
 right-handed left-handed TOTAL
 
 begin{tabular}{|c|c|c|c|}
-	hline
-	% after : hline or cline{col1-col2} cline{col3-col4} ...
-	& right-handed &left-handed & TOTALhline
-	Male & 43 & 9 & 52 
-	Female & 44 & 4 & 48 
-	TOTAL & 87 & 13 & 100 
-	hline
+hline
+% after : hline or cline{col1-col2} cline{col3-col4} ...
+& right-handed &left-handed & TOTALhline
+Male & 43 & 9 & 52 
+Female & 44 & 4 & 48 
+TOTAL & 87 & 13 & 100 
+hline
+end{tabular}
+
+
+The hypothesis to be tested is
+$H0 :$There is no relationship between gender and left/right-handedness
+$H1 :$There is a relationship between gender and left/right-handedness
+The values that we collect from our sample are called the observed
+(O) frequencies (counts). Now need to calculate the expected (E)
+frequencies, i.e. the values we would expect to see in the table, if
+H0 was true.
+
+
+
+
+
+#### Two Sample Tests}
+
+
+All of the previous hypothesis tests and confidence intervals can be
+extended to the two-sample case.
+
+The same assumptions apply, i.e. data are normally distributed in
+each population and we may want to test if the mean in one
+population is the same as the mean in the other population, etc.
+
+Normality can be checked using histograms, boxplots and Q-Q
+plots as before. The Anderson-Darling test can be used on
+each group of data also.
+
+
+%------------------------------------------------------%
+sub<p>
+#### Implementation}
+
+This can be carried out in R by hand:
+
+footnotesize <code>
+>obs.vals <- matrix(c(43,9,44,4), nrow=2, byrow=T)
+>row.tots <- apply(obs.vals, 1, sum)
+>col.tots <- apply(obs.vals, 2, sum)
+>exp.vals <- row.tots%o%col.tots/sum(obs.vals)
+>TS <- sum((obs.vals-exp.vals)^2/exp.vals)
+>TS
+>[1] 1.777415
+</code>
+
+
+
+#### Chi-squared Test}
+
+A $chi^2$ test is carried out on tabular data containing counts, e.g. the
+number of animals that died, the number of days of rain, the
+number of stocks that grew in value, etc.
+
+Usually have two qualitative variables, each with a number of
+levels, and want to determine if there is a relationship between the
+two variables, e.g. hair colour and eye colour, social status and
+crime rates, house price and house size, gender and left/right
+handedness.
+
+The data are presented in a contingency table:
+right-handed left-handed TOTAL
+
+begin{tabular}{|c|c|c|c|}
+hline
+% after : hline or cline{col1-col2} cline{col3-col4} ...
+& right-handed &left-handed & TOTALhline
+Male & 43 & 9 & 52 
+Female & 44 & 4 & 48 
+TOTAL & 87 & 13 & 100 
+hline
 end{tabular}
 
 
@@ -209,7 +272,7 @@ H0 was true.
 
 %------------------------------------------------------%
 sub<p>
-#### {Two Sample Tests}
+#### Two Sample Tests}
 
 
 All of the previous hypothesis tests and confidence intervals can be
@@ -224,13 +287,10 @@ plots as before. The Anderson-Darling test can be used on
 each group of data also.
 
 
-%------------------------------------------------------%
-sub<p>
-#### {Implementation}
+#### Implementation
 
 This can be carried out in R by hand:
-
-footnotesize <code>
+<code>
 >obs.vals <- matrix(c(43,9,44,4), nrow=2, byrow=T)
 >row.tots <- apply(obs.vals, 1, sum)
 >col.tots <- apply(obs.vals, 2, sum)
@@ -238,83 +298,5 @@ footnotesize <code>
 >TS <- sum((obs.vals-exp.vals)^2/exp.vals)
 >TS
 >[1] 1.777415
-</code>normalsize
-
-
-%------------------------------------------------------%
-
-%----------------------------------------------------%
-
-sub<p>
-#### {Chi-squared Test}
-
-A $chi^2$ test is carried out on tabular data containing counts, e.g. the
-number of animals that died, the number of days of rain, the
-number of stocks that grew in value, etc.
-
-Usually have two qualitative variables, each with a number of
-levels, and want to determine if there is a relationship between the
-two variables, e.g. hair colour and eye colour, social status and
-crime rates, house price and house size, gender and left/right
-handedness.
-
-The data are presented in a contingency table:
-right-handed left-handed TOTAL
-
-begin{tabular}{|c|c|c|c|}
-	hline
-	% after : hline or cline{col1-col2} cline{col3-col4} ...
-	& right-handed &left-handed & TOTALhline
-	Male & 43 & 9 & 52 
-	Female & 44 & 4 & 48 
-	TOTAL & 87 & 13 & 100 
-	hline
-end{tabular}
-
-
-The hypothesis to be tested is
-$H0 :$There is no relationship between gender and left/right-handedness
-$H1 :$There is a relationship between gender and left/right-handedness
-The values that we collect from our sample are called the observed
-(O) frequencies (counts). Now need to calculate the expected (E)
-frequencies, i.e. the values we would expect to see in the table, if
-H0 was true.
-
-
-
-
-
-
-%------------------------------------------------------%
-sub<p>
-#### {Two Sample Tests}
-
-
-All of the previous hypothesis tests and confidence intervals can be
-extended to the two-sample case.
-
-The same assumptions apply, i.e. data are normally distributed in
-each population and we may want to test if the mean in one
-population is the same as the mean in the other population, etc.
-
-Normality can be checked using histograms, boxplots and Q-Q
-plots as before. The Anderson-Darling test can be used on
-each group of data also.
-
-
-%------------------------------------------------------%
-sub<p>
-#### {Implementation}
-
-This can be carried out in R by hand:
-
-footnotesize <code>
->obs.vals <- matrix(c(43,9,44,4), nrow=2, byrow=T)
->row.tots <- apply(obs.vals, 1, sum)
->col.tots <- apply(obs.vals, 2, sum)
->exp.vals <- row.tots%o%col.tots/sum(obs.vals)
->TS <- sum((obs.vals-exp.vals)^2/exp.vals)
->TS
->[1] 1.777415
-</code>normalsize
+</code>
 
