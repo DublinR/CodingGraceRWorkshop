@@ -9,9 +9,7 @@ library(plotrix)
 \end{verbatim}
 \end{framed}
 
-\end{frame}
-%=====================================================================================================%
-\begin{frame}[verbatim]
+
 The RuffeSLRH92 data frame is then loaded.
 
 \begin{framed}
@@ -21,9 +19,8 @@ str(RuffeSLRH92)
 \end{verbatim}
 \end{framed}
 
-\end{frame}
-%=======================================================================================================%
-\begin{frame}[verbatim]
+<p>
+
 \frametitle{dplyr: Select (columns) Example}
 Columns can be selected from a data.frame with select(), given the original data.frame as the first argument and the variables to select, or include, as further arguments. The following creates a data.frame without the fish.id, species, day and year variables (they are not very useful in this context and will make the output further below easier to read).
 \begin{framed}
@@ -32,10 +29,7 @@ RuffeSLRH92 <- select(RuffeSLRH92,-fish.id,-species,-day,-year)
 head(RuffeSLRH92)
 \end{verbatim}
 \end{framed}
-
-\end{frame}
-%=======================================================================================================%
-\begin{frame}[verbatim]
+<p>
 
 The following creates a data.frame of just the length and weight variables.
 
@@ -47,9 +41,8 @@ head(ruffeLW)
 \end{verbatim}
 \end{framed}
 
-\end{frame}
-%=======================================================================================================%
-\begin{frame}[verbatim]
+<p>
+
 \begin{itemize}
 \item 
 The dplyr package contains a variety of helpers for selecting. 
@@ -62,26 +55,21 @@ str(ruffeL)
 \end{verbatim}
 \end{framed}
 
-\end{frame}
-%=======================================================================================================%
-\begin{frame}
 \frametitle{Filtering Example}
-\begin{itemize}
+
 \item The filter() function can be used similarly to subset() to select a set of rows from an original data.frame according to some 
 conditioning statement. 
 \item As with subset(), filter() returns an object that maintains a list of the original levels whether those levels exist in the new data.frame or not.
 \item  Use droplevels() to restrict the levels to only those that exist in the data.frame. 
 \item The example below finds just the males from the original data.frame.
-\end{itemize}
+
 \begin{framed}
 \begin{verbatim}male <- filter(RuffeSLRH92,sex=="male")
 xtabs(~sex,data=male)
 \end{verbatim}
 \end{framed}
 
-\end{frame}
-%=======================================================================================================%
-\begin{frame}[fragile]
+
 
 \begin{framed}
 \begin{verbatim}
@@ -92,9 +80,7 @@ xtabs(~sex,data=male)
 ##  201
 \end{verbatim}
 \end{framed}
-\end{frame}
-%=======================================================================================================%
-\begin{frame}[fragile]
+
 Multiple conditioning statements can be strung together as additional arguments to filter(). The example below finds males that are also ripe.
 
 \begin{framed}
@@ -104,4 +90,3 @@ xtabs(~sex+maturity,data=maleripe)
 \end{verbatim}
 \end{framed}
 
-\end{frame}
