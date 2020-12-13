@@ -1,0 +1,127 @@
+---
+title: "``flashlight::light_effects``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ Combination of Response, Predicted, Partial Dependence, and ALE
+Profiles
+
+#### Description
+
+Calculates response- prediction-, partial dependence, and ALE profiles of a (multi-)flashlight with
+respect to a covariable v.
+
+#### Usage
+<pre><code>
+
+light_effects(x, ...)
+## Default S3 method:
+light_effects(x, ...)
+## S3 method for class 'flashlight'
+light_effects(x, v, data = NULL, by = x$by,
+stats = c("mean", "quartiles"), breaks = NULL, n_bins = 11,
+cut_type = c("equal", "quantile"), use_linkinv = TRUE,
+value_name = "value", q1_name = "q1", q3_name = "q3",
+label_name = "label", type_name = "type", counts_name = "counts",
+counts_weighted = FALSE, v_labels = TRUE, pred = NULL,
+pd_indices = NULL, pd_n_max = 1000, pd_seed = NULL,
+ale_two_sided = TRUE, ...)
+## S3 method for class 'multiflashlight'
+light_effects(x, v, data = NULL,
+breaks = NULL, n_bins = 11, cut_type = c("equal", "quantile"), ...)
+</code></pre>
+
+#### Arguments
+* ``x``: An object of class flashlight or multiflashlight.
+... Further arguments passed to cut3 resp. formatC in forming the cut breaks of
+the v variable.
+v The variable to be profiled.
+* ``data``: An optionaldata.frame.
+* ``by``: An optional vector of column names used to additionally group the results.
+stats Statistic to calculate for the response profile: "mean" or "quartiles".
+breaks Cut breaks for a numeric v.
+* ``n_bins``: Maxmium number of unique values to evaluate for numeric v.
+cut_type For the default "equal", bins of equal width are created for v by pretty. Choose
+"quantile" to create quantile bins (recommended if interested in ALE).
+use_linkinv Should retransformation function be applied? Default is TRUE.
+light_effects 17
+value_name Column name in resulting data objects containing the profile value. Defaults to "value".
+q1_name Name of the resulting column with first quartile values. Only relevant for stats "quartiles".
+q3_name Name of the resulting column with third quartile values. Only relevant for stats "quartiles".
+* ``label_name``: Column name in resulting data containing the label of the flashlight. Defaults to "label".
+type_name Name of the column in data containing type.
+* ``counts_name``:  Name of the column containing counts.
+counts_weighted Should counts be weighted by the case weights? If TRUE, the sum of w is
+returned by group.
+v_labels If FALSE, return group centers of v instead of labels. Only relevant if v is
+numeric with many distinct values. In that case useful if e.g. different flashlights
+use different data sets.
+pred Optional vector with predictions (after application of inverse link). Can be used
+to avoid recalculation of predictions over and over if the functions is to be repeatedly
+called for different v and predictions are computationally expensive to
+make.
+pd_indices A vector of row numbers to consider in calculating partial dependence and ALE
+profiles. Useful to force all flashlights to use the same basis for calculations of
+partial dependence and ALE.
+pd_n_max Maximum number of ICE profiles to consider for partial depencence and ALE
+calculation (will be randomly picked from data).
+pd_seed An integer random seed used to sample ICE profiles for partial dependence and
+ALE.
+ale_two_sided If TRUE, v is continuous and breaks are passed or being calculated, then twosided
+derivatives are calculated for ALE instead of left derivatives. This aligns
+the results better with the x labels. More specifically: Usually, local effects at
+value x are calculated using points between x-e and x. Set ale_two_sided =
+TRUE to use points between x-e/2 and x+e/2.
+
+#### Details
+
+Note that ALE profiles are being calibrated by (weighted) average predictions. The resulting level
+might be quite different from the one of the partial dependence profiles.
+
+#### Value
+
+An object of classes light_effects, light (and a list) with the following elements.
+*  response A tibble containing the response profiles.
+*  predicted A tibble containing the prediction profiles.
+*  pd A tibble containing the partial dependence profiles.
+18 light_effects
+*  by Same as input by.
+*  v The variable(s) evaluated.
+*  stats Same as input stats.
+*  value_name Same as input value_name.
+*  q1_name Same as input q1_name.
+*  q3_name Same as input q3_name.
+*  label_name Same as input label_name.
+*  type_name Same as input type.
+*  counts_name Same as input counts_name.
+Methods (by class)
+*  default: Default method.
+*  flashlight: Profiles for a flashlight object.
+*  multiflashlight: Effect profiles for a multiflashlight object.
+See Also
+light_profile, plot.light_effects.
+
+#### Examples
+```{r}
+
+fit_full <- lm(Sepal.Length ~ ., data = iris)
+fit_part <- lm(Sepal.Length ~ Petal.Length, data = iris)
+mod_full <- flashlight(model = fit_full, label = "full", data = iris, y = "Sepal.Length")
+mod_part <- flashlight(model = fit_part, label = "part", data = iris, y = "Sepal.Length")
+mods <- multiflashlight(list(mod_full, mod_part))
+light_effects(mod_full, v = "Species")
+light_effects(mod_full, v = "Species", stats = "quartiles")
+light_effects(mod_full, v = "Petal.Width")
+light_effects(mod_full, v = "Petal.Width", v_label = FALSE)
+light_effects(mod_full, v = "Petal.Width", stats = "quartiles")
+light_effects(mod_full, v = "Petal.Width", n_bins = 3)
+light_effects(mod_full, v = "Petal.Width", n_bins = 3, format = "f")
+light_effects(mod_full, v = "Petal.Width", breaks = 0:3)
+light_effects(mod_full, v = "Petal.Width", by = "Species")
+light_effects(mods, v = "Petal.Width")
+light_effects(mods, v = "Petal.Width", by = "Species")
+light_effects(mods, v = "Petal.Width", by = "Species", stats = "quartiles")

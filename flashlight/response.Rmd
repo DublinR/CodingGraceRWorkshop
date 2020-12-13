@@ -1,0 +1,46 @@
+---
+title: "``flashlight::response``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+response Response of flashlight
+
+#### Description
+
+Extracts response from object of class flashlight.
+
+#### Usage
+<pre><code>
+
+response(object, ...)
+## Default S3 method:
+response(object, ...)
+## S3 method for class 'flashlight'
+response(object, ...)
+</code></pre>
+
+#### Arguments
+object An object of class flashlight.
+... Arguments used to update the flashlight before extracting the response.
+
+#### Value
+
+A numeric vector of responses.
+Methods (by class)
+• default: Default method not implemented yet.
+• flashlight: Extract response from flashlight object.
+46 response
+
+#### Examples
+```{r}
+
+fit <- lm(Sepal.Length ~ ., data = iris)
+(fl <- flashlight(model = fit, data = iris, y = "Sepal.Length", label = "ols"))
+response(fl)[1:5]
+response(fl, data = iris[1:5, ])
+response(fl, data = iris[1:5, ], linkinv = exp)
+```

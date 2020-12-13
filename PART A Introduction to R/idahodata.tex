@@ -1,46 +1,46 @@
 
-\documentclass{beamer}
+documentclass{beamer}
 
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{framed}
-\usepackage{subfiles}
+usepackage{amsmath}
+usepackage{amssymb}
+usepackage{framed}
+usepackage{subfiles}
 
-\begin{document}
+begin{document}
 	
 %ESRItalk
-\begin{frame}[fragile]
-The American Community Survey distributes downloadable data about United States communities. 
-Download the 2006 microdata survey about housing for the state of Idaho using \texttt{download.file()} from here: 
 
-\begin{verbatim}
+The American Community Survey distributes downloadable data about United States communities. 
+Download the 2006 microdata survey about housing for the state of Idaho using texttt{download.file()} from here: 
+
+<code>
 https://dl.dropbox.com/u/7710864/data/csv_hid/ss06hid.csv
 
 or here:
 
 https://spark-public.s3.amazonaws.com/dataanalysis/ss06hid.csv 
-\end{verbatim}
-and load the data into \texttt{R}. 
-\end{frame}
+</code>
+and load the data into texttt{R}. 
+
 %=========================================================================== %
 
 % You will use this data for the next several questions. 
-\begin{frame}[fragile]
-\noindent \textbf{\textit{Code Book}}\\
+
+noindent textbf{textit{Code Book}}
 The code book, describing the variable names is here: 
 
-\begin{verbatim}
+<code>
 https://dl.dropbox.com/u/7710864/data/PUMSDataDict06.pdf
-\end{verbatim}
-\end{frame}
+</code>
+
 %=========================================================================== %
-\begin{frame}[fragile]
 
-How many housing units in this survey were worth more than \$1,000,000?
-% **53**
 
-%\begin{framed}
-%	\begin{verbatim}
+How many housing units in this survey were worth more than $1,000,000?
+%              *  * 53             *  * 
+
+%<pre>
+%	<code>
 %	# Download 2006 microdata survey 
 %	# re: housing for Idaho using download.file()
 %	# setwd("~/DA")
@@ -52,17 +52,18 @@ How many housing units in this survey were worth more than \$1,000,000?
 %	# download.file(
 %	'https://spark-public.s3.amazonaws.com/dataanalysis/PUMSDataDict06.pdf',
 %	"PUMSDataDict06.pdf", method="curl")
-%	\end{verbatim}
-%\end{framed}
+%	</code>
+%</pre>
+<p>
 
-\end{frame}
+
 
 %=========================================================================================== %
 
-\begin{frame}[fragile]
 
-\begin{framed}
-	\begin{verbatim}	
+
+<pre>
+	<code>	
 	# load the data into R
 	idahoData <- read.csv("ss06hid.csv", header=TRUE)
 	
@@ -76,92 +77,97 @@ How many housing units in this survey were worth more than \$1,000,000?
 	# How many housing units are worth
 	# more than $1,000,000?
 	table(idahoData$TYPE,idahoData$VAL)
-	\end{verbatim}
-\end{framed}
+	</code>
+</pre>
+<p>
 
-\end{frame}
+
 
 %=========================================================================================== %
 
-\begin{frame}[fragile]
 
-\begin{framed}
-	\begin{verbatim}
+
+<pre>
+	<code>
 	#from local files
 	idahoData <- read.csv("daquiz2.csv", header=TRUE)
 	
-	\end{verbatim}
-\end{framed}
+	</code>
+</pre>
+<p>
 
-\end{frame}
+
 
 %=========================================================================================== %
 
-\begin{frame}[fragile]
-\frametitle{Question 4}
 
-\begin{itemize}
-	\item Use the data you loaded from Question 3. 
-	\item Consider the variable FES. 
-	\item Which of the "tidy data" principles does this variable violate?
-\end{itemize}
+frametitle{Question 4}
+
+
+	         * Use the data you loaded from Question 3. 
+	         * Consider the variable FES. 
+	         * Which of the "tidy data" principles does this variable violate?
+
 
 %%READY
-%\textbf{\textit{Revision}}\\
+%textbf{textit{Revision}}
 %What are the three characteristics of tidy data?
 %
-%\begin{itemize}
-%	\item ``\textit{\textbf{Tidy data}}" by Hadley Wickham (RStudio)
-%	\item Submission to Journal of Statistical Software
-%	\item (http://vita.had.co.nz/papers/tidy-data.pdf)
-%\end{itemize}
+%
+%	         * ``textit{textbf{Tidy data}}" by Hadley Wickham (RStudio)
+%	         * Submission to Journal of Statistical Software
+%	         * (http://vita.had.co.nz/papers/tidy-data.pdf)
+%
 %Three Principles from Hadley Wickham's paper
-%\begin{itemize}
-%	\item[1.] Each variable forms a column, 
-%	\item[2.] Each observation forms a row, 
-%	\item[3.] Each table/file stores data about one kind of observation.
-%\end{itemize}
+%
+%	        * [1.] Each variable forms a column, 
+%	        * [2.] Each observation forms a row, 
+%	        * [3.] Each table/file stores data about one kind of observation.
+%
 
-\begin{framed} 
-	\begin{verbatim}
+<pre> 
+	<code>
 	# let's look!
 	unique(idahoData$FES)
-	\end{verbatim}
-\end{framed} 
+	</code>
+</pre>
+<p> 
 
-\end{frame}
+
 %-----------------------------------------------------------------%
 
-%\subsection*{ Question 5 }
-\begin{frame}
+%<p>
+####        * { Question 5 }
 
 
-\textbf{Options}
-\begin{itemize}
-	\item[(i)]  Each tidy data table contains information about only one type of observation.\\
+
+textbf{Options}
+
+	        * [(i)]  Each tidy data table contains information about only one type of observation.
 	(Not so)
 	
-	\item[(ii)]  Each variable in a tidy data set has been transformed to be interpretable.
+	        * [(ii)]  Each variable in a tidy data set has been transformed to be interpretable.
 	(No)
 	
-	\item[(iii)]  Tidy data has no missing values.
+	        * [(iii)]  Tidy data has no missing values.
 	
-	\item[(iv)]  Tidy data has one variable per column.
-\end{itemize}
-\end{frame}
+	        * [(iv)]  Tidy data has one variable per column.
+
+
 %-----------------------------------------------------------------%
 
-%\subsection*{ Question 5 }
-\begin{frame}[fragile]
+%<p>
+####        * { Question 5 }
+
 Use the data you loaded from Question 3. 
 
-\begin{itemize}
-	\item How many households have 3 bedrooms and and 4 total rooms? 
-	\item How many households have 2 bedrooms and 5 total rooms? 
-	\item How many households have 2 bedrooms and 7 total rooms?
-\end{itemize}
-\begin{framed}
-	\begin{verbatim}
+
+	         * How many households have 3 bedrooms and and 4 total rooms? 
+	         * How many households have 2 bedrooms and 5 total rooms? 
+	         * How many households have 2 bedrooms and 7 total rooms?
+
+<pre>
+	<code>
 	#USING TABLE
 	#Rooms on Rows , Bedrooms on Columns
 	#dnn adds dimension names
@@ -169,15 +175,16 @@ Use the data you loaded from Question 3.
 	table(idahoData$RMS,idahoData$BDS,
 	    dnn=list("RMS","BDS"))
 	
-	\end{verbatim}
-\end{framed}
+	</code>
+</pre>
+<p>
 
-\end{frame}
+
 %============================================================= %
-\begin{frame}[fragile]
+
 Another Way of Doing it
-\begin{framed}
-	\begin{verbatim}
+<pre>
+	<code>
 	# How many households have 3 bedrooms and 4 total rooms?
 	nrow(idahoData[!is.na(idahoData$BDS) & idahoData$BDS==3 &
 	!is.na(idahoData$BDS) & idahoData$RMS==4,])
@@ -190,38 +197,41 @@ Another Way of Doing it
 	nrow(idahoData[!is.na(idahoData$BDS) & idahoData$BDS==2 &
 	!is.na(idahoData$BDS) & idahoData$RMS==7,])
 	
-	\end{verbatim}
-\end{framed}
-% **148, 386, 49**
-\end{frame}
+	</code>
+</pre>
+<p>
+%              *  * 148, 386, 49             *  * 
+
 
 %-----------------------------------------------------------------%
 
-%\subsection*{Question 6}
-\begin{frame}
-\begin{itemize}
-	\item Use the data from Question 3. 
-	\item Create a logical vector that identifies the households on greater than 10 acres who sold more than \$10,000 worth of agriculture products. 
-	\item Assign that logical vector to the variable `\texttt{agricultureLogical}`. 
-	\item Apply the `\texttt{which()} function like this to identify the rows of the data frame where the logical vector is `TRUE`.
-\end{itemize}
+%<p>
+####        * {Question 6}
 
-\end{frame}
+
+	         * Use the data from Question 3. 
+	         * Create a logical vector that identifies the households on greater than 10 acres who sold more than $10,000 worth of agriculture products. 
+	         * Assign that logical vector to the variable `texttt{agricultureLogical}`. 
+	         * Apply the `texttt{which()} function like this to identify the rows of the data frame where the logical vector is `TRUE`.
+
+
+
 %====================================================== %
-\begin{frame}[fragile]
-\begin{framed} 
-	\begin{verbatim}
+
+<pre> 
+	<code>
 	# Like this (this wont run yet)
 	which(agricultureLogical) 
-	\end{verbatim}
-\end{framed} 
-\end{frame}
+	</code>
+</pre>
+<p> 
+
 %====================================================== %
-\begin{frame}[fragile]
+
 What are the first 3 values that result?
 
-\begin{framed}
-\begin{verbatim}
+<pre>
+<code>
 	# Showing off a bit
 	q6cols <- c("ACR", "AGS")
 	which(names(idahoData) %in% q6cols)  
@@ -231,156 +241,163 @@ What are the first 3 values that result?
 	
 	# and:
 	which(agricultureLogical) 
-	\end{verbatim}
-\end{framed} 
+	</code>
+</pre>
+<p> 
 
-%**125, 238, 262**
-\end{frame}
+%             *  * 125, 238, 262             *  * 
+
 %====================================================== %
-\begin{frame}
-	
-\frametitle{Question 7}
 
-\begin{itemize}
-	\item Use the data from Question 3. 
-	\item Create a logical vector that identifies the households on greater than 10 acres who
-	sold more than \$10,000 worth of agriculture products. 
-	\item Assign that logical vector to the variable \texttt{agricultureLogical}. 
-	\item Apply the \texttt{which()} function like this to identify the rows of the 
+	
+frametitle{Question 7}
+
+
+	         * Use the data from Question 3. 
+	         * Create a logical vector that identifies the households on greater than 10 acres who
+	sold more than $10,000 worth of agriculture products. 
+	         * Assign that logical vector to the variable texttt{agricultureLogical}. 
+	         * Apply the texttt{which()} function like this to identify the rows of the 
 	data frame where the logical vector is TRUE and assign it to the variable indexes. 
-\end{itemize}
 
-\end{frame}
+
+
 %====================================================== %
-\begin{frame}[fragile]
-	
-\begin{framed} 
-\begin{verbatim}
-	indexes =  which(agricultureLogical) 
-\end{verbatim}
-\end{framed} 
 
-If your data frame for the complete data is called \texttt{dataFrame} you can create a data frame 
+	
+<pre> 
+<code>
+	indexes =  which(agricultureLogical) 
+</code>
+</pre>
+<p> 
+
+If your data frame for the complete data is called texttt{dataFrame} you can create a data frame 
 with only the above subset with the command: 
 
-\end{frame}
-%====================================================== %
-\begin{frame}[fragile]
-	
-\begin{framed} 
-	\begin{verbatim}
-	subsetDataFrame  = dataFrame[indexes,] 
-	\end{verbatim}
-\end{framed} 
 
-\noindent Note that we are subsetting this way because the NA values in the variables 
+%====================================================== %
+
+	
+<pre> 
+	<code>
+	subsetDataFrame  = dataFrame[indexes,] 
+	</code>
+</pre>
+<p> 
+
+noindent Note that we are subsetting this way because the NA values in the variables 
 will cause problems if you subset directly with the logical statement. 
 
-\end{frame}
+
 
 %====================================================== %
-\begin{frame}[fragile]
+
 	
-\noindent How many households in the subsetDataFrame have a missing value for the mortgage status 
+noindent How many households in the subsetDataFrame have a missing value for the mortgage status 
 (MRGX) variable?
 
-\begin{framed} 
-	\begin{verbatim}
+<pre> 
+	<code>
 	indexes <- which(agricultureLogical)
 	subsetIdahoData <- idahoData[indexes,]
 	
 	# And then:
 	nrow(subsetIdahoData[is.na(subsetIdahoData$MRGX),])
-	\end{verbatim}
-\end{framed} 
+	</code>
+</pre>
+<p> 
 
-\end{frame}
+
 
 
 %====================================================== %
-\begin{frame}[fragile]
-	
-\frametitle{Question 8}
-\begin{itemize}
-	\item Use the data from Question 3.
-	\item Apply `\texttt{strsplit()}` to split all the names of the data frame on the characters "wgtp". 
-	\item What is the value of the 123 element of the resulting list?
-\end{itemize}
 
-\begin{framed} 
-\begin{verbatim}
+	
+frametitle{Question 8}
+
+	         * Use the data from Question 3.
+	         * Apply `texttt{strsplit()}` to split all the names of the data frame on the characters "wgtp". 
+	         * What is the value of the 123 element of the resulting list?
+
+
+<pre> 
+<code>
 	List <- strsplit(names(idahoData), "wgtp")
 	List[123]
-\end{verbatim}
-\end{framed} 
+</code>
+</pre>
+<p> 
 
-%**"" "15"**
-\end{frame}
+%             *  * "" "15"             *  * 
+
 %====================================================== %
-\begin{frame}[fragile]
-\frametitle{Question 9}
 
-What are the 0\% and 100\% quantiles of the variable \texttt{YBL}? Is there anything wrong with these values?
-\textit{ Hint: you may need to use the \texttt{na.rm} parameter.}
+frametitle{Question 9}
 
-\begin{framed} 
-	\begin{verbatim}
+What are the 0% and 100% quantiles of the variable texttt{YBL}? Is there anything wrong with these values?
+textit{ Hint: you may need to use the texttt{na.rm} parameter.}
+
+<pre> 
+	<code>
 	quantile(idahoData$YBL, na.rm=TRUE)
 	#  0%  25%  50%  75% 100% 
 	#  -1    3    5    7   25 
-	\end{verbatim}
-\end{framed} 
+	</code>
+</pre>
+<p> 
 
-\end{frame}
+
 
 %====================================================== %
-\begin{frame}[fragile]	
-\frametitle{Question 10}
+	
+frametitle{Question 10}
 
 In addition to the data from Question 3, the American Community Survey also collects data about populations. 
-Using `\texttt{download.file()}`, download the population record data from: 
+Using `texttt{download.file()}`, download the population record data from: 
 
-\begin{verbatim}
+<code>
 https://dl.dropbox.com/u/7710864/data/csv_hid/ss06pid.csv 
 
 or here:
 
 https://spark-public.s3.amazonaws.com/dataanalysis/ss06pid.csv
-\end{verbatim}
+</code>
 
-\end{frame}
+
 %====================================================== %
-\begin{frame}[fragile]
+
 	
-\begin{itemize}
-	\item Load the data into \texttt{R}. Assign the housing data from Question 3 to a data frame `\texttt{housingData}` and the population data from above to a data frame `populationData`.
+
+	         * Load the data into texttt{R}. Assign the housing data from Question 3 to a data frame `texttt{housingData}` and the population data from above to a data frame `populationData`.
 	
-	\item Use the merge command to merge these data sets based only on the common identifier "SERIALNO". 
+	         * Use the merge command to merge these data sets based only on the common identifier "SERIALNO". 
 	
-	\item What is the dimension of the resulting data set? 
-\end{itemize}
+	         * What is the dimension of the resulting data set? 
+
 %[OPTIONAL] For fun, you might look at the data and see what happened when they merged.
 
-\end{frame}
+
 %========================================================================================== %
-\begin{frame}[fragile]
+
 	
 %	download.file(
 %	'https://spark-public.s3.amazonaws.com/dataanalysis/ss06pid.csv',
 %	'ss06pid.csv', method='curl')
 %	
-\textbf{Merging Data Sets}
-\begin{framed} 
-	\begin{verbatim}
+textbf{Merging Data Sets}
+<pre> 
+	<code>
 
 	housingData <- read.csv("ss06hid.csv", header=TRUE)
 	popuData <- read.csv("ss06pid.csv", header=TRUE)
 	
 	dim(merge(housingData, 
 	popuData, by="SERIALNO", all=TRUE))
-	\end{verbatim}
-\end{framed} 
+	</code>
+</pre>
+<p> 
 
-\end{frame}
 
-\end{document}
+
+end{document}

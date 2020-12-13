@@ -1,0 +1,39 @@
+---
+title: "``flashlight::predict.flashlight ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+predict.flashlight Predictions for flashlight
+
+#### Description
+
+Predict method for an object of class flashlight. Pass additional elements to update the flashlight,
+typically data.
+
+#### Usage
+<pre><code>
+
+## S3 method for class 'flashlight'
+predict(object, ...)
+Arguments
+object An object of class flashlight.
+... Arguments used to update the flashlight.
+
+#### Value
+
+A vector with predictions.
+
+#### Examples
+```{r}
+
+fit <- lm(Sepal.Length ~ ., data = iris)
+(fl <- flashlight(model = fit, data = iris, y = "Sepal.Length", label = "ols"))
+predict(fl)[1:5]
+predict(fl, data = iris[1:5, ])
+predict(fl, data = iris[1:5, ], linkinv = exp)
+```

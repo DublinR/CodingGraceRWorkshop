@@ -1,0 +1,40 @@
+---
+title: "``ModelMetrics::rmse``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ModelMetrics)
+```
+rmse Root-Mean Square Error
+
+#### Description  
+
+Calculates the root mean square error
+
+#### Usage  
+<pre><code>
+
+rmse(...)
+## Default S3 method:
+rmse(actual, predicted, ...)
+## S3 method for class 'lm'
+rmse(modelObject, ...)
+## S3 method for class 'glm'
+rmse(modelObject, ...)
+
+</code></pre>
+#### Arguments
+
+... additional parameters to be passed the the s3 methods
+* ``actual``: A vector of the labels
+* ``predicted``:  A vector of predicted values
+* ``modelObject``:  the model object. Currently supported lm
+
+#### Examples  
+
+data(testDF)
+glmModel <- glm(y ~ ., data = testDF, family="binomial")
+Preds <- predict(glmModel, type = 'response')
+rmse(testDF$y, Preds)

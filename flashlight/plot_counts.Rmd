@@ -1,0 +1,58 @@
+---
+title: "``flashlight::plot_counts``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+plot_counts Add Counts to Effects Plot
+
+#### Description
+
+Add counts as bar plot on top of light_effects plot.
+
+#### Usage
+<pre><code>
+
+plot_counts(p, x, text_size = 3, facet_scales = "free_x",
+show_labels = TRUE, big.mark = "'", scientific = FALSE, ...)
+plot_counts 41
+</code></pre>
+
+#### Arguments
+p The result of plot.light_effects.
+* ``x``: An object of class light_effects.
+text_size Size of count labels.
+* ``facet_scales``: Scales argument passed to facet_wrap.
+show_labels Should counts be added as text?
+big.mark Parameter passed to format. Default is "’".
+scientific Parameter passed to format. Default is FALSE.
+... Further arguments passed to geom_bar.
+
+#### Details
+
+Experimental. Uses package ggpubr to rearrange the figure. Thus, the resulting plot cannot be easily modified. Furthermore, adding counts only works if the legend in ``plot.light_effects`` is not placed on the left or right side of the plot. It has to be placed inside or at the bottom.
+
+#### Value
+
+An object of class ggplot2.
+See Also
+plot.light_effects.
+
+#### Examples
+```{r}
+
+fit_full <- lm(Sepal.Length ~ ., data = iris)
+fit_part <- glm(Sepal.Length ~ Petal.Length, data = iris)
+mod_full <- flashlight(model = fit_full, label = "full", data = iris, y = "Sepal.Length")
+mod_part <- flashlight(model = fit_part, label = "part", data = iris, y = "Sepal.Length")
+mods <- multiflashlight(list(mod_full, mod_part))
+x <- light_effects(mod_full, v = "Petal.Width", stats = "quartiles")
+plot_counts(plot(x), x, width = 0.3, alpha = 0.2)
+plot_counts(plot(x, zero_counts = FALSE), x, width = 0.3, alpha = 0.2)
+plot_counts(plot(x), x, width = 0.3, alpha = 0.2, show_labels = FALSE)
+plot_counts(plot(x, use = "response"), x, fill = "lightblue")
+plot_counts(plot(x, use = "pd", show.legend = FALSE), x, fill = "lightblue")
+```

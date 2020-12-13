@@ -1,0 +1,123 @@
+---
+title: "``flashlight::light_breakdown ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+light_breakdown 11
+light_breakdown Variable Contribution Breakdown for Single Observation
+
+#### Description
+
+Calculates sequential additive variable contribution to the prediction of a single observation, see
+Gosiewska and Biecek [1] and the details below.
+
+#### Usage
+<pre><code>
+
+light_breakdown(x, ...)
+## Default S3 method:
+light_breakdown(x, ...)
+## S3 method for class 'flashlight'
+light_breakdown(x, new_obs, data = x$data,
+by = x$byNULL, order_by_importance = TRUE, top_m = Inf,
+n_max = Inf, seed = NULL, use_linkinv = FALSE,
+after_name = "after", before_name = "before", label_name = "label",
+variable_name = "variable", step_name = "step",
+description_name = "description", digits = 3, ...)
+## S3 method for class 'multiflashlight'
+light_breakdown(x, ...)
+</code></pre>
+
+#### Arguments
+* ``x``: An object of class flashlight or multiflashlight.
+... Further arguments passed to prettyNum to format numbers in description text.
+new_obs One single new observation to calculate variable attribution for. Needs to be a data.frame of same structure as data.
+* ``data``: An optionaldata.frame.
+* ``by``: An optional vector of column names used to filter data for rows with equal values in "by" variables as new_obs.
+v Vector of variables to assess contribution for. Defaults to all except those specified
+by "y", "w" and "by".
+order_by_importance
+Logical flag indicated if v should be ordered automatically based on individual contribution (see description).
+* ``top_m``:  Maximum number of steps/variable contributions to be calculated.
+* ``n_max``:  Maximum number of rows in data to consider. Set to lower value if data is
+large.
+seed An integer random seed used to shuffle rows if n_max is smaller than the number
+of rows in data.
+12 light_breakdown
+use_linkinv Should retransformation function be applied? Default is FALSE.
+after_name Column name in resulting data containing prediction after the step in step_name.
+Defaults to "after".
+before_name Column name in resulting data containing prediction before the step in step_name.
+Defaults to "before".
+* ``label_name``: Column name in resulting data containing the label of the flashlight. Defaults
+to "label".
+variable_name Column name in resulting data containing the variable names. Defaults to "variable".
+step_name Column name in resulting data containing the step of the prediction process.
+Defaults to "step".
+description_name
+Column name in resulting data containing the description text to be visualized.
+Defaults to "description".
+digits Passed to prettyNum to format numbers in description text.
+
+#### Details
+
+The breakdown algorithm works as follows: First, the visit order (x_1, ..., x_m) of the variables
+v is specified. Then, in the query data, the column x_1 is set to the value of x_1 of the single
+observation new_obs to be explained. The change in the (weighted) average prediction on data measures the contribution of x_1 on the prediction of new_obs. This procedure is iterated over all x_i until eventually, all rows in data are identical to new_obs. A complication with this approach
+is that the visit order is relevant, at least for non-additive models. Ideally, the algorithm could be
+repeated for all possible permutations of v and its results averaged per variable. This is basically what SHAP values do, see [1] for an explanation. Unfortunately, there is no efficient way to do this in a model agnostic way. Thus we use the short-cut described in [1]. The variables are sorted
+by the size of their contribution in the same way as the breakdown algorithm but without iteration, i.e. starting from the original query data for each variable $x_i$. Note that the minimum required elements in the (multi-) flashlight are "y", "``predict_function``", "model", and "data". The latter can
+also directly be passed to light_breakdown. Note that by default, no retransformation function is
+applied.
+
+#### Value
+
+An object of class light_breakdown, light (and a list) with the following elements.
+*  data A tibble with results. Can be used to build fully customized visualizations.
+*  by Same as input by.
+*  after_name Same as input after_name.
+*  before_name Same as input before_name.
+*  label_name Same as input label_name.
+*  variable_name Same as input variable_name.
+*  step_name Same as input step_name.
+*  description_name Same as input description_name.
+light_check 13
+Methods (by class)
+*  default: Default method not implemented yet.
+*  flashlight: Variable attribution to single observation for a flashlight.
+*  multiflashlight: Variable attribution to single observation for a multiflashlight.
+
+#### References
+
+[1] A. Gosiewska and P. Biecek (2019). IBREAKDOWN: Uncertainty of model explanations for
+non-additive predictive models. ArXiv <arxiv.org/abs/1903.11420>.
+See Also
+plot.light_breakdown.
+
+#### Examples
+```{r}
+
+fit_part <- lm(Sepal.Length ~ Petal.Length, data = iris)
+fit_full <- lm(Sepal.Length ~ ., data = iris)
+mod_full <- flashlight(model = fit_full, label = "full", data = iris, y = "Sepal.Length")
+mod_part <- flashlight(model = fit_part, label = "part", data = iris, y = "Sepal.Length")
+mods <- multiflashlight(list(mod_full, mod_part), by = "Species")
+light_breakdown(mod_full, new_obs = iris[1, ])
+light_breakdown(mods, new_obs = iris[1, ])
+light_breakdown(mods, new_obs = iris[1, ], top_m = 2)
+ir <- iris
+ir$log_sl <- log(ir$Sepal.Length)
+fit_lm <- lm(log_sl ~ Petal.Length, data = ir)
+fit_glm <- glm(Sepal.Length ~ Petal.Length, data = ir, family = Gamma(link = log))
+fl_lm <- flashlight(model = fit_lm, label = "lm", y = "log_sl", linkinv = exp)
+fl_glm <- flashlight(model = fit_glm, label = "glm", y = "Sepal.Length",
+``predict_function`` = function(m, X) predict(m, X, type = "response"))
+fls <- multiflashlight(list(fl_lm, fl_glm), data = ir)
+light_breakdown(fls, new_obs = ir[1, ])$data
+light_breakdown(fls, new_obs = ir[1, ], use_linkinv = TRUE)$data
+```
+

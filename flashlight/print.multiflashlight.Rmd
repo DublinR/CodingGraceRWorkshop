@@ -1,0 +1,42 @@
+---
+title: "``flashlight::print.multiflashlight ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Prints a multiflashlight
+
+#### Description
+
+Print method for an object of class multiflashlight.
+
+#### Usage
+<pre><code>
+
+## S3 method for class 'multiflashlight'
+print(x, ...)
+</code></pre>
+
+#### Arguments
+* ``x``: An object of class multiflashlight.
+... Further arguments passed to print.flashlight.
+
+#### Value
+
+Invisibly, the input is returned.
+See Also
+multiflashlight.
+
+#### Examples
+```{r}
+
+fit_lm <- lm(Sepal.Length ~ ., data = iris)
+fit_glm <- glm(Sepal.Length ~ ., family = Gamma(link = log), data = iris)
+fl_lm <- flashlight(model = fit_lm, label = "lm")
+fl_glm <- flashlight(model = fit_glm, label = "glm")
+multiflashlight(list(fl_lm, fl_glm), data = iris)
+
+```

@@ -28,7 +28,7 @@ origin a date-time object, or something which can be coerced by as.POSIXct(tz = 
  
 
 Details
-The as.POSIX* functions convert an object to one of the two classes used to represent date/times (calendar dates plus time to the nearest second). They can convert a wide variety of objects, including objects of the other class and of classes "Date", "date" (from package date), "chron" and "dates" (from package chron) to these classes. Dates without times are treated as being at midnight UTC. 
+The as.POSIX      functions convert an object to one of the two classes used to represent date/times (calendar dates plus time to the nearest second). They can convert a wide variety of objects, including objects of the other class and of classes "Date", "date" (from package date), "chron" and "dates" (from package chron) to these classes. Dates without times are treated as being at midnight UTC. 
 
 They can also convert character strings of the formats "2001-02-03" and "2001/02/03" optionally followed by white space and a time in the format "14:52" or "14:52:03". (Formats such as "01/02/03" are ambiguous but can be converted via a format specification by strptime.) Fractional seconds are allowed. Alternatively, format can be specified for character vectors or factors: if it is not specified and no standard format works for all non-NA inputs an error is thrown. 
 
@@ -94,7 +94,7 @@ options(op)
 
 ## Matlab 'serial day number' (days and fractional days)
 z <- 7.343736909722223e5 # 2010-08-23 16:35:00
-as.POSIXct((z - 719529)*86400, origin = "1970-01-01", tz = "UTC")
+as.POSIXct((z - 719529)     86400, origin = "1970-01-01", tz = "UTC")
 
 as.POSIXlt(Sys.time(), "GMT") # the current time in UTC
 

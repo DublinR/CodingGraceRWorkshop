@@ -1,0 +1,83 @@
+
+<p>
+### {SLR Example}
+
+
+The data give the yields of cotton and irrigation levels in the Salt River Valley for different plots of land. Each plot was on Maricopa sandy loam soil. The variables are as follows:
+begin{ }
+         * textbf{Irrigation} The amount of irrigation water applied in feet per acre. This is the predictor variable.
+         * textbf{Yield} The yield of Pima cotton in pounds per acre. This is the response variable.
+end{ }
+begin{center}
+begin{tabular}{|c|c|c||c|c|c|}
+  hline
+  % after : hline or cline{col1-col2} cline{col3-col4} ...
+  Observation & Irrigation & Yield & Observation & Irrigation & Yield hline
+  1 & 1.8	& 260 & 8  &  1.5	& 280 
+  2 & 1.9	& 370 & 9  & 1.5	& 230 
+  3 & 2.5	& 450 & 10 & 1.2	& 180 
+  4 & 1.4	& 160 & 11 & 1.3	& 220 
+  5 & 1.3	& 90  & 12 & 1.8	& 180 
+  6 & 2.1	& 440 & 13 & 3.5	& 400 
+  7 & 2.3	& 380 & 14 & 3.5	& 650 
+  hline
+end{tabular}
+end{center}
+
+
+%begin{figure}[h!]
+%begin{center}
+%  includegraphics[scale=0.8]{SLR1.png}
+%  caption{SPSS output.}label{SLR1}
+%end{center}
+%end{figure}
+
+
+begin{center}
+begin{table}[htbp]
+  centering
+  caption{Add caption}
+    begin{tabular}{|rrrr|}
+    %toprule
+    hline
+    multicolumn{4}{c}{Descriptive Statistics}  
+    hline % midrule
+          & multicolumn{1}{|c|}{Mean} & multicolumn{1}{|c|}{Std. Deviation} & multicolumn{1}{|c|}{N} 
+    multicolumn{1}{|l|}{Yield} & 306.4286 & 149.6461 & 14 
+    multicolumn{1}{|l|}{Irrig} & 1.971429 & 0.754911 & 14 
+    %bottomrule
+    hline
+    end{tabular}%
+
+end{table}%
+end{center}
+
+Next we are given the output from the correlation analysis and the regression ANOVA.
+
+%begin{figure}[h!]
+%begin{center}
+%  includegraphics[width=160mm]{SLR3.jpg}
+%  caption{SPSS output.}label{SLR1}
+%end{center}
+%end{figure}
+
+The intercept and slope estimate are determined by examining the ``coefficients".
+%begin{figure}[h!]
+%begin{center}
+%  includegraphics[width=150mm]{SLR2.jpg}
+%  caption{SPSS output.}label{SLR1}
+%end{center}
+%end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+%-----------------------------------------------------------------------------------------%

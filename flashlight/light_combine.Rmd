@@ -1,0 +1,58 @@
+---
+title: "``flashlight::....``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+light_combine Combine Objects
+
+#### Description
+
+Combines a list of similar objects each of class light by row binding data.frame slots and retaining the other slots from the first list element.
+
+#### Usage
+<pre><code>
+
+light_combine(x, ...)
+## Default S3 method:
+light_combine(x, ...)
+## S3 method for class 'light'
+light_combine(x, new_class = NULL, ...)
+## S3 method for class 'list'
+light_combine(x, new_class = NULL, ...)
+</code></pre>
+
+#### Arguments
+x A list of objects of the same class.
+... Further arguments passed from or to other methods.
+new_class An optional vector with additional class names to be added to the output.
+
+#### Value
+
+If x is a list, an object like each element but with unioned rows in data slots.
+Methods (by class)
+*  default: Default method not implemented yet.
+*  light: Since there is nothing to combine, the input is returned except for additional classes.
+*  list: Combine a list of similar light objects.
+
+#### Examples
+```{r}
+
+fit_lm <- lm(Sepal.Length ~ ., data = iris)
+fit_glm <- glm(Sepal.Length ~ ., family = Gamma(link = "log"), data = iris)
+mod_lm <- flashlight(model = fit_lm, label = "lm", data = iris, y = "Sepal.Length")
+mod_glm <- flashlight(model = fit_glm, label = "glm", data = iris, y = "Sepal.Length",
+``predict_function`` = function(object, newdata)
+predict(object, newdata, type = "response"))
+mods <- multiflashlight(list(mod_lm, mod_glm))
+perf_lm <- light_performance(mod_lm)
+perf_glm <- light_performance(mod_glm)
+manual_comb <- light_combine(list(perf_lm, perf_glm),
+new_class = "light_performance_multi")
+auto_comb <- light_performance(mods)
+all.equal(manual_comb, auto_comb)
+light_combine(perf_lm)
+```

@@ -1,0 +1,169 @@
+
+<p>
+###  *         {Exercise 27: Kolmogorov-Smirnov test}
+
+<code>
+x <- rnorm(50)
+y <- runif(30)
+# Do x and y come from the same distribution?
+ks.test(x, y)
+
+Two-sample Kolmogorov-Smirnov test
+
+data:  x and y
+D = 0.46, p-value = 0.0004387
+alternative hypothesis: two-sided
+</code>
+
+<p>
+### {Weighted and Unweighted Regression}
+begin{ }
+	 *           Unweighted regression requires that the variability of the
+	residuals is constant over the measured range of values.
+	(This is called homoskedasticity).
+	
+	 *           Weighted regression does not have this requirement.
+	There may be differing variability over the range of values.
+	(This is called heteroskedasticity).
+	
+	 *           Weighted regression requires extra information on the standard deviations of the responses so as to compute the weights.
+	
+	 *           Unweighted regression does not need or use any information on the response standard deviations.
+	
+	 *           Weighted regression is preferable if heteroskedasticity evident in the data
+	
+	 *           (If there is not constant variance for the residuals over the range of values)
+	
+end{ }
+
+
+<p>
+### {Weighted Regression}
+
+textbf{Homoscedasticity} - the standard deviations of
+y-observations from the straight line are the same independently
+of the underlying x-observations.
+
+textbf{Heteroscedasticity} - the standard deviations of
+y-observations depend on the underlying x-observations.
+
+In the first case, standard regression analysis should be
+performed, while in the second the weighted regression is more
+suitable.
+
+<code>
+>Conc=c(0,2,4,6,8,10)
+>StDev=c(0.001,0.004,0.010,0.013,0.017,0.022)
+>Abs=c(0.009,0.158,0.301,0.472,0.577,0.739)
+>n=length(Conc)
+>weights=StDevˆ(-2)/mean(StDevˆ(-2))
+>wreg=lm(Abs˜Conc,weights=weights)
+>reg=lm(Abs˜Conc)
+>summary(wreg)
+</code>
+
+
+It is often convienent to express the regression analysis using
+ANOVA table. The following equation is the basis for such
+representation
+
+It is often shortened to SST = SSLR + SSR; where SST is referred
+
+to as the total sum of squares, SSLR is the sum of squares due to
+linear regression (within regression), SSR is the sum of squares
+due to residuals (outside regression).
+
+<p>
+#### {R square}
+$R^2$ is a measure of variation explained by regression.
+
+The following coefficient has a natural interpretation as amount
+of variability in the data that is explained by the regression
+fit: $R^2 = SSLR/SST = 1 - SSR/SST$.
+
+A similar interpretation is given to the adjusted coefficient
+$R^2_{adj}$ which is given by $R^2_{adj} = 1 - MSR/MST $; where
+MSR is the mean squared error due to residuals, and MST is the
+total mean squared error.
+
+The adjusted coefficient is accounting for the degrees of freedom
+used for each source of variation and is often a more reliable
+indicator of variability than $R^2$. $R^2_{adj}$ is always smaller
+than $R^2$.
+
+
+
+newpage
+
+
+<p>
+### {Advanced Regression}
+
+begin{enumerate}
+	 *           Multiple Linear regression
+	 *           Deming regression
+	 *           Weighted Linear Regression
+end{enumerate}
+
+
+<p>
+### {Multiple Linear regression}
+
+In multiple linear regression, there are p explanatory variables, and the relationship
+between the dependent variable and the explanatory variables is represented by the
+following equation:
+
+begin{equation}
+y =
+end{equation}
+
+
+noindent Examples where multiple linear regression may be used include:
+begin{ }
+	 *           Trying to predict an individual’s income given several socio-economic
+	characteristics.
+	 *           Trying to predict the overall examination performance of pupils in ‘A’ levels, given
+	the values of a set of exam scores at age 16.
+	 *           Trying to estimate systolic or diastolic blood pressure, given a variety of socioeconomic
+	and behavioural characteristics (occupation, drinking smoking, age
+	etc).
+end{ }
+
+<p>
+### {Deming regression}
+
+Whereas the ordinary linear regression method assumes that only the $Y$ measurements are associated with random measurement errors, the Deming method takes measurement errors for both methods into account.
+
+
+<p>
+### {Weighted regression}
+
+
+
+
+<p>
+### {SLR Diagnostics}
+
+begin{ }
+	 *           Once the model has been fitted, we must check the residuals.
+	 *           The residuals should be independent and normally distributed with
+	mean of 0 .
+	 *           Use a histogram of the residuals
+	 *           Can also use a Q-Q plot.
+	 *           The residuals should must have constant variance.
+	 *           Use a plot of fitted values vs residuals.
+end{ }
+<p>
+### {Regression: R-Square}
+
+
+Any model is only as good as it is able to predict the actual outcome with accuracy. R-Square is a measure of how well the model is able to predict the changes in the actual data. R-Square ranges between 0 and 1, with values over 0.5 indicating a good fit between the predictions and actual data.
+<p>
+### {Regression: Multi-collinearity}
+
+Multi-collinearity is a condition when independent variables included in a model are correlated with each other. Multi-collinearity may result in redundant variables being included in the model, which in itself is not such a terrible thing. The real damage caused by multi-collinearity is that it causes large standard errors in estimating the coefficients. In simpler terms it causes the estimated t-statistics for correlated or multi-collinear variables to be insignificant, thus resulting in significant variables to appear to be insignificant. Multi-collinearity can be identified by the textbf{Variance Inflation factor (VIF)}, which is a statistic calculated for each variable in a model. A VIF greater than 5 may suggest that the concerned variable is multi-collinear with others in the model and may need to be dropped. VIF cannot be calculated with the Excel Regression package, it needs to be calculated using more sophisticated packages like SAS, SPSS or S-Plus.
+
+Multicollinearity can be controlled by shrinkage techniques like Ridge Regressions, but a better strategy is to combine collinear variables using techniques like Factor Analysis or Principal Components Analysis.
+
+
+%------------------------------------------------------------------------------------------------%

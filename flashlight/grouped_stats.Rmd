@@ -1,0 +1,63 @@
+---
+title: "``flashlight::grouped_stats``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ Grouped Weighted Means or Quartiles
+
+#### Description
+
+Calculates weighted means or quartiles (and counts) of a variable grouped by optional columns.
+
+#### Usage
+<pre><code>
+
+grouped_stats(data, xNULL, by = NULL, stats = c("mean",
+"quartiles"), counts = TRUE, counts_weighted = FALSE,
+counts_name = "counts", value_name = x, q1_name = "q1",
+q3_name = "q3", ...)
+</code></pre>
+
+#### Arguments
+data A data.frame.
+x Variable name in data to summarize.
+w Optional name of the column in data with case weights.
+* ``by``: An optional vector of column names in data used to group the results.
+stats Statistic to calculate: "mean" or "quartiles".
+counts Should group counts be added?
+counts_weighted
+Should counts be weighted by the case weights? If TRUE, the sum of w is
+returned by group.
+* ``counts_name``:  Name of column in the resulting data.frame containing the counts.
+value_name Name of the resulting column with mean or median.
+q1_name Name of the resulting column with first quartile values. Only relevant for stats
+"quartiles".
+q3_name Name of the resulting column with third quartile values. Only relevant for stats
+"quartiles".
+... Additional arguments passed to MetricsWeighted::weighted_mean or weighted_quartiles.
+is.flashlight 9
+
+#### Value
+
+A data.frame with columns by, x and optionally counts_name.
+
+#### Examples
+```{r}
+
+grouped_stats(iris, "Sepal.Width")
+grouped_stats(iris, "Sepal.Width", stats = "quartiles")
+grouped_stats(iris, "Sepal.Width", w = "Petal.Width")
+grouped_stats(iris, "Sepal.Width", w = "Petal.Width", counts_weighted = TRUE)
+grouped_stats(iris, "Sepal.Width", by = "Species")
+grouped_stats(iris, "Sepal.Width", stats = "quartiles", by = "Species")
+grouped_stats(iris, "Sepal.Width", w = "Petal.Width", by = "Species")
+grouped_stats(iris, "Sepal.Width", w = "Petal.Width",
+counts_weighted = TRUE, by = "Species")
+grouped_stats(iris, "Sepal.Width", counts = FALSE)
+grouped_stats(iris, "Sepal.Width", counts_name = "n",
+stats = "quartiles", q1_name = "p25", q3_name = "p75")
+```

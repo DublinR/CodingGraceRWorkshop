@@ -1,0 +1,65 @@
+---
+title: "``flashlight::plot.light_importance ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+37
+plot.light_importance Visualize Model Importance
+
+#### Description
+
+Minimal visualization of an object of class light_importance as geom_bar. The object returned
+is of class ggplot and can be further customized.
+
+#### Usage
+<pre><code>
+
+## S3 method for class 'light_importance'
+plot(x, top_m = Inf, swap_dim = FALSE,
+facet_scales = "fixed", ...)
+</code></pre>
+
+#### Arguments
+* ``x``: An object of class light_importance.
+* ``top_m``:  Maximum number of important variables to be returned.
+swap_dim If multiflashlight and one "by" variable or single flashlight with two "by" variables,
+swap the role of dodge/fill variable and facet variable. If multiflashlight
+or one "by" variable, use facets instead of colors.
+* ``facet_scales``: Scales argument passed to facet_wrap.
+... Further arguments passed to geom_bar.
+
+#### Details
+
+The plot is organized as a bar plot with variable names as x-aesthetic. Up to two additional dimensions (multiflashlight and one "by" variable or single flashlight with two "by" variables) can be visualized by facetting and dodge/fill. Set swap_dim = FALSE to revert the role of these two dimensions.
+One single additional dimension is visualized by a facet wrap, or - if swap_dim = FALSE - by
+dodge/fill.
+
+#### Value
+
+An object of class ggplot2.
+See Also
+light_importance.
+
+#### Examples
+```{r}
+
+fit_full <- lm(Sepal.Length ~ ., data = iris)
+fit_part <- lm(Sepal.Length ~ Petal.Length, data = iris)
+mod_full <- flashlight(model = fit_full, label = "full", data = iris, y = "Sepal.Length")
+mod_part <- flashlight(model = fit_part, label = "part", data = iris, y = "Sepal.Length")
+mods <- multiflashlight(list(mod_full, mod_part), by = "Species")
+38 plot.light_performance
+plot(light_importance(mod_full), fill = "darkred")
+plot(light_importance(mod_full, variable_name = "v", label_name = "model",
+metric_name = "m", value_name = "drop"))
+plot(light_importance(mod_full), top_m = 2)
+plot(light_importance(mods))
+plot(light_importance(mods), swap_dim = TRUE)
+plot(light_importance(mods, by = NULL), fill = "darkgreen")
+plot(light_importance(mods, by = NULL), swap_dim = TRUE)
+plot.light_performance
+```

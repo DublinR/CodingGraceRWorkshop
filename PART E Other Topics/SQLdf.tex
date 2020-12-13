@@ -7,7 +7,7 @@ Queries
 Queries begin with the select statement, followed by what we want to select:
 
 # This query will return everything from df
-sqldf("select * from df")
+sqldf("select         * from df")
 # This will only return 2 columns, Wind and Ozone, from df
 sqldf("select Ozone, Wind from df")
 These queries can be assigned to R objects. (I think select Ozone, Wind from df is much nicer than df[, names(df) %in% c(“Ozone, Wind”)]).
@@ -15,7 +15,7 @@ These queries can be assigned to R objects. (I think select Ozone, Wind from df 
 We can easily create aggregated data using expressions in the select statement. Expressions include:
 
 AVG: The avg() function returns the average value of all non-NULL X within a group.
-COUNT: The count(X) function returns a count of the number of times that X is not NULL in a group. The count(*) function (with no arguments) returns the total number of rows in the group.
+COUNT: The count(X) function returns a count of the number of times that X is not NULL in a group. The count(       * ) function (with no arguments) returns the total number of rows in the group.
 MAX: The max() aggregate function returns the maximum value of all values in the group.
 MIN: The min() aggregate function returns the minimum non-NULL value of all values in the group.
 SUM: The sum() and total() aggregate functions return sum of all non-NULL values in the group.
@@ -71,14 +71,14 @@ Eg.
 
 Windvalue <- 10
 Ozonevalue <- "High"
-fn$sqldf("select * from df where Wind > $Windvalue and Ozone_Grpd = '$Ozonevalue'")
+fn$sqldf("select         * from df where Wind > $Windvalue and Ozone_Grpd = '$Ozonevalue'")
 ##   Ozone Solar_R Wind Temp Month Day Ozone_Grpd
 ## 1    71     291 13.8   90     6   9       High
 ## 2    63     220 11.5   85     7  20       High
 ## 3    89     229 10.3   90     8   8       High
 Updates
 
-We can update our table within the database and apply all the transformations we want. This only applies the changes to the database not the table in our workspace! To account for this we can then select everything back from the database by running select * from main .(table name). This selects from the database table rather than the workspace table.
+We can update our table within the database and apply all the transformations we want. This only applies the changes to the database not the table in our workspace! To account for this we can then select everything back from the database by running select         * from main .(table name). This selects from the database table rather than the workspace table.
 
 library("sqldf")
 
@@ -98,7 +98,7 @@ df <- sqldf(c("alter table df add month_grpd char(30)",
                     else 'Not bothered'
                   end,
 
-                  Wind_Ozone = Wind*Ozone,
+                  Wind_Ozone = Wind       * Ozone,
 
                   Wind_1 = case
                     when Wind > 9.7 then 0
@@ -111,7 +111,7 @@ df <- sqldf(c("alter table df add month_grpd char(30)",
                   end,
 
                   Wind_norm = Wind/(select avg(Wind) from df)", 
-              "select * from main.df"))
+              "select         * from main.df"))
 
 head(df)
 ##   Ozone Solar_R Wind Temp Month Day Ozone_Grpd month_grpd Wind_Ozone
@@ -139,12 +139,12 @@ Inner Join (merges common rows from both tables)
 Cross Join (cartesian product of tables)
 # lets create a fake variable
 df2 <- data.frame(mon = rep(5:9, each=16), day = seq(1, 31, 2))
-df2$crazy_var <- df2$mon * rnorm(80, 30, 2)
+df2$crazy_var <- df2$mon         * rnorm(80, 30, 2)
 
 sqldf("select Month, Day, month_grpd, Ozone, Wind_norm, crazy_var 
       from
       (
-        select a.*, b.crazy_var
+        select a.       * , b.crazy_var
         from
         df a
         left join
@@ -154,10 +154,10 @@ sqldf("select Month, Day, month_grpd, Ozone, Wind_norm, crazy_var
 
         union all
 
-        select a.*, b.crazy_var
+        select a.       * , b.crazy_var
         from
         (
-          select a.*
+          select a.       * 
           from
           df a
           left join

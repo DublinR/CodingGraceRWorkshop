@@ -1,0 +1,49 @@
+---
+title: "``flashlight::....``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+light_check Check flashlight
+
+#### Description
+
+Checks if an object of class flashlight or multiflashlight is consistently defined.
+14 light_combine
+
+#### Usage
+<pre><code>
+
+light_check(x)
+## Default S3 method:
+light_check(x)
+## S3 method for class 'flashlight'
+light_check(x)
+## S3 method for class 'multiflashlight'
+light_check(x)
+</code></pre>
+
+#### Arguments
+* ``x``: An object of class flashlight or multiflashlight.
+
+#### Value
+
+The input x or an error message.
+Methods (by class)
+*  default: Default check method not implemented yet.
+*  flashlight: Checks if a flashlight object is consistently defined.
+*  multiflashlight: Checks if a multiflashlight object is consistently defined.
+
+#### Examples
+```{r}
+
+fit <- lm(Sepal.Length ~ ., data = iris)
+fit_log <- lm(log(Sepal.Length) ~ ., data = iris)
+fl <- flashlight(fit, data = iris, y = "Sepal.Length", label = "ols")
+fl_log <- flashlight(fit_log, y = "Sepal.Length", label = "ols", linkinv = exp)
+light_check(fl)
+light_check(fl_log)
+```

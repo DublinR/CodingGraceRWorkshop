@@ -1,0 +1,39 @@
+---
+title: "``flashlight::residuals.flashlight``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ Residuals for flashlight
+
+#### Description
+
+Residuals method for an object of class flashlight. Pass additional elements to update the flashlight before calculation of residuals.
+
+#### Usage
+<pre><code>
+
+## S3 method for class 'flashlight'
+residuals(object, ...)
+response 45
+Arguments
+object An object of class flashlight.
+... Arguments used to update the flashlight before calculating the residuals.
+
+#### Value
+
+A numeric vector with residuals.
+
+#### Examples
+```{r}
+
+fit <- lm(Sepal.Length ~ ., data = iris)
+(fl <- flashlight(model = fit, data = iris, y = "Sepal.Length", label = "ols"))
+residuals(fl)[1:5]
+residuals(fl, data = iris[1:5, ])
+residuals(fl, data = iris[1:5, ], linkinv = exp)
+resid(fl)[1:5]
+```

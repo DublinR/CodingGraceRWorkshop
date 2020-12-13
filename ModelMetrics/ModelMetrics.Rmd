@@ -1,0 +1,449 @@
+---
+title: "``ModelMetrics::plot_counts``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ModelMetrics)
+```
+
+Package ‘ModelMetrics’
+November 3, 2018
+Title Rapid Calculation of Model Metrics
+Version 1.2.2
+Date 2018-11-03
+
+#### Description  
+ Collection of metrics for evaluating models written in C++ using 'Rcpp'. Popular metrics
+include area under the curve, log loss, root mean square error, etc.
+Depends R (>= 3.2.2)
+License GPL (>= 2)
+Encoding UTF-8
+LazyData true
+LinkingTo Rcpp
+Imports Rcpp, data.table
+RoxygenNote 6.0.1
+Suggests testthat
+NeedsCompilation yes
+Author Tyler Hunt [aut, cre]
+Maintainer Tyler Hunt <thunt@snapfinance.com>
+  Repository CRAN
+Date/Publication 2018-11-03 17:00:14 UTC
+R topics documented:
+  auc . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+brier . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+ce . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+confusionMatrix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+f1Score . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+fScore . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+gini . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+kappa . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+logLoss . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+1
+2 auc
+mae . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+mauc . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+mcc . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+mlogLoss . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+mse . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+msle . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+npv . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+ppv . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+recall . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+rmse . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+rmsle . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+testDF . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+tnr . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+Index 18
+auc Area Under the Curve
+
+#### Description  
+
+Calculates the area under the curve for a binary classifcation model
+
+#### Usage  
+<pre><code>
+
+auc(...)
+## Default S3 method:
+auc(actual, predicted, ...)
+## S3 method for class 'glm'
+auc(modelObject, ...)
+## S3 method for class 'randomForest'
+auc(modelObject, ...)
+## S3 method for class 'glmerMod'
+auc(modelObject, ...)
+## S3 method for class 'gbm'
+auc(modelObject, ...)
+## S3 method for class 'rpart'
+auc(modelObject, ...)
+brier 3
+
+</code></pre>
+#### Arguments
+
+... additional parameters to be passed the the s3 methods
+* ``actual``: A vector of the labels. Can be numeric, character, or factor
+* ``predicted``:  A vector of predicted values
+* ``modelObject``:  the model object. Currently supported glm, randomForest, glmerMod, gbm
+
+#### Examples  
+
+data(testDF)
+glmModel <- glm(y ~ ., data = testDF, family="binomial")
+Preds <- predict(glmModel, type = 'response')
+auc(testDF$y, Preds)
+# using s3 method for glm
+auc(glmModel)
+brier Brier Score
+
+#### Description  
+
+Calculates the Brier score
+
+#### Usage  
+<pre><code>
+
+brier(...)
+## Default S3 method:
+brier(actual, predicted, ...)
+## S3 method for class 'glm'
+brier(modelObject, ...)
+## S3 method for class 'randomForest'
+brier(modelObject, ...)
+## S3 method for class 'glmerMod'
+brier(modelObject, ...)
+## S3 method for class 'gbm'
+brier(modelObject, ...)
+## S3 method for class 'rpart'
+brier(modelObject, ...)
+4 ce
+
+</code></pre>
+#### Arguments
+
+... additional parameters to be passed the the s3 methods
+* ``actual``: A vector of the labels
+* ``predicted``:  A vector of predicted values
+* ``modelObject``:  the model object. Currently supported glm, randomForest, glmerMod, gbm
+ce Classification error
+
+#### Description  
+
+Calculates the classification error
+
+#### Usage  
+<pre><code>
+
+ce(...)
+## Default S3 method:
+ce(actual, predicted, ...)
+## S3 method for class 'lm'
+ce(modelObject, ...)
+## S3 method for class 'glm'
+ce(modelObject, ...)
+## S3 method for class 'randomForest'
+ce(modelObject, ...)
+## S3 method for class 'glmerMod'
+ce(modelObject, ...)
+## S3 method for class 'gbm'
+ce(modelObject, ...)
+## S3 method for class 'rpart'
+ce(modelObject, ...)
+
+</code></pre>
+#### Arguments
+
+... additional parameters to be passed the the s3 methods
+* ``actual``: A vector of the labels
+* ``predicted``:  A vector of predicted values
+* ``modelObject``:  the model object. Currently supported lm, glm, randomForest, glmerMod, gbm, rpart
+confusionMatrix 5
+confusionMatrix Confusion Matrix
+
+#### Description  
+
+Create a confusion matrix given a specific cutoff.
+
+#### Usage  
+<pre><code>
+
+confusionMatrix(actual, predicted, cutoff = 0.5)
+
+</code></pre>
+#### Arguments
+
+* ``actual``: A vector of the labels
+* ``predicted``:  A vector of predicted values
+cutoff A cutoff for the predicted values
+f1Score F1 Score
+
+#### Description  
+
+Calculates the f1 score
+
+#### Usage  
+<pre><code>
+
+f1Score(actual, predicted, cutoff = 0.5)
+
+</code></pre>
+#### Arguments
+
+* ``actual``: A vector of the labels
+* ``predicted``:  A vector of predicted values
+cutoff A cutoff for the predicted values
+
+fScore F Score
+
+#### Description  
+
+Calculates the F score and allows different specifications of the beta value (F0.5)
+
+#### Usage  
+<pre><code>
+
+fScore(actual, predicted, cutoff = 0.5, beta = 1)
+
+</code></pre>
+#### Arguments
+
+* ``actual``: A vector of the labels
+* ``predicted``:  A vector of predicted values
+cutoff A cutoff for the predicted values
+beta the desired beta value (lower increases weight of precision over recall). Defaults
+to 1
+gini GINI Coefficient
+
+#### Description  
+
+Calculates the GINI coefficient for a binary classifcation model
+
+#### Usage  
+<pre><code>
+
+gini(...)
+## Default S3 method:
+gini(actual, predicted, ...)
+## S3 method for class 'glm'
+gini(modelObject, ...)
+## S3 method for class 'randomForest'
+gini(modelObject, ...)
+## S3 method for class 'glmerMod'
+gini(modelObject, ...)
+## S3 method for class 'gbm'
+gini(modelObject, ...)
+## S3 method for class 'rpart'
+gini(modelObject, ...)
+kappa 7
+
+</code></pre>
+#### Arguments
+
+... additional parameters to be passed the the s3 methods
+* ``actual``: A vector of the labels. Can be numeric, character, or factor
+* ``predicted``:  A vector of predicted values
+* ``modelObject``:  the model object. Currently supported glm, randomForest, glmerMod, gbm
+
+#### Examples  
+
+data(testDF)
+glmModel <- glm(y ~ ., data = testDF, family="binomial")
+Preds <- predict(glmModel, type = 'response')
+gini(testDF$y, Preds)
+# using s3 method for glm
+gini(glmModel)
+kappa kappa statistic
+
+#### Description  
+
+Calculates kappa statistic. Currently build to handle binary values in actual vector.
+
+#### Usage  
+<pre><code>
+
+kappa(actual, predicted, cutoff = 0.5)
+
+</code></pre>
+#### Arguments
+
+* ``actual``: A vector of the labels
+* ``predicted``:  A vector of predicted values
+cutoff A cutoff for the predicted values
+8 logLoss
+logLoss Log Loss
+
+#### Description  
+
+Calculates the log loss or entropy loss for a binary outcome
+
+#### Usage  
+<pre><code>
+
+logLoss(...)
+## Default S3 method:
+logLoss(actual, predicted, distribution = "binomial", ...)
+## S3 method for class 'glm'
+logLoss(modelObject, ...)
+## S3 method for class 'randomForest'
+logLoss(modelObject, ...)
+## S3 method for class 'glmerMod'
+logLoss(modelObject, ...)
+## S3 method for class 'gbm'
+logLoss(modelObject, ...)
+## S3 method for class 'rpart'
+logLoss(modelObject, ...)
+
+</code></pre>
+#### Arguments
+
+... additional parameters to be passed the the s3 methods
+actual a binary vector of the labels
+predicted a vector of predicted values
+distribution the distribution of the loss function needed binomial, poisson
+* ``modelObject``:  the model object. Currently supported glm, randomForest, glmerMod, gbm
+
+#### Examples  
+
+data(testDF)
+glmModel <- glm(y ~ ., data = testDF, family="binomial")
+Preds <- predict(glmModel, type = 'response')
+logLoss(testDF$y, Preds)
+# using s3 method for glm
+logLoss(glmModel)
+mae 9
+mae Mean absolute error
+
+#### Description  
+
+Calculates the mean absolute error
+
+#### Usage  
+<pre><code>
+
+mae(...)
+## Default S3 method:
+mae(actual, predicted, ...)
+## S3 method for class 'glm'
+mae(modelObject, ...)
+## S3 method for class 'randomForest'
+mae(modelObject, ...)
+## S3 method for class 'glmerMod'
+mae(modelObject, ...)
+## S3 method for class 'gbm'
+mae(modelObject, ...)
+## S3 method for class 'rpart'
+mae(modelObject, ...)
+
+</code></pre>
+#### Arguments
+
+... additional parameters to be passed the the s3 methods
+* ``actual``: A vector of the labels
+* ``predicted``:  A vector of predicted values
+* ``modelObject``:  the model object. Currently supported glm, randomForest, glmerMod, gbm
+* ``mauc``: Multiclass Area Under the Curve
+
+#### Description  
+
+Calculates the area under the curve for a binary classifcation model
+10 mcc
+
+#### Usage  
+<pre><code>
+
+mauc(actual, predicted)
+
+</code></pre>
+#### Arguments
+
+* ``actual``: A vector of the labels. Can be numeric, character, or factor
+* ``predicted``: A data.frame of predicted values. Can be matrix, data.frame
+
+#### Examples  
+
+```{r}
+setosa <- glm(I(Species == 'setosa') ~ Sepal.Length, data = iris, family = 'binomial')
+versicolor <- glm(I(Species == 'versicolor') ~ Sepal.Length, data = iris, family = 'binomial')
+virginica <- glm(I(Species == 'virginica') ~ Sepal.Length, data = iris, family = 'binomial')
+Pred <-
+  data.frame(
+    setosa = predict(setosa, type = 'response')
+    ,versicolor = predict(versicolor, type = 'response')
+    ,virginica = predict(virginica, type = 'response')
+  )
+Predicted = Pred/rowSums(Pred)
+Actual = iris$Species
+mauc(Actual, Predicted)
+```
+
+mcc Matthews Correlation Coefficient
+
+#### Description  
+
+Calculates the Matthews Correlation Coefficient
+
+#### Usage  
+<pre><code>
+
+mcc(actual, predicted, cutoff)
+
+</code></pre>
+#### Arguments
+
+* ``actual``: A vector of the labels
+* ``predicted``:  A vector of predicted values
+cutoff A cutoff for the predicted values
+mlogLoss 11
+mlogLoss Multiclass Log Loss
+
+#### Description  
+
+Calculated the multi-class log loss
+
+#### Usage  
+<pre><code>
+
+mlogLoss(actual, predicted)
+
+</code></pre>
+#### Arguments
+
+* ``actual``: A vector of the labels. Can be numeric, character, or factor
+predicted matrix of predicted values. Can be matrix, data.frame
+* ``mse ``:  Mean Square Error
+
+#### Description  
+
+Calculates the mean square error
+
+#### Usage  
+<pre><code>
+
+mse(...)
+## Default S3 method:
+mse(actual, predicted, ...)
+## S3 method for class 'lm'
+mse(modelObject, ...)
+## S3 method for class 'glm'
+mse(modelObject, ...)
+
+</code></pre>
+#### Arguments
+
+... additional parameters to be passed the the s3 methods
+* ``actual``: A vector of the labels
+* ``predicted``:  A vector of predicted values
+* ``modelObject``:  the model object. Currently supported lm
+12 msle
+
+#### Examples  
+
+data(testDF)
+glmModel <- glm(y ~ ., data = testDF, family="binomial")
+Preds <- predict(glmModel, type = 'response')
+mse(testDF$y, Preds)
+
+
+

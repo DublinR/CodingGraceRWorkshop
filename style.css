@@ -1,0 +1,38 @@
+/* Whole document: */
+body{
+  font-family: Helvetica;
+  font-size: 16pt;
+}
+/* Headers */
+h1,h2,h3{
+  font-size: 24pt;
+}
+h4,h5,h6{
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: stretch;
+
+  width: 50%;
+  height: 50%;
+
+  border-radius: 0px;
+  background-color: hsl(0, 0%, 96%);
+}
+
+.box {
+  border-radius: 4px;
+  display: flex;
+}
+
+.box img {
+  width: 60%;
+  object-fit: contain;
+  border-radius: 4px;
+}

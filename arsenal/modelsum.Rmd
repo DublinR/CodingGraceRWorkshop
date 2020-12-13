@@ -1,0 +1,62 @@
+---
+title: "``Arsenal::modelsum``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(arsenal)
+```
+
+
+Fit models over each of a set of independent variables with a response variable
+
+#### Description
+
+Fit and summarize models for each independent (x) variable with a response variable (y), with
+options to adjust by variables for each model.
+
+#### Usage
+<pre><code>
+
+modelsum(formula, family = "gaussian", data, adjust = NULL,
+na.action = NULL, subset = NULL, weights = NULL, strata,
+control = NULL, ...)
+
+</code></pre>
+#### Arguments
+
+* ``formula ``: an object of class formula; a symbolic description of the variables to be modeled. See "Details" for more information.
+family similar mechanism to glm, where the model to be fit is driven by the family. Options include: binomial, gaussian, survival, poisson, negbin, and ordinal. These can be passed as a string, as a function, or as a list resulting from a call to one of the functions. See modelsum.family for details on survival and ordinal families.
+* data an optional data.frame, list or environment (or object coercible by as.data.frame to a data frame) containing the variables in the model. If not found in data, the variables are taken from environment(formula), typically the environment from which modelsum is called.
+* adjust an object of class formula, listing variables to adjust by in all models. Specify as a one-sided formula, like: ~Age+ Sex.
+* ``na.action``:  a function which indicates what should happen when the data contain NAs. The default (NULL) is to use the defaults of lm, glm, or coxph, depending on the
+family specifications.
+* ``subset``: an optional vector specifying a subset of observations (rows of data) to be used in the results. If strata is missing, this works as vector of logicals or an index;
+otherwise, it should be a logical vector.
+* ``weights``: an optional vector specifying the weights to apply to each data observation (rows of data)
+* ``strata``:  a vector of strata to separate model summaries by an additional group.
+* ``control``:  control parameters to handle optional settings within modelsum.  Arguments for ``modelsum.control`` can be passed to modelsum via the ... argument, but if a control object and ``...`` arguments are both supplied, the latter are used. See ``modelsum.control`` for other details.
+* ``... ``: additional arguments to be passed to internal modelsum functions.
+
+#### Value
+
+An object with class c("modelsum", "arsenal_table")
+Author(s)
+Jason Sinnwell, Patrick Votruba, Beth Atkinson, Gregory Dougherty, and Ethan Heinzen, adapted
+from SAS Macro of the same name
+See Also
+arsenal_table, modelsum.control, summary.modelsum, formulize
+
+#### Examples
+```{r}
+data(mockstudy)
+tab1 <- modelsum(bmi ~ sex + age, data = mockstudy)
+summary(tab1, text = TRUE)
+tab2 <- modelsum(alk.phos ~ arm + ps + hgb, adjust = ~ age + sex,
+family = "gaussian", data = mockstudy)
+summary(tab2, text = TRUE)
+summary(tab2, show.intercept = FALSE, text = TRUE)
+tab2.df <- as.data.frame(tab2)
+tab2.df[1:5,]
+```

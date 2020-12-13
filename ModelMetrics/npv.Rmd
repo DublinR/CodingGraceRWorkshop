@@ -1,0 +1,34 @@
+---
+title: "``ModelMetrics::plot_counts``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ModelMetrics)
+```
+
+npv Negative Predictive Value
+
+#### Description  
+
+True Negatives / (True Negatives + False Negatives)
+
+#### Usage  
+<pre><code>
+
+npv(actual, predicted, cutoff = 0.5)
+
+</code></pre>
+#### Arguments
+
+* ``actual``: A vector of the labels
+* ``predicted``:  A vector of predicted values
+cutoff A cutoff for the predicted values
+
+#### Examples  
+
+data(testDF)
+glmModel <- glm(y ~ ., data = testDF, family="binomial")
+Preds <- predict(glmModel, type = 'response')
+npv(testDF$y, Preds, cutoff = 0)

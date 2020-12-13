@@ -1,0 +1,46 @@
+---
+title: "``flashlight::plot_counts``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+cut3 Modified cut
+
+#### Description
+
+Slightly modified version of base::cut.default. Both modifications refer to the construction of break labels. Firstly, ... arguments are passed to formatC in formatting the numbers in the labels. Secondly,
+a separator between the two numbers can be specified with default ", ".
+
+#### Usage
+<pre><code>
+
+cut3(x, breaks, labels = NULL, include.lowest = FALSE, right = TRUE,
+dig.lab = 3L, ordered_result = FALSE, sep = ", ", ...)
+</code></pre>
+
+#### Arguments
+* ``x``: Numeric vector.
+breaks Numeric vector of cut points or a single number specifying the number of intervals desired.
+labels Labels for the levels of the final categories.
+include.lowest Flag if minimum value should be added to intervals of type (,] (or maximum for
+[, )).
+right Flag if intervals should be closed to the right or left.
+dig.lab Number of significant digits passed to formatC.
+ordered_result Flag if resulting output vector should be ordered.
+sep Separater between from-to labels.
+... Arguments passed to formatC.
+</code></pre>
+
+#### Value
+
+Vector of the same length as x.
+
+#### Examples
+```{r}
+
+x <- 998:1001
+cut3(x, breaks = 2)
+cut3(x, breaks = 2, big.mark = "'", sep = ":")
+```

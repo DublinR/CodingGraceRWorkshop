@@ -1,0 +1,38 @@
+---
+title: "``flashlight::summary.compare``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+print.flashlight Prints a flashlight
+
+#### Description
+
+Print method for an object of class flashlight.
+
+#### Usage
+<pre><code>
+
+## S3 method for class 'flashlight'
+</code></pre>
+
+#### Arguments
+x A on object of class flashlight.
+... Further arguments passed from other methods.
+print.light 43
+
+#### Value
+
+Invisibly, the input is returned.
+See Also
+flashlight.
+
+#### Examples
+```{r}
+
+fit <- lm(Sepal.Length ~ ., data = iris)
+flashlight(model = fit, label = "lm", y = "Sepal.Length", data = iris)
+```

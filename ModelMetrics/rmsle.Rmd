@@ -1,0 +1,42 @@
+---
+title: "``ModelMetrics::plot_counts``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ModelMetrics)
+```
+rmsle Root Mean Squared Log Error
+
+#### Description  
+
+Calculates the mean square log error
+16 testDF
+
+#### Usage  
+<pre><code>
+
+rmsle(...)
+## Default S3 method:
+rmsle(actual, predicted, ...)
+## S3 method for class 'lm'
+rmsle(modelObject, ...)
+## S3 method for class 'glm'
+rmsle(modelObject, ...)
+## S3 method for class 'randomForest'
+rmsle(modelObject, ...)
+## S3 method for class 'glmerMod'
+rmsle(modelObject, ...)
+## S3 method for class 'gbm'
+rmsle(modelObject, ...)
+## S3 method for class 'rpart'
+rmsle(modelObject, ...)
+
+</code></pre>
+#### Arguments
+
+... additional parameters to be passed the the s3 methods
+* ``actual``: A vector of the labels
+* ``predicted``:  A vector of predicted values
+* ``modelObject``:  the model object. Currently supported glm, randomForest, glmerMod, gbm

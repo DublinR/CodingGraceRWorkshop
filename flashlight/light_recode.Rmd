@@ -1,0 +1,61 @@
+---
+title: "``flashlight::light_recode``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+light_recode Recode Factor Columns
+
+#### Description
+
+Recodes factor levels of columns in data slots of an object of class light.
+
+#### Usage
+<pre><code>
+
+light_recode(x, ...)
+## Default S3 method:
+light_recode(x, ...)
+## S3 method for class 'light'
+light_recode(x, what, levels, labels, ...)
+</code></pre>
+
+#### Arguments
+* ``x``: An object of class light.
+... Further arguments passed to factor.
+what Column identifier in x (not column name) to be recoded, e.g. "type_name",
+"label_name".
+levels Current levels/values of type_name column (in desired order).
+labels New levels of type_name column in same order as levels.
+
+#### Value
+
+x with new factor levels of type_name column.
+Methods (by class)
+*  default: Default method not implemented yet.
+*  light: Recoding factors in data slots of light object.
+See Also
+plot.light_effects.
+
+#### Examples
+```{r}
+
+fit_full <- lm(Sepal.Length ~ ., data = iris)
+fit_part <- lm(Sepal.Length ~ Petal.Length, data = iris)
+mod_full <- flashlight(model = fit_full, label = "full", data = iris, y = "Sepal.Length")
+mod_part <- flashlight(model = fit_part, label = "part", data = iris, y = "Sepal.Length")
+mods <- multiflashlight(list(mod_full, mod_part))
+eff <- light_effects(mods, v = "Species")
+eff <- light_recode(eff, what = "type_name",
+levels = c("response", "predicted", "partial dependence"),
+labels = c("Observed", "Fitted", "Effect"))
+plot(eff)
+perf <- light_performance(mods)
+perf <- light_recode(perf, what = "label_name",
+levels = c("part", "full"), labels = c("simple", "complex"))
+plot(perf)
+```
+

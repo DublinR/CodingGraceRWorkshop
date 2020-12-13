@@ -1,0 +1,24 @@
+gvlma: Global Validation of Linear Models Assumptions
+
+Methods from the paper: Pena, EA and Slate, EH, "Global Validation of Linear Model Assumptions," J. American Statistical Association, 101(473):341-354, 2006.
+
+gvlma-package.
+CarMileageData..
+deletion.gvlma.
+display.delstats.
+gvlma..
+plot.gvlma..
+plot.gvlmaDel..
+summary.gvlma..
+summary.gvlmaDel..
+update.gvlma
+
+
+
+plot.gvlma Various Plots for a Gvlma Object
+Description
+Diagnostic plots for a single-response gvlma linear model.
+Usage
+## S3 method for class 'gvlma'
+plot(x, onepage = TRUE, ask = !onepage && prod(par("mfcol")) <
+ncol(model.matrix(x)) + 4 && dev.interactive(), ...)

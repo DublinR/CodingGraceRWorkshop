@@ -1,0 +1,84 @@
+---
+title: "``flashlight::ale_profile``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Index 47
+ale_profile ALE profile
+
+#### Description
+
+Internal function used by light_profile to calculate ALE profiles.
+ale_profile 3
+
+#### Usage
+<pre><code>
+
+ale_profile(x, v, breaks = NULL, n_bins = 11, cut_type = c("equal",
+"quantile"), value_name = "value", counts_name = "counts",
+counts = TRUE, counts_weighted = FALSE, pred = NULL,
+evaluate_at = NULL, indices = NULL, n_max = 1000, seed = NULL,
+two_sided = FALSE, calibrate = TRUE)
+Arguments
+* ``x``: An object of class flashlight.
+v The variable to be profiled.
+breaks Cut breaks for a numeric v. Only used if no evaluate_at is specified.
+* ``n_bins``: Maxmium number of unique values to evaluate for numeric v. Only used if no
+evaluate_at is specified.
+cut_type For the default "equal", bins of equal width are created for v by pretty. Choose
+"quantile" to create quantile bins.
+value_name Column name containing the profile value. Defaults to "value".
+* ``counts_name``:  Name of the column containing counts if counts is TRUE.
+counts Should counts be added?
+counts_weighted
+If counts is TRUE: Should counts be weighted by the case weights? If TRUE,
+the sum of w is returned by group.
+pred Optional vector with predictions.
+evaluate_at Vector with values of v used to evaluate the profile. Only relevant for type =
+"partial dependence".
+indices A vector of row numbers to consider.
+* ``n_max``:  Maximum number of ICE profiles to calculate within interval (not within data).
+seed Integer random seed passed to light_ice.
+two_sided Standard ALE profiles are calculated via left derivatives. Set to TRUE if twosided
+derivatives should be calculated. Only works for continuous v. More
+specifically: Usually, local effects at value x are calculated using points between
+x-e and x. Set ale_two_sided = TRUE to use points between x-e/2 and x+e/2.
+calibrate Should values be calibrated based on average preditions? Default is TRUE.
+
+#### Value
+
+A tibble containing results.
+4 auto_cut
+all_identical all_identical
+
+#### Description
+
+Checks if an aspect is identical for all elements in a nested list. The aspect is specified by fun, e.g.
+‘[[‘, followed by the element name to compare.
+
+#### Usage
+<pre><code>
+
+all_identical(x, fun, ...)
+Arguments
+x A nested list of objects.
+fun Function used to extract information of each element of x.
+... Further arguments passed to fun.
+
+#### Value
+
+A logical vector of length one.
+
+#### Examples
+```{r}
+
+x <- list(a = 12)
+y <- list(a = 13)
+all_identical(list(x, y), `[[`, "a")
+all_identical(list(x, y), `[[`, "b")
+```
+
+

@@ -1,0 +1,66 @@
+---
+title: "``arsenal::summary.freqlist``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(arsenal)
+```
+
+
+
+summary.freqlist
+
+#### Description
+
+Summarize the freqlist object.
+
+#### Usage
+<pre><code>
+
+## S3 method for class 'freqlist'
+summary(object, ..., labelTranslations = NULL,
+title = NULL)
+## S3 method for class 'summary.freqlist'
+as.data.frame(x, ..., list.ok = FALSE)
+
+</code></pre>
+#### Arguments
+
+object
+an object of class freqlist
+...
+For summary.freqlist, these are passed to as.data.frame.freqlist (and
+hence to freq.control). For the print method, these are additional arguments
+passed to the kable function.
+labelTranslations
+A named list (or vector) where the name is the label in the output to be replaced
+in the pretty rendering by the character string value for the named element of
+the list, e.g., list(age = "Age(Years)", meansd = "Mean(SD)").
+title Title for the table, defaulting to NULL (no title)
+x An object of class summary.freqlist.
+list.ok If the object has multiple by-variables, is it okay to return a list of data.frames
+instead of a single data.frame? If FALSE but there are multiple by-variables, a
+warning is issued.
+
+#### Value
+
+An object of class "summary.freqlist" (invisibly for the print method).summary.modelsum
+33
+Author(s)
+Tina Gunderson, with major revisions by Ethan Heinzen
+See Also
+freqlist, table, xtabs, kable
+
+#### Examples
+```{r}
+# load mockstudy data
+data(mockstudy)
+tab.ex <- table(mockstudy[c("arm", "sex", "mdquality.s")], useNA = "ifany")
+noby <- freqlist(tab.ex, na.options = "include")
+summary(noby)
+withby <- freqlist(tab.ex, strata = c("arm","sex"), na.options = "showexclude")
+summary(withby)
+summary(withby, dupLabels = TRUE)
+```

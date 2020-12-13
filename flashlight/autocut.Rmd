@@ -1,0 +1,61 @@
+---
+title: "``flashlight::plot_counts``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+``auto_cut`` Discretizes a Vector
+
+#### Description
+
+This function takes a vector x and returns a list with information on disretized version of x, see
+return for details on the resulting object.
+
+#### Usage
+<pre><code>
+
+auto_cut(x, breaks = NULL, n_bins = 27, cut_type = c("equal",
+"quantile"), x_name = "value", level_name = "level", ...)
+auto_cut 5
+</code></pre>
+
+#### Arguments
+x A vector.
+* ``breaks``: An optional vector of breaks. Only relevant for numeric x.
+* ``n_bins``:  If x is numeric and no breaks are provided, this is the maximum number of bins allowed or to be created (approximately).
+cut_type For the default type "equal", bins of equal width are created by pretty. Choose "quantile" to create quantile bins.
+x_name Column name with the values of x in the output.
+level_name Column name with the bin labels of x in the output.
+... Further arguments passed to cut3.
+
+#### Details
+
+The construction of level names can be controlled by passing ... arguments to formatC.
+
+#### Value
+
+A list with the following four elements:
+*  data A data.frame with colums x_name and level_name each with the same length as x.
+The column x_name has values in output bin_means while the column level_name has values in bin_labels.
+*  breaks A vector of increasing and unique breaks used to cut a numeric x with too many
+distinct levels. NULL otherwise.
+*  bin_means The midpoints of subsequent breaks, or if there are no breaks in the output, factor
+levels or distinct values of x.
+*  bin_labels Break labels of the form "(low, high]" if there are breaks in the output, otherwise
+the same as bin_means. Same order as bin_means.
+
+#### Examples
+```{r}
+
+auto_cut(1:10, n_bins = 3)
+auto_cut(c(NA, 1:10), n_bins = 3)
+auto_cut(1:10, breaks = 3:4, n_bins = 3)
+auto_cut(1:10, n_bins = 3, cut_type = "quantile")
+auto_cut(LETTERS[4:1], n_bins = 2)
+auto_cut(factor(LETTERS[1:4], LETTERS[4:1]), n_bins = 2)
+auto_cut(990:1100, n_bins = 3, big.mark = "'", format = "fg")
+auto_cut(c(0.0001, 0.0002, 0.0003, 0.005), n_bins = 3, format = "fg")
+```
+

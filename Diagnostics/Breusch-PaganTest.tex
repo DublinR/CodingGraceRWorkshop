@@ -1,0 +1,29 @@
+
+<p>
+#### {Breusch-Pagan Test for Heteroskedasticity}
+
+% http://cran.r-project.org/doc/contrib/Farnsworth-EconometricsInR.pdf
+begin{frame}
+In order to test for the presence of heteroskedasticity, we can use the Breusch-Pagan test from the lmtest
+package. Alternately we can use the the ncv.test() function from the car package. They work pretty much
+the same way. After running the regression, we call the bptest() function with the fitted regression.
+
+
+<pre>
+<code>
+> unrestricted <- lm(z~x)
+> bptest(unrestricted)
+Breusch-Pagan test
+data: unrestricted
+BP = 44.5465, df = 1, p-value = 2.484e-11
+</code>
+</pre>
+<p>
+
+end{frame}
+%---------------------------------------------------------------------------%
+begin{frame}[fragile]
+
+This performs the studentized" version of the test. In order to be consistent with some other software
+(including ncv.test()) we can specify studentize=FALSE.
+

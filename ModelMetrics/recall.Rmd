@@ -1,0 +1,37 @@
+---
+title: "``ModelMetrics::plot_counts``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ModelMetrics)
+```
+
+recall Recall, Sensitivity, tpr
+
+#### Description  
+
+True Positives / (True Positives + False Negatives)
+
+#### Usage  
+<pre><code>
+
+recall(actual, predicted, cutoff = 0.5)
+
+</code></pre>
+#### Arguments
+
+* ``actual``: A vector of the labels
+* ``predicted``:  A vector of predicted values
+cutoff A cutoff for the predicted values
+
+#### Examples  
+
+data(testDF)
+glmModel <- glm(y ~ ., data = testDF, family="binomial")
+Preds <- predict(glmModel, type = 'response')
+recall(testDF$y, Preds, cutoff = 0)
+sensitivity(testDF$y, Preds, cutoff = 0)
+tpr(testDF$y, Preds, cutoff = 0)
+rmse 15

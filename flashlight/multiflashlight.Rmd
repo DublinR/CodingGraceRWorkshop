@@ -1,0 +1,59 @@
+---
+title: "``flashlight::summary.compare``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+multiflashlight Create or Update a multiflashlight
+
+#### Description
+
+Combines a list of flashlights to an object of class multiflashlight and/or updates a multiflashlight.
+
+#### Usage
+<pre><code>
+
+multiflashlight(x, ...)
+## Default S3 method:
+multiflashlight(x, ...)
+## S3 method for class 'flashlight'
+multiflashlight(x, ...)
+## S3 method for class 'list'
+multiflashlight(x, ...)
+## S3 method for class 'multiflashlight'
+multiflashlight(x, ...)
+</code></pre>
+
+#### Arguments
+* ``x``: An object of class multiflashlight, flashlight or a list of flashlights.
+... Optional arguments in the flashlights to update, see examples.
+
+#### Value
+
+An object of class multiflashlight. This is a named list of flashlight objects.
+Methods (by class)
+*  default: Used to create a flashlight object. No x has to be passed in this case.
+*  flashlight: Updates an existing flashlight object and turns into a multiflashlight.
+*  list: Creates (and updates) a multiflashlight from a list of flashlights.
+*  multiflashlight: Updates an object of class multiflashlight.
+See Also
+flashlight.
+plot.light_breakdown 33
+
+#### Examples
+```{r}
+
+fit_lm <- lm(Sepal.Length ~ ., data = iris)
+fit_glm <- glm(Sepal.Length ~ ., family = Gamma(link = log), data = iris)
+mod_lm <- flashlight(model = fit_lm, label = "lm")
+mod_glm <- flashlight(model = fit_glm, label = "glm")
+(mods <- multiflashlight(list(mod_lm, mod_glm)))
+mods <- multiflashlight(list(mod_lm, mod_glm),
+data = iris, by = "Species", y = "Sepal.Length")
+mod_lm <- mods$lm
+mod_lm
+```
+

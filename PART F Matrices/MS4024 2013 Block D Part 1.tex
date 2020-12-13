@@ -1,17 +1,17 @@
-\documentclass[a4paper,12pt]{article}
+documentclass[a4paper,12pt]{article}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{eurosym}
-\usepackage{vmargin}
-\usepackage{amsmath}
-\usepackage{graphics}
-\usepackage{epsfig}
-\usepackage{subfigure}
-\usepackage{fancyhdr}
-%\usepackage{listings}
-\usepackage{framed}
-\usepackage{graphicx}
+usepackage{eurosym}
+usepackage{vmargin}
+usepackage{amsmath}
+usepackage{graphics}
+usepackage{epsfig}
+usepackage{subfigure}
+usepackage{fancyhdr}
+%usepackage{listings}
+usepackage{framed}
+usepackage{graphicx}
 
-\setcounter{MaxMatrixCols}{10}
+setcounter{MaxMatrixCols}{10}
 %TCIDATA{OutputFilter=LATEX.DLL}
 %TCIDATA{Version=5.00.0.2570}
 %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
@@ -19,129 +19,140 @@
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{Language=American English}
 
-\pagestyle{fancy}
-\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
-\lhead{MS4024} \rhead{Mr. Kevin O'Brien}
-\chead{Numerical Computation}
-%\input{tcilatex}
+pagestyle{fancy}
+setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+lhead{MS4024} rhead{Mr. Kevin O'Brien}
+chead{Numerical Computation}
+%input{tcilatex}
 
-\begin{document}
+begin{document}
 
-\tableofcontents
-\newpage
-\section{The R Programming Language}
+tableofcontents
+newpage
+<p>
+### {The R Programming Language}
 
 The R Programming Language is a statistical , data analysis , etc
 
 R is a free software environment for statistical computing and graphics.
 
-\section{Writing R scripts}
+<p>
+### {Writing R scripts}
 Editing your R script ``R Editor".
-\begin{itemize}
-\item On the menu of the R console, click on file.
-\item Select open script or new script as appropriate.
-\item Navigate to your working directory and select your \texttt{.R} file
-\item A new dialogue box ``\texttt{the R editor}" will open up.
-\item Input or select code you wish to compile.
-\item To compile this code, highlight it. Click the edit button on the menu.
-\item Select either ``Run Line" or ``Run Selection or All".
-\item Your code should now compile.
-\item To save your code, clink on ``file" and then ``\texttt{save as}".
-\item Save the file with the ``\texttt{.R}" extension to your working directory.
-\end{itemize}
+begin{ }
+       On the menu of the R console, click on file.
+       Select open script or new script as appropriate.
+       Navigate to your working directory and select your texttt{.R} file
+       A new dialogue box ``texttt{the R editor}" will open up.
+       Input or select code you wish to compile.
+       To compile this code, highlight it. Click the edit button on the menu.
+       Select either ``Run Line" or ``Run Selection or All".
+       Your code should now compile.
+       To save your code, clink on ``file" and then ``texttt{save as}".
+       Save the file with the ``texttt{.R}" extension to your working directory.
+end{ }
 
-\section{Vector types}
-\texttt{R} operates on named data structures. The simplest such structure is the
+<p>
+### {Vector types}
+texttt{R} operates on named data structures. The simplest such structure is the
 vector, which is a single entity consisting of an ordered collection of
 Numbers or characters.
 
-\begin{itemize}
-\item Numeric vectors
-\item Character vectors
-\item Logical vectors
-\item (also complex number vectors and colour vectors)
-\end{itemize}
+begin{ }
+       Numeric vectors
+       Character vectors
+       Logical vectors
+       (also complex number vectors and colour vectors)
+end{ }
 
 To create a vector, use the assignment operator and the concatenate function.
 For numeric vectors, the values are simply numbers.
 
-\begin{verbatim}
+<code>
 ># week8.r
 >NumVec<-c(10.4,5.6,3.1,6.4)
-\end{verbatim}
+</code>
 
-Alternatively we can use the \texttt{assign()} command
+Alternatively we can use the texttt{assign()} command
 
 For character vectors, the values are simply characters, specified with
 quotation marks.A logical vectors is a vector whose elements are TRUE, FALSE or NA
 
-\begin{verbatim}
+<code>
 >CharVec<-c(``blue", ``green", ``yellow")
 >LogVec<-c(TRUE, FALSE)
-\end{verbatim}
+</code>
 
-\section{Graphical data entry interface}
+<p>
+### {Graphical data entry interface}
 
-\texttt{Data.entry()} is a useful  command for inputting or editing data sets. Any
+texttt{Data.entry()} is a useful  command for inputting or editing data sets. Any
 changes are saved automatically (i.e. dont need to use the assignment
-operator). We can also used the \texttt{edit()} command, which calls the \texttt{R Editor}.
+operator). We can also used the texttt{edit()} command, which calls the texttt{R Editor}.
 
-\begin{verbatim}
+<code>
 >data.entry(NumVec)
 >NumVec <- edit(NumVec)
-\end{verbatim}
+</code>
 
 Another method of creating vectors is to use the following
-\begin{verbatim}
+<code>
 numeric (length = n)
 character (length = n)
 logical (length = n)
-\end{verbatim}
+</code>
 These commands create empty vectors, of the appropriate kind, of length $n$. You can then use the graphical data entry interface to populate your data sets.
 
-\subsubsection{Accessing specified elements of a vector}
+sub<p>
+#### {Accessing specified elements of a vector}
 
 The $n$th element of vector ``Vec" can be accessed by specifying its index when
 calling ``Vec".
-\begin{verbatim}>Vec[n]
-\end{verbatim}
+<code>>Vec[n]
+</code>
 A sequence of  elements of vector ``Vec" can be accessed by specifying its index
 when calling ``Vec".
-\begin{verbatim}>Vec[l:u]
-\end{verbatim}
+<code>>Vec[l:u]
+</code>
 Omitting and deleting the $n$th element of vector ``Vec"
-\begin{verbatim}
+<code>
 >Vec[-n]
 >Vec <- Vec[-n]
-\end{verbatim}
+</code>
 
-%\subsection{Reading data}
+%<p>
+#### {Reading data}
 
 
-\subsection{inputting data}
+<p>
+#### {inputting data}
  Concatenation
 
-\subsection{using help}
+<p>
+#### {using help}
 
 ?mean
 
-%\subsection{Adding comments}
+%<p>
+#### {Adding comments}
 
-\subsection{Packages}
+<p>
+#### {Packages}
 The capabilities of R are extended through user-submitted packages, which allow specialized statistical techniques, graphical devices, as well as and
 import/export capabilities to many external data formats.
 
-\section{Managing Precision}
-\begin{itemize}
-\item \texttt{floor()} - 
-\item \texttt{ceiling()} - 
-\item \texttt{round()} - 
-\item \texttt{as.integer()} -
-\end{itemize}
+<p>
+### {Managing Precision}
+begin{ }
+       texttt{floor()} - 
+       texttt{ceiling()} - 
+       texttt{round()} - 
+       texttt{as.integer()} -
+end{ }
 
-\footnotesize
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+footnotesize
+begin{myindentpar}{1cm}
+<code>
 > pi
 [1] 3.141593
 > floor(pi)
@@ -152,35 +163,41 @@ import/export capabilities to many external data formats.
 [1] 3.142
 > as.integer(pi)
 [1] 3
-\end{verbatim}
-\end{myindentpar}
-\normalsize
+</code>
+end{myindentpar}
+normalsize
 
-\section{Basic Operations}
-\subsection{Complex numbers}
-\subsection{Trigonometric functions}
-\section{Matrices}
+<p>
+### {Basic Operations}
+<p>
+#### {Complex numbers}
+<p>
+#### {Trigonometric functions}
+<p>
+### {Matrices}
 
-%\end{document}
+%end{document}
 
 
-\subsubsection{exponentials, powers and logarithms}
-\footnotesize
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+sub<p>
+#### {exponentials, powers and logarithms}
+footnotesize
+begin{myindentpar}{1cm}
+<code>
 >x^y
 >exp(x)
 >log(x)
 >log(y)
 #determining the square root of x
 >sqrt(x)
-\end{verbatim}
-\end{myindentpar}
-\normalsize
-\subsection{vectors}
-\footnotesize
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+</code>
+end{myindentpar}
+normalsize
+<p>
+#### {vectors}
+footnotesize
+begin{myindentpar}{1cm}
+<code>
 R handles vector objects quite easily and intuitively.
 
 > x<-c(1,3,2,10,5)    #create a vector x with 5 components
@@ -191,7 +208,7 @@ R handles vector objects quite easily and intuitively.
 [1] 1 2 3 4 5
 > y+2                 #scalar addition
 [1] 3 4 5 6 7
-> 2*y                 #scalar multiplication
+> 2     y                 #scalar multiplication
 [1]  2  4  6  8 10
 > y^2                 #raise each component to the second power
 [1]  1  4  9 16 25
@@ -199,42 +216,48 @@ R handles vector objects quite easily and intuitively.
 [1]  2  4  8 16 32
 > y                   #y itself has not been unchanged
 [1] 1 2 3 4 5
-> y<-y*2
+> y<-y     2
 > y                   #it is now changed
 [1]  2  4  6  8 10
-\end{verbatim}
-\end{myindentpar}
-\normalsize
+</code>
+end{myindentpar}
+normalsize
 
-\subsubsection{Misc}
-\texttt{seq()} and \texttt{rep()} are useful commands for constructing vectors with a certain pattern.
+sub<p>
+#### {Misc}
+texttt{seq()} and texttt{rep()} are useful commands for constructing vectors with a certain pattern.
 
-%\end{document}
+%end{document}
 
-\subsection{Matrices}
+<p>
+#### {Matrices}
 A matrix refers to a numeric array of rows and columns.
 
 One of the easiest ways to create a matrix is to combine vectors of equal
 length using cbind(), meaning "column bind". Alternatively one can use rbind(), meaning ``row bind".
 
 
-\subsubsection{Matrices Inversion}
-\subsubsection{Matrices Multiplication}
+sub<p>
+#### {Matrices Inversion}
+sub<p>
+#### {Matrices Multiplication}
 
 
-\subsection{Data frame}
+<p>
+#### {Data frame}
 A Data frame is
-\newpage
+newpage
 
 %------------------------------------------------------------------------------------------------%
 
-\chapter{Descriptive Statistics}
+chapter{Descriptive Statistics}
 
-\section{Basic Statistics}
+<p>
+### {Basic Statistics}
 
-\footnotesize
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+footnotesize
+begin{myindentpar}{1cm}
+<code>
 > X=c(1,4,5,7,8,9,5,8,9)
 > mean(X);median(X)       #mean and median of vector
 [1] 6.222222
@@ -249,39 +272,41 @@ A Data frame is
 [1]  1 16 25 49 64 81 25 64 81
 > rev(X)
 [1] 9 8 5 9 8 7 5 4 1
-> sort(X)                 #items in ascending order
+> sort(X)                 #      s in ascending order
 [1] 1 4 5 5 7 8 8 9 9
 > X[1:5]
 [1] 1 4 5 7 8
-\end{verbatim}
-\end{myindentpar}
-\normalsize
+</code>
+end{myindentpar}
+normalsize
 
 
-\section{Summary Statistics}
-The \texttt{R} command \texttt{summary()} returns a summary statistics for a simple dataset.
-The \texttt{R} command \texttt{fivenum()} returns a summary statistics for a simple dataset, but without the mean.
+<p>
+### {Summary Statistics}
+The texttt{R} command texttt{summary()} returns a summary statistics for a simple dataset.
+The texttt{R} command texttt{fivenum()} returns a summary statistics for a simple dataset, but without the mean.
 Also, the quartiles are computed a different way.
 
-\footnotesize
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+footnotesize
+begin{myindentpar}{1cm}
+<code>
 > summary(mtcars$mpg)
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
   10.40   15.43   19.20   20.09   22.80   33.90 
 >
 > fivenum(mtcars$mpg)
 [1] 10.40 15.35 19.20 22.80 33.90
-\end{verbatim}
-\end{myindentpar}
-\normalsize
+</code>
+end{myindentpar}
+normalsize
 
 
 
 
-\section{Bivariate Data}
-\footnotesize \begin{myindentpar}{1cm}
-\begin{verbatim}
+<p>
+### {Bivariate Data}
+footnotesize begin{myindentpar}{1cm}
+<code>
 > Y=mtcars$mpg
 > X=mtcars$wt
 >
@@ -290,137 +315,148 @@ Also, the quartiles are computed a different way.
 >
 > cov(X,Y)          #Covariance
 [1] -5.116685
-\end{verbatim}
-\end{myindentpar}\normalsize
+</code>
+end{myindentpar}normalsize
 
 
-\section{Histograms}
-Histograms can be created using the \texttt{hist()} command.
+<p>
+### {Histograms}
+Histograms can be created using the texttt{hist()} command.
 To create a histogram of the car weights from the Cars93 data set
-\footnotesize
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+footnotesize
+begin{myindentpar}{1cm}
+<code>
 hist(mtcars$mpg, main="Histogram of MPG (Data: MTCARS) ")
-\end{verbatim}
-\end{myindentpar}\normalsize
-\texttt{R} automatically chooses the number and width of the bars. We can
+</code>
+end{myindentpar}normalsize
+texttt{R} automatically chooses the number and width of the bars. We can
 change this by specifying the location of the break points.
-\footnotesize
-\begin{myindentpar}{1cm}
-\begin{verbatim}hist(Cars93$Weight, breaks=c(1500, 2050, 2300, 2350, 2400,
+footnotesize
+begin{myindentpar}{1cm}
+<code>hist(Cars93$Weight, breaks=c(1500, 2050, 2300, 2350, 2400,
 2500, 3000, 3500, 3570, 4000, 4500), xlab="Weight",
 main="Histogram of Weight")
-\end{verbatim}
-\end{myindentpar}\normalsize
+</code>
+end{myindentpar}normalsize
 
 
 
-\section{Boxplot}
+<p>
+### {Boxplot}
 Boxplots can be used to identify outliers.
 
-By default, the \texttt{boxplot()} command sets the orientation as vertical. By adding the argument \texttt{horizontal=TRUE}, the orientation can be changed to horizontal.
-\footnotesize
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+By default, the texttt{boxplot()} command sets the orientation as vertical. By adding the argument texttt{horizontal=TRUE}, the orientation can be changed to horizontal.
+footnotesize
+begin{myindentpar}{1cm}
+<code>
 boxplot(mtcars$mpg, horizontal=TRUE, xlab="Miles Per Gallon",
 main="Boxplot of MPG")
-\end{verbatim}
-\end{myindentpar}\normalsize
+</code>
+end{myindentpar}normalsize
 
-\begin{figure}
-  % Requires \usepackage{graphicx}
-  \includegraphics[scale=0.4]{MTCARSboxplot.png}\\
-  \caption{Boxplot}\label{boxplot}
-\end{figure}
+begin{figure}
+  % Requires usepackage{graphicx}
+  includegraphics[scale=0.4]{MTCARSboxplot.png}
+  caption{Boxplot}label{boxplot}
+end{figure}
 
 
 
-\newpage
-\chapter{Advanced R code}
-\section{Data frame}
+newpage
+chapter{Advanced R code}
+<p>
+### {Data frame}
 A Data frame is
-\subsection{Merging Data frames}
+<p>
+#### {Merging Data frames}
 
-\section{Functions}
+<p>
+### {Functions}
 Syntax to define functions
 
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+begin{myindentpar}{1cm}
+<code>
         myfct <- function(arg1, arg2, ...) { function_body }
-\end{verbatim}
-\end{myindentpar}
+</code>
+end{myindentpar}
 The value returned by a function is the value of the function body, which is usually an unassigned final expression, e.g.: return()
 
 Syntax to call functions
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+begin{myindentpar}{1cm}
+<code>
         myfct(arg1=..., arg2=...)
-\end{verbatim}
-\end{myindentpar}
+</code>
+end{myindentpar}
 
 
-\section{Time and Date}
+<p>
+### {Time and Date}
 It is useful . The length of time a program takes is interesting.
 
 
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+begin{myindentpar}{1cm}
+<code>
 date() # returns the current system date and time
-\end{verbatim}
-\end{myindentpar}
+</code>
+end{myindentpar}
 
 
-\section{The Apply family}
+<p>
+### {The Apply family}
 
 Sometimes want to apply a function to each element of a
 vector/data frame/list/array.
-\\
+
 Four members: lapply, sapply, tapply, apply
-\\
+
 lapply: takes any structure and gives a list of results (hence
 the `l')
-\\
+
 sapply: like lapply, but tries to simplify the result to a
 vector or matrix if possible (hence the `s')
-\\
+
 apply: only used for arrays/matrices
-\\
+
 tapply: allows you to create tables (hence the `t') of values
 from subgroups defined by one or more factors.
-\newpage
-\chapter{Data Visualization}
-\section{Plots}
-This section is an introduction for producing simple graphs with
+newpage
+chapter{Data Visualization}
+<p>
+### {Plots}
+This <p>
+###  is an introduction for producing simple graphs with
 the R Programming Language.
-\begin{itemize}
-\item Line Charts  \item Bar Charts \item Histograms \item Pie
-Charts \item Dotcharts
-\end{itemize}
+begin{ }
+       Line Charts         Bar Charts        Histograms        Pie
+Charts        Dotcharts
+end{ }
 
-\subsubsection{Comparison of variances}
+sub<p>
+#### {Comparison of variances}
 
 
 Even though it is possible in R to perform the two-sample t test without
 the assumption that the variances are the same, you may still be interested
 in testing that assumption, and R provides the var.test function for that
 purpose, implementing an F test on the ratio of the group variances. It is
-called the same way as \texttt{t.test}:.
-\begin{verbatim}
+called the same way as texttt{t.test}:.
+<code>
 > var.test(expend~stature)
-\end{verbatim}
-\begin{itemize}
-\item
-\item
-\end{itemize}
-\footnotesize \begin{verbatim}
+</code>
+begin{ }
+      
+      
+end{ }
+footnotesize <code>
 > code here
- \end{verbatim}\normalsize
+ </code>normalsize
 
 
-\subsection{ Charts}
+<p>
+#### { Charts}
 
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+begin{myindentpar}{1cm}
+<code>
 # Define 2 vectors cars <- c(1, 3, 6, 4, 9) trucks <- c(2, 5, 4,
 5, 12)
 
@@ -437,8 +473,8 @@ col="blue", ylim=g_range,
 lab=c("Mon","Tue","Wed","Thu","Fri"))
 
 # Make y axis with horizontal labels that display ticks at # every
-4 marks. 4*0:g_range[2] is equivalent to c(0,4,8,12). axis(2,
-las=1, at=4*0:g_range[2])
+4 marks. 4     0:g_range[2] is equivalent to c(0,4,8,12). axis(2,
+las=1, at=4     0:g_range[2])
 
 # Create box around plot box()
 
@@ -456,24 +492,28 @@ col.lab=rgb(0,0.5,0)) title(ylab="Total", col.lab=rgb(0,0.5,0))
 actual plots legend(1, g_range[2], c("cars","trucks"), cex=0.8,
    col=c("blue","red"), pch=21:22, lty=1:2);
 
-\end{verbatim}
-\end{myindentpar}
-\subsection{Bar charts}
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+</code>
+end{myindentpar}
+<p>
+#### {Bar charts}
+begin{myindentpar}{1cm}
+<code>
 # Define the cars vector with 7 values
 cars <- c(1, 3, 6, 4, 9, 5, 7)
 # Graph cars
 barplot(cars)
-\end{verbatim}
-\end{myindentpar}
-\subsection{Boxplots}
-\subsection{Setting graphical parameters}
-\subsection{Miscellaneous}
+</code>
+end{myindentpar}
+<p>
+#### {Boxplots}
+<p>
+#### {Setting graphical parameters}
+<p>
+#### {Miscellaneous}
 The following code can be used to make variations of the plots.
 
-\begin{myindentpar}{1cm}
-\footnotesize \begin{verbatim}
+begin{myindentpar}{1cm}
+footnotesize <code>
 # Make an empty chart
 plot(1, 1, xlim=c(1,5.5), ylim=c(0,7), type="n", ann=FALSE)
 
@@ -497,26 +537,29 @@ points(1:5, rep(2,5), cex=2, pch=(15:19))
 text((1:5)+0.4, rep(2,5), cex=0.6, (15:19))
 
 # Plot symbols 20-25 with labels
-points((1:6)*0.8+0.2, rep(1,6), cex=2, pch=(20:25))
-text((1:6)*0.8+0.5, rep(1,6), cex=0.6, (20:25))
-\end{verbatim}\normalsize
-\end{myindentpar}
+points((1:6)     0.8+0.2, rep(1,6), cex=2, pch=(20:25))
+text((1:6)     0.8+0.5, rep(1,6), cex=0.6, (20:25))
+</code>normalsize
+end{myindentpar}
 
-\subsection{Lattice Graphs}
-\subsection{setting up}
+<p>
+#### {Lattice Graphs}
+<p>
+#### {setting up}
 Execute the following command:
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+begin{myindentpar}{1cm}
+<code>
 library(lattice)
-\end{verbatim}
-\end{myindentpar}
+</code>
+end{myindentpar}
 For information on lattice, type:
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+begin{myindentpar}{1cm}
+<code>
 help(package = lattice)
-\end{verbatim}
-\end{myindentpar}
-The examples in this section are generally drawn from the R documentation and Murrell (2006).
+</code>
+end{myindentpar}
+The examples in this <p>
+###  are generally drawn from the R documentation and Murrell (2006).
 
 Murrell gives three reasons for using Lattice Graphics:
 
@@ -524,128 +567,150 @@ They usually look better.
 They can be extended in powerful ways.
 The resulting output can be annotated, edited, and saved
 
-\subsection{3 Dimensional Graphs}
+<p>
+#### {3 Dimensional Graphs}
 How to do a 3-d graph
 
-\newpage
-\chapter{Statistical Analysis using R}
-\section{Confidence Intervals}
-\subsection{Confidence Intervals for Large Samples}
-\subsection{Confidence Intervals for Small Samples}
+newpage
+chapter{Statistical Analysis using R}
+<p>
+### {Confidence Intervals}
+<p>
+#### {Confidence Intervals for Large Samples}
+<p>
+#### {Confidence Intervals for Small Samples}
 
-\section{Linear Models}
+<p>
+### {Linear Models}
 
 The Slope and Intercept
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+begin{myindentpar}{1cm}
+<code>
 
-\end{verbatim}
-\end{myindentpar}
+</code>
+end{myindentpar}
 
-\section{ANOVA}
+<p>
+### {ANOVA}
 
 
 %--------------------------------------------------------Inference Procedures and testing for Normality-%
-\newpage
-%\chapter{Normality Assumptions and Outliers}
-%\subsubsection{Grubbs Test for outliers}
-%\subsection{Anderson Darling Test}
-%\subsection{Normal Probability plots}
-%\subsubsection{ Kolmogorov Smirnov Test}
+newpage
+%chapter{Normality Assumptions and Outliers}
+%sub<p>
+#### {Grubbs Test for outliers}
+%<p>
+#### {Anderson Darling Test}
+%<p>
+#### {Normal Probability plots}
+%sub<p>
+#### { Kolmogorov Smirnov Test}
 
 
 
 
 
-\subsection{Subsetting datasets by rows}
+<p>
+#### {Subsetting datasets by rows}
 
-Suppose we wish to divide a data frame into two different section. The simplest approach we can take is to create two new data sets, each assigned data from the relevant rows of the original data set.
+Suppose we wish to divide a data frame into two different <p>
+### . The simplest approach we can take is to create two new data sets, each assigned data from the relevant rows of the original data set.
 
 Suppose our dataset ``Info" has the dimensions of 200 rows and 4 columns. We wish to separate "Info" into two subsets , with the first and second 100 rows respectively. ( We call these new subsets "Info.1" and "Info.2".)
-\begin{verbatim}
+<code>
 Info.1 = Info[1:100,]		#assigning "info" rows 1 to 100
 Info.2 = Info[101:200,]		#assigning "info" rows 101 to 200
-\end{verbatim}
+</code>
 
 More useful commands such as rbind() and cbind()  can be used to manipulate vectors.
 
 Part 2 Strategies for Data project
-\begin{itemize}
-\item Exploratory Data Analysis
+begin{ }
+       Exploratory Data Analysis
 
 The first part of your report should contain some descriptive statistics and summary values. Also include some tests for normality.
 
-\item{Regression}
+      {Regression}
 You should have a data set with multiple columns, suitable for regression analysis.
 Familiarize yourself with the data, and decide which variable is the dependent variable.
 
 Also determine the independent variables that you will use as part of your analysis.
 
-\item{Correlation Analysis}
+      {Correlation Analysis}
 Compute the Pearson correlation for the dependent variable with the respective independent variables.  As part of your report, mention the confidence interval for the correlation estimate
 Choose the independent variables with the highest correlation as your candidate variables.
 For these independent variables, perform a series of simple linear regression procedures.
-\begin{verbatim}
+<code>
 lm(y~x1)
 lm(y~x2)
-\end{verbatim}
+</code>
 Comment on the slope and intercept estimates and their respective p-values. Also comment on the coefficient of determination (multiple R squared). Remember to write the regression equations.
 Perform a series of multiple linear regressions, using pairs of candidate independent variables.
-\begin{verbatim}
+<code>
 lm(y~x1 +x2)
 lm(y~x2 +x3)
-\end{verbatim}
+</code>
 Again, comment on the slope and intercept estimates, and their respective p-values.
 In this instance, compare each of the models using the coefficient of determinations. Which model explains the data best?
-\subsection{Analysis of residuals}
-Perform an analysis of regression residuals ( you can pick the best regression model from last section).
+<p>
+#### {Analysis of residuals}
+Perform an analysis of regression residuals ( you can pick the best regression model from last <p>
+### ).
 Are the residuals normally distributed?
 	Histogram /  Boxplot / QQ plot / Shapiro Wilk Test
 Also you can plot the residuals to check that there is constant variance.
-\begin{verbatim}
+<code>
 y=rnorm(10)
 x=rnorm(10)
 fit1=lm(y~x)
 res.fit1 = resid(fit1)
 plot(res.fit1)
-\end{verbatim}
+</code>
 
 
 
 
 %---------------------------------------------------------------------------Probability Distributions ----%
-\newpage
-\chapter{Probability Distributions}
-\section{Generating a set of random numbers}
+newpage
+chapter{Probability Distributions}
+<p>
+### {Generating a set of random numbers}
 
-\begin{myindentpar}{1cm}
-\footnotesize \begin{verbatim}
+begin{myindentpar}{1cm}
+footnotesize <code>
 rnorm(10)
-\end{verbatim}\normalsize
-\end{myindentpar}
+</code>normalsize
+end{myindentpar}
 
-\section{The Poisson Distribution}
-\section{The Binomial Distribution}
-\section{Using probability distributions for simulations}
-\section{Probability Distributions}
-\subsection{Generate random numbers }
+<p>
+### {The Poisson Distribution}
+<p>
+### {The Binomial Distribution}
+<p>
+### {Using probability distributions for simulations}
+<p>
+### {Probability Distributions}
+<p>
+#### {Generate random numbers }
 
 %----------------------------------------------------------------------------Graphical Methods--%
-\newpage
-\chapter{Graphical methods}
+newpage
+chapter{Graphical methods}
 
-\section{Scatterplots}
-%\begin{figure}
-  % Requires \usepackage{graphicx}
-  % \includegraphics[scale=0.40]{MTCARSmpgwt.png}\\
-  % \caption{Scatterplot}\label{mpgwt}
-% \end{figure}
-
-
-\section{Adding titles, lines, points to plots}
+<p>
+### {Scatterplots}
+%begin{figure}
+  % Requires usepackage{graphicx}
+  % includegraphics[scale=0.40]{MTCARSmpgwt.png}
+  % caption{Scatterplot}label{mpgwt}
+% end{figure}
 
 
-\footnotesize \begin{verbatim}
+<p>
+### {Adding titles, lines, points to plots}
+
+
+footnotesize <code>
 library(MASS)
 # Colour points and choose plotting symbols according to a levels of a factor
 plot(Cars93$Weight, Cars93$EngineSize, col=as.numeric(Cars93$Type),
@@ -660,34 +725,35 @@ max(Cars93$EngineSize)), lwd=4, lty=3, col="green")
 abline(h=3, lty=2)
 abline(v=1999, lty=4)
 # Add points to the plot.
-\end{verbatim}\normalsize
+</code>normalsize
 
-\newpage
-\chapter{Programming}
+newpage
+chapter{Programming}
 
-\section{Writing Functions}
+<p>
+### {Writing Functions}
 
 A simple function can be constructed as follows:
 
-\begin{verbatim}
+<code>
 function_name <- function(arg1, arg2, ...){
 commands
 output
 }
-\end{verbatim}
+</code>
 
 You decide on the name of the function. The function command shows R that you are writing a function. Inside the parenthesis you outline the input objects required and decide what to call them. The commands occur inside the { }.
 
-The name of whatever output you want goes at the end of the function. Comments lines (usually a description of what the function does is placed at the beginning) are denoted by "\#".
+The name of whatever output you want goes at the end of the function. Comments lines (usually a description of what the function does is placed at the beginning) are denoted by "#".
 
-\begin{verbatim}sf1 <- function(x){
+<code>sf1 <- function(x){
 x^2
 }
-\end{verbatim}
+</code>
 
 This function is called sf1. It has one argument, called x.
-Whatever value is inputted for x will be squared and the result outputted to the screen. This function must be loaded into \texttt{R} and can then be called. We can call the function using:
-\begin{verbatim}
+Whatever value is inputted for x will be squared and the result outputted to the screen. This function must be loaded into texttt{R} and can then be called. We can call the function using:
+<code>
 sf1(x = 3)
 #sf1(3)
 [1] 9
@@ -696,41 +762,41 @@ x.sq <- sf1(x = 3)
 x.sq <- sf1(3)
 > x.sq
 [1] 9
-\end{verbatim}
+</code>
 Example
-\begin{verbatim}
+<code>
 sf2 <- function(a1, a2, a3){
 x <- sqrt(a1^2 + a2^2 + a3^2)
 return(x)
 }
-\end{verbatim}
+</code>
 
 This function is called sf2 with 3 arguments. The values inputted for a1, a2, a3 will be squared, summed and the square root of the sum calculated and stored in x. (There will be no output to the screen as in the last example.)
 The return command specifies what the function returns, here the value of x. We will not be able to view the result of the function unless we store it.
-\begin{verbatim}sf2(a1=2, a2=3, a3=4)
+<code>sf2(a1=2, a2=3, a3=4)
 sf2(2, 3, 4) # Can't see result.
 res <- sf2(a1=2, a2=3, a3=4)
 res <- sf2(2, 3, 4) # Need to use this.
 res
 [1] 5.385165
-\end{verbatim}
+</code>
 We can also give some/all arguments default values.
-\begin{verbatim}mypower <- function(x, pow=2){
+<code>mypower <- function(x, pow=2){
 x^pow
 }
-\end{verbatim}
+</code>
 If a value for the argument pow is not specified in the function call,
 a value of 2 is used.
-\begin{verbatim}mypower(4)
+<code>mypower(4)
 [1] 16
-\end{verbatim}
+</code>
 If a value for "pow" is specified, that value is used.
-\begin{verbatim}
+<code>
 mypower(4, 3)
 [1] 64
 mypower(pow=5, x=2)
 [1] 32
-\end{verbatim}
+</code>
 
 
 
@@ -742,27 +808,29 @@ mypower(pow=5, x=2)
 %----------------------------------------------------%
 
 
-\footnotesize \begin{verbatim}
+footnotesize <code>
 > code here
- \end{verbatim}\normalsize
+ </code>normalsize
 
 
-\footnotesize \begin{verbatim}
+footnotesize <code>
 > code here
- \end{verbatim}\normalsize
+ </code>normalsize
 
 
 
 %---------------------------------------------------%
-\subsubsection{slide234}
+sub<p>
+#### {slide234}
 The TS are <equation here>  
 The p-values for both of these tests are 0 and so there is enough evidence to reject $H_0$ and conclude that both 0 and 1 are not 0, i.e. there is a significant linear relationship between x and y. 
-Also given are the $R^2$ and $R^2$ adjusted values. Here $R^2 = SSR/SST = 0.8813$ and so $88.13\%$ of the variation in y is being explained by x. 
+Also given are the $R^2$ and $R^2$ adjusted values. Here $R^2 = SSR/SST = 0.8813$ and so $88.13%$ of the variation in y is being explained by x. 
 The final line gives the result of using the ANOVA table to assess the model t.
 
 %----------------------------------------------------%
 
-\subsubsection{slide235}
+sub<p>
+#### {slide235}
 
 In SLR, the ANOVA table tests <EQN>The TS is the F value and the critical value and p-values are found
 in the F tables with (p - 1) and (n - p) degrees of freedom.
@@ -773,7 +841,8 @@ This output gives the p-value = 0, therefore there is enough evidence to reject 
 
 
 
-\subsubsection{slide236}
+sub<p>
+#### {slide236}
 Once the model has been tted, must then check the residuals.
 The residuals should be independent and normally distributed with
 mean of 0 and constant variance.
@@ -784,49 +853,52 @@ histogram as in MINITAB) while a, plot of the residuals versus fitted values giv
 
 
 %----------------------------------------------------%
-\subsubsection{slidename}
+sub<p>
+#### {slidename}
 
-\footnotesize \begin{verbatim}
+footnotesize <code>
 > xbar <- 83
 > sigma <- 12
 > n <- 5
 > sem <- sigma/sqrt(n)
 > sem
 [1] 5.366563
-> xbar + sem * qnorm(0.025)
+> xbar + sem       qnorm(0.025)
 [1] 72.48173
-> xbar + sem * qnorm(0.975)
+> xbar + sem       qnorm(0.975)
 [1] 93.51827
- \end{verbatim}\normalsize
+ </code>normalsize
 
 
-\subsubsection{Testing the slope (II)}
+sub<p>
+#### {Testing the slope (II)}
 
 You can compute a
 t test for that hypothesis simply by dividing the estimate by its standard
 error
-\begin{equation}
-t = \frac{\hat{\beta}}{S.E.(\hat{\beta})}
-\end{equation}
-which follows a t distribution on n - 2 degrees of freedom if the true $\beta$ is
+begin{equation}
+t = frac{hat{beta}}{S.E.(hat{beta})}
+end{equation}
+which follows a t distribution on n - 2 degrees of freedom if the true $beta$ is
 zero.
 
 
 %----------------------------------------------------%
-\begin{itemize}
-\item The standard $\chi^{2}$ test  in chisq.test works with data in matrix form, like fisher.test does.
-\item For a 2 by 2 table, the test is exactly equivalent to prop.test.
-\end{itemize}
+begin{ }
+       The standard $chi^{2}$ test  in chisq.test works with data in matrix form, like fisher.test does.
+       For a 2 by 2 table, the test is exactly equivalent to prop.test.
+end{ }
 
 
-\footnotesize \begin{verbatim}
+footnotesize <code>
 > chisq.test(lewitt.machin)
-\end{verbatim}\normalsize
+</code>normalsize
 
 
 %----------------------------------------------------%
 
-\subsubsection{Chi-squared Test}
+sub<p>
+#### {Chi-squared Test}
 
 A $chi^2$ test is carried out on tabular data containing counts, e.g. the
 number of animals that died, the number of days of rain, the
@@ -841,15 +913,15 @@ handedness.
 The data are presented in a contingency table:
 right-handed left-handed TOTAL
 
-\begin{tabular}{|c|c|c|c|}
-  \hline
-  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
-  & right-handed &left-handed & TOTAL\\\hline
-  Male & 43 & 9 & 52 \\
-  Female & 44 & 4 & 48 \\
-  TOTAL & 87 & 13 & 100 \\
-  \hline
-\end{tabular}
+begin{tabular}{|c|c|c|c|}
+  hline
+  % after : hline or cline{col1-col2} cline{col3-col4} ...
+  & right-handed &left-handed & TOTALhline
+  Male & 43 & 9 & 52 
+  Female & 44 & 4 & 48 
+  TOTAL & 87 & 13 & 100 
+  hline
+end{tabular}
 
 
 The hypothesis to be tested is
@@ -866,7 +938,8 @@ H0 was true.
 
 
 %------------------------------------------------------%
-\subsubsection{Two Sample Tests}
+sub<p>
+#### {Two Sample Tests}
 
 
 All of the previous hypothesis tests and confidence intervals can be
@@ -882,11 +955,12 @@ each group of data also.
 
 
 %------------------------------------------------------%
-\subsubsection{Implementation}
+sub<p>
+#### {Implementation}
 
 This can be carried out in R by hand:
 
-\footnotesize \begin{verbatim}
+footnotesize <code>
 >obs.vals <- matrix(c(43,9,44,4), nrow=2, byrow=T)
 >row.tots <- apply(obs.vals, 1, sum)
 >col.tots <- apply(obs.vals, 2, sum)
@@ -894,7 +968,7 @@ This can be carried out in R by hand:
 >TS <- sum((obs.vals-exp.vals)^2/exp.vals)
 >TS
 >[1] 1.777415
- \end{verbatim}\normalsize
+ </code>normalsize
 
 
 %------------------------------------------------------%
@@ -902,23 +976,25 @@ This can be carried out in R by hand:
 
 
 
-\chapter { R Graphics}
-\section Enhancing your scatter plots
-\subsection{Adding lines}
+chapter { R Graphics}
+<p>
+###  Enhancing your scatter plots
+<p>
+#### {Adding lines}
 Previously we have used scatter plots to plot bivariate data. They were constructed using the plot() command.
-Recall that we can use the arguments \texttt{xlim} and \texttt{ylim} to control the vertical and horizontal range of the plots, by specifying a two element vector (min and max) for each.
+Recall that we can use the arguments texttt{xlim} and texttt{ylim} to control the vertical and horizontal range of the plots, by specifying a two element vector (min and max) for each.
 
-Using the \texttt{abline()} command, we can add lines to our scatter plots. We specify the argument according to the type of line required. A demonstration of three types of line is provided below.
-Additionally we change the colour of the added lines, by specifying a colour in the \texttt{col} argument. We can also change the line type to one of four possible types, using the \texttt{lty} argument.
+Using the texttt{abline()} command, we can add lines to our scatter plots. We specify the argument according to the type of line required. A demonstration of three types of line is provided below.
+Additionally we change the colour of the added lines, by specifying a colour in the texttt{col} argument. We can also change the line type to one of four possible types, using the texttt{lty} argument.
 
 The line types are follows
-\begin{itemize}
-\item	\texttt{lty =1}   Normal full line (default)
-\item	\texttt{lty =2}   Dashed line
-\item	\texttt{lty =3}   Dotted line
-\item	\texttt{lty =4}   Dash-dot line
-\end{itemize}
-\footnotesize \begin{verbatim}
+begin{ }
+      	texttt{lty =1}   Normal full line (default)
+      	texttt{lty =2}   Dashed line
+      	texttt{lty =3}   Dotted line
+      	texttt{lty =4}   Dash-dot line
+end{ }
+footnotesize <code>
 x=rnorm(10)
 y=rnorm(10)
 plot(x,y)
@@ -926,68 +1002,73 @@ plot(x,y,xlim=c(-4,4),ylim=c(-4,4))
 abline(v =0 , lty =2 )    # add a vertical dotted line (here the y-axis) to the plot
 abline(h=0  ,lty =3)    # add a horizontal dotted line (here the x-axis) to the plot
 abline(a=0,b=1,col="green") # add a line to your plot with intercept "a" and slope "b"
- \end{verbatim}\normalsize
+ </code>normalsize
 
-\subsection{Changing your plot character}
+<p>
+#### {Changing your plot character}
 
 To change the plot character (the symbol for each covariate, we supply an additional argument to the plot() function.  This argument is formulated as pch=n where n is some number.
 Additionally we change the colour of the characters, by specifying a colour in the col argument.
-\footnotesize \begin{verbatim}
+footnotesize <code>
 plot(x,y,pch=15,col="red")		#Square plot symbols
 plot(x,y,pch=16,col="green")		#Orb plot symbols
 plot(x,y,pch=17,col="mauve")		#Triangular plot symbols
 plot(x,y,pch=36	,col="amber")		#Dollar sign plot symbols
-\end{verbatim}\normalsize
+</code>normalsize
 Recall that we can add new variates to an existing scatterplot using the points() function. Remember to set the vertical and horizontal limits accordingly.
-\footnotesize \begin{verbatim}
+footnotesize <code>
 y1 = rnorm(10); y2 = rnorm(10)
 plot(x,y1, pch=8,col="purple" ,xlim=c(-5,5),ylim=c(-5,5))
 points(x,y2,pch=12,col="green")
-\end{verbatim}\normalsize
-\subsection{Adding the regression model line}
+</code>normalsize
+<p>
+#### {Adding the regression model line}
 
-The \texttt{abline()} function can be used to add a regression model line  by supplying as an argument the \texttt{coef()} values for intercept and slope estimates .These estimates can be inputted directly by using both functions in conjunction.
+The texttt{abline()} function can be used to add a regression model line  by supplying as an argument the texttt{coef()} values for intercept and slope estimates .These estimates can be inputted directly by using both functions in conjunction.
 
-\footnotesize \begin{verbatim}
+footnotesize <code>
 Fit1 =lm(y1~x);  coef(Fit1)
 abline(coef(Fit1))	
-\end{verbatim}\normalsize
+</code>normalsize
 
-\subsection{Adding a title }
+<p>
+#### {Adding a title }
 
 It is good practice to label your scatterplots properly. You can specify the following argument
-\begin{itemize}
-\item	main="Scatterplot Example", 	This provides the plot with a title
-\item	sub="Subtitle",                 This adds a subtitle
-\item	xlab="X variable ",				This command labels the x axis 
-\item   ylab="y variable ",				This command labels the y-axis
-\end{itemize}
-We can also add text to each margin, using the \texttt{mtext()} command.  
+begin{ }
+      	main="Scatterplot Example", 	This provides the plot with a title
+      	sub="Subtitle",                 This adds a subtitle
+      	xlab="X variable ",				This command labels the x axis 
+         ylab="y variable ",				This command labels the y-axis
+end{ }
+We can also add text to each margin, using the texttt{mtext()} command.  
 We simply require the number of the side. (1 = bottom, 2=left,3=top,4=right). 
 We can change the colour using the col argument.
-\footnotesize \begin{verbatim}
+footnotesize <code>
 plot(x,y,main="Scatterplot Example",   sub="subtitle",    xlab="X variable ", ylab="y variable ")	
 mtext("Enhanced Scatterplot", side=4,col="red ")
-\end{verbatim}\normalsize
+</code>normalsize
 Alternatively , we can also use the command title() to add a title to an existing scatterplot.
-\footnotesize \begin{verbatim}
+footnotesize <code>
 title(main="Scatterplot Example)	
-\end{verbatim}\normalsize
+</code>normalsize
 
 
-\section{Combining plots}
-It is possible to combine two plots. We used the graphical parameters command \texttt{par()} to create an array. 
-Often we just require two plots side by side or above and below. We simply specify the numbers of rows and columns of this array using the \texttt{mfrow} argument, passed as a vector.
+<p>
+### {Combining plots}
+It is possible to combine two plots. We used the graphical parameters command texttt{par()} to create an array. 
+Often we just require two plots side by side or above and below. We simply specify the numbers of rows and columns of this array using the texttt{mfrow} argument, passed as a vector.
 
-\begin{verbatim}
+<code>
 par(mfrow=c(1,2))
 plot(x,y1)			# draw first plot
 plot(x,y2)			# draw second plot
 par(mfrow=c(1,1))		# reset to default setting.
-\end{verbatim}
+</code>
 
-\section{Plot of single vectors}
-If only one vector is specified i.e. \texttt{plot(x)},  the plot created will simply be a scatter-plot of the values of x against their indices.
+<p>
+### {Plot of single vectors}
+If only one vector is specified i.e. texttt{plot(x)},  the plot created will simply be a scatter-plot of the values of x against their indices.
 
 $plot(x)$
 Suppose we wish to examine a trend that these points represent. We can connect each covariate using a line.
@@ -1004,20 +1085,21 @@ $plot(x, type = "b")$
 
 
 
-\section{Exercise} The following are measurements (in mm) of a critical
+<p>
+### {Exercise} The following are measurements (in mm) of a critical
 dimension on a sample of twelve engine crankshafts:
 
-\begin{verbatim}
+<code>
 224.120 	224.001 	224.017 	223.982 	223.989 	223.961
 223.960 	224.089 	223.987 	223.976 	223.902 	223.980
-\end{verbatim}
+</code>
 (a) Calculate the mean and standard deviation for these data.
 (b) The process mean is supposed to be ? = 224mm. Is this the
 case? Give reasons for your answer.
-(c) Construct a 99\% confidence interval for these data and interpret.
+(c) Construct a 99% confidence interval for these data and interpret.
 (d) Check that the normality assumption is valid using 2 suitable plots.
 
-\begin{verbatim}
+<code>
 > x<-c(224.120,224.001,224.017,223.982 ,223.989 ,223.961,
 + 223.960 ,224.089 ,223.987 ,223.976 , 223.902 ,223.980)
 >
@@ -1040,30 +1122,32 @@ sample estimates:
 mean of x
   223.997
 
-\end{verbatim}
-\section{Exercise 2} 
+</code>
+<p>
+### {Exercise 2} 
 The height of 12 Americans and 10 Japanese was measured. Test for a difference in the heights of both populations.
-\begin{verbatim}
+<code>
 Americans
 174.68   	169.87 	   	165.07    	165.95 		204.99 		177.61 	
 170.11 	 	170.71 	   	181.52 		167.68 		158.62 		182.90
 Japanese
 158.76  		168.85  		159.64  		180.02  		164.24
 161.91  		163.99  		152.71  		157.32  		147.20
-\end{verbatim}
+</code>
 
 
-\section{Exercise 3}
+<p>
+### {Exercise 3}
 
 A large group of students each took two exams. The marks obtained in both exams by a sample of eight students is given below
 
-\begin{verbatim}
+<code>
 Student	1	2	3	4	5	6	7	8
 Exam 1	57	76	47	39	62	56	49	81
 Exam 2	67	81	62	49	57	61	59	71
-\end{verbatim}
+</code>
 Test the hypothesis that in the group as a whole the mean mark gained did not vary according to the exam against the hypothesis that the mean mark in the second exam was higher
-\begin{verbatim}
+<code>
 >
 > Ex1<-c(57,76,47,39,62,56,49,81)
 > Ex2<-c(67,81,62,49,57,61,59,71)
@@ -1079,12 +1163,13 @@ alternative hypothesis: true mean is not equal to 0
 sample estimates:
 mean of x
        -5
-\end{verbatim}
+</code>
 
-\section{Exercise 4}
-A poll on social issues interviewed 1025 people randomly selected from the United States. 450 of people said that they do not get enough time to themselves. A report claims that over 41\% of the population are not satisfied with personal time. Is this the case?
+<p>
+### {Exercise 4}
+A poll on social issues interviewed 1025 people randomly selected from the United States. 450 of people said that they do not get enough time to themselves. A report claims that over 41% of the population are not satisfied with personal time. Is this the case?
 
-\begin{verbatim}
+<code>
 
 > prop.test(450,1025,p=0.40,alternative="greater")
 
@@ -1098,10 +1183,10 @@ alternative hypothesis: true p is greater than 0.4
 sample estimates:
         p
 0.4390244
-\end{verbatim}
+</code>
 
 Exercise 23b:  A company wants to investigate the proportion of males and females promoted in the last year. 45 out of 400 female candidates were promoted, while 520 out of 3270 male candidates were promoted. Is there evidence of sexism in the company?
-\begin{verbatim}
+<code>
 > x.vec=c(45,520)
 > n.vec=c(400,3270)
 >  prop.test(x.vec,n.vec)
@@ -1116,15 +1201,16 @@ alternative hypothesis: two.sided
 sample estimates:
    prop 1    prop 2
 0.1125000 0.1590214
-\end{verbatim}
+</code>
 
 ?
-\section{Exercise}
+<p>
+### {Exercise}
 
 Generate a histogram for data set 'scores', with an accompanying box-and-whisker plot.
 The colour of the histogram's bar should be yellow. The orientation for the boxplot should be horizontal.
 
-\begin{verbatim}
+<code>
 scores <-c(23,19,22,22,19,20,25,26,26,19,24,23,17,21,28,26)
 
 par(mfrow=c(2,1)) 	# two rows , one column
@@ -1134,119 +1220,130 @@ hist(scores,main="Distribution of scores",xlab="scores",col="yellow")
 boxplot(scores ,horizontal=TRUE)
 
 par(mfrow =c(1,1)) 	#reset
-\end{verbatim}
-\section{The R Programming Language}
+</code>
+<p>
+### {The R Programming Language}
 
 The R Programming Language is a statistical , data analysis , etc
 
 R is a free software environment for statistical computing and graphics.
 
-\section{Writing R scripts}
+<p>
+### {Writing R scripts}
 Editing your R script ``R Editor".
-\begin{itemize}
-\item On the menu of the R console, click on file.
-\item Select open script or new script as appropriate.
-\item Navigate to your working directory and select your \texttt{.R} file
-\item A new dialogue box ``\texttt{the R editor}" will open up.
-\item Input or select code you wish to compile.
-\item To compile this code, highlight it. Click the edit button on the menu.
-\item Select either ``Run Line" or ``Run Selection or All".
-\item Your code should now compile.
-\item To save your code, clink on ``file" and then ``\texttt{save as}".
-\item Save the file with the ``\texttt{.R}" extension to your working directory.
-\end{itemize}
+begin{ }
+       On the menu of the R console, click on file.
+       Select open script or new script as appropriate.
+       Navigate to your working directory and select your texttt{.R} file
+       A new dialogue box ``texttt{the R editor}" will open up.
+       Input or select code you wish to compile.
+       To compile this code, highlight it. Click the edit button on the menu.
+       Select either ``Run Line" or ``Run Selection or All".
+       Your code should now compile.
+       To save your code, clink on ``file" and then ``texttt{save as}".
+       Save the file with the ``texttt{.R}" extension to your working directory.
+end{ }
 
-\section{Vector types}
-\texttt{R} operates on named data structures. The simplest such structure is the
+<p>
+### {Vector types}
+texttt{R} operates on named data structures. The simplest such structure is the
 vector, which is a single entity consisting of an ordered collection of
 Numbers or characters.
 
-\begin{itemize}
-\item Numeric vectors
-\item Character vectors
-\item Logical vectors
-\item (also complex number vectors and colour vectors)
-\end{itemize}
+begin{ }
+       Numeric vectors
+       Character vectors
+       Logical vectors
+       (also complex number vectors and colour vectors)
+end{ }
 
 To create a vector, use the assignment operator and the concatenate function.
 For numeric vectors, the values are simply numbers.
 
-\begin{verbatim}
+<code>
 ># week8.r
 >NumVec<-c(10.4,5.6,3.1,6.4)
-\end{verbatim}
+</code>
 
-Alternatively we can use the \texttt{assign()} command
+Alternatively we can use the texttt{assign()} command
 
 For character vectors, the values are simply characters, specified with
 quotation marks.A logical vectors is a vector whose elements are TRUE, FALSE or NA
 
-\begin{verbatim}
+<code>
 >CharVec<-c(``blue", ``green", ``yellow")
 >LogVec<-c(TRUE, FALSE)
-\end{verbatim}
+</code>
 
-\section{Graphical data entry interface}
+<p>
+### {Graphical data entry interface}
 
-\texttt{Data.entry()} is a useful  command for inputting or editing data sets. Any
+texttt{Data.entry()} is a useful  command for inputting or editing data sets. Any
 changes are saved automatically (i.e. dont need to use the assignment
-operator). We can also used the \texttt{edit()} command, which calls the \texttt{R Editor}.
+operator). We can also used the texttt{edit()} command, which calls the texttt{R Editor}.
 
-\begin{verbatim}
+<code>
 >data.entry(NumVec)
 >NumVec <- edit(NumVec)
-\end{verbatim}
+</code>
 
 Another method of creating vectors is to use the following
-\begin{verbatim}
+<code>
 numeric (length = n)
 character (length = n)
 logical (length = n)
-\end{verbatim}
+</code>
 These commands create empty vectors, of the appropriate kind, of length $n$. You can then use the graphical data entry interface to populate your data sets.
 
-\subsubsection{Accessing specified elements of a vector}
+sub<p>
+#### {Accessing specified elements of a vector}
 
 The $n$th element of vector ``Vec" can be accessed by specifying its index when
 calling ``Vec".
-\begin{verbatim}>Vec[n]
-\end{verbatim}
+<code>>Vec[n]
+</code>
 A sequence of  elements of vector ``Vec" can be accessed by specifying its index
 when calling ``Vec".
-\begin{verbatim}>Vec[l:u]
-\end{verbatim}
+<code>>Vec[l:u]
+</code>
 Omitting and deleting the $n$th element of vector ``Vec"
-\begin{verbatim}
+<code>
 >Vec[-n]
 >Vec <- Vec[-n]
-\end{verbatim}
+</code>
 
-\section{Reading data}
+<p>
+### {Reading data}
 
 
-\subsection{inputting data}
+<p>
+#### {inputting data}
  Concatenation
 
-\subsection{using help}
+<p>
+#### {using help}
 
 ?mean
 
-\subsection{Adding comments}
+<p>
+#### {Adding comments}
 
-\subsection{Packages}
+<p>
+#### {Packages}
 The capabilities of R are extended through user-submitted packages, which allow specialized statistical techniques, graphical devices, as well as and
 import/export capabilities to many external data formats.
 
-\section{Managing Precision}
-\begin{itemize}
-\item \texttt{floor()} - 
-\item \texttt{ceiling()} - 
-\item \texttt{round()} - 
-\item \texttt{as.integer()} -
-\end{itemize}
+<p>
+### {Managing Precision}
+begin{ }
+       texttt{floor()} - 
+       texttt{ceiling()} - 
+       texttt{round()} - 
+       texttt{as.integer()} -
+end{ }
 
-\begin{framed}
-\begin{verbatim}
+<pre>
+<code>
 > pi
 [1] 3.141593
 > floor(pi)
@@ -1257,32 +1354,40 @@ import/export capabilities to many external data formats.
 [1] 3.142
 > as.integer(pi)
 [1] 3
-\end{verbatim}
-\end{framed}
+</code>
+</pre>
+<p>
 
-\section{Basic Operations}
-\subsection{Complex numbers}
-\subsection{Trigonometric functions}
-\section{Matrices}
+<p>
+### {Basic Operations}
+<p>
+#### {Complex numbers}
+<p>
+#### {Trigonometric functions}
+<p>
+### {Matrices}
 
-%\end{document}
+%end{document}
 
 
-\subsubsection{exponentials, powers and logarithms}
-\begin{framed}
-\begin{verbatim}
+sub<p>
+#### {exponentials, powers and logarithms}
+<pre>
+<code>
 >x^y
 >exp(x)
 >log(x)
 >log(y)
 #determining the square root of x
 >sqrt(x)
-\end{verbatim}
-\end{framed}
+</code>
+</pre>
+<p>
 
-\subsection{vectors}
-\begin{framed}
-\begin{verbatim}
+<p>
+#### {vectors}
+<pre>
+<code>
 R handles vector objects quite easily and intuitively.
 
 > x<-c(1,3,2,10,5)    #create a vector x with 5 components
@@ -1293,7 +1398,7 @@ R handles vector objects quite easily and intuitively.
 [1] 1 2 3 4 5
 > y+2                 #scalar addition
 [1] 3 4 5 6 7
-> 2*y                 #scalar multiplication
+> 2     y                 #scalar multiplication
 [1]  2  4  6  8 10
 > y^2                 #raise each component to the second power
 [1]  1  4  9 16 25
@@ -1301,41 +1406,48 @@ R handles vector objects quite easily and intuitively.
 [1]  2  4  8 16 32
 > y                   #y itself has not been unchanged
 [1] 1 2 3 4 5
-> y<-y*2
+> y<-y     2
 > y                   #it is now changed
 [1]  2  4  6  8 10
-\end{verbatim}
-\end{framed}
+</code>
+</pre>
+<p>
 
-\subsubsection{Misc}
-\texttt{seq()} and \texttt{rep()} are useful commands for constructing vectors with a certain pattern.
+sub<p>
+#### {Misc}
+texttt{seq()} and texttt{rep()} are useful commands for constructing vectors with a certain pattern.
 
-%\end{document}
+%end{document}
 
-\subsection{Matrices}
+<p>
+#### {Matrices}
 A matrix refers to a numeric array of rows and columns.
 
 One of the easiest ways to create a matrix is to combine vectors of equal
 length using cbind(), meaning "column bind". Alternatively one can use rbind(), meaning ``row bind".
 
 
-\subsubsection{Matrices Inversion}
-\subsubsection{Matrices Multiplication}
+sub<p>
+#### {Matrices Inversion}
+sub<p>
+#### {Matrices Multiplication}
 
 
-\subsection{Data frame}
+<p>
+#### {Data frame}
 A Data frame is
-\newpage
+newpage
 
 %------------------------------------------------------------------------------------------------%
 
-\chapter{Descriptive Statistics}
+chapter{Descriptive Statistics}
 
-\section{Basic Statistics}
+<p>
+### {Basic Statistics}
 
-\footnotesize
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+footnotesize
+begin{myindentpar}{1cm}
+<code>
 > X=c(1,4,5,7,8,9,5,8,9)
 > mean(X);median(X)       #mean and median of vector
 [1] 6.222222
@@ -1350,39 +1462,41 @@ A Data frame is
 [1]  1 16 25 49 64 81 25 64 81
 > rev(X)
 [1] 9 8 5 9 8 7 5 4 1
-> sort(X)                 #items in ascending order
+> sort(X)                 #      s in ascending order
 [1] 1 4 5 5 7 8 8 9 9
 > X[1:5]
 [1] 1 4 5 7 8
-\end{verbatim}
-\end{myindentpar}
-\normalsize
+</code>
+end{myindentpar}
+normalsize
 
 
-\section{Summary Statistics}
-The \texttt{R} command \texttt{summary()} returns a summary statistics for a simple dataset.
-The \texttt{R} command \texttt{fivenum()} returns a summary statistics for a simple dataset, but without the mean.
+<p>
+### {Summary Statistics}
+The texttt{R} command texttt{summary()} returns a summary statistics for a simple dataset.
+The texttt{R} command texttt{fivenum()} returns a summary statistics for a simple dataset, but without the mean.
 Also, the quartiles are computed a different way.
 
-\footnotesize
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+footnotesize
+begin{myindentpar}{1cm}
+<code>
 > summary(mtcars$mpg)
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
   10.40   15.43   19.20   20.09   22.80   33.90 
 >
 > fivenum(mtcars$mpg)
 [1] 10.40 15.35 19.20 22.80 33.90
-\end{verbatim}
-\end{myindentpar}
-\normalsize
+</code>
+end{myindentpar}
+normalsize
 
 
 
 
-\section{Bivariate Data}
-\footnotesize \begin{myindentpar}{1cm}
-\begin{verbatim}
+<p>
+### {Bivariate Data}
+footnotesize begin{myindentpar}{1cm}
+<code>
 > Y=mtcars$mpg
 > X=mtcars$wt
 >
@@ -1391,127 +1505,141 @@ Also, the quartiles are computed a different way.
 >
 > cov(X,Y)          #Covariance
 [1] -5.116685
-\end{verbatim}
-\end{myindentpar}\normalsize
+</code>
+end{myindentpar}normalsize
 
 
-\section{Histograms}
-Histograms can be created using the \texttt{hist()} command.
+<p>
+### {Histograms}
+Histograms can be created using the texttt{hist()} command.
 To create a histogram of the car weights from the Cars93 data set
-\footnotesize
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+footnotesize
+begin{myindentpar}{1cm}
+<code>
 hist(mtcars$mpg, main="Histogram of MPG (Data: MTCARS) ")
-\end{verbatim}
-\end{myindentpar}\normalsize
-\texttt{R} automatically chooses the number and width of the bars. We can
+</code>
+end{myindentpar}normalsize
+texttt{R} automatically chooses the number and width of the bars. We can
 change this by specifying the location of the break points.
-\footnotesize
+footnotesize
 
-\begin{verbatim}hist(Cars93$Weight, breaks=c(1500, 2050, 2300, 2350, 2400,
+<code>hist(Cars93$Weight, breaks=c(1500, 2050, 2300, 2350, 2400,
 2500, 3000, 3500, 3570, 4000, 4500), xlab="Weight",
 main="Histogram of Weight")
-\end{verbatim}
+</code>
 
 
-\end{document}
+end{document}
 
-\section{Boxplot}
+<p>
+### {Boxplot}
 Boxplots can be used to identify outliers.
 
-By default, the \texttt{boxplot()} command sets the orientation as vertical. By adding the argument \texttt{horizontal=TRUE}, the orientation can be changed to horizontal.
-\footnotesize
-\begin{framed}
-\begin{verbatim}
+By default, the texttt{boxplot()} command sets the orientation as vertical. By adding the argument texttt{horizontal=TRUE}, the orientation can be changed to horizontal.
+footnotesize
+<pre>
+<code>
 boxplot(mtcars$mpg, horizontal=TRUE, xlab="Miles Per Gallon",
 main="Boxplot of MPG")
-\end{verbatim}
-\end{framed}
+</code>
+</pre>
+<p>
 
-%\begin{figure}
-%  Requires \usepackage{graphicx}
-%  \includegraphics[scale=0.4]{MTCARSboxplot.png}\\
-%  \caption{Boxplot}\label{boxplot}
-%\end{figure}
+%begin{figure}
+%  Requires usepackage{graphicx}
+%  includegraphics[scale=0.4]{MTCARSboxplot.png}
+%  caption{Boxplot}label{boxplot}
+%end{figure}
 
 
 
-\newpage
-\chapter{Advanced R code}
-\section{Data frame}
+newpage
+chapter{Advanced R code}
+<p>
+### {Data frame}
 A Data frame is
-\subsection{Merging Data frames}
+<p>
+#### {Merging Data frames}
 
-\section{Functions}
+<p>
+### {Functions}
 Syntax to define functions
 
-\begin{framed}
-\begin{verbatim}
+<pre>
+<code>
         myfct <- function(arg1, arg2, ...) { function_body }
-\end{verbatim}
-\end{framed}
+</code>
+</pre>
+<p>
 The value returned by a function is the value of the function body, which is usually an unassigned final expression, e.g.: return()
 
 Syntax to call functions
-\begin{framed}
-\begin{verbatim}
+<pre>
+<code>
         myfct(arg1=..., arg2=...)
-\end{verbatim}
-\end{framed}
+</code>
+</pre>
+<p>
 
 
-\subsection{Time and Date}
+<p>
+#### {Time and Date}
 It is useful . The length of time a program takes is interesting.
 
 
-\begin{framed}
-\begin{verbatim}
+<pre>
+<code>
 date() # returns the current system date and time
-\end{verbatim}
-\end{framed}
+</code>
+</pre>
+<p>
 
 
-\section{The Apply family}
+<p>
+### {The Apply family}
 
 Sometimes want to apply a function to each element of a
 vector/data frame/list/array.
-\\
+
 Four members: lapply, sapply, tapply, apply
-\\
+
 lapply: takes any structure and gives a list of results (hence
 the `l')
-\\
+
 sapply: like lapply, but tries to simplify the result to a
 vector or matrix if possible (hence the `s')
-\\
+
 apply: only used for arrays/matrices
-\\
+
 tapply: allows you to create tables (hence the `t') of values
 from subgroups defined by one or more factors.
-\newpage
+newpage
 
-\section{Plots}
-This section is an introduction for producing simple graphs with
+<p>
+### {Plots}
+This <p>
+###  is an introduction for producing simple graphs with
 the R Programming Language.
-\begin{itemize}
-\item Line Charts  \item Bar Charts \item Histograms \item Pie
-Charts \item Dotcharts
-\end{itemize}
+begin{ }
+       Line Charts         Bar Charts        Histograms        Pie
+Charts        Dotcharts
+end{ }
 
 
-\begin{itemize}
-\item
-\item
-\end{itemize}
-\footnotesize \begin{verbatim}
+begin{ }
+      
+      
+end{ }
+footnotesize <code>
 > code here
- \end{verbatim}\normalsize
+ </code>normalsize
 
 
-\subsection{ Charts}
+<p>
+#### { Charts}
 
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+begin{myindentpar}{1cm}
+<code>
 # Define 2 vectors cars <- c(1, 3, 6, 4, 9) trucks <- c(2, 5, 4,
 5, 12)
 
@@ -1528,8 +1656,8 @@ col="blue", ylim=g_range,
 lab=c("Mon","Tue","Wed","Thu","Fri"))
 
 # Make y axis with horizontal labels that display ticks at # every
-4 marks. 4*0:g_range[2] is equivalent to c(0,4,8,12). axis(2,
-las=1, at=4*0:g_range[2])
+4 marks. 4     0:g_range[2] is equivalent to c(0,4,8,12). axis(2,
+las=1, at=4     0:g_range[2])
 
 # Create box around plot box()
 
@@ -1547,24 +1675,28 @@ col.lab=rgb(0,0.5,0)) title(ylab="Total", col.lab=rgb(0,0.5,0))
 actual plots legend(1, g_range[2], c("cars","trucks"), cex=0.8,
    col=c("blue","red"), pch=21:22, lty=1:2);
 
-\end{verbatim}
-\end{myindentpar}
-\subsection{Bar charts}
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+</code>
+end{myindentpar}
+<p>
+#### {Bar charts}
+begin{myindentpar}{1cm}
+<code>
 # Define the cars vector with 7 values
 cars <- c(1, 3, 6, 4, 9, 5, 7)
 # Graph cars
 barplot(cars)
-\end{verbatim}
-\end{myindentpar}
-\subsection{Boxplots}
-\subsection{Setting graphical parameters}
-\subsection{Miscellaneous}
+</code>
+end{myindentpar}
+<p>
+#### {Boxplots}
+<p>
+#### {Setting graphical parameters}
+<p>
+#### {Miscellaneous}
 The following code can be used to make variations of the plots.
 
-\begin{myindentpar}{1cm}
-\footnotesize \begin{verbatim}
+begin{myindentpar}{1cm}
+footnotesize <code>
 # Make an empty chart
 plot(1, 1, xlim=c(1,5.5), ylim=c(0,7), type="n", ann=FALSE)
 
@@ -1588,26 +1720,29 @@ points(1:5, rep(2,5), cex=2, pch=(15:19))
 text((1:5)+0.4, rep(2,5), cex=0.6, (15:19))
 
 # Plot symbols 20-25 with labels
-points((1:6)*0.8+0.2, rep(1,6), cex=2, pch=(20:25))
-text((1:6)*0.8+0.5, rep(1,6), cex=0.6, (20:25))
-\end{verbatim}\normalsize
-\end{myindentpar}
+points((1:6)     0.8+0.2, rep(1,6), cex=2, pch=(20:25))
+text((1:6)     0.8+0.5, rep(1,6), cex=0.6, (20:25))
+</code>normalsize
+end{myindentpar}
 
-\subsection{Lattice Graphs}
-\subsection{setting up}
+<p>
+#### {Lattice Graphs}
+<p>
+#### {setting up}
 Execute the following command:
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+begin{myindentpar}{1cm}
+<code>
 library(lattice)
-\end{verbatim}
-\end{myindentpar}
+</code>
+end{myindentpar}
 For information on lattice, type:
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+begin{myindentpar}{1cm}
+<code>
 help(package = lattice)
-\end{verbatim}
-\end{myindentpar}
-The examples in this section are generally drawn from the R documentation and Murrell (2006).
+</code>
+end{myindentpar}
+The examples in this <p>
+###  are generally drawn from the R documentation and Murrell (2006).
 
 Murrell gives three reasons for using Lattice Graphics:
 
@@ -1615,129 +1750,151 @@ They usually look better.
 They can be extended in powerful ways.
 The resulting output can be annotated, edited, and saved
 
-\subsection{3 Dimensional Graphs}
+<p>
+#### {3 Dimensional Graphs}
 How to do a 3-d graph
 
-\newpage
-\chapter{Statistical Analysis using R}
-\section{Confidence Intervals}
-\subsection{Confidence Intervals for Large Samples}
-\subsection{Confidence Intervals for Small Samples}
+newpage
+chapter{Statistical Analysis using R}
+<p>
+### {Confidence Intervals}
+<p>
+#### {Confidence Intervals for Large Samples}
+<p>
+#### {Confidence Intervals for Small Samples}
 
-\section{Linear Models}
+<p>
+### {Linear Models}
 
 The Slope and Intercept
-\begin{myindentpar}{1cm}
-\begin{verbatim}
+begin{myindentpar}{1cm}
+<code>
 
-\end{verbatim}
-\end{myindentpar}
+</code>
+end{myindentpar}
 
-\section{ANOVA}
+<p>
+### {ANOVA}
 
 
 %--------------------------------------------------------Inference Procedures and testing for Normality-%
-\newpage
-\chapter{Normality Assumptions and Outliers}
-\subsubsection{Grubbs Test for outliers}
-\subsection{Anderson Darling Test}
-\subsection{Normal Probability plots}
-\subsubsection{ Kolmogorov Smirnov Test}
+newpage
+chapter{Normality Assumptions and Outliers}
+sub<p>
+#### {Grubbs Test for outliers}
+<p>
+#### {Anderson Darling Test}
+<p>
+#### {Normal Probability plots}
+sub<p>
+#### { Kolmogorov Smirnov Test}
 
 
 
 
 
 
-\subsection{Subsetting datasets by rows}
+<p>
+#### {Subsetting datasets by rows}
 
-Suppose we wish to divide a data frame into two different section. The simplest approach we can take is to create two new data sets, each assigned data from the relevant rows of the original data set.
+Suppose we wish to divide a data frame into two different <p>
+### . The simplest approach we can take is to create two new data sets, each assigned data from the relevant rows of the original data set.
 
 Suppose our dataset ``Info" has the dimensions of 200 rows and 4 columns. We wish to separate "Info" into two subsets , with the first and second 100 rows respectively. ( We call these new subsets "Info.1" and "Info.2".)
-\begin{verbatim}
+<code>
 Info.1 = Info[1:100,]		#assigning "info" rows 1 to 100
 Info.2 = Info[101:200,]		#assigning "info" rows 101 to 200
-\end{verbatim}
+</code>
 
 More useful commands such as rbind() and cbind()  can be used to manipulate vectors.
 
 Part 2 Strategies for Data project
-\begin{itemize}
-\item Exploratory Data Analysis
+begin{ }
+       Exploratory Data Analysis
 
 The first part of your report should contain some descriptive statistics and summary values. Also include some tests for normality.
 
-\item{Regression}
+      {Regression}
 You should have a data set with multiple columns, suitable for regression analysis.
 Familiarize yourself with the data, and decide which variable is the dependent variable.
 
 Also determine the independent variables that you will use as part of your analysis.
 
-\item{Correlation Analysis}
+      {Correlation Analysis}
 Compute the Pearson correlation for the dependent variable with the respective independent variables.  As part of your report, mention the confidence interval for the correlation estimate
 Choose the independent variables with the highest correlation as your candidate variables.
 For these independent variables, perform a series of simple linear regression procedures.
-\begin{verbatim}
+<code>
 lm(y~x1)
 lm(y~x2)
-\end{verbatim}
+</code>
 Comment on the slope and intercept estimates and their respective p-values. Also comment on the coefficient of determination (multiple R squared). Remember to write the regression equations.
 Perform a series of multiple linear regressions, using pairs of candidate independent variables.
-\begin{verbatim}
+<code>
 lm(y~x1 +x2)
 lm(y~x2 +x3)
-\end{verbatim}
+</code>
 Again, comment on the slope and intercept estimates, and their respective p-values.
 In this instance, compare each of the models using the coefficient of determinations. Which model explains the data best?
-\subsection{Analysis of residuals}
-Perform an analysis of regression residuals ( you can pick the best regression model from last section).
+<p>
+#### {Analysis of residuals}
+Perform an analysis of regression residuals ( you can pick the best regression model from last <p>
+### ).
 Are the residuals normally distributed?
 	Histogram /  Boxplot / QQ plot / Shapiro Wilk Test
 Also you can plot the residuals to check that there is constant variance.
-\begin{verbatim}
+<code>
 y=rnorm(10)
 x=rnorm(10)
 fit1=lm(y~x)
 res.fit1 = resid(fit1)
 plot(res.fit1)
-\end{verbatim}
+</code>
 
 
 
 
 %---------------------------------------------------------------------------Probability Distributions ----%
-\newpage
-\chapter{Probability Distributions}
-\section{Generating a set of random numbers}
+newpage
+chapter{Probability Distributions}
+<p>
+### {Generating a set of random numbers}
 
-%\begin{myindentpar}{1cm}
-\footnotesize \begin{verbatim}
+%begin{myindentpar}{1cm}
+footnotesize <code>
 rnorm(10)
-\end{verbatim}\normalsize
-%\end{myindentpar}
+</code>normalsize
+%end{myindentpar}
 
-\section{The Poisson Distribution}
-\section{The Binomial Distribution}
-\section{Using probability distributions for simulations}
-\section{Probability Distributions}
-\subsection{Generate random numbers }
+<p>
+### {The Poisson Distribution}
+<p>
+### {The Binomial Distribution}
+<p>
+### {Using probability distributions for simulations}
+<p>
+### {Probability Distributions}
+<p>
+#### {Generate random numbers }
 
 %----------------------------------------------------------------------------Graphical Methods--%
-\newpage
-\chapter{Graphical methods}
+newpage
+chapter{Graphical methods}
 
-\section{Scatterplots}
-%\begin{figure}
-%  % Requires \usepackage{graphicx}
-%  \includegraphics[scale=0.40]{MTCARSmpgwt.png}\\
-%  \caption{Scatterplot}\label{mpgwt}
-%\end{figure}
-
-
-\section{Adding titles, lines, points to plots}
+<p>
+### {Scatterplots}
+%begin{figure}
+%  % Requires usepackage{graphicx}
+%  includegraphics[scale=0.40]{MTCARSmpgwt.png}
+%  caption{Scatterplot}label{mpgwt}
+%end{figure}
 
 
-\footnotesize \begin{verbatim}
+<p>
+### {Adding titles, lines, points to plots}
+
+
+footnotesize <code>
 library(MASS)
 # Colour points and choose plotting symbols according to a levels of a factor
 plot(Cars93$Weight, Cars93$EngineSize, col=as.numeric(Cars93$Type),
@@ -1752,10 +1909,10 @@ max(Cars93$EngineSize)), lwd=4, lty=3, col="green")
 abline(h=3, lty=2)
 abline(v=1999, lty=4)
 # Add points to the plot.
-\end{verbatim}\normalsize
+</code>normalsize
 
-\newpage
-\chapter{Programming}
+newpage
+chapter{Programming}
 
 
 
@@ -1764,7 +1921,8 @@ abline(v=1999, lty=4)
 
 
 %----------------------------------------------------%
-\subsubsection{Two Sample t test}
+sub<p>
+#### {Two Sample t test}
 
 The two-sample t test is used to test the hypothesis that two samples may
 be assumed to come from distributions with the same mean.
@@ -1772,27 +1930,29 @@ be assumed to come from distributions with the same mean.
 The theory for the two-sample t test is not very different in principle from
 that of the one-sample test. Data are now from two groups, $x_{11}, . . . , x_{1n1}$
 and $x_{21}, . . . , x_{2n2}$ , which we assume are sampled from the normal distributions
-$N(µ_{1}, \sigma^{1}_{2} )$ and
-$N(µ_{2}, \sigma^{2}_{2} )$, and it is desired to test the null hypothesis
-$\mu_{1} = \mu_{2}$. You then calculate
+$N(µ_{1}, sigma^{1}_{2} )$ and
+$N(µ_{2}, sigma^{2}_{2} )$, and it is desired to test the null hypothesis
+$mu_{1} = mu_{2}$. You then calculate
 
-\[
-t = \frac{\bar{X}_{1}-\bar{X}_{2}}{S.E.(\bar{X}_{1}-\bar{X}_{2})}
-\]
+[
+t = frac{bar{X}_{1}-bar{X}_{2}}{S.E.(bar{X}_{1}-bar{X}_{2})}
+]
 
 
 
 
 %---------------------------------------------------%
-\subsubsection{slide234}
+sub<p>
+#### {slide234}
 The TS are <equation here>  
 The p-values for both of these tests are 0 and so there is enough evidence to reject $H_0$ and conclude that both 0 and 1 are not 0, i.e. there is a significant linear relationship between x and y. 
-Also given are the $R^2$ and $R^2$ adjusted values. Here $R^2 = SSR/SST = 0.8813$ and so $88.13\%$ of the variation in y is being explained by x. 
+Also given are the $R^2$ and $R^2$ adjusted values. Here $R^2 = SSR/SST = 0.8813$ and so $88.13%$ of the variation in y is being explained by x. 
 The final line gives the result of using the ANOVA table to assess the model t.
 
 %----------------------------------------------------%
 
-\subsubsection{slide235}
+sub<p>
+#### {slide235}
 
 In SLR, the ANOVA table tests <EQN>The TS is the F value and the critical value and p-values are found
 in the F tables with (p - 1) and (n - p) degrees of freedom.
@@ -1803,7 +1963,8 @@ This output gives the p-value = 0, therefore there is enough evidence to reject 
 
 
 
-\subsubsection{slide236}
+sub<p>
+#### {slide236}
 Once the model has been tted, must then check the residuals.
 The residuals should be independent and normally distributed with
 mean of 0 and constant variance.
@@ -1815,53 +1976,56 @@ histogram as in MINITAB) while a, plot of the residuals versus fitted values giv
 
 
 
-\section{Introduction to \texttt{R}}
-\texttt{R} consists of a base package and many additional packages
-\texttt{R} was originally designed as a command language.  
+<p>
+### {Introduction to texttt{R}}
+texttt{R} consists of a base package and many additional packages
+texttt{R} was originally designed as a command language.  
 Commands were typed into a text-based input area on the computer screen and the program responded with a response to each command.
-The \texttt{R} console opens with information and then a prompt mark  ``>"  it is ready to accept commands
-\texttt{R}  is an open source software package, meaning that the code written to implement the various functions can be freely examined and modified.
-\texttt{R} can be installed free of charge from the \texttt{R}-project website.
+The texttt{R} console opens with information and then a prompt mark  ``>"  it is ready to accept commands
+texttt{R}  is an open source software package, meaning that the code written to implement the various functions can be freely examined and modified.
+texttt{R} can be installed free of charge from the texttt{R}-project website.
 
 %----------------------------------------------------%
-\subsubsection{slidename}
+sub<p>
+#### {slidename}
 
-\footnotesize \begin{verbatim}
+footnotesize <code>
 > xbar <- 83
 > sigma <- 12
 > n <- 5
 > sem <- sigma/sqrt(n)
 > sem
 [1] 5.366563
-> xbar + sem * qnorm(0.025)
+> xbar + sem       qnorm(0.025)
 [1] 72.48173
-> xbar + sem * qnorm(0.975)
+> xbar + sem       qnorm(0.975)
 [1] 93.51827
- \end{verbatim}\normalsize
+ </code>normalsize
 
 
-\subsubsection{Testing the slope (II)}
+sub<p>
+#### {Testing the slope (II)}
 
 You can compute a
 t test for that hypothesis simply by dividing the estimate by its standard
 error
-\begin{equation}
-t = \frac{\hat{\beta}}{S.E.(\hat{\beta})}
-\end{equation}
-which follows a t distribution on n - 2 degrees of freedom if the true $\beta$ is
+begin{equation}
+t = frac{hat{beta}}{S.E.(hat{beta})}
+end{equation}
+which follows a t distribution on n - 2 degrees of freedom if the true $beta$ is
 zero.
 
 
 %----------------------------------------------------%
-\begin{itemize}
-\item The standard $\chi^{2}$ test  in chisq.test works with data in matrix form, like fisher.test does.
-\item For a 2 by 2 table, the test is exactly equivalent to prop.test.
-\end{itemize}
+begin{ }
+       The standard $chi^{2}$ test  in chisq.test works with data in matrix form, like fisher.test does.
+       For a 2 by 2 table, the test is exactly equivalent to prop.test.
+end{ }
 
 
-\footnotesize \begin{verbatim}
+footnotesize <code>
 > chisq.test(lewitt.machin)
-\end{verbatim}\normalsize
+</code>normalsize
 
 
 
@@ -1869,23 +2033,25 @@ zero.
 
 
 
-\chapter { R Graphics}
-\section Enhancing your scatter plots
-\subsection{Adding lines}
+chapter { R Graphics}
+<p>
+###  Enhancing your scatter plots
+<p>
+#### {Adding lines}
 Previously we have used scatter plots to plot bivariate data. They were constructed using the plot() command.
-Recall that we can use the arguments \texttt{xlim} and \texttt{ylim} to control the vertical and horizontal range of the plots, by specifying a two element vector (min and max) for each.
+Recall that we can use the arguments texttt{xlim} and texttt{ylim} to control the vertical and horizontal range of the plots, by specifying a two element vector (min and max) for each.
 
-Using the \texttt{abline()} command, we can add lines to our scatter plots. We specify the argument according to the type of line required. A demonstration of three types of line is provided below.
-Additionally we change the colour of the added lines, by specifying a colour in the \texttt{col} argument. We can also change the line type to one of four possible types, using the \texttt{lty} argument.
+Using the texttt{abline()} command, we can add lines to our scatter plots. We specify the argument according to the type of line required. A demonstration of three types of line is provided below.
+Additionally we change the colour of the added lines, by specifying a colour in the texttt{col} argument. We can also change the line type to one of four possible types, using the texttt{lty} argument.
 
 The line types are follows
-\begin{itemize}
-\item	\texttt{lty =1}   Normal full line (default)
-\item	\texttt{lty =2}   Dashed line
-\item	\texttt{lty =3}   Dotted line
-\item	\texttt{lty =4}   Dash-dot line
-\end{itemize}
-\footnotesize \begin{verbatim}
+begin{ }
+      	texttt{lty =1}   Normal full line (default)
+      	texttt{lty =2}   Dashed line
+      	texttt{lty =3}   Dotted line
+      	texttt{lty =4}   Dash-dot line
+end{ }
+footnotesize <code>
 x=rnorm(10)
 y=rnorm(10)
 plot(x,y)
@@ -1893,68 +2059,73 @@ plot(x,y,xlim=c(-4,4),ylim=c(-4,4))
 abline(v =0 , lty =2 )    # add a vertical dotted line (here the y-axis) to the plot
 abline(h=0  ,lty =3)    # add a horizontal dotted line (here the x-axis) to the plot
 abline(a=0,b=1,col="green") # add a line to your plot with intercept "a" and slope "b"
- \end{verbatim}\normalsize
+ </code>normalsize
 
-\subsection{Changing your plot character}
+<p>
+#### {Changing your plot character}
 
 To change the plot character (the symbol for each covariate, we supply an additional argument to the plot() function.  This argument is formulated as pch=n where n is some number.
 Additionally we change the colour of the characters, by specifying a colour in the col argument.
-\footnotesize \begin{verbatim}
+footnotesize <code>
 plot(x,y,pch=15,col="red")		#Square plot symbols
 plot(x,y,pch=16,col="green")		#Orb plot symbols
 plot(x,y,pch=17,col="mauve")		#Triangular plot symbols
 plot(x,y,pch=36	,col="amber")		#Dollar sign plot symbols
-\end{verbatim}\normalsize
+</code>normalsize
 Recall that we can add new variates to an existing scatterplot using the points() function. Remember to set the vertical and horizontal limits accordingly.
-\footnotesize \begin{verbatim}
+footnotesize <code>
 y1 = rnorm(10); y2 = rnorm(10)
 plot(x,y1, pch=8,col="purple" ,xlim=c(-5,5),ylim=c(-5,5))
 points(x,y2,pch=12,col="green")
-\end{verbatim}\normalsize
-\subsection{Adding the regression model line}
+</code>normalsize
+<p>
+#### {Adding the regression model line}
 
-The \texttt{abline()} function can be used to add a regression model line  by supplying as an argument the \texttt{coef()} values for intercept and slope estimates .These estimates can be inputted directly by using both functions in conjunction.
+The texttt{abline()} function can be used to add a regression model line  by supplying as an argument the texttt{coef()} values for intercept and slope estimates .These estimates can be inputted directly by using both functions in conjunction.
 
-\footnotesize \begin{verbatim}
+footnotesize <code>
 Fit1 =lm(y1~x);  coef(Fit1)
 abline(coef(Fit1))	
-\end{verbatim}\normalsize
+</code>normalsize
 
-\subsection{Adding a title }
+<p>
+#### {Adding a title }
 
 It is good practice to label your scatterplots properly. You can specify the following argument
-\begin{itemize}
-\item	main="Scatterplot Example", 	This provides the plot with a title
-\item	sub="Subtitle",                 This adds a subtitle
-\item	xlab="X variable ",				This command labels the x axis 
-\item   ylab="y variable ",				This command labels the y-axis
-\end{itemize}
-We can also add text to each margin, using the \texttt{mtext()} command.  
+begin{ }
+      	main="Scatterplot Example", 	This provides the plot with a title
+      	sub="Subtitle",                 This adds a subtitle
+      	xlab="X variable ",				This command labels the x axis 
+         ylab="y variable ",				This command labels the y-axis
+end{ }
+We can also add text to each margin, using the texttt{mtext()} command.  
 We simply require the number of the side. (1 = bottom, 2=left,3=top,4=right). 
 We can change the colour using the col argument.
-\footnotesize \begin{verbatim}
+footnotesize <code>
 plot(x,y,main="Scatterplot Example",   sub="subtitle",    xlab="X variable ", ylab="y variable ")	
 mtext("Enhanced Scatterplot", side=4,col="red ")
-\end{verbatim}\normalsize
+</code>normalsize
 Alternatively , we can also use the command title() to add a title to an existing scatterplot.
-\footnotesize \begin{verbatim}
+footnotesize <code>
 title(main="Scatterplot Example)	
-\end{verbatim}\normalsize
+</code>normalsize
 
 
-\section{Combining plots}
-It is possible to combine two plots. We used the graphical parameters command \texttt{par()} to create an array. 
-Often we just require two plots side by side or above and below. We simply specify the numbers of rows and columns of this array using the \texttt{mfrow} argument, passed as a vector.
+<p>
+### {Combining plots}
+It is possible to combine two plots. We used the graphical parameters command texttt{par()} to create an array. 
+Often we just require two plots side by side or above and below. We simply specify the numbers of rows and columns of this array using the texttt{mfrow} argument, passed as a vector.
 
-\begin{verbatim}
+<code>
 par(mfrow=c(1,2))
 plot(x,y1)			# draw first plot
 plot(x,y2)			# draw second plot
 par(mfrow=c(1,1))		# reset to default setting.
-\end{verbatim}
+</code>
 
-\section{Plot of single vectors}
-If only one vector is specified i.e. \texttt{plot(x)},  the plot created will simply be a scatter-plot of the values of x against their indices.
+<p>
+### {Plot of single vectors}
+If only one vector is specified i.e. texttt{plot(x)},  the plot created will simply be a scatter-plot of the values of x against their indices.
 
 $plot(x)$
 Suppose we wish to examine a trend that these points represent. We can connect each covariate using a line.
@@ -1971,20 +2142,21 @@ $plot(x, type = "b")$
 
 
 
-\section{Exercise} The following are measurements (in mm) of a critical
+<p>
+### {Exercise} The following are measurements (in mm) of a critical
 dimension on a sample of twelve engine crankshafts:
 
-\begin{verbatim}
+<code>
 224.120 	224.001 	224.017 	223.982 	223.989 	223.961
 223.960 	224.089 	223.987 	223.976 	223.902 	223.980
-\end{verbatim}
+</code>
 (a) Calculate the mean and standard deviation for these data.
 (b) The process mean is supposed to be ? = 224mm. Is this the
 case? Give reasons for your answer.
-(c) Construct a 99\% confidence interval for these data and interpret.
+(c) Construct a 99% confidence interval for these data and interpret.
 (d) Check that the normality assumption is valid using 2 suitable plots.
 
-\begin{verbatim}
+<code>
 > x<-c(224.120,224.001,224.017,223.982 ,223.989 ,223.961,
 + 223.960 ,224.089 ,223.987 ,223.976 , 223.902 ,223.980)
 >
@@ -2007,18 +2179,19 @@ sample estimates:
 mean of x
   223.997
 
-\end{verbatim}
-\section{Exercise 2} 
+</code>
+<p>
+### {Exercise 2} 
 The height of 12 Americans and 10 Japanese was measured. Test for a difference in the heights of both populations.
-\begin{verbatim}
+<code>
 Americans
 174.68   	169.87 	   	165.07    	165.95 		204.99 		177.61 	
 170.11 	 	170.71 	   	181.52 		167.68 		158.62 		182.90
 Japanese
 158.76  		168.85  		159.64  		180.02  		164.24
 161.91  		163.99  		152.71  		157.32  		147.20
-\end{verbatim}
-\begin{verbatim}
+</code>
+<code>
 > t.test(A,J)
         Welch Two Sample t-test
 data:  A and J
@@ -2029,19 +2202,20 @@ alternative hypothesis: true difference in means is not equal to 0
 sample estimates:
 mean of x mean of y
  174.1425  161.4640
-\end{verbatim}
+</code>
 
-\section{Exercise 3}
+<p>
+### {Exercise 3}
 
 A large group of students each took two exams. The marks obtained in both exams by a sample of eight students is given below
 
-\begin{verbatim}
+<code>
 Student	1	2	3	4	5	6	7	8
 Exam 1	57	76	47	39	62	56	49	81
 Exam 2	67	81	62	49	57	61	59	71
-\end{verbatim}
+</code>
 Test the hypothesis that in the group as a whole the mean mark gained did not vary according to the exam against the hypothesis that the mean mark in the second exam was higher
-\begin{verbatim}
+<code>
 >
 > Ex1<-c(57,76,47,39,62,56,49,81)
 > Ex2<-c(67,81,62,49,57,61,59,71)
@@ -2057,12 +2231,13 @@ alternative hypothesis: true mean is not equal to 0
 sample estimates:
 mean of x
        -5
-\end{verbatim}
+</code>
 
-\section{Exercise 4}
-A poll on social issues interviewed 1025 people randomly selected from the United States. 450 of people said that they do not get enough time to themselves. A report claims that over 41\% of the population are not satisfied with personal time. Is this the case?
+<p>
+### {Exercise 4}
+A poll on social issues interviewed 1025 people randomly selected from the United States. 450 of people said that they do not get enough time to themselves. A report claims that over 41% of the population are not satisfied with personal time. Is this the case?
 
-\begin{verbatim}
+<code>
 
 > prop.test(450,1025,p=0.40,alternative="greater")
 
@@ -2076,10 +2251,10 @@ alternative hypothesis: true p is greater than 0.4
 sample estimates:
         p
 0.4390244
-\end{verbatim}
+</code>
 
 Exercise 23b:  A company wants to investigate the proportion of males and females promoted in the last year. 45 out of 400 female candidates were promoted, while 520 out of 3270 male candidates were promoted. Is there evidence of sexism in the company?
-\begin{verbatim}
+<code>
 > x.vec=c(45,520)
 > n.vec=c(400,3270)
 >  prop.test(x.vec,n.vec)
@@ -2094,15 +2269,16 @@ alternative hypothesis: two.sided
 sample estimates:
    prop 1    prop 2
 0.1125000 0.1590214
-\end{verbatim}
+</code>
 
 ?
-\section{Exercise}
+<p>
+### {Exercise}
 
 Generate a histogram for data set 'scores', with an accompanying box-and-whisker plot.
 The colour of the histogram's bar should be yellow. The orientation for the boxplot should be horizontal.
 
-\begin{verbatim}
+<code>
 scores <-c(23,19,22,22,19,20,25,26,26,19,24,23,17,21,28,26)
 
 par(mfrow=c(2,1)) 	# two rows , one column
@@ -2112,122 +2288,146 @@ hist(scores,main="Distribution of scores",xlab="scores",col="yellow")
 boxplot(scores ,horizontal=TRUE)
 
 par(mfrow =c(1,1)) 	#reset
-\end{verbatim}
+</code>
 
 %----------------------------------------------------------------%
-\section{Vector Operations}
-\begin{itemize}
-\item $R$ operates on named data structures. The simplest such
+<p>
+### {Vector Operations}
+begin{ }
+       $R$ operates on named data structures. The simplest such
 structure is the vector, which is a single entity consisting of an
 ordered collection of numbers or characters.
 
-\item The most common types of vectors are:
-\begin{itemize}
-\item Numeric vectors \item Character vectors \item Logical
+       The most common types of vectors are:
+begin{ }
+       Numeric vectors        Character vectors        Logical
 vectors
-\end{itemize}
+end{ }
 
-\item There are, of course, other types of vectors.
-\begin{itemize}
-\item Colour vectors - potentially useful later on.
-\item Order vectors - The rankings of items in a vector.
-\item Complex number vectors - not part of this course.
-\end{itemize}
-\end{itemize}
-\subsection{Ordering Vector Operations}
-\begin{framed}
-\begin{verbatim}
+       There are, of course, other types of vectors.
+begin{ }
+       Colour vectors - potentially useful later on.
+       Order vectors - The rankings of       s in a vector.
+       Complex number vectors - not part of this course.
+end{ }
+end{ }
+<p>
+#### {Ordering Vector Operations}
+<pre>
+<code>
 sort(x)  # sort x into ascending order
 rev(x)
 rev(sort(x))
-\end{verbatim}
-\end{framed}
+</code>
+</pre>
+<p>
 
-\begin{framed}
-\begin{verbatim}
+<pre>
+<code>
 x=c(15, 34, 7, 12, 18, 9, 1, 42, 56, 28, 13, 24, 35)
 
-length(x)         # How many items in x
+length(x)         # How many       s in x
 median(x)         # median of data set x
-sort(x)[7]        # 7th item when x is in ascending order
+sort(x)[7]        # 7th        when x is in ascending order
 quantile(x,0.75)  # Compute the third quartile
 quantile(x,0.25)  # Compute the first quartile
 IQR(x)            
 fivenum(x)
 
 # code is committed
-\end{verbatim}
-\end{framed}
+</code>
+</pre>
+<p>
 
 
 
 
 %----------------------------------------------------------------%
-\section{Some Useful Operations}
-\subsection{Sampling}
+<p>
+### {Some Useful Operations}
+<p>
+#### {Sampling}
 
-The \texttt{sample()} function.
+The texttt{sample()} function.
 
-\subsection{Set Theory Operations}
+<p>
+#### {Set Theory Operations}
 
-\subsection{Controlling Precision and Integerization}
-\begin{framed}
-\begin{verbatim}
+<p>
+#### {Controlling Precision and Integerization}
+<pre>
+<code>
 pi
 round(pi,3)
 round(pi,2)
 floor(pi)
 ceiling(pi)
-\end{verbatim}
-\end{framed}
+</code>
+</pre>
+<p>
 
 %----------------------------------------------------------------%
 
-\section{Important Introductory Topics}
-\subsection{The \texttt{head()} and \texttt{tail()} functions}
-\subsection{Randomly Generated Numbers}
+<p>
+### {Important Introductory Topics}
+<p>
+#### {The texttt{head()} and texttt{tail()} functions}
+<p>
+#### {Randomly Generated Numbers}
 With $a$ and $b$ as the lower and upper bound of the continous uniform distribution.
-\[X \sim U(a,b)\]
-\subsection{The \texttt{as} and \texttt{is} families of functions}
-\subsection{The \texttt{apply} family of functions}
-\subsection{Writing your own function}
+[X sim U(a,b)]
+<p>
+#### {The texttt{as} and texttt{is} families of functions}
+<p>
+#### {The texttt{apply} family of functions}
+<p>
+#### {Writing your own function}
 
 
 %----------------------------------------------------------------%
-\section{Lists and Data Frames}
-\subsection{Lists}
-\subsection{Named Components}
-\subsection{Data Frames}
-\begin{framed}
-\begin{verbatim}
+<p>
+### {Lists and Data Frames}
+<p>
+#### {Lists}
+<p>
+#### {Named Components}
+<p>
+#### {Data Frames}
+<pre>
+<code>
 framename = data.frame()
-\end{verbatim}
-\end{framed}
+</code>
+</pre>
+<p>
 %----------------------------------------------------------------%
-\section{Important Graphical Procedures}
-\begin{enumerate}
-\item Histograms
-\item Box-plots
-\item Scatter-plots
-\end{enumerate}
+<p>
+### {Important Graphical Procedures}
+begin{enumerate}
+       Histograms
+       Box-plots
+       Scatter-plots
+end{enumerate}
 
 
 %----------------------------------------------------------------%
 
-\subsection{Correlation  and Regression tests }
-\subsubsection{Correlation Coefficient}
+<p>
+#### {Correlation  and Regression tests }
+sub<p>
+#### {Correlation Coefficient}
 Strength of a linear relationship between $X$ and $Y$
 
-%\begin{framed}
-\begin{verbatim}
+%<pre>
+<code>
 M=1000
 CorrData=numeric(M)
 for (i in 1:M)
 {
 CorrData[i] = cor(rnorm(10),rnorm(10))
 }
-\end{verbatim}
-%\end{framed}
+</code>
+%</pre>
+<p>
 The null hypothesis is that the correlation coefficient is zero. 
 
 The alternative hypothesis is that the correlation coefficients is greater than zero. 
@@ -2239,25 +2439,27 @@ The one tailed format compares a null hypothesis where the parameter of interest
   
 
 
-\newpage
-\section{Programming Paradigms}
-\subsection{While Loops}
+newpage
+<p>
+### {Programming Paradigms}
+<p>
+#### {While Loops}
 The while loop can be used if the number of iterations required is not known beforehand. For example, if we want to continue looping until a certain condition is met, a while loop is useful.
 
 The following is the syntax for a while loop:
 
-\begin{verbatim}
+<code>
 while (condition){
    command
    command
 }
-\end{verbatim}
-The loop continues while \texttt{condition == TRUE}.
+</code>
+The loop continues while texttt{condition == TRUE}.
 
 
-Note: \texttt{sample()} takes a sample of the specified size (here just one) from a range of values (here integers 1 to 100).
-\begin{framed}
-\begin{verbatim}
+Note: texttt{sample()} takes a sample of the specified size (here just one) from a range of values (here integers 1 to 100).
+<pre>
+<code>
 
 #initialise a counter to zero
 niter = 0		
@@ -2277,15 +2479,18 @@ while(num != 20)
 numvec
 niter
 
-\end{verbatim}
-\end{framed}
+</code>
+</pre>
+<p>
 
 
-\subsection{Nested Loops}
+<p>
+#### {Nested Loops}
 
-\subsection{Sums of two dice rolls}
-\begin{framed}
-\begin{verbatim}
+<p>
+#### {Sums of two dice rolls}
+<pre>
+<code>
 #Set Up an Empty Matrix of 6 rows and 6 columns
 Dice = matrix(0,6,6)
 
@@ -2299,34 +2504,39 @@ for(i in 1:6)
 		}
 	}		
 Dice   # Print your Results
-\end{verbatim}
-\end{framed}
-\subsection{Correlation Structure Example}
+</code>
+</pre>
+<p>
+<p>
+#### {Correlation Structure Example}
 
 
-\newpage
-\section{Correlation and Simple Regression Models}
+newpage
+<p>
+### {Correlation and Simple Regression Models}
 
-\subsection{Correlation}
+<p>
+#### {Correlation}
 
 A correlation coefficient is a number between -1 and 1 which measures the degree to which two variables are linearly related. If there is perfect linear relationship with positive slope between the two variables, we have a correlation coefficient of 1; if there is positive correlation, whenever one variable has a high (low) value, so does the other.
 
 If there is a perfect linear relationship with negative slope between the two variables, we have a correlation coefficient of -1; if there is negative correlation, whenever one variable has a high (low) value, the other has a low (high) value.
 A correlation coefficient of 0 means that there is no linear relationship between the variables.
 
-We can determine the Pearson Correlation coefficient in R using the \texttt{cor()} command.
-To get a more complete statistical analysis, with formal tests, we can use the command \texttt{cor.test()}
+We can determine the Pearson Correlation coefficient in R using the texttt{cor()} command.
+To get a more complete statistical analysis, with formal tests, we can use the command texttt{cor.test()}
 The interpretation of the output from the cor.test()procedure is very similar to procedures we have already encountered. The null hypothesis is that the correlation coefficient is equal to zero. This is equivalent to saying that there is no linear relationship between variables.
 
 
-\begin{framed}
-\begin{verbatim}
+<pre>
+<code>
 C=c(0,2,4,6,8,10,12) 
 F=c(2.1,5.0,9.0,12.6,17.3,21.0,24.7)
 cor.test(C,F)
-\end{verbatim}
-\end{framed}
-\begin{verbatim}
+</code>
+</pre>
+<p>
+<code>
 
         Pearson's product-moment correlation
 
@@ -2338,13 +2548,14 @@ alternative hypothesis: true correlation is not equal to 0
 sample estimates:
       cor 
 0.9988796 
-\end{verbatim}
+</code>
 
 
-\subsection{Spearman and Kendall Correlation}
-Spearman and Kendall correlations are both \textbf{\emph{rank correlations}}. 
-To implement Spearman and Kendall correlation, simply specify the type in the \texttt{method=" "} argument.
-\begin{verbatim}
+<p>
+#### {Spearman and Kendall Correlation}
+Spearman and Kendall correlations are both textbf{emph{rank correlations}}. 
+To implement Spearman and Kendall correlation, simply specify the type in the texttt{method=" "} argument.
+<code>
 > cor(G,D)
 [1] 0.3167869
 >
@@ -2354,33 +2565,37 @@ To implement Spearman and Kendall correlation, simply specify the type in the \t
 > cor(G,D,method="kendall")
 [1] 0.1428571
 > 
-\end{verbatim}
+</code>
 The interpretation is very similar, but there are no confidence intervals for the estimates.
 
-\subsection{Fitting a Regression Model}
-A regression model is fitted using the \texttt{lm()} command.
+<p>
+#### {Fitting a Regression Model}
+A regression model is fitted using the texttt{lm()} command.
 
 Consider the response variable $F$ and predictor variable $C$.
-\begin{framed}
-\begin{verbatim}
+<pre>
+<code>
 C=c(0,2,4,6,8,10,12) 
 F=c(2.1,5.0,9.0,12.6,17.3,21.0,24.7)
 Fit1=lm(F~C)
-\end{verbatim}
-\end{framed}
+</code>
+</pre>
+<p>
 
 
-\subsection{Confidence and Prediction Intervals for Fitted Values} 
+<p>
+#### {Confidence and Prediction Intervals for Fitted Values} 
 
-Recall that a fitted value $\hat{Y}$ is a estimate for the response variable, as determined by a linear model. The difference between the observed value and the corresponding fitted value is known as the residual.
+Recall that a fitted value $hat{Y}$ is a estimate for the response variable, as determined by a linear model. The difference between the observed value and the corresponding fitted value is known as the residual.
 
-The \textbf{\emph{residual standard error}} is the conditional standard deviation of the dependent variable Y given a value of the independent variable X. The calculation of this standard error follows from the definition of the residuals.
+The textbf{emph{residual standard error}} is the conditional standard deviation of the dependent variable Y given a value of the independent variable X. The calculation of this standard error follows from the definition of the residuals.
 
 The residual standard error is often called the root mean square error (RMSE), and is a measure of the differences between values predicted by a model or an estimator and the values actually observed from the thing being modelled or estimated.
 
 Since the residual standard error is a good measure of accuracy, it is ideal if it is small.
 
-\subsubsection{Prediction Intervals}
+sub<p>
+#### {Prediction Intervals}
 In contrast to a confidence interval, which is concerned with estimating a population parameter, a prediction interval is concerned with estimating an individual value and is therefore a type of probability interval. 
 
 The complete standard error for a prediction interval is called the standard error of forecast, and it includes the uncertainty associated with the vertical “scatter” about the regression line plus the uncertainty associated with the position of the regression line value itself.
@@ -2393,18 +2608,20 @@ The complete standard error for a prediction interval is called the standard err
 
 
 
-\newpage
+newpage
 %----------------------------------------------------------------------------------------------------------------------------%
-\section{Working with Categorical Data}
-\subsection{Chi-Square}
+<p>
+### {Working with Categorical Data}
+<p>
+#### {Chi-Square}
 
 The table below shows the relationship between gender and party identification in a US state.
 
 
-%	   & Democrat &	Independent & Republican & Total \\
-%Male   &	279	& 73  &	225 &	577 \\
-%Female &	165	& 47  & 191 &	403 \\
-%Total  &	444 & 120 &	416	&   980 \\
+%	   & Democrat &	Independent & Republican & Total 
+%Male   &	279	& 73  &	225 &	577 
+%Female &	165	& 47  & 191 &	403 
+%Total  &	444 & 120 &	416	&   980 
 
 Test for association between gender and party affiliation at two appropriate levels
 and comment on your results.
@@ -2420,20 +2637,22 @@ Work out the expected values. For example, you should work out the expected valu
 the number of males who use no aids from the following: (95/195) × 22 = 10.7.
 
 
-\section{Probability Distributions}
-\subsection{Discrete Probability Distribution}
+<p>
+### {Probability Distributions}
+<p>
+#### {Discrete Probability Distribution}
 
 
-The two most accessible discrete distributions are the binomial and \textbf{\emph{Poisson}} distributions
-
-
- 
-
-
+The two most accessible discrete distributions are the binomial and textbf{emph{Poisson}} distributions
 
 
  
 
 
 
-\end{document}
+
+ 
+
+
+
+end{document}

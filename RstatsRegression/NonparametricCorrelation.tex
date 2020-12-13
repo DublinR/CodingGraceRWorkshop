@@ -1,0 +1,23 @@
+<p>
+####        * {Spearman and Kendall Correlation Coefficients}
+The Spearman's rank-order and Kendall Tau correlation coefficients are the textbf{nonparametric} version of the Pearson product-moment correlation. Both methods measure the strength of association between two textbf{ranked} (ordinal) variables. The coefficients are interpreted the same way.
+<pre>
+	<code>
+### Spearman Correlation Coefficient
+
+cor(iris$Sepal.Length,iris$Sepal.Width, 
+   method="spearman")
+   
+### Kendall Correlation Coefficient
+
+cor(iris$Sepal.Length,iris$Sepal.Width, 
+   method="kendall")
+
+## [1] -0.1668
+## [1] -0.077
+	</code>
+</pre>
+<p>
+Non parametric statistics are statistics that do not require any special assumptions (i.e. Assumption of normality).
+
+newpage

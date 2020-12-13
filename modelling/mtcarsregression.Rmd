@@ -1,0 +1,60 @@
+mtcars - Regression Exercise
+========================================================
+
+### Quick Inspection of Data Set
+
+Firstly we have a quick loot at the data set to set a sense of the 
+size of the data set, and the names of the variables
+```{r}
+tail(mtcars)
+
+```
+
+To find out more about this data set, simpy type `help(mtcars)` to get the help file.
+
+### Exercise 1 : Simple Linear Regression
+
+In this exercise, fit a simple linear model, where weight (***wt***) is the independent variable, and miles per gallon (***mpg***) is the dependent variable. Call the fitted model `Fit1`.
+```{r fig.width=7, fig.height=6}
+
+Fit1 = lm(mpg ~ wt,data=mtcars)
+Fit1
+```
+More information about the model can be found using the `summary()` command.
+
+```{r fig.width=7, fig.height=6}
+
+summary(Fit1)
+
+```
+### Exercise 2 : Multiple Linear Regression
+In this exercise, fit a simple linear model, where weight (***wt***) and number of cylinders (***cyl*** are the independent variable, and miles per gallon (***mpg***) is the dependent variable. Call the fitted model `Fit2`.
+```{r fig.width=7, fig.height=6}
+
+Fit2 = lm(mpg ~ wt+cyl,data=mtcars)
+Fit2
+summary(Fit2)
+```
+
+### Exercise 3 : Confidence Intervals for Regression Estimates
+Using the regression model from the previous exercise (i.e. `Fit2`), compute 95% and 99% confidence intervals for the regression estimates.
+
+```{r fig.width=7, fig.height=6}
+confint(Fit2)
+confint(Fit2, conf.level=0.99)
+```
+
+### Exercise 4 : Akaike Information Criterion
+When comparing two or more candidate models, the model with lowest
+AIC value is considered the best model. Use the AIC to compare `Fit1` and `Fit2`.
+```{r fig.width=7, fig.height=6}
+AIC(Fit1)
+AIC(Fit2)
+```
+
+### Exercise 5 : ANOVA tables for Regression Models
+Construct the ANOVA tables for the fitted models computed previously.
+```{r fig.width=7, fig.height=6}
+anova(Fit1)
+anova(Fit2)
+```

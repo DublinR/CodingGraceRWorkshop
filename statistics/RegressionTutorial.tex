@@ -1,0 +1,121 @@
+# In this tutorial, I have a data set of two variables as a set of time series i.e. monthly abstract views and downloading of one of my research paper
+# which is available on "http://ideas.repec.org/a/ods/journl/v2y2013i1p36-48.html"
+# The basic idea here is that the visitors (which may be researchers, scholars, academicians or others) found my paper (either through search on internet or from other links on the net) and land on this website address : "http://ideas.repec.org/a/ods/journl/v2y2013i1p36-48.html"
+# Here, the individuals first read the abstract, and if find it interesting, they move further to download the full paper.
+
+# Now, if I want to make a prediction, using simple linear model methodology (e.g. regression model), I can do it by setting up the 
+# hypothesis (of course, I am not going to test that hypothesis in this tutorial) that "visitor are downloading the paper after reading the abstract", and if so
+# what would be the regression model to predict the download of paper (outcome) for the given input (abstract view or reading)
+
+# Let us first read the csv file, that contains the data, into data frame
+# you can download the csv file from the link:
+# https://app.box.com/s/so8k201852blyl4pvbzk
+
+> myData = read.csv("paper.csv", header=T) 
+
+# Re-storing individual column data as time series 
+
+> data1 = ts(myData$AbstractViews, frequency=12, start = c(20013, 3))> data2 = ts(myData$Downloads, frequency=12, start = c(20013, 3)) 
+
+# Ploting time series data 
+> plot.ts(data1, xlab = "Month", ylab="Views and Downloads", col="red", main="Downloading the paper vs. reading abstract") 
+
+> lines(data2) > legend("topleft", c("Abstract Views", "Full Paper Download"), col = c("red", "black"), text.col = "green4", lty = c(1, 1), merge = TRUE, bg = "gray90", text.font = 0.7, cex = 0.7)
+
+
+reg1
+ 
+
+# Applying regression on the data (y = download, x = abstract views) and storing results in an object "fit"
+> fit = lm(myData$Downloads ~ myData$AbstractViews)
+
+# checking the names of the object "fit"
+> names(fit)
+##  [1] "coefficients"  "residuals"     "effects"       "rank"         
+##  [5] "fitted.values" "assign"        "qr"            "df.residual"  
+##  [9] "xlevels"       "call"          "terms"         "model"
+# Displaying the results (coefficients to build regression equation) stored in the object
+> fit
+## 
+## Call:
+## lm(formula = myData$Downloads ~ myData$AbstractViews)
+## 
+## Coefficients:
+##          (Intercept)  myData$AbstractViews  
+##               -1.583                 0.552
+# Summarizing the results
+> summary(fit)
+## 
+## Call:
+## lm(formula = myData$Downloads ~ myData$AbstractViews)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+##  -6.85  -0.94   0.09   2.04   4.12 
+## 
+## Coefficients:
+##                      Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)            -1.583      1.686   -0.94     0.36    
+## myData$AbstractViews    0.552      0.078    7.08  3.7e-06                    
+## ---
+## Signif. codes:  0 '                   ' 0.001 '             *  * ' 0.01 '       * ' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 2.94 on 15 degrees of freedom
+## Multiple R-squared:  0.77,   Adjusted R-squared:  0.755 
+## F-statistic: 50.2 on 1 and 15 DF,  p-value: 3.72e-06
+# the p-value is significantly < 0.05 (and is : 3.72e-06                    ), therefore,
+# the regression equation will be:
+
+# Downloads = -1.58332 + [0.55230 x (Abstract Views)]
+
+# Applying ANOVA on the fitted values
+> anova(fit)
+## Analysis of Variance Table
+## 
+## Response: myData$Downloads
+##                      Df Sum Sq Mean Sq F value  Pr(>F)    
+## myData$AbstractViews  1    435     435    50.2 3.7e-06                    
+## Residuals            15    130       9                    
+## ---
+## Signif. codes:  0 '                   ' 0.001 '             *  * ' 0.01 '       * ' 0.05 '.' 0.1 ' ' 1
+# The result confirms that there are significanlt differences (p-value < 0.05) between the groups which are highlighted in the model summary.
+
+# we can also calculate confidence intervals on the "Abstract Views" at 95% CI levels:
+> confint(fit)
+##                        2.5 % 97.5 %
+## (Intercept)          -5.1769 2.0102
+## myData$AbstractViews  0.3861 0.7185
+# Plotting the fitted values and residuals from the object "fit"
+> opar <- par(mfrow = c(2,2), oma = c(0, 0, 1.1, 0))
+> plot(fit, las = 1)
+> par(opar)
+
+
+reg2
+
+# Predicting from the model fits
+
+> predict(fit)
+##      1      2      3      4      5      6      7      8      9     10 
+##  1.730  7.254  5.597  3.387  3.387  3.940 10.015  8.910 18.852 13.881 
+##     11     12     13     14     15     16     17 
+## 10.567 10.015 19.956 13.881  8.910 10.567  6.149
+> pred.fit = predict(fit)
+
+> str(pred.fit)
+##  Named num [1:17] 1.73 7.25 5.6 3.39 3.39 ...
+##  - attr(       * , "names")= chr [1:17] "1" "2" "3" "4" ...
+> opar <- par(mfrow = c(1,2), oma = c(0, 0, 1.1, 0))
+
+> plot.ts(data1, xlab = "Month", ylab="Views and Downloads", col="red", main="Downloading the paper vs. reading abstract")
+> lines(data2)
+> legend("topleft", c("Abstract Views", "Full Paper Download"), col = c("red", "black"), text.col = "green4", lty = c(1, 1), merge = TRUE, bg = "gray90", text.font = 0.7, cex = 0.7)
+
+> plot(pred.fit, type="l", main="Prediction for downloading the paper after reading abstract", col="blue")
+
+> par(opar)
+
+reg3
+
+
+reg4

@@ -1,0 +1,63 @@
+---
+title: "``flashlight::flashlight``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+flashlight Create or Update a flashlight
+
+#### Description
+
+Creates or updates a flashlight object. If a flashlight is to be created, all arguments are optional except label. If a flashlight is to be updated, all arguments are optional up to x (the flashlight to be updated).
+
+#### Usage
+
+<pre><code>
+flashlight(x, ...)
+## Default S3 method:
+flashlight(x, model = NULL, data = NULLNULL,
+``predict_function`` = predict, linkinv = function(z) zNULL,
+by = NULL, metrics = list(rmse = rmse), label = NULL, ...)
+## S3 method for class 'flashlight'
+flashlight(x, ...)
+</code></pre>
+
+#### Arguments
+
+* ``x``: An object of class flashlight. If not provided, a new flashlight is created based on further input. Otherwise, x is updated based on further input.
+... Arguments passed from or to other functions.
+model A fitted model of any type. Most models require a customized ``predict_function``.
+data A data.frame or tibble used as basis for calculations.
+y Variable name of response.
+``predict_function``
+A real valued function with two arguments: A model and a data of the same
+structure as data. Only the order of the two arguments matter, not their names.
+linkinv An inverse transformation function applied after ``predict_function``.
+w A variable name of case weights.
+by A character vector with names of grouping variables.
+metrics A named list of metrics. Here, a metric is a function with exactly four arguments:
+actual, predicted, w (case weights) and ... like those in package
+MetricsWeighted.
+label Name of the flashlight. Required.
+
+#### Value
+
+An object of class flashlight (and list) containing each input (except x) as element.
+8 grouped_stats
+Methods (by class)
+*  default: Used to create a flashlight object. No x has to be passed in this case.
+*  flashlight: Used to update an existing flashlight object.
+See Also
+multiflashlight.
+
+#### Examples
+```{r}
+
+fit <- lm(Sepal.Length ~ ., data = iris)
+(fl <- flashlight(model = fit, data = iris, y = "Sepal.Length", label = "ols"))
+(fl_updated <- flashlight(fl, linkinv = exp))
+
+

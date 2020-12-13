@@ -1,0 +1,101 @@
+---
+title: "``flashlight::light_importance``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ Permutation Importance
+
+#### Description
+
+Calculates performance per variable with respect to a performance measure before and after permuting
+its values. The difference is a measure of importance, see Fisher et al. 2018 [1].
+
+#### Usage
+<pre><code>
+
+light_importance(x, ...)
+## Default S3 method:
+light_importance(x, ...)
+## S3 method for class 'flashlight'
+light_importance(x, data = x$data, by = x$by,
+metric = x$metrics[1], v = NULL, n_max = Inf, seed = NULL,
+lower_is_better = TRUE, use_linkinv = FALSE,
+metric_name = "metric", value_name = "value", label_name = "label",
+22 light_importance
+variable_name = "variable", ...)
+## S3 method for class 'multiflashlight'
+light_importance(x, ...)
+</code></pre>
+
+#### Arguments
+* ``x``: An object of class flashlight or multiflashlight.
+... Further arguments passed to light_performance.
+* ``data``: An optionaldata.frame.
+* ``by``: An optional vector of column names used to additionally group the results.
+* ``metric``: An optional namedlist of length one with a metric as element. Defaults to the first metric in the flashlight. The metric needs to be a function with at least four
+arguments: actual, predicted, case weights w and ....
+v Vector of variables to assess importance for. Defaults to all variables in data.
+* ``n_max``:  Maximum number of rows to consider. Use if data is large.
+seed An integer random seed used to select and shuffle rows.
+lower_is_better
+Logical flag indicating if lower values in the metric are better or not. If set to FALSE, the increase in metric is multiplied by -1.
+use_linkinv Should retransformation function be applied? Default is FALSE.
+metric_name Name of the resulting column containing the name of the metric. Defaults to`"metric".
+value_name Column name in resulting data containing the drop in performance. Defaults to "value".
+* ``label_name``: Column name in resulting data containing the label of the flashlight. Defaults to "label".
+variable_name Column name in resulting data containing the variable names. Defaults to "variable".
+
+#### Details
+
+The minimum required elements in the (multi-) flashlight are "y", "``predict_function``", "model",
+"data" and "metrics". The latter two can also directly be passed to light_importance. Note that
+by default, no retransformation function is applied.
+
+#### Value
+
+An object of class light_importance, light (and a list) with the following elements.
+*  data A tibble with results. Can be used to build fully customized visualizations. The columns
+"value_original" and "value_shuffled" provide the performance before and after shuffling.
+*  by Same as input by.
+*  metric_name Column name representing the name of the metric. For information only.
+*  value_name Same as input value_name.
+*  label_name Same as input label_name.
+*  variable_name Same as input variable_name.
+light_performance 23
+Methods (by class)
+*  default: Default method not implemented yet.
+*  flashlight: Variable importance for a flashlight.
+*  multiflashlight: Variable importance for a multiflashlight.
+
+#### References
+
+[1] Fisher A., Rudin C., Dominici F. (2018). All Models are Wrong but many are Useful: Variable
+Importance for Black-Box, Proprietary, or Misspecified Prediction Models, using Model Class
+Reliance. ArXiv <arxiv.org/abs/1801.01489>.
+See Also
+most_important, plot.light_importance.
+
+#### Examples
+```{r}
+
+fit_part <- lm(Sepal.Length ~ Petal.Length, data = iris)
+fit_full <- lm(Sepal.Length ~ ., data = iris)
+mod_full <- flashlight(model = fit_full, label = "full", data = iris, y = "Sepal.Length")
+mod_part <- flashlight(model = fit_part, label = "part", data = iris, y = "Sepal.Length")
+mods <- multiflashlight(list(mod_full, mod_part), by = "Species")
+light_importance(mod_full)
+light_importance(mods)
+ir <- iris
+ir$log_sl <- log(ir$Sepal.Length)
+fit_lm <- lm(log_sl ~ Petal.Length, data = ir)
+fit_glm <- glm(Sepal.Length ~ Petal.Length, data = ir, family = Gamma(link = log))
+fl_lm <- flashlight(model = fit_lm, label = "lm", y = "log_sl", linkinv = exp)
+fl_glm <- flashlight(model = fit_glm, label = "glm", y = "Sepal.Length",
+``predict_function`` = function(m, X) predict(m, X, type = "response"))
+fls <- multiflashlight(list(fl_lm, fl_glm), data = ir)
+light_importance(fls, v = "Petal.Length", seed = 45)
+light_importance(fls, v = "Petal.Length", seed = 45, use_linkinv = TRUE)

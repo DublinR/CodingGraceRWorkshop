@@ -1,0 +1,69 @@
+---
+title: "``arsenal::tableby.stats``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+tableby Summary Statistics Functions
+
+#### Description
+
+A collection of functions that will report summary statistics. To create a custom function, consider
+using a function with all three arguments and .... See the tableby vignette for an example.
+
+#### Usage
+<pre><code>
+
+meansd(x, na.rm = TRUE, weights = rep(1, length(x)), ...)
+medianrange(x, na.rm = TRUE, weights = rep(1, length(x)), ...)
+median(x, na.rm = TRUE, weights = rep(1, length(x)), ...)
+range(x, na.rm = TRUE, ...)
+Nevents(x, na.rm = TRUE, weights = rep(1, nrow(x)), ...)
+medSurv(x, na.rm = TRUE, weights = rep(1, nrow(x)), ...)
+NeventsSurv(x, na.rm = TRUE, weights = rep(1, nrow(x)), times = 1:5,...)
+NriskSurv(x, na.rm = TRUE, weights = rep(1, nrow(x)), times = 1:5,...)
+medTime(x, na.rm = TRUE, weights = rep(1, nrow(x)), ...)
+q1q3(x, na.rm = TRUE, weights = rep(1, length(x)), ...)
+medianq1q3(x, na.rm = TRUE, weights = rep(1, length(x)), ...)
+iqr(x, na.rm = TRUE, weights = rep(1, length(x)), ...)
+Nmiss(x, na.rm = TRUE, weights = rep(1, length(x)), ...)
+Nmiss2(x, na.rm = TRUE, weights = rep(1, length(x)), ...)
+N(x, na.rm = TRUE, weights = rep(1, length(x)), ...)
+count(x, levels = NULL, na.rm = TRUE, weights = rep(1, length(x)),...)
+countpct(x, levels = NULL, na.rm = TRUE, weights = rep(1, length(x)),...)
+countrowpct(x, levels = NULL, by, by.levels = sort(unique(by)),
+na.rm = TRUE, weights = rep(1, length(x)), ...)
+countcellpct(x, levels = NULL, by, by.levels = sort(unique(by)),
+na.rm = TRUE, weights = rep(1, length(x)), ...)
+binomCI(x, levels = NULL, na.rm = TRUE, weights = rep(1, length(x)),
+conf.level = 0.95, ...)
+rowbinomCI(x, levels = NULL, by, by.levels = sort(unique(by)),
+na.rm = TRUE, weights = rep(1, length(x)), conf.level = 0.95, ...)
+
+</code></pre>
+#### Arguments
+
+x Usually a vector.
+na.rm Should NAs be removed?
+weights A vector of weights.
+... Other arguments.
+times A vector of times to use for survival summaries.44
+tableby.stats.internal
+levels A vector of levels that character xs should have.
+by a vector of the by-values.
+by.levels a vector of the levels of by.
+conf.level Numeric, denoting what confidence level to use for confidence intervals.
+Details
+Not all these functions are exported, in order to avoid conflicting NAMESPACES.
+
+#### Value
+
+Usually a vector of the appropriate numbers.
+See Also
+includeNA, tableby.control
+tableby.stats.internal

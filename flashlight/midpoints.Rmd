@@ -1,0 +1,36 @@
+---
+title: "``flashlight::midpoints ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+midpoints Midpoints
+
+#### Description
+
+Takes a vector of breaks and calculates midpoints of subsequent unique breaks.
+
+#### Usage
+<pre><code>
+
+midpoints(breaks)
+</code></pre>
+
+#### Arguments
+breaks Numeric vector of cut points or a single number specifying the number of intervals
+desired.
+
+#### Value
+
+Vector of the same length as x minus 1 with midpoints of breaks.
+
+#### Examples
+```{r}
+
+midpoints(1:4)
+midpoints(c(4, 4:1))
+```
+
