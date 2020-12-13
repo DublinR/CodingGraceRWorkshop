@@ -1,10 +1,9 @@
 
 
 
-<p>
-### {Bivariate Data}
-footnotesize begin{myindentpar}{1cm}
-<code>
+\section{Bivariate Data}
+\footnotesize \begin{myindentpar}{1cm}
+\begin{verbatim}
 > Y=mtcars$mpg
 > X=mtcars$wt
 >
@@ -13,48 +12,46 @@ footnotesize begin{myindentpar}{1cm}
 >
 > cov(X,Y)          #Covariance
 [1] -5.116685
-</code>
-end{myindentpar}normalsize
+\end{verbatim}
+\end{myindentpar}\normalsize
 
 
-<p>
-### {Histograms}
-Histograms can be created using the texttt{hist()} command.
+\section{Histograms}
+Histograms can be created using the \texttt{hist()} command.
 To create a histogram of the car weights from the Cars93 data set
-footnotesize
-begin{myindentpar}{1cm}
-<code>
+\footnotesize
+\begin{myindentpar}{1cm}
+\begin{verbatim}
 hist(mtcars$mpg, main="Histogram of MPG (Data: MTCARS) ")
-</code>
-end{myindentpar}normalsize
-texttt{R} automatically chooses the number and width of the bars. We can
+\end{verbatim}
+\end{myindentpar}\normalsize
+\texttt{R} automatically chooses the number and width of the bars. We can
 change this by specifying the location of the break points.
-footnotesize
-begin{myindentpar}{1cm}
-<code>hist(Cars93$Weight, breaks=c(1500, 2050, 2300, 2350, 2400,
+\footnotesize
+\begin{myindentpar}{1cm}
+\begin{verbatim}hist(Cars93$Weight, breaks=c(1500, 2050, 2300, 2350, 2400,
 2500, 3000, 3500, 3570, 4000, 4500), xlab="Weight",
 main="Histogram of Weight")
-</code>
-end{myindentpar}normalsize
+\end{verbatim}
+\end{myindentpar}\normalsize
 
 
 
-<p>
-### {Boxplot}
+\section{Boxplot}
 Boxplots can be used to identify outliers.
 
-By default, the texttt{boxplot()} command sets the orientation as vertical. By adding the argument texttt{horizontal=TRUE}, the orientation can be changed to horizontal.
-footnotesize
-begin{myindentpar}{1cm}
-<code>
+By default, the \texttt{boxplot()} command sets the orientation as vertical. By adding the argument \texttt{horizontal=TRUE}, the orientation can be changed to horizontal.
+\footnotesize
+\begin{myindentpar}{1cm}
+\begin{verbatim}
 boxplot(mtcars$mpg, horizontal=TRUE, xlab="Miles Per Gallon",
 main="Boxplot of MPG")
-</code>
-end{myindentpar}normalsize
+\end{verbatim}
+\end{myindentpar}\normalsize
 
-begin{figure}
-  % Requires usepackage{graphicx}
-  includegraphics[scale=0.4]{MTCARSboxplot.png}
-  caption{Boxplot}label{boxplot}
-end{figure}
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \includegraphics[scale=0.4]{MTCARSboxplot.png}\\
+  \caption{Boxplot}\label{boxplot}
+\end{figure}
 
