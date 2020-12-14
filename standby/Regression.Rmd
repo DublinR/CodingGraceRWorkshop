@@ -1,0 +1,37 @@
+* {Regression}
+You should have a data set with multiple columns, suitable for regression analysis.
+Familiarize yourself with the data, and decide which variable is the dependent variable.
+
+Also determine the independent variables that you will use as part of your analysis.
+
+* {Correlation Analysis}
+Compute the Pearson correlation for the dependent variable with the respective independent variables.  As part of your report, mention the confidence interval for the correlation estimate
+Choose the independent variables with the highest correlation as your candidate variables.
+For these independent variables, perform a series of simple linear regression procedures.
+\begin{verbatim}
+lm(y~x1)
+lm(y~x2)
+\end{verbatim}
+Comment on the slope and intercept estimates and their respective p-values. Also comment on the coefficient of determination (multiple R squared). Remember to write the regression equations.
+Perform a series of multiple linear regressions, using pairs of candidate independent variables.
+\begin{verbatim}
+lm(y~x1 +x2)
+lm(y~x2 +x3)
+\end{verbatim}
+Again, comment on the slope and intercept estimates, and their respective p-values.
+In this instance, compare each of the models using the coefficient of determinations. Which model explains the data best?
+\subsection{Analysis of residuals}
+Perform an analysis of regression residuals ( you can pick the best regression model from last section).
+Are the residuals normally distributed?
+Histogram /  Boxplot / QQ plot / Shapiro Wilk Test
+Also you can plot the residuals to check that there is constant variance.
+\begin{verbatim}
+y=rnorm(10)
+x=rnorm(10)
+fit1=lm(y~x)
+res.fit1 = resid(fit1)
+plot(res.fit1)
+\end{verbatim}
+
+
+

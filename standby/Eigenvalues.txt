@@ -1,0 +1,21 @@
+\subsection{Eigenvalues and Eigenvectors}
+The eigenvalues and eigenvectors can be computed using the eigen() function.  A data object is created.
+This is a very important type of matrix analysis, and many will encounter it again in future modules.
+
+Y = eigen(A)
+names(Y)
+"	y$val are the eigenvalues of A
+"	y$vec are the eigenvectors of A
+
+?
+Part 2 Revision on Earlier Material
+"	Accessing a column of a data frame
+"	Accessing a row of a data frame
+
+A particular row can be accessed by specifying the row index , while leaving the column index empty
+
+Info [4,]			# Fourth row of "Info" is called
+
+A sequence of rows can be accessed by specifying a sequence of rows as follows.
+
+Info [10:15,]		# tenth row to fifteenth row of "Info" is called

@@ -1,0 +1,145 @@
+%------------------------------------------------------------------------------------------------------%
+\begin{slide}{Data Frames: Attributes}
+
+All objects (except simple values) can have one or more attributes attached to them.
+These commands can be used to determine particular attributes.
+\begin{itemize}
+    \item names() - can find the labels of the individual columns.
+    \item dim() - can find the dimensions of a data object.
+\end{itemize}
+
+\end{slide}
+
+%------------------------------------------------------------------------------------------------------%
+\begin{slide}{Data Frames: Assessing Data}
+An assessment of how the data frame is structured can be made by visual inspection.
+If a data set is called, it will be printed on screen in its entirety.
+This is often hard to read and very unhelpful. \\ Often a visual inspection of the first few rows will suffice.
+To access the first six rows of a data frame, use the head() command.
+\begin{verbatim}
+> head(ChickWeight)
+  weight Time Chick Diet
+1     42    0     1    1
+2     51    2     1    1
+3     59    4     1    1
+4     64    6     1    1
+5     76    8     1    1
+6     93   10     1    1
+\end{verbatim}
+\end{slide}
+
+
+
+
+%------------------------------------------------------------------------------------------------------%
+\begin{slide}{Data Frames: Accessing columns}
+\begin{itemize}
+\item The names of columns can be found by using the names()
+command.
+\begin{verbatim}
+> names(ChickWeight)
+[1] "weight" "Time"   "Chick"  "Diet"
+\end{verbatim}
+
+\item Individual columns can be accessed using the '\$' operator.
+\begin{verbatim}
+>ChickWeight$weight
+\end{verbatim}
+
+
+\item The columns can now be studied in the same ways as basic
+vectors.
+\begin{verbatim}
+> mean(ChickWeight$weight)
+[1] 121.8183
+\end{verbatim}
+\end{itemize}
+\end{slide}
+%------------------------------------------------------------------------------------------------------------------------%
+\begin{slide}{Data Frames: Dimensions}
+
+The dimensions of a data frame can be found using the dim()
+command.
+\begin{verbatim}
+> dim(ChickWeight)
+[1] 578   4
+\end{verbatim}
+Alternatively we can use the nrow() and ncol() commands, which
+return the number of rows and columns of a specified data frame
+respectively.
+\begin{verbatim}
+>  nrow(ChickWeight)
+[1] 578
+>  ncol(ChickWeight)
+[1] 4
+\end{verbatim}
+\end{slide}
+%------------------------------------------------------------------------------------------------------------------------%
+\begin{slide}{Subsetting data sets}
+\begin{itemize}
+\item Often, we would wish to make a subset of a larger data
+set.We would use logical and relational operators to do so. We can
+pick all rows which fulfil the criteria.
+
+
+\begin{verbatim}
+> ChickWeight[ChickWeight$Chick=='1',]
+> ChickWeight[ChickWeight$weight>50,]
+\end{verbatim}
+\item It doesn't make sense to subset by columns. Therefore, the
+following code wouldn't work.
+
+\begin{verbatim}
+> ChickWeight[, ChickWeight$Chick=='1']
+\end{verbatim}
+\end{itemize}
+\end{slide}
+
+%------------------------------------------------------------------------------------------------------------------------%
+\begin{slide}{Lists}
+\begin{itemize}
+\item An R list is an object consisting of an ordered collection of objects known as its components.
+\item A list could consist of any combination of numeric vector, a logical value,
+a matrix, a complex vector, a character array, a function, and so on.
+\item
+Here is a simple example of how to make a list:
+\begin{verbatim}
+> Lst <- list(name="Fred", wife="Mary",
+        no.children=3, child.ages=c(4,7,9))
+\end{verbatim}
+\end{itemize}
+
+\end{slide}
+
+
+
+%------------------------------------------------------------------------------------------------------------------------%
+\begin{slide}{Lists: Components}
+\begin{itemize}
+\item Components are always numbered and may always be referred to
+as such. \item Thus if Lst is the name of a list with four
+components, these may be individually referred to as Lst[[1]],
+Lst[[2]], Lst[[3]] and Lst[[4]]. \item If Lst[[4]] is a vector,
+then Lst[[4]][1] is its first entry. \item Components of lists may
+also be named and can be accessed with an expression of the form
+\begin{verbatim}
+     > name$component_name
+\end{verbatim}
+\end{itemize}
+\end{slide}
+
+%------------------------------------------------------------------------------------------------------------------------%
+\begin{slide}{Lists: Names and Indices}
+
+In our simple example:
+\begin{itemize}
+\item Lst\$name  is the same as  Lst[[1]] and is the string
+"Fred",
+
+\item Lst\$wife  is the same as  Lst[[2]]
+ and is the string "Mary",
+
+\item Lst\$child.ages[1]is the same as Lst[[4]][1] and is the
+number 4.
+\end{itemize}
+\end{slide}

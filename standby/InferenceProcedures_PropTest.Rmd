@@ -1,0 +1,193 @@
+ 9 Inference Procedures
+
+
+
+
+\subsection{Hypothesis test of Proportion}
+This procedure is used to assess whether an assumed proportion is supported by evidence. For two tailed tests, the null hypothesis states that the population proportion  ?? has a specified value, with the alternative stating that ?? has a different value. 
+
+The hypotheses are typically as follows:   
+
+\begin{itemize}
+	\item[Ho] : $\pi = 0.50$
+	\item[Ha] : $\pi \neq 0.50$
+\end{itemize}
+
+\subsubsection{Example}
+A manufacturer is interested in whether people can tell the difference between a new formulation of a soft drink and the original formulation. The new formulation is cheaper to produce so if people cannot tell the difference, the new formulation will be manufactured. 
+
+A sample of 100 people is taken. Each person is given a taste of both formulations and asked to identify the original. Sixty-two percent of the subjects correctly identified the new formulation. Is this proportion significantly different from $50\%$? 
+
+The first step in hypothesis testing is to specify the null hypothesis and an alternative hypothesis. In testing proportions, the null hypothesis is that $\pi$, the proportion in the population, is equal to 0.5. The alternate hypothesis is $\pi \neq 0.5$. 
+
+The computed p-values is compared to the pre-specified significance level of $5\%$. Since the p-value (0.0214) is less than the significance level of 0.05, the effect is statistically significant. 
+
+\begin{verbatim}
+> prop.test(62,100,0.5)
+
+1-sample proportions test with continuity correction
+
+data:  62 out of 100, null probability 0.5 
+X-squared = 5.29, df = 1, p-value = 0.02145
+alternative hypothesis: true p is not equal to 0.5 
+95 percent confidence interval:
+0.5170589 0.7136053 
+sample estimates:
+p 
+0.62 
+\end{verbatim}
+
+Since the effect is significant, the null hypothesis is rejected. It is concluded that the proportion of people choosing the original formulation is greater than 0.50. 
+
+This result might be described in a report as follows: 
+
+\begin{quote}
+	The proportion of subjects choosing the original formulation (0.62) was significantly greater than 0.50, with p-value = 0.021.
+\end{quote}  
+
+%----------------------------------------------------%
+
+\subsubsection{Chi-squared Test}
+
+A $chi^2$ test is carried out on tabular data containing counts, e.g. the
+number of animals that died, the number of days of rain, the
+number of stocks that grew in value, etc.
+
+Usually have two qualitative variables, each with a number of
+levels, and want to determine if there is a relationship between the
+two variables, e.g. hair colour and eye colour, social status and
+crime rates, house price and house size, gender and left/right
+handedness.
+
+The data are presented in a contingency table:
+right-handed left-handed TOTAL
+
+\begin{tabular}{|c|c|c|c|}
+	\hline
+	% after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+	& right-handed &left-handed & TOTAL\\\hline
+	Male & 43 & 9 & 52 \\
+	Female & 44 & 4 & 48 \\
+	TOTAL & 87 & 13 & 100 \\
+	\hline
+\end{tabular}
+
+
+The hypothesis to be tested is
+$H0 :$There is no relationship between gender and left/right-handedness
+$H1 :$There is a relationship between gender and left/right-handedness
+The values that we collect from our sample are called the observed
+(O) frequencies (counts). Now need to calculate the expected (E)
+frequencies, i.e. the values we would expect to see in the table, if
+H0 was true.
+
+
+
+
+
+
+%------------------------------------------------------%
+\subsubsection{Two Sample Tests}
+
+
+All of the previous hypothesis tests and confidence intervals can be
+extended to the two-sample case.
+
+The same assumptions apply, i.e. data are normally distributed in
+each population and we may want to test if the mean in one
+population is the same as the mean in the other population, etc.
+
+Normality can be checked using histograms, boxplots and Q-Q
+plots as before. The Anderson-Darling test can be used on
+each group of data also.
+
+
+%------------------------------------------------------%
+\subsubsection{Implementation}
+
+This can be carried out in R by hand:
+
+\footnotesize \begin{verbatim}
+>obs.vals <- matrix(c(43,9,44,4), nrow=2, byrow=T)
+>row.tots <- apply(obs.vals, 1, sum)
+>col.tots <- apply(obs.vals, 2, sum)
+>exp.vals <- row.tots%o%col.tots/sum(obs.vals)
+>TS <- sum((obs.vals-exp.vals)^2/exp.vals)
+>TS
+>[1] 1.777415
+\end{verbatim}\normalsize
+
+
+%------------------------------------------------------%
+
+%----------------------------------------------------%
+
+\subsubsection{Chi-squared Test}
+
+A $chi^2$ test is carried out on tabular data containing counts, e.g. the
+number of animals that died, the number of days of rain, the
+number of stocks that grew in value, etc.
+
+Usually have two qualitative variables, each with a number of
+levels, and want to determine if there is a relationship between the
+two variables, e.g. hair colour and eye colour, social status and
+crime rates, house price and house size, gender and left/right
+handedness.
+
+The data are presented in a contingency table:
+right-handed left-handed TOTAL
+
+\begin{tabular}{|c|c|c|c|}
+	\hline
+	% after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+	& right-handed &left-handed & TOTAL\\\hline
+	Male & 43 & 9 & 52 \\
+	Female & 44 & 4 & 48 \\
+	TOTAL & 87 & 13 & 100 \\
+	\hline
+\end{tabular}
+
+
+The hypothesis to be tested is
+$H0 :$There is no relationship between gender and left/right-handedness
+$H1 :$There is a relationship between gender and left/right-handedness
+The values that we collect from our sample are called the observed
+(O) frequencies (counts). Now need to calculate the expected (E)
+frequencies, i.e. the values we would expect to see in the table, if
+H0 was true.
+
+
+
+
+
+
+%------------------------------------------------------%
+\subsubsection{Two Sample Tests}
+
+
+All of the previous hypothesis tests and confidence intervals can be
+extended to the two-sample case.
+
+The same assumptions apply, i.e. data are normally distributed in
+each population and we may want to test if the mean in one
+population is the same as the mean in the other population, etc.
+
+Normality can be checked using histograms, boxplots and Q-Q
+plots as before. The Anderson-Darling test can be used on
+each group of data also.
+
+
+%------------------------------------------------------%
+\subsubsection{Implementation}
+
+This can be carried out in R by hand:
+
+\footnotesize \begin{verbatim}
+>obs.vals <- matrix(c(43,9,44,4), nrow=2, byrow=T)
+>row.tots <- apply(obs.vals, 1, sum)
+>col.tots <- apply(obs.vals, 2, sum)
+>exp.vals <- row.tots%o%col.tots/sum(obs.vals)
+>TS <- sum((obs.vals-exp.vals)^2/exp.vals)
+>TS
+>[1] 1.777415
+\end{verbatim}\normalsize
