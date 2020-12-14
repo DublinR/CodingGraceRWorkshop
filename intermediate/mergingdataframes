@@ -1,28 +1,7 @@
 Enter file contents here
 How to join data frames in R (inner, outer, left, right)?
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-up vote215down votefavorite
-154
- 
-
-
+=======================================
 
 Given two data frames
 df1 = data.frame(CustomerId=c(1:6),Product=c(rep("Toaster",3),rep("Radio",3)))
@@ -61,15 +40,15 @@ How can I do a sql style select statement?
 
 By using the merge function and its optional parameters:
 
-Inner join: merge(df1, df2) will work for these examples because R automatically joins the frames by common variable names, but you would most likely want to specify merge(df1, df2, by="CustomerId") to make sure that you were matching on only the fields you desired. You can also use the by.x and by.y parameters if the matching variables have different names in the different data frames.
+* Inner join: merge(df1, df2) will work for these examples because R automatically joins the frames by common variable names, but you would most likely want to specify merge(df1, df2, by="CustomerId") to make sure that you were matching on only the fields you desired. You can also use the by.x and by.y parameters if the matching variables have different names in the different data frames.
 
-Outer join: merge(x = df1, y = df2, by = "CustomerId", all = TRUE)
+* Outer join: merge(x = df1, y = df2, by = "CustomerId", all = TRUE)
 
-Left outer: merge(x = df1, y = df2, by = "CustomerId", all.x=TRUE)
+* Left outer: merge(x = df1, y = df2, by = "CustomerId", all.x=TRUE)
 
-Right outer: merge(x = df1, y = df2, by = "CustomerId", all.y=TRUE)
+* Right outer: merge(x = df1, y = df2, by = "CustomerId", all.y=TRUE)
 
-Cross join: merge(x = df1, y = df2, by = NULL)
+* Cross join: merge(x = df1, y = df2, by = NULL)
 
 Just as with the inner join, you would probably want to explicitly pass "CustomerId" to R as the matching variable. I think it's almost always best to explicitly state the identifiers on which you want to merge; it's safer if the input data.frames change unexpectedly and easier to read later on.
  
