@@ -1,12 +1,11 @@
 
-Descriptive Statistics}
+Descriptive Statistics
 ===========================================
 
-<p>
-### {Basic Statistics}
+### Basic Statistics
 
 
-begin{myindentpar}{1cm}
+
 <code>
 > X=c(1,4,5,7,8,9,5,8,9)
 > mean(X);median(X)#mean and median of vector
@@ -27,18 +26,17 @@ begin{myindentpar}{1cm}
 > X[1:5]
 [1] 1 4 5 7 8
 </code>
-end{myindentpar}
 
 
 
 <p>
-### {Summary Statistics}
-The texttt{R} command texttt{summary()} returns a summary statistics for a simple dataset.
-The texttt{R} command texttt{fivenum()} returns a summary statistics for a simple dataset, but without the mean.
+### Summary Statistics
+The texttt{R} command ``summary()`` returns a summary statistics for a simple dataset.
+The texttt{R} command ``fivenum()`` returns a summary statistics for a simple dataset, but without the mean.
 Also, the quartiles are computed a different way.
 
 
-begin{myindentpar}{1cm}
+
 <code>
 > summary(mtcars$mpg)
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
@@ -47,5 +45,5 @@ begin{myindentpar}{1cm}
 > fivenum(mtcars$mpg)
 [1] 10.40 15.35 19.20 22.80 33.90
 </code>
-end{myindentpar}
+
 
