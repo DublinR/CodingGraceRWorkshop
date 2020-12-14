@@ -1,0 +1,93 @@
+
+\begin{document}
+%--------------------------------------------%
+
+The focus of the section is to develop programming skills
+related to probability distributions. With that in mind, we will take the opportunity
+to work with less-well known probability distributions
+
+\begin{itemize}
+\item The Weibull Distribution
+\item The Cauchy Distribution
+\item The Beta Distribution
+\item The hypergeometic distribution
+\end{itemize}
+
+There will be no exercises that require an in-depth knowledge of this distributions.
+
+%---------------------------------------------%
+
+\section{The Weibull Distribution}
+The Weibull distribution is used extensively in reliability applications to model failure times.
+
+% http://www.math.utah.edu/~lzhang/teaching/3070summer2009/Daily%20Updates/lectures/sec4_5.pdf
+
+
+The formula for the probability density function of the general Weibull distribution is
+
+\[ f(x)=\gamma\alpha(x-\mu\alpha)(\gamma-1)exp(-((x-\mu)/\alpha)\gamma)x=\mu;\gamma,\alpha>0\]
+
+where \gamma is the shape parameter, \mu is the location parameter and \alpha is the scale parameter. The case where \mu = 0 and \alpha = 1 is called the standard Weibull distribution. The case where \mu = 0 is called the 2-parameter Weibull distribution. The equation for the standard Weibull distribution reduces to
+
+\[ f(x)=\gammax(\gamma-1)exp(-(x\gamma))x=0;\gamma>0 \]
+
+Since the general form of probability functions can be expressed in terms of the standard distribution, all subsequent formulas in this section are given for the standard form of the function.
+
+%--------------------------------------------%
+
+\section{The Beta Distribution}
+
+% http://www.statlect.com/beta_distribution.htm
+
+The Beta distribution is a continuous probability distribution having two parameters. One of its most common uses is to model one's uncertainty about the probability of success of an experiment.
+Suppose a probabilistic experiment can have only two outcomes, either success, with probability  X, or failure, with probability  $1-X$. Suppose also that  X is unknown and all its possible values are deemed equally likely. This uncertainty can be described by assigning to  X a uniform distribution on the interval  $left[ 0,1
+ight] $. This is appropriate because  X, being a probability, can take only values between  0 and  1; furthermore, the uniform distribution assigns equal probability density to all points in the interval, which reflects the fact that no possible value of  X is, a priori, deemed more likely than all the others. Now, suppose that we perform  n independent repetitions of the experiment and we observe  k successes and  $n-k$ failures. After performing the experiments, we naturally want to know how we should revise the distribution initially assigned to  X, in order to properly take into account the information provided by the observed outcomes. In other words, we want to calculate the conditional distribution of  X, conditional on the number of successes and failures we have observed. The result of this calculation is a Beta distribution. In particular, the conditional distribution of  X, conditional on having observed  k successes out of  n trials, is a Beta distribution with parameters  $k+1$ and  $n-k+1$.
+
+\subsection{Definition}
+The Beta distribution is characterized as follows.
+
+%Definition Let  X be an absolutely continuous random variable. 
+%Let its support be the unit interval:
+%[eq1]
+%Let  [eq2]. 
+%We say that  X has a Beta distribution with shape parameters  
+%$\alpha $ and  $\beta $ if its probability density function is
+%[eq3]
+%where  $Bleft( {}ight) $ is the Beta function.
+
+%------------------------------------------%
+\subsection{Expected Values and Variances}
+\begin{itemize}
+\item Expected value\\
+The expected value of a Beta random variable $X$ is
+
+\item Variance\\
+The variance of a Beta random variable $X$ is
+\end{itemize}
+%------------------------------------------%
+\section{Cauchy Distribution}
+% http://www.phy.ornl.gov/csep/mc/node20.html
+% 
+Cauchy Distribution
+
+ 
+
+This is an interesting pdf, because strictly speaking, its mean does not exist and its variance is infinite. Given our definition of mean,
+
+ 
+
+we find that this integral does not exist because the separate integrals for   and  do not exist. However, if we allow a ``principal value'' integration, where the limits are taken simultaneously, we see that the integral for  will cancel the integral for  and the mean is zero, consistent with a graphical interpretation of this pdf, as depicted in Figure 8. However, if we try to compute the variance, we find:
+
+ 
+
+which is an unbounded integral. Thus if we sample from the Cauchy distribution and we attempt to predict the extent to which samples will fall ``close'' to the mean, we will fail. Note that the Cauchy distribution is a legitimate pdf, because it satisfies the properties of a pdf given in Eq. (24) and Eq. (25), namely,
+
+
+
+
+
+but its variance is infinite and its mean necessitates a more general definition of integration.
+
+
+
+\end{document}

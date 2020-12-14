@@ -1,0 +1,473 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[linktoc=all]{hyperref}
+\usepackage{amsmath}
+\usepackage[labelformat=empty]{caption}
+\definecolor{shadecolor}{gray}{0.9}
+\pagenumbering{roman}
+\hypersetup{
+    colorlinks,
+    %citecolor=MidnightBlue,
+    %filecolor=MidnightBlue,
+    linkcolor=MidnightBlue,
+    %urlcolor=MidnightBlue
+}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+%\begin{titlepage}
+\begin{center}
+{\HRule} ~\\[0.1cm]
+{\textbf\bfseries{\LARGE Dublin \texttt{R}}}
+\HRule
+\newline
+\\[0.3in]
+{\textbf{\Large{Introduction to Probability with \texttt{R}}}}
+\\[0.3in]
+{\textbf{Kevin O'Brien}}
+\\[0.3in]
+\end{center}
+%{\hfill{\textit{Completed: 11/04/13}}}
+\begin{center}
+\section*{\underline{Overview}}
+\addcontentsline{toc}{section}{Introduction}
+\end{center}
+\newpage
+%----------------------------------------------%
+\begin{itemize}
+\item[(i)] Simulating Dice Rolls : \texttt{sample()} and \texttt{runif()} functions.
+\item[(ii)] The Monty Hall Problem : 
+\item[(iii)] Gambler's Ruin : using \texttt{plot()} command.
+\item[(iv)] Monte Carlo and the Gambler's Fallacy.
+\item[(v)] $p-$values.
+\end{itemize}
+\newpage
+\section{Gambler's Ruin}
+Consider a gambler who starts with an initial fortune of 1 and then on each successive gamble
+either wins  or loses independent of the past with probabilities p and q = 1-p respectively.
+Suppose the gambler has a starting kitty of A. This gamblers places bets with the Banker,
+who has an initial fortune B. We will look at the game from the perspective of the gambler
+only. The Banker is, by convention, the richer of the two.
+
+
+\begin{itemize}
+\item Probability of successful gamble for gambler : p
+\item Probability of unsuccessful gamble for gambler : q (where q = 1 - p )
+\item Ratio of success probability to failure success: s = p=q
+\item Conventionally the game is biased in favour of the Banker (i.e.$ q > p$ and $s < 1$)
+\end{itemize}
+%-------------------------%
+Let $R_n$ denote the Gamblers total fortune after the $n-$th gamble.
+If the Gambler wins the first game, his wealth becomes Rn = A + 1. If he loses the first
+gamble, his wealth becomes Rn = A - 1. The entire sum of money at stake is the Jackpot i.e.
+A + B. The game ends when the Gambler wins the Jackpot (Rn = A + B) or loses everything
+(Rn = 0).
+
+%--------------------------------------------------------------------------%
+\newpage
+\subsection{1.1 Simulation a Single Gamble}
+To simulate one single bet, compute a single random number between 0 and 1.
+\begin{framed}
+\begin{verbatim}
+runif(1)
+\end{verbatim}
+\end{framed}
+Lets assume that the game is biased in favour of the Banker p = 0.45 , q = 0.55. If the
+number is less than 0.45, the gamble wins. Otherwise the Banker wins.
+\begin{verbatim}
+> runif(1)
+[1] 0.1251274
+>#Gambler Loses
+>
+> runif(1)
+[1] 0.754075
+>#Gambler wins
+>
+> runif(1)
+[1] 0.2132148
+>#Gambler Loses
+>
+> runif(1)
+[1] 0.8306269
+\end{verbatim}
+%--------------------------------------------------------------------------%
+
+Let A be the Gambler's Kitty at the start of the gambling. Let B be the Banker's Wealth.
+The probability of A winning a gamble is p. The vector Rn records the gambler's worth on an
+ongoing basis. At the start, The first value is A.
+\begin{framed}
+\begin{verbatim}
+A=20;B=100;p=0.47
+Rn=c(A)
+probval = runif(1)
+if (probval < p)
+{
+A = A+1; B =B-1
+}else{A=A-1;B=B+1}
+#Save the values from each bet
+R=c(R,A)
+\end{verbatim}
+\end{framed}
+
+%----------------------------------------------------------------------------%
+
+Should the Gambler win the entire jackpot (A+B). The game would also cease. We include
+a break statement to stop the loop if the gambler wins the entire jackpot. A break statement
+will stop a loop if a certain logical condition is met.
+\begin{framed}
+\begin{verbatim}
+A=20;B=100;p=0.47
+Rec=c(A)
+Total=A+B
+while(A>0)
+{
+ProbVal=runif(1)
+if(ProbVal <= p)
+{
+A = A+1; B =B-1
+}else{A=A-1;B=B+1}
+Rec=c(Rec,A)
+if(A==Total){break}
+}
+\end{verbatim}
+\end{framed}
+
+We can construct a plot to depict the gambler's ongoing fortunes in the game.
+\begin{framed}
+\begin{verbatim}
+length(Rec)
+plot(Rec,type="l",col="red")
+abline(h=0)
+abline(v=0)
+abline(h=A,col="red")
+abline(h=Total,col="green")
+\end{verbatim}
+\end{framed}
+
+%--End of Gambler's Ruin
+%----------------------------------------------%
+\newpage
+\section{Using the \texttt{sample()} command}
+\large
+\begin{framed}
+\begin{verbatim}
+sample(1:6,4)
+sample(1:6,10)
+sample(1:6,10,replace=TRUE)
+\end{verbatim}
+\end{framed}
+\begin{shaded}
+\begin{framed}
+\textbf{Output}
+\large{\color{BrickRed}
+\begin{verbatim}
+> sample(1:6,4)
+[1] 6 3 2 1
+>
+> sample(1:6,10)
+Error in sample(1:6, 10) :
+  cannot take a sample larger than the population 
+  when 'replace = FALSE'
+>
+> sample(1:6,10,replace=TRUE)
+ [1] 6 1 2 6 5 5 5 1 3 4
+\end{verbatim}}
+\end{framed}
+\end{shaded}
+
+\newpage
+\begin{shaded}
+\begin{framed}
+\textbf{Output}
+\large{\color{BrickRed}
+\begin{verbatim}
+> sample(1:6,4)
+[1] 6 3 2 1
+>
+> sample(1:6,10)
+\end{verbatim}
+}
+\end{framed}
+\vspace{-1.83cm}
+\begin{framed}
+\large{\color{BrickRed}
+\begin{verbatim} Error in sample(1:6, 10) :
+  cannot take a sample larger than the population 
+  when 'replace = FALSE'
+>
+> sample(1:6,10,replace=TRUE)
+ [1] 6 1 2 6 5 5 5 1 3 4
+\end{verbatim}
+}
+\end{framed}
+\end{shaded}
+%----------------------------------------------%
+\newpage
+\section{The Monty Hall Problem : Introduction}
+%\Large
+Imagine that the set of Monty Hall's game show Let's Make a Deal has three closed doors. Behind one of these doors is a car; behind the other two are goats. The contestant does not know where the car is, but Monty Hall does.
+
+The contestant picks a door and Monty opens one of the remaining doors, one he knows doesn't hide the car. If the contestant has already chosen the correct door, Monty is equally likely to open either of the two remaining doors.
+
+After Monty has shown a goat behind the door that he opens, the contestant is always given the option to switch doors. What is the probability of winning the car if she stays with her first choice? What if she decides to switch?
+
+
+%----------------------------------------------%
+
+One way to think about this problem is to consider the sample space, which Monty alters by opening one of the doors that has a goat behind it. In doing so, he effectively removes one of the two losing doors from the sample space.
+We will assume that there is a winning door and that the two remaining doors, A and B, both have goats behind them. There are three options:
+
+The contestant first chooses the door with the car behind it. She is then shown either door A or door B, which reveals a goat. If she changes her choice of doors, she loses. If she stays with her original choice, she wins.
+
+The contestant first chooses door A. She is then shown door B, which has a goat behind it. If she switches to the remaining door, she wins the car. Otherwise, she loses.
+The contestant first chooses door B. She is then is shown door A, which has a goat behind it. If she switches to the remaining door, she wins the car. Otherwise, she loses.
+
+Each of the above three options has a 1/3 probability of occurring, because the contestant is equally likely to begin by choosing any one of the three doors. In two of the above options, the contestant wins the car if she switches doors; in only one of the options does she win if she does not switch doors. When she switches, she wins the car twice (the number of favorable outcomes) out of three possible options (the sample space). Thus the probability of winning the car is 2/3 if she switches doors, which means that she should always switch doors - unless she wants to become a goatherd.
+
+%----------------------------------------------%
+This result of 2/3 may seem counterintuitive to many of us because we may believe that the probability of winning the car should be 1/2 once Monty has shown that the car is not behind door A or door B. Many people reason that since there are two doors left, one of which must conceal the car, the probability of winning must be 1/2. This would mean that switching doors would not make a difference. As we've shown above through the three different options, however, this is not the case.
+
+One way to convince yourself that 2/3 is the correct probability is to do a simulation with a friend. Have your friend impersonate Monty Hall and you be the contestant. Keep track of how often you win the car by switching doors and by not switching doors.
+\end{document}
+%----------------------------------------------%
+\newpage
+\section{ Monty Hall Problem}
+Suppose that there are three closed doors on the set of the Let's Make a Deal, a TV game
+show presented by Monty Hall. Behind one of these doors is a car; behind the other two are
+goats. The contestant does not know where the car is, but Monty Hall does.
+The contestant selects a door, but not the outcome is not immediately evident. Monty
+opens one of the remaining "wrong" doors. If the contestant has already chosen the correct
+door, Monty is equally likely to open either of the two remaining doors.
+After Monty has shown a goat behind the door that he opens, the contestant is always given
+the option to switch doors. What is the probability of winning the car if she stays with her
+rst choice? What if she decides to switch?
+%------------------------------------------------%
+\subsection{1.1 Implementation (part 1)}
+We have 3 doors to choose from, so we will dene a numeric sequence between 1 and 3. The
+command \texttt{sample(,n)} takes a sample of size n from a specified set of values. Here we just
+want to select one door to be our "correct door" and another to be "selected" door (i.e. the
+contestant selects)
+These events are independent. We will perform the selection for both doors separately, but
+this can be implemented in one command.
+\begin{framed}
+\begin{verbatim}}
+Doors = 1:3
+Correct = sample(Doors,1)
+Choice = sample(Doors,1)
+\end{verbatim}
+\end{framed}
+%--------------------------------------------%
+
+A wrong door must be selected to be opened. The door selected by the contestant can't be
+chosen. First let us select the doors that must stay closed, then nd the ones we can choose
+from to open
+\begin{framed}
+\begin{verbatim}
+StayClosed = union(Correct, Choice)
+CanOpen = setdiff(Doors, StayClosed)
+\end{verbatim}
+\end{framed}
+%---------------------------------------%
+The R command \texttt{sample()} poses an interesting problem. Lets look at the help le to see
+what it is.
+Create a single element vector (let's call it Vec, with that single element being 4. Now
+sample a single value from that data set. You may expect to get 4 each time, but R doesnt
+work that way in this instance.
+\begin{framed}
+\begin{verbatim}
+Vec=c(4)
+sample(Vec,1)
+\end{verbatim}
+\end{framed}
+
+
+
+\begin{shaded}
+\begin{framed}
+\footnotesize{\color{BrickRed}
+\begin{verbatim}
+> sample(Vec,1)
+[1] 3
+> sample(Vec,1)
+[1] 4
+> sample(Vec,1)
+[1] 1
+\end{verbatim}}
+\end{framed}
+\end{shaded}
+%-------------------------------------------------------------------------------------%
+To overcome this we need some control statements. Now we have the doors we are able to open.
+\begin{verbatim}
+if(length(CanOpen)>1)
+{
+Open = sample(CanOpen,1)
+}else {Open=CanOpen}
+NotOpen = setdiff(Doors,Open)
+Stick = Choice
+#The previous statement is to aid the narrative.
+Switch = setdiff(NotOpen,Choice)
+# Was sticking the right decision? Or was switching?
+# The following logicial statements will tell us.
+Stick==Choice
+Switch==Choice
+\end{verbatim}
+%-------------------------------------------------------------------%
+\newpage
+\subsection{ Writing a Function}
+We are going to create a function \texttt{MHfunc()} to help us simulate a solution for the Monty Hall Problem. The function is constructed using R code we have seen already. The output of the
+function is returned as a data frame, with three columns:
+Correct : The number of the correct door.
+\begin{itemize}
+\item Choice : The door that the contestant chose originally, and the door selected if the contestant
+decided to "stick".
+\item Switch : The door selected if the contestant chose to "switch".
+\end{itemize}
+%-------------------------%
+Necessarily the Correct option must correspond with a value in one of the other two columns.
+2
+\begin{verbatim}
+MHfunc <- function(numdoors=3){
+Doors = 1:numdoors
+Correct = sample(Doors,1)
+Choice = sample(Doors,1)
+StayClosed = union(Correct, Choice)
+CanOpen = setdiff(Doors, StayClosed)
+if(length(CanOpen)>1)
+{
+Open = sample(CanOpen,1) #Problem here
+}else {Open=CanOpen}
+NotOpen = setdiff(Doors,Open)
+Switch = setdiff(NotOpen,Choice)
+MHoutput=c(Correct,Choice,Switch)
+names(MHoutput)= c("Correct","Choice","Switch")
+return(MHoutput)
+}
+\end{verbatim}
+
+%-----------------------------------%
+\begin{framed}
+\begin{verbatim}
+f code
+\end{verbatim}
+\end{framed}
+%-----------------------------------%
+\begin{shaded}
+\begin{framed}
+\footnotesize{\color{BrickRed}
+\begin{verbatim}
+> boxplot(RealGDP, horizontal = TRUE, add=TRUE,
++ col = c("cadetblue4", "chocolate2",
++ "darkslateblue", "darkslategray", "red",
++ terrain.colors(5)), main = "Boxplot of Real
++ GDP Growth (2008-2017)", legend(-5, 10,
++ c("2008","2009","2010","2011","2012", "2013",
++ "2014","2015","2016","2017"),
++ fill=c("cadetblue4", "chocolate2", "darkslateblue",
++ "darkslategray", "red", terrain.colors(5))))
+\end{verbatim}}
+\end{framed}
+\end{shaded}
+\newpage
+
+%\begin{figure}[ht!]
+%\centering
+%\includegraphics[width=120mm]{3.jpeg}
+%\caption{\color{ForestGreen}{Boxplot: (\%) change in GDP growth vs. time (Yrs.)} }
+%\label{fig:2}
+%\end{figure}
+
+%------------------------------------------------------%
+MHfunc()
+No arguments are needed to be passed to the function. The output should appear something
+like this:
+> MHfunc()
+Correct Choice Switch
+1 1 2 1
+> MHfunc()
+Correct Choice Switch
+1 1 3 1
+> MHfunc()
+Correct Choice Switch
+1 3 3 1
+
+\subsection{Transforming logical values}
+The R command \texttt{as.numeric()} can be use to convert logical values, such as TRUE or FALSE
+into binary form (i.e. 1 and 0).
+\begin{verbatim}
+LogVec=c(TRUE,FALSE,TRUE)
+as.numeric(LogVec)
+\end{verbatim}
+> output = MHfunc()
+> output
+Correct Choice Switch
+1 2 1
+> output[1]
+Correct
+1
+> output[2]
+Choice
+2
+> output[1]==output[2]
+Correct
+FALSE
+> output[1]==output[3]
+Correct
+TRUE
+> as.numeric(output[1]==output[2])
+[1] 0
+> as.numeric(output[1]==output[3])
+[1] 1
+>
+%---------------------------------------------------------------%
+\newpage
+\subsection{ A Simulation Study of the Monty Hall Problem}
+Let us perform a simulation study of the Monty Hall problem. We are putting the code we have
+written already, placed in a for loop, although we alter the ending to make for more readable
+output.
+\begin{verbatim}
+StickCount = 0
+SwitchCount = 0
+M=1000
+for(i in 1:M)
+{
+output=MHfunc()
+Correct=output[1]
+Choice=output[2]
+Switch=output[3]
+# Install counters for both count variables
+\end{verbatim}
+
+
+\begin{verbatim}
+StickCount = StickCount + as.numeric(Choice == Correct)
+SwitchCount = SwitchCount + as.numeric(Switch == Correct)
+}
+StickCount
+SwitchCount
+\end{verbatim}
+The output of this program would look like this. The proportion is approximately 2 to 1 in
+favour of the switching option.
+\begin{verbatim}
+> StickCount
+[1] 323
+> SwitchCount
+[1] 677
+\end{verbatim}
+\newpage
+
+
+
+\newpage
+%\begin{figure}[ht!]
+%\centering
+%\includegraphics[width=120mm]{2.jpeg}
+%\caption{Histogram describing the frequencies of growth throughout the world in 2008}
+%\label{fig:1}
+%\end{figure}
+%
+\end{document}

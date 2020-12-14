@@ -1,0 +1,41 @@
+\subsection{Probability Density Function}
+Recall: As the Normal distribution is a continuous distribution, the PDF for a particular observed value will not give us an intuitive
+result (as far as this module is concerned). It is, in fact, the height of the density curve at a particular point.
+
+Nonetheless, the relevant \texttt{R} code may be included in exam questions, so as to add complexity to questions.
+
+\begin{verbatim}
+> dnorm(0.7)
+[1] 0.3122539
+>
+> dnorm(1.7)
+[1] 0.09404908
+
+\end{verbatim}
+
+
+\subsection{\texttt{R} Implementation}
+
+
+Using the following \texttt{R} code, we can determine $P(Z \leq 1.7)$.
+\begin{verbatim}
+
+> pnorm(1.7)
+[1] 0.9554345
+
+\end{verbatim}
+
+
+%------------------------------------------%
+
+
+\subsection{Direct \texttt{R} Implementation}
+
+This can easily be implemented directly - without using the standardization formula, by specifying the normal mean and normal standard deviation directly. However, we will not be using this approach in this module.
+\begin{verbatim}
+
+> pnorm(2340,mean=2000,sd=200)
+[1] 0.9554345
+
+
+\end{verbatim}
