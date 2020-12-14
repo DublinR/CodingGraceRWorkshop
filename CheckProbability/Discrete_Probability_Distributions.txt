@@ -1,0 +1,160 @@
+
+\section{Discrete Probability Distributions}
+The discrete distributions we will look at in this course are
+\begin{itemize}
+\item The binomial distribution
+\item The Poisson distribution
+\end{itemize}
+\subsection{Binomial Distribution}
+
+A binomial experiment (known as a Bernoulli trial) is a statistical experiment that has the following properties: 
+  
+  \begin{itemize}
+\item	The experiment consists of $n$ repeated trials.
+\item	Each trial can result in just two possible outcomes. We call one of these outcomes a success and the other, a failure.
+\item	The probability of success, conventionally denoted mathematically as $p$, is the same on every trial.
+\item	The trials are independent; that is, the outcome on one trial does not affect the outcome on other trials.
+\item	There are $n$ independent trials.
+\end{itemize}
+
+
+As with other functions, there are four functions that can be used to generate the values associated with the binomial distribution; \textbf{\texttt{dbinom()}},\textbf{\texttt{pbinom()}}, \textbf{\texttt{qbinom()}} and \textbf{\texttt{rbinom()}}.
+The arguments to these commands are \texttt{\textbf{size=}} and \texttt{\textbf{prob=}}.
+
+Suppose that there are ten independent trials, and that the probability of success on each trial is 0.6, the probability of 5 successes over ten trials can be computed using the following code.
+\begin{framed}
+\begin{verbatim}
+dbinom(5,size=10,prob=0.60)
+\end{verbatim}
+\end{framed}
+The probability that the numbers not excessing 5 successes is computed using the \textbf{\texttt{pbinom()}} function.
+\begin{framed}
+\begin{verbatim}
+pbinom(5,size=10,prob=0.60)
+\end{verbatim}
+\end{framed}
+
+\begin{verbatim}
+> dbinom(5,size=10,prob=0.60)
+[1] 0.2006581
+> pbinom(5,size=10,prob=0.60)
+[1] 0.3668967
+\end{verbatim}
+
+\begin{center}
+\includegraphics[scale=0.50]{dbinomPlot}
+% \caption{Some function f(x) evaluated at x=1}
+\end{center}
+
+This plot was implemented with the following \texttt{R} code.
+\begin{framed}
+\begin{verbatim}
+x = seq(0,5,by=1)
+y = dbinom(x,5,0.6)
+plot(x,y,type="h",col="red",lwd=2,font.lab=2,font.axis=2)
+points(x,y,type="p",col="green",cex=2,pch=16)
+\end{verbatim}
+\end{framed}
+The heights of each line are as follows:
+  \begin{verbatim}
+> dbinom(0:5,size=5,prob=0.60)
+[1] 0.01024 0.07680 0.23040 0.34560 0.25920 0.07776
+\end{verbatim}
+
+\subsubsection{Exercise}
+Suppose there are twelve multiple choice questions in an English class quiz. Each question has five possible answers, and only one of them is correct. Find the probability of having four or less correct answers if a student attempts to answer every question at random. 
+
+\textbf{Solution:} Since only one out of five possible answers is correct, the probability of answering a question correctly by random is 1/5=0.2. To find the probability of having four or less correct answers by random attempt, we apply the function pbinom with x = 4, size = 12, prob = 0.2. 
+
+\begin{verbatim}
+> pbinom(4, size=12,prob=0.2) 
+[1] 0.92744 
+\end{verbatim}
+
+The probability of four or less questions answered correctly by random in a twelve question multiple choice quiz is 92.7\%. 
+
+\subsubsection{Generating Random Values}
+
+Suppose we wish to simulate the number of defective components in a sequence of twenty batches of 100 items, where the probability of defect is 0.02. We would implement this simulation as follows:
+  
+  \begin{framed}
+\begin{verbatim}
+rbinom(20,size=100,prob=0.02)
+\end{verbatim}
+\end{framed}
+
+\begin{verbatim}
+> rbinom(20,size=100,prob=0.02)
+[1] 0 3 1 1 3 2 0 2 2 0 5 0 1 1 3 1 2 4 0 3
+\end{verbatim}
+\subsubsection{Quantiles}
+The inverse cumulative distribution function can be implemented using the \texttt{\textbf{qbinom()}} function.
+However the output is generally not as useful as the \texttt{\textbf{pbinom()}} function.
+\begin{verbatim}
+> qbinom(0.95,100,0.02)
+[1] 5
+> qbinom(0.90,100,0.02)
+[1] 4
+> qbinom(0.80,100,0.02)
+[1] 3
+> qbinom(0.85,100,0.02)
+[1] 3
+\end{verbatim}
+
+
+\section{Summary of Distributions}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Distribution &	R name & Arguments\\ \hline
+beta &	beta &	shape1, shape 2, ncp\\
+binomial &	binom	& size, prob\\
+Cauchy	& cauchy	& location, scale\\
+chi-squared &	chisq &	df, ncp\\
+exponential	& exp &	rate\\
+F	& f	& df1,df2,ncp\\
+normal &	norm &	mean, sd\\
+Poisson&	pois & 	lambda\\
+Student's t	& t&	df, ncp\\
+uniform	& unif &	min, max\\
+Weibull	& weibull & shape, scale\\
+Wilcoxon &	wilcox &	m, n\\ 
+\hline 
+\end{tabular}
+\end{center}
+
+\section{Discrete Probability Distributions}
+\begin{itemize}
+\item Poisson Distribution
+\item Binomial Distribution
+\item Geometric Distribution
+\end{itemize}
+\subsection{The Poisson distribution}
+The Poisson distribution is characterized the by the arrival rate 'lambda'.
+\begin{framed}
+\begin{verbatim}
+rpois(n=5,lambda=4)          #generate five random numbers
+\end{verbatim}
+\end{framed} 
+\subsubsection{Simple population study}
+
+Suppose a small island has population 1,000 at the start of a decade. The birth rate on this island is expected to 25 births per annum, while there is on average 10 deaths.  Forecast the population after five years.
+
+\begin{framed}
+\begin{verbatim}
+Base = 1000
+Births =rpois(5,25)
+Deaths=rpois(5,10)
+Yrly.Incr =Births - Deaths
+Increase =cumsum(Yrly.Incr)
+Popn = Base + Births +Deaths
+\end{verbatim}
+\end{framed} 
+\subsection{The Binomial Distribution}
+The binomial distribution is characterized by the number of trials, which in \texttt{R} is denoted as \texttt{'size'} rather than 'n', and the probability of success  \texttt{'prob'}.
+\begin{framed}
+\begin{verbatim}
+rbinom(n=5,size=100,prob=0.25)           #generate five random numbers
+\end{verbatim}
+\end{framed} 
+\newpage

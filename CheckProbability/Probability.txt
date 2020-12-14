@@ -1,0 +1,218 @@
+
+
+\section{Continuous Probability Distributions}
+
+
+The continuous uniform distribution is commonly used in simulation.
+\subsection{The Normal distribution}
+
+The normal distribution is perhaps the most widely known distribution.
+\begin{framed}
+	\begin{verbatim}
+	rnorm(n=15)       #15 random numbers, mean  = 0 , std. deviation = 1
+	rnorm(n=15,mean= 17)       #set the mean to 17
+	rnorm(n=15,mean= 17,sd=4)        #set the standard deviation to 4
+	rnorm(15,17,4)                #argument matching : default positions
+	\end{verbatim}
+\end{framed} 
+
+
+
+
+
+
+\subsection{The exponential distribution}
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\usepackage{framed}
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{ A Taste of \texttt{R}}
+\author{Coding Grace}
+
+
+\begin{document}
+\maketitle
+%-----------------------------------------------------------------------------------------------------------------------------------%
+\section{Overview}
+
+\begin{itemize}
+\item Basics of Probability (some definitions, the \texttt{prob} package) 
+\item Dice Rolls and the Birthday Distribution ( histograms )
+\item Gambler's Ruin ( plotting functions )
+\item The Monty Hall Problem 
+ % \item Probability Distributions (continuous and discrete distributions)
+\end{itemize}
+Book: \textbf{\textit{Introduction to Probability and Statistics using R}} by G Kerns \\ (downloadable for free online) We will use chapters 4,5 and 6. \\ \bigskip
+Packages: The \texttt{prob} package (for the first part only).
+
+\begin{framed}
+\begin{verbatim}
+install.packages("prob")
+library(prob)
+\end{verbatim}
+\end{framed}
+%-----------------------------------------------------------------------------------------------------------------------------------%
+\newpage
+\section{Basics of Probability}
+
+\begin{description}
+\item[Random Experiment] A random experiment is one whose outcome is determined by chance, with an outcome that may not be predicted with certainty beforehand. Common examples are coin tosses and dice rolls.
+\item[Sample Space] For a random experiment E, the set of all possible outcomes of E is called the sample space and
+is denoted by the letter S . For a coin-toss experiment, S would be the results ``Head" and ``Tail", for a  single roll of a die it is the numbers 1 to 6.
+\item[Events] An event $A$
+ is merely a collection of outcomes, or in other words, a subset of the sample space.
+\end{description}
+The sample space of a coin toss experiment can be written out using the \texttt{tosscoin()} function on the \texttt{prob} package, specifying the number of tosses. The size of the sample space is $2^n$ for $n$ coin tosses, for binary outcome experiments. For 8 coin tosses, the sample space contains 256 possible outcomes.
+
+\begin{verbatim}
+> tosscoin(1)
+  toss1
+1     H
+2     T
+> tosscoin(2)
+  toss1 toss2
+1     H     H
+2     T     H
+3     H     T
+4     T     T
+\end{verbatim}
+There is a similar command for dice roll : \texttt{rolldie()}. Again, specify the number of rolls. For $n$ dice rolls, there are $6^n$ outcomes in the sample space. (It gets large very quickly).
+
+\begin{verbatim}
+> rolldie(1)
+  X1
+1  1
+2  2
+3  3
+4  4
+5  5
+6  6
+\end{verbatim}
+
+The \texttt{cards()} command describes each card from a deck of cards. The \texttt{roulette()} commands describes each possible spin from a roulette wheel.
+\newpage
+\subsection{Computing Probabilities}
+We can evaluate the probability associated with each sample point using the \texttt{makespace} argument.
+\begin{verbatim}
+> rolldie(1,makespace=TRUE)
+  X1     probs
+1  1 0.1666667
+2  2 0.1666667
+3  3 0.1666667
+4  4 0.1666667
+5  5 0.1666667
+6  6 0.1666667
+>
+> tosscoin(3,makespace=TRUE)
+  toss1 toss2 toss3 probs
+1     H     H     H 0.125
+2     T     H     H 0.125
+3     H     T     H 0.125
+4     T     T     H 0.125
+5     H     H     T 0.125
+6     T     H     T 0.125
+7     H     T     T 0.125
+8     T     T     T 0.125
+\end{verbatim}
+We can use this to compute the probability of certain events. Suppose we wish to compute the probability of a sum of 28 or more from five dice rolls. Importantly, each column of the output has a name. X1, X2 etc. Lets subset the sample space such that the sum of the 5 X variables is greater than or equal to 28. 
+\begin{framed}
+\begin{verbatim}
+subset(rolldie(5,makespace=TRUE), X1 + X2 + X3 + X4 + X5 >= 28)
+X = subset(rolldie(5,makespace=TRUE), X1 + X2 + X3 + X4 + X5 >= 28)
+names(X)
+X$prob
+sum(X$prob)
+\end{verbatim}
+\end{framed}
+\newpage
+\begin{verbatim}
+> X = subset(rolldie(5,makespace=TRUE), X1 + X2 + X3 + X4 + X5 >= 28)
+> names(X)
+[1] "X1"    "X2"    "X3"    "X4"    "X5"    "probs"
+>
+> X$prob
+ [1] 0.0001286008 0.0001286008 0.0001286008 0.0001286008
+ [5] 0.0001286008 0.0001286008 0.0001286008 0.0001286008
+ [9] 0.0001286008 0.0001286008 0.0001286008 0.0001286008
+[13] 0.0001286008 0.0001286008 0.0001286008 0.0001286008
+[17] 0.0001286008 0.0001286008 0.0001286008 0.0001286008
+[21] 0.0001286008
+>
+>
+ sum(X$prob)
+[1] 0.002700617
+\end{verbatim}
+
+%-----------------------------------------------------------------------------------------------------------------------------------%
+\newpage
+\subsection{Cards example}
+Compute the probability of a King or Queen.
+\begin{framed}
+\begin{verbatim}
+S <- cards(,makespace=TRUE)
+subset(S, rank %in% c("Q","K"))
+\end{verbatim}
+\end{framed}
+
+\begin{verbatim}
+> subset(S, rank %in% c("Q","K"))
+   rank    suit      probs
+11    Q    Club 0.01923077
+12    K    Club 0.01923077
+24    Q Diamond 0.01923077
+25    K Diamond 0.01923077
+37    Q   Heart 0.01923077
+38    K   Heart 0.01923077
+50    Q   Spade 0.01923077
+51    K   Spade 0.01923077
+\end{verbatim}
+
+\begin{verbatim}
+> X = subset(S, rank %in% c("Q","K"))
+> sum(X$probs)
+[1] 0.1538462
+\end{verbatim}
+\newpage
