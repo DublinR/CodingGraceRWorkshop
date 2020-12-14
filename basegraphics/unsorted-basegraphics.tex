@@ -1,0 +1,92 @@
+	\chapter { R Graphics}
+	
+	\section{Important Graphical Procedures}
+	\begin{enumerate}
+		\item Histograms
+		\item Box-plots
+		\item Scatter-plots
+	\end{enumerate}
+	
+	
+	%----------------------------------------------------------------%
+	
+	
+	
+			\section Enhancing your scatter plots
+			\subsection{Adding lines}
+			Previously we have used scatter plots to plot bivariate data. They were constructed using the plot() command.
+			Recall that we can use the arguments \texttt{xlim} and \texttt{ylim} to control the vertical and horizontal range of the plots, by specifying a two element vector (min and max) for each.
+			
+			Using the \texttt{abline()} command, we can add lines to our scatter plots. We specify the argument according to the type of line required. A demonstration of three types of line is provided below.
+			Additionally we change the colour of the added lines, by specifying a colour in the \texttt{col} argument. We can also change the line type to one of four possible types, using the \texttt{lty} argument.
+			
+
+			
+			The \texttt{abline()} function can be used to add a regression model line  by supplying as an argument the \texttt{coef()} values for intercept and slope estimates .These estimates can be inputted directly by using both functions in conjunction.
+			
+			\footnotesize \begin{verbatim}
+			Fit1 =lm(y1~x);  coef(Fit1)
+			abline(coef(Fit1))	
+			\end{verbatim}\normalsize
+			
+			\subsection{Adding a title }
+			
+			It is good practice to label your scatterplots properly. You can specify the following argument
+			\begin{itemize}
+				\item	main="Scatterplot Example", 	This provides the plot with a title
+				\item	sub="Subtitle",                 This adds a subtitle
+				\item	xlab="X variable ",				This command labels the x axis 
+				\item   ylab="y variable ",				This command labels the y-axis
+			\end{itemize}
+			We can also add text to each margin, using the \texttt{mtext()} command.  
+			We simply require the number of the side. (1 = bottom, 2=left,3=top,4=right). 
+			We can change the colour using the col argument.
+			\footnotesize \begin{verbatim}
+			plot(x,y,main="Scatterplot Example",   sub="subtitle",    xlab="X variable ", ylab="y variable ")	
+			mtext("Enhanced Scatterplot", side=4,col="red ")
+			\end{verbatim}\normalsize
+			Alternatively , we can also use the command title() to add a title to an existing scatterplot.
+			\footnotesize \begin{verbatim}
+			title(main="Scatterplot Example)	
+			\end{verbatim}\normalsize
+			
+			
+			\section{Combining plots}
+			It is possible to combine two plots. We used the graphical parameters command \texttt{par()} to create an array. 
+			Often we just require two plots side by side or above and below. We simply specify the numbers of rows and columns of this array using the \texttt{mfrow} argument, passed as a vector.
+			
+			\begin{verbatim}
+			par(mfrow=c(1,2))
+			plot(x,y1)			# draw first plot
+			plot(x,y2)			# draw second plot
+			par(mfrow=c(1,1))		# reset to default setting.
+			\end{verbatim}
+			
+			\section{Plot of single vectors}
+			If only one vector is specified i.e. \texttt{plot(x)},  the plot created will simply be a scatter-plot of the values of x against their indices.
+			
+			$plot(x)$
+			Suppose we wish to examine a trend that these points represent. We can connect each covariate using a line.
+			
+			$plot(x, type = "l")$
+			If we wish to have both lines and points, we would input the following code. This is quite useful if we wish to see how a trend develops over time.
+			$plot(x, type = "b")$
+			
+			
+			
+			\section{Exercise}
+			
+			Generate a histogram for data set 'scores', with an accompanying box-and-whisker plot.
+			The colour of the histogram's bar should be yellow. The orientation for the boxplot should be horizontal.
+			
+			\begin{verbatim}
+			scores <-c(23,19,22,22,19,20,25,26,26,19,24,23,17,21,28,26)
+			
+			par(mfrow=c(2,1)) 	# two rows , one column
+			
+			hist(scores,main="Distribution of scores",xlab="scores",col="yellow")
+			
+			boxplot(scores ,horizontal=TRUE)
+			
+			par(mfrow =c(1,1)) 	#reset
+			\end{verbatim}

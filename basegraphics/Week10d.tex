@@ -1,0 +1,331 @@
+\documentclass[pdf,default,slideColor,colorBG]{prosper}
+
+
+
+% define a new font called goodfont
+\def\goodfont{\usefont{T1}{pcr}{b}{n}\fontsize{36pt}{40pt}\selectfont\green}
+\renewcommand{\familydefault}{\rmdefault}
+\renewcommand{\rmdefault}{cmr}
+\parindent 0pt
+\parskip 5pt
+
+
+\begin{document}
+
+
+\begin{slide}{Today's Class}
+
+
+\begin{itemize}
+\item Today's Class will look at some important significance tests
+\item Previously we have seen the test for slope and intercept estimates implemented using the ``summary()" command.
+\item We have also seen a significance test for Pearson's Correlation coefficient.
+\end{itemize}
+
+\end{slide}
+
+\begin{slide}{Today's Class}
+
+\begin{itemize}
+\item Inference tests .
+\begin{itemize}
+\item Kolmogorov Smirnov (K-S) test.
+\item Grubbs Test
+\item Anderson Darling Test
+\item Shapiro Wilk Test
+\item Chi Square test.
+\end{itemize}
+\item I will do the most important test, the ``t - test", in the next class.
+\end{itemize}
+
+\end{slide}
+
+
+%------------------------------------------
+\begin{slide}{K-S test: one sample test}
+
+\begin{itemize}
+\item One sample test - tests whether or not a data set comes from a specified distribution.
+\item The distribution is specified in the argument, by passing as an argument the name of a function associated with that distribution, but not the quantile function.
+\item To specify the normal distribution use either ``prnorm",``dnorm" or ``rnorm", but not ``qnorm".
+\item The null hypothesis is that the data set is normally distributed (or other specified distribution).
+\item The alternative is that it is not normally distributed.
+\item The mean and standard deviation must be specified, to distinguish from the standard normal distribution.
+
+\end{itemize}
+\end{slide}
+%------------------------------------------
+\begin{slide}{K-S test: one sample test}
+Generate two random sets of data values: x and y.
+\begin{verbatim}
+> ks.test(x,"rnorm", mean(x),sd(x))
+
+        One-sample Kolmogorov-Smirnov test
+
+data:  x
+D = 0.143, p-value = 0.938
+alternative hypothesis: two-sided
+
+\end{verbatim}
+
+The p-value is very high, greater than 1\%. We fail to reject the null. The data is indeed normally distributed.
+
+\end{slide}
+%------------------------------------------
+\begin{slide}{K-S test: two sample test}
+
+\begin{itemize}
+\item Two sample test - tests whether or not two data sets come from the same distribution.
+\item The null is that they do come from the same distribution. The alternative is that they don't.
+\end{itemize}
+
+\begin{verbatim}
+> ks.test(x,y)
+
+        Two-sample Kolmogorov-Smirnov test
+
+data:  x and y
+D = 0.25, p-value = 0.869
+alternative hypothesis: two-sided
+\end{verbatim}
+Again a high p-value. We can conclude that they do come from the same distribution.
+\end{slide}
+
+%------------------------------------------
+
+\begin{slide}{Other Inference tests}
+
+The nortest package includes common tests for normality of distribution. Similarly the outliers package contains well known inference tests for outliers.
+
+\begin{itemize}
+\item Grubbs test for outliers [outliers].
+\item Dixon Test for outliers [outliers].
+\item Anderson Darling test for normality [nortest].
+\end{itemize}
+ A boxplot is useful in conjunction with such tests.
+\end{slide}
+
+
+%------------------------------------------
+
+\begin{slide}{Grubbs test}
+\begin{verbatim}
+
+> library(outliers)
+> grubbs.test(x)
+        Grubbs test for one outlier
+data:  x
+G = 2.4180, U = 0.4202, p-value = 0.02405
+alternative hypothesis:
+    lowest value 3.51 is an outlier
+\end{verbatim}
+\end{slide}
+%------------------------------------------
+
+\begin{slide}{Grubbs test: conclusion}
+\begin{itemize}
+\item The null hypothesis is that lowest value (highest in other cases) is not an outlier.
+\item The alternative hypothesis that it is an outlier.
+\item The p-value (0.02405) is less than 5\% (usual value for $\alpha$).
+\item Therefore we reject the null hypothesis.
+\item Lowest value is an outlier.
+\end{itemize}
+\end{slide}
+%------------------------------------------
+\begin{slide}{Anderson-Darling normality test}
+\begin{verbatim}
+> ad.test(x)
+
+        Anderson-Darling normality test
+
+data:  x
+A = 0.3859, p-value = 0.3325
+\end{verbatim}
+\end{slide}
+
+%------------------------------------------
+\begin{slide}{The Shapiro Wilk normality test}
+The Shapiro Wilk is another commonly used procedure used to test normality.
+Again, the null hypothesis is that the data set is normally distributed.
+\begin{verbatim}
+> x=rnorm(40)
+> shapiro.test(x)
+
+        Shapiro-Wilk normality test
+
+data:  x
+W = 0.9601, p-value = 0.1689
+\end{verbatim}
+Here, the P-value is greater than 1\%. We fail to reject the null hypothesis.
+\end{slide}
+%------------------------------------------
+
+\begin{slide}{A-D test: conclusion}
+\begin{itemize}
+\item The null hypothesis is that data set is normally distributed.
+\item The alternative hypothesis is that it is not normally distributed.
+\item The p-value (0.3325) is greater than than 1\%.
+\item Therefore we fail to reject the null hypothesis.
+\end{itemize}
+\end{slide}
+
+%---------------------------------------------------------------------
+\begin{slide}{Chi Square test}
+
+Chi Square test are used when one wants to check whether a sample comes from some type of population,
+or when one wants to check that two samples are from the same population.
+
+\begin{itemize}
+\item Goodness of fit tests.
+\item Testing for association in contingency tables.
+\end{itemize}
+
+The $R$ command for chi squared tests is chisq.test().
+\end{slide}
+
+
+%---------------------------------------------------------------------
+\begin{slide}{Chi-Square test}
+\begin{itemize}
+\item Goodness of fit test is used to test whether a sample comes from a specified distribution.
+\item The sample is univariate.
+\item $R$ assumes a null hypothesis that each outcome is equally likely ( uniformly distributed).
+\item chisq.test(x)
+\item Can specify the distribution of expected values under the null hypothesis for other cases using the `p' parameter.
+\item chisq.test(x,p)
+\end{itemize}
+\end{slide}
+%---------------------------------------------------------------------
+\begin{slide}{Chi Square}
+\begin{itemize}
+\item Example: In an experiment of 100 trials, the number of times that each of the four possible outcomes
+occured was recorded.\\
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+  Event & A & B & C & D \\\hline
+  Outcomes & 59 & 20 & 11 & 10 \\
+  \hline
+\end{tabular}
+
+\item It was presupposed that each outcome was equally likely \\(i.e. The null hypothesis is $H_{0} : P_{A} = P_{B} = P_{C} = P_{D}$.)\\
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+  Event & A & B & C & D \\\hline
+  Expected & 25 & 25 & 25 & 25 \\
+  \hline
+\end{tabular}
+\item Under the null hypothesis, any deviations from the expected values are attributable to random error.
+
+\end{itemize}
+\end{slide}
+%---------------------------------------------------------------------
+\begin{slide}{Chi Square tests}
+
+
+\begin{verbatim}
+> chisq.test(c(59,20,11,10))
+
+Chi-squared test for given probabilities
+
+data:  c(59, 20, 11, 10)
+X-squared = 64.08, df = 3,
+p-value = 7.891e-14
+\end{verbatim}
+
+The p-value indicates that we should reject the hypothesis that there is an equal likely outcomes.
+
+\end{slide}
+%---------------------------------------------------------------------
+\begin{slide}{Chi Square test}
+\begin{itemize}
+\item If you do not want equal proportions, you need to give a set of
+proportions for each cell (using the `p' parameter).
+\item Genetic theory predicts that certain fruit flies
+will fall into four categories in proportions 9:3:3:1.
+\item Data showed counts of 59, 20, 11 and 10.
+\end{itemize}
+\begin{verbatim}
+> chisq.test(c(59,20,11,10),
+ p=c(9/16,3/16,3/16,1/16))
+
+Chi-squared test for given probabilities
+
+data:  c(59, 20, 11, 10)
+X-squared = 5.6711, df = 3, p-value = 0.1288
+\end{verbatim}
+\end{slide}
+\begin{slide}{Chi Square test}
+\begin{itemize}
+\item We would not reject the theoretical hypothesis with these data.
+\item Deviations from expected values are attributed to random error.
+\end{itemize}
+\end{slide}
+
+%--------------------------------------------------------------------
+\begin{slide}{Contingency Tables}
+
+\begin{itemize}
+\item We also use the Chi square test for testing association in two way
+contingency tables.
+\item Contingency tables: Outcomes are categorized into rows and columns.
+\item This can be used to test the differences between several groups.
+\item The null hypothesis is that there is not differences between the groups.
+\item The alternative is that there is difference between the groups.
+\item Independence or association?
+\end{itemize}
+
+\end{slide}
+
+
+%--------------------------------------------------------------------
+
+\begin{slide}{Chi Square: Contingency table}
+
+Example: Test the association between smoking and exercise.
+
+\begin{verbatim}
+> library(MASS)     # load the MASS package
+> tbl = table(survey$Smoke, survey$Exer)
+> tbl               # the contingency table
+
+        Freq None Some
+  Heavy    7    1    3
+  Never   87   18   84
+  Occas   12    3    4
+  Regul    9    1    7
+
+
+\end{verbatim}
+\end{slide}
+
+\begin{slide}{Chi Square: Contingency table}
+Test the hypothesis whether the students smoking habit is independent of their exercise level at .05 significance level.
+\begin{verbatim}
+> chisq.test(tbl)
+
+Pearson's Chi-squared test
+
+data:  tbl
+X-squared = 5.4885, df = 6, p-value = 0.4828
+
+Warning message:
+In chisq.test(tbl) : Chi-squared
+approximation may be incorrect
+
+\end{verbatim}
+\end{slide}
+
+
+
+%---------------------------------------------------------------------
+\begin{slide}{Chi Square: Contingency table}
+\begin{itemize}
+\item We have applied the chisq.test() function to the contingency table tbl, and found the p-value to be 0.4828.
+\item We fail to reject the null hypothesis.
+
+
+\item The warning message found in the solution above is due to the small cell values in the contingency table. \item To avoid such warning, we could combine the second and third columns of tbl.
+\end{itemize}
+\end{slide}
+\end{document}
+

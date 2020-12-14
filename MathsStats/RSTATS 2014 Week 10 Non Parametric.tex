@@ -1,0 +1,155 @@
+\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{fancyhdr}
+%\usepackage{listings}
+\usepackage{framed}
+\usepackage{graphicx}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 2011 13:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{MS4024} \rhead{Mr. Kevin O'Brien}
+\chead{Numerical Computation}
+%\input{tcilatex}
+\begin{document}
+
+\tableofcontents
+<p>
+
+\section{Non-Parametric Inference Procedures}
+Non-parametric inference procedures were developed to be used in cases when the distribution of the variable of interest in the population is known to be not-normal, or not known at all, and furthermore the distributional assumptions relevant to parametric statistical inference are undetermined (hence the name nonparametric).
+
+% MA4605 Class
+Nonparametric tests are also referred to as \textbf{\emph{distribution-free}} tests. These tests have the obvious advantage of not requiring the assumption of normality or the assumption of homogeneity of variance. They compare medians rather than means and, as a result, if the data have one or two outliers, their influence is negated.
+
+Parametric tests are preferred because, in general, for the same number of observations, they are more likely to lead to the rejection of a false hull hypothesis. That is, they have more power. This greater power stems from the fact that if the data have been collected at an interval or ratio level, information is lost in the conversion to ranked data (i.e., merely ordering the data from the lowest to the highest value).
+
+
+%\begin{tabular}{|c|c|c|c|c|c|c|c|}
+%\hline  & Country & Points & GD &  & Country & Points & GD \\ 
+%\hline 1 & Paraguay & 5 & +2 & 1 & Spain & 6 &  \\ 
+%\hline 2 & Slovakia & 4 & -1 & 2 & Chile & 6 &  \\ 
+%\hline 3 & New Zealand & 3 & 0 & 3 & Switzerland & 4 &  \\ 
+%\hline 4 & Italy & 2 & 1 & 4 & Honduras & 1 &  \\ 
+%\hline 
+%\end{tabular} 
+#### {Non-Parametric Procedures}
+\begin{itemize}
+* Kolmogorov- Smirnov Test (``ks.test()``)
+* Wilcoxon test (``wilcox.test()``)
+\end{itemize}
+
+
+#### {Kolmogorov-Smirnov Test}
+
+For a single sample of data, the Kolmogorov-Smirnov test is used to test whether or not the sample of data is consistent with a specified distribution function. (Not part of this course)
+When there are two samples of data, it is used to test whether or not these two samples may reasonably be assumed to come from the same distribution.
+The null and alternative hypotheses are as follows:\\
+\emph{
+$H_0$: The two data sets are from the same distribution\\
+$H_1$: The data sets are not from the same distribution\\
+}
+
+\noindent Consider two sample data sets X and Y that are both normally distributed with similar means and variances.
+<pre>
+<code>
+X=rnorm(16,mean=20,sd=5)
+Y=rnorm(18,mean=21,sd=4)
+ks.test(X,Y)
+<\code>
+</pre>
+<code>
+> ks.test(X,Y)
+        Two-sample Kolmogorov-Smirnov test
+
+data:  X and Y
+D = 0.2153, p-value = 0.7348
+alternative hypothesis: two-sided
+<\code>
+
+\noindent \textbf{Remark:} It doesn’t not suffice that both datasets are from the same distribution. They must have the same value for the defining parameters. Consider the case of data sets; X and Z. Both are normally distributed, but with different mean values.
+<pre>
+<code>
+> X=rnorm(16,mean=20,sd=5)
+> Z=rnorm(16,mean=14,sd=5)
+> ks.test(X,Z)
+
+        Two-sample Kolmogorov-Smirnov test
+
+data:  X and Z
+D = 0.5625, p-value = 0.0112
+alternative hypothesis: two-sided
+<\code>
+</pre>
+
+#### {Wilcoxon Mann-Whitney Test}
+The Wilcoxon Mann-Whitney Test is one of the most powerful of the nonparametric tests for comparing two populations. It is used to test the null hypothesis that two populations have identical distribution functions against the alternative hypothesis that the two distribution functions differ only with respect to \textbf{\emph{location}} (i.e. median), if at all.
+
+The Wilcoxon Mann-Whitney test does not require the assumption that the differences between the two samples are normally distributed.
+In many applications, the Wilcoxon Mann-Whitney Test is used in place of the two sample t-test when the normality assumption is questionable.
+This test can also be applied when the observations in a sample of data are ranks, that is, ordinal data rather than direct measurements.
+
+\noindent \textbf{Remark} \textit{- Non-parametric procedures often give warning errors when tied values occur. In this module you may disregard these.}
+
+
+
+#### {Example}
+In the data frame column \textit{\textbf{mpg}} of the \textit{\textbf{mtcars}} data set , there are gas mileage data of various 1974 U.S. automobiles.
+
+<code>
+> mtcars$mpg 
+ [1] 21.0 21.0 22.8 21.4 18.7 ...
+<\code> 
+Meanwhile, another data column in mtcars, named am, indicates the transmission type of the automobile model (0 = automatic, 1 = manual). In other words, it is the differentiating factor of the transmission type.
+<code>
+> mtcars$am 
+ [1] 1 1 1 0 0 0 0 0 ...
+<\code> 
+In particular, the gas mileage data for manual and automatic transmissions are independent.
+
+\textbf{Exercise}
+Without assuming the data to have normal distribution, decide at .05 significance level if the gas mileage data of manual and automatic transmissions in mtcars have identical data distribution.
+
+The null hypothesis is that the gas mileage data of manual and automatic transmissions are identical populations. To test the hypothesis, we apply the ``wilcox.test} function to compare the independent samples. 
+
+<code>
+> wilcox.test(mpg ~ am, data=mtcars) 
+ 
+        Wilcoxon rank sum test with continuity correction 
+ 
+data:  mpg by am 
+W = 42, p-value = 0.001871 
+alternative hypothesis: true location shift is not equal to 0 
+ 
+..............
+<\code>
+As the p-value turns out to be 0.001817, and is less than the .05 significance level, we reject the null hypothesis.
+At .05 significance level, we conclude that the gas mileage data of manual and automatic transmissions in mtcar are nonidentical populations.
+\subsubsection{Boxplot to accompany Wilcoxon Test Analysis}
+<pre>
+<code>
+boxplot(mpg~am,data=mtcars,horizontal=TRUE,
+    col=c("lightblue","lightpink"))
+title("Miles Per Gallon by Transmission Type")
+<\code>
+</pre>
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{./mpgboxplot}
+\label{fig:mpgboxplot}
+\end{figure}
+
+\end{document}

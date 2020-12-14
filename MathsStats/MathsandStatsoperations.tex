@@ -1,0 +1,573 @@
+\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{fancyhdr}
+%\usepackage{listings}
+\usepackage{framed}
+\usepackage{graphicx}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 2011 13:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{Dublin ``R}} \rhead{10 April 2013}
+\chead{Introduction to ``R} (Module A)}
+%\input{tcilatex}
+
+
+% http://www.norusis.com/pdf/SPC_v13.pdf
+\begin{document}
+
+\tableofcontents
+\section{Mathematical and Statistical Commands}
+%------------------------------------------------------%
+1.8 Basic Maths Operations
+The most commonly used mathematical operators are all supported by R. Here are a few
+examples:
+5 + 3 * 5 # Note the order of operations.
+log (10) # Natural logarithm with base e=2.718282
+log(8,2) # Log to the base 2
+4^2 # 4 raised to the second power
+7/2 # Division
+factorial(4) #Factorial of Four
+sqrt (25) # Square root
+abs (3-7) # Absolute value of 3-7
+pi # The mysterious number \\\
+exp(2) # exponential function
+
+%------------------------------------------------------%
+R can be used for many mathematical operations, including
+* Set Theory
+* Trigonometry
+* Complex Numbers
+* Binomial Coecients
+We will not go into any of these in great detail today.
+%---------------------------------------------------------------------------------------%
+
+#### {Basic Mathematical Calculations}
+Basic operations
+addition  +      
+subtraction    	-
+division   /     
+multiplication   $\ast$
+power     
+
+
+#### *{Mathematical functions}
+\begin{itemize}
+* abs()       - Absolute value 
+* exp()	   - The exponential
+* log(,b)     - logarithm to the base "b". The default setting is the natural log.
+\end{itemize}
+\subsubsection*{trigonometrics functions}
+
+pi            -  to 6 decimal places.
+
+tan() ,cos(), sin()   - Common trigonometric functions
+
+ 
+ Precision
+ floor() 	  The floor function 		x
+ ceiling()    The ceiling function       x
+
+\begin{itemize} 
+* round()      Round to the nearest integer
+* round( ,2)  Round to two decimal places
+\end{itemize} 
+ 
+\begin{itemize}
+* Exercise:  write $\pi$   with 4 decimal places.  
+\end{itemize}
+
+ 
+%=====================================================================================================================%
+<pre>
+<code>
+	Complex numbers
+	x = -1 ;  sqrt(x)  ;  str(x) ; 	# variable is defined as numeric, not complex.
+	y = -1 +0i ;  sqrt(y)  ;  str(y) ;    	#variable is defined as complex .
+	Trigonometric  Functions
+	pi				#returns the value of pi to six decimal places
+	sin(3.5*pi)			# correct answer is -1
+	cos(3.5*pi)			# correct answer is zero
+<\code>
+</pre>
+%=====================================================================================================================%
+
+#### {Basic Calculations}
+<code>
+We will briefly look at how R accomplished basic calculations.
+
+
+x*y			# multiplication
+x/z			# division
+
+x^2			# powers
+sqrt(x)		# square root
+
+exp(z)		 # exponentials   
+log(y)		 # logarithms
+
+pi             # returns the value of pi to six decimal places
+
+<\code>
+
+Complex numbers , Trigonometric  Functions and Binomial Coefficients
+
+
+Binomial coefficients are computed using the choose() command.
+
+
+
+<pre>
+<code>
+J = -1 ;  sqrt(J)  ;  str(J) ;      # variable is defined as numeric, not complex.
+K = -1 +0i ;  sqrt(K)  ;  str(K) ;  # variable is defined as complex .
+
+
+<\code>
+</pre>
+% sin(3.5*pi)             # correct answer is -1
+% cos(3.5*pi)             # correct answer is zero
+% choose(6,2)             # From 6 how many ways of choosing items.
+
+
+%=========================================================================================================== %
+
+
+
+
+
+
+#### {Useful Mathematical Operators}
+
+\begin{itemize}
+	* Factorials
+	$n! = n \times n-1 \times \ldots \times 2 \times 1 $
+	* Binomial Coefficients
+	\[ { n \choose k }  = \frac{n!}{(n-k)! \times k!}\]
+\end{itemize}
+The ``R} commands are ``factorial()`` and ``choose()`` respectively.
+
+Matrices and Linear Algebra
+Factorials and permutations
+\textbf{The Choose Function}
+
+\[ { 6 \choose 3} =\frac{654}{321}= 20\]
+
+
+<pre>
+<code>
+> factorial(6)
+[1] 720
+> choose(6,3)
+[1] 20
+> 
+<\code>
+</pre>
+
+%--------------------%
+#### {Mathematical Precision Functions}
+Three commonly used mathematical precision functions are:
+\begin{itemize}
+	* Absolute Value Function $| x |$ - distance on the number line from zero.
+	* Ceiling Function $\lceil x \rceil$ - rounds a value up to the nearest integer.
+	* Floor Function  $\lfloor x \rfloor $ - rounds a value down to the nearest integer.
+\end{itemize}
+\begin{itemize}
+	* ``floor()`` Floor function of x, $\lfloor x \rfloor$.
+	* ``ceiling()`` Ceiling function of x, $\lceil x \rceil$.
+	* ``round()`` Rounding a number to a specified number of decimal places.
+\end{itemize}
+%--------------------------------------------%
+
+<pre>
+	<code>
+	pi
+	floor(pi)
+	ceiling(pi)
+	<\code>
+</pre>
+<code>
+> pi
+[1] 3.141593
+>
+> floor(pi)
+[1] 3
+>
+> ceiling(pi)
+[1] 4
+>
+<\code>
+We can also round numbers to a specified number of decimal places, using the ``round()`` command.
+<pre>
+	<code>
+	round(pi,3)
+	round(pi,2)
+	<\code>
+</pre>
+<code>
+> round(pi,3)
+[1] 3.142
+> round(pi,2)
+[1] 3.14
+<\code>
+
+
+#### {Truncation and discretization}
+
+The functions "floor" and "ceiling" can be used to discretize outcomes. In this instance we should use "ceiling".
+\begin{itemize}
+* ``ceiling(X)}
+* ``floor(X)}
+* ``round(X,2)}
+\end{itemize}
+X=ceiling(X)
+
+
+
+The expected value is 3.5.
+
+The variance from first principles we can calculate the variance using
+
+#### {Managing Precision}
+
+\begin{itemize}
+	* ``floor()`` Floor function of x, $\lfloor x \rfloor$.
+	* ``ceiling()`` Ceiling function of x, $\lceil x \rceil$.
+	* ``round()`` Rounding a number to a specified number of decimal places.
+\end{itemize}
+
+%--------------------%
+#### {Sequences}
+
+
+#### {Sampling}
+
+Types of Sampling
+\begin{itemize}
+	* Sampling With Replacement
+	* Sampling Without Replacement
+\end{itemize}
+
+The R command we use to perform sampling is sample().
+
+All elements in either X or Y
+
+<pre>
+	<code>
+	
+	
+	> X=c(4,5)
+	>
+	> sample(X,2)
+	[1] 4 5
+	>
+	> sample(X,1);sample(X,1);sample(X,1);
+	[1] 4
+	[1] 5
+	[1] 5
+	
+	<\code>
+</pre>
+When x is a single value, the function sample() behaves differently.
+
+<pre>
+	<code>
+	
+	> Y=c(4)
+	>
+	> sample(Y,1)
+	[1] 2
+	> 
+	> sample(Y,2)
+	[1] 3 1
+	<\code>
+</pre>
+
+
+%-----------------------------------------------------%
+Generate a quick pick : pick 6 numbers from 1 to 42. ( Same number cant be selected more than once)
+
+Generate five values from a die ( Same number can be selected more than once).
+
+<code>
+> Lotto = 1:42
+> Dice = 1:6
+> 
+> sample(Lotto,6)
+[1] 38 25 34 30 22 29
+> 
+> sample(Dice,5,replace = TRUE)
+[1] 4 3 2 3 3
+>
+<\code>
+%---------------------------------------------------------------------------%
+\section{Sampling}
+# 
+# The R command we use to perform sampling is sample().
+# 
+# All elements in either X or Y
+
+
+
+<code>
+> X=c(4,5)
+>
+> sample(X,2)
+[1] 4 5
+>
+> sample(X,1);sample(X,1);sample(X,1);
+[1] 4
+[1] 5
+[1] 5
+
+When x is a single value, the function sample() behaves differently.
+
+> Y=c(4)
+>
+> sample(Y,1)
+[1] 2
+> 
+> sample(Y,2)
+[1] 3 1
+
+<\code>
+
+\begin{itemize}
+	* Sampling With Replacement
+	* Sampling Without Replacement
+\end{itemize}
+%-----------------------------------------------------%
+Generate a quick pick : pick 6 numbers from 1 to 42. ( Same number cant be selected more than once)
+
+Generate five values from a die ( Same number can be selected more than once).
+
+<code>
+> Lotto = 1:42
+> Dice = 1:6
+> 
+> sample(Lotto,6)
+[1] 38 25 34 30 22 29
+> 
+> sample(Dice,5,replace = TRUE)
+[1] 4 3 2 3 3
+>
+<\code>
+<p>
+#### {Useful Statistical Commands}
+\begin{itemize}
+	* ``mean()`` mean of a data set
+	* ``median()`` median of a data set
+	* ``length()`` Sample Size
+	* ``IQR()`` Inter-Quartile Range of a sample
+	* ``var()`` Variance of a sample
+	* ``sd()`` Standard Deviation  of a sample
+	* ``range()`` Range of a data set
+	* ``fivenum()`` Tukey's five number summary
+\end{itemize}
+
+#### {Set Theory Operations}
+\begin{itemize}
+	* ``union()`` union of sets A and B
+	* ``intersect()`` intersection of sets A and B
+	* ``setdiff()`` set difference A-B (order is important)
+\end{itemize}
+
+<pre>
+	<code>
+	x = 5:10
+	y = 8:12
+	union(x,y)
+	intersect(x,y)
+	setdiff(x,y)
+	setdiff(y,x)
+	<\code>
+</pre>
+%=============================================================================%
+
+
+% R Class : Set Theory and Sampling
+
+%# Sampling
+%# - Sampling With Replacement
+%# - Sampling Without Replacement
+
+%=============================================================================%
+#### {Set Theory with ``R} }
+	
+	\begin{itemize}
+		* Union
+		* Intersection
+		* Set Diffference
+	\end{itemize}
+	<pre>
+		<code>
+		X = 5:10
+		Y = 8:12
+		<\code>
+	</pre>
+
+	<pre>
+		<code>
+		
+		union(X,Y)
+		# [1]  5  6  7  8  9 10 11 12
+		intersect(X,Y)
+		# [1]  8  9 10
+		
+		<\code>
+	</pre>
+%=============================================================================%
+
+
+\section{R Class : Set Theory and Sampling}
+
+%=============================================================================%
+%# Sampling
+%# - Sampling With Replacement
+%# - Sampling Without Replacement
+
+%=============================================================================%
+\begin{frame}[fragile] 
+	\frametitle{Set Theory with ``R} }
+	
+	\begin{itemize}
+		* Union
+		* Intersection
+		* Set Diffference
+	\end{itemize}
+	<pre>
+		<code>
+		X = 5:10
+		Y = 8:12
+		<\code>
+	</pre>
+\end{frame}
+%=============================================================================%
+\begin{frame}[fragile] 
+	\frametitle{Set Theory with ``R} }
+	<pre>
+		<code>
+		
+		union(X,Y)
+		# [1]  5  6  7  8  9 10 11 12
+		intersect(X,Y)
+		# [1]  8  9 10
+		
+		<\code>
+	</pre>
+\end{frame}
+%=============================================================================%
+\end{document}
+
+#### {Set Theory Operations}
+\begin{itemize}
+	* ``union()`` union of sets A and B
+	* ``intersect()`` intersection of sets A and B
+	* ``setdiff()`` set difference A-B (order is important)
+\end{itemize}
+
+<pre>
+	<code>
+	x = 5:10
+	y = 8:12
+	union(x,y)
+	intersect(x,y)
+	setdiff(x,y)
+	setdiff(y,x)
+	<\code>
+</pre>
+%---------------------------------------------------------%
+#### {The Birthday function}
+The R command ``pbirthday()`` computes the probability of a coincidence of a number of randomly chosen people sharing a birthday, given that there are n people to choose from.
+Suppose there are four people in a room. The probability of two of them sharing a birthday is computed as about 1.6 \%
+<code>
+> pbirthday(4)
+[1] 0.01635591
+<\code>
+
+How many people do you need for a greater than 50\% chance of a shared birthday? (choose from 23,43,63,83)?
+%---------------------------%
+
+
+
+#### {Other Mathematical Functions}
+%-----------------------------------------------------------------------%
+Complex numbers
+<pre>
+	<code>
+	x = -1 ;  sqrt(x)  ;  str(x) ; 	# variable is defined as numeric, not complex.
+y = -1 +0i ;  sqrt(y)  ;  str(y) ;    	#variable is defined as complex .
+
+<\code>
+</pre>
+%-----------------------------------------------------------------------%
+Trigonometric  Functions
+
+<pre>
+<code>
+pi				#returns the value of pi to six decimal places
+sin(3.5*pi)			# correct answer is -1
+cos(3.5*pi)			# correct answer is zero
+
+<\code>
+</pre>
+%-----------------------------------------------------------------------%
+
+%============================================================================================================== %
+#### {Generating Random Numbers}
+R is very useful for performing simulations.
+
+<pre>
+<code>
+#generate a random number between 0 and 1
+runif(1)						
+#generate four random numbers between 0 and 6				 
+runif(4,min=0,max=6) 			  
+<\code>
+</pre>
+Random numbers can be discretized using the "floor()" or "Ceiling()" functions. Suppose we wish to simulate four throws of a dice.
+
+X = ceiling (runif(4,min=0,max=6))
+Y = floor (runif(4,min=1,max=7))
+X+Y
+
+%================================================================================================================= %
+#### {Section 2: Basic Mathematical operations}
+Trigonometric and power functions
+
+Integration
+
+<pre>
+<code>
+integrate(sin, lower =0, upper = 3)
+integrate(dnorm, -1.96, 1.96)					 # standard normal distribution
+integrate(dnorm, 0, Inf)							   # standard normal distribution
+<\code>
+</pre>
+Complex numbers 
+
+``R} has a small number of built-in constants.
+\begin{description}
+	\item[``LETTERS}]: the 26 upper-case letters of the Roman alphabet;
+
+	\item[``letters}]: the 26 lower-case letters of the Roman alphabet;
+
+	\item[``month.abb}]: the three-letter abbreviations for the English month names;
+
+	\item[``month.name}]: the English names for the months of the year;
+	
+\item[``pi}]: the ratio of the circumference of a circle to its diameter.
+

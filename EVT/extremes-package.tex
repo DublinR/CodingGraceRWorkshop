@@ -1,0 +1,75 @@
+\documentclass[]{article}
+\usepackage{framed}
+\begin{document}
+\tableofcontents
+
+\section{Analysis of extreme values using \texttt{R} and \texttt{extRemes} }
+
+\subsection{Contributed packages}
+\begin{framed}
+\begin{verbatim}
+
+# Install some useful packages. Need only do once.
+install.packages( c("fields", # A spatial stats package.
+"evd", # An EVA package.
+"evdbayes", # Bayesian EVA package.
+"ismev", # Another EVA package.
+"maps", # For adding maps to plots.
+"SpatialExtremes")
+
+# Now load them into R. Must do for each new session.
+library( fields)
+library( evd)
+library( evdbayes)
+library( ismev)
+library( SpatialExtremes)
+\end{verbatim}
+\end{framed}
+
+\subsection{Background on Extreme Value Analysis (EVA)}
+%Motivation
+\textbf{Sums, averages and proportions (Normality)}
+\begin{itemize}
+\item Central Limit Theorem (CLT)
+\item Limiting distribution of binomial distribution
+\end{itemize}
+\textbf{Extremes}
+\begin{itemize}
+\item Normal distribution inappropriate
+\item Bulk of data may be misleading
+\item Extremes are often rare, so often not enough data
+\end{itemize}
+
+\newpage
+\section{Generalized Extreme Value (GEV) distribution}
+The generalized extreme value (GEV) distribution is a family of continuous probability distributions developed within extreme value theory to combine the Gumbel, Fréchet and Weibull families also known as type I, II and III extreme value distributions. 
+
+By the extreme value theorem the GEV distribution is the only possible limit distribution of properly normalized maxima of a sequence of independent and identically distributed random variables. 
+
+\begin{itemize}
+\item Gumbel
+\item Fréchet
+\item Weibull
+\end{itemize}
+The Gumbel distribution is used to model the distribution of the maximum (or the minimum) of a number of samples of various distributions. Such a distribution might be used to represent the distribution of the maximum level of a river in a particular year if there was a list of maximum values for the past ten years. It is useful in predicting the chance that an extreme earthquake, flood or other natural disaster will occur.
+ 
+
+
+Distribution fitting with confidence band of a cumulative Gumbel distribution to maximum one-day October rainfalls.
+Gumbel has shown that the maximum value (or last order statistic) in a sample of a random variable following an exponential distribution approaches the Gumbel distribution closer with increasing sample size.[4]
+In hydrology, therefore, the Gumbel distribution is used to analyze such variables as monthly and annual maximum values of daily rainfall and river discharge volumes,[5] and also to describe droughts.[6]
+
+Gumbel has also shown that the estimator r / (n+1) for the probability of an event - where r is the rank number of the observed value in the data series and n is the total number of observations - is an unbiased estimator of the cumulative probability around the mode of the distribution. Therefore, this estimator is often used as a plotting position.
+
+The blue picture illustrates an example of fitting the Gumbel distribution to ranked maximum one-day October rainfalls showing also the 90\% confidence band based on the binomial distribution. The rainfall data are represented by the plotting position r / (n+1) as part of the cumulative frequency analysis.
+
+In number theory, the Gumbel distribution approximates the number of terms in a partition of an integer[7] as well as the trend-adjusted sizes of record prime gaps and record gaps between prime constellations.[8]
+
+ 
+\textbf{Light tail}
+\begin{itemize}
+\item Domain of attraction for many common distributions
+(e.g., normal, lognormal, exponential, gamma)
+\end{itemize}
+
+\end{document}

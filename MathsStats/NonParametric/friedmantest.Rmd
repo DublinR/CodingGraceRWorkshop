@@ -1,0 +1,15 @@
+Friedman Test
+========================================================
+
+
+
+```{r fig.width=7, fig.height=6}
+wb <- aggregate(warpbreaks$breaks,
+                by = list(w = warpbreaks$wool,
+                          t = warpbreaks$tension),
+                FUN = mean)
+wb
+friedman.test(wb$x, wb$w, wb$t)
+friedman.test(x ~ w | t, data = wb)
+```
+

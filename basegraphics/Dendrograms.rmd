@@ -1,0 +1,10 @@
+Hierarchical Dendrogram
+# install.packages("ggdendro")
+library(ggplot2)
+library(ggdendro)
+theme_set(theme_bw())
+
+hc <- hclust(dist(USArrests), "ave")  # hierarchical clustering
+
+# plot
+ggdendrogram(hc, rotate = TRUE, size = 2)

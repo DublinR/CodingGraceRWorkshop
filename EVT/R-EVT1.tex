@@ -1,0 +1,123 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{epsfig}
+\usepackage{subfigure}
+%\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{amsthm, amsmath}
+%\usepackage[dvips]{graphicx}
+\usepackage{natbib}
+\bibliographystyle{chicago}
+\usepackage{vmargin}
+% left top textwidth textheight headheight
+% headsep footheight footskip
+\setmargins{3.0cm}{2.5cm}{15.5 cm}{22cm}{0.5cm}{0cm}{1cm}{1cm}
+\renewcommand{\baselinestretch}{1.2}
+\pagenumbering{arabic}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{ill}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{axiom}{Axiom}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{notation}{Notation}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\renewcommand{\thenotation}{}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\title{Research notes: Extreme Value Theory}
+\author{ } \date{ }
+
+
+\begin{document}
+\author{Kevin O'Brien}
+\title{R for Extreme Value Theory}
+
+% http://www.floodrisk.org.uk/index.php?option=com_content&view=article&id=146&catid=0&Itemid=41
+
+
+
+
+\newpage
+\section{using  \texttt{R}  to study Extreme Value Theory}
+The statistical programming environment \texttt{R} supports many of the most frequently used EVT analyses.
+
+\subsection{ Probability distributions supported by \texttt{R}}
+
+\begin{itemize}
+\item The Gumbell dsitribution
+\item Generalized pareto distribution (GPD)
+\end{itemize}
+
+
+
+
+
+%----------------------------------------------------------------------------------------%
+\section{The GWSDAT \texttt{R} package}
+%--http://meetingorganizer.copernicus.org/EGU2011/EGU2011-8678.pdf
+The GroundWater Spatio-Temporal Data Analysis Tool, or GWSDAT, has been
+developed by Shell Global Solutions to facilitate the analysis and reporting of trends in groundwater monitoring
+data. GWSDAT automatically uploads data from MS Excel to generate a user- friendly interface, which allows
+users to scroll through the groundwater monitoring history of a site, exporting trend plots and graphics as required.
+The underlying statistical calculations and graphical output are generated using the open- source statistical
+program  \texttt{R} (www.r-project.org)
+\section{Analyzing Geospatial data}
+Methods for visualising and handling Spatial data include the \texttt{R} packages \textbf{\emph{deldir}},  \textbf{\emph{sp}},  \textbf{\emph{splancs}} and \textbf{\emph{ maptools}}.
+
+%----------------------------------------------------------------------------------------%
+
+
+\begin{itemize}
+
+\item \textbf{\emph{RHydro}}
+ is an experimental package providing dedicated classes and methods for hydrological modelling and data analysis.
+
+\item \textbf{\emph{hydroTSM}} - contains functions for
+management, analysis, interpolation and plotting of
+ time series used in hydrology and related environmental sciences.
+ In particular, this package is highly oriented to hydrological modelling tasks.
+ The focus of this package has been put in providing a collection of tools useful for the daily work of hydrologists.
+
+
+\item \textbf{\emph{sp}} - A package that provides classes and
+methods for spatial data. The classes document where the spatial
+location information resides, for 2D or 3D data. Utility functions
+are provided, e.g. for plotting data as maps, spatial selection,
+as well as methods for retrieving coordinates, for subsetting,
+print, summary, etc.
+
+\item \textbf{\emph{maptools}} - Set of tools for manipulating and
+reading geographic data, in particular ESRI shapefiles; C code
+used from shapelib. It includes binary access to GSHHS shoreline
+files. The package also provides interface wrappers for exchanging
+spatial objects with packages such as PBSmapping, spatstat, maps,
+RArcInfo, Stata tmap, WinBUGS, Mondrian, and others.
+
+\item \textbf{\emph{evd}} - this package extends simulation,
+distribution, quantile and density functions to univariate and
+multivariate parametric extreme value distributions, and provides
+fitting functions which calculate maximum likelihood estimates for
+univariate and bivariate maxima models, and for univariate and
+bivariate threshold models.
+
+
+
+\end{itemize}
+
+
+
+%\chapter{Geospatial data}
+\section{Contour Lines}
+A contour line (also isoline or isarithm) of a function of two variables is a curve along which the function has a constant value.
+In cartography, a contour line (often just called a "contour") joins points of equal elevation (height) above a given level, such as mean sea level.
+ A contour map is a map illustrated with contour lines, for example a topographic map, which thus shows valleys and hills, and the steepness of slopes.
+The contour interval of a contour map is the difference in elevation between successive contour lines.
+
+\end{document}

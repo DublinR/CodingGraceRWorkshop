@@ -1,0 +1,47 @@
+\section{Customizing Startup}
+
+You can customize the R environment through a site initialization file or a directory initialization file. 
+R will always source the Rprofile.site file first. 
+On Windows, the file is in the C:\Program Files\R\R-n.n.n\etc directory. You can also place a .Rprofile file in any directory that you are going to run R from or in the user home directory. 
+
+At startup, R will source the Rprofile.site file. 
+It will then look for a .Rprofile file to source in the current working directory. 
+If it doesn't find it, it will look for one in the user's home directory. There are two special functions you can place in these files. .First( ) will be run at the start of the R session and .Last( ) will be run at the end of the session. 
+
+<code>
+# Sample Rprofile.site file 
+
+# Things you might want to change
+ # options(papersize="a4") 
+# options(editor="notepad") 
+# options(pager="internal")
+
+ # R interactive prompt 
+# options(prompt="> ")
+ # options(continue="+ ") 
+
+# to prefer Compiled HTML 
+help options(chmhelp=TRUE) 
+# to prefer HTML help 
+# options(htmlhelp=TRUE) 
+
+# General options 
+options(tab.width = 2) 
+options(width = 130)
+ options(graphics.record=TRUE) 
+
+.First <- function(){
+  library(Hmisc)
+  library(R2HTML)
+  cat("\nWelcome at", date(), "\n") 
+}
+
+ .Last <- function(){ 
+ cat("\nGoodbye at ", date(), "\n")
+ }
+
+<\code>
+
+%--------------------------------------------------%
+
+\end{document}

@@ -1,0 +1,54 @@
+
+\section{Scatterplots (with \texttt{locator} and \texttt{identify})}
+\noindent Using two variables in the \texttt{plot()} function will result in scatter-plot, a graph with the first argument as the variable plotted on the x-axis and the second argument as the variable plotted on the y-axis.
+\begin{framed}
+\begin{verbatim}
+X=c(4.53, 0.21, 3.42, 9.19, 6.17, 1.91, 7.9, 11.8, 1.06, 2.7)
+Y=c(14.42, 2.52, 6.56, 15.6, 9.94, 9.82, 14.32, 10.71, 3.02, 13.82)
+
+plot(X,Y,pch=18,col="red")
+\end{verbatim}
+\end{framed}
+
+
+\begin{center}
+\includegraphics[scale=0.35]{IDent1}
+\end{center}
+%---Insert Graphs (IDent1)
+
+\subsection{The \texttt{locator()} function}
+We can use the  \texttt{\textbf{locator()}} command to find out more about the position of observations. Suppose we are looking for the information on one only point, so we specify ``1" as an argument. (let's choose the first point from the right-handside in this instance).
+
+
+\noindent Type the following, then click on the point, on the scatter-plot using your mouse (i.e. precisely on the point).
+
+
+\begin{framed}
+\begin{verbatim}
+locator(1)
+\end{verbatim}
+\end{framed}
+The XY co-ordinates of where the mouse was clicked will appear on screen.
+\begin{framed}
+\begin{verbatim}
+> locator(1)
+$x
+[1] 11.76287
+
+$y
+[1] 10.7516
+\end{verbatim}
+\end{framed}
+
+\subsection{The \texttt{identify()} function}
+Suppose we wish to identify which case (ie. row number) that a data-point corresponds to.
+For this we use the \textbf{\texttt{identify()}} command. We specify the X and Y variables as arguments (It is possible to have more than one pair of predictor and response variables on the same scatterplot).
+
+\begin{framed}
+\begin{verbatim}
+identify(X,Y)
+\end{verbatim}
+\end{framed}
+
+\noindent The observation corresponds to the 8th case. Find out which case corresponds to the lowest data point (i.e. one with the smallest ``y-value"). 
+\newpage

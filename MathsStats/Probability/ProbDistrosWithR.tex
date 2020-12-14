@@ -1,0 +1,464 @@
+%- http://en.wikibooks.org/wiki/R_Programming/Random_Number_Generation
+
+\documentclass[12pt, a4paper]{article}
+\usepackage{array} % and/or
+\usepackage{longtable} % and/or
+\usepackage{colortab} % or
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{epsfig}
+\usepackage{subfigure}
+%\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{framed}
+\usepackage{amsthm, amsmath}
+%\usepackage[dvips]{graphicx}
+\usepackage{natbib}
+\bibliographystyle{chicago}
+\usepackage{vmargin}
+% left top textwidth textheight headheight
+% headsep footheight footskip
+\setmargins{3.0cm}{2.5cm}{15.5 cm}{22cm}{0.5cm}{0cm}{1cm}{1cm}
+\renewcommand{\baselinestretch}{1.5}
+\pagenumbering{arabic}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{ill}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{axiom}{Axiom}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{notation}{Notation}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\renewcommand{\thenotation}{}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\author{ }
+
+
+\begin{document}
+\author{Dublin R}
+\title{Probability with R : Introductory Workshop}
+\maketitle
+
+R Functions for Probability Distributions
+
+Every distribution that R handles has four functions. There is a root name, for example, the root name for the normal distribution is norm. This root is prefixed by one of the letters
+
+p for "probability", the cumulative distribution function (c. d. f.)
+q for "quantile", the inverse c. d. f.
+d for "density", the density function (p. f. or p. d. f.)
+r for "random", a random variable having the specified distribution
+
+
+\newpage
+Binomial
+Geometric
+Hypergeometric
+Poisson
+Normal
+Exponential
+
+To get a full list of the distributions available in R you can use the following command:
+
+help(Distributions)
+For every distribution there are four commands. The commands for each distribution are prepended with a letter to indicate the functionality:
+
+“d”	returns the height of the probability density function
+“p”	returns the cumulative density function
+“q”	returns the inverse cumulative density function (quantiles)
+“r”	returns randomly generated numbers
+
+
+
+R Programming/Probability Distributions
+< R Programming
+R logo.svg
+R Programming
+R Basics
+Introduction75% developed  as of Sep 11, 2009
+Sample Session100% developed  as of Jul 16, 2010
+Manage your workspace50% developed  as of July 22 2011
+Settings75% developed  as of May 20, 2011
+Documentation75% developed  as of Sep 11, 2009
+Control Structures75% developed  as of July 22 2011
+Working with functions50% developed  as of July 22 2011
+Debugging50% developed  as of August 19 2011
+Using C or Fortran
+Utilities0% developed  as of -
+Estimation utilities0% developed  as of -
+Packages75% developed  as of July 22, 2011
+Data Management
+Data types75% developed  as of July 22, 2011
+Working with data frames25% developed  as of Sep 11, 2009
+Importing and exporting data25% developed  as of Sep 11, 2009
+Text Processing75% developed  as of April 23, 2010
+Times and Dates
+Graphics75% developed  as of July 22, 2011
+Grammar of graphics
+Publication quality output25% developed  as of Sep 11, 2009
+Descriptive Statistics75% developed  as of July 22 2011
+Mathematics25% developed  as of Oct 4, 2009
+Optimization25% developed  as of Sep 11, 2009
+Probability Distributions75% developed  as of July 22 2011
+Random Number Generation25% developed  as of Sep 11, 2009
+Statistical Core Methods
+Maximum Likelihood25% developed  as of Sep 11, 2009
+Method of Moments
+Bayesian Methods0% developed  as of Sep 11, 2009
+Bootstrap0% developed  as of Sep 11, 2009
+Multiple Imputation0% developed  as of Sep 11, 2009
+Nonparametric Methods50% developed  as of Sep 11, 2009
+Regression Models
+Linear Models50% developed  as of Apr 28, 2010
+Quantile Regression0% developed  as of Sep 11, 2009
+Binomial Models0% developed  as of Sep 17, 2009
+Multinomial Models0% developed  as of Sep 11, 2009
+Tobit And Selection Models0% developed  as of Oct 4, 2009
+Count Data Models0% developed  as of Sep 11, 2009
+Duration Analysis0% developed  as of Sep 11, 2009
+Time Series25% developed  as of July 22 2011
+Factor Analysis25% developed  as of Sep 17, 2009
+Classification
+Ordination25% developed  as of Sep 11, 2009
+Clustering0% developed  as of Sep 11, 2009
+Network Analysis0% developed  as of Sep 11, 2009
+High Performance Computing
+Profiling R code0% developed  as of Jun 27, 2011
+Parallel computing with R0% developed  as of Jun 27, 2011
+Appendix
+Sources
+Index0% developed  as of Oct 25, 2010
+edit this box
+This page review the main probability distributions and describe the main R functions to deal with them.
+
+R has lots of probability functions.
+
+r is the generic prefix for random variable generator such as runif(), rnorm().
+d is the generic prefix for the probability density function such as dunif(), dnorm().
+p is the generic prefix for the cumulative density function such as punif(), pnorm().
+q is the generic prefix for the quantile function such as qunif(), qnorm().
+
+
+Contents  [hide] 
+
+3 See also
+4 References
+Discrete distributions[edit]
+
+
+Bernouilli[edit]
+We can draw from a Bernouilli using sample(), runif() or rbinom() with size = 1.
+
+> n <- 1000
+> x <- sample(c(0,1), n, replace=T)
+> x <- sample(c(0,1), n, replace=T, prob=c(0.3,0.7))
+> x <- runif(n) > 0.3
+> x <- rbinom(n, size=1, prob=0.2)
+Binomial[edit]
+We can sample from a binomial distribution using the rbinom() function with arguments n for number of samples to take, size defining the number of trials and prob defining the probability of success in each trial.
+
+> x <- rbinom(n=100,size=10,prob=0.5)
+Binomial distribution cdf.svg
+
+
+Hypergeometric distribution[edit]
+We can sample n times from a hypergeometric distribution using the rhyper() function.
+
+> x <- rhyper(n=1000, 15, 5, 5)
+
+
+
+
+Multinomial[edit]
+The multinomial distribution.
+
+> sample(1:6, 100, replace=T, prob= rep(1/6,6))
+
+
+Negative binomial distribution[edit]
+The negative binomial distribution is the distribution of the number of failures before k successes in a series of Bernoulli events.
+
+> N <- 100000
+> x <- rnbinom(N, 10, .25)
+
+
+Poisson distribution[edit]
+We can draw n values from a Poisson distribution with a mean set by the argument lambda.
+
+> x <- rpois(n=100, lambda=3)
+Zipf's law[edit]
+The distribution of the frequency of words is known as Zipf's Law. It is also a good description of the distribution of city size[3]. dzipf() and pzipf() (VGAM)
+
+> library(VGAM)
+> dzipf(x=2, N=1000, s=2
+
+
+Continuous distributions[edit]
+Beta and Dirichlet distributions[edit]
+beta distribution
+Dirichlet in gtools and MCMCpack
+>library(gtools)
+>?rdirichlet
+>library(bayesm)
+>?rdirichlet
+>library(MCMCpack)
+>?Dirichlet
+Cauchy[edit]
+We can sample n values from a Cauchy distribution with a given location parameter x_0 (default is 0) and scale parameter \gamma (default is 1) using the rcauchy() function.
+
+> x <- rcauchy(n=100, location=0, scale=1)
+
+
+Chi Square distribution[edit]
+Quantile of the Chi square distribution (\chi^2 distribution)
+
+> qchisq(.95,1)
+[1] 3.841459
+> qchisq(.95,10)
+[1] 18.30704
+> qchisq(.95,100)
+[1] 124.3421
+Chi-Squared-pdf.png
+ 
+Chi-Squared-pdf and cdf.png
+
+
+Exponential[edit]
+We can sample n values from a exponential distribution with a given rate (default is 1) using the rexp() function
+
+> x <- rexp(n=100, rate=1)
+
+
+Fisher-Snedecor[edit]
+We can draw the density of a Fisher distribution (F-distribution) :
+
+> par(mar=c(3,3,1,1))
+> x <- seq(0,5,len=1000)
+> plot(range(x),c(0,2),type="n")
+> grid()
+> lines(x,df(x,df1=1,df2=1),col="black",lwd=3)
+> lines(x,df(x,df1=2,df2=1),col="blue",lwd=3)
+> lines(x,df(x,df1=5,df2=2),col="green",lwd=3)
+> lines(x,df(x,df1=100,df2=1),col="red",lwd=3)
+> lines(x,df(x,df1=100,df2=100),col="grey",lwd=3)
+> legend(2,1.5,legend=c("n1=1, n2=1","n1=2, n2=1","n1=5, n2=2","n1=100, n2=1","n1=100, n2=100"),col=c("black","blue","green","red","grey"),lwd=3,bty="n")
+
+
+Gamma[edit]
+We can sample n values from a gamma distribution with a given shape parameter and scale parameter \theta using the rgamma() function. Alternatively a shape parameter and rate parameter \beta=1/\theta can be given.
+
+> x <- rgamma(n=100, scale=1, shape=0.4)
+> x <- rgamma(n=100, scale=1, rate=0.8)
+
+
+Levy[edit]
+We can sample n values from a Levy distribution with a given location parameter \mu (defined by the argument m, default is 0) and scaling parameter (given by the argument s, default is 1) using the rlevy() function.
+
+> x <- rlevy(n=100, m=0, s=1)
+
+
+Log-normal distribution[edit]
+We can sample n values from a log-normal distribution with a given meanlog (default is 0) and sdlog (default is 1) using the rlnorm() function
+
+> x <- rlnorm(n=100, meanlog=0, sdlog=1)
+
+
+Normal and related distributions[edit]
+We can sample n values from a normal or gaussian Distribution with a given mean (default is 0) and sd (default is 1) using the rnorm() function
+
+> x <- rnorm(n=100, mean=0, sd=1)
+Quantile of the normal distribution
+
+> qnorm(.95)
+[1] 1.644854
+> qnorm(.975)
+[1] 1.959964
+> qnorm(.99)
+[1] 2.326348
+The mvtnorm package includes functions for multivariate normal distributions.
+rmvnorm() generates a multivariate normal distribution.
+> library(mvtnorm)
+> sig <- matrix(c(1, 0.8, 0.8, 1), 2, 2)
+> r <- rmvnorm(1000, sigma = sig)
+> cor(r) 
+          [,1]      [,2]
+[1,] 1.0000000 0.8172368
+[2,] 0.8172368 1.0000000
+Pareto Distributions[edit]
+Generalized Pareto dgpd() in evd
+dpareto(), ppareto(), rpareto(), qpareto() in actuar
+The VGAM package also has functions for the Pareto distribution.
+
+
+Student's t distribution[edit]
+Quantile of the Student t distribution
+
+> qt(.975,30)
+[1] 2.042272
+> qt(.975,100)
+[1] 1.983972
+> qt(.975,1000)
+[1] 1.962339
+The following lines plot the .975th quantile of the t distribution in function of the degrees of freedom :
+
+curve(qt(.975,x), from = 2 , to = 100, ylab = "Quantile 0.975 ", xlab = "Degrees of freedom", main = "Student t distribution")
+abline(h=qnorm(.975), col = 2)
+
+
+Uniform distribution[edit]
+We can sample n values from a uniform distribution (also known as a rectangular distribution] between two values (defaults are 0 and 1) using the runif() function
+
+> runif(n=100, min=0, max=1)
+
+
+Weibull[edit]
+We can sample n values from a Weibull distribution with a given shape and scale parameter \mu (default is 1) using the rweibull() function.
+
+> x <- rweibull(n=100, shape=0.5, scale=1)
+
+
+Extreme values and related distribution[edit]
+The Gumbel distribution
+The logistic distribution : distribution of the difference of two gumbel distributions.
+plogis, qlogis, dlogis, rlogis
+
+Frechet dfrechet() evd
+Generalized Extreme Value dgev() evd
+Gumbel dgumbel() evd
+Burr, dburr, pburr, qburr, rburr in actuar
+
+
+Distribution in circular statistics[edit]
+Functions for circular statistics are included in the CircStats package.
+dvm() Von Mises (also known as the nircular normal or Tikhonov distribution) density function
+dtri() triangular density function
+dmixedvm() Mixed Von Mises density
+dwrpcauchy() wrapped Cauchy density
+dwrpnorm() wrapped normal density.
+
+
+See also[edit]
+Packages VGAM, SuppDists, actuar, fBasics, bayesm, MCMCpack
+
+
+References[edit]
+Jump up ↑ Benford, F. (1938) The Law of Anomalous Numbers. Proceedings of the American Philosophical Society, 78, 551–572.
+Jump up ↑ Newcomb, S. (1881) Note on the Frequency of Use of the Different Digits in Natural Numbers. American Journal of Mathematics, 4, 39–40.
+Jump up ↑ Gabaix, Xavier (August 1999). "Zipf's Law for Cities: An Explanation". Quarterly Journal of Economics 114 (3): 739–67. doi:10.1162/003355399556133. ISSN 0033-5533. http://pages.stern.nyu.edu/~xgabaix/papers/zipf.pdf.
+
+%==============================================================================================================%
+\section{Calculate probability and likelihood}
+\texttt{R} has many built-in functions to calculate probabilities for discrete random variables and probability densities for continuous random variables. These are additionally useful for calculating likelihoods. This section highlights a few of the most commonly used probability distributions. If used to calculate likelihoods, the log=TRUE option (yielding log likelihoods instead) is recommended to prevent memory overflow or underflow.
+
+The basic structure of these commands is detailed in the section below on the binomial distribution. The structure of other commands will be similar, though options may vary.
+
+\section{Binomial distribution}
+Used for binary data (1 or 0; success or failure; alive or dead; mated or unmated). The number of \textbf{\textit{successes}} in n trials will have a binomial distribution if separate trials are independent and if the probability of success p is the same in every trial.
+
+In its simplest version, the \texttt{dbinom} command is used to calculate $Pr[X]$, the probability of obtaining X successes in n random trials, where X is an integer between 0 and n (n can be as small as 1 trial). To calculate this probability you will also need to specify p, the probability of success in each trial,
+\begin{framed}
+\begin{verbatim}
+dbinom(X,size=n,prob=p)
+\end{verbatim}
+\end{framed}
+
+The same command calculates L[ p | X ], the likelihood of the parameter value p given the observed number of successes X,
+
+\begin{framed}
+\begin{verbatim}
+dbinom(X,size=n,prob=p)           # likelihood of p
+dbinom(X,size=n,prob=p,log=TRUE)  # log-likelihood of p
+\end{verbatim}
+\end{framed}
+
+If X is a single number (rather than a vector), the same command can be used to obtain the log-likelihood of each of many values for p. For example,
+\begin{framed}
+\begin{verbatim}
+p <- seq(0.01, 0.99, by = 0.01)
+loglike <- dbinom(X,size=n,prob=p,log=TRUE)
+\end{verbatim}
+\end{framed}
+
+However, the data more typically come as a vector of measurements made on individuals rather than a single count.
+% For example, the variable �disease.state� in a data frame would have entries that looked something like
+id disease.state
+1 infected
+2 uninfected
+3 infected
+4 infected
+5 uninfected
+...
+In this case, to calculate the log-likelihood of a specified value for p (the probability that an individual in the population is infected) you will first need to calculate the log-likelihood of p for each data observation (0 = uninfected, 1 = infected). The log-likelihood for p given all the data is then the sum of the log-likelihoods based on each observation. This assumes that the data represent a random sample (so that \textbf{\textit{trials}} are independent).
+
+\begin{framed}
+\begin{verbatim}
+x<-as.integer(disease.state=="infected") # converts to 0 and 1's
+z<-dbinom(x,size=1,prob=p,log=TRUE)      # log-like for each obs
+loglike<-sum(z)                          # log-likelihood of p
+\end{verbatim}
+\end{framed}
+
+(Note: If you calculate the likelihood of p for each data observation, rather than the log-likelihood, then the likelihood of p given all the data will be the product of the likelihoods based on each observation, rather than their sum. This number can get very small, however, so calculating the log-likelihoods and summing is recommended.)
+
+Typically, we would like to calculate the log-likelihood of many different values of p, given the same vector if data, so that we can draw the likelihood function and find the maximum. This can be accomplished by writing a loop
+\begin{framed}
+\begin{verbatim}
+loglike <- vector()                        # to store results
+x <- as.integer(disease.state=="infected") # converts to 0 and 1
+p <- seq(0.01, 0.99, by = 0.01)            # test many p's
+for(i in 1:length(p)){
+  loglike[i]<-sum(dbinom(x,size=1,prob=p[i],log=TRUE))
+  }
+\end{verbatim}
+\end{framed}
+
+or using a built-in loop,
+\begin{framed}
+\begin{verbatim}
+x <- as.integer(disease.state=="infected")
+p <- seq(0.01, 0.99, by = 0.01)
+loglike <- sapply(p,FUN=function(p.try){
+  sum(dbinom(x,size=1,prob=p.try,log=TRUE))})
+\end{verbatim}
+\end{framed}
+
+%-------------------------------------------------------------------%
+\newpage
+\section{Hypergeometric distribution}
+Used for mark-recapture data. The hypergeometric distribution describes the number of recaptures (marked individuals) X in a random sample of k individuals from a finite population in which m individuals in total are marked and n individuals are unmarked.
+
+The distribution is used to model mark-recapture data in which the goal is to estimate total population size m + n, where n is unknown. X can be any integer between 0 and m. k can be any integer between 1 and m + n. The model assumes no births, deaths, or immigration or emigration events between marking and recapturing. It also assumes that all individuals in the population have the same probability of being captured. The probability of X recaptures (marked individuals) in a random sample of size k is
+\begin{framed}
+\begin{verbatim}
+dhyper(X,m,n,k)
+dhyper(X,m,n,k,log=TRUE)
+\end{verbatim}
+\end{framed}
+%-------------------------------------------------------------------%
+\newpage
+\section{Poisson distribution}
+Used for count data. The Poisson distribution describes the number of events X in a block of space or time. The single parameter lambda is the population mean number of events per block. The assumption is that individual events occur randomly and independently in space or time. Block size is arbitrary but is usually chosen such that the mean number of events per block is neither very small nor very large. The probability of X events occurring in a single block is
+
+dpois(X,lambda)\\
+dpois(X,lambda, log=TRUE)
+\section{Normal distribution}
+Optimistically, this probability distribution approximates the frequency distribution of a trait in a population (except when it doesn't!). Because it is a continuous distribution, the height of the normal curve refers to probability density rather than probability as such. Probability is instead represented by area under the normal curve.
+
+The probability density of a normally distributed variable X having mean $\mu$ ( here as `mu') and standard deviation $\sigma$ (here as `s')  is
+\texttt{dnorm(X, mean=mu, sd=s)}
+\texttt{dnorm(X, mean=mu, sd=s, log=TRUE)}
+
+
+\end{document} 
+
+
+
+%https://www.zoology.ubc.ca/~schluter/R/probability/
+http://stochas.com/table.html

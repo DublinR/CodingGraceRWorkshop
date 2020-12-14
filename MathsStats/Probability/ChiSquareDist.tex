@@ -1,0 +1,93 @@
+Section 4.4 The Chi-Squared Distribution
+
+help(normal)
+
+
+There are four functions that can be used to generate the values associated with the Chi-Squared distribution. You can get a full list of them and their options using the help command:
+
+> help(Chisquare)
+
+help(normal)
+
+
+These commands work just like the commands for the normal distribution. The first difference is that it is assumed that you have normalized the value so no mean can be specified. The other difference is that you have to specify the number of degrees of freedom. The commands follow the same kind of naming convention, and the names of the commands are dchisq, pchisq, qchisq, and rchisq.
+
+help(normal)
+
+
+A few examples are given below to show how to use the different commands. First we have the distribution function, dchisq:
+
+> x <- seq(-20,20,by=.5)
+> y <- dchisq(x,df=10)
+> plot(x,y)
+> y <- dchisq(x,df=12)
+> plot(x,y)
+Next we have the cumulative probability distribution function:
+
+help(normal)
+
+
+> pchisq(2,df=10)
+[1] 0.003659847
+> pchisq(3,df=10)
+[1] 0.01857594
+> 1-pchisq(3,df=10)
+[1] 0.981424
+> pchisq(3,df=20)
+[1] 4.097501e-06
+> x = c(2,4,5,6)
+> pchisq(x,df=20)
+[1] 1.114255e-07 4.649808e-05 2.773521e-04 1.102488e-03
+Next we have the inverse cumulative probability distribution function:
+
+help(normal)
+
+
+> qchisq(0.05,df=10)
+[1] 3.940299
+> qchisq(0.95,df=10)
+[1] 18.30704
+> qchisq(0.05,df=20)
+[1] 10.85081
+> qchisq(0.95,df=20)
+[1] 31.41043
+> v <- c(0.005,.025,.05)
+> qchisq(v,df=253)
+[1] 198.8161 210.8355 217.1713
+> qchisq(v,df=25)
+[1] 10.51965 13.11972 14.61141
+
+Finally random numbers can be generated according to the Chi-Squared distribution:
+
+> rchisq(3,df=10)
+[1] 16.80075 20.28412 12.39099
+> rchisq(3,df=20)
+[1] 17.838878  8.591936 17.486372
+> rchisq(3,df=20)
+[1] 11.19279 23.86907 24.81251
+
+
+help(normal)
+
+ 
+
+Distribution	R name	
+Additional Arguments
+
+beta	beta	shape1, shape 2, ncp
+binomial	binom	size, prob
+Cauchy	cauchy	location, scale
+chi-squared	chisq	df, ncp
+exponential	exp	rate
+F	f	df1,df2,ncp
+normal	norm	mean, sd
+Poisson	pois	lambda
+Student's t	t	df, ncp
+uniform	unif	min, max
+Weibull	weibull	shape, scale
+Wilcoxon	wilcox	m, n
+ 
+
+help(normal)
+
+

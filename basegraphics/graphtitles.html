@@ -1,0 +1,43 @@
+\subsection{Adding a title }
+
+It is good practice to label your scatterplots properly. You can specify the following argument
+\begin{itemize}
+\item	main="Scatterplot Example", 	This provides the plot with a title
+\item	sub="Subtitle",                 This adds a subtitle
+\item	xlab="X variable ",				This command labels the x axis 
+\item   ylab="y variable ",				This command labels the y-axis
+\end{itemize}
+We can also add text to each margin, using the \texttt{mtext()} command.  
+We simply require the number of the side. (1 = bottom, 2=left,3=top,4=right). 
+We can change the colour using the col argument.
+\footnotesize \begin{verbatim}
+plot(x,y,main="Scatterplot Example",   sub="subtitle",    xlab="X variable ", ylab="y variable ")	
+mtext("Enhanced Scatterplot", side=4,col="red ")
+\end{verbatim}\normalsize
+Alternatively , we can also use the command title() to add a title to an existing scatterplot.
+\footnotesize \begin{verbatim}
+title(main="Scatterplot Example)	
+\end{verbatim}\normalsize
+
+%----------------------------------------------------------------------%
+
+\subsection{Title and Subtitles}
+It is good practice to have a title attached to your scatterplot. The chosen title (``titlename") of the plot is specified using the argument \texttt\textbf{{main="titlename"}}. Text for a subtitle (here ``subtitle text" ) may also be inserted into the plot, using the argument  \texttt\textbf{{sub="subtitletext"}}. Another way to add a title is using the \texttt{title()} function, as a separate command to plot.
+
+
+\begin{framed}
+\begin{verbatim}
+Palette=c("lightblue","blue","navyblue","midnightblue")
+hist(iris$Petal.Length,col=Palette,
+main="Iris Data Set", sub="Distribution of Sepal Lenghts")
+\end{verbatim}
+\end{framed}
+%---IMAGE ATTACH 3
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{./irishist4}
+\caption{}
+\label{fig:irishist4}
+\end{figure}

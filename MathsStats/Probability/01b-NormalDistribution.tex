@@ -1,0 +1,130 @@
+
+\newenvironment{myindentpar}[1]%
+{\begin{list}{}%
+         {\setlength{\leftmargin}{#1}}%
+         \item[]%
+} {\end{list}}
+
+
+%---------------------------------------------------------------------------------------------------%
+
+\subsection{The Normal Distribution}
+
+There are four functions that can be used to generate the values associated with the normal distribution. You can get a full list of them and their options using the help command:
+
+> help(Normal)
+The first function we look at it dnorm. Given a set of values it returns the height of the probability distribution at each point. If you only give the points it assumes you want to use a mean of zero and standard deviation of one.
+
+There are options to use different values for the mean and standard deviation, though:
+
+
+\begin{myindentpar}{1cm}
+\footnotesize \begin{verbatim}
+> dnorm(0)
+[1] 0.3989423
+> dnorm(0)*sqrt(2*pi)
+[1] 1
+> dnorm(0,mean=4)
+[1] 0.0001338302
+> dnorm(0,mean=4,sd=10)
+[1] 0.03682701
+>v <- c(0,1,2)
+> dnorm(v)
+[1] 0.39894228 0.24197072 0.05399097
+> x <- seq(-20,20,by=.1)
+> y <- dnorm(x)
+> plot(x,y)
+> y <- dnorm(x,mean=2.5,sd=0.1)
+> plot(x,y)
+\end{verbatim}\normalsize
+\end{myindentpar}
+
+The second function we examine is pnorm. Given a number or a list it computes the probability that a normally distributed random number will be less than that number.
+
+This function also goes by the rather ominous title of the "Cumulative Distribution Function." It accepts the same options as dnorm:
+
+\begin{myindentpar}{1cm}
+\footnotesize \begin{verbatim}
+rnorm(10)
+\end{verbatim}\normalsize
+\end{myindentpar}
+> pnorm(0)
+[1] 0.5
+> pnorm(1)
+[1] 0.8413447
+> pnorm(0,mean=2)
+[1] 0.02275013
+> pnorm(0,mean=2,sd=3)
+[1] 0.2524925
+> v <- c(0,1,2)
+> pnorm(v)
+[1] 0.5000000 0.8413447 0.9772499
+> x <- seq(-20,20,by=.1)
+> y <- pnorm(x)
+> plot(x,y)
+> y <- pnorm(x,mean=3,sd=4)
+> plot(x,y)
+
+The next function we look at is \texttt{qnorm()} which is the inverse of \texttt{pnorm()}. The idea behind \texttt{qnorm()} is that you give it a probability, and it returns the number whose cumulative distribution matches the probability.
+
+For example, if you have a normally distributed random variable with mean zero and standard deviation one, then if you give the function a probability it returns the associated Z-value:
+\begin{myindentpar}{1cm}
+\footnotesize \begin{verbatim}
+rnorm(10)
+\end{verbatim}\normalsize
+\end{myindentpar}
+> qnorm(0.5)
+[1] 0
+> qnorm(0.5,mean=1)
+[1] 1
+> qnorm(0.5,mean=1,sd=2)
+[1] 1
+> qnorm(0.5,mean=2,sd=2)
+[1] 2
+> qnorm(0.5,mean=2,sd=4)
+[1] 2
+> qnorm(0.25,mean=2,sd=2)
+[1] 0.6510205
+> qnorm(0.333)
+[1] -0.4316442
+> qnorm(0.333,sd=3)
+[1] -1.294933
+> qnorm(0.75,mean=5,sd=2)
+[1] 6.34898
+> v = c(0.1,0.3,0.75)
+> qnorm(v)
+[1] -1.2815516 -0.5244005  0.6744898
+> x <- seq(0,1,by=.05)
+> y <- qnorm(x)
+> plot(x,y)
+> y <- qnorm(x,mean=3,sd=2)
+> plot(x,y)
+> y <- qnorm(x,mean=3,sd=0.1)
+> plot(x,y)
+
+
+
+
+The last function we examine is the \texttt{rnorm()} function which can generate random numbers whose distribution is normal. The argument that you give it is the number of random numbers that you want, and it has optional arguments to specify the mean and standard deviation:
+\begin{myindentpar}{1cm}
+\footnotesize \begin{verbatim}
+rnorm(10)
+\end{verbatim}\normalsize
+\end{myindentpar}
+> rnorm(4)
+[1]  1.2387271 -0.2323259 -1.2003081 -1.6718483
+> rnorm(4,mean=3)
+[1] 2.633080 3.617486 2.038861 2.601933
+> rnorm(4,mean=3,sd=3)
+[1] 4.580556 2.974903 4.756097 6.395894
+> rnorm(4,mean=3,sd=3)
+[1]  3.000852  3.714180 10.032021  3.295667
+> y <- rnorm(200)
+> hist(y)
+> y <- rnorm(200,mean=-2)
+> hist(y)
+> y <- rnorm(200,mean=-2,sd=4)
+> hist(y)
+> qqnorm(y)
+> qqline(y)
+

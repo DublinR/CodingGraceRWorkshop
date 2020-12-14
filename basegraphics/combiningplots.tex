@@ -1,0 +1,66 @@
+	\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{framed}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode"CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 201113:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{Introduction to \texttt{R}} \rhead{Kevin O'Brien} \chead{Base Graphics} %\input{tcilatex}
+
+\begin{document}
+
+\section*{Combining plots}
+It is possible to combine two plots. We used the graphical parameters command \texttt{par()} to create an array. 
+Often we just require two plots side by side or above and below. We simply specify the numbers of rows and columns of this array using the \texttt{mfrow} argument, passed as a vector.
+
+\begin{verbatim}
+par(mfrow=c(1,2))
+plot(x,y1)			# draw first plot
+plot(x,y2)			# draw second plot
+par(mfrow=c(1,1))		# reset to default setting.
+\end{verbatim}
+
+\subsection*{Combining Plots}
+Multiple plots can be combined into a single graph, arranged vertically, horizontally or in a grid.
+
+This can be implemented with \texttt{\textbf{par( )}} function, specifying the arrangment using the \texttt{\textbf{mfrow=}} argeument.
+
+Suppose we require a histogram above a boxplot (with horizontal orientation). If we consider this as a grid, we have an array of two rows, with one column.
+
+\begin{framed}
+\begin{verbatim}
+# 2 plots arranged in 2 rows and 1 column
+
+
+par(mfrow=c(2,1))
+
+
+hist(mtcars$wt, main="Histogram of wt",col=c("lightblue","blue"))
+boxplot(mtcars$
+wt, main="Boxplot of wt",horizontal=TRUE,col="lightblue")
+
+\end{verbatim}
+\end{framed}
+
+%\begin{center}[h1]
+%\includegraphics[scale=0.65]{combiPlot}
+%\end{center}
+
+
+
+\end{document}

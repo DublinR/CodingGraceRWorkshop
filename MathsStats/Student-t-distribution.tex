@@ -1,0 +1,65 @@
+\section{Student's $t-$distribution (1)}
+\begin{itemize}
+\item Student's $t-$distribution is a variation of the normal distribution, designed to factor in the increased uncertainty resulting from smaller samples.
+\item The distribution is really a family of distributions, with
+a somewhat different distribution associated with the degrees of freedom ($df$). For a confidence interval for the
+population mean based on a sample of size n, $df = n - 1$.
+
+\end{itemize}
+\begin{verbatim}
+
+> qt(0.975, df=4:28)
+[1] 2.776445 2.570582 2.446912 2.364624 2.306004
+[6] 2.262157 2.228139 2.200985 2.178813 2.160369
+[11] 2.144787 2.131450 2.119905 2.109816 2.100922
+[16] 2.093024 2.085963 2.079614 2.073873 2.068658
+[21] 2.063899 2.059539 2.055529 2.051831 2.048407
+\end{verbatim}
+
+
+
+
+%------------------------------------------------------------------------------%
+
+\textbf{Student's $t-$distribution (2)}
+\textbf{IMPORTANT}
+\begin{itemize}
+\item  With increasing
+sample size, the $t-$distribution approaches the form of the standard normal (`Z') distribution.
+\item  In fact the standard normal distribution can be thought of as the $t-$distribution with $\infty$ degrees of freedom.
+
+\item  \textbf{REALLY IMPORTANT} For values of $n$ greater then 30, the difference between using $df = n-1$ and $df = \infty$ is negligible.
+\item  For computing quantiles, we will consider the `Z' distribution in this way, i.e. using the $t$ distribution instead.
+\item  As this will be relevant later, remember that a confidence interval is a \textbf{two-tailed} procedure, i.e. $k=2$.
+\end{itemize}
+
+
+%-----------------------------------------------------------%
+
+%
+%\textbf{Student's $t-$distribution (3)}
+%
+%\begin{itemize}
+%\item  Student's t- values are determined using the \texttt{t} family of commands (e.g. \texttt{qt, pt, dt}).
+%\item  To compute quantiles, use the code below.
+%\item  The degrees of freedom must be additionally be specified. Degrees of freedom are computed as sample size minus one ($n-1$)
+%\item  As the degrees of freedom gets larger and larger, the student t distribution converges to the Z distribution.
+%
+%\end{itemize}
+%
+%
+
+
+%-----------------------------------------------------------%
+
+
+\subsection{Student's $t-$distribution (3)}
+
+\begin{itemize}
+\item Student's t- values are determined using the \texttt{t} family of commands (e.g. \texttt{qt, pt, dt}).
+\item To compute quantiles, use the code below.
+\item The degrees of freedom must be additionally be specified. Degrees of freedom are computed as sample size minus one ($n-1$)
+\item As the degrees of freedom gets larger and larger, the student t distribution converges to the Z distribution.
+
+\end{itemize}
+\end{document}

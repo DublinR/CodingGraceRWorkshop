@@ -1,0 +1,157 @@
+\documentclass{beamer}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphics}
+
+\begin{document}
+%-------------------------------------------------- %
+\begin{frame}
+\bigskip
+{
+\huge
+\[ \mbox{Computing with \texttt{R}}  \]
+\[ \mbox{The \texttt{rank} and \texttt{order} commands}  \]
+}
+{
+\LARGE
+\[ \mbox{www.stats-lab.com}  \]
+\[ \mbox{Twitter: @StatsLabDublin} \]
+}
+\end{frame}
+%-------------------------------------------------- %
+\begin{frame}
+\frametitle{Computing with \texttt{R}}
+\LARGE
+ \texttt{rank} : Returns the relative ranking of each value in the vector.
+\begin{itemize}
+\item The lowest (i.e.minimum) value corresponds to 1.
+\item The next lowest value corresponds to 2
+\item and so on.
+\end{itemize}
+\end{frame}
+%-------------------------------------------------- %
+\begin{frame}
+\frametitle{Computing with \texttt{R}}
+\LARGE
+ \texttt{order} : Returns the sequence of locations (i.e. indices) of the lowest value, the next lowest value, etc etc.
+
+\begin{itemize}
+\item First item is index of lowest value
+\item Second item is index of next lowest value
+\item and so on.
+\end{itemize}
+
+\end{frame}
+%-------------------------------------------------- %
+\begin{frame}
+\frametitle{Index Numbers: Linking Two Series}
+
+\begin{tabular}
+{|c|c|c|c|}
+Year	&	Old	&	New	&	Workings	\\ \hline
+2004	&	164	&		&		\\ \hline
+2005	&	182	&		&		\\ \hline
+2006	&	190	&		&		\\ \hline
+2007	&	200	&	100	&		\\ \hline
+2008	&		&	105	&		\\ \hline
+2009	&		&	107	&		\\ \hline
+2010	&		&	110	&		\\ \hline
+\end{tabular}  
+
+\end{frame}
+
+%-------------------------------------------------- %
+\begin{frame}
+\frametitle{Index Numbers: Linking Two Series}
+\Large
+\begin{center}
+\begin{tabular}
+{|c||c|c||c|}
+\hline
+Year	&\phantom{sp}	Old	\phantom{sp}&\phantom{sp}	New\phantom{sp}	&	Workings	\\ \hline \hline
+2004	&	164	&		&		\\ \hline
+2005	&	182	&		&		\\ \hline
+2006	&	190	&		&		\\ \hline
+2007	&	\textbf{200}	&	\textbf{100}	&	\textit{\textbf{New = Old / 2}}	\\ \hline
+2008	&		&	105	&		\\ \hline
+2009	&		&	107	&		\\ \hline
+2010	&		&	110	&		\\ \hline
+\end{tabular}  
+\end{center}
+\end{frame}
+%-------------------------------------------------- %
+
+\begin{frame}
+\frametitle{Index Numbers: Linking Two Series}
+\Large
+\begin{center}
+\begin{tabular}
+{|c||c|c||c|}
+\hline
+Year	&\phantom{sp}	Old	\phantom{sp}&\phantom{sp}	New\phantom{sp}	&	Workings	\\ 
+	&&	&	\textit{(New = Old / 2)}	\\ 
+\hline \hline
+
+2004	&	164	&		&		\\ \hline
+2005	&	182	&		&		\\ \hline
+2006	&	\textbf{190}	&	\textbf{95}	&	\textbf{(=190/2)}	\\ \hline
+2007	&	200	&	100	&		\\ \hline
+2008	&		&	105	&		\\ \hline
+2009	&		&	107	&		\\ \hline
+2010	&		&	110	&		\\ \hline
+\end{tabular}  
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Index Numbers: Linking Two Series}
+\Large
+\begin{center}
+\begin{tabular}
+{|c||c|c||c|}
+\hline
+Year	&\phantom{sp}	Old	\phantom{sp}&\phantom{sp}	New\phantom{sp}	&	Workings	\\ 
+	&&	&	\textit{(New = Old / 2)}	\\ 
+\hline \hline
+
+2004	&	164	&		&		\\ \hline
+
+2005	&	\textbf{182}	&	\textbf{91}	&	\textbf{(=182/2)}	\\ \hline
+2006	&	190	&	95	&		\\ \hline
+2007	&	200	&	100	&		\\ \hline
+2008	&		&	105	&		\\ \hline
+2009	&		&	107	&		\\ \hline
+2010	&		&	110	&		\\ \hline
+\end{tabular}  
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Index Numbers: Linking Two Series}
+\Large
+\begin{center}
+\begin{tabular}
+{|c||c|c||c|}
+\hline
+Year	&\phantom{sp}	Old	\phantom{sp}&\phantom{sp}	New\phantom{sp}	&	Workings	\\ 
+	&&	&	\textit{(New = Old / 2)}	\\ 
+\hline \hline
+
+
+
+2004	&	\textbf{164}	&	\textbf{82}	&	\textbf{(=164/2)}	\\ \hline
+2005	&	182	&	91	&		\\ \hline
+2006	&	190	&	95	&		\\ \hline
+2007	&	200	&	100	&		\\ \hline
+2008	&		&	105	&		\\ \hline
+2009	&		&	107	&		\\ \hline
+2010	&		&	110	&		\\ \hline
+\end{tabular}  
+\end{center}
+\end{frame}
+
+
+
+
+\end{document}

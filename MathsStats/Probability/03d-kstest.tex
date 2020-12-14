@@ -1,0 +1,44 @@
+\documentclass[MAIN.tex]{subfiles} 
+\begin{document} 
+
+%======================================================================= %
+\begin{frame}[fragile]
+\frametitle{Kolmogorov Smirnov Test}
+
+\begin{framed}
+\begin{verbatim}
+> x <- rnorm(50)
+> y <- runif(30)
+> 
+> ks.test(x,"pnorm")
+\end{verbatim}
+\end{framed}
+\begin{framed}
+	\begin{verbatim}
+One-sample Kolmogorov-Smirnov test
+
+data:  x
+D = 0.0655, p-value = 0.9732
+alternative hypothesis: two-sided
+\end{verbatim}
+\end{framed}
+
+\end{frame}
+%======================================================================= %
+\begin{frame}[fragile]
+\frametitle{Kolmogorov Smirnov Test}
+
+\begin{framed}
+\begin{verbatim}
+> ks.test(y,"rnorm")
+
+One-sample Kolmogorov-Smirnov test
+
+data:  y
+D = 2.5349, p-value < 2.2e-16
+alternative hypothesis: two-sided
+\end{verbatim}
+\end{framed}
+\end{frame}
+%======================================================================= %
+\end{document}

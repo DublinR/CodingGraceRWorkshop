@@ -1,0 +1,148 @@
+## Resources
+## https://datasciencespecialization.github.io/Developing_Data_Products/shiny.html
+## https://shiny.rstudio.com/tutorial/#written
+
+
+# Intro -------------------------------------------------------------------
+
+# install the package
+install.packages("shiny")
+require(shiny)
+
+# it used to have 2 files
+# ui.R - gives the user interface, determines how your app looks
+# server.R - controls what your app does
+
+# now in 1 file
+# here's a template
+ui <- fluidPage()
+server <- function(input, output) {}
+shinyApp(ui = ui, server = server)
+
+## Examples --> presentation
+
+# Input Functions ------------------------------------------------------------------
+
+# sliderInput
+## 1
+ui <- fluidPage(sliderInput(inputId = "slider1",
+                            label = "Choose a number",
+                            value = 10, min = 1, max = 100)
+)
+server <- function(input, output) {}
+shinyApp(ui = ui, server = server)
+
+## ARGUMENTS
+# inputId - allows you to assign a name to the input, you can use any name
+# use unique names to identify them easily
+
+# label - text displayed in the app, for the users 
+# you can drop the argument names, because all input functions take at least these two arguments
+# sliderInput("slider1", "Choose a number"...)
+
+## 2
+ui <- fluidPage(sliderInput(inputId = "slider2",
+                            label = "Choose a Range",
+                            value = c(10, 20), min = 1, max = 100)
+)
+server <- function(input, output) {}
+shinyApp(ui = ui, server = server)
+
+## combine them
+ui <- fluidPage(sliderInput(inputId = "slider1",
+                            label = "Choose a number",
+                            value = 10, min = 1, max = 100),
+                sliderInput(inputId = "slider2",
+                            label = "Choose a Range",
+                            value = c(10, 20), min = 1, max = 100)
+)
+server <- function(input, output) {}
+shinyApp(ui = ui, server = server)
+
+
+# Otput Functions ---------------------------------------------------------
+
+ui <- fluidPage(sliderInput(inputId = "slider1",
+                            label = "Choose a number",
+                            value = 10, min = 1, max = 100),
+                plotOutput("hist")
+)
+server <- function(input, output) {}
+shinyApp(ui = ui, server = server)
+
+## adding an output function in the ui creates a placeholder
+## you need to build the object in the server function, use Render Functions
+
+server <- function(input, output) {
+  output$hist <- renderPlot(hist(rnorm(100)))
+}
+shinyApp(ui = ui, server = server)
+
+## use curly brackets inside the render function to spread code over multiple lines
+server <- function(input, output) {
+  output$hist <- renderPlot({
+    title <- "Histogram of 100 random normal values"
+    hist(rnorm(100), main = title) 
+  }) ## use curly brackets to spread code over multiple lines
+}
+shinyApp(ui = ui, server = server)
+
+
+
+# Reactivity --------------------------------------------------------------
+
+## If you use the slider now, the output isn't responding
+# use the values from the Input Functions using the inputId value
+# you assigned to them by calling input$slider1
+
+server <- function(input, output) {
+  output$hist <- renderPlot({
+    title <- "Histogram of random normal values"
+    hist(rnorm(input$slider1), main = title) 
+  }) ## use curly brackets to spread code over multiple lines
+}
+shinyApp(ui = ui, server = server)
+
+# reactivity automatically occurs when you use an input value to render an output object
+# check out reactive toolkit --> presentation
+
+
+# Sharing Shiny Apps ------------------------------------------------------------
+
+## save the script with the ui, server and shinyApp() under app.R
+## or in case of large scripts 2 files: ui.R and server.R, no need to call shinyApp()
+## place in a directory with datasets, images, helper scripts
+## Server will look for the files
+
+# shinyapps.io ## free (5 applications, 25 active hours)
+               ## secure
+               ## easy to use
+               ## scalable (suited to multiple users)
+# you can build your own server using Shiny Server
+
+## demo shinyapps.io, run shinyX
+
+
+# Layout ------------------------------------------------------------------
+
+## this example presents only a handful of layout enhancements --> presentation
+
+ui <- fluidPage(titlePanel("My 1st Shiny App"),
+                sidebarPanel(h5("This slider will allow you to", strong("interact"), "with the app"),
+                sliderInput(inputId = "slider1",
+                            label = "Choose a number",
+                            value = 10, min = 1, max = 100)
+                ),
+                img(height = 50, width = 100, src = "http://www.rstudio.com/images/RStudio.2x.png"),
+                plotOutput("hist")
+)
+
+server <- function(input, output) {
+  output$hist <- renderPlot({
+    title <- "Histogram of random normal values"
+    hist(rnorm(input$slider1), main = title) 
+  }) ## use curly brackets to spread code over multiple lines
+}
+
+shinyApp(ui = ui, server = server)
+

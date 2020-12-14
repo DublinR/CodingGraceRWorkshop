@@ -1,0 +1,100 @@
+	\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{framed}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode"CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 201113:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{Introduction to R} \rhead{Kevin O'Brien} \chead{Graphical Methods} %\input{tcilatex}
+
+\begin{document}
+
+
+%---------------------------------------------------%
+\section*{Boxplots}
+\begin{itemize}
+    \item 
+A box plot provides an excellent visual summary of many important aspects of a distribution. 
+\item It shows a measure of central location (the median), two measures of dispersion (the range and inter-quartile range), the skewness (from the orientation of the median relative to the quartiles) and potential outliers (marked individually). 
+
+\item The box stretches from the lower hinge (defined as the 25th percentile) to the upper hinge (the 75th percentile) and therefore contains the middle half of the scores in the distribution.
+\item A boxplot, or box and whisker diagram, provides a simple graphical summary of a set of data. 
+
+\end{itemize}
+\section*{Boxplot Outliers}
+Boxplots can be used to identify \textbf{\textit{potential}} outliers, but is not actually intended as a formal testing procedure for outliers. Boxplots are designed for symmetric distributions, and are appropriate for skewed distributions.
+\section*{Orientation}
+\begin{itemize}
+\item The default orientation for boxplots is vertical. To construct a horizontal boxplot, specify as an additional argument
+\texttt{\textbf{horizontal=TRUE}}.
+\end{itemize}
+\begin{framed}
+\begin{verbatim}
+boxplot(DAT,horizontal=TRUE)
+\end{verbatim}
+\end{framed}
+
+%image of boxplot here
+
+
+
+\footnotesize
+\begin{framed}
+\begin{verbatim}
+boxplot(mtcars$mpg, horizontal=TRUE, xlab="Miles Per Gallon",
+main="Boxplot of MPG")
+\end{verbatim}
+\end{framed}
+
+%\begin{figure}
+%  Requires \usepackage{graphicx}
+%  \includegraphics[scale=0.4]{MTCARSboxplot.png}\\
+%  \caption{Boxplot}\label{boxplot}
+%\end{figure}
+
+%---------------------------------------------------%
+\subsection*{Boxplots for the Iris Data Set}
+
+\begin{framed}
+\begin{verbatim}
+
+boxplot(iris$Petal.Lengths)
+title("boxplot 1")
+
+boxplot(iris$Petal.Lengths,col="lightblue")
+title("boxplot 2")
+
+boxplot(iris$Petal.Lengths,horizontal=TRUE)
+title("boxplot 3")
+
+\end{verbatim}
+\end{framed}
+
+
+
+%---------------------------------------------------%
+\subsection*{Comparing Multiple Groups}
+
+Boxplots are especially useful when comparing two or more sets of data. 
+\begin{verbatim}
+# boxplot on a formula:
+boxplot.stats(count ~ spray, data = InsectSprays, col = "lightgray")
+# *add* notches (somewhat funny here):
+boxplot(count ~ spray, data = InsectSprays,        notch = TRUE, add = TRUE, col = "blue")
+\end{verbatim}
+\end{document}
