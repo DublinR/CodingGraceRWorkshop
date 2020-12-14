@@ -1,19 +1,4 @@
-\documentclass[pdf,default,slideColor,colorBG]{prosper}
 
-
-
-% define a new font called goodfont
-\def\goodfont{\usefont{T1}{pcr}{b}{n}\fontsize{36pt}{40pt}\selectfont\green}
-\renewcommand{\familydefault}{\rmdefault}
-\renewcommand{\rmdefault}{cmr}
-\parindent 0pt
-\parskip 5pt
-
-
-\begin{document}
-
-
-\begin{slide}{Today's Class}
 
 
 \begin{itemize}
