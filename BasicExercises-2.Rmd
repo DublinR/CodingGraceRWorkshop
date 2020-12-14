@@ -1,0 +1,426 @@
+\section{Exercise} The following are measurements (in mm) of a critical
+dimension on a sample of twelve engine crankshafts:
+
+\begin{verbatim}
+224.120 224.001 224.017 223.982 223.989 223.961
+223.960 224.089 223.987 223.976 223.902 223.980
+\end{verbatim}
+(a) Calculate the mean and standard deviation for these data.
+(b) The process mean is supposed to be ? = 224mm. Is this the
+case? Give reasons for your answer.
+(c) Construct a 99\% confidence interval for these data and interpret.
+(d) Check that the normality assumption is valid using 2 suitable plots.
+
+\begin{verbatim}
+> x<-c(224.120,224.001,224.017,223.982 ,223.989 ,223.961,
++ 223.960 ,224.089 ,223.987 ,223.976 , 223.902 ,223.980)
+>
+> mean(x)
+[1] 223.997
+>
+> sd(x)
+[1] 0.05785405
+>
+> t.test(x,mu=224,conf.level=0.99)
+
+One Sample t-test
+
+data:  x
+t = -0.1796, df = 11, p-value = 0.8607
+alternative hypothesis: true mean is not equal to 224
+99 percent confidence interval:
+223.9451 224.0489
+sample estimates:
+mean of x
+223.997
+
+\end{verbatim}
+\section{Exercise 2} 
+The height of 12 Americans and 10 Japanese was measured. Test for a difference in the heights of both populations.
+\begin{verbatim}
+Americans
+174.68   169.87    165.07    165.95 204.99 177.61 
+170.11  170.71    181.52 167.68 158.62 182.90
+Japanese
+158.76  168.85  159.64  180.02  164.24
+161.91  163.99  152.71  157.32  147.20
+\end{verbatim}
+\begin{verbatim}
+> t.test(A,J)
+Welch Two Sample t-test
+data:  A and J
+t = 2.8398, df = 19.815, p-value = 0.01018
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+3.360121 21.996879
+sample estimates:
+mean of x mean of y
+174.1425  161.4640
+\end{verbatim}
+
+\section{Exercise 3}
+
+A large group of students each took two exams. The marks obtained in both exams by a sample of eight students is given below
+
+\begin{verbatim}
+Student12345678
+Exam 15776473962564981
+Exam 26781624957615971
+\end{verbatim}
+Test the hypothesis that in the group as a whole the mean mark gained did not vary according to the exam against the hypothesis that the mean mark in the second exam was higher
+\begin{verbatim}
+>
+> Ex1<-c(57,76,47,39,62,56,49,81)
+> Ex2<-c(67,81,62,49,57,61,59,71)
+> t.test(Ex1-Ex2)
+
+One Sample t-test
+
+data:  Ex1 - Ex2
+t = -1.6733, df = 7, p-value = 0.1382
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+-12.065666   2.065666
+sample estimates:
+mean of x
+-5
+\end{verbatim}
+
+\section{Exercise 4}
+A poll on social issues interviewed 1025 people randomly selected from the United States. 450 of people said that they do not get enough time to themselves. A report claims that over 41\% of the population are not satisfied with personal time. Is this the case?
+
+\begin{verbatim}
+
+> prop.test(450,1025,p=0.40,alternative="greater")
+
+1-sample proportions test with continuity correction
+
+data:  450 out of 1025, null probability 0.4
+X-squared = 6.3425, df = 1, p-value = 0.005894
+alternative hypothesis: true p is greater than 0.4
+95 percent confidence interval:
+0.413238 1.000000
+sample estimates:
+p
+0.4390244
+\end{verbatim}
+
+Exercise 23b:  A company wants to investigate the proportion of males and females promoted in the last year. 45 out of 400 female candidates were promoted, while 520 out of 3270 male candidates were promoted. Is there evidence of sexism in the company?
+\begin{verbatim}
+> x.vec=c(45,520)
+> n.vec=c(400,3270)
+>  prop.test(x.vec,n.vec)
+
+2-sample test for equality of proportions with continuity correction
+
+data:  x.vec out of n.vec
+X-squared = 5.5702, df = 1, p-value = 0.01827
+alternative hypothesis: two.sided
+95 percent confidence interval:
+-0.08133043 -0.01171238
+sample estimates:
+prop 1    prop 2
+0.1125000 0.1590214
+\end{verbatim}
+
+?
+\section{Exercise}
+
+Generate a histogram for data set 'scores', with an accompanying box-and-whisker plot.
+The colour of the histogram's bar should be yellow. The orientation for the boxplot should be horizontal.
+
+\begin{verbatim}
+scores <-c(23,19,22,22,19,20,25,26,26,19,24,23,17,21,28,26)
+
+par(mfrow=c(2,1)) # two rows , one column
+
+hist(scores,main="Distribution of scores",xlab="scores",col="yellow")
+
+boxplot(scores ,horizontal=TRUE)
+
+par(mfrow =c(1,1)) #reset
+\end{verbatim}
+
+%----------------------------------------------------------------%
+\section{Vector Operations}
+\begin{itemize}
+*  $R$ operates on named data structures. The simplest such
+structure is the vector, which is a single entity consisting of an
+ordered collection of numbers or characters.
+
+*  The most common types of vectors are:
+\begin{itemize}
+*  Numeric vectors *  Character vectors *  Logical
+vectors
+\end{itemize}
+
+*  There are, of course, other types of vectors.
+\begin{itemize}
+*  Colour vectors - potentially useful later on.
+*  Order vectors - The rankings of items in a vector.
+*  Complex number vectors - not part of this course.
+\end{itemize}
+\end{itemize}
+\subsection{Ordering Vector Operations}
+\begin{framed}
+\begin{verbatim}
+sort(x)  # sort x into ascending order
+rev(x)
+rev(sort(x))
+\end{verbatim}
+\end{framed}
+
+\begin{framed}
+\begin{verbatim}
+x=c(15, 34, 7, 12, 18, 9, 1, 42, 56, 28, 13, 24, 35)
+
+length(x)         # How many items in x
+median(x)         # median of data set x
+sort(x)[7]        # 7th item when x is in ascending order
+quantile(x,0.75)  # Compute the third quartile
+quantile(x,0.25)  # Compute the first quartile
+IQR(x)            
+fivenum(x)
+
+# code is committed
+\end{verbatim}
+\end{framed}
+
+
+
+
+%----------------------------------------------------------------%
+\section{Some Useful Operations}
+\subsection{Sampling}
+
+The ``sample()`` function.
+
+\subsection{Set Theory Operations}
+
+\subsection{Controlling Precision and Integerization}
+\begin{framed}
+\begin{verbatim}
+pi
+round(pi,3)
+round(pi,2)
+floor(pi)
+ceiling(pi)
+\end{verbatim}
+\end{framed}
+
+\subsection{Randomly Generated Numbers}
+With $a$ and $b$ as the lower and upper bound of the continous uniform distribution.
+\[X \sim U(a,b)\]
+
+\begin{framed}
+\begin{verbatim}
+framename = data.frame()
+\end{verbatim}
+\end{framed}
+%----------------------------------------------------------------%
+\section{Important Graphical Procedures}
+\begin{enumerate}
+*  Histograms
+*  Box-plots
+*  Scatter-plots
+\end{enumerate}
+
+\subsubsection{Correlation Coefficient}
+Strength of a linear relationship between $X$ and $Y$
+
+%\begin{framed}
+\begin{verbatim}
+M=1000
+CorrData=numeric(M)
+for (i in 1:M)
+{
+CorrData[i] = cor(rnorm(10),rnorm(10))
+}
+\end{verbatim}
+%\end{framed}
+The null hypothesis is that the correlation coefficient is zero. 
+
+The alternative hypothesis is that the correlation coefficients is greater than zero. 
+
+The slope and intercept estimates 
+
+These tests are given in the "Two Tailed" format. 
+The one tailed format compares a null hypothesis where the parameter of interest has a true value of less than or equalt to one versus an alternative hypothesis stating that it has a value greater than zero. 
+
+
+
+\newpage
+\section{Programming Paradigms}
+
+
+
+Note: ``sample()`` takes a sample of the specified size (here just one) from a range of values (here integers 1 to 100).
+\begin{framed}
+\begin{verbatim}
+
+#initialise a counter to zero
+niter = 0
+#initialize an empty vector
+numvec = numeric()
+
+
+num = sample(1:100, 1)
+
+#while loop
+while(num != 20)
+{
+num = sample(1:100, 1)
+niter = niter + 1
+numvec = c(numvec,num)
+}
+numvec
+niter
+
+\end{verbatim}
+\end{framed}
+
+
+\subsection{Sums of two dice rolls}
+\begin{framed}
+\begin{verbatim}
+#Set Up an Empty Matrix of 6 rows and 6 columns
+Dice = matrix(0,6,6)
+
+#Main Loop
+for(i in 1:6)
+{
+#Nested Loop
+for(j in 1:6)
+{
+Dice[i,j] = i+j
+}
+}
+Dice   # Print your Results
+\end{verbatim}
+\end{framed}
+\subsection{Correlation Structure Example}
+
+
+\newpage
+\section{Correlation and Simple Regression Models}
+
+\subsection{Correlation}
+
+A correlation coefficient is a number between -1 and 1 which measures the degree to which two variables are linearly related. If there is perfect linear relationship with positive slope between the two variables, we have a correlation coefficient of 1; if there is positive correlation, whenever one variable has a high (low) value, so does the other.
+
+If there is a perfect linear relationship with negative slope between the two variables, we have a correlation coefficient of -1; if there is negative correlation, whenever one variable has a high (low) value, the other has a low (high) value.
+A correlation coefficient of 0 means that there is no linear relationship between the variables.
+
+We can determine the Pearson Correlation coefficient in R using the ``cor()`` command.
+To get a more complete statistical analysis, with formal tests, we can use the command ``cor.test()``
+The interpretation of the output from the cor.test()procedure is very similar to procedures we have already encountered. The null hypothesis is that the correlation coefficient is equal to zero. This is equivalent to saying that there is no linear relationship between variables.
+
+
+\begin{framed}
+\begin{verbatim}
+C=c(0,2,4,6,8,10,12) 
+F=c(2.1,5.0,9.0,12.6,17.3,21.0,24.7)
+cor.test(C,F)
+\end{verbatim}
+\end{framed}
+\begin{verbatim}
+
+Pearson's product-moment correlation
+
+data:  C and F 
+t = 47.1967, df = 5, p-value = 8.066e-08
+alternative hypothesis: true correlation is not equal to 0 
+95 percent confidence interval:
+0.9920730 0.9998421 
+sample estimates:
+cor 
+0.9988796 
+\end{verbatim}
+
+
+\subsection{Spearman and Kendall Correlation}
+Spearman and Kendall correlations are both \textbf{\emph{rank correlations}}. 
+To implement Spearman and Kendall correlation, simply specify the type in the ``method=" "} argument.
+\begin{verbatim}
+> cor(G,D)
+[1] 0.3167869
+>
+> cor(G,D,method="spearman")
+[1] 0.1785714
+>
+> cor(G,D,method="kendall")
+[1] 0.1428571
+> 
+\end{verbatim}
+The interpretation is very similar, but there are no confidence intervals for the estimates.
+
+\subsection{Fitting a Regression Model}
+A regression model is fitted using the ``lm()`` command.
+
+Consider the response variable $F$ and predictor variable $C$.
+\begin{framed}
+\begin{verbatim}
+C=c(0,2,4,6,8,10,12) 
+F=c(2.1,5.0,9.0,12.6,17.3,21.0,24.7)
+Fit1=lm(F~C)
+\end{verbatim}
+\end{framed}
+
+
+\subsection{Confidence and Prediction Intervals for Fitted Values} 
+
+Recall that a fitted value $\hat{Y}$ is a estimate for the response variable, as determined by a linear model. The difference between the observed value and the corresponding fitted value is known as the residual.
+
+The \textbf{\emph{residual standard error}} is the conditional standard deviation of the dependent variable Y given a value of the independent variable X. The calculation of this standard error follows from the definition of the residuals.
+
+The residual standard error is often called the root mean square error (RMSE), and is a measure of the differences between values predicted by a model or an estimator and the values actually observed from the thing being modelled or estimated.
+
+Since the residual standard error is a good measure of accuracy, it is ideal if it is small.
+
+\subsubsection{Prediction Intervals}
+In contrast to a confidence interval, which is concerned with estimating a population parameter, a prediction interval is concerned with estimating an individual value and is therefore a type of probability interval. 
+
+The complete standard error for a prediction interval is called the standard error of forecast, and it includes the uncertainty associated with the vertical “scatter” about the regression line plus the uncertainty associated with the position of the regression line value itself.
+
+
+
+
+
+
+
+
+
+\newpage
+%----------------------------------------------------------------------------------------------------------------------------%
+\section{Working with Categorical Data}
+\subsection{Chi-Square}
+
+The table below shows the relationship between gender and party identification in a US state.
+
+
+%   & Democrat &Independent & Republican & Total \\
+%Male   &279& 73  &225 &577 \\
+%Female &165& 47  & 191 &403 \\
+%Total  &444 & 120 &416&   980 \\
+
+Test for association between gender and party affiliation at two appropriate levels
+and comment on your results.
+
+Set out the null hypothesis that there is no association between method of computation
+and gender against the alternative, that there is. Be careful to get these the correct way
+round!
+
+H0: There is no association.
+H1: There is an association.
+
+Work out the expected values. For example, you should work out the expected value for
+the number of males who use no aids from the following: (95/195) × 22 = 10.7.
+
+
+\section{Probability Distributions}
+\subsection{Discrete Probability Distribution}
+
+
+The two most accessible discrete distributions are the binomial and \textbf{\emph{Poisson}} distributions
+
+
