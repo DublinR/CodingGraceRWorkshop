@@ -4,9 +4,10 @@
 
 
 \section*{Adding Lines to a Scatter Plot}
-Previously we have used scatter plots to plot bivariate data. They were constructed using the \texttt{\textbf{plot()}} command.  
+Previously we have used scatter plots to plot bivariate data. They were constructed using the ``plot()`` command.  
 
-Using the \texttt{\textbf{abline()}} command, we can add lines to our scatter plots. We specify the argument according to the type of line required. A demonstration of three types of line is provided below.
+Using the ``abline()`` command, we can add lines to our scatter plots. We specify the argument according to the type of line required. 
+A demonstration of three types of line is provided below.
 
 
 
@@ -27,23 +28,28 @@ abline(a=5,b=-1/6)
 ~% \includegraphics[scale=0.55]{linesDemo}
 % \end{center}
 
-Additionally we change the colour of the added lines, by specifying a colour in the \texttt{\textbf{col=}} argument. Finally we can change the line type to one of four possible types, using the lty argument.
+Additionally we change the colour of the added lines, by specifying a colour in the ``col=`` argument. 
+Finally we can change the line type to one of four possible types, using the lty argument.
 The line types are follows 
 
-* \texttt{\textbf{lty =1}}   Normal full line (default)
-* \texttt{\textbf{lty =2}}  Dashed line 
-* \texttt{\textbf{lty =3}}   Dotted line
-* \texttt{\textbf{lty =4}}   Dash-dot line
+* ``lty =1``   Normal full line (default)
+* ``lty =2``  Dashed line 
+* ``lty =3``   Dotted line
+* ``lty =4``   Dash-dot line
 
 
 
 #### {Adding lines}
 
-Recall that we can use the arguments \texttt{xlim} and \texttt{ylim} to control the vertical and horizontal range of the plots, by specifying a two element vector (min and max) for each.
+Recall that we can use the arguments ``xlim} and ``ylim} to control the vertical and horizontal range of the plots, by specifying a two element vector (min and max) for each.
 
-Using the \texttt{abline()} command, we can add lines to our scatter plots. We specify the argument according to the type of line required. A demonstration of three types of line is provided below.
+Using the ``abline()`` command, we can add lines to our scatter plots. We specify the argument according to the type of line required. 
 
-Additionally we change the colour of the added lines, by specifying a colour in the \texttt{col} argument. We can also change the line type to one of four possible types, using the \texttt{lty} argument.
+A demonstration of three types of line is provided below.
+
+Additionally we change the colour of the added lines, by specifying a colour in the ``col`` argument. 
+
+We can also change the line type to one of four possible types, using the ``lty`` argument.
 
 %=====================================================================================================================%
 
@@ -86,21 +92,21 @@ abline(coef(Fit1))
 %\end{center}
 \[IMAGE\]
 %#### {Line Types and Line Width}
-%To specify a line width, we use the \texttt\textbf{{lwd=}} argument.
+%To specify a line width, we use the \texttt\textbf{{lwd=`` argument.
 
 
-#### *{\texttt{abline()}}
+#### *{``abline()``
 
-Using the \texttt{abline()} command, we can add lines to our scatter plots. We specify the argument according to the type of line required. A demonstration of three types of line is provided below.
-Additionally we change the colour of the added lines, by specifying a colour in the \texttt{col} argument. We can also change the line type to one of four possible types, using the \texttt{lty} argument.
+Using the ``abline()} command, we can add lines to our scatter plots. We specify the argument according to the type of line required. A demonstration of three types of line is provided below.
+Additionally we change the colour of the added lines, by specifying a colour in the ``col`` argument. We can also change the line type to one of four possible types, using the ``lty} argument.
 
 
 The line types are follows
 
-	\item	\texttt{lty =1}   Normal full line (default)
-	\item	\texttt{lty =2}   Dashed line
-	\item	\texttt{lty =3}   Dotted line
-	\item	\texttt{lty =4}   Dash-dot line
+* 	``lty =1``   Normal full line (default)
+* 	``lty =2``   Dashed line
+* 	``lty =3``  Dotted line
+* 	``lty =4``   Dash-dot line
 
 \footnotesize 
 
@@ -111,11 +117,11 @@ The line types are follows
 
 #### {Adding the regression model line}
 
-The \texttt{abline()} function can be used to add a regression model line  by supplying as an argument the \texttt{coef()} values for intercept and slope estimates .These estimates can be inputted directly by using both functions in conjunction.
+The ``abline()`` function can be used to add a regression model line  by supplying as an argument the ``coef()``` values for intercept and slope estimates .These estimates can be inputted directly by using both functions in conjunction.
 
 \footnotesize <code>
 Fit1 =lm(y1~x);  coef(Fit1)
 abline(coef(Fit1))	
 </code>
-
 \end{document}
+
