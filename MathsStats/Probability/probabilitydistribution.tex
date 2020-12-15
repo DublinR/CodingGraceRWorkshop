@@ -1,29 +1,4 @@
-	\documentclass[a4paper,12pt]{article}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{eurosym}
-\usepackage{vmargin}
-\usepackage{amsmath}
-\usepackage{graphics}
-\usepackage{epsfig}
-\usepackage{framed}
-\usepackage{subfigure}
-\usepackage{enumerate}
-\usepackage{fancyhdr}
-
-\setcounter{MaxMatrixCols}{10}
-%TCIDATA{OutputFilter=LATEX.DLL}
-%TCIDATA{Version=5.00.0.2570}
-%TCIDATA{<META NAME="SaveForMode"CONTENT="1">}
-%TCIDATA{LastRevised=Wednesday, February 23, 201113:24:34}
-%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
-%TCIDATA{Language=American English}
-
-\pagestyle{fancy}
-\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
-\lhead{Probability with R} \rhead{Kevin O'Brien} \chead{Decision tree} %\input{tcilatex}
-
-\begin{document}
-
+	
 A probability distribution describes how the values of a random variable is distributed. For example, the collection of all possible outcomes of a sequence of coin tossing is known to follow the binomial distribution. Whereas the means of sufficiently large samples of a data population are known to resemble the normal distribution. Since the characteristics of these theoretical distributions are well understood, they can be used to make statistical inferences on the entire data population as a whole.
 In the following tutorials, we demonstrate how to compute a few well-known probability distributions that occurs frequently in statistical study. We reference them quite often in other sections.
 
@@ -149,6 +124,7 @@ The last function we examine is the rnorm function which can generate random num
 > qqnorm(y)
 > qqline(y)
 \end{verbatim}
+
 \subsection*{The t Distribution}
 
 There are four functions that can be used to generate the values associated with the t distribution. You can get a full list of them and their options using the help command:
@@ -341,6 +317,8 @@ Finally random numbers can be generated according to the Chi-Squared distributio
 [1] 11.19279 23.86907 24.81251
 \end{verbatim}
 \end{framed}
+
+
 \section*{Continuous Probability Distributions}
  
 The continuous uniform distribution is commonly used in simulation.
@@ -355,7 +333,7 @@ rnorm(15,17,4)                         	          	             #argument matchi
 \end{verbatim}
 \end{framed} 
  
-other distributions
+### other distributions
 Special mathematical functions related to the beta and gamma functions.
 Usage
 
@@ -373,4 +351,3 @@ lchoose(n, k)
 factorial(x)
 lfactorial(x)
 
-\end{document}
