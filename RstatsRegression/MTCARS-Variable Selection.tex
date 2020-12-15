@@ -1,65 +1,38 @@
-documentclass[a4paper,12pt]{article}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-usepackage{eurosym}
-usepackage{vmargin}
-usepackage{amsmath}
-usepackage{graphics}
-usepackage{epsfig}
-usepackage{framed}
-usepackage{subfigure}
-usepackage{fancyhdr}
 
-setcounter{MaxMatrixCols}{10}
-%TCIDATA{OutputFilter=LATEX.DLL}
-%TCIDATA{Version=5.00.0.2570}
-%TCIDATA{<META NAME="SaveForMode"CONTENT="1">}
-%TCIDATA{LastRevised=Wednesday, February 23, 201113:24:34}
-%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
-%TCIDATA{Language=American English}
-
-pagestyle{fancy}
-setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
-lhead{MA4128} rhead{Kevin O'Brien} chead{Stepwise Regression with AIC} %input{tcilatex}
-
-%http://www.electronics.dit.ie/staff/ysemenova/Opto2/CO_IntroLab.pdf
-begin{document}
-
-% tableofcontents
-% newpage
 <p>
 ###        * {Stepwise Regression (using texttt{R})}
-begin{ }
-	         * SPSS can be very opaque in determining how particularly statistical routines are carried out. Conversely the statistical programming language texttt{R} is usually quite clear, once a familiarity with the language has been developed.
+
+*  SPSS can be very opaque in determining how particularly statistical routines are carried out. Conversely the statistical programming language texttt{R} is usually quite clear, once a familiarity with the language has been developed.
 	
-	         * For variable selection procedures, texttt{R} used the AIC criterion. When comparing multiple candidate models, the candidate model with the lowest AIC value is the best model. We will use texttt{R} output to revise variable selection procedures. Recall that we used the textbf{textit{mtcars}} data set. 
-	         * The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973ü¾£¤¼74 models). 
-	         * For this data, we tried to determine the optimal set of independent variables to predict the dependent variables textbf{textit{mpg}} (miles per gallon).
-	         * The possible predictor variables are
+*  For variable selection procedures, texttt{R} used the AIC criterion. When comparing multiple candidate models, the candidate model with the lowest AIC value is the best model. We will use texttt{R} output to revise variable selection procedures. Recall that we used the textbf{textit{mtcars}} data set. 
+*  The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973Ã¼Â¾ÂÂ£Â¤Â¼74 models). 
+*  For this data, we tried to determine the optimal set of independent variables to predict the dependent variables textbf{textit{mpg}} (miles per gallon).
+*  The possible predictor variables are
 	 
-		        * [cyl]  Number of cylinders
-		        * [disp]	 Displacement (cu.in.)
-		        * [hp]  Gross horsepower
-		        * [drat]	 Rear axle ratio
-		        * [wt] Weight (lb/1000)
-		        * [qsec]	 1/4 mile time
-		        * [vs] V/S engine type
-		        * [am] Transmission (0 = automatic, 1 = manual)
-		        * [gear]	 Number of forward gears
-		        * [carb]	  Number of carburetors
+*  [cyl]  Number of cylinders
+*  [disp]	 Displacement (cu.in.)
+*  [hp]  Gross horsepower
+*  [drat]	 Rear axle ratio
+*  [wt] Weight (lb/1000)
+*  [qsec]	 1/4 mile time
+*  [vs] V/S engine type
+*  [am] Transmission (0 = automatic, 1 = manual)
+*  [gear]	 Number of forward gears
+*  [carb]	  Number of carburetors
 	
 
 <p>
-end{ }
 
 
-newpage
+
+
 <p>
 ####        * {Backward Elimination}
-begin{ }
-         * The initial model contains all of the independent variables. Candidate models, whereby each of the independent variables are individually removed from the model are fitted.
-          * The AIC value for each reduced model is computed. The unreduced model is also used for comparison. The AIC values are tabulated to determine which removal results in the lowest AIC value. 
-         * In this first case, the removal of cyl would reduced the AIC value from 70.898 (see bottom row) to 68.915. Thus the independent variable textbf{textit{cyl}} is removed from the set of independent variables.
-end{ }
+
+* The initial model contains all of the independent variables. Candidate models, whereby each of the independent variables are individually removed from the model are fitted.
+* The AIC value for each reduced model is computed. The unreduced model is also used for comparison. The AIC values are tabulated to determine which removal results in the lowest AIC value. 
+* In this first case, the removal of cyl would reduced the AIC value from 70.898 (see bottom row) to 68.915. Thus the independent variable textbf{textit{cyl}} is removed from the set of independent variables.
+
 
 <pre>
 <code>
@@ -81,10 +54,10 @@ mpg ~ cyl + disp + hp + drat + wt + qsec + vs + am + gear + carb
 </code>
 </pre>
 <p>
-begin{ }
-	         * In the second phase, the process is repeated. This time removing textbf{textit{vs}} results in an AIC value of 66.973. It is then removed from the set of independent variables. 
-	         * For this phase, the unreduced model is the model fitted by all independent variables except textbf{textit{cyl}}, which was removed in the previous phase.
-	end{ }
+
+*  In the second phase, the process is repeated. This time removing textbf{textit{vs}} results in an AIC value of 66.973. It is then removed from the set of independent variables. 
+*  For this phase, the unreduced model is the model fitted by all independent variables except textbf{textit{cyl}}, which was removed in the previous phase.
+	
 <pre>
 <code>
 Step:  AIC=68.92
@@ -105,10 +78,10 @@ mpg ~ disp + hp + drat + wt + qsec + vs + am + gear + carb
 </code>
 </pre>
 <p>
-begin{ }
-	         * This process continues until the removal of an independent variable will not results in an improvement in AIC. This is indicated by having the textbf{$<none>$} ( i.e unreduced model) having the lowest AIC value.
+
+*  This process continues until the removal of an independent variable will not results in an improvement in AIC. This is indicated by having the textbf{$<none>$} ( i.e unreduced model) having the lowest AIC value.
 	          * At the end of the output is the optimal model, according to the backward elimination procedure, using the independent variables : textbf{textit{am}} , textbf{textit{qsec}} and textbf{textit{wt}}.
-end{ }
+
 
 <pre>
 <code>
@@ -132,12 +105,12 @@ Coefficients:
 </code>
 </pre>
 <p>
-newpage
+
 <p>
 ####        * {Stepwise Regression}
-begin{ }
-	         * Stepwise Regression differs from Backward Elimination, in that it allows independent variables to be re-introduced. Hence the $+$ signs from the second phase onwards.
-end{ }
+
+*  Stepwise Regression differs from Backward Elimination, in that it allows independent variables to be re-introduced. Hence the $+$ signs from the second phase onwards.
+
 
 <pre>
 <code>
@@ -176,10 +149,10 @@ mpg ~ disp + hp + drat + wt + qsec + vs + am + gear + carb
 </code>
 </pre>
 <p>
-newpage
-begin{ }
+
+
          * Again, the procedure finishes when it is found that the unchanged model has the lowest of all possible AIC values.
-end{ }
+
 <pre>
 <code>
 Step:  AIC=61.31
