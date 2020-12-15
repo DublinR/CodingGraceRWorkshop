@@ -1,0 +1,129 @@
+
+### {The R Programming Language}
+
+The R Programming Language is a statistical , data analysis , etc
+
+R is a free software environment for statistical computing and graphics.
+
+<p>
+### {Writing R scripts}
+Editing your R script ``R Editor".
+
+On the menu of the R console, click on file.
+Select open script or new script as appropriate.
+Navigate to your working directory and select your texttt{.R} file
+A new dialogue box ``texttt{the R editor}" will open up.
+Input or select code you wish to compile.
+To compile this code, highlight it. Click the edit button on the menu.
+Select either ``Run Line" or ``Run Selection or All".
+Your code should now compile.
+To save your code, clink on ``file" and then ``texttt{save as}".
+Save the file with the ``texttt{.R}" extension to your working directory.
+
+
+<p>
+### {Vector types}
+texttt{R} operates on named data structures. The simplest such structure is the
+vector, which is a single entity consisting of an ordered collection of
+Numbers or characters.
+
+
+Numeric vectors
+Character vectors
+Logical vectors
+(also complex number vectors and colour vectors)
+
+
+To create a vector, use the assignment operator and the concatenate function.
+For numeric vectors, the values are simply numbers.
+
+<code>
+># week8.r
+>NumVec<-c(10.4,5.6,3.1,6.4)
+</code>
+
+Alternatively we can use the texttt{assign()} command
+
+For character vectors, the values are simply characters, specified with
+quotation marks.A logical vectors is a vector whose elements are TRUE, FALSE or NA
+
+<code>
+>CharVec<-c(``blue", ``green", ``yellow")
+>LogVec<-c(TRUE, FALSE)
+</code>
+
+<p>
+
+
+
+
+
+
+%----------------------------------------------------------------%
+<p>
+### {Some Useful Operations}
+<p>
+#### {Sampling}
+
+The texttt{sample()} function.
+
+<p>
+#### {Set Theory Operations}
+
+<p>
+#### {Controlling Precision and Integerization}
+<pre>
+<code>
+pi
+round(pi,3)
+round(pi,2)
+floor(pi)
+ceiling(pi)
+</code>
+</pre>
+<p>
+
+%----------------------------------------------------------------%
+
+<p>
+### {Important Introductory Topics}
+<p>
+#### {The texttt{head()} and texttt{tail()} functions}
+<p>
+#### {Randomly Generated Numbers}
+With $a$ and $b$ as the lower and upper bound of the continous uniform distribution.
+[X sim U(a,b)]
+<p>
+#### {The texttt{as} and texttt{is} families of functions}
+<p>
+#### {The texttt{apply} family of functions}
+<p>
+#### {Writing your own function}
+
+
+%----------------------------------------------------------------%
+<p>
+### {Lists and Data Frames}
+<p>
+#### {Lists}
+<p>
+#### {Named Components}
+<p>
+#### {Data Frames}
+<pre>
+<code>
+framename = data.frame()
+</code>
+</pre>
+<p>
+%----------------------------------------------------------------%
+<p>
+### {Important Graphical Procedures}
+begin{enumerate}
+Histograms
+Box-plots
+Scatter-plots
+end{enumerate}
+
+
+%----------------------------------------------------------------%
