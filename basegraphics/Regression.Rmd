@@ -1,19 +1,19 @@
 
-%------------------------------------------
+<p>
 
-\begin{slide}{Bivariate Data}
+{Bivariate Data}
 
-\begin{itemize}
+
 * A dataset with two variables contains what is called bivariate data.
 
 * Each pair of values describes the same instance. For example, the first value of both variables describe the same individual or item.
     
 * It is often of interest to describe the relationship between two variables.
-\end{itemize}
 
-%------------------------------------------
 
-\begin{slide}{Data used today}
+<p>
+
+{Data used today}
 
 \begin{verbatim}
 >x<-c(5.98, 8.80, 6.89, 8.49, 8.48, 7.47,
@@ -32,27 +32,27 @@ It is important the both data sets have same length.
 \end{verbatim}
 
 
-%------------------------------------------
-\begin{slide}{Regression Models}
+<p>
+{Regression Models}
 
-\begin{itemize}
+
 * Simple linear regression (today).
-    \begin{itemize}
+    
     * Estimates for slope and intercept.
     * Accessing those estimates.
     * Inference on those estimates.
-    \end{itemize}
+    
 * Multiple linear regression (later).
-    \begin{itemize}
+    
     * Model selection
-    \end{itemize}
+    
 * Non-linear regression (later).
 * Diagnostics (later).
-\end{itemize}
 
-%------------------------------------------
-\begin{slide}{Simple linear regression}
-\begin{itemize}
+
+<p>
+{Simple linear regression}
+
 * Simple linear regression is used to describe the relationship
 between two variables `x' and `y'. * For example, you may want to describe the
 relationship between age and blood pressure or the relationship
@@ -67,11 +67,11 @@ kind of relationship exists between `x' and `y'.
 
 
 
-\end{itemize}
 
-%------------------------------------------
-\begin{slide}{Simple linear regression}
-\begin{itemize}
+
+<p>
+{Simple linear regression}
+
 
 * A scatterplot can created and can initially be used to get an idea
 about the nature of the relationship between the variables, e.g. if
@@ -83,35 +83,35 @@ between x and y.
 * Simple linear regression is only useful when there is evidences of a linear relationship.
 In other cases, such as quadratic relationships, other types of regression may be useful.
 
-\end{itemize}
 
-%------------------------------------------
 
-\begin{slide}{Scatterplot}
-\begin{itemize}
+<p>
+
+{Scatterplot}
+
 * To make a simple scatterplot of the bivariate data, we simply use the
 ``plot()" command. * The independent variable (the variable to go along the x-axis) is always specified first.
 \begin{verbatim}
 >plot(x,y)
 \end{verbatim}
 * In future classes, we will look at how to improve and enhance scatter-plots, by controlling graphical parameters.
-\end{itemize}
 
 
-%------------------------------------------
-\begin{slide}{Correlation}
-\begin{itemize}
+
+<p>
+{Correlation}
+
 
 * The Pearson product-moment correlation coefficient is a measure of the strength of the linear relationship between two variables. *  It is referred to as Pearson's correlation or simply as the correlation coefficient. * If the relationship between the variables is not linear, then the correlation coefficient does not adequately represent the strength of the relationship between the variables.
-\end{itemize}
-
-
-%------------------------------------------
 
 
 
-\begin{slide}{Correlation}
-\begin{itemize}
+<p>
+
+
+
+{Correlation}
+
 * To compute the Pearson correlation coefficient (``r"), we use the ``cor()" command.
 \begin{verbatim}
 > cor(x,y)
@@ -121,11 +121,11 @@ In other cases, such as quadratic relationships, other types of regression may b
 * Recall, the higher the absolute value of the correlation coefficient, the stronger the linear relationship.
 * A positive correlation coefficient indicates a positive relationship.
 * A negative correlation coefficient indicates a negative (inverse) relationship.
-\end{itemize}
 
 
-\begin{slide}{Correlation and Covariance}
-\begin{itemize}
+
+{Correlation and Covariance}
+
 * Other types of correlation coefficient are possible, such as the Spearman coefficient, and the Kendall Tau coefficient.
 * To specify one of these methods, add the argument to the command, as shown below.
  \begin{verbatim}
@@ -141,15 +141,15 @@ In other cases, such as quadratic relationships, other types of regression may b
 [1] 1.824429
 \end{verbatim}
 
-\end{itemize}
-
-%------------------------------------------
-
-\begin{slide}{Simple Linear Regression}
 
 
+<p>
 
-\begin{itemize}
+{Simple Linear Regression}
+
+
+
+
 * Basic regression model :
 $y=\beta_{0} + \beta_{1}x + \epsilon$
 
@@ -160,24 +160,26 @@ the y axis
 
 * From the data set, we determine the regression coefficients, i.e estimates for slope and intercept.
 
-\begin{itemize}
+
 \item
  $\hat{\beta}_{0}$ : the intercept estimate.
 * $\hat{\beta}_{1}$ : the slope estimate.
-\end{itemize}
+
 * Fitted model : $\hat{y}=\hat{\beta}_{0} + \hat{\beta}_{1}x $
-\end{itemize}
 
 
 
 
-%------------------------------------------
 
-\begin{slide}{The lm() command.}
-\begin{itemize}
-* The command lm() is used to fit linear models. * Firstly the response variable is specified, then the predictor variable. * The tilde sign is used to denote the dependent relationship (i.e. y depends on x).
+<p>
+
+{The lm() command.}
+
+* The command ``lm()`` is used to fit linear models. 
+* Firstly the response variable is specified, then the predictor variable. 
+* The tilde sign is used to denote the dependent relationship (i.e. y depends on x).
 * The regression coefficients are then determined.
-\end{itemize}
+
 \begin{verbatim}
 > lm(y~x)
 
@@ -190,16 +192,19 @@ Coefficients:
 \end{verbatim}
 
 
-%------------------------------------------
+<p>
 
-\begin{slide}{Simple linear regression}
-\begin{itemize} * A more detailed model (i.e. more than just the coefficients) is generated in the form of a data object. * We can give a name to the model, and view all of the results of the calculation, including \begin {itemize} * The regression coefficients \item
-The fitted $\hat{y}$ values (i.e. the estimated `y' values for the x date set) * The residuals (i.e. the differences between  the estimated `y' values and the observed `y' values). \end{itemize}\item
-In common with all data structures we can use the names() function and `\$' to access components.\end{itemize}
+{Simple linear regression}
+ * A more detailed model (i.e. more than just the coefficients) is generated in the form of a data object. 
+* We can give a name to the model, and view all of the results of the calculation, including 
+* The regression coefficients \item
+The fitted $\hat{y}$ values (i.e. the estimated `y' values for the x date set) 
+* The residuals (i.e. the differences between  the estimated `y' values and the observed `y' values). \item
+In common with all data structures we can use the names() function and `\$' to access components.
 
-%------------------------------------------
+<p>
 
-\begin{slide}{Simple linear regression}
+{Simple linear regression}
 
 \begin{verbatim}
 > fit1 = lm(y~x)
@@ -217,9 +222,9 @@ In common with all data structures we can use the names() function and `\$' to a
 
 
 
-%------------------------------------------
+<p>
 
-\begin{slide}{Simple linear regression}
+{Simple linear regression}
 We can access components using the `\$'.
 \begin{verbatim}
 >
@@ -238,17 +243,17 @@ We can access components using the `\$'.
 \end{verbatim}
 
 
-%------------------------------------------
+<p>
 
-\begin{slide}{Simple Linear Regression}
+{Simple Linear Regression}
 An alternative method is to use the following commands.
-\begin{itemize}
+
 * coef() - returns the regression coefficients of the model.
 * fitted() - returns the fitted values of the model.
 * resid() - returns the residuals of the model.
 
 
-\end{itemize}
+
  \begin{verbatim}
  > coef(fit1)
 (Intercept)           x
@@ -258,15 +263,15 @@ An alternative method is to use the following commands.
 
 
 
-%------------------------------------------
+<p>
 
-\begin{slide}{Coefficient of Determination}
-\begin{itemize}
+{Coefficient of Determination}
+
 * The coefficient of determination $R^2$ is  the proportion of variability in a data set
 that is accounted for by the linear model.
 * $R^2$ provides a measure of how well future outcomes are likely to be predicted by the model.
 * For simple linear regression, it can also be computed by squaring the correlation coefficient.
-\end{itemize}
+
 
 \begin{verbatim}
 > summary(fit1)$r.squared
@@ -276,10 +281,10 @@ that is accounted for by the linear model.
 
 
 
-%------------------------------------------
+<p>
 
-\begin{slide}{p-values}
-\begin{itemize}
+{p-values}
+
 \item
 We will begin to use hypothesis testing in out analyses.
 * We will mostly be using ``p-values".
@@ -287,13 +292,13 @@ We will begin to use hypothesis testing in out analyses.
 * If it is above an arbitrary threshold, we ``fail to reject" the null hypothesis.
 * We will use 0.01 (1\%) as our arbitrary threshold.
 * The relevant hypotheses will be discussed for each methodology.
-\end{itemize}
 
 
-%------------------------------------------
 
-\begin{slide}{Inference for regression}
-\begin{itemize}
+<p>
+
+{Inference for regression}
+
 \item
 We can use the ``summary()" command to determine
 test statistics and p-values for the both
@@ -301,11 +306,11 @@ regression coefficients.
 * In both cases the null hypothesis is that the true value is zero.
 * Consequently the alternative hypothesis is that they are not zero in both cases.
 * Stating that the slope is zero is equivalent to saying that there is no relationship between `x' and `y'.
-\end{itemize}
 
-%------------------------------------------
 
-\begin{slide}{Inference for regression}
+<p>
+
+{Inference for regression}
 \begin{verbatim}
 > summary(fit1)
 
@@ -325,21 +330,21 @@ x       0.85805    0.08103  10.590 9.38e-07 ***
 
 \end{verbatim}
 
-%------------------------------------------
+<p>
 
-\begin{slide}{Inference for regression}
-\begin{itemize}
+{Inference for regression}
+
 * The p value for the intercept is 0.209. This means we fail to reject the null hypothesis that true intercept is zero.
 * The p value for the slope is extremely small. This means we reject the null hypothesis that it is zero.
 * Consequently we reject the hypothesis that there is no relationship between `x' and `y'.
 * Notice that the stars beside the p-value. The more stars, the lower the p-value.
-\end{itemize}
 
 
 
-%------------------------------------------
-\begin{slide}{Inference for correlation}
-\begin{itemize}
+
+<p>
+{Inference for correlation}
+
 
 * The cor() function in R can be extended to provide the significance testing required. 
 * The function is ``cor.test()".
@@ -350,12 +355,12 @@ x       0.85805    0.08103  10.590 9.38e-07 ***
 \end{verbatim}
 * For this test, the null hypothesis is that the true correlation coefficient is zero.
 * The alternative is that the true value is not zero, and a linear relationship exists.
-\end{itemize}
 
 
 
-%------------------------------------------
-\begin{slide}{Inference for correlation (contd)}
+
+<p>
+{Inference for correlation (contd)}
 \begin{verbatim}
 
 > cor.test(x,y)
@@ -374,15 +379,15 @@ sample estimates:
 \end{verbatim}
 
 
-%------------------------------------------
-\begin{slide}{Inference for correlation (contd)}
-\begin{itemize}
+<p>
+{Inference for correlation (contd)}
+
 * The p-value for this hypothesis test is 9.379e-07.
 * As this is much smaller than out threshold of 0.01, we reject the null hypothesis.
 * There is a linear relationship between x and y.
 * Notice the alternative hypothesis was expressed in the output.
 * Also notice that a 95\% confidence interval was given for the correlation coefficient.
-\end{itemize}
+
 
 \end{document}
 
