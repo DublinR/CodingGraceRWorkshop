@@ -1,40 +1,14 @@
-documentclass[a4paper,12pt]{article}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-usepackage{eurosym}
-usepackage{vmargin}
-usepackage{amsmath}
-usepackage{graphics}
-usepackage{epsfig}
-usepackage{framed}
-usepackage{subfigure}
-usepackage{fancyhdr}
-
-setcounter{MaxMatrixCols}{10}
-%TCIDATA{OutputFilter=LATEX.DLL}
-%TCIDATA{Version=5.00.0.2570}
-%TCIDATA{<META NAME="SaveForMode"CONTENT="1">}
-%TCIDATA{LastRevised=Wednesday, February 23, 201113:24:34}
-%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
-%TCIDATA{Language=American English}
-
-pagestyle{fancy}
-setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
-lhead{MA4128} rhead{Kevin O'Brien} chead{Variable Selection Procedures} %input{tcilatex}
-
-%http://www.electronics.dit.ie/staff/ysemenova/Opto2/CO_IntroLab.pdf
-begin{document}
-
 
 <p>
 ### {Variable Selection}
 Often we require the optimal set of independent variables to adequately describe the data, without overfitting. As such we will use variable selection procedures. In statistical methods, the order in which the predictor variables are entered into (or taken out of) the model is determined according to the strength of their correlation with the response variable. Actually there are several versions of this method, called forward selection, backward selection and stepwise selection.
 
 The main procedures are as follows:
-begin{ }
+
 	         * Forward Selection
 	         * Backward Elimination
 	         * Stepwise Selection
-end{ }
+
 
 The essential concept is the estimation of the relationship between a predictor
 variable and a response variable after controlling for the effects of other
@@ -44,16 +18,16 @@ predictors in the equation. One such estimate is the semi-partial correlation co
 <p>
 ### {Variable Selection Procedures}
 
-begin{ }
+
          * textbf{Enter}: This is the forced entry option. SPSS will enter at one time all specified variables regardless of significance levels.
          * textbf{Forward}: This method will enter variables one at a time, based on the significance value to enter.
          * textbf{Backward}: This enters all independent variables at one time and then removes variables one at a time based on a preset significance value to remove.
          * textbf{Stepwise}: This combines both forward and backward procedures. Since inter correlations are complex, the variance due to certain variables will change when new variables are entered into the equation. This is the most frequently used of the regression methods.
          * textbf{Remove}: This is the forced removal option. It requires an initial regression analysis using the Enter procedure. In the next block (Block 1 of 1) you may specify one or more variables to remove. SPSS will then remove the specified variables and run the analysis again.
-end{ }
+
 There are different ways that the relative contribution of each predictor variable can be assessed. In the “simultaneous” method (which SPSS calls the Enter method), the analyst specifies the set of predictor variables that make up the model. The success of this model in predicting the criterion variable is then assessed.
 
-begin{ }
+
 	         * In contrast, “hierarchical” methods enter the variables into the model in a specified order. The order specified should reflect some theoretical consideration or previous
 	findings. If you have no reason to believe that one variable is likely to be more important than another you should not use this method. As each variable is entered into the model its contribution is assessed. If adding the variable does not significantly increase the predictive power of the model then the variable is
 	dropped.
@@ -192,7 +166,7 @@ Stepwise methods include or remove one independent variable at each step, based 
 
 The following three stepwise methods are available.
 
-begin{ }
+
          * Stepwise Based on the p-value of F (probability of F), SPSS starts by entering the variable with the smallest p-value; at the next step again the variable (from the list of variables not yet in the equation) with the smallest p-value for F and so on. 
     
     Variables already in the equation are removed if their p-value becomes larger than the default limit due to the inclusion of another variable. The method terminates when no more variables are eligible for inclusion or removal.	
@@ -200,8 +174,7 @@ begin{ }
     This methods is based on both probability-to-enter (PIN) and probability to remove (POUT).
          * Backward Elimination: First all variables are entered into the equation and then sequentially removed. For each step SPSS provides statistics, namely $R^2$. At each step, the largest probability of F is removed (if the value is larger than POUT.
          * Forward Forward selection: at each step the variable not yet in the equation with the smallest probability of F is entered. as long as the value is smaller than PIN. The procedure stops when there are no variables that meet the entry criterion.
-end{ }
-newpage
+
 <p>
 ### {Stepwise Regression (Minitab)}
 
