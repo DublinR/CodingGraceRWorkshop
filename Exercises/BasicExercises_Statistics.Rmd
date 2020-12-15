@@ -1,0 +1,12 @@
+Exercise
+======================================
+We are going to analyse the Chick weight data.
+In your report, report the following pieces of information.
+
+For this exercise, the necessary summary statistics are: the mean, median, variance, maximum and minimum.
+
+*  A brief discussion of the data set.
+*  The names and dimensions of the data set.
+*  The levels of the Diet factor.
+*  The summary statistics of weights on day `2'.
+*  The summary statistics the weights on day`14'.
