@@ -1,0 +1,315 @@
+
+### {Using R for Inference Procedures}
+
+*  [1] Paired t-test
+*  [2] Single Sample Tests for Proportions
+*  [3] Two Sample Test for Proportions
+*  [4] Test for the equality of variances for two samples
+*  [5] Shapiro-Wilk Test for Normality
+*  [6] Graphical procedures for assessing normality
+
+
+%---------%
+
+### {p-values using R}
+
+*  In every inference procedure performed using R, a p-value is presented to the screen for the user to interpret.
+
+*  If the p-value is larger than a specified threshold $alpha/k$ then the appropriate conclusion is a
+failure to reject the null hypothesis.
+
+*  Conversely, if the p-value is less than threshold, the appropriate conclusion is to reject the null hypothesis.
+
+*  In this module, we will use a significance level$alpha=0.05$ and almost always the procedures will be two tailed ($k=2$). Therefore the threshold $alpha/k$ will be $0.025$.
+
+
+
+%---------%
+
+### {Using Confidence Limits}
+
+*  Alternatively, we can use the confidence interval to make a decision on whether or not we should reject or fail to reject the null hypothesis.
+*  If the null value is within the range of the confidence limits, we fail to reject the null hypothesis.
+*  If the null value is outside the range of the confidence limits, we reject the null hypothesis.
+*  Occasionally a conclusion based on this approach may differ from a conclusion based on the p-value. In such a case, remark upon this discrepancy.
+
+
+%------------------------------------------%
+
+
+### {The paired t-test (a)}
+
+
+*  Previously we have seen the paired t-test. It is used to determine whether or
+not there is a significant difference between paired measurements. Equivalently whether or not
+the case-wise differences are zero.
+*  The mean and standard deviation of the case-wise differences are used to determine the test statistic.
+*  Under the null hypothesis, the expected value of the case-wise differences is zero (i.e $H_0 : mu_d = 0$).
+[ TS = frac{bar{d} - mu_d}{frac{s_d}{sqrt{n}}} ]
+
+
+
+*  The calculation is dependent on the case-wise differences
+*  Here the case-wise differences between paired measurements (e.g. ``before" and ``after")
+*  The test statistic can be computed using the following R code, where texttt{CWdiff} is the case-wise differences. *  The mean, standard deviation and sample size are presented in the next slide.
+
+
+
+%------------------------------------------%
+
+### {The paired t-test (c)}
+<code>
+> CWdiff = Before - After
+> mean(CWdiff)
+[1] 8.214286
+> sd(CWdiff)
+[1] 7.904999
+> length(CWdiff)
+[1] 14
+</code>
+
+[ TS = frac{8.21 - 0}{frac{7.90}{sqrt{14}}} = 3.881 ]
+In an exam situation, the candidate will be expected to compute this value. It will be omitted from R code output.
+
+
+%------------------------------------------%
+
+### {The paired t-test (d)}
+Implementing the paired t-test using R.
+<code>
+> t.test(Before,After,paired=TRUE)
+
+        Paired t-test
+
+data:  Before and After
+t = 3.8881, df = 13, p-value = 0.001868
+alternative hypothesis: true difference in means is not 0
+95 percent confidence interval:
+  3.650075 12.778496
+sample estimates:
+mean of the differences
+               8.214286
+
+</code>
+
+
+%-------------------------------------------------%
+
+### {The paired t-test (e)}
+
+*  The p-value ($0.001868$) is less than the threshold is less than the threshold $0.0250$
+*  We reject the null hypothesis (mean of case-wise differences being zero, i.e. expect no difference between ``before" and ``after")
+*  We conclude that there is a difference between `before' and `after'.
+*  That is to say, we can expected a difference between two paired measurements.
+
+
+%-------------------------------------------------%
+
+### {The paired t-test (f)}
+
+*  We consider the confidence interval. We are $95%$ confident that the expected value of the case-wise difference is at least 3.65.
+*  Here the null value (i.e. 0) is not within the range of the confidence limits.
+*  Therefore we reject the null hypothesis.
+
+<code>
+> t.test(Before,After,paired=TRUE)
+...
+...
+95 percent confidence interval:
+  3.650075 12.778496
+...
+</code>
+
+%-------------------------------------------------%
+
+### {Single Sample Proportion Test (a)}
+
+
+*  In this procedure, we determine whether or not we are are justified in assuming that the population proportion takes a certain value.
+*  For example, suppose we believed that the population proportion of students with iphones or androids was $80%$.
+*  We would write the null and alternative accordingly.
+[H_0 : pi = 80% ]
+[H_1 : pi neq 80% ]
+*  The  appropriate R command is texttt{prop.test(x,n,p)}
+*  $x$ is the number of successes, $n$ is the sample size and $p$ is the population proportion assumed under the null hypothesis.
+*  Suppose we survey 65 students, with 50 replying that they had an iphone or android.
+
+
+
+%-------------------------------------------------%
+
+
+### {Single Sample Proportion Test (b)}
+
+<code>
+> prop.test(50,65,0.80)
+
+        1-sample proportions test 
+
+data:  50 out of 65, null probability 0.8
+X-squared = 0.2163, df = 1, p-value = 0.6418
+alternative hypothesis: true p is not equal to 0.8
+95 percent confidence interval:
+ 0.6452269 0.8610191
+sample estimates:
+        p
+0.7692308
+</code>
+
+
+%-------------------------------------------------%
+
+
+### {Single Sample Proportion Test (c)}
+
+
+*  The p-value is above the threshold. Therefore we fail to reject the null hypothesis that the population proportion ($pi$) is $80%$.
+
+*  The observed proportion is a very straightforward calculation:
+
+[ hat{p} = frac{50}{65} = 0.76923= 76.92%]
+*  Nonetheless, you would be required to show how it was calculated.
+
+
+
+
+%-------------------------------------------------%
+
+### {Test of Equality for Two Sample Proportions (a)}
+The null hypothesis is that two populations have the same proportions for a particular characteristic.
+[H_0 : pi_1 = pi_2 ]
+[H_1 : pi_1 neq pi_2 ]
+
+*  The command is texttt{prop.test(c(x1,x2),c(n1,n2))}
+*  $x1$ and $x2$ are the number of successes from both samples.
+*  $n2$ and $n2$ are the sample sizes for both groups.
+*  The difference in population proportions assumed under the null hypothesis is zero.
+*  (It is possible to specify a different null value, but we will not consider this in this module.)
+
+
+
+%-------------------------------------------------%
+
+### {Test of Equality for Two Sample Proportions (b)}
+
+*  Consider a study where the proportion of Irish students who owned mobile devices, such as iphones and androids was compared to the corresponding proportion of French student.
+*  As before, $65$ Irish students were interviewed, with $50$ replying that they owned mobile devices.
+*  $90$ french students were interview, with 60 responding that they owned mobile devices.
+*  The test of equality of proportions is implemented on the next slide.
+
+
+
+%-------------------------------------------------%
+
+
+
+### {Test of Equality for Two Sample Proportions (c)}
+Based on the p-value, we fail to reject the null hypothesis. There is not enough evidence to assume a difference in proportions. Also the expected difference assumed under the null hypothesis, i.e. 0, is contained in the confidence interval.
+<code>
+> prop.test(c(50,60),c(65,90))
+
+        2-sample test for equality of proportions
+
+data:  c(50, 60) out of c(65, 90)
+X-squared = 1.4613, df = 1, p-value = 0.2267
+alternative hypothesis: two.sided
+95 percent confidence interval:
+ -0.05202058  0.25714878
+sample estimates:
+   prop 1    prop 2
+0.7692308 0.6666667
+</code>
+
+
+### {Test of Equality for Two Sample Proportions (d)}
+
+*  You would be required to compute the differences in observed proportions.
+*  Additionally you will given the R code for one sample procedures. This may or may not be relevant for answering the question.
+
+<code>
+> prop.test(60,90,0.80)
+...
+...
+X-squared = 9.184, df = 1, p-value = 0.002441
+alternative hypothesis: true p is not equal to 0.8
+95 percent confidence interval:
+ 0.5585219 0.7604058
+sample estimates:
+        p
+0.6666667
+</code>
+
+
+
+
+
+%-------------------------------------------------%
+
+
+
+### {Shapiro-Wilk Test(a)}
+
+
+
+*  We will often be required to determine whether or not a data set is normally distributed.
+*  Again, this assumption underpins many statistical models.
+*  The null hypothesis is that the data set is normally distributed.
+*  The alternative hypothesis is that the data set is not normally distributed.
+*  One procedure for testing these hypotheses is the Shapiro-Wilk test, implemented in R using the command texttt{shapiro.test()}.
+*  (Remark: You will not be required to compute the test statistic for this test.)
+
+
+%----------------------------------------%
+
+### {Shapiro Wilk Test(b)}
+For the data set used previously; $x$ and $y$, we use the Shapiro-Wilk test to determine that both data sets are normally distributed.
+<code>
+
+> shapiro.test(x)
+
+        Shapiro-Wilk normality test
+
+data:  x
+W = 0.9474, p-value = 0.6378
+
+> shapiro.test(y)
+
+        Shapiro-Wilk normality test
+
+data:  y
+W = 0.9347, p-value = 0.5273
+</code>
+
+
+
+
+%-------------------------------------------------%
+
+### {Graphical Procedures for assessing Normality}
+
+
+*  The Q-Q plot is a very useful tool for determining whether or not a data set is normally distributed
+*  Interpretation is simple. If the points follow the trendline (provided by the second line of R code texttt{qqline}).
+*  One should expect minor deviations. Numerous major deviations would lead the analyst to conclude that the data set is not normally distributed.
+*  The Q-Q plot is best used in conjunction with a formal procedure such as the Shapiro-Wilk test.
+
+
+<code>
+>qqnorm(CWdiff)
+>qqline(CWdiff)
+</code>
+
+
+
+### {Graphical Procedures for Assessing Normality}
+
+begin{center}
+includegraphics[scale=0.32]{10AQQplot}
+end{center}
+
+
+
+Kolmogorov Smirnov Tests
+Non-parametric procedures
+Compute the test statistic
+Same distribution
