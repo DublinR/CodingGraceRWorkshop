@@ -10,21 +10,21 @@ For example, the collection of all possible outcomes of a sequence of coin tossi
 Recall that probability distributions can be categorised as either \textit{\textbf{discrete}} or \textit{\textbf{continuous}}.
 We will look at  
 \begin{itemize}
-\item how to generate random numbers,
-\item how to use probability mass and density functions,
-\item how to use cumulative distribution functions,
-\item how to determine quantiles.
+* how to generate random numbers,
+* how to use probability mass and density functions,
+* how to use cumulative distribution functions,
+* how to determine quantiles.
 \end{itemize} 
 
 There is a wide variety of probability distributions available, but we shall only look at a few key distribution. 
 
 \begin{itemize}
-\item	The Normal Distribution
-\item	The Student $t-$Distribution
-\item   The Uniform Distribution
-\item	The Exponential Distribution
-\item	The Binomial Distribution
-\item	The Poisson Distribution
+* The Normal Distribution
+* The Student $t-$Distribution
+* The Uniform Distribution
+* The Exponential Distribution
+* The Binomial Distribution
+* The Poisson Distribution
 \end{itemize}
 
 If you would like to know what distributions are available you can do a search using the command \texttt{\textbf{help.search("distribution")}}. 
@@ -41,7 +41,7 @@ For a discrete distribution, the probability mass function (pmf) is the probabil
 For a discrete distribution, the probability density function (pdf) is the relative likelihood that the continuous random variable $X$ will have some specified value (k).
 Since for continuous distributions the probability at a single point is zero, it is \textbf{not} equivalent to $P(X = k)$.
 
-Rather the density function is the height of a \textbf{\textit{density curve}} (such as the well-known Gaussian bell-curve) at point $k$.
+Rather the density function is the height of a ``density curve}} (such as the well-known Gaussian bell-curve) at point $k$.
 
 \begin{center}
 \includegraphics[scale=0.40]{6AFunction}
@@ -50,12 +50,14 @@ Rather the density function is the height of a \textbf{\textit{density curve}} (
  
 %\end{document}
  
-Probability density functions are determined using the \texttt{\textbf{d}} family of functions. For example, for the normal distribution, the command is \texttt{\textbf{dnorm()}}. 
+Probability density functions are determined using the \texttt{\textbf{d}} family of functions. 
+For example, for the normal distribution, the command is \texttt{\textbf{dnorm()}}. 
 Necessarily the  \texttt{\textbf{d}} family of functions are more useful for discrete random variables than for continuous variables.
 
 \subsection{Cumulative Distribution Functions}
 
-The cumulative distribution function (cdf) is the probability that the variable takes a value less than or equal to $x$. The cumulative density function is often denoted as $F(x)$.
+The cumulative distribution function (cdf) is the probability that the variable takes a value less than or equal to $x$. 
+The cumulative density function is often denoted as $F(x)$.
  
  \[F(x)= P(X \leq x) = \alpha \]
 
@@ -70,14 +72,15 @@ The inverse cumulative distribution function (otherwise known as the quantile fu
 
 \[F^{-1}(\alpha) = x  \]
 
-Implementation of the inverse cumulative distribution function requires use of the \texttt{\textbf{q}} family of functions. Quantile functions generally tend to be used with continuous random variables, rather than for discrete random variables.
+Implementation of the inverse cumulative distribution function requires use of the \texttt{\textbf{q}} family of functions. 
+Quantile functions generally tend to be used with continuous random variables, rather than for discrete random variables.
 
 
 \section{Continuous Probability Distributions}
 In addition to the normal distribution and the $t-$distribution , we will look at two more continuous distribution functions: 
 \begin{itemize}
-\item The Uniform Distribution
-\item The Exponential Distributions
+*The Uniform Distribution
+*The Exponential Distributions
 \end{itemize}
 \subsection{The Uniform Distribution}
 
@@ -95,19 +98,22 @@ It is known as the `Rectangle Distribution' for obvious reasons. We specify the 
 The continuous uniform distribution is characterized by the following parameters
 
 \begin{itemize}
-\item The lower limit $a$ (or with \texttt{R}: \texttt{\textbf{min}} )
-\item The upper limit $b$ (or with \texttt{R}: \texttt{\textbf{max}} )
-\item We denote a uniform random variable $X$ as $X \sim U(a,b)$
+*The lower limit $a$ (or with \texttt{R}: \texttt{\textbf{min}} )
+*The upper limit $b$ (or with \texttt{R}: \texttt{\textbf{max}} )
+*We denote a uniform random variable $X$ as $X \sim U(a,b)$
 \end{itemize}
 
 It is not possible to have an outcome that is lower than $a$ or larger than $b$ ,i.e. $ P(X < a) = P(X > b) = 0$.
 
-We wish to compute the probability of an outcome being within a range of values.We shall call this lower bound of this range $L$ and the upper bound $ U$. Necessarily $L$ and $U$ must be possible outcomes.The probability of $X$ being between $L$ and $U$ is denoted $P( L \leq X \leq U )$.
+We wish to compute the probability of an outcome being within a range of values.
+We shall call this lower bound of this range $L$ and the upper bound $ U$. 
+Necessarily $L$ and $U$ must be possible outcomes.The probability of $X$ being between $L$ and $U$ is denoted $P( L \leq X \leq U )$.
 
 In the absence of the specified upper and lower limits, the default values of 0 and 1 would be used.
 
 \subsubsection{Generating Random Values}
-The most common use of the uniform distribution is the generation of uniformly distributed random variables. The relevant command is \texttt{\textbf{runif()}}. Functions that can be used to manage precision are useful when generating random values.
+The most common use of the uniform distribution is the generation of uniformly distributed random variables. 
+The relevant command is \texttt{\textbf{runif()}}. Functions that can be used to manage precision are useful when generating random values.
 
 \begin{verbatim}
 > runif(10)
