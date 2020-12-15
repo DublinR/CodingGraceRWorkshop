@@ -1,0 +1,257 @@
+
+
+chapter { R Graphics}
+<p>
+###  Enhancing your scatter plots
+<p>
+#### {Adding lines}
+Previously we have used scatter plots to plot bivariate data. They were constructed using the plot() command.
+Recall that we can use the arguments texttt{xlim} and texttt{ylim} to control the vertical and horizontal range of the plots, by specifying a two element vector (min and max) for each.
+
+Using the texttt{abline()} command, we can add lines to our scatter plots. We specify the argument according to the type of line required. A demonstration of three types of line is provided below.
+Additionally we change the colour of the added lines, by specifying a colour in the texttt{col} argument. We can also change the line type to one of four possible types, using the texttt{lty} argument.
+
+The line types are follows
+
+      	texttt{lty =1}   Normal full line (default)
+      	texttt{lty =2}   Dashed line
+      	texttt{lty =3}   Dotted line
+      	texttt{lty =4}   Dash-dot line
+
+ <code>
+x=rnorm(10)
+y=rnorm(10)
+plot(x,y)
+plot(x,y,xlim=c(-4,4),ylim=c(-4,4))
+abline(v =0 , lty =2 )    # add a vertical dotted line (here the y-axis) to the plot
+abline(h=0  ,lty =3)    # add a horizontal dotted line (here the x-axis) to the plot
+abline(a=0,b=1,col="green") # add a line to your plot with intercept "a" and slope "b"
+ </code>
+
+<p>
+#### {Changing your plot character}
+
+To change the plot character (the symbol for each covariate, we supply an additional argument to the plot() function.  This argument is formulated as pch=n where n is some number.
+Additionally we change the colour of the characters, by specifying a colour in the col argument.
+ <code>
+plot(x,y,pch=15,col="red")		#Square plot symbols
+plot(x,y,pch=16,col="green")		#Orb plot symbols
+plot(x,y,pch=17,col="mauve")		#Triangular plot symbols
+plot(x,y,pch=36	,col="amber")		#Dollar sign plot symbols
+</code>
+Recall that we can add new variates to an existing scatterplot using the points() function. Remember to set the vertical and horizontal limits accordingly.
+ <code>
+y1 = rnorm(10); y2 = rnorm(10)
+plot(x,y1, pch=8,col="purple" ,xlim=c(-5,5),ylim=c(-5,5))
+points(x,y2,pch=12,col="green")
+</code>
+<p>
+#### {Adding the regression model line}
+
+The texttt{abline()} function can be used to add a regression model line  by supplying as an argument the texttt{coef()} values for intercept and slope estimates .These estimates can be inputted directly by using both functions in conjunction.
+
+ <code>
+Fit1 =lm(y1~x);  coef(Fit1)
+abline(coef(Fit1))	
+</code>
+
+<p>
+#### {Adding a title }
+
+It is good practice to label your scatterplots properly. You can specify the following argument
+
+      	main="Scatterplot Example", 	This provides the plot with a title
+      	sub="Subtitle",   This adds a subtitle
+      	xlab="X variable ",				This command labels the x axis 
+  ylab="y variable ",				This command labels the y-axis
+
+We can also add text to each margin, using the texttt{mtext()} command.  
+We simply require the number of the side. (1 = bottom, 2=left,3=top,4=right). 
+We can change the colour using the col argument.
+ <code>
+plot(x,y,main="Scatterplot Example",   sub="subtitle",    xlab="X variable ", ylab="y variable ")	
+mtext("Enhanced Scatterplot", side=4,col="red ")
+</code>
+Alternatively , we can also use the command title() to add a title to an existing scatterplot.
+ <code>
+title(main="Scatterplot Example)	
+</code>
+
+
+
+chapter{Graphical methods}
+
+<p>
+### {Scatterplots}
+%begin{figure}
+  % Requires usepackage{graphicx}
+  % includegraphics[scale=0.40]{MTCARSmpgwt.png}
+  % caption{Scatterplot}label{mpgwt}
+% end{figure}
+
+
+<p>
+### {Adding titles, lines, points to plots}
+
+
+ <code>
+library(MASS)
+# Colour points and choose plotting symbols according to a levels of a factor
+plot(Cars93$Weight, Cars93$EngineSize, col=as.numeric(Cars93$Type),
+pch=as.numeric(Cars93$Type))
+
+# Adds x and y axes labels and a title.
+plot(Cars93$Weight, Cars93$EngineSize, ylab="Engine Size",
+xlab="Weight", main="My plot")
+# Add lines to the plot.
+lines(x=c(min(Cars93$Weight), max(Cars93$Weight)), y=c(min(Cars93$EngineSize),
+max(Cars93$EngineSize)), lwd=4, lty=3, col="green")
+abline(h=3, lty=2)
+abline(v=1999, lty=4)
+# Add points to the plot.
+</code>
+
+
+
+
+<p>
+#### { Charts}
+
+begin{myindentpar}{1cm}
+<code>
+# Define 2 vectors cars <- c(1, 3, 6, 4, 9) trucks <- c(2, 5, 4,
+5, 12)
+
+# Calculate range from 0 to max value of cars and trucks g_range
+<- range(0, cars, trucks)
+
+# Graph autos using y axis that ranges from 0 to max # value in
+cars or trucks vector.  Turn off axes and # annotations (axis
+labels) so we can specify them ourself plot(cars, type="o",
+col="blue", ylim=g_range,
+   axes=FALSE, ann=FALSE)
+
+# Make x axis using Mon-Fri labels axis(1, at=1:5,
+lab=c("Mon","Tue","Wed","Thu","Fri"))
+
+# Make y axis with horizontal labels that display ticks at # every
+4 marks. 4     0:g_range[2] is equivalent to c(0,4,8,12). axis(2,
+las=1, at=4     0:g_range[2])
+
+# Create box around plot box()
+
+# Graph trucks with red dashed line and square points
+lines(trucks, type="o", pch=22, lty=2, col="red")
+
+# Create a title with a red, bold/italic font title(main="Autos",
+col.main="red", font.main=4)
+
+# Label the x and y axes with dark green text title(xlab="Days",
+col.lab=rgb(0,0.5,0)) title(ylab="Total", col.lab=rgb(0,0.5,0))
+
+# Create a legend at (1, g_range[2]) that is slightly smaller #
+(cex) and uses the same line colors and points used by # the
+actual plots legend(1, g_range[2], c("cars","trucks"), cex=0.8,
+   col=c("blue","red"), pch=21:22, lty=1:2);
+
+</code>
+end{myindentpar}
+<p>
+#### {Bar charts}
+begin{myindentpar}{1cm}
+<code>
+# Define the cars vector with 7 values
+cars <- c(1, 3, 6, 4, 9, 5, 7)
+# Graph cars
+barplot(cars)
+</code>
+end{myindentpar}
+<p>
+#### {Boxplots}
+<p>
+#### {Setting graphical parameters}
+<p>
+#### {Miscellaneous}
+The following code can be used to make variations of the plots.
+
+begin{myindentpar}{1cm}
+ <code>
+# Make an empty chart
+plot(1, 1, xlim=c(1,5.5), ylim=c(0,7), type="n", ann=FALSE)
+
+# Plot digits 0-4 with increasing size and color
+text(1:5, rep(6,5), labels=c(0:4), cex=1:5, col=1:5)
+
+# Plot symbols 0-4 with increasing size and color
+points(1:5, rep(5,5), cex=1:5, col=1:5, pch=0:4)
+text((1:5)+0.4, rep(5,5), cex=0.6, (0:4))
+
+# Plot symbols 5-9 with labels
+points(1:5, rep(4,5), cex=2, pch=(5:9))
+text((1:5)+0.4, rep(4,5), cex=0.6, (5:9))
+
+# Plot symbols 10-14 with labels
+points(1:5, rep(3,5), cex=2, pch=(10:14))
+text((1:5)+0.4, rep(3,5), cex=0.6, (10:14))
+
+# Plot symbols 15-19 with labels
+points(1:5, rep(2,5), cex=2, pch=(15:19))
+text((1:5)+0.4, rep(2,5), cex=0.6, (15:19))
+
+# Plot symbols 20-25 with labels
+points((1:6)     0.8+0.2, rep(1,6), cex=2, pch=(20:25))
+text((1:6)     0.8+0.5, rep(1,6), cex=0.6, (20:25))
+</code>
+end{myindentpar}
+
+<p>
+#### {Lattice Graphs}
+<p>
+#### {setting up}
+Execute the following command:
+begin{myindentpar}{1cm}
+<code>
+library(lattice)
+</code>
+end{myindentpar}
+For information on lattice, type:
+begin{myindentpar}{1cm}
+<code>
+help(package = lattice)
+</code>
+end{myindentpar}
+The examples in this <p>
+###  are generally drawn from the R documentation and Murrell (2006).
+
+Murrell gives three reasons for using Lattice Graphics:
+
+They usually look better.
+They can be extended in powerful ways.
+The resulting output can be annotated, edited, and saved
+
+<p>
+#### {3 Dimensional Graphs}
+How to do a 3-d graph
+
+
+chapter{Statistical Analysis using R}
+<p>
+### {Confidence Intervals}
+<p>
+#### {Confidence Intervals for Large Samples}
+<p>
+#### {Confidence Intervals for Small Samples}
+
+<p>
+### {Linear Models}
+
+The Slope and Intercept
+begin{myindentpar}{1cm}
+<code>
+
+</code>
+end{myindentpar}
+
+<p>
+### {ANOVA}
+

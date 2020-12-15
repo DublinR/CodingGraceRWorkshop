@@ -2,8 +2,8 @@
 \section{Discrete Probability Distributions}
 The discrete distributions we will look at in this course are
 \begin{itemize}
-\item The binomial distribution
-\item The Poisson distribution
+* The binomial distribution
+* The Poisson distribution
 \end{itemize}
 \subsection{Binomial Distribution}
 
@@ -125,9 +125,9 @@ Wilcoxon &	wilcox &	m, n\\
 
 \section{Discrete Probability Distributions}
 \begin{itemize}
-\item Poisson Distribution
-\item Binomial Distribution
-\item Geometric Distribution
+* Poisson Distribution
+* Binomial Distribution
+* Geometric Distribution
 \end{itemize}
 \subsection{The Poisson distribution}
 The Poisson distribution is characterized the by the arrival rate 'lambda'.

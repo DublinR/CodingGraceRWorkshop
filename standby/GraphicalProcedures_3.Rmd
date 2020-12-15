@@ -1,0 +1,111 @@
+
+
+chapter { R Graphics}
+<p>
+###  Enhancing your scatter plots
+<p>
+#### {Adding lines}
+Previously we have used scatter plots to plot bivariate data. They were constructed using the plot() command.
+Recall that we can use the arguments texttt{xlim} and texttt{ylim} to control the vertical and horizontal range of the plots, by specifying a two element vector (min and max) for each.
+
+Using the texttt{abline()} command, we can add lines to our scatter plots. We specify the argument according to the type of line required. A demonstration of three types of line is provided below.
+Additionally we change the colour of the added lines, by specifying a colour in the texttt{col} argument. We can also change the line type to one of four possible types, using the texttt{lty} argument.
+
+The line types are follows
+
+      	texttt{lty =1}   Normal full line (default)
+      	texttt{lty =2}   Dashed line
+      	texttt{lty =3}   Dotted line
+      	texttt{lty =4}   Dash-dot line
+
+ <code>
+x=rnorm(10)
+y=rnorm(10)
+plot(x,y)
+plot(x,y,xlim=c(-4,4),ylim=c(-4,4))
+abline(v =0 , lty =2 )    # add a vertical dotted line (here the y-axis) to the plot
+abline(h=0  ,lty =3)    # add a horizontal dotted line (here the x-axis) to the plot
+abline(a=0,b=1,col="green") # add a line to your plot with intercept "a" and slope "b"
+ </code>
+
+<p>
+#### {Changing your plot character}
+
+To change the plot character (the symbol for each covariate, we supply an additional argument to the plot() function.  This argument is formulated as pch=n where n is some number.
+Additionally we change the colour of the characters, by specifying a colour in the col argument.
+ <code>
+plot(x,y,pch=15,col="red")		#Square plot symbols
+plot(x,y,pch=16,col="green")		#Orb plot symbols
+plot(x,y,pch=17,col="mauve")		#Triangular plot symbols
+plot(x,y,pch=36	,col="amber")		#Dollar sign plot symbols
+</code>
+Recall that we can add new variates to an existing scatterplot using the points() function. Remember to set the vertical and horizontal limits accordingly.
+ <code>
+y1 = rnorm(10); y2 = rnorm(10)
+plot(x,y1, pch=8,col="purple" ,xlim=c(-5,5),ylim=c(-5,5))
+points(x,y2,pch=12,col="green")
+</code>
+<p>
+#### {Adding the regression model line}
+
+The texttt{abline()} function can be used to add a regression model line  by supplying as an argument the texttt{coef()} values for intercept and slope estimates .These estimates can be inputted directly by using both functions in conjunction.
+
+ <code>
+Fit1 =lm(y1~x);  coef(Fit1)
+abline(coef(Fit1))	
+</code>
+
+<p>
+#### {Adding a title }
+
+It is good practice to label your scatterplots properly. You can specify the following argument
+
+      	main="Scatterplot Example", 	This provides the plot with a title
+      	sub="Subtitle",   This adds a subtitle
+      	xlab="X variable ",				This command labels the x axis 
+  ylab="y variable ",				This command labels the y-axis
+
+We can also add text to each margin, using the texttt{mtext()} command.  
+We simply require the number of the side. (1 = bottom, 2=left,3=top,4=right). 
+We can change the colour using the col argument.
+ <code>
+plot(x,y,main="Scatterplot Example",   sub="subtitle",    xlab="X variable ", ylab="y variable ")	
+mtext("Enhanced Scatterplot", side=4,col="red ")
+</code>
+Alternatively , we can also use the command title() to add a title to an existing scatterplot.
+ <code>
+title(main="Scatterplot Example)	
+</code>
+
+
+<p>
+### {Combining plots}
+It is possible to combine two plots. We used the graphical parameters command texttt{par()} to create an array. 
+Often we just require two plots side by side or above and below. We simply specify the numbers of rows and columns of this array using the texttt{mfrow} argument, passed as a vector.
+
+<code>
+par(mfrow=c(1,2))
+plot(x,y1)			# draw first plot
+plot(x,y2)			# draw second plot
+par(mfrow=c(1,1))		# reset to default setting.
+</code>
+
+<p>
+### {Plot of single vectors}
+If only one vector is specified i.e. texttt{plot(x)},  the plot created will simply be a scatter-plot of the values of x against their indices.
+
+$plot(x)$
+Suppose we wish to examine a trend that these points represent. We can connect each covariate using a line.
+
+$plot(x, type = "l")$
+If we wish to have both lines and points, we would input the following code. This is quite useful if we wish to see how a trend develops over time.
+$plot(x, type = "b")$
+
+
+
+
+
+
+
+
+

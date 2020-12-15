@@ -5,9 +5,9 @@
 \section{Test for Equality of Variance and Means}
 
 \begin{itemize}
-\item Test for Equality of Test (\texttt{var.test()})
-\item Welch Two Sample \emph{t-}test (\texttt{t.test()})
-\item Independent Two Sample \emph{t-}test (\texttt{t.test(var.equal=TRUE)})
+* Test for Equality of Test (\texttt{var.test()})
+* Welch Two Sample \emph{t-}test (\texttt{t.test()})
+* Independent Two Sample \emph{t-}test (\texttt{t.test(var.equal=TRUE)})
 
 \end{itemize}
 
@@ -19,30 +19,30 @@ Equal variances across samples is called homogeneity of variances. Bartlett's te
 Some statistical tests, such as the analysis of variance, assume that variances are equal across groups or samples.  The Bartlett test can be used to verify that assumption.
 
 \begin{itemize}
-\item The null hypothesis is that each of the samples have equal variance.
-\item The alternative hypothesis states that at least one sample has a significantly different variance.
+* The null hypothesis is that each of the samples have equal variance.
+* The alternative hypothesis states that at least one sample has a significantly different variance.
 \end{itemize}
 
 %----------------------------------------------------------------------------------------------------------------- %
-\newpage
+
 \section{Outliers}
 \subsection{Grubb's Test for Outliers}
-\begin{framed}
-	\begin{verbatim}
+<pre>
+	<code>
 	library(outliers)
 	grubbs.test(X)
-	\end{verbatim}
-\end{framed}
+	</code>
+</pre>
 \subsection{Dixon Test for Outliers}
 \subsection{Outliers on Boxplots}
 Boxplots can used to determine an outlie (we will refer to them as ``boxplot outliers")
-\begin{framed}
-	\begin{verbatim}
+<pre>
+	<code>
 	boxplot(X, horizontal = TRUE)
-	\end{verbatim}
-\end{framed}
+	</code>
+</pre>
 
-\newpage
+
 
 \section{Inference Procedures}
 \subsection{Confidence Interval }
@@ -57,30 +57,30 @@ The power of a statistical hypothesis test measures the test's ability to reject
 If we have a single sample we might want to answer several
 questions:
 \begin{itemize}
-	\item What is the mean value? \item Is the mean value
+	* What is the mean value? * Is the mean value
 	significantly different from current theory? (Hypothesis test)
-	\item What is the level of uncertainty associated with our
+	* What is the level of uncertainty associated with our
 	estimate of the mean value? (Confidence interval)
 \end{itemize}
 
 \begin{itemize}
-	\item (Last week : confidence interval for a mean) \item Revision:
+	* (Last week : confidence interval for a mean) * Revision:
 	For large samples ($n > 30$) and/or if the population standard
 	deviation ($\sigma$) is known, the usual test statistic is given
 	by: \[Z =\frac{\bar{X} - \mu}{SE(\bar{X})}\]
 	
-	\item $S.E.(\bar{X}) = { \sigma \over \sqrt{n}} $ or ${s \over \sqrt{n}}$. 
-	\item For small samples, use the $t-$distribution with $n-1$ degrees of freedom.
-	\item Critical value from tables.
-	\item Compare test statistics and critical values.
+	* $S.E.(\bar{X}) = { \sigma \over \sqrt{n}} $ or ${s \over \sqrt{n}}$. 
+	* For small samples, use the $t-$distribution with $n-1$ degrees of freedom.
+	* Critical value from tables.
+	* Compare test statistics and critical values.
 \end{itemize}
 
 To ensure that our analysis is correct we need to check for
 outliers in the data (i.e. boxplots) and we also need to check
 whether the data are normally distributed or not.
 
-\begin{framed}
-	\begin{verbatim}
+<pre>
+	<code>
 	> t.test(X,mu=10)
 	
 	One Sample t-test
@@ -93,8 +93,8 @@ whether the data are normally distributed or not.
 	sample estimates:
 	mean of x 
 	10.1 
-	\end{verbatim}
-\end{framed}
+	</code>
+</pre>
 
 
 

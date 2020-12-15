@@ -13,192 +13,11 @@ rnorm(10)
 </code>
 end{myindentpar}
 
-<p>
-### {The Poisson Distribution}
-<p>
-### {The Binomial Distribution}
-<p>
-### {Using probability distributions for simulations}
-<p>
-### {Probability Distributions}
-<p>
-#### {Generate random numbers }
-
-%----------------------------------------------------------------------------Graphical Methods--%
-
-chapter{Graphical methods}
-
-<p>
-### {Scatterplots}
-%begin{figure}
-  % Requires usepackage{graphicx}
-  % includegraphics[scale=0.40]{MTCARSmpgwt.png}
-  % caption{Scatterplot}label{mpgwt}
-% end{figure}
-
-
-<p>
-### {Adding titles, lines, points to plots}
-
-
- <code>
-library(MASS)
-# Colour points and choose plotting symbols according to a levels of a factor
-plot(Cars93$Weight, Cars93$EngineSize, col=as.numeric(Cars93$Type),
-pch=as.numeric(Cars93$Type))
-
-# Adds x and y axes labels and a title.
-plot(Cars93$Weight, Cars93$EngineSize, ylab="Engine Size",
-xlab="Weight", main="My plot")
-# Add lines to the plot.
-lines(x=c(min(Cars93$Weight), max(Cars93$Weight)), y=c(min(Cars93$EngineSize),
-max(Cars93$EngineSize)), lwd=4, lty=3, col="green")
-abline(h=3, lty=2)
-abline(v=1999, lty=4)
-# Add points to the plot.
-</code>
-
-
-chapter{Programming}
-
-<p>
-### {Writing Functions}
-
-A simple function can be constructed as follows:
-
-<code>
-function_name <- function(arg1, arg2, ...){
-commands
-output
-}
-</code>
-
-You decide on the name of the function. The function command shows R that you are writing a function. Inside the parenthesis you outline the input objects required and decide what to call them. The commands occur inside the { }.
-
-The name of whatever output you want goes at the end of the function. Comments lines (usually a description of what the function does is placed at the beginning) are denoted by "#".
-
-<code>sf1 <- function(x){
-x^2
-}
-</code>
-
-This function is called sf1. It has one argument, called x.
-Whatever value is inputted for x will be squared and the result outputted to the screen. This function must be loaded into texttt{R} and can then be called. We can call the function using:
-<code>
-sf1(x = 3)
-#sf1(3)
-[1] 9
-To store the result into a variable x.sq
-x.sq <- sf1(x = 3)
-x.sq <- sf1(3)
-> x.sq
-[1] 9
-</code>
-Example
-<code>
-sf2 <- function(a1, a2, a3){
-x <- sqrt(a1^2 + a2^2 + a3^2)
-return(x)
-}
-</code>
-
-This function is called sf2 with 3 arguments. The values inputted for a1, a2, a3 will be squared, summed and the square root of the sum calculated and stored in x. (There will be no output to the screen as in the last example.)
-The return command specifies what the function returns, here the value of x. We will not be able to view the result of the function unless we store it.
-<code>sf2(a1=2, a2=3, a3=4)
-sf2(2, 3, 4) # Can't see result.
-res <- sf2(a1=2, a2=3, a3=4)
-res <- sf2(2, 3, 4) # Need to use this.
-res
-[1] 5.385165
-</code>
-We can also give some/all arguments default values.
-<code>mypower <- function(x, pow=2){
-x^pow
-}
-</code>
-If a value for the argument pow is not specified in the function call,
-a value of 2 is used.
-<code>mypower(4)
-[1] 16
-</code>
-If a value for "pow" is specified, that value is used.
-<code>
-mypower(4, 3)
-[1] 64
-mypower(pow=5, x=2)
-[1] 32
-</code>
 
 
 
 
 
-
-
-
-%----------------------------------------------------%
-
-
- <code>
-> code here
- </code>
-
-
- <code>
-> code here
- </code>
-
-
-
-%---------------------------------------------------%
-
-#### {slide234}
-The TS are <equation here>  
-The p-values for both of these tests are 0 and so there is enough evidence to reject $H_0$ and conclude that both 0 and 1 are not 0, i.e. there is a significant linear relationship between x and y. 
-Also given are the $R^2$ and $R^2$ adjusted values. Here $R^2 = SSR/SST = 0.8813$ and so $88.13%$ of the variation in y is being explained by x. 
-The final line gives the result of using the ANOVA table to assess the model t.
-
-%----------------------------------------------------%
-
-
-#### {slide235}
-
-In SLR, the ANOVA table tests <EQN>The TS is the F value and the critical value and p-values are found
-in the F tables with (p - 1) and (n - p) degrees of freedom.
-
-This output gives the p-value = 0, therefore there is enough evidence to reject H0 and conclude that there is a signicant linear relationship between y and x. The full ANOVA table can be accessed using :
-
-<TABLE HERE>
-
-
-
-
-#### {slide236}
-Once the model has been tted, must then check the residuals.
-The residuals should be independent and normally distributed with
-mean of 0 and constant variance.
-A Q-Q plot checks the assumption of normality (can also use a
-histogram as in MINITAB) while a, plot of the residuals versus fitted values gives an indication as to whether the assumption of constant variance holds.
-
-<HISTOGRAM>
-
-
-%----------------------------------------------------%
-
-#### {slidename}
-
- <code>
-> xbar <- 83
-> sigma <- 12
-> n <- 5
-> sem <- sigma/sqrt(n)
-> sem
-[1] 5.366563
-> xbar + semqnorm(0.025)
-[1] 72.48173
-> xbar + semqnorm(0.975)
-[1] 93.51827
- </code>
 
 
 
@@ -214,14 +33,16 @@ which follows a t distribution on n - 2 degrees of freedom if the true $beta$ is
 zero.
 
 
+
+
+
 %----------------------------------------------------%
+\begin{itemize}
+*  The standard $\chi^{2}$ test  in chisq.test works with data in matrix form, like fisher.test does.
+*  For a 2 by 2 table, the test is exactly equivalent to prop.test.
+\end{itemize}
 
-The standard $chi^{2}$ test  in chisq.test works with data in matrix form, like fisher.test does.
-For a 2 by 2 table, the test is exactly equivalent to prop.test.
 
-
-
- <code>
+\large \begin{verbatim}
 > chisq.test(lewitt.machin)
-</code>
-
+\end{verbatim}\large

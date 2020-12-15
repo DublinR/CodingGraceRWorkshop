@@ -1,60 +1,37 @@
-\documentclass[pdf,default,slideColor,colorBG]{prosper}
 
-
-
-% define a new font called goodfont
-\def\goodfont{\usefont{T1}{pcr}{b}{n}\fontsize{36pt}{40pt}\selectfont\green}
-\renewcommand{\familydefault}{\rmdefault}
-\renewcommand{\rmdefault}{cmr}
-\parindent 0pt
-\parskip 5pt
-
-
-\begin{document}
-
-
-\begin{slide}{Assessments}
-\begin{itemize}
-\item This outcome of this project is to enhance understanding of numerical computation software, and it's
-role in the professional or academic world.
-
-\item If your software or R packages are aimed at a certain type of analysis, include a description of your analysis. \item Mention how this methodology would be used in
-the professional world.
-\end{itemize}
-\end{slide}
-\begin{slide}{Assessments}
+#### {Assessments}
 \begin{itemize}
 
-\item Describe how an analyst would go about acquiring a piece of software.
+* Describe how an analyst would go about acquiring a piece of software.
 
-\item If relevant, describe how one would become trained in the use of the software.
-\item The document should be submitted in Latex, but to accompanying graphics may be submitted on Microsoft Word.
-\item (i.e. use the new line twice to create a blank page).
+* If relevant, describe how one would become trained in the use of the software.
+* The document should be submitted in Latex, but to accompanying graphics may be submitted on Microsoft Word.
+* (i.e. use the new line twice to create a blank page).
 \end{itemize}
-\end{slide}
+
 %------------------------------------------------------------------------------------------------------%
-\begin{slide}{Week 9 (Thursday)}
+#### {Week 9 (Thursday)}
 
 Today's Class
 
 \begin{itemize}
-    \item The scan command.
-    \item Factors.
-    \item Data frames.
-    \item Attributes.
-    \item Making subsets.
-    \item Lists.
-    \item Missing values.
-    \item Exercises
+    * The scan command.
+    * Factors.
+    * Data frames.
+    * Attributes.
+    * Making subsets.
+    * Lists.
+    * Missing values.
+    * Exercises
 \end{itemize}
-\end{slide}
+
 
 %------------------------------------------------------------------------------------------------------%
-\begin{slide}{Some more vector functions}
+#### {Some more vector functions}
 \begin{itemize}
-\item cumsum()  - computes the cumulative sums for a vector
-\item cumprod() - computes the cumulative products for a vector
-\item diff()  - computes lagged  differences (default difference is 1)
+* cumsum()  - computes the cumulative sums for a vector
+* cumprod() - computes the cumulative products for a vector
+* diff()  - computes lagged  differences (default difference is 1)
 
 \begin{verbatim}
 > s <- c(1,1,3,4,7,11)
@@ -69,17 +46,17 @@ Today's Class
 >
 \end{verbatim}
 \end{itemize}
-\end{slide}
+
 
 
 
 %--------------------------------------------------------------------------------%
 
-\begin{slide}{The scan function}
+#### {The scan function}
 \begin{itemize}
-\item We can use the function  ``scan()" when typing in data.
-\item It stops adding data when you enter a blank row.
-\item for more information type ``?scan" , but the basic usage is simple.
+* We can use the function  ``scan()" when typing in data.
+* It stops adding data when you enter a blank row.
+* for more information type ``?scan" , but the basic usage is simple.
 
 \begin{verbatim}
 > y=scan()
@@ -90,75 +67,75 @@ Read 6 items
 [1] 4 5 6 7 8 9
 \end{verbatim}
 \end{itemize}
-\end{slide}
+
 
 
 %------------------------------------------------------------------------------------------------------%
 
-\begin{slide}{Datasets Included with R}
+#### {Datasets Included with R}
 \begin{itemize}
-\item R contains many datasets that are built-in to the software. \item These datasets are stored as data
-frames. \item To see the list of datasets, type
+* R contains many datasets that are built-in to the software. * These datasets are stored as data
+frames. * To see the list of datasets, type
 \begin{verbatim}
 > data()
 \end{verbatim}
-\item Additionally, we will be using datasets embedded on the MASS package.
-\item To access those data sets, simply type
+* Additionally, we will be using datasets embedded on the MASS package.
+* To access those data sets, simply type
 \begin{verbatim}
 > library(MASS)
 > data()
 \end{verbatim}
 \end{itemize}
-\end{slide}
+
 
 %------------------------------------------------------------------------------------------------------%
 
-\begin{slide}{Datasets Included with R}
+#### {Datasets Included with R}
 \begin{itemize}
-\item A window will open and the available datasets are listed (many others are accessible from
-external user-written packages, however). \item To open the dataset called trees, simply type
+* A window will open and the available datasets are listed (many others are accessible from
+external user-written packages, however). * To open the dataset called trees, simply type
 
 \begin{verbatim}
 > data(trees)
 \end{verbatim}
 
-\item After doing so, the data frame trees is now in your workspace. \item  To learn more about this (or
+* After doing so, the data frame trees is now in your workspace. *  To learn more about this (or
 any other included dataset), type help(trees).
 \end{itemize}
-\end{slide}
+
 
 %------------------------------------------------------------------------------------------------------%
 
-\begin{slide}{Categorical Data}
+#### {Categorical Data}
 \begin{itemize}
-\item 
+* 
 There is a distinction between types of data in statistics and R knows about some of these differences. In particular,
-initially, data can be of three basic types: categorical, discrete numeric and continuous numeric. \item Methods for viewing
+initially, data can be of three basic types: categorical, discrete numeric and continuous numeric. * Methods for viewing
 and summarizing the data depend on the type, and so we need to be aware of how each is handled and what we can
 do with it.
 \end{itemize}
-\end{slide}
+
 
 %--------------------------------------------------------------------------------%
 
-\begin{slide}{Categorical Data (contd)}
+#### {Categorical Data (contd)}
 \begin{itemize}
-\item Categorical data may be recorded using character vectors.
-\item For example, a survey asks people if they smoke or not. \item The results may be recorded as follows.
+* Categorical data may be recorded using character vectors.
+* For example, a survey asks people if they smoke or not. * The results may be recorded as follows.
 
 \begin{verbatim}
 >x=c("Yes","No","No","Yes","Yes","No","No","Yes")
 \end{verbatim}
 \end{itemize}
-\end{slide}
+
 
 
 
 %------------------------------------------------------------------------------------------------------%
 
-\begin{slide}{Categorical Data (contd)}
+#### {Categorical Data (contd)}
 \begin{itemize}
-\item To summarize this data. we can use the ``table()" command
+* To summarize this data. we can use the ``table()" command
 
 \begin{verbatim}
 > table(x)
@@ -167,32 +144,32 @@ x
   4   4
 \end{verbatim}
 
-\item The table command simply adds up the frequency of each unique value of the data.
+* The table command simply adds up the frequency of each unique value of the data.
 \end{itemize}
-\end{slide}
+
 
 
 
 
 %------------------------------------------------------------------------------------------------------%
 
-\begin{slide}{Data Frames : Introduction}
+#### {Data Frames : Introduction}
 A data frame can be thought of
 \begin{itemize}
-\item as a data matrix or data set \item is a generalization of a
-matrix \item is a data structure of vectors and/or factors of the
-same length \item  The frame has a unique set of row names. \item Data in
+* as a data matrix or data set * is a generalization of a
+matrix * is a data structure of vectors and/or factors of the
+same length *  The frame has a unique set of row names. * Data in
 the same position across columns come from the same subject. \item
 Most data sets are in the form of a data frame.
 \end{itemize}
 
-\end{slide}
+
 %------------------------------------------------------------------------------------------------------%
 
-\begin{slide}{Data Frames: Creating a data frame}
+#### {Data Frames: Creating a data frame}
 \begin{itemize}
-\item Data frames can be constructed using component vectors.
-\item 
+* Data frames can be constructed using component vectors.
+* 
 We can create data frames from variables using the data.frame()
 command:
 \begin{verbatim}
@@ -203,33 +180,33 @@ command:
 > d <- data.frame(mean_weight,Gender)
 \end{verbatim}
 \end{itemize}
-\end{slide}
+
 
 %------------------------------------------------------------------------------------------------------%
 
 
-\begin{slide}{Data Frames: Indexing}
+#### {Data Frames: Indexing}
 
 \begin{itemize}
-\item The $n$th row of a data frame can be accessed as follows:
+* The $n$th row of a data frame can be accessed as follows:
 \begin{verbatim}
 > framename[n,]
 \end{verbatim}
-leaving the column argument empty. \item Similarly the $m$th
+leaving the column argument empty. * Similarly the $m$th
 column of a data frame can be accessed as follows:
 \begin{verbatim}
 > framename[,m]
 \end{verbatim}
 this time leaving the row argument empty.
 
-\item A particular value can be accessed by specifying the row and
+* A particular value can be accessed by specifying the row and
 column numbers together.
 \begin{verbatim}
 > framename[n,m]
 \end{verbatim}
 \end{itemize}
 
-\end{slide}
+
 
 
 
