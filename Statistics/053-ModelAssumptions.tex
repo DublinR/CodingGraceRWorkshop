@@ -1,9 +1,12 @@
 
+Model Diagnostics
+=====================================
 
-<p>
-### {Diagnosing a Linear Regression}
-The ease of implementation fosters the impression that linear regression is easy: just use the texttt{textbf{lm()}} function. Yet fitting
-this is only the beginning.
+Column {.tabset}
+---------------------------------------
+### Diagnosing a Linear Regression
+The ease of implementation fosters the impression that linear regression is easy: just use the ``lm()`` function. 
+Yet fitting this is only the beginning.
 
 After a linear regression analysis has been performed. It is good practice to verify the model’s quality
 by running diagnostic checks.
@@ -12,8 +15,8 @@ The approach we will take is to create diagnostic plots, by plotting the model o
 
 <pre>
 <code>
-attach(iris)
-Fit1 <- lm(Sepal.length ~ Sepal.Width)
+
+Fit1 <- lm(Sepal.length ~ Sepal.Width,data=iris)
 plot(Fit1)
 </code> 
 </pre>
@@ -21,7 +24,7 @@ plot(Fit1)
 
 Next, identify possible outliers either by looking at the diagnostic plot of the residuals
 
-Another approach is to use the texttt{textbf{outlierTest()}} function of the textit{textbf{car}} package:
+Another approach is to use the ``outlierTest()`` function of the {car} package:
 
 
 <pre>
@@ -44,9 +47,8 @@ Largest |rstudent|:
 
 </code>
 
-Influence Measures
-============================================
-#### {Influence Measures}
+
+### Influence Measures
 Finally, identify any overly influential observations by using the ***influence.measures()***
 function.
 If an observation is considered influential, it will be indicated with an asterisk on the right hand side. Interpretation of the individual statistics, such as textit{DFFITS} and textit{DFBETA} are beyond the scope of this course.
