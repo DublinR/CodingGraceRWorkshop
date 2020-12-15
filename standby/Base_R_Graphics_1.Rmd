@@ -1,11 +1,9 @@
-%------------------------------------------------------%
+R Graphics}
 
+Enhancing your scatter plots
+=============================================
 
-
-
-\chapter { R Graphics}
-\section Enhancing your scatter plots
-\subsection{Adding lines}
+### Adding lines
 Previously we have used scatter plots to plot bivariate data. They were constructed using the plot() command.
 Recall that we can use the arguments ``xlim} and ``ylim} to control the vertical and horizontal range of the plots, by specifying a two element vector (min and max) for each.
 
@@ -29,7 +27,7 @@ abline(h=0  ,lty =3)    # add a horizontal dotted line (here the x-axis) to the 
 abline(a=0,b=1,col="green") # add a line to your plot with intercept "a" and slope "b"
 \end{verbatim}\large
 
-\subsection{Changing your plot character}
+### Changing your plot character}
 
 To change the plot character (the symbol for each covariate, we supply an additional argument to the plot() function.  This argument is formulated as pch=n where n is some number.
 Additionally we change the colour of the characters, by specifying a colour in the col argument.
@@ -44,8 +42,9 @@ Recall that we can add new variates to an existing scatterplot using the points(
 y1 = rnorm(10); y2 = rnorm(10)
 plot(x,y1, pch=8,col="purple" ,xlim=c(-5,5),ylim=c(-5,5))
 points(x,y2,pch=12,col="green")
-\end{verbatim}\large
-\subsection{Adding the regression model line}
+\end{verbatim}
+
+### Adding the regression model line}
 
 The ``abline()`` function can be used to add a regression model line  by supplying as an argument the ``coef()`` values for intercept and slope estimates .These estimates can be inputted directly by using both functions in conjunction.
 
@@ -54,7 +53,7 @@ Fit1 =lm(y1~x);  coef(Fit1)
 abline(coef(Fit1))
 \end{verbatim}\large
 
-\subsection{Adding a title }
+### Adding a title 
 
 It is good practice to label your scatterplots properly. You can specify the following argument
 \begin{itemize}
@@ -73,10 +72,10 @@ mtext("Enhanced Scatterplot", side=4,col="red ")
 Alternatively , we can also use the command title() to add a title to an existing scatterplot.
 \large \begin{verbatim}
 title(main="Scatterplot Example)
-\end{verbatim}\large
+\end{verbatim}
 
 
-\section{Combining plots}
+### Combining plots}
 It is possible to combine two plots. We used the graphical parameters command ``par()`` to create an array. 
 Often we just require two plots side by side or above and below. We simply specify the numbers of rows and columns of this array using the ``mfrow} argument, passed as a vector.
 
@@ -87,7 +86,7 @@ plot(x,y2)# draw second plot
 par(mfrow=c(1,1))# reset to default setting.
 \end{verbatim}
 
-\section{Plot of single vectors}
+### Plot of single vectors}
 If only one vector is specified i.e. ``plot(x)},  the plot created will simply be a scatter-plot of the values of x against their indices.
 
 $plot(x)$
