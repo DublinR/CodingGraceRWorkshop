@@ -1,0 +1,14 @@
+
+%------------------------------------------%
+\section{Cauchy Distribution}
+% http://www.phy.ornl.gov/csep/mc/node20.html
+% 
+Cauchy Distribution
+
+ 
+
+This is an interesting pdf, because strictly speaking, its mean does not exist and its variance is infinite. Given our definition of mean,
+
+ 
+
+we find that this integral does not exist because the separate integrals for   and  do not exist. However, if we allow a ``principal value'' integration, where the limits are taken simultaneously, we see that the integral for  will cancel the integral for  and the mean is zero, consistent with a graphical interpretation of this pdf, as depicted in Figure 8. However, if we try to compute the variance, we find:
