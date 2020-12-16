@@ -1,0 +1,54 @@
+
+### Test for Equality of Variance
+
+*  In this procedure, we determine whether or not two data sets have the same variance.
+*  The assumption of equal variance underpins several inference procedures.
+*  We will not get into too much detail about that, but concentrate on how to assess equality of variance.*  The null and alternative hypotheses are as follows:
+
+[ H_0: sigma^2_1 = sigma^2_2 ]
+[ H_1: sigma^2_1 neq sigma^2_2 ]
+
+
+
+*  When using texttt{R} it would be convenient to consider the null and alternative in terms of variance ratios.*  Two data sets have equal variance if the variance ration is 1.
+
+
+[ H_0: sigma^2_1 / sigma^2_2 = 1 ]
+[ H_1: sigma^2_1 / sigma^2_2 neq 1 ]
+
+%----------------------------------------%
+% - x=c(14,13,16,20,12,18,11,09,13,11)
+% - y=c(15,13,18,20,10,17,23,11,10)
+
+
+You would be required to compute the test statistic for this procedure.
+The test statistic is the ratio of the variances for both data sets.
+[ TS = frac{s^2_x}{s^2_y} ]
+The standard deviations would be provided in the texttt{R} code. <code>
+> sd(x)
+[1] 3.40098
+> sd(y)
+[1] 4.630815
+</code>
+To compute the test statistic.
+[ TS = frac{3.40^2}{4.63^2} = frac{11.56}{21.43} = 0.5394 ]
+
+
+
+<code>
+> var.test(x,y)
+
+        F test to compare two variances
+
+data:  x and y
+F = 0.5394, num df = 9, denom df = 8, p-value = 0.3764
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.1237892 2.2125056
+sample estimates:
+ratio of variances
+         0.5393782
+</code>
+
+*  The p-value is 0.3764, above the threshold level of 0.0250.*  We fail to reject the null hypothesis.*  We can assume that there is no significant difference in sample size.*  Additionally the $95%$ confidence interval (0.1237, 2.2125) contains the null values i.e. 1.
+
