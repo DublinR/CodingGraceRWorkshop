@@ -1,29 +1,6 @@
 
 #### {Assessments}
-\begin{itemize}
 
-* Describe how an analyst would go about acquiring a piece of software.
-
-* If relevant, describe how one would become trained in the use of the software.
-* The document should be submitted in Latex, but to accompanying graphics may be submitted on Microsoft Word.
-* (i.e. use the new line twice to create a blank page).
-\end{itemize}
-
-%------------------------------------------------------------------------------------------------------%
-#### {Week 9 (Thursday)}
-
-Today's Class
-
-\begin{itemize}
-    * The scan command.
-    * Factors.
-    * Data frames.
-    * Attributes.
-    * Making subsets.
-    * Lists.
-    * Missing values.
-    * Exercises
-\end{itemize}
 
 
 %------------------------------------------------------------------------------------------------------%
@@ -91,7 +68,7 @@ frames. * To see the list of datasets, type
 %------------------------------------------------------------------------------------------------------%
 
 #### {Datasets Included with R}
-\begin{itemize}
+
 * A window will open and the available datasets are listed (many others are accessible from
 external user-written packages, however). * To open the dataset called trees, simply type
 
@@ -101,40 +78,35 @@ external user-written packages, however). * To open the dataset called trees, si
 
 * After doing so, the data frame trees is now in your workspace. *  To learn more about this (or
 any other included dataset), type help(trees).
-\end{itemize}
 
 
 %------------------------------------------------------------------------------------------------------%
 
 #### {Categorical Data}
-\begin{itemize}
+
 * 
 There is a distinction between types of data in statistics and R knows about some of these differences. In particular,
 initially, data can be of three basic types: categorical, discrete numeric and continuous numeric. * Methods for viewing
 and summarizing the data depend on the type, and so we need to be aware of how each is handled and what we can
 do with it.
-\end{itemize}
+
 
 
 %--------------------------------------------------------------------------------%
 
 #### {Categorical Data (contd)}
-\begin{itemize}
+
 * Categorical data may be recorded using character vectors.
 * For example, a survey asks people if they smoke or not. * The results may be recorded as follows.
 
 \begin{verbatim}
 >x=c("Yes","No","No","Yes","Yes","No","No","Yes")
 \end{verbatim}
-\end{itemize}
-
-
-
 
 %------------------------------------------------------------------------------------------------------%
 
 #### {Categorical Data (contd)}
-\begin{itemize}
+
 * To summarize this data. we can use the ``table()" command
 
 \begin{verbatim}
@@ -145,32 +117,24 @@ x
 \end{verbatim}
 
 * The table command simply adds up the frequency of each unique value of the data.
-\end{itemize}
-
-
-
-
 
 %------------------------------------------------------------------------------------------------------%
 
 #### {Data Frames : Introduction}
 A data frame can be thought of
-\begin{itemize}
-* as a data matrix or data set * is a generalization of a
-matrix * is a data structure of vectors and/or factors of the
-same length *  The frame has a unique set of row names. * Data in
-the same position across columns come from the same subject. \item
-Most data sets are in the form of a data frame.
-\end{itemize}
 
+* as a data matrix or data set * is a generalization of a matrix 
+* is a data structure of vectors and/or factors of the same length 
+*  The frame has a unique set of row names. 
+* Data in the same position across columns come from the same subject. 
+* Most data sets are in the form of a data frame.
 
 %------------------------------------------------------------------------------------------------------%
 
 #### {Data Frames: Creating a data frame}
-\begin{itemize}
+
 * Data frames can be constructed using component vectors.
-* 
-We can create data frames from variables using the data.frame()
+* We can create data frames from variables using the ``data.frame()``
 command:
 \begin{verbatim}
 >mean_weight=c(71.5,72.1,73.7,74.3,75.2,74.7)
@@ -180,14 +144,10 @@ command:
 > d <- data.frame(mean_weight,Gender)
 \end{verbatim}
 \end{itemize}
-
-
 %------------------------------------------------------------------------------------------------------%
-
-
 #### {Data Frames: Indexing}
 
-\begin{itemize}
+
 * The $n$th row of a data frame can be accessed as follows:
 \begin{verbatim}
 > framename[n,]
@@ -204,12 +164,4 @@ column numbers together.
 \begin{verbatim}
 > framename[n,m]
 \end{verbatim}
-\end{itemize}
-
-
-
-
-
-
-
 \end{document}
