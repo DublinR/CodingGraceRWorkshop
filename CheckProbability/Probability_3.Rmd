@@ -1,0 +1,82 @@
+
+
+\section{Continuous Probability Distributions}
+
+
+The continuous uniform distribution is commonly used in simulation.
+\subsection{The Normal distribution}
+
+The normal distribution is perhaps the most widely known distribution.
+\begin{framed}
+	\begin{verbatim}
+	rnorm(n=15)       #15 random numbers, mean  = 0 , std. deviation = 1
+	rnorm(n=15,mean= 17)       #set the mean to 17
+	rnorm(n=15,mean= 17,sd=4)        #set the standard deviation to 4
+	rnorm(15,17,4)                #argument matching : default positions
+	\end{verbatim}
+\end{framed} 
+
+
+
+
+
+
+\subsection{The exponential distribution}
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+
+
+\begin{itemize}
+\item Basics of Probability (some definitions, the \texttt{prob} package) 
+\item Dice Rolls and the Birthday Distribution ( histograms )
+\item Gambler's Ruin ( plotting functions )
+\item The Monty Hall Problem 
+ % \item Probability Distributions (continuous and discrete distributions)
+\end{itemize}
+Book: \textbf{\textit{Introduction to Probability and Statistics using R}} by G Kerns \\ (downloadable for free online) We will use chapters 4,5 and 6. \\ \bigskip
+Packages: The \texttt{prob} package (for the first part only).
+
+\begin{framed}
+\begin{verbatim}
+install.packages("prob")
+library(prob)
+\end{verbatim}
+\end{framed}
+%-----------------------------------------------------------------------------------------------------------------------------------%
+\newpage
+\section{Basics of Probability}
+
+\begin{description}
+\item[Random Experiment] A random experiment is one whose outcome is determined by chance, with an outcome that may not be predicted with certainty beforehand. Common examples are coin tosses and dice rolls.
+\item[Sample Space] For a random experiment E, the set of all possible outcomes of E is called the sample space and
+is denoted by the letter S . For a coin-toss experiment, S would be the results ``Head" and ``Tail", for a  single roll of a die it is the numbers 1 to 6.
+\item[Events] An event $A$
+ is merely a collection of outcomes, or in other words, a subset of the sample space.
+\end{description}
+The sample space of a coin toss experiment can be written out using the \texttt{tosscoin()} function on the \texttt{prob} package, specifying the number of tosses. The size of the sample space is $2^n$ for $n$ coin tosses, for binary outcome experiments. For 8 coin tosses, the sample space contains 256 possible outcomes.
+
+\begin{verbatim}
+> tosscoin(1)
+  toss1
+1     H
+2     T
+> tosscoin(2)
+  toss1 toss2
+1     H     H
+2     T     H
+3     H     T
+4     T     T
+\end{verbatim}
+There is a similar command for dice roll : \texttt{rolldie()}. Again, specify the number of rolls. For $n$ dice rolls, there are $6^n$ outcomes in the sample space. (It gets large very quickly).
+
+\begin{verbatim}
+> rolldie(1)
+  X1
+1  1
+2  2
+3  3
+4  4
+5  5
+6  6
+\end{verbatim}
