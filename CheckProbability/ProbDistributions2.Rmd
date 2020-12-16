@@ -1,7 +1,4 @@
 
-\begin{document}
-%--------------------------------------------%
-
 The focus of the section is to develop programming skills
 related to probability distributions. With that in mind, we will take the opportunity
 to work with less-well known probability distributions
@@ -17,7 +14,7 @@ There will be no exercises that require an in-depth knowledge of this distributi
 
 %---------------------------------------------%
 
-\section{The Weibull Distribution}
+### The Weibull Distribution
 The Weibull distribution is used extensively in reliability applications to model failure times.
 
 % http://www.math.utah.edu/~lzhang/teaching/3070summer2009/Daily%20Updates/lectures/sec4_5.pdf
@@ -63,20 +60,6 @@ The expected value of a Beta random variable $X$ is
 
 * Variance\\
 The variance of a Beta random variable $X$ is
-
-%------------------------------------------%
-\section{Cauchy Distribution}
-% http://www.phy.ornl.gov/csep/mc/node20.html
-% 
-Cauchy Distribution
-
- 
-
-This is an interesting pdf, because strictly speaking, its mean does not exist and its variance is infinite. Given our definition of mean,
-
- 
-
-we find that this integral does not exist because the separate integrals for   and  do not exist. However, if we allow a ``principal value'' integration, where the limits are taken simultaneously, we see that the integral for  will cancel the integral for  and the mean is zero, consistent with a graphical interpretation of this pdf, as depicted in Figure 8. However, if we try to compute the variance, we find:
 
  
 
