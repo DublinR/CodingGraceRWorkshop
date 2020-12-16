@@ -1,15 +1,10 @@
-%----------------------------------------------------%
+### Chi-squared Test
 
-\subsubsection{Chi-squared Test}
-
-A $chi^2$ test is carried out on tabular data containing counts, e.g. the
-number of animals that died, the number of days of rain, the
+A $chi^2$ test is carried out on tabular data containing counts, e.g. the number of animals that died, the number of days of rain, the
 number of stocks that grew in value, etc.
 
-Usually have two qualitative variables, each with a number of
-levels, and want to determine if there is a relationship between the
-two variables, e.g. hair colour and eye colour, social status and
-crime rates, house price and house size, gender and left/right
+Usually have two qualitative variables, each with a number of levels, and want to determine if there is a relationship between the
+two variables, e.g. hair colour and eye colour, social status and crime rates, house price and house size, gender and left/right
 handedness.
 
 The data are presented in a contingency table:
@@ -26,36 +21,26 @@ TOTAL & 87 & 13 & 100 \\
 \end{tabular}
 
 
-The hypothesis to be tested is
-$H0 :$There is no relationship between gender and left/right-handedness
-$H1 :$There is a relationship between gender and left/right-handedness
-The values that we collect from our sample are called the observed
-(O) frequencies (counts). Now need to calculate the expected (E)
-frequencies, i.e. the values we would expect to see in the table, if
-H0 was true.
+The hypothesis to be tested is $H0 :$There is no relationship between gender and left/right-handedness $H1 :$There is a relationship between gender and left/right-handedness
+The values that we collect from our sample are called the observed (O) frequencies (counts). Now need to calculate the expected (E)
+frequencies, i.e. the values we would expect to see in the table, if H0 was true.
 
+<p>
 
-
-
-
-
-%------------------------------------------------------%
 \subsubsection{Two Sample Tests}
 
 
-All of the previous hypothesis tests and confidence intervals can be
-extended to the two-sample case.
+All of the previous hypothesis tests and confidence intervals can be extended to the two-sample case.
 
-The same assumptions apply, i.e. data are normally distributed in
-each population and we may want to test if the mean in one
+The same assumptions apply, i.e. data are normally distributed in each population and we may want to test if the mean in one
 population is the same as the mean in the other population, etc.
 
-Normality can be checked using histograms, boxplots and Q-Q
-plots as before. The Anderson-Darling test can be used on
+Normality can be checked using histograms, boxplots and Q-Q plots as before. The Anderson-Darling test can be used on
 each group of data also.
 
 
-%------------------------------------------------------%
+<p>
+
 \subsubsection{Implementation}
 
 This can be carried out in R by hand:
@@ -68,4 +53,4 @@ This can be carried out in R by hand:
 >TS <- sum((obs.vals-exp.vals)^2/exp.vals)
 >TS
 >[1] 1.777415
-\end{verbatim}\large
+\end{verbatim}
