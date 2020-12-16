@@ -1,20 +1,4 @@
 
-%--------------------------------------------------------Inference Procedures and testing for Normality-%
-
-%chapter{Normality Assumptions and Outliers}
-%
-#### {Grubbs Test for outliers}
-%<p>
-#### {Anderson Darling Test}
-%<p>
-#### {Normal Probability plots}
-%
-#### { Kolmogorov Smirnov Test}
-
-
-
-
-
 <p>
 #### {Subsetting datasets by rows}
 
@@ -58,6 +42,7 @@ lm(y~x2 +x3)
 Again, comment on the slope and intercept estimates, and their respective p-values.
 In this instance, compare each of the models using the coefficient of determinations. Which model explains the data best?
 <p>
+
 #### {Analysis of residuals}
 Perform an analysis of regression residuals ( you can pick the best regression model from last <p>
 ### ).
@@ -73,30 +58,6 @@ plot(res.fit1)
 </code>
 
 
-
-
-<p>
-### {Combining plots}
-It is possible to combine two plots. We used the graphical parameters command texttt{par()} to create an array. 
-Often we just require two plots side by side or above and below. We simply specify the numbers of rows and columns of this array using the texttt{mfrow} argument, passed as a vector.
-
-<code>
-par(mfrow=c(1,2))
-plot(x,y1)			# draw first plot
-plot(x,y2)			# draw second plot
-par(mfrow=c(1,1))		# reset to default setting.
-</code>
-
-<p>
-### {Plot of single vectors}
-If only one vector is specified i.e. texttt{plot(x)},  the plot created will simply be a scatter-plot of the values of x against their indices.
-
-$plot(x)$
-Suppose we wish to examine a trend that these points represent. We can connect each covariate using a line.
-
-$plot(x, type = "l")$
-If we wish to have both lines and points, we would input the following code. This is quite useful if we wish to see how a trend develops over time.
-$plot(x, type = "b")$
 
 
 
