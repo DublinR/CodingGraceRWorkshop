@@ -1,0 +1,23 @@
+Another method of creating vectors is to use the following
+<code>
+numeric (length = n)
+character (length = n)
+logical (length = n)
+</code>
+These commands create empty vectors, of the appropriate kind, of length $n$. You can then use the graphical data entry interface to populate your data sets.
+
+\subsubsection{Accessing specified elements of a vector}
+
+The $n$th element of vector ``Vec" can be accessed by specifying its index when
+calling ``Vec".
+<code>>Vec[n]
+</code>
+A sequence of  elements of vector ``Vec" can be accessed by specifying its index
+when calling ``Vec".
+<code>>Vec[l:u]
+</code>
+Omitting and deleting the $n$th element of vector ``Vec"
+<code>
+>Vec[-n]
+>Vec <- Vec[-n]
+</code>
