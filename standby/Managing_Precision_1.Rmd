@@ -1,0 +1,23 @@
+
+\section{Managing Precision}
+\begin{itemize}
+*  ``floor()`` - 
+*  ``ceiling()`` - 
+*  ``round()`` - 
+*  ``as.integer()`` -
+\end{itemize}
+
+<pre>
+<code>
+> pi
+[1] 3.141593
+> floor(pi)
+[1] 3
+> ceiling(pi)
+[1] 4
+> round(pi,3)
+[1] 3.142
+> as.integer(pi)
+[1] 3
+</code>
+</pre>
