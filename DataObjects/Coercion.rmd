@@ -1,0 +1,23 @@
+Data Type Coercion and Confirmation
+========================================================
+
+A data type, such as numeric, may be coerced (i.e. transformed) into a different data type, such as logical, using the “***as***” family of commands. To coerce an object as logical data, simply use the ***as.logical()*** command. To coerce an object as a character, simply use the ***as.character()*** command.
+
+```{r}
+#Coercion
+NumVec =c(0,1,1,1,0)
+
+as.logical(NumVec)
+as.character(NumVec)
+```
+
+The ***is*** family of commands is used to verify whether or not the data is of a certain type. A response is given in the form of a logical vector.
+```{r}
+#verification
+#pi – 3.1415193
+
+is.integer(pi)
+is.numeric(pi)
+is.logical(pi)
+````
+

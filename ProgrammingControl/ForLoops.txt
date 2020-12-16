@@ -1,0 +1,93 @@
+
+Stem and Leaf Plots
+Bivariate Data
+Simple Scatterplots, Correlation and Covariance
+X1 =
+Y1 =
+Plot(X1,Y1)
+cor(X1)
+cov(Y1)
+
+<!--######################################################################################-->
+
+Anscombe’s Quartet
+The uniform distribution
+ 
+ 
+The "apply" family of functions
+The Apply family of functions are
+
+
+<!--######################################################################################-->
+Iteration Loops
+Central Limit Theorem
+Recall the Dice experiment in week 8.
+ 
+N=100           	          	          	             #number of loops
+Avgs=numeric(N)           	             #array “Avgs” store the sample means
+for( i in 1:N)
+              {              Dice=floor(runif(50,min=1,max=7));              Avgs[i]=mean(Dice);
+              }
+Avgs           	          	          	             #print Avgs dataset to screen
+ 
+The Central limit theorem states that.
+The “Dice” distribution is a discrete uniform distribution. However
+mean(Avgs)           	          	             #compute the mean. Is it roughly what we are expecting?
+qqnorm(Avgs)           	          	             #draws a QQ plot that is used to check for normality.
+qqline(Avgs)           	          	             #adds trend line to QQplot.
+shapiro.test(Avgs)           	             #Shapiro Wilk test. Normality is assumed if p-value > 0.05.
+           	          	            
+
+<!--######################################################################################-->
+Gambler’s Ruin
+In anticipation of future material on course MS4217.
+
+Markov Chains
+In anticipation of future material on course MS4217.
+For the purposes of this course, we will assume the initial state is state 1.
+#Transition matrix “Tron”
+Tron = matrix (c(0.5,0.25,0.25,0.4,0.3,0.3,0.2,0.7,0.1),nrow=3,byrow=TRUE)
+rownames(Tron)=c("state1","state2","state3")
+colnames(Tron) = rownames(Tron)
+
+<!--######################################################################################-->
+
+Assume that the process is currently in state 1. The uniform distribution can be used to compute a random value for probability.
+> runif(1)           	                           #return one random value between 0 and 1
+[1] 0.6891122
+The outcome is between 0.5 and 0.75, therefore the process will migrate to state 2. If the probability value was less than 0.5, the process would have remained in state 1. If the probability was greater than 0.75, the  process would have migrated to state 3.
+ 
+
+<!--######################################################################################--> 
+Tron = matrix (c(0.5,0.25,0.25,0.4,0.3,0.3,0.2,0.7,0.1),nrow=3,byrow=TRUE)
+#check that each row totals is one.
+sum( Tron[1,]) == 1;                sum( Tron[2,]) == 1 ;               sum( Tron[3,]) ==1 ;
+#compute upper and lower ‘fences’ for each row.
+L1 =Tron[1,1];   	             U1 = Tron[1,1] + Tron[1,2];
+L2 =Tron[2,1];   	             U2 = Tron[2,1] + Tron[2,2];
+L3 =Tron[3,1];            	             U3 = Tron[3,1] + Tron[3,2];
+# inital conditions
+State = 1           	             #initial state
+N=4000           	          	             #number of loops
+Migrn = numeric(N)              #array that can be used to keep track of migrations
+Visits=numeric (3)              #array that counts the number of visits to each state
+
+ 
+for ( i in 1:N)
+{
+Migrn[i] = State           	          	             #record the state for phase i
+Visits[State] = Visits[State]+1           	             #update the number of visits made to each state
+Prob = runif(1)
+if (State==1){
+             	       if (Prob <= L1){State = 1};if (Prob > L1) {State = 2};if (Prob > U1) {State = 3};
+           	 	 }
+if (State==2){
+             	       if (Prob <= L2){State = 1};if (Prob > L2) {State = 2};if (Prob > U2) {State = 3};
+           	 	          	      }
+if (State==3){
+             	       if (Prob <= L3){State = 3};if (Prob > L3) {State = 2};if (Prob > U3) {State = 3};
+           	 	          	      }
+}              # complete the "for" loop
+Migrn           	          	            
+Visits           	          	             #how many visits were made to each state?
+ 

@@ -1,0 +1,250 @@
+Grouping, loops and conditional execution
+R is an expression language in the sense that its only command type is a function or expression which returns a result. Even an assignment is an expression whose result is the value assigned, and it may be used wherever any expression may be used; in particular multiple assignments are possible.
+
+Commands may be grouped together in braces, $\{expr_1; ...; expr_m\}$, in which case the value of the group is the result of the last expression in the group evaluated. Since such a group is also an expression it may, for example, be itself included in parentheses and used a part of an even larger expression, and so on.  
+
+
+\subsection*{if Statement}
+
+Have already encountered implicit looping when using the apply
+family of functions.
+
+Conditional execution: the if statement has the form 
+\begin{verbatim}
+if (condition){ # Brackets can be omitted if only one command
+expr_1 # to be carried out.
+}
+else {
+expr_2
+}    
+\end{verbatim}
+
+
+The condition must evaluate to a logical value, i.e. TRUE or
+FALSE. If the condition == TRUE, expr\_1 is carried out, which
+can consist of a single command or multiple commands. If the
+condition == FALSE, expr\_2 is carried out.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+Can also have longer if statements:
+\begin{verbatim}
+if (condition1){
+expr_1
+}
+else if (condition2){
+expr_2
+}
+...
+else {
+expr_n
+}   
+\end{verbatim}
+
+If condition1 == TRUE, expr\_1 is executed and the checking
+stops. If condition1 == FALSE, moves on to condition2 and
+checks if that condition is met. If condition2 == TRUE, expr\_2
+is executed and checking stops. If condition2 == FALSE, moves
+on to the next condition and so on until all conditions have been
+checked.
+The final else is executed if none of the previous conditions have
+returned a value of TRUE.
+
+
+Usually the logical operators &&, ||, ==, !=, >, <, >=, <= are used
+as the conditions in the if statement.
+The following function gives a demonstration of the use of
+if... else.
+\begin{verbatim}
+comparisons1 <- function(number)
+{
+# if ... else
+if (number != 1)
+{
+cat(number,"is not one\n")
+}
+else
+{
+cat(number,"is one\n")
+}
+}
+> comparisons1(1) > comparisons1(20)
+1 is one 20 is not one
+\end{verbatim}
+
+
+The following demonstrates the use of
+if ... else if ... else
+\begin{verbatim}
+ comparisons2 <- function(number)
+{
+if (number == 0)
+{
+cat(number,"equals 0\n")
+}
+else if (number > 0)
+{
+cat(number,"is positive\n")
+}
+else
+{
+cat(number,"is negative\n")
+}
+}
+> comparisons2(0) > comparisons2(-15) > comparisons2(1)
+0 equals 0 -15 is negative 1 is positive   
+\end{verbatim}
+
+
+
+This function demonstrates the use of && in the condition. This
+means that both conditions must be met before a value of TRUE is
+returned.
+\begin{verbatim}
+comparisons3 <- function(number)
+{
+if ( (number > 0) && (number < 10) )
+{
+cat(number,"is between 0 and 10\n")
+}
+}
+> comparisons3(-1) > comparisons3(9) > comparisons3(10)
+9 is between 0 and 10    
+\end{verbatim}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection*{ifelse Statement}
+A vectorised version of the if statement is ifelse. This is useful
+if you want to perform some action on every element of a vector
+that satis es some condition.
+The syntax is
+ifelse( condition, true expr, false expr )
+If condition == TRUE, the true expr is carried out. If
+condition == FALSE, the false expr is carried out.
+\begin{framed}
+\begin{verbatim}
+x <- rnorm(20, mean=15, sd=5)
+x
+[1] 23.608513 14.424667 12.306040 14.291568 18.522846 14.514071 22.004400
+[8] 24.658249 11.697999 16.344976 22.110389 8.455789 19.672274 22.393680
+[15] 11.449034 17.288859 14.839597 14.484774 18.636589 22.670548
+ifelse(x >= 17, sqrt(x), NA)
+[1] 4.858859 NA NA NA 4.303818 NA 4.690885
+[8] 4.965707 NA NA 4.702169 NA 4.435344 4.732196
+[15] NA 4.157987 NA NA 4.317012 4.761360
+    
+\end{verbatim}
+\end{framed}
+
+
+\subsection*{for Loops}
+Repetitive execution: for loops, while loops and repeat loops.
+To loop/iterate through a certain number of repetitions a for loop
+is used. The basic syntax is
+\begin{verbatim}
+for(variable_name in sequence) {
+command
+command
+command
+}
+\end{verbatim}
+
+A simple example of a for loop is:
+\begin{verbatim}
+for(i in 1:5){
+print(sqrt(i))
+}
+[1] 1
+[1] 1.414214
+[1] 1.732051
+[1] 2
+[1] 2.236068
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+Another example is:
+\begin{verbatim}
+n <- 20
+p <- 5
+value <- vector(mode="numeric", length=n)
+rand.nums <- matrix(rnorm(n*p), nrow=n)
+for(i in 1:length(value)){
+value[i] <- max(rand.nums[i,])
+print(sum(value))
+}
+\end{verbatim}
+The first four lines create variables n and p with values 20 and 5
+respectively, a numeric vector called value with length 20 and a
+matrix of 20*5=100 random numbers, called rand.nums, with 20
+rows.
+The for loop performs 20 loops and stores the maximum value
+from each row of rand.nums into position i of the vector value.
+The sum of the current numbers in value is also printed to the
+screen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Can also have nested for loops. Indenting your code can be useful
+when trying to \match" brackets.
+for(variable_name1 in sequence) {
+command
+command
+for(variable_name2 in sequence) {
+command
+command
+command
+} # ends inner for loop
+} # ends outer for loop
+It should be noted that variable_name2 should be di erent from
+variable_name1, e.g. use i and j. Using the same name will
+reset the counter each time and result in an in nite loop!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Load the function simple.nesting from Loops.R and call the
+function using
+simple.nesting(num.fam=5, num.child=3).
+The le nest.dat will be created in your current working
+directory. Open this file and explore the contents.
+for loops and multiply nested for loops are generally avoided
+when possible in R as they can be quite slow. We will use in
+simulation examples later in the course.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The while loop can be used if the number of iterations required is
+not known beforehand. For example, if we want to continue
+looping until a certain condition is met, a while loop is useful.
+The following is the syntax for a while loop:
+\begin{verbatim}
+while (condition){
+command
+command
+}
+The loop continues while condition == TRUE.
+niter <- 0
+num <- sample(1:100, 1)
+while(num != 20) {
+num <- sample(1:100, 1)
+niter <- niter + 1
+}
+niter
+    
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{next, break, repeat Statements}
+The next statement can be used to discontinue one particular
+iteration of any loop, i.e. this iteration is ended and the loop
+\skips" to the next iteration. Useful if you want a loop to continue
+even if an error is found (error checking).
+The break statement completely terminates a loop. Useful if you
+want a loop to end if an error is found. See the Loops.R script le
+for code to exhibit the di erence between the next and break
+statements.
+The repeat loop uses next and break. The only way to end this
+type of loop is to use the break statement. For an example, see
+the Loops.R script file.
+\end{document}

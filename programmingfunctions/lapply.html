@@ -1,0 +1,65 @@
+
+
+Lists
+
+The Apply Family
+
+Factors
+
+
+
+Lists
+
+A list in R is a rather loose objects made of a collection of other arbitary objects known as its components. 
+
+The Apply Family 
+
+
+The apply() function is a powerful device that operates on arrays and, in particular, matrices. Since it can return arrays, it can bypasses calls to multiple loops and makes for quicker and cleaner programming.
+
+
+
+The local version of apply()is lapply(), which computes a function for each argument of a list., provided each argument is compatible with the function argument (e.g. that is numeric). 
+
+
+A user friendly version of lapply() is sapply()
+
+
+
+
+
+
+
+
+> x = list( a=1:10, beta =exp(-3:3),logic=c(T,F,T,F))
+
+>
+
+> lapply(x,mean)
+
+
+$a
+
+[1] 5.5
+
+$beta
+
+[1] 4.535125
+
+$logic
+
+[1] 0.5
+
+
+>
+
+> sapply(x,mean)
+
+       a     beta        logic
+
+5.500000  4.535125   0.500000 
+
+
+
+
+

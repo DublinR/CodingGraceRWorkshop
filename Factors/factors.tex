@@ -1,0 +1,93 @@
+	\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{framed}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode"CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 201113:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{Apache Spark} \rhead{Kevin O'Brien} \chead{Decision tree} %\input{tcilatex}
+
+\begin{document}
+\subsection*{Factors}
+A factor is a special type of vector used to represent categorical
+data, e.g. gender, social class, etc.
+\begin{itemize}
+	\item Stored internally as a numeric vector with values 1, 2, : : : ; k,
+	where k is the number of levels.
+	\item Can have either ordered and unordered factors.
+	\item A factor with k levels is stored internally consisting of 2 items
+	\begin{itemize}
+		\item[(a)] a vector of k integers
+		\item[(b)] a character vector containing strings describing what the k
+		levels are.
+	\end{itemize}
+	\end{itemize}
+	
+
+		
+		\subsection{Factors: Example}
+		Consider a survey that has data on 200 females and 300 males. If
+		the first 200 values are from females and the next 300 values are
+		from males, one way of representing this is to create a vector
+		\begin{framed}
+			\begin{verbatim}
+			> gender <- c(rep("female", 200), rep("male", 300))
+			> #To change this into a factor
+			> gender <- factor(gender)
+			>
+	\end{verbatim}
+	\end{framed}	The factor gender is stored internally as
+		\begin{enumerate}
+	\item female
+	\item male
+		\end{enumerate}
+	
+		Each category, i.e. female and male, is called a level of the factor.
+		To determine the levels of a factor the function levels() can be
+		used:
+		\begin{framed}
+			\begin{verbatim}
+			> levels(gender)
+			[1] "female" "male"
+			
+	\end{verbatim}
+	\end{framed}
+	
+	%-------------------------------------------------------%
+		\subsection{Factors: Example}
+		Five people are asked to rate the performance of a product on a
+		scale of 1-5, with 1 representing very poor performance and 5
+		representing very good performance. The following data were
+		collected.
+		\begin{framed}
+			\begin{verbatim}
+			> satisfaction <- c(1, 3, 4, 2, 2)
+			> fsatisfaction <- factor(satisfaction, levels=1:5)
+			> levels(fsatisfaction) <- c("very poor", "poor", "average",
+			"good", "very good")
+	\end{verbatim}
+	\end{framed}	%-------------------------------------------------------%
+		\begin{itemize}
+			\item The first line creates a numeric vector containing the satisfaction
+			levels of the 5 people. Want to treat this as a categorical variable
+			and so the second line creates a factor. 
+			\item The \texttt{levels=1:5} argument
+			indicates that there are 5 levels of the factor. Finally the last line
+			sets the names of the levels to the specified character strings.
+		\end{itemize}
+		\end{document}

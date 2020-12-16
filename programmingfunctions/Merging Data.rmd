@@ -1,0 +1,27 @@
+Merging Data
+========================================================
+
+### Adding Columns
+To merge two data frames (datasets) horizontally, use the merge function. In most cases, you join two data frames by one or more common key variables (i.e., an inner join).
+
+- merge two data frames by ID 
+
+```
+total <- merge(data frameA,data frameB,by="ID")
+```
+
+- merge two data frames by ID and Country
+
+```
+total <- merge(data frameA,data frameB,by=c("ID","Country"))
+```
+
+### Adding Rows
+
+To join two data frames (datasets) vertically, use the rbind function. The two data frames must have the same variables, but they do not have to be in the same order.
+```
+total <- rbind(data frameA, data frameB)
+```
+If data frameA has variables that data frameB does not, then either:
+ - Delete the extra variables in data frameA or
+ - Create the additional variables in data frameB and set them to NA (missing) before joining them with **rbind( )**.

@@ -1,0 +1,39 @@
+# apply
+#
+# create a matrix of 10 rows x 2 columns
+m <- matrix(c(1:10, 11:20), nrow = 10, ncol = 2)
+
+# mean of the rows
+
+apply(m, 1, mean)
+# [1]  6  7  8  9 10 11 12 13 14 15
+
+
+# mean of the columns
+apply(m, 2, mean)
+#[1]  5.5 15.5
+
+
+#########################################################
+# lapply - list apply
+
+x <- list(a=1:10, b=exp(-3:3), logic=c(T,F,F,T))
+
+# compute the list mean for each list element
+lapply(x,mean)
+
+#$a
+#[1] 5.5
+#
+#$b
+#[1] 4.535125
+#$logic
+#[1] 0.5
+
+# simplified apply
+
+sapply(x,mean)
+       a        b    logic 
+5.500000 4.535125 0.500000
+
+#########################################################

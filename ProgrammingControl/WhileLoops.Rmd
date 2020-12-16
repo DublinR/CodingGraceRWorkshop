@@ -1,0 +1,15 @@
+```{r}
+# Find a data set where the sample variance is an integer
+
+# Need to create and initialise objects in the R environment
+mySet <- sample(10:20, 8,replace=TRUE)
+mySet.variance <- var(mySet)
+i = 0
+
+while(mySet.variance != floor(mySet.variance)) { 
+  i = i + 1
+  mySet <- sample(10:20, 8,replace=TRUE)
+  mySet.variance <- var(mySet)
+  }
+  
+```  

@@ -1,0 +1,22 @@
+
+Program Control
+==================
+```{r}
+# for loops
+
+for(i in 1:10){  
+  cat("\n","This is row",i)
+  Value1 <- iris$Sepal.Length[i]
+  Value2 <- iris$Petal.Length[i]
+  output = round(Value1/Value2,3)
+  cat("\n This Ratio is =",output,"\n")
+}
+```
+
+#### Exercise 
+Print out the ratio of ***Petal.length*** to ***Sepal.length*** for rows 1 to 10 of the iris dataframe.
+
+<pre><code>
+This is row 1
+This ratio is ..
+</code></pre?

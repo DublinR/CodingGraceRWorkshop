@@ -1,0 +1,154 @@
+	\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{framed}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode"CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 201113:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{Statistics with \texttt{r}} \rhead{Kevin O'Brien} \chead{Chi-Square Test} %\input{tcilatex}
+
+\begin{document}
+
+
+
+\section{Test for Equality of Variance and Means}
+
+\begin{itemize}
+\item Test for Equality of Test (\texttt{var.test()})
+\item Welch Two Sample \emph{t-}test (\texttt{t.test()})
+\item Independent Two Sample \emph{t-}test (\texttt{t.test(var.equal=TRUE)})
+
+\end{itemize}
+
+
+\newpage
+\section{Outliers}
+\subsection{Grubb's Test for Outliers}
+\begin{framed}
+	\begin{verbatim}
+	library(outliers)
+	grubbs.test(X)
+	\end{verbatim}
+\end{framed}
+\subsection{Dixon Test for Outliers}
+\subsection{Outliers on Boxplots}
+Boxplots can used to determine an outlie (we will refer to them as ``boxplot outliers")
+\begin{framed}
+	\begin{verbatim}
+	boxplot(X, horizontal = TRUE)
+	\end{verbatim}
+\end{framed}
+
+\newpage
+
+\section{Inference Procedures}
+\subsection{Confidence Interval }
+A confidence interval gives an estimated range of values which is likely to include an unknown population parameter, the estimated range being calculated from a given set of sample data. If independent samples are taken repeatedly from the same population, and a confidence interval calculated for each sample, then a certain percentage (confidence level) of the intervals will include the unknown population parameter. 
+
+Confidence intervals are usually calculated so that this percentage is $95\%$, but we can produce $90\%$, $99\%$, $99.9\%$ (or whatever) confidence intervals for the unknown parameter. The width of the confidence interval gives us some idea about how uncertain we are about the unknown parameter. A very wide interval may indicate that more data should be collected before anything very definite can be said about the parameter.
+\subsection{Power }
+The power of a statistical hypothesis test measures the test's ability to reject the null hypothesis when it is actually false - that is, to make a correct decision. In other words, the power of a hypothesis test is the probability of not committing a type II error. It is calculated by subtracting the probability of a type II error from 1, usually expressed as: 
+\[\mbox{Power} = 1 - \mbox{P(type II error) } = 1- \beta \]The maximum power a test can have is 1, the minimum is 0. Ideally we want a test to have high power, close to 1.
+
+\section{Single Sample Inference Procedures}
+If we have a single sample we might want to answer several
+questions:
+\begin{itemize}
+	\item What is the mean value? \item Is the mean value
+	significantly different from current theory? (Hypothesis test)
+	\item What is the level of uncertainty associated with our
+	estimate of the mean value? (Confidence interval)
+\end{itemize}
+
+\begin{itemize}
+	\item (Last week : confidence interval for a mean) \item Revision:
+	For large samples ($n > 30$) and/or if the population standard
+	deviation ($\sigma$) is known, the usual test statistic is given
+	by: \[Z =\frac{\bar{X} - \mu}{SE(\bar{X})}\]
+	
+	\item $S.E.(\bar{X}) = { \sigma \over \sqrt{n}} $ or ${s \over \sqrt{n}}$. 
+	\item For small samples, use the $t-$distribution with $n-1$ degrees of freedom.
+	\item Critical value from tables.
+	\item Compare test statistics and critical values.
+\end{itemize}
+
+To ensure that our analysis is correct we need to check for
+outliers in the data (i.e. boxplots) and we also need to check
+whether the data are normally distributed or not.
+
+\begin{framed}
+	\begin{verbatim}
+	> t.test(X,mu=10)
+	
+	One Sample t-test
+	
+	data:  X 
+	t = 14.1421, df = 4, p-value = 0.0001451
+	alternative hypothesis: true mean is not equal to 10 
+	95 percent confidence interval:
+	10.08037 10.11963 
+	sample estimates:
+	mean of x 
+	10.1 
+	\end{verbatim}
+\end{framed}
+
+
+%--------------------------------------------------------------------------------------------------%
+
+
+%--------------------------------------------------------------------------%
+\newpage
+%section 9 Inference Procedures
+
+
+
+%------------------------------------------------------%
+\subsubsection{Two Sample Tests}
+
+
+All of the previous hypothesis tests and confidence intervals can be
+extended to the two-sample case.
+
+The same assumptions apply, i.e. data are normally distributed in
+each population and we may want to test if the mean in one
+population is the same as the mean in the other population, etc.
+
+Normality can be checked using histograms, boxplots and Q-Q
+plots as before. The Anderson-Darling test can be used on
+each group of data also.
+
+
+%------------------------------------------------------%
+\subsubsection{Implementation}
+
+This can be carried out in R by hand:
+
+\footnotesize \begin{verbatim}
+>obs.vals <- matrix(c(43,9,44,4), nrow=2, byrow=T)
+>row.tots <- apply(obs.vals, 1, sum)
+>col.tots <- apply(obs.vals, 2, sum)
+>exp.vals <- row.tots%o%col.tots/sum(obs.vals)
+>TS <- sum((obs.vals-exp.vals)^2/exp.vals)
+>TS
+>[1] 1.777415
+\end{verbatim}\normalsize
+
+
+
+\end{document}

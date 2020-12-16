@@ -1,0 +1,138 @@
+%-------------------------------------------------------------------------------------------------------------%
+%{P-values}
+Lets simulate 100 rolls of a die and sum up the numbers.\\
+\begin{itemize}
+\item The command \color{blue}\texttt{runif(100,1,7)}\color{black} generates 100 random numbers uniformly distributed between 1 and 7.
+\item The command \color{blue}\texttt{floor()}\color{black} discretizes those values.
+\item The command \color{blue}\texttt{sum()}\color{black} computes the sum of those 100 values.
+\end{itemize}
+
+
+\rule{12.1cm}{0.25mm}
+\texttt{R} Code:
+\begin{verbatim}
+>
+> x<-sum(floor(runif(100,1,7)))
+> x
+[1] 357
+>
+\end{verbatim}
+
+
+%
+
+%--------------------------------------------------------------------------------------------------------%
+
+%--------------------------------------------------------------------------------------------------------%
+
+%{P-values}
+We could have used some other approachs in implementing this.\\
+\begin{itemize}
+\item The command \color{blue}\texttt{runif(100,0,6)}\color{black} generates 100 random numbers uniformly distributed between 0 and 6.
+\item The command \color{blue}\texttt{ceiling()}\color{black} discretizes those values.
+\item The command \color{blue}\texttt{sum()}\color{black} computes the sum of those 100 values.
+\end{itemize}
+
+
+\rule{12.1cm}{0.25mm}
+\texttt{R} Code:
+\begin{verbatim}
+>
+> x<-sum(ceiling(runif(100,0,6)))
+> x
+[1] 372
+>
+\end{verbatim}
+%
+
+
+%-----------------------------------------------
+\subsection{Statistical Inference}
+\begin{itemize}
+\item $R$ commands for statistical inference procedures \item
+t.test() - testing procedure for means.
+\begin{itemize}
+\item One sample \item Two sample \item Paired
+\end{itemize}
+\item prop.test() - testing procedure for proportions.
+\begin{itemize}
+\item One sample \item Two sample
+\end{itemize}
+\item var.test() - testing procedure for variances.
+\end{itemize}
+%
+
+
+
+
+%-----------------------------------------------
+\subsection{Single sample inference}
+
+If we have a single sample we might want to answer several
+questions:
+\begin{itemize}
+\item What is the mean value? \item Is the mean value
+significantly different from current theory? (Hypothesis test)
+\item What is the level of uncertainty associated with our
+estimate of the mean value? (Confidence interval)
+\end{itemize}
+To ensure that our analysis is correct we need to check for
+outliers in the data (i.e. boxplots) and we also need to check
+whether the data are normally distributed or not.
+%
+
+%-----------------------------------------------
+\subsection{Checking normality}
+
+
+Graphical methods are often used to check that the data being
+analysed are normally distributed. We can use
+\begin{itemize}
+\item Histogram - check for symmetry \item Boxplot - symmetry and
+outliers \item Normal probability (Q-Q) plot
+
+\item Other procedures
+\begin{itemize}
+\item Kolmogorov-Smirnov test (ks.test())\item Shapiro Wilk test (shapiro.test()) \item
+Grubb's test \item Anderson Darling test
+\end{itemize}
+\end{itemize}
+We shall revert to these tests later.
+%
+
+
+%-----------------------------------------------------------------------------------------------------------------------%
+\subsection{Hypothesis testing for a mean}
+
+\begin{itemize}
+\item (Last week : confidence interval for a mean) \item Revision:
+For large samples ($n > 30$) and/or if the population standard
+deviation ($\sigma$) is known, the usual test statistic is given
+by: \[Z =\frac{\bar{X} - \mu}{SE(\bar{X})}\]
+
+\item $S.E.(\bar{X}) = { \sigma \over \sqrt{n}} $ or ${s \over \sqrt{n}}$. \item For small samples, use the $t-$distribution
+with $n-1$ degrees of freedom.
+\item
+Critical value from tables.
+\item Compare test statistics and critical values.
+\end{itemize}
+
+
+%
+
+
+
+\rule{12.1cm}{0.25mm}
+\texttt{R} Code:
+\begin{verbatim}
+
+> x = c(3, 0, 5, 2, 5, 5, 5, 4, 4, 5)
+>qqnorm(x)
+>qqline(x)
+
+\end{verbatim}
+
+%
+
+
+\end{document}

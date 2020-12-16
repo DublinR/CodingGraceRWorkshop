@@ -1,0 +1,37 @@
+Central Limit Theorem
+========================================================
+
+
+
+Hypothesis testing and confidence interval construction are based on the ***Central Limit Theorem*** (CLT).
+
+Recall the Dice experiment.
+```{r}
+Dice1=floor(runif(50,min=1,max=7))  
+```
+A simple demonstration of the CLT is given by the problem of rolling a large number of dice repeatedly. 
+The distribution of the sum (or average) of the rolled numbers will be well approximated by a normal distribution, the parameters of which can be determined empirically.
+```{r}
+N=1000            #number of loops
+Avgs=numeric(N)  #array “Avgs” store the sample means
+for( i in 1:N)
+     { 
+     Dice=floor(runif(50,min=1,max=7));
+     Avgs[i]=mean(Dice)  
+}                                 
+Avgs[1:20]            #print first 20 values from Avgs dataset to screen
+``` 
+
+Lets look at the distribution of the means. Are they normally distributed?
+```{r}
+mean(Avgs)          #compute the mean. 
+qqnorm(Avgs,pch=16,col="red")        #draws a QQ plot
+qqline(Avgs,col="blue")        #adds trend line to QQplot.
+shapiro.test(Avgs)  #Shapiro Wilk test. 
+```
+```{r}
+hist(Avgs,breaks=20,col="lightblue")
+abline(v=3.5,col="red")
+```
+
+

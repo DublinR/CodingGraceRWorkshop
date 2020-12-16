@@ -1,0 +1,162 @@
+
+%%  -Inference procedures
+
+ 
+
+
+
+
+\begin{framed}
+\begin{verbatim}
+
+x= c( 166.0 ,168.9 , 164.5, 161.0, 169.0, 160.5, 166.5, 158.0, 154.6, 167.7, 167.1,
+
+164.0, 165.5, 160.9, 170.0, 151.8, 161.7, 175.6, 157.5, 165.5)
+\end{verbatim}
+\end{framed}
+
+ 
+A confidence interval is automatically computed.
+
+The confidence level can be specified, but the default setting is the commonly used 95\% confidence level.
+
+\begin{framed}
+\begin{verbatim}
+t.test(x,mu=161)
+\end{verbatim}
+\end{framed}
+%=============================================%
+\begin{framed}
+\begin{verbatim}
+
+t.test(x,mu=160,conf.level = 0.99)
+\end{verbatim}
+\end{framed} 
+
+
+1) Complete the review of Inference Procedures ( from Lecture 1B)
+2) Introduce new inference procedures that will be used in this course.
+
+One and Two-sample t-tests
+
+The R function t.test() can be used to perform both one and two sample t-tests on vectors of data.
+The function contains a variety of options and can be called as follows:
+
+> t.test(x, y = NULL, alternative = c("two.sided", "less", "greater"), mu = 0, paired = FALSE, var.equal = FALSE, conf.level = 0.95)
+
+Here x is a numeric vector of data values and y is an optional numeric vector of data values. 
+If y is excluded, the function performs a one-sample t-test on the data contained in x.
+if it is included it performs a two-sample t-tests using both x and y.
+
+The option mu provides a number indicating the true value of the mean (or difference in means if you are performing a two sample test) under the null hypothesis. 
+
+The option alternative is a character string specifying the alternative hypothesis, and must be one of the following: "two.sided" (which is the default), "greater" or "less" depending on whether the alternative hypothesis is that the mean is different than, greater than or less than mu, respectively. 
+
+For example the following call:
+
+
+> t.test(x, alternative = "less", mu = 10)
+
+
+
+performs a one sample t-test on the data contained in x where the null hypothesis is that =10 and the alternative is that <10.
+
+The option paired indicates whether or not you want a paired t-test (TRUE = yes and FALSE = no). If you leave this option out it defaults to FALSE.
+
+The option var.equal is a logical variable indicating whether or not to assume the two variances as being equal when performing a two-sample t-test. 
+
+
+If TRUE then the pooled variance is used to estimate the variance otherwise the Welch (or Satterthwaite) approximation to the degrees of freedom is used. If you leave this option out it defaults to FALSE.
+
+Finally, the option conf.level determines the confidence level of the reported confidence interval for in the one-sample case and 1-2 in the two-sample case.
+
+A. One-sample t-tests
+Ex. An outbreak of Salmonella-related illness was attributed to ice cream produced at a certain factory. Scientists measured the level of Salmonella in 9 randomly sampled batches of ice cream. The levels (in MPN/g) were:
+
+0.593 0.142 0.329 0.691 0.231 0.793 0.519 0.392 0.418
+
+Is there evidence that the mean level of Salmonella in the ice cream is greater than 0.3 MPN/g?
+Let be the mean level of Salmonella in all batches of ice cream. Here the hypothesis of interest can be expressed as:
+H0: = 0.3
+H1: > 0.3
+Hence, we will need to include the options alternative="greater", mu=0.3. 
+
+Below is the relevant R-code:
+
+> x = c(0.593, 0.142, 0.329, 0.691, 0.231, 0.793, 0.519, 0.392, 0.418)
+> t.test(x, alternative="greater", mu=0.3)
+
+
+One Sample t-test
+data: x
+t = 2.2051, df = 8, p-value = 0.02927
+alternative hypothesis: true mean is greater than 0.3
+
+
+
+
+From the output we see that the p-value = 0.029. Hence, there is moderately strong evidence that the mean Salmonella level in the ice cream is above 0.3 MPN/g.
+
+
+
+
+
+B. Two-sample t-tests
+Ex. 6 subjects were given a drug (treatment group) and an additional 6 subjects a placebo (control group). Their reaction time to a stimulus was measured (in ms). We want to perform a two-sample t-test for comparing the means of the treatment and control groups.
+Let 1 be the mean of the population taking medicine and 2 the mean of the untreated population. Here the hypothesis of interest can be expressed as:
+H0: 1-2=0
+Ha: 1-2<0
+Here we will need to include the data for the treatment group in x and the data for the control group in y. We will also need to include the options alternative="less", mu=0.
+
+Finally, we need to decide whether or not the standard deviations are the same in both groups.
+Below is the relevant R-code when assuming equal standard deviation:
+
+> Control = c(91, 87, 99, 77, 88, 91)
+> Treat = c(101, 110, 103, 93, 99, 104)
+> t.test(Control,Treat,alternative="less", var.equal=TRUE)
+
+
+Two Sample t-test
+data: Control and Treat
+t = -3.4456, df = 10, p-value = 0.003136
+alternative hypothesis: true difference in means is less than 0
+
+
+Below is the relevant R-code when not assuming equal standard deviation:
+
+> t.test(Control,Treat,alternative="less")
+Welch Two Sample t-test
+data: Control and Treat
+t = -3.4456, df = 9.48, p-value = 0.003391
+alternative hypothesis: true difference in means is less than 0
+
+
+Here the pooled t-test and the Welsh t-test give roughly the same results (p-value = 0.00313 and 0.00339, respectively).
+
+
+
+
+
+An engineer is studying the formation of a Portland cement mortar. He is interested
+in the tension bond strength. The tension bond strength (in kgf/cm2) of a randomly chosen specimen of the Portland cement batch can be viewed as a random variable. Two formulations are subject of a study that the engineer plans to carry out. One is the original one that is currently used and the other one is an experimental 'new' one. 
+
+The tension bond strength data are graphically illustrated below:
+
+
+> X=c(16.38,16.41,16.52,16.58,16.59,16.84,16.94,17.03,17.14,17.21)
+> Y=c(16.60,16.70,16.88,16.98,17.00,17.08,17.13,17.27,17.34,17.39)
+> 
+> t.test(X,Y)
+
+        Welch Two Sample t-test
+
+data:  X and Y 
+t = -2.144, df = 17.567, p-value = 0.0463
+alternative hypothesis: true difference in means is not equal to 0 
+95 percent confidence interval:
+ -0.540992295 -0.005007705 
+sample estimates:
+mean of x mean of y 
+   16.764    17.037 
+
+
