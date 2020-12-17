@@ -1,0 +1,21 @@
+
+
+
+
+\section{Boxplot}
+Boxplots can be used to identify outliers.
+
+By default, the ``boxplot()`` command sets the orientation as vertical. By adding the argument ``horizontal=TRUE}, the orientation can be changed to horizontal.
+
+<pre>
+<code>
+boxplot(mtcars$mpg, horizontal=TRUE, xlab="Miles Per Gallon",
+main="Boxplot of MPG")
+</code>
+</pre>
+
+%\begin{figure}
+%  Requires \usepackage{graphicx}
+%  \includegraphics[scale=0.4]{MTCARSboxplot.png}\\
+%  \caption{Boxplot}\label{boxplot}
+%\end{figure}
