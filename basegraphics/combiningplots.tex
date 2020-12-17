@@ -1,8 +1,9 @@
 
 
 \section*{Combining plots}
-It is possible to combine two plots. We used the graphical parameters command \texttt{par()} to create an array. 
-Often we just require two plots side by side or above and below. We simply specify the numbers of rows and columns of this array using the \texttt{mfrow} argument, passed as a vector.
+It is possible to combine two plots. We used the graphical parameters command ``par()`` to create an array. 
+Often we just require two plots side by side or above and below. 
+We simply specify the numbers of rows and columns of this array using the ``mfrow`` argument, passed as a vector.
 
 <code>
 par(mfrow=c(1,2))
@@ -14,9 +15,10 @@ par(mfrow=c(1,1))		# reset to default setting.
 #### *{Combining Plots}
 Multiple plots can be combined into a single graph, arranged vertically, horizontally or in a grid.
 
-This can be implemented with \texttt{\textbf{par( )}} function, specifying the arrangment using the \texttt{\textbf{mfrow=}} argeument.
+This can be implemented with ``par( )`` function, specifying the arrangment using the ``mfrow`` argument.
 
-Suppose we require a histogram above a boxplot (with horizontal orientation). If we consider this as a grid, we have an array of two rows, with one column.
+Suppose we require a histogram above a boxplot (with horizontal orientation). 
+If we consider this as a grid, we have an array of two rows, with one column.
 
 <pre>
 <code>
@@ -33,10 +35,3 @@ wt, main="Boxplot of wt",horizontal=TRUE,col="lightblue")
 </code>
 </pre>
 
-%\begin{center}[h1]
-%\includegraphics[scale=0.65]{combiPlot}
-%\end{center}
-
-
-
-\end{document}
