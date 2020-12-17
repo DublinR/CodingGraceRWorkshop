@@ -1,0 +1,20 @@
+\section{Histograms}
+Histograms can be created using the ``hist()`` command.
+To create a histogram of the car weights from the Cars93 data set
+
+
+<code>
+hist(mtcars$mpg, main="Histogram of MPG (Data: MTCARS) ")
+</code>
+<p>
+\texttt{R} automatically chooses the number and width of the bars. 
+We can change this by specifying the location of the break points.
+
+
+<code>
+hist(Cars93$Weight, 
+breaks=c(1500, 2050, 2300, 2350, 2400, 2500, 3000, 3500, 3570, 4000, 4500), 
+ xlab="Weight",
+ main="Histogram of Weight")
+</code>
+<p>
