@@ -1,7 +1,136 @@
 	%MAM: Why are you presenting this data set? It looks like you are using the New York city data set not the Huston data sets?
 	%<p>
 ####        * {The hflights data set}
-	%hflights is a dataset contains information about flights that departed Houston in 2011. In the description the author writes:
+	%hflights is a dataset contai%MAM: Why are you presenting this data set? It looks like you are using the New York city data set not the Huston data sets?
+%<p>
+####  * {The hflights data set}
+%hflights is a dataset contains information about flights that departed Houston in 2011. In the description the author writes:
+%begin{quote}
+%This dataset contains all flights departing from Houston airports IAH (George Bush Intercontinental) and HOU (Houston Hobby). The data comes from the Research and Innovation Technology Administration at the Bureau of Transportation statistics:
+%end{quote}
+%<code>
+%http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0
+%</code>
+%================================================================================ %
+newpage
+<p>
+### {Worked Examples}
+
+%<p>
+#### {Data Sets}
+%MAM: This list is confusing here, maybe present them when you need them (in text?).
+% 
+%  * [airlines]
+%  * [airports]
+%  * [flights]
+%  * [planes] 
+%  * [weather]
+%
+
+<p>
+<p>
+#### {New York Flights Exercise}
+
+To explore the basic data manipulation verbs of dplyr, we'll start with the built-in textit{nycflights13} data frame. This dataset comes from the US Bureau of Transporation Statistics contains information on flights that departed from New York City in 2013. 
+
+
+<pre>
+<code>
+library(dplyr) # for functions
+library(nycflights13) # for data
+data(flights)
+</code>
+</pre>
+<p>
+
+sub<p>
+####  * {Preliminary Exercises}
+Using simple data inspection functions, answer the following questions. %MAM: Do you mean using simple dplyr inspection functions or any? I would actually list the functions that should be used  in the question.
+
+ * How many columns (i.e. variables) are there in this data set?
+ * How many rows (i.e. cases) are there?
+ * Which column has the most missing values?
+ * What are names of the last three variables?
+ * What type of data object is ``flights"?
+
+
+<pre>
+<code>
+#> year month day dep_time dep_delay arr_time arr_delay carrier tailnum
+#> 1  2013  115172830  11UA  N14228
+#> 2  2013  115334850  20UA  N24211
+#> 3  2013  115422923  33AA  N619AA
+#> 4  2013  11544  -1  1004 -18B6  N804JB
+#> ..  ...... ...... ...... ...  ...  ...
+</code>
+</pre>
+<p>
+<p>
+#### {Converting to tbl}
+% MAM: Note that the flights data set is already tbl 
+The dataset flights is of class ***tbl_df}, which is a wrapper around a data frame. ***tbl_df} prevents the€™ accidental printing of large dataset to the screen. While textbf{dplyr} can work with data frames as is, if you're dealing with large data it'€™s worth converting them to a ***tbl_df} using the function ***as.tbl()}.
+
+
+
+%=================================================================================== %
+<p>
+#### {Filter rows with ***filter()}}
+
+***filter()} allows you to select a subset of the rows of a data frame. The first argument is the name of the data frame, and the second and subsequent are filtering expressions evaluated in the context of that data frame:
+For example, we can select all flights on January 1st (New Years Day) with:
+
+<pre>
+<code>
+> flightsNYD = filter(flights, month == 1, day == 1)
+> dim(flightsNYD)
+[1] 842  16
+</code>
+</pre>
+<p>
+
+
+
+<p>
+#### { ***group_by()}}
+
+The ***tbl} also comes in a grouped variant which allows you to easily perform operations ``by group". Suppose we wish to group by carrier.
+
+<pre>
+<code>
+> carriersDF  <- group_by(flights, carrier)
+</code>
+</pre>
+<p>
+
+What type of object is ***carriersDF}? (multiple answers)
+
+<pre>
+<code>
+> by_tailnum <- group_by(flights, tailnum)
+> delay <- summarise(by_tailnum,
+count = n(), 
+dist = mean(distance, na.rm = TRUE),
+delay = mean(arr_delay, na.rm = TRUE))
+> delay <- filter(delay, count > 20, dist < 2000)
+</code>
+</pre>
+<p>
+newpage
+%======================================================================================================== %
+<p>
+### {Weather data set}
+
+ * ***origin}: Weather station. Named origin to facilitate merging with flights data
+ * ***year,month,day,hour}: Time of recording
+ * ***temp,dewp}: Temperature and dewpoint in F
+ * ***humid}: Relative humidity
+ * ***wind_dir,wind_speed,wind_gust}: Wind direction (in degrees), speed and gust speed (in mph)
+ * ***precip}: Precipitation, in inches
+ * ***pressure}: Sea level pressure in millibars
+ * ***visib}: Visibility in miles
+
+end{document}
+ns information about flights that departed Houston in 2011. In the description the author writes:
 	%begin{quote}
 	%This dataset contains all flights departing from Houston airports IAH (George Bush Intercontinental) and HOU (Houston Hobby). The data comes from the Research and Innovation Technology Administration at the Bureau of Transportation statistics:
 	%end{quote}
