@@ -1,14 +1,12 @@
-%-------------------------------------------------------------------------------------------------------------%
-%{P-values}
-Lets simulate 100 rolls of a die and sum up the numbers.\\
-\begin{itemize}
-\item The command \color{blue}\texttt{runif(100,1,7)}\color{black} generates 100 random numbers uniformly distributed between 1 and 7.
-\item The command \color{blue}\texttt{floor()}\color{black} discretizes those values.
-\item The command \color{blue}\texttt{sum()}\color{black} computes the sum of those 100 values.
-\end{itemize}
+{P-values}
+Lets simulate 100 rolls of a die and sum up the numbers.
+<p>
+*  The command \color{blue}\texttt{runif(100,1,7)}\color{black} generates 100 random numbers uniformly distributed between 1 and 7.
+*  The command \color{blue}\texttt{floor()}\color{black} discretizes those values.
+*  The command \color{blue}\texttt{sum()}\color{black} computes the sum of those 100 values.
+<p>
 
 
-\rule{12.1cm}{0.25mm}
 \texttt{R} Code:
 \begin{verbatim}
 >
@@ -18,23 +16,14 @@ Lets simulate 100 rolls of a die and sum up the numbers.\\
 >
 \end{verbatim}
 
-
-%
-
-%--------------------------------------------------------------------------------------------------------%
-
-%--------------------------------------------------------------------------------------------------------%
-
-%{P-values}
-We could have used some other approachs in implementing this.\\
-\begin{itemize}
-\item The command \color{blue}\texttt{runif(100,0,6)}\color{black} generates 100 random numbers uniformly distributed between 0 and 6.
-\item The command \color{blue}\texttt{ceiling()}\color{black} discretizes those values.
-\item The command \color{blue}\texttt{sum()}\color{black} computes the sum of those 100 values.
-\end{itemize}
+We could have used some other approachs in implementing this.
+<p>
+*  The command \color{blue}\texttt{runif(100,0,6)}\color{black} generates 100 random numbers uniformly distributed between 0 and 6.
+*  The command \color{blue}\texttt{ceiling()}\color{black} discretizes those values.
+*  The command \color{blue}\texttt{sum()}\color{black} computes the sum of those 100 values.
+<p>
 
 
-\rule{12.1cm}{0.25mm}
 \texttt{R} Code:
 \begin{verbatim}
 >
@@ -48,18 +37,18 @@ We could have used some other approachs in implementing this.\\
 
 %-----------------------------------------------
 \subsection{Statistical Inference}
-\begin{itemize}
-\item $R$ commands for statistical inference procedures \item
+<p>
+*  $R$ commands for statistical inference procedures * 
 t.test() - testing procedure for means.
-\begin{itemize}
-\item One sample \item Two sample \item Paired
-\end{itemize}
-\item prop.test() - testing procedure for proportions.
-\begin{itemize}
-\item One sample \item Two sample
-\end{itemize}
-\item var.test() - testing procedure for variances.
-\end{itemize}
+<p>
+*  One sample *  Two sample *  Paired
+<p>
+*  prop.test() - testing procedure for proportions.
+<p>
+*  One sample *  Two sample
+<p>
+*  var.test() - testing procedure for variances.
+<p>
 %
 
 
@@ -70,12 +59,12 @@ t.test() - testing procedure for means.
 
 If we have a single sample we might want to answer several
 questions:
-\begin{itemize}
-\item What is the mean value? \item Is the mean value
+<p>
+*  What is the mean value? *  Is the mean value
 significantly different from current theory? (Hypothesis test)
-\item What is the level of uncertainty associated with our
+*  What is the level of uncertainty associated with our
 estimate of the mean value? (Confidence interval)
-\end{itemize}
+<p>
 To ensure that our analysis is correct we need to check for
 outliers in the data (i.e. boxplots) and we also need to check
 whether the data are normally distributed or not.
@@ -87,16 +76,16 @@ whether the data are normally distributed or not.
 
 Graphical methods are often used to check that the data being
 analysed are normally distributed. We can use
-\begin{itemize}
-\item Histogram - check for symmetry \item Boxplot - symmetry and
-outliers \item Normal probability (Q-Q) plot
+<p>
+*  Histogram - check for symmetry *  Boxplot - symmetry and
+outliers *  Normal probability (Q-Q) plot
 
-\item Other procedures
-\begin{itemize}
-\item Kolmogorov-Smirnov test (ks.test())\item Shapiro Wilk test (shapiro.test()) \item
-Grubb's test \item Anderson Darling test
-\end{itemize}
-\end{itemize}
+*  Other procedures
+<p>
+*  Kolmogorov-Smirnov test (ks.test())*  Shapiro Wilk test (shapiro.test()) * 
+Grubb's test *  Anderson Darling test
+<p>
+<p>
 We shall revert to these tests later.
 %
 
@@ -104,25 +93,20 @@ We shall revert to these tests later.
 %-----------------------------------------------------------------------------------------------------------------------%
 \subsection{Hypothesis testing for a mean}
 
-\begin{itemize}
-\item (Last week : confidence interval for a mean) \item Revision:
+<p>
+*  (Last week : confidence interval for a mean) *  Revision:
 For large samples ($n > 30$) and/or if the population standard
 deviation ($\sigma$) is known, the usual test statistic is given
 by: \[Z =\frac{\bar{X} - \mu}{SE(\bar{X})}\]
 
-\item $S.E.(\bar{X}) = { \sigma \over \sqrt{n}} $ or ${s \over \sqrt{n}}$. \item For small samples, use the $t-$distribution
+*  $S.E.(\bar{X}) = { \sigma \over \sqrt{n}} $ or ${s \over \sqrt{n}}$. *  For small samples, use the $t-$distribution
 with $n-1$ degrees of freedom.
-\item
+* 
 Critical value from tables.
-\item Compare test statistics and critical values.
-\end{itemize}
+*  Compare test statistics and critical values.
+<p>
 
 
-%
-
-
-
-\rule{12.1cm}{0.25mm}
 \texttt{R} Code:
 \begin{verbatim}
 
