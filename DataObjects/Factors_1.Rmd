@@ -1,0 +1,48 @@
+
+
+
+*   Categorical data is often used to classify data into various levels or factors.
+*  For example, the smoking data could be part of a broader survey on student health issues.
+*  In such case, gender and alcohol consumption would be other probable factors.
+
+
+%------------------------------------------------------------------------------------------------------%
+
+
+*  A factor is a special type of vector used to represent
+categorical data, e.g. gender, social class, etc. *  Stored
+internally as a numeric vector with values 1, 2, ... k, where k is
+the number of levels. *  Can have either ordered and unordered
+factors. *  A factor with k levels is stored internally
+consisting of 2 items; a vector of k integers and a character
+vector containing strings describing what the k levels are.
+
+
+%------------------------------------------------------------------------------------------------------%
+\begin{slide}{Factors: Example}
+
+*  Consider a survey that has data on 200 females and 300
+males. *  If the first 200 values are from females and the next 300
+values are from males, one way of representing this is to create a
+vector
+\begin{verbatim}
+> gender <- c(rep("female", 200),
+  rep("male", 300))
+\end{verbatim}
+*  
+To change this into a factor
+\begin{verbatim}
+> gender <- factor(gender)
+\end{verbatim}
+
+
+ *  The factor gender is stored internally as '1' for `female'
+and `2' for male. *  Each category, i.e. female and male, is
+called a level of the factor.  *  To determine the levels of a
+factor the function levels() can be used:
+
+\begin{verbatim}
+> levels(gender)
+[1] "female" "male"
+\end{verbatim}
+
