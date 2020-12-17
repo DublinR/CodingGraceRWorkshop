@@ -1,0 +1,38 @@
+Scatterplots
+========================================================
+
+As seen previously, scatter plots are easily implementable in *R* using the ***plot()*** command.
+To add lines to a scatterplot, we use the ***abline()*** command. There are a number of variations of this command, depending on the orientation of the line.
+
+For horizontal lines, we specify the argument “h=”, with the vertical displacement of that line from the origin. For vertical lines, we specify the argument “v=”, with the horizontal displacement of that line from the origin.
+
+Sloped lines are specified by an intercept, and a slope. Recall “y = mx + c” as the equation of a line.
+Here “c” is the intercept, the displacement from origin of where the line crosses the y-axis. The slope of the line is denoted “m”. 
+
+In keeping with commonly used notation for regression models, the intercept is denoted “a”  while the slope is denoted “b”. So the equation of a line becomes “y = a + bx”.
+
+We will implement a simple scatter plot using the **Iris** data set.
+
+```{rfig.width=8, fig.height=7}
+x=iris[,1]
+y=iris[,2]
+plot(x,y)
+
+abline ( h = mean(y) ,col="red")
+abline ( v = mean(x) ,col="blue")
+abline ( a =5, b= -0.3, col="green")
+#
+```
+
+### Plot Character
+The default plot character is a “hollow” circle. We can change the type of plot character used by specifying a value to the “pch=” argument.  We can also change the colour using the “col=” argument.
+
+```{r fig.width=7, fig.height=6}
+plot(x,y, pch = 16, col="red")
+```
+
+For a list of plot characters see: http://voteview.com/symbols_pch.htm
+
+
+
+

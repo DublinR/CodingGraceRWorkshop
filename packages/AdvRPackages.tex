@@ -1,0 +1,57 @@
+%-------------------------------------------------------------------%
+\subsection{GGobi}
+
+The GGobi Foundation was formed January 1, 2007, by the developers of GGobi. 
+Its purpose is to:
+\begin{itemize}
+\item advance the GGobi project by designing, developing and distributing free and open source software for interactive and dynamic data visualization as part of data analysis.
+\item promote knowledge about and use of interactive and and dynamic graphics in data analysis.
+\end{itemize}
+
+Most of GGobi was written and designed by Debby Swayne, Di Cook, Duncan Temple Lang and Andreas Buja.
+
+GGobi is an open source visualization program for exploring high-dimensional data. 
+
+GGobi provides highly dynamic and interactive graphics such as tours, as well as familiar graphics such as the scatterplot, barchart and parallel coordinates plots. Plots are interactive and linked with brushing and identification.
+
+GGobi is fully documented in the GGobi book: "Interactive and Dynamic Graphics for Data Analysis".
+
+Classifly is an R package that uses rggobi to explore classification boundaries in high-dimensional spaces.
+
+
+
+%-------------------------------------------------------------------%
+\subsection{SQLDF}
+
+% http://www.r-bloggers.com/make-r-speak-sql-with-sqldf/
+
+\begin{framed}
+\begin{verbatim}
+
+# Load the package
+library(sqldf)
+
+# Use the titanic data set
+
+data(titanic3, package="PASWR")
+colnames(titanic3)
+head(titanic3)
+\end{verbatim}
+\end{framed}
+
+http://www.r-bloggers.com/running-sql-queries-in-r-with-the-sqldf-package/
+http://cran.r-project.org/web/packages/RPostgreSQL/RPostgreSQL.pdf
+
+%----------------------------------------------------------------------------
+\subsection{Data Table}
+I'm also more comfortable with SQL, but when working with large data sets in R, 
+my favourite manipulation tool is the data.table package. 
+Unlike sqldf, which lets you write SQL in R, data.table lets you write R 
+in R - but gives you the ability to add indexes on data frames 
+(well, data.tables, to be precise). 
+
+The ability to index data frames makes 'joins' much much much faster. 
+And being an R implementation, your code still looks like R.
+
+%-------------------------------------------------------------------%
+\subsection{TourR}

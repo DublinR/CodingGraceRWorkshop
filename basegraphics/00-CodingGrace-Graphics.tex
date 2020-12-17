@@ -1,0 +1,191 @@
+\chapter{ R Graphics}
+\section{Enhancing your scatter plots}
+
+
+
+%=====================================================================================================================%
+\begin{frame}
+\subsection{Adding a title }
+
+It is good practice to label your scatterplots properly. You can specify the following argument
+\begin{itemize}
+	\item	main="Scatterplot Example", 	This provides the plot with a title
+	\item	sub="Subtitle",                 This adds a subtitle
+	\item	xlab="X variable ",				This command labels the x axis 
+	\item   ylab="y variable ",				This command labels the y-axis
+\end{itemize}
+We can also add text to each margin, using the \texttt{mtext()} command.  
+We simply require the number of the side. (1 = bottom, 2=left,3=top,4=right). 
+We can change the colour using the col argument.
+\footnotesize \begin{verbatim}
+plot(x,y,main="Scatterplot Example",   sub="subtitle",    xlab="X variable ", ylab="y variable ")	
+mtext("Enhanced Scatterplot", side=4,col="red ")
+\end{verbatim}\normalsize
+Alternatively , we can also use the command title() to add a title to an existing scatterplot.
+\footnotesize \begin{verbatim}
+title(main="Scatterplot Example)	
+\end{verbatim}\normalsize
+
+
+\section{Plot of single vectors}
+If only one vector is specified i.e. \texttt{plot(x)},  the plot created will simply be a scatter-plot of the values of x against their indices.
+
+$plot(x)$
+Suppose we wish to examine a trend that these points represent. We can connect each covariate using a line.
+
+$plot(x, type = "l")$
+If we wish to have both lines and points, we would input the following code. This is quite useful if we wish to see how a trend develops over time.
+$plot(x, type = "b")$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Boxplot}
+Boxplots can be used to identify outliers.
+
+By default, the \texttt{boxplot()} command sets the orientation as vertical. By adding the argument \texttt{horizontal=TRUE}, the orientation can be changed to horizontal.
+\footnotesize
+\begin{framed}
+	\begin{verbatim}
+	boxplot(mtcars$mpg, horizontal=TRUE, xlab="Miles Per Gallon",
+	main="Boxplot of MPG")
+	\end{verbatim}
+\end{framed}
+
+%\begin{figure}
+%  Requires \usepackage{graphicx}
+%  \includegraphics[scale=0.4]{MTCARSboxplot.png}\\
+%  \caption{Boxplot}\label{boxplot}
+%\end{figure}
+
+
+
+\newpage
+
+
+\chapter{Data Visualization}
+\section{Plots}
+This section is an introduction for producing simple graphs with
+the R Programming Language.
+\begin{itemize}
+	\item Line Charts  \item Bar Charts \item Histograms \item Pie
+	Charts \item Dotcharts
+\end{itemize}
+
+
+
+\section{Plots}
+This section is an introduction for producing simple graphs with
+the R Programming Language.
+\begin{itemize}
+\item Line Charts  \item Bar Charts \item Histograms \item Pie
+Charts \item Dotcharts
+\end{itemize}
+
+
+\begin{itemize}
+\item
+\item
+\end{itemize}
+\footnotesize \begin{verbatim}
+> code here
+ \end{verbatim}\normalsize
+
+
+\subsection{ Charts}
+
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+# Define 2 vectors cars <- c(1, 3, 6, 4, 9) trucks <- c(2, 5, 4,
+5, 12)
+
+# Calculate range from 0 to max value of cars and trucks g_range
+<- range(0, cars, trucks)
+
+# Graph autos using y axis that ranges from 0 to max # value in
+cars or trucks vector.  Turn off axes and # annotations (axis
+labels) so we can specify them ourself plot(cars, type="o",
+col="blue", ylim=g_range,
+   axes=FALSE, ann=FALSE)
+
+# Make x axis using Mon-Fri labels axis(1, at=1:5,
+lab=c("Mon","Tue","Wed","Thu","Fri"))
+
+# Make y axis with horizontal labels that display ticks at # every
+4 marks. 4*0:g_range[2] is equivalent to c(0,4,8,12). axis(2,
+las=1, at=4*0:g_range[2])
+
+# Create box around plot box()
+
+# Graph trucks with red dashed line and square points
+lines(trucks, type="o", pch=22, lty=2, col="red")
+
+# Create a title with a red, bold/italic font title(main="Autos",
+col.main="red", font.main=4)
+
+# Label the x and y axes with dark green text title(xlab="Days",
+col.lab=rgb(0,0.5,0)) title(ylab="Total", col.lab=rgb(0,0.5,0))
+
+# Create a legend at (1, g_range[2]) that is slightly smaller #
+(cex) and uses the same line colors and points used by # the
+actual plots legend(1, g_range[2], c("cars","trucks"), cex=0.8,
+   col=c("blue","red"), pch=21:22, lty=1:2);
+
+\end{verbatim}
+\end{myindentpar}
+\subsection{Bar charts}
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+# Define the cars vector with 7 values
+cars <- c(1, 3, 6, 4, 9, 5, 7)
+# Graph cars
+barplot(cars)
+\end{verbatim}
+\end{myindentpar}
+\subsection{Boxplots}
+\subsection{Setting graphical parameters}
+\subsection{Miscellaneous}
+The following code can be used to make variations of the plots.
+
+\begin{myindentpar}{1cm}
+\footnotesize \begin{verbatim}
+# Make an empty chart
+plot(1, 1, xlim=c(1,5.5), ylim=c(0,7), type="n", ann=FALSE)
+
+# Plot digits 0-4 with increasing size and color
+text(1:5, rep(6,5), labels=c(0:4), cex=1:5, col=1:5)
+
+# Plot symbols 0-4 with increasing size and color
+points(1:5, rep(5,5), cex=1:5, col=1:5, pch=0:4)
+text((1:5)+0.4, rep(5,5), cex=0.6, (0:4))
+
+# Plot symbols 5-9 with labels
+points(1:5, rep(4,5), cex=2, pch=(5:9))
+text((1:5)+0.4, rep(4,5), cex=0.6, (5:9))
+
+# Plot symbols 10-14 with labels
+points(1:5, rep(3,5), cex=2, pch=(10:14))
+text((1:5)+0.4, rep(3,5), cex=0.6, (10:14))
+
+# Plot symbols 15-19 with labels
+points(1:5, rep(2,5), cex=2, pch=(15:19))
+text((1:5)+0.4, rep(2,5), cex=0.6, (15:19))
+
+# Plot symbols 20-25 with labels
+points((1:6)*0.8+0.2, rep(1,6), cex=2, pch=(20:25))
+text((1:6)*0.8+0.5, rep(1,6), cex=0.6, (20:25))
+\end{verbatim}\normalsize
+\end{myindentpar}
+
+
+

@@ -1,0 +1,556 @@
+\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{fancyhdr}
+%\usepackage{listings}
+\usepackage{framed}
+\usepackage{graphicx}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 2011 13:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{Dublin \texttt{R}} \rhead{September 2013}
+\chead{Introduction to \texttt{R}}
+%\input{tcilatex}
+
+
+% http://www.norusis.com/pdf/SPC_v13.pdf
+\begin{document}
+
+\tableofcontents
+
+Part 1a : Exploratory Data Analysis and Basic Probability
+
+Measures and Graphical Techniques (i.e. Boxplots)
+Statistical Fallacies
+Part 2 : Probability Distributions
+
+Introduction to Probability
+Probability Distributions
+Advanced Probability
+Probability Distributions (Gambler's Ruin)
+
+
+
+
+
+
+R and EVT
+
+R and EVT
+Overview of Proposal
+Simple R Programming
+vectors
+integer
+Character
+logical
+numeric
+Packages
+Inference procedures
+Regression models and bivariate data
+Tinn-R
+Packages
+Using and Installing packages
+Installing additional packages
+
+Overview of Proposal
+how to access R
+using modules
+setting up projects
+statistics
+designing a statistical analysis
+practical element focusing carrying out basic statistics and extreme value analysis on an annual maximum series
+ 
+ 
+head()
+
+rbind()
+cbind()
+
+
+
+
+commenting #######
+
+
+basic R editor
+ - new script
+ - updating script
+ - running script
+ -
+ 
+Probability distributions
+ - Continuous: Normal / Student's 't' / Chi-square distribution
+ - discrete: Binomial / Poisson / geometric distribution
+Inference procedures
+ - t.test
+Performs one and two sample t-tests on vectors of data. 
+ - prop.test
+	    prop.test can be used for testing the null that the proportions (probabilities of success) in several groups are the same, or that they equal certain given values.
+ - Kolmogorov-Smirnov test      [ks.test()]
+Performs one or two sample Kolmogorov-Smirnov tests. 
+ - Anderson Darling test        [ad.test()]
+ - Grubbs test for outliers     [Grubbs.test()]
+ - Dixon test for outliers
+ - correlation test [cor.test()]
+ - Analysis of variance. [anova()]
+ 
+
+Logical functions and coercion
+ - as.vector
+ - is.na
+ - NA is a logical constant of length 1 which contains a missing value indicator.
+ - Missing value/ not available. 
+Regression models and bivariate data
+ - simple linear regression 
+ - multiple linear regression 
+ - lm()
+ - lm is used to fit linear models. It can be used to carry out regression, single stratum analysis of variance and analysis of covariance 
+
+Control Loops
+ - do 
+ - if 
+
+Writing Functions
+
+Goodness of Fit statistics
+ - AIC()
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Setting up project directories
+
+It is helpful to organize your work in project directories.
+Create a directory for your project.
+Copy a workspace (a .Rdata file) to the directory
+You can then start R by clicking on the .Rdata file's icon
+All directory references in the R session will be relative to the project directory. For example, you can read a file 'data.csv' in the directory with
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+http://www.r-tutor.com/elementary-statistics/hypothesis-testing/two-tailed-test-population-proportion
+ 
+
+Regression more
+Chi-square Tests
+Binomial coefficients
+Basic Probability Distributions
+Continuous Probability Distributions
+The Normal distribution
+other distributions
+Central Limit Theorem
+
+Regression more
+
+http://www.ats.ucla.edu/stat/R/dae/rreg.htm
+
+
+ 
+
+Chi-square Tests
+Hypothesis test for count data that use the Pearson Chi-square statistic are available in R.
+These include the goodness-of-fit tests and those for contingency tables. Each of these are
+performed by using the chisq.test() function. 
+
+The basic syntax for this function is (see ?chisq.test for more information): 
+ 
+http://www.r-tutor.com/elementary-statistics/probability-distributions
+
+
+
+
+Binomial coefficients
+' n choose k'
+nk =n!k! (n-k)!
+
+RSS Higher Certificate Module 4 Linear model
+(Royal Statistical Society Professional Exams)
+Advanced Data Modelling
+
+Use Simple Linear Regression for calibration and reverse prediction,
+Apply and evaluate regression diagnostics with emphasis on leverage and influence points.
+Explain the Matrix formulation of the linear model
+Understand multiple regression, partial correlation, polynomial regression.
+Apply Analysis of Variance : multiple comparisons, two-way ANOVA, interactions
+Understand analysis of covariance.
+Overview of Generalized Linear Models including nonlinear regression, logistic regression and log-linear models.
+1. Simple Linear Regression :
+
+calibration, reverse prediction, regression through the origin, analysis of residuals, regression diagnostics, leverage and influence.
+2. Matrix formulation of the linear model :
+
+Multiple regression, partial correlation, polynomial regression.
+
+Regression
+
+Simple linear regression. Least squares estimation.
+Multiple linear regression – concepts, interpretation of computer output, inference for regression coefficients using estimates and estimated standard errors from computer output.
+Analysis of variance for regression models.
+Calculation and interpretation of the multiple correlation coefficient (coefficient of determination).
+Simple cases of transforming to linearity.
+Correlation
+
+Product-moment correlation (Pearson).
+Rank correlation – Spearman’s coefficient.
+Calculation and interpretation.
+Design of experiments
+
+Reasons for experimentation, causality.
+Principles of replication and randomisation, completely randomised design.
+Analysis of variance
+
+One-way analysis of variance.
+Inference for means and for differences in means
+One-way ANOVA, multiple comparisons,
+Two-way ANOVA with  interactions,
+Analysis of covariance.
+Generalized Linear Models
+
+Introduction to Generalized Linear Models including nonlinear regression, logistic regression and log-linear models.
+
+
+
+ 
+Central Limit Theorem
+Hypothesis testing and con dence interval construction are based on the Central Limit Theorem.
+CLT - see Introductory Data Analysis notes by Dr. Ailish Hannigan.
+Can check the CLT using a small simulation example.
+We will take 10000 samples of size 5 from data with a uniform distribution and record the means.
+When we plot a histogram of the means, should have a normal distribution.
+ 
+means <- numeric(10000)
+for(i in 1:10000){
+means[i] <- mean(runif(5))
+}
+hist(means)
+ 
+
+Recall the Dice experiment in week 8.
+ 
+N=100           	          	          	             #number of loops
+Avgs=numeric(N)           	             #array “Avgs” store the sample means
+for( i in 1:N)
+              {              Dice=floor(runif(50,min=1,max=7));              Avgs[i]=mean(Dice);
+              }
+Avgs           	          	          	             #print Avgs dataset to screen
+ 
+The Central limit theorem states that.
+
+The “Dice” distribution is a discrete uniform distribution. However
+
+mean(Avgs)           	          	             #compute the mean. Is it roughly what we are expecting?
+qqnorm(Avgs)           	          	             #draws a QQ plot that is used to check for normality.
+qqline(Avgs)           	          	             #adds trend line to QQplot.
+shapiro.test(Avgs)           	             #Shapiro Wilk test. Normality is assumed if p-value > 0.05.
+	                                     
+
+
+crime=c(761,780 ,593,715,1078,567,456,686,1206,723,261 ,326,282 ,960,489,496,463,1062,805,998,126 ,792,327 ,744,434,178,679,82,339,138,627,930,875,1074,504,635,503,418,402,1023,208,766,762,301 ,372,114,515,264,208,286,2922 )
+
+murder=c(9,11.6 ,10.2 ,8.6 ,13.1 ,5.8 ,6.3 ,5 ,8.9 ,11.4 ,3.8 ,2.3 ,2.9 ,11.4 ,7.5 ,6.4 ,6.6 ,20.3 ,3.9 ,12.7 ,1.6 ,9.8 ,3.4 ,11.3 ,13.5 ,3 ,11.3 ,
+1.7 ,3.9 ,2 ,5.3 ,8 ,10.4 ,13.3 ,6 ,8.4 ,4.6 ,6.8 ,3.9 ,10.3 ,3.4 ,10.2 ,11.9 ,3.1 ,8.3 ,3.6 ,5.2 ,4.4 ,6.9 ,3.4 ,8.5 )
+
+pctmetro=c(41.8 ,67.4 ,44.7 ,84.7 ,96.7 ,81.8 ,95.7 ,82.7 ,93 ,67.7 ,74.7 ,43.8 ,30 ,84 ,71.6 ,54.6 ,48.5 ,75 , 96.2 , 92.8 ,35.7 ,
+82.7 ,69.3 ,68.3 ,30.7 ,24 ,66.3 ,41.6 ,50.6 ,59.4 ,100 ,56 ,84.8 ,91.7 ,81.3 ,60.1 ,70 ,84.8 ,93.6 ,69.8 ,32.6 ,67.7 ,83.9 ,77.5 ,77.5 ,27 ,83 ,68.1 ,41.8 ,29.7 ,100 )
+
+pctwhite=c(75.2 ,73.5 ,82.9 ,88.6 ,79.3 ,92.5 ,89 ,79.4 ,83.5 ,70.8 ,40.9 ,96.6 ,96.7 ,81 ,90.6 ,90.9 ,91.8 ,66.7 ,91.1 ,68.9 ,98.5 ,83.1 ,94 ,87.6 ,63.3 ,92.6 ,75.2 ,94.2 ,94.3 ,98 ,80.8 ,87.1 ,86.7 ,77.2 ,87.5 ,82.5 ,93.6 ,88.7 ,92.6 ,68.6 ,90.2 ,82.8 ,85.1 ,94.8 ,77.1 ,98.4 ,89.4 ,92.1 ,96.3 ,95.9 ,31.8 )
+
+pcths=c(86.6 ,66.9 ,66.3 ,78.7 ,76.2 ,84.4 ,79.2 ,77.5 ,74.4 ,70.9 ,80.1 ,80.1 ,79.7 ,76.2 ,75.6 ,81.3 ,64.6 ,68.3 ,80 ,78.4 ,78.8 ,76.8 ,82.4 ,73.9 ,64.3 ,81 ,70 ,76.7 ,81.8 , 82.2 ,76.7 ,75.1 ,78.8 ,74.8 ,75.7 ,74.6 ,81.5 ,74.7 ,72 ,68.3 ,77.1 ,67.1 ,72.1 ,85.1 ,75.2 ,80.8 ,83.8 ,78.6 ,66 ,83 ,73.1 )
+
+poverty=c(9.1 ,17.4 ,20 ,15.4 ,18.2 ,9.9 ,8.5 ,10.2 ,17.8 ,13.5 ,8 ,10.3 ,13.1 ,13.6 ,12.2 ,13.1 ,20.4 ,26.4 ,10.7 ,9.7 ,10.7 ,15.4 ,11.6 ,16.1 ,24.7 ,14.9 ,14.4 ,11.2 ,10.3 ,9.9 ,10.9 ,17.4 ,9.8 ,16.4 ,13 ,19.9 ,11.8 ,13.2 ,11.2 ,18.7 ,14.2 ,19.6 ,17.4 ,10.7 ,9.7 ,10 ,12.1 ,12.6 ,22.2 ,13.3 ,26.4 )
+
+
+
+
+\newpage
+%------------------------------------------%
+
+
+
+
+%======================================================================================================== %
+1. Starting R the first time
+
+
+When running R from the computer lab, your M drive will be the working directory where your work will be saved by default. You can easily change to another directory at any time by selecting Change Dir... from the File menu. 
+You can save your work at any time. Select Save Workspace from the File menu. You will usually save the workspace in the working directory. When you quit R you will be prompted to save your workspace. 
+
+
+\section{The \texttt{summary()} command}
+\texttt{summary()} is a generic but very useful, function to summarize many types of \texttt{R} objects, including datasets. When used on a dataset, summary returns distributional summaries of variables in the dataset.
+
+\section{Creating Data with \texttt{R}}
+
+\subsection{Data Import}
+It is necessary to import outside data into \texttt{R} before you start analysing it. Here we will look at some relevant issues.
+
+\subsubsection{Microsoft XLS File}
+Very often, the sample data is in MS Excel$^{\mbox{\tiny{TM}}}$ format, and needs to be imported into \texttt{R} prior to use. For this, we could use the \texttt{read.xls()} function from the \textbf{\textit{gdata}} package. The command reads from an Excel spreadsheet and returns a data frame. The following shows how to load an Excel spreadsheet named ``mydata.xls". As the package is not in the core \texttt{R} library, it has to be installed and loaded into the \texttt{R} workspace. (This spreadsheet is saved in the working directory).
+\begin{verbatim}
+> library(gdata)                   # load the gdata package
+> help(read.xls)                   # documentation
+> mydata = read.xls("mydata.xls")  # read from first sheet
+\end{verbatim}
+
+
+
+%Similarly to read.csv and read.csv2, the functions write.csv and write.csv2 are provided as wrappers to read.table, with appropriate options set to produce comma- or semicolon-separated files.
+
+%\newpage
+
+
+
+
+%We can use this approach to create a data frame :
+%> data.frame(rbind(X,Y))
+ % X1 X2 X3
+%X  1  2  3
+%Y  4  5  6
+
+%We can then use rownames and colnames to assign meaningful names to this data frame.
+
+%---- END OF CREATING DATA
+%-------------------------------------------------------------------------------------------------------%
+%----------------------------------------------------------------------------------CREATING DATA--------%
+
+%\section{Data Entry Methods}
+%\subsection{Using the \texttt{scan()} command}
+
+
+
+%\subsection{Importing and Exporting Data}
+%\subsection{The \texttt{read.csv()} command}
+%\subsection{The \texttt{write.csv()} command}
+%\subsection{The \texttt{sink()} command}
+
+%-------------------------------------------------------------------------%
+%\subsection{Classes of Data Objects}
+%\begin{verbatim}
+%class(Numvec)
+%class(Charvec)
+%class(A)
+%class(iris)
+%class(Nile)
+%\end{verbatim}
+
+
+
+
+
+\section{A Brief Introduction to fitting Linear Models (Lists)}
+
+A very commonly used statistical procedure is \textbf{simple linear regression}
+\begin{itemize}
+\item \texttt{lm()}
+\item \texttt{summary()}
+\end{itemize}
+
+\begin{framed}
+\begin{verbatim}
+Y <- c( )
+X <- c( )
+
+plot(X,Y)
+cor(X,Y)
+lm(Y~X)
+\end{verbatim}
+\end{framed}
+%------------------------%
+\begin{framed}
+\begin{verbatim}
+FitA =lm(Y~X)
+summary(FitA)
+\end{verbatim}
+\end{framed}
+%--------------------------------%
+Let's look at this summary output in more detail, to see how it is structured. Importantly this object is structured as a list of named components.
+\begin{framed}
+\begin{verbatim}
+names(summary(FitA))
+class(summary(FitA))
+mode(summary(FitA))
+str(summary(FitA))
+\end{verbatim}
+\end{framed}
+
+%-------------------------------%
+The summary of \texttt{FitA} is a data object in it's own right. We will save it under the name \texttt{Sum.FitA} (N.B. The dot in the name has no particular meaning).
+\begin{framed}
+\begin{verbatim}
+Sum.FitA=summary(FitA)
+Sum.FitA[1]
+Sum.FitA$pvalue
+\end{verbatim}
+\end{framed}
+%------------------------------%
+Suppose we wish require the $p-$value for the slope estimate only.
+\begin{framed}
+\begin{verbatim}
+class(Sum.FitA$pvalue)
+mode(Sum.FitA$pvalue)
+dim(Sum.FitA$pvalue)
+\end{verbatim}
+\end{framed}
+%-------------------------------------------------%
+
+
+
+
+
+%================================================================================================== %
+Topics included in this tutorial: 
+1. Starting R the first time
+2. Some things to keep in mind
+3. Beginning an analysis
+4. Visualizing your data
+%======================================================================================================== %
+3. Beginning an analysis
+
+
+For the remainder of this tutorial, we will be analyzing the following dataset: 
+Concentration
+0.3330
+0.1670
+0.0833
+0.0416
+0.0208
+0.0104
+0.0052
+Velocity
+3.636
+3.636
+3.236
+2.666
+2.114
+1.466
+0.866
+These data are measurements of the rate or velocity of a chemical reaction for different concentrations of substrate. We are interested in fitting a model of the relationship between concentration and velocity. The first thing we need to do is enter the data. We can do this from the Commands Window, from a spreadsheet interface, or by importing an existing file. Most of this tutorial will focus on command line input so let's begin there. At the prompt, create two vectors: 
+> conc <- c(0.3330, 0.1670, 0.0833, 0.0416, 0.0208, 0.0104, 0.0052)
+> vel <- c(3.636, 3.636, 3.236, 2.660, 2.114, 1.466, 0.866)
+We use the function c(), which stands for concatenate, to create a vector. The individual elements can be numeric, as in this example, or character, or any other mode. However, all elements in a vector must be the same mode. Note that the elements are separated by commas. The spaces between elements are included for clarity and are not required by R. 
+Now, we will combine these two vectors into a single data frame: 
+> df <- data.frame(conc, vel)
+Let's look at the data frame to be sure we entered the data correctly. To view any object in R, simply type its name: 
+> df
+conc   vel
+1 0.3330 3.636
+2 0.1670 3.636
+3 0.0833 3.236
+4 0.0416 2.660
+5 0.0208 2.114
+6 0.0104 1.466
+7 0.0052 0.866
+Oops. It looks like there is an error in one of the velocity entries. The fourth one down, 2.660, should be 2.666. You could use the up-arrow to recall the command you used to create vel, make the change, and run it again. Then use the up-arrow again to recall the command you used to create df and run that one again. Let's look at another way to do it. First, we'll change just that one element in the vector vel. Individual elements in a vector are referenced in square brackets. We want to change the fourth element, so we type: 
+> vel[4] <- 2.666
+Take a look at vel to see that it has been changed. There are a couple ways to change elements in a data frame. Treating the data frame as a matrix, we can reference the element in the fourth row and second column like this: 
+> df[4,2] <- 2.666
+Note the order that the row and column are referenced: first the row, then the column. Data frames also allow us to reference individual columns by their names. This is done with the name of the data frame, followed by a dollar sign, and the name of the column. So the vel data can be referenced as df$vel. Now we can change the fourth element like this: 
+> df$vel[4] <- 2.666
+Note that df$vel is a vector so we only need one number in the brackets. Let's take another look at df to be sure we have it right this time. 
+\begin{framed}
+\begin{verbatim}
+> df
+conc   vel 
+1 0.3330 3.636
+2 0.1670 3.636
+3 0.0833 3.236
+4 0.0416 2.666
+5 0.0208 2.114
+6 0.0104 1.466
+7 0.0052 0.866
+\end{verbatim}
+\end{framed}
+Looks good! We could have created this data frame in other ways. If the data were already entered into a spreadsheet, database, or ASCII file, you could import it using the appropriate commands. Alternatively, you could create a data frame using a spreadsheet-like interface right in R. From the Edit choose Data Editor... and follow the prompts. You can use the fix() command to edit existing data frames. 
+Now we're ready to do an analysis.
+
+%======================================================================================================== %
+\subsection{4. Visualizing your data}
+
+
+The first thing we want to do is plot the data. You can easily get a basic plot with the following:
+
+> plot(df$conc, df$vel)
+
+The first vector given is the independent variable to be plotted on the X-axis, the second is the dependent variable for the Y-axis. If you execute a plotting function and there is no active graphsheet, a default graphsheet will be opened for you. If you then do another plot, the first one will be lost and the new plot will be drawn in the 
+same graphics window. You can keep your first plot by opening another graphsheet by typing: 
+
+> win.graph()
+
+The default is a square graphsheet. You can create portrait graphsheets, landscape graphsheets, any shape you want. Check win.graph in the help files to see how. 
+We're going to look at 3 different ways to analyze these data: simple linear regression, non-linear regression, and polynomial regression. 
+
+
+%------------------------------------------------------------------------------------------------------%
+\newpage
+Using the R environment
+Views R Console
+Graphics Console
+Script Editor Console
+passing a script for compiling
+
+Creating and Editting a script using script editor
+
+Using R Studio Integrated Development Environment
+
+Changing GUI options
+
+length
+ls()
+getwd
+setwd
+head()
+length()
+rbind()
+cbind()
+
+
+
+Saving your workspace
+Listing objects in the workspace
+Removing objects from the workspace
+quitting the environment
+
+data entry
+Spreadsheet Style Interface
+Vectors
+Lists
+Output from many important statistical functions are structured as lists.
+Arrays
+Matrices important in advanced computational disciplines like Machine Learning.
+
+ 
+The summary function
+
+
+Lists
+A list in R is a rather loose objects made of a collection of other arbitary objects known as its components. 
+
+
+
+
+
+
+
+
+Factors
+
+a factor is a vector of characters or integers that are used to specify a discrete classification of the component of vectors.
+
+logical subscripting
+
+\end{document}

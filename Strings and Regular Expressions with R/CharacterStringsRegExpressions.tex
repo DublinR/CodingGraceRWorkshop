@@ -1,0 +1,26 @@
+
+%-----------------------------------------------------------%
+\section{Character Manipulation}
+R is usually thought of as a language designed for numerical computation,
+it contains a full complement of functions which can manipulate character
+data.
+
+\begin{itemize}
+\item The \texttt{nchar()} function can be used to find the number of characters in a character value.
+\item Character values will be displayed when they are passed to the  \texttt{print()} function.
+\item The \texttt{cat()}  function will combine
+character values and print them to the screen or a file directly. The \texttt{cat()}
+function coerces its arguments to character values, then concatenates and displays
+them. This makes the function ideal for printing messages and warnings
+from inside of functions.
+\end{itemize}
+
+%-----------------------------------------------------------%
+\subsection{Regular Expressions in \texttt{R}}
+Regular expressions are a method of expressing patterns in character values
+which can then be used to extract parts of strings or to modify those strings in some way. Regular expressions are supported in the \texttt{R} functions \texttt{strsplit()},
+\texttt{grep()}, \texttt{sub()}, and \texttt{gsub()}, as well as in the\texttt{ regexp()} and \texttt{gregexpr()} functions which
+are the main tools for working with regular expressions in \texttt{R}.
+
+
+\newpage

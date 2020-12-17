@@ -1,0 +1,34 @@
+
+Downloading and Installing R
+===================================
+
+
+
+R can be started in the usual way by double-clicking on the R icon on the desktop.
+
+#### Working Directory
+
+R works best if you have a dedicated folder for each separate project - called the working directory.
+ Create the directory/folder that will be used as the working folder, e.g. create a folder on your desktop titled Your_name
+by right-clicking, then clicking New > Folder.
+  Right-click on an existing R icon and click Copy.
+  In the working folder, right-click and click Paste. 
+The R icon will appear in the folder.
+
+#### Introduction to R
+
+R is an open source implementation of the S-Plus language. It is freely available and is licensed under the GPL. The language simplifies many statistical computations and can be a powerful tool. R is typically used by statisticians as a tool for direct data analysis.
+
+
+R software and packages can be downloaded from Comprehensive R Archive Network (CRAN; http: //cran.r-project.org).
+ 
+R is under very active development and is constantly gaining “market shares” in many fields related to statistics, such as finance, data mining, genomics and pharmaceuticals.
+ 
+####  Downloading and Installing R
+
+Click on
+Windows > base > R-version-win32.exe > Run
+and follow the instructions to install the programme.
+
+
+

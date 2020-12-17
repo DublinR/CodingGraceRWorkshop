@@ -1,0 +1,109 @@
+
+Part 1
+
+
+1. scanning in csv files using "read.csv" command.
+
+2. Write out a csv file to working directory.
+
+3. Using the "sink" function. Summary out of the iris data set.
+
+4. Scanning in Character Data. Construct a data frame.
+
+5. Generating Random Numbers using rnorm and runif commands
+
+6. Variance covariance correlation and matrices "cov2cor ".
+
+7. Nested loops two dice. Difference AR(1) example
+
+8. Missing Values
+
+ 9. Exercise Spurious correlation in Big Data
+
+
+
+MS4024 Week 8 and 9 - Worksheet
+
+2 way Anova
+
+
+[UoL-EP Stats 2 Question 3 2006 Zone A]
+
+
+Three lubricants are testing using 15 different cars. Three cars are of brand A, Three from brand B, C, D and E.
+
+
+Each one of the three cars of each brand used a different lubricant.
+
+
+Testing took place on the same day and the top speeds in kilometres per hour acheived by each car without
+
+overheating was given in the following table.
+
+%======================================================%
+
+Lub1<-c(176,177,181,171,197)
+
+Lub2<-c(174,172,180,170,191)
+
+Lub3<-c(172,166,177,187,202)
+
+%======================================================%
+
+tab= cbind(Lub1,Lub2,Lub3)
+
+colnames(tab)=c("Lub1","Lub2","Lub3")
+
+rownames(tab)=c("A","B","C","D","E")
+
+%======================================================%
+
+anova(tab)
+
+
+Give the two way anova table
+
+is there a significant difference between top speeds achieved by the cars
+
+is there a significant difference between top speeds achieved by using different lubricants
+
+
+%======================================================%
+
+
+testA<-c(52,54,61,43,95)
+
+testB<-c(48,45,60,42,90)
+
+testC<-c(45,30,58,50,99)
+
+
+%======================================================%
+
+ 
+
+X=c(37, 44, 48, 51, 53, 56, 58, 60, 62, 63,65, 67, 69, 70, 72, 74, 76, 77, 79, 81,
+
+83, 86, 88, 91, 94, 97, 101, 106, 113, 127)
+
+
+hist(X,breaks=c(30,50,70,90,110,130))
+
+ 
+
+%======================================================%
+
+dice=c(rep(1,17),rep(2,16),rep(3,15),rep(4,19),rep(5,18),rep(6,15))
+
+mean(dice)
+
+sd(dice)
+
+median(dice)
+
+
+
+ 
+
+ 
+

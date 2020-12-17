@@ -1,0 +1,302 @@
+
+%- http://blog.revolutionanalytics.com/2015/04/new-packages-for-reading-data-into-r-fast.html
+
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+New packages for reading data into R — fast
+Hadley Wickham and the RStudio team have created some new packages for R, which will be very useful for anyone who needs to read data into R (that is, everyone). The readr package provides functions for reading text data into R, and the readxl package provides functions for reading Excel spreadsheet data into R. Both are much faster than the functions you're probably using now.
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+The readr package provides several functions for reading tabular text data into R. This is a task normally accomplished with the read.table family of functions in R, and readr provides a number of replacement functions that provide additional functionality and are much faster.
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+First, there's read_table which provides a near-replacement for read.table. Here's a comparison of using both functions on a file with 4 million rows of data (which I created by stacking copies of this file):
+\begin{framed}
+\begin{verbatim}
+dat <- read_table("biggerfile.txt",
+  col_names=c("DAY","MONTH","YEAR","TEMP"))
+
+dat2 <- read.table("biggerfile.txt", 
+  col.names=c("DAY","MONTH","YEAR","TEMP"))
+\end{verbatim}
+\end{framed}
+The commands look quite similar, but while read.table took just over 30 seconds to complete, readr's read_table accomplished the same task in less than a second. The trick is that read_table treats the data as a fixed-format file, and uses C++ to process the data quickly. (One small caveat is that read.table supports arbitrary amounts of whitespace between columns, while read_table requires the columns be lined up exactly. In practice, this isn't much of a restriction.)
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+Base R has a function for reading fixed-width data too, and here readr really shines:
+\begin{framed}
+\begin{verbatim}
+dat <- read_fwf("biggerfile.txt", 
+  fwf_widths(c(3,15,16,12),
+    col_names=c("DAY","MONTH","YEAR","TEMP")))
+
+dat2 <- read.fwf("biggerfile.txt", c(3,15,16,12),
+  col.names=c("DAY","MONTH","YEAR","TEMP"))
+
+\end{verbatim}
+\end{framed}
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+While readr's read_fwf again accomplished the task in about a second, the standard read.fwf took over 3 minutes — almost 200 times as long.
+
+Other functions in the package include read_csv (and a European-friendly variant read_csv2) for comma-separated data, read_tsv for tab-separated data, and read_lines for line-by-line file extraction (great for complicated post-processing). The package also makes it much easier to read columns of dates in various formats, and sensibly always handles text data as strings (no more strings.as.factors=FALSE). 
+
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+For data in Excel format, there's also the new readxl package. This package provides function to read Excel worksheets in both .xls and .xlsx formats. I haven't benchmarked the read_excel function myself, but like the readr functions it's based on a C++ library so should be quite snappy. And best of all, it has no external dependencies, so you can use it to read Excel data on just about any platform — there's no requirement that Excel itself be installed.
+
+The readr package is on CRAN now, and readxl can be installed from GiHub. If you try them yourself, let us know how it goes in the comments.
+
+\end{framed}
+\end{frame}
+%======================================%
+
+
+
+
+
+I’m pleased to announced that readr is now available on CRAN. Readr makes it easy to read many types of tabular data:
+
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+
+Delimited files with\texttt{read_delim()}, \texttt{read_csv()}, \texttt{read_tsv()}, and \texttt{read_csv2()}.
+Fixed width files with \texttt{read_fwf()}, and \texttt{read_table()}.
+Web log files with \texttt{read_log()}.
+You can install it by running:
+
+install.packages("readr")
+Compared to the equivalent base functions, readr functions are around 10x faster. They’re also easier to use because they’re more consistent, they produce data frames that are easier to use (no more stringsAsFactors = FALSE!), they have a more flexible column specification, and any parsing problems are recorded in a data frame. Each of these features is described in more detail below.
+
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+Input
+All readr functions work the same way. There are four important arguments:
+
+\begin{itemize}
+\item
+file gives the file to read; 
+\item a url or local path. A local path can point to a a zipped, bzipped, xzipped, or gzipped file. it’ll be automatically 
+uncompressed in memory before reading. You can also pass in a connection or a raw vector.
+\end{itemize}
+For small examples, you can also supply literal data: if file contains a new line, then the data will be read directly from the string. Thanks to data.table for this great idea!
+
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+\begin{framed}
+\begin{verbatim}
+
+library(readr)
+\texttt{read_csv("x,y\n1,2\n3,4")
+#>   x y
+#> 1 1 2
+#> 2 3 4
+\end{verbatim}
+\end{framed}
+
+\texttt{col_names: describes the column names (equivalent to header in base R). It has three possible values:
+TRUE will use the the first row of data as column names.
+FALSE will number the columns sequentially.
+A character vector to use as column names.
+
+\texttt{col_types: overrides the default column types (equivalent to colClasses in base R). More on that below.
+progress: By default, readr will display a progress bar if the estimated loading time is greater than 5 seconds. Use progress = FALSE to suppress the progress indicator.
+
+
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+\noindent \textbf{Output}\\
+The output has been designed to make your life easier:
+
+\begin{itemize}
+\item Characters are never automatically converted to factors (i.e. no more stringsAsFactors = FALSE!).
+\item Column names are left as is, not munged into valid R identifiers (i.e. there is no check.names = TRUE). Use backticks to refer to variables with unusual names, e.g. df$`Income ($000)`.
+\item The output has class c("tbl_df", "tbl", "data.frame") so if you also use dplyr you’ll get an enhanced print method (i.e. you’ll see just the first ten rows, not the first 10,000!).
+Row names are never set.
+\end{itemize}
+
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+Column types
+Readr heuristically inspects the first 100 rows to guess the type of each columns. This is not perfect, but it’s fast and it’s a reasonable start. Readr can automatically detect these column types:
+
+\texttt{col_logical()} [l], contains only T, F, TRUE or FALSE.
+\texttt{col_integer()} [i], integers.
+\texttt{col_double()} [d], doubles.
+\texttt{col_euro_double()} [e], “Euro” doubles that use , as the decimal separator.
+\texttt{col_date()} [D]: Y-m-d dates.
+\texttt{col_datetime()} [T]: ISO8601 date times
+\texttt{col_character()} [c], everything else.
+
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+You can manually specify other column types:
+
+\texttt{col_skip()} [_], don’t import this column.
+\texttt{col_date(format) and \texttt{col_datetime(format, tz), dates or date times parsed with given format string. Dates and times are rather complex, so they’re described in more detail in the next section.
+\texttt{col_numeric()} [n], a sloppy numeric parser that ignores everything apart from 0-9, - and . (this is useful for parsing currency data).
+\texttt{col_factor(levels, ordered), parse a fixed set of known values into a (optionally ordered) factor.
+
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+There are two ways to override the default choices with the \texttt{col_types argument:
+
+Use a compact string: "dc__d". Each letter corresponds to a column so this specification means: read first column as double, second as character, skip the next two and read the last column as a double. (There’s no way to use this form with column types that need parameters.)
+With a (named) list of col objects:
+\texttt{read_csv("iris.csv", \texttt{col_types = list(
+  Sepal.Length = \texttt{col_double()},
+  Sepal.Width = \texttt{col_double()},
+  Petal.Length = \texttt{col_double()},
+  Petal.Width = \texttt{col_double()},
+  Species = \texttt{col_factor(c("setosa", "versicolor", "virginica"))
+))
+
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+
+Any omitted columns will be parsed automatically, so the previous call is equivalent to:
+
+\texttt{read_csv("iris.csv", \texttt{col_types = list(
+  Species = \texttt{col_factor(c("setosa", "versicolor", "virginica"))
+)
+
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+DATES AND TIMES
+One of the most helpful features of readr is its ability to import dates and date times. It can automatically recognise the following formats:
+
+Dates in year-month-day form: 2001-10-20 or 2010/15/10 (or any non-numeric separator). It can’t automatically recongise dates in m/d/y or d/m/y format because they’re ambiguous: is 02/01/2015 the 2nd of January or the 1st of February?
+Date times as ISO8601 form: e.g. 2001-02-03 04:05:06.07 -0800, 20010203 040506, 20010203 etc. I don’t support every possible variant yet, so please let me know if it doesn’t work for your data (more details in ?parse_datetime).
+If your dates are in another format, don’t despair. You can use \texttt{col_date()} and \texttt{col_datetime()} to explicit specify a format string. Readr implements it’s own strptime()} equivalent which supports the following format strings:
+
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+
+Year: \%Y (4 digits). \%y (2 digits); 00-69 -> 2000-2069, 70-99 -> 1970-1999.
+Month: \%m (2 digits), \%b (abbreviated name in current locale), \%B (full name in current locale).
+Day: \%d (2 digits), \%e (optional leading space)
+Hour: \%H
+Minutes: \%M
+Seconds: \%S (integer seconds), \%OS (partial seconds)
+Time zone: \%Z (as name, e.g. America/Chicago), \%z (as offset from UTC, e.g. +0800)
+Non-digits: \%. skips one non-digit charcater, \%* skips any number of non-digit characters.
+Shortcuts: \%D = \%m/\%d/\%y, \%F = \%Y-\%m-\%d, \%R = \%H:\%M, \%T = \%H:\%M:\%S, \%x = \%y/\%m/\%d.
+To practice parsing date times with out having to load the file each time, you can use parse_datetime()} and parse_date()}:
+
+parse_date("2015-10-10")
+#> [1] "2015-10-10"
+parse_datetime("2015-10-10 15:14")
+#> [1] "2015-10-10 15:14:00 UTC"
+
+parse_date("02/01/2015", "%m/%d/%Y")
+#> [1] "2015-02-01"
+parse_date("02/01/2015", "%d/%m/%Y")
+#> [1] "2015-01-02"
+Problems
+If there are any problems parsing the file, the \texttt{read_ function will throw a warning telling you how many problems there are. You can then use the problems()} function to access a data frame that gives information about each problem:
+
+csv <- "x,y
+1,a
+b,2
+"
+
+df <- \texttt{read_csv(csv, \texttt{col_types = "ii")
+#> Warning: 2 problems parsing literal data. See problems(...) for more
+#> details.
+problems(df)
+#>   row col   expected actual
+#> 1   1   2 an integer      a
+#> 2   2   1 an integer      b
+df
+#>    x  y
+#> 1  1 NA
+#> 2 NA  2
+
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+
+Helper functions
+Readr also provides a handful of other useful functions:
+
+\texttt{read_lines()} works the same way as readLines()}, but is a lot faster.
+\texttt{read_file()} reads a complete file into a string.
+\texttt{type_convert()} attempts to coerce all character columns to their appropriate type. This is useful if you need to do some manual munging (e.g. with regular expressions) to turn strings into numbers. It uses the same rules as the \texttt{read_* functions.
+\texttt{write_csv()} writes a data frame out to a csv file. It’s quite a bit faster than \texttt{write.csv()} and it never writes row.names. It also escapes " embedded in strings in a way that \texttt{read_csv()} can read.
+
+\end{frame}
+%======================================%
+\begin{frame}
+\frametitle{Importing Data}
+\large
+\noindent \textbf{Development}\\
+\begin{itemize}
+\item Readr is still under very active development. If you have problems loading a dataset, please try the development version, and if that doesn’t work, file an issue.
+\end{itemize}
+
+
+\end{document}
