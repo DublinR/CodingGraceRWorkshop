@@ -35,7 +35,7 @@ For example, the collection of all possible outcomes of a sequence of coin tossi
 
 Recall that probability distributions can be categorised as either \textit{\textbf{discrete}} or \textit{\textbf{continuous}}.
 We will look at  
-\begin{itemize}
+
 \item how to generate random numbers,
 \item how to use probability mass and density functions,
 \item how to use cumulative distribution functions,
@@ -44,7 +44,7 @@ We will look at
 
 There is a wide variety of probability distributions available, but we shall only look at a few key distribution. 
 
-\begin{itemize}
+
 \item	The Normal Distribution
 \item	The Student $t-$Distribution
 \item   The Uniform Distribution
@@ -97,7 +97,7 @@ The inverse cumulative distribution function (otherwise known as the quantile fu
 \[F^{-1}(\alpha) = x  \]
 
 Implementation of the inverse cumulative distribution function requires use of the \texttt{\textbf{q}} family of functions. Quantile functions generally tend to be used with continuous random variables, rather than for discrete random variables.
-\newpage
+
 \section{The Normal Distribution}
 
 There are four functions that can be used to generate the values associated with the normal distribution.  
@@ -105,11 +105,11 @@ The first function we shall look at is \textbf{\texttt{dnorm}}. Given an appropr
 
 To specify a value for mean, use the argument \textbf{\texttt{mean=}}. Similarly to specify a value for mean, use the argument \textbf{\texttt{sd=}}.
 
-\begin{framed}
+
 \begin{verbatim}
 dnorm(3,mean=2,sd=1)
 \end{verbatim}
-\end{framed}
+
 \begin{verbatim}
 > dnorm(3,mean=2,sd=1)
 [1] 0.2419707
@@ -127,7 +127,7 @@ The default values for mean ($\mu$) and standard deviation ($\sigma$) are 0 and 
 [1] 0.39894228 0.24197072 0.05399097
 \end{verbatim}
 The command \texttt{\textbf{dnorm()}} can be used to plot the bell curve. The bell curve depicted below can be constructed using the following \texttt{R} code.
-\begin{framed}
+
 \begin{verbatim}
 x = seq(-5,5,by=.01)
 y = dnorm(x) 
@@ -135,7 +135,7 @@ plot(x,y,type="l",lwd=2,col="red")
 abline(h=0)
 abline(v=0)
 \end{verbatim}
-\end{framed}
+
  \begin{center}
  \includegraphics[scale=0.30]{dnormCurve}
 % \caption{Some function f(x) evaluated at x=1}
@@ -243,7 +243,7 @@ The last function we examine is the  \textbf{\texttt{help(rnorm)}} function whic
 \end{verbatim}
 
 The help file for thes commands can be obtained by specifying any one of the fuctions as an argument to the \textbf{\texttt{help()}} function: e.g.\textbf{\texttt{help(dnorm)}}.
-\newpage
+
 \section{Student t-Distribution}
 The Student’s t-distribution is a probability distribution that is used to estimate population parameters when the sample size is small and/or when the population variance is unknown.
 The parameters are the \textbf{\textit{degrees of freedom}} (df = n-1 where n is sample size).
@@ -264,7 +264,7 @@ Also the number of degrees of freedom must be specified.
 [1] 0.9964621
 \end{verbatim}
 The density curves for various degrees of freedom (red with df=5, blue with df=15 and green with df=100) are depicted on the following graph.
-\begin{framed}
+
 \begin{verbatim}
 x = seq(-5,5,by=.01)
 y = dt(x,df=100) 
@@ -275,7 +275,7 @@ points(x,w,type="l",lwd=2,col="green",add=TRUE)
 z = dt(x,df=5) 
 points(x,z,type="l",lwd=2,col="blue",add=TRUE)
 \end{verbatim}
-\end{framed}
+
  \begin{center}
  \includegraphics[scale=0.30]{dtCurve}
 % \caption{Some function f(x) evaluated at x=1}
@@ -301,10 +301,10 @@ Finally random numbers can be generated according to the $t-$distribution using 
 \end{verbatim}
 
 
-\newpage
+
 \section{Continuous Probability Distributions}
 In addition to the normal distribution and the $t-$distribution , we will look at two more continuous distribution functions: 
-\begin{itemize}
+
 \item The Uniform Distribution
 \item The Exponential Distributions
 \end{itemize}
@@ -323,7 +323,7 @@ The continuous distribution is very simple to understand and implement, and is c
 It is known as the `Rectangle Distribution' for obvious reasons. We specify the word ``continuous" so as to distinguish it from it's discrete equivalent: the discrete uniform distribution.
 The continuous uniform distribution is characterized by the following parameters
 
-\begin{itemize}
+
 \item The lower limit $a$ (or with \texttt{R}: \texttt{\textbf{min}} )
 \item The upper limit $b$ (or with \texttt{R}: \texttt{\textbf{max}} )
 \item We denote a uniform random variable $X$ as $X \sim U(a,b)$
@@ -351,7 +351,7 @@ The most common use of the uniform distribution is the generation of uniformly d
  [1] 1 5 1 6 6 2 1 2 6 3
 \end{verbatim}
 
-\newpage
+
 \subsection{The Exponential Distribution}
 
 The exponential distribution describes the arrival time of a randomly recurring independent event sequence. If $\mu$ is the mean ``duration" or ``waiting time" for the next event recurrence, its probability density function is given as
@@ -400,12 +400,12 @@ Also determine the first and third quartiles $Q_1$ and $Q_3$.
 > qexp(0.75,rate=1/3)
 [1] 4.158883
 \end{verbatim}
-\newpage
+
 
 
 \section{Discrete Probability Distributions}
 The discrete distributions we will look at in this course are
-\begin{itemize}
+
 \item The binomial distribution
 \item The Poisson distribution
 \end{itemize}
@@ -413,7 +413,7 @@ The discrete distributions we will look at in this course are
 
 A binomial experiment (known as a Bernoulli trial) is a statistical experiment that has the following properties: 
 
-\begin{itemize}
+
 \item	The experiment consists of $n$ repeated trials.
 \item	Each trial can result in just two possible outcomes. We call one of these outcomes a success and the other, a failure.
 \item	The probability of success, conventionally denoted mathematically as $p$, is the same on every trial.
@@ -426,17 +426,17 @@ As with other functions, there are four functions that can be used to generate t
 The arguments to these commands are \texttt{\textbf{size=}} and \texttt{\textbf{prob=}}.
 
 Suppose that there are ten independent trials, and that the probability of success on each trial is 0.6, the probability of 5 successes over ten trials can be computed using the following code.
-\begin{framed}
+
 \begin{verbatim}
 dbinom(5,size=10,prob=0.60)
 \end{verbatim}
-\end{framed}
+
 The probability that the numbers not excessing 5 successes is computed using the \textbf{\texttt{pbinom()}} function.
-\begin{framed}
+
 \begin{verbatim}
 pbinom(5,size=10,prob=0.60)
 \end{verbatim}
-\end{framed}
+
 
 \begin{verbatim}
 > dbinom(5,size=10,prob=0.60)
@@ -451,14 +451,14 @@ pbinom(5,size=10,prob=0.60)
  \end{center}
  
 This plot was implemented with the following \texttt{R} code.
-\begin{framed}
+
 \begin{verbatim}
 x = seq(0,5,by=1)
 y = dbinom(x,5,0.6)
 plot(x,y,type="h",col="red",lwd=2,font.lab=2,font.axis=2)
 points(x,y,type="p",col="green",cex=2,pch=16)
 \end{verbatim}
-\end{framed}
+
 The heights of each line are as follows:
 \begin{verbatim}
 > dbinom(0:5,size=5,prob=0.60)
@@ -481,11 +481,11 @@ The probability of four or less questions answered correctly by random in a twel
 
 Suppose we wish to simulate the number of defective components in a sequence of twenty batches of 100 items, where the probability of defect is 0.02. We would implement this simulation as follows:
 
-\begin{framed}
+
 \begin{verbatim}
 rbinom(20,size=100,prob=0.02)
 \end{verbatim}
-\end{framed}
+
 
 \begin{verbatim}
 > rbinom(20,size=100,prob=0.02)
@@ -506,14 +506,14 @@ However the output is generally not as useful as the \texttt{\textbf{pbinom()}} 
 \end{verbatim}
 
 %---------------------------------------- %
-\newpage
+
 \subsection{The Poisson Distribution}
 
 A Poisson distribution is the probability distribution that results from a Poisson experiment. A Poisson experiment, ,with $X$ as the number of successes, is a statistical experiment that has the following properties: 
 
 %\subsubsection{Attributes of a Poisson Experiment}
 
-\begin{itemize}
+
 \item The experiment results in outcomes that can be classified as successes or failures.
 \item The average number of successes ($\lambda$ or lambda) that occurs in a specified region is known.
 \item The probability that a success will occur is proportional to the size of the region.
@@ -530,12 +530,12 @@ These commands work just like the commands for the other distribution. The Poiss
 \subsubsection{Example}
 Suppose that the expected number of occurences per unit space is 5, compute the probability of exactly 4 and exactly 5 occurences, i.e. $P(X = 4)$ and $P(X = 5)$ respectively.
 
-\begin{framed}
+
 \begin{verbatim}
 dpois(4,lambda=5)
 dpois(5,lambda=5)
 \end{verbatim}
-\end{framed}
+
 The probability of both 4 and 5 successes is 17.5\%.
 \begin{verbatim}
 > dpois(4,lambda=5)
@@ -551,21 +551,21 @@ The probability of both 4 and 5 successes is 17.5\%.
  
 This plot was implemented with the following \texttt{R} code.
 The upper limit of 15 was arbitrarily chosen. There is no upper bound in the sample space of potential successes.
-\begin{framed}
+
 \begin{verbatim}
 x = seq(0,15,by=1)
 y = dpois(x,lambda=5)
 plot(x,y,type="h",col="red",lwd=2,font.lab=2,font.axis=2)
 points(x,y,type="p",col="red",cex=1.60,pch=18)
 \end{verbatim}
-\end{framed}
+
 Compute the probability that the number of successes is less than or equal to 15, i.e. $P(X \leq 15)$. To compute this, we would use the \textbf{\texttt{ppois()}} command. The answer is 99.99\%.
 
-\begin{framed}
+
 \begin{verbatim}
 ppois(3,lambda=5)
 \end{verbatim}
-\end{framed}
+
 \begin{verbatim}
 > ppois(15,lambda=5)
 [1] 0.999931

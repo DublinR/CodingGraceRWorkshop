@@ -1,52 +1,13 @@
-\documentclass[12pt,a4paper]{article}
 
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{framed}
-\usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[linktoc=all]{hyperref}
-\usepackage{amsmath}
-\usepackage[labelformat=empty]{caption}
-\definecolor{shadecolor}{gray}{0.9}
-\pagenumbering{roman}
-\hypersetup{
-    colorlinks,
-    %citecolor=MidnightBlue,
-    %filecolor=MidnightBlue,
-    linkcolor=MidnightBlue,
-    %urlcolor=MidnightBlue
-}
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
-
-\begin{document}
-\begin{titlepage}
-\begin{center}
-{\HRule} ~\\[0.1cm]
-{\textbf\bfseries{\LARGE Coding Grace and Dublin \texttt{R}}}
-\HRule
-\newline
-\\[0.3in]
-{\textbf{\Large{A Taste of R}}}
-\\[0.3in]
-{\textbf{Kevin O'Brien}}
-\\[0.3in]
-\end{center}
-%{\hfill{\textit{Completed: 11/04/13}}}
-\begin{center}
-\section*{\underline{Overview}}
-\addcontentsline{toc}{section}{Introduction}
-\end{center}
-\newpage
 %----------------------------------------------%
-\begin{itemize}
+
 \item Dice Rolls : \texttt{sample()} and \texttt{runif()} functions.
 \item The Monty Hall Problem : 
 \item Gambler's Ruin : using \texttt{plot()} command.
 \item Monte Carlo and the Gambler's Fallacy.
 \item p-values.
 \end{itemize}
-\newpage
+
 \section{Gambler's Ruin}
 Consider a gambler who starts with an initial fortune of 1 and then on each successive gamble
 either wins  or loses independent of the past with probabilities p and q = 1-p respectively.
@@ -55,7 +16,7 @@ who has an initial fortune B. We will look at the game from the perspective of t
 only. The Banker is, by convention, the richer of the two.
 
 
-\begin{itemize}
+
 \item Probability of successful gamble for gambler : p
 \item Probability of unsuccessful gamble for gambler : q (where q = 1 - p )
 \item Ratio of success probability to failure success: s = p=q
@@ -69,14 +30,14 @@ A + B. The game ends when the Gambler wins the Jackpot (Rn = A + B) or loses eve
 (Rn = 0).
 
 %--------------------------------------------------------------------------%
-\newpage
+
 \subsection{1.1 Simulation a Single Gamble}
 To simulate one single bet, compute a single random number between 0 and 1.
-\begin{framed}
+
 \begin{verbatim}
 runif(1)
 \end{verbatim}
-\end{framed}
+
 Lets assume that the game is biased in favour of the Banker p = 0.45 , q = 0.55. If the
 number is less than 0.45, the gamble wins. Otherwise the Banker wins.
 \begin{verbatim}
@@ -100,7 +61,7 @@ number is less than 0.45, the gamble wins. Otherwise the Banker wins.
 Let A be the Gambler's Kitty at the start of the gambling. Let B be the Banker's Wealth.
 The probability of A winning a gamble is p. The vector Rn records the gambler's worth on an
 ongoing basis. At the start, The first value is A.
-\begin{framed}
+
 \begin{verbatim}
 A=20;B=100;p=0.47
 Rn=c(A)
@@ -112,14 +73,14 @@ A = A+1; B =B-1
 #Save the values from each bet
 R=c(R,A)
 \end{verbatim}
-\end{framed}
+
 
 %----------------------------------------------------------------------------%
 
 Should the Gambler win the entire jackpot (A+B). The game would also cease. We include
 a break statement to stop the loop if the gambler wins the entire jackpot. A break statement
 will stop a loop if a certain logical condition is met.
-\begin{framed}
+
 \begin{verbatim}
 A=20;B=100;p=0.47
 Rec=c(A)
@@ -135,10 +96,10 @@ Rec=c(Rec,A)
 if(A==Total){break}
 }
 \end{verbatim}
-\end{framed}
+
 
 We can construct a plot to depict the gambler's ongoing fortunes in the game.
-\begin{framed}
+
 \begin{verbatim}
 length(Rec)
 plot(Rec,type="l",col="red")
@@ -147,23 +108,23 @@ abline(v=0)
 abline(h=A,col="red")
 abline(h=Total,col="green")
 \end{verbatim}
-\end{framed}
+
 
 %--End of Gambler's Ruin
 %----------------------------------------------%
-\newpage
+
 \section{Using the \texttt{sample()} command}
 \large
-\begin{framed}
+
 \begin{verbatim}
 sample(1:6,4)
 sample(1:6,10)
 sample(1:6,10,replace=TRUE)
 \end{verbatim}
-\end{framed}
-\begin{shaded}
-\begin{framed}
-\normalsize{\color{BrickRed}
+
+
+
+\normalsize
 \begin{verbatim}
 > sample(1:6,4)
 [1] 6 3 2 1
@@ -175,11 +136,11 @@ Error in sample(1:6, 10) :
 > sample(1:6,10,replace=TRUE)
  [1] 6 1 2 6 5 5 5 1 3 4
 \end{verbatim}}
-\end{framed}
-\end{shaded}
+
+
 
 %----------------------------------------------%
-\newpage
+
 \section{The Monty Hall Problem}
 %\Large
 Imagine that the set of Monty Hall's game show Let's Make a Deal has three closed doors. Behind one of these doors is a car; behind the other two are goats. The contestant does not know where the car is, but Monty Hall does.
@@ -193,7 +154,7 @@ After Monty has shown a goat behind the door that he opens, the contestant is al
 
 One way to think about this problem is to consider the sample space, which Monty alters by opening one of the doors that has a goat behind it. In doing so, he effectively removes one of the two losing doors from the sample space.
 We will assume that there is a winning door and that the two remaining doors, A and B, both have goats behind them. There are three options:
-\newpage
+
 The contestant first chooses the door with the car behind it. She is then shown either door A or door B, which reveals a goat. If she changes her choice of doors, she loses. If she stays with her original choice, she wins.
 The contestant first chooses door A. She is then shown door B, which has a goat behind it. If she switches to the remaining door, she wins the car. Otherwise, she loses.
 The contestant first chooses door B. She is then is shown door A, which has a goat behind it. If she switches to the remaining door, she wins the car. Otherwise, she loses.
@@ -205,7 +166,7 @@ This result of 2/3 may seem counterintuitive to many of us because we may believ
 One way to convince yourself that 2/3 is the correct probability is to do a simulation with a friend. Have your friend impersonate Monty Hall and you be the contestant. Keep track of how often you win the car by switching doors and by not switching doors.
 
 %----------------------------------------------%
-\newpage
+
 The objective of this report is to complete at least 20 of the 24 tests set out in the project outline. The ultimate goal is to have garnered a wider knowledge in both statistics and the tools used to implement them, in this case $R$ \& {\LaTeX}. To achieve this, I will be using 3 different datasets to better represent the results, and to provide variety for the multiple different outcomes. They are:
 \begin{description}
 \small
@@ -215,13 +176,13 @@ The objective of this report is to complete at least 20 of the 24 tests set out 
 \end{description}
 I will be detailing these datasets throughout the next few pages. I have also added a notation beside every test (\pageref{label:BTP}); clicking on it will return you to the Table of Contents, for quicker navigation. Now, to get started:
 \end{titlepage}
-\newpage
+
 \begin{center}{\textbf{\underline{Relevant commands for dataset 1:} (RealGDPgrowth.csv)}}\end{center}
 
 \underline{Assigning Columns:}
 \begin{description}
 \centering
-\footnotesize
+
 \item[\textit{TTE}]= RealGDP[,1], where \textit{TTE}=\underline{2008};
 \item[\textit{TTN}]= RealGDP[,2], where \textit{TTN}=\underline{2009};
 \item[\textit{TTT}]= RealGDP[,3], where \textit{TTT}=\underline{2010};
@@ -235,7 +196,7 @@ I will be detailing these datasets throughout the next few pages. I have also ad
 \end{description}
 \underline{Assigning Rows:}
 \begin{description}
-\footnotesize
+
 \centering
 \item[\textit{Wor}]= c(1.3, -2.3, 3.9, 2.6, 2.1, 2.3, 2.9, 2.9, 2.9, 3), \hfill\\where \textit{Wor}= \underline{World.}
 \item[\textit{NAm}]= c(-0.2, -3, 2.5, 1.9, 2.2, 2.1, 2.4, 2.3, 2.3, 2.4), \hfill\\where \textit{NAm}= \underline{North America.}
@@ -246,10 +207,10 @@ I will be detailing these datasets throughout the next few pages. I have also ad
 \item[\textit{MENAf}]= c(4.4, 1.3, 5.2, 2.5, 3.6, 3.3, 4.4, 4.7, 5, 5.1), \hfill\\where \textit{MENAf}= \underline{Middle East \& North Africa.}
 \item[\textit{SSA}]= c(4.8, 1.2, 4.5, 4.6, 4, 4.5, 5, 5, 5.4, 5.7), \hfill\\where \textit{SSA}= \underline{Sub-Saharan Africa.}
 \end{description}
-\newpage
+
 \begin{center}{\textbf{\underline{Relevant commands for dataset 2:} (Pima.tr)}}\end{center}
 \begin{description}
-\footnotesize
+
 \item[\textit{npreg}]= Pima.tr[,1]; \textbf{\textit{npreg}}= number of pregnancies each tested woman has had.
 \item[\textit{glu}]= Pima.tr[,2]; \textbf{\textit{glu}}= plasma glucose concentration of each woman.
 \item[\textit{bp}]= Pima.tr[,3]; \textbf{\textit{bp}}= the blood pressure of the tested women (mm Hg).
@@ -262,26 +223,26 @@ I will be detailing these datasets throughout the next few pages. I have also ad
 \vspace{1cm}
 \begin{center}{\textbf{\underline{Relevant commands for dataset 3:} (forbes)}}\end{center}
 \begin{description}
-\footnotesize
+
 \item[-] \textbf{\textit{forbes\$bp}}, the boiling point ({$\,^{\circ}\rm{F}$})
 \item[-] \textbf{\textit{forbes\$pres}}, barometric pressure in inches of mercury.
 \end{description}
-\newpage
+
 \tableofcontents
 \label{label:BTP}
 %-------------------------------------------------------------------------------------------%
-\newpage
+
 \section*{\textbf{\underline{\#2. - \#5.}}}
-\addcontentsline{toc}{section}{{\#2. - \#5.}}
+{section}{{\#2. - \#5.}}
 \subsection*{\pageref{label:BTP} \#2. Histogram:}
-\addcontentsline{toc}{subsection}{Histogram}
+{subsection}{Histogram}
 A histogram is a graphical procedure used to show the probability distribution of a given variable by grouping the frequencies of observations in a given range of values.
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
+{subsubsection}{The Test}
 \textbf{Create a histogram.} For the purpose of showing what a histogram exemplifies, I will be testing the real GDP Growth for the year 2008.
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > hist(TTE, col=heat.colors(12), breaks=12,
 + xlim=c(-1,5), col.main="darkorange3", prob=FALSE,
@@ -291,9 +252,9 @@ A histogram is a graphical procedure used to show the probability distribution o
 + col.lab="darkorange4", cex.lab=1.2)
 > lines(density(TTE), lty=4, lwd=2)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
-\newpage
+
+
+
 %\begin{figure}[ht!]
 %\centering
 %\includegraphics[width=120mm]{2.jpeg}
@@ -302,26 +263,26 @@ A histogram is a graphical procedure used to show the probability distribution o
 %\end{figure}
 %
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
+{subsubsection}{The Conclusion}
 We can interpret this figure as an indication of who was hit hardest by the sudden market crash. While the western world languishes on the left (North America \& and Western Europe, respectively), the developing countries are almost unaffected by the beginning of the recession (on the right).
 %-----------------------------------%
-\newpage
+
 \subsection*{\pageref{label:BTP} \#3. Boxplot:}
-\addcontentsline{toc}{subsection}{Boxplot}
+{subsection}{Boxplot}
 A boxplot is a graph designed to show the distribution of a certain set of data. It is a convenient way of graphically depicting groups of numerical data through their five-number summaries: the IQR, \& the sample minimums and maximums. Many boxplots (including this one) use the formula {$\pm 1.58\times(\frac{IQR}{\sqrt{n}}$)} as a limit for their samples min.'s \& max.'s; the rest are regarded as outliers.
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
+{subsubsection}{The Test}
 \textbf{Create a boxplot.} As with \#2., I will be creating a sample test, however this time I will use the boxplot to highlight the difference of overall worldwide real GDP growth from 2008 to 2017.
 %-----------------------------------%
-\begin{framed}
+
 \begin{verbatim}
 f code
 \end{verbatim}
-\end{framed}
+
 %-----------------------------------%
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > boxplot(RealGDP, horizontal = TRUE, add=TRUE,
 + col = c("cadetblue4", "chocolate2",
@@ -333,9 +294,9 @@ f code
 + fill=c("cadetblue4", "chocolate2", "darkslateblue",
 + "darkslategray", "red", terrain.colors(5))))
 \end{verbatim}}
-\end{framed}
-\end{shaded}
-\newpage
+
+
+
 \end{document}
 \begin{figure}[ht!]
 \centering
@@ -344,81 +305,81 @@ f code
 \label{fig:2}
 \end{figure}
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
+{subsubsection}{The Conclusion}
 After the recession hit in late 2008, 2009 suffered massively in terms of GDP growth. However, progress was slowly made and the expected outcomes are that real GDP will continue to grow.
 (See also, figures \ref{fig:3} \& \ref{fig:8}.)
-\newpage
+
 \subsection*{\pageref{label:BTP} \#4. Line Plots with “Bands”:}
-\addcontentsline{toc}{subsection}{Line Plot w/ "Bands"}
+{subsection}{Line Plot w/ "Bands"}
 Not Completed.
-\newpage
+
 \subsection*{\pageref{label:BTP} \#5. Descriptive Graphics:}
-\addcontentsline{toc}{subsection}{Descriptive Graphics}
+{subsection}{Descriptive Graphics}
 See figures \ref{fig:1}, \ref{fig:2}, \ref{fig:3}, \ref{fig:4}, \ref{fig:5}, \ref{fig:6}, \ref{fig:7} \& \ref{fig:8}.
-\newpage
+
 \section*{\textbf{\underline{\#6. - \#10.}}}
-\addcontentsline{toc}{section}{\#6. - \#10.}
+{section}{\#6. - \#10.}
 
 \subsection*{\pageref{label:BTP} \#6. Summary of Descriptive Statistics:}
-\addcontentsline{toc}{subsection}{Summary of Descriptive Statistics}
+{subsection}{Summary of Descriptive Statistics}
 Descriptive statistics is the act of describing the main features of a collection of data, i.e. by referencing its standard deviation, mean, variance, 95\% Confidence Interval and so on.
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
-\textbf{Summarise the descriptive statistics of a dataset.} There are multiple commands that can be used in R to show the summarised statistics for a certain dataset. Using the dataset RealGDP, inputting the following commands will yield {\color{BrickRed}{1.}} the minimum value, mean, median, maximum value and values of each quartile for every column of data, whereas {\color{BrickRed}{2.}} can be used to provide the variance and standard deviation.
+{subsubsection}{The Test}
+\textbf{Summarise the descriptive statistics of a dataset.} There are multiple commands that can be used in R to show the summarised statistics for a certain dataset. Using the dataset RealGDP, inputting the following commands will yield {1.}} the minimum value, mean, median, maximum value and values of each quartile for every column of data, whereas {2.}} can be used to provide the variance and standard deviation.
 \vspace{0.7cm}
-\newline
-\footnotesize{\color{BrickRed}
+
+
 \hspace{0.55cm}1.
-\begin{shaded}
+
 \begin{verbatim}
 > summary(RealGDP)
 \end{verbatim}
-\end{shaded}
+
 2.
-\begin{shaded}
+
 \begin{verbatim}
 > sapply(RealGDP,sd,na.rm=TRUE)
 > sapply(RealGDP,var,na.rm=TRUE)
 \end{verbatim}
-\end{shaded}
+
 }
 However, this can all be simplified to one command, although it requires the "pastecs" package.
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > install.packages("pastecs")
 > library(pastecs)
 > stat.desc(RealGDP)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
+
+
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
+{subsubsection}{The Conclusion}
 After executing a number of commands (including another not outlined above: $>$ install.packages("Hmisc"), $>$ library(Hmisc), $>$ describe(RealGDP)), it is found that the "pastecs" package provides everything the previous commands did, as well as a host of other useful statistics. It is safe to conclude that this is the best route to take in terms of descriptive statistics.
-\newpage
+
 \subsection*{\pageref{label:BTP} \#7. Quartiles and Tukey’s Five Number Summary:}
-\addcontentsline{toc}{subsection}{Quartiles \& Tukey's FNS}
+{subsection}{Quartiles \& Tukey's FNS}
 Tukey's five-number summary is a test which provides information about a set of observations. It consists of what is regarded as the five most important sample percentiles; those being the sample minimum (smallest observation), the lower quartile (where quartiles come in), the median (middle value of the data), the upper quartile, \& the sample maximum (largest observation).
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test:}
+{subsubsection}{The Test:}
 \textbf{Carry out a Tukey Five-Number Summary test.} For this test, I will be detailing the 5 numbers which will detail the year 2008 in a nutshell. To show another form of this, I will be including the summary of this year as well.
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > fivenum(TTE)
 > summary(TTE)
 > IQR(TTE)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
+
+
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
+{subsubsection}{The Conclusion}
 We can graphically represent the results from this test as a boxplot (which I will do for each region in 2008), which shows that the five-number summary holds up upon examination. It is a useful command to quickly show the "five main numbers".
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > boxplot(fivenum(Wor), fivenum(NAm), fivenum(WE),
 + fivenum(TE), fivenum(AAJ), fivenum(LA),
@@ -435,28 +396,28 @@ We can graphically represent the results from this test as a boxplot (which I wi
 + c(terrain.colors(10)), srt=45, pos=1, xpd=TRUE,
 + cex=0.8)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
+
+
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=120mm]{7.jpeg}
 \caption{Boxplot of real GDP growth in each region (2008)}
 \label{fig:3}
 \end{figure}
-\newpage
+
 \subsection*{\pageref{label:BTP} \#8. Titles and Presentation Formatting:}
-\addcontentsline{toc}{subsection}{Titles \& Presentation Formatting}
+{subsection}{Titles \& Presentation Formatting}
 Again, see figures \ref{fig:1}, \ref{fig:2}, \ref{fig:3}, \ref{fig:4}, \ref{fig:5}, \ref{fig:6}, \ref{fig:7} \& \ref{fig:8}.
-\newpage
+
 \subsection*{\pageref{label:BTP} \#9. Scatterplot Indicating Boiling Pt. of Water in the Alps:}
-\addcontentsline{toc}{subsection}{Scatterplot}
+{subsection}{Scatterplot}
 A scatterplot is a diagram which utilises Cartesian coordinates to show the relationship of two variables for a set of data. The data is displayed as a collection of points, is an x- vs. y-axis scale.
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
+{subsubsection}{The Test}
 \textbf{Plot a scatterplot.} For this, I will be introducing the forbes dataset to test the correlation between the boiling point of the water (in {$\,^{\circ}\rm{F}$}), and the pressure exerted (in inches of mercury). Another piece of code I have inputted is the 'coef' command, which returns the most accurate intercept of the set of data.
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > plot(forbes$bp, forbes$pres, main="Boiling Point vs.
 + Barometric Pressure", col.main="midnightblue",
@@ -469,9 +430,9 @@ A scatterplot is a diagram which utilises Cartesian coordinates to show the rela
 + "Correlation Line"), fill=c("blue","red", "black"),
 + cex=0.8, bty="n")
 \end{verbatim}}
-\end{framed}
-\end{shaded}
-\newpage
+
+
+
 %\begin{figure}[ht!]
 %\centering
 %\includegraphics[width=120mm]{9.jpeg}
@@ -479,150 +440,150 @@ A scatterplot is a diagram which utilises Cartesian coordinates to show the rela
 %\label{fig:4}
 %\end{figure}
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
+{subsubsection}{The Conclusion}
 The useful thing about scatterplots is they can provide a very good indication of the relationship between the $X$ \& $Y$ variables. It is clear to see here that there is almost a direct correlation between $X$ \& $Y$.
-\newpage
+
 \subsection*{\pageref{label:BTP} \#10. Covariance and Correlation Matrix:}
-\addcontentsline{toc}{subsection}{Correlation \& Covariance}
+{subsection}{Correlation \& Covariance}
 The correlation matrix of n random variables $X_1,..., X_n$ is the $n\times n$ matrix whose i,j entry is the correlation between $X_i$ \& $X_j$, where as the covariance matrix is a matrix whose element in the i, j position is the covariance between the i\textsuperscript{th} and j\textsuperscript{th} elements of a random vector
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
+{subsubsection}{The Test}
 \textbf{Construct a covariance matrix and a correlation matrix.} Although the outline above seems complicated, the code needed and assumptions attained are not. I will be testing the correlation and covariance of the concentration of plasma glucose in each woman with Pima Indian heritage against the diagnosis of diabetes in each woman. We are expecting a positive relationship, as plasma glucose levels need to be maintained at a high level in those with diabetes.
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > var(glu,type)
 > cov(glu,as.numeric(type))
 > cor(glu,as.numeric(type))
 \end{verbatim}}
-\end{framed}
-\end{shaded}
+
+
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
+{subsubsection}{The Conclusion}
 What we can see from the results of the 3 operations above is that both variance and covariance are the same, returning 7.20, which indicates (given the amount of people in the sample) that it is a fairly tightly-knit dataset. Also, the correlation returned tells us that there is a medium-strength positive linear relationship, which implies that the two samples are linked.
-\newpage
+
 \section*{\textbf{\underline{\#11. - \#15.}}}
-\addcontentsline{toc}{section}{\#11. - \#15.}
+{section}{\#11. - \#15.}
 \subsection*{\pageref{label:BTP} \#11. Correlation with Formal Test Procedure:}
-\addcontentsline{toc}{subsection}{Correlation w/ test procedure}
+{subsection}{Correlation w/ test procedure}
 Pearson product-moment correlation coefficient is a measure of the linear dependence between two variables $X$ and $Y$, giving a value between $^+1$ and ${^{-}1}$ inclusive, depending on the level of dependence.
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
-\textbf{Conduct a correlation test with formal test procedures.} I will be testing the correlation between the rate of growth in 2008 and in 2017, to see the relationship between economic turmoil and expected stable growth. We will be hoping that there is indeed a positive linear relationship, as a well-known rule in economics is to keep the rate of growth at a low figure (~2\% per annum.). The hypotheses are as follows: \newline
-{\color{Red}$H_0:$} The correlation coefficient for the population of values is zero. (i.e. No linear relationship.)\newline
+{subsubsection}{The Test}
+\textbf{Conduct a correlation test with formal test procedures.} I will be testing the correlation between the rate of growth in 2008 and in 2017, to see the relationship between economic turmoil and expected stable growth. We will be hoping that there is indeed a positive linear relationship, as a well-known rule in economics is to keep the rate of growth at a low figure (~2\% per annum.). The hypotheses are as follows: 
+{\color{Red}$H_0:$} The correlation coefficient for the population of values is zero. (i.e. No linear relationship.)
 {\color{Red}$H_1:$} The coefficient is not zero. (Linear relationship exists.)
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > cor.test(TTE,TTSe)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
+
+
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
+{subsubsection}{The Conclusion}
 From this, we can rest easy in knowing that the test gave the result we had hoped for. The p-value is much lower than 0.01 significance level threshold. Therefore, we reject the null hypothesis, as this indicates there is a positive linear correlation between the two datasets. (Also, another indication of this is the 95\% Confidence Interval, which does not pass through 0, which would indicate no correlation: 0.5660331, 0.9835027.)
 The Correlation coefficient is 0.9083815, there is a very strong positive linear correlation between the two datasets.
-\newpage
+
 \subsection*{\pageref{label:BTP} \#12. 2 Multiple Regression Fits:}
-\addcontentsline{toc}{subsection}{Multiple Regression Fits}
+{subsection}{Multiple Regression Fits}
 Linear regression is an approach to modelling the relationship between a dependent variable $y$ (a scalar) and one or more explanatory variables denoted $X$.
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
+{subsubsection}{The Test}
 \textbf{Execute 2 multiple linear regression fits.} As multiple linear regression fits are being requested, we must include more than one explanatory variables in our tests. The first linear model I will be testing is the blood pressure of tested women explained by number of pregnancies, the body mass index and age, from the Pima.tr dataset. The second linear model I will be testing is the World GDP growth between the years of 2008 \& 2017, explained by growth of North American real GDP and Australasian real GDP (which includes Japan). I will then add in the summaries of these procedures, to see if they are of a good quality fit.
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > fitbp <- lm(bp ~ npreg + bmi + age)
 > fitwor <- lm(Wor ~ NAm + AAJ)
 > summary(fitbp)
 > summary(fitwor)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
+
+
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
-By looking at the adjusted $\bar R^2$ of each summary, we can determine whether they are a good fit or not, with 0 indicating no fit, and 1 indicating a perfect fit. We can clearly see that the North American \& Australasian GDP growths are a very good indicators of the overall world GDP growth, whereas blood pressure cannot be particularly explained by the number of pregnancies, the body mass index, and age each woman has.\newline
+{subsubsection}{The Conclusion}
+By looking at the adjusted $\bar R^2$ of each summary, we can determine whether they are a good fit or not, with 0 indicating no fit, and 1 indicating a perfect fit. We can clearly see that the North American \& Australasian GDP growths are a very good indicators of the overall world GDP growth, whereas blood pressure cannot be particularly explained by the number of pregnancies, the body mass index, and age each woman has.
 (See also, \#13. Model Selection Procedure.)
-\newpage
+
 \subsection*{\pageref{label:BTP} \#13. Model Selection Procedure:}
-\addcontentsline{toc}{subsection}{Model Selection Procedure}
+{subsection}{Model Selection Procedure}
 Model selection procedure is the task of selecting a statistical model
 that will best represent the results from given data.
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
+{subsubsection}{The Test}
 Detail the factors in model selection. In this module, we were introduced to a few
 different ways of determining which model would be suitable for the data. These are {\color{red}{1.}} the AIC (Akaike information criterion) \& {\color{red}{2.}} the details of the "summary", namely the adjusted $\bar R^2$.
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > AIC(fitwor)
 > AIC(fitbp)
 > summary(fitwor)
 > summary(fitbp)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
+
+
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
+{subsubsection}{The Conclusion}
 We are looking for the lowest AIC, as the lower it is, the better the fit, as the bigger it grows, the more likely it is that the explanatory variables do not have any effect at all. Looking at each result, we see AIC on fitwor is 14.4076; whereas it is 1510.817 on fitbp. We can conclude that fitwor is a better fit model. Using summary, however, we are looking for the adjusted $\bar R^2$ closest to zero, the higher the better. In fitwor, we see that the coefficient is 0.9455, indicating a very good fit, whereas we can see that fitbp returns the same conclusion as the AIC, with a coefficient of 0.1769.
-\newpage
+
 \subsection*{\pageref{label:BTP} \#14. Equality of Variances:}
-\addcontentsline{toc}{subsection}{Equality of Variances}
+{subsection}{Equality of Variances}
 Simply put, equality of variances is a test done to see if the variances of two different samples are equal.
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
+{subsubsection}{The Test}
 \textbf{Complete a test on the equality of variances.} This can be done in a couple of different ways. Using the null hypothesis that the population variances are equal, I am going to detail 2 such methods.
 {\color{red}{1.}} Levene's test would be the most basic, simply used to assess the equality of variances in different samples. In doing so, however, we must import the "lawstat" package.
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 1.
 > install.packages("lawstat")
 > library(lawstat)
 > levene.test(bp,type)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
+
+
 
 In {\color{red}{2.}}, however, the F-test of equality of variances is used, although it is working under the assumption that the samples are normally distributed, which can lead to accuracy problems if they are not.
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 2.
 > var.test(bp~type)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
+
+
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
-We can see from both tests that the p-values attained are much higher than the 0.05 significance level (0.6772 \& 0.6603 respectively), $\therefore$ we fail to reject $H_0$. There is evidence to support the fact that the variances are equal.\newline
+{subsubsection}{The Conclusion}
+We can see from both tests that the p-values attained are much higher than the 0.05 significance level (0.6772 \& 0.6603 respectively), $\therefore$ we fail to reject $H_0$. There is evidence to support the fact that the variances are equal.
 (See also, \#20. Bartletts test.)
-\newpage
+
 \subsection*{\pageref{label:BTP} \#15. Grubb's Test for Outliers:}
-\addcontentsline{toc}{subsection}{Grubb's Test}
+{subsection}{Grubb's Test}
 Not Completed.
-\newpage
+
 \section*{\textbf{\underline{\#16. - \#20.}}}
-\addcontentsline{toc}{section}{\#16. - \#20.}
+{section}{\#16. - \#20.}
 \subsection*{\pageref{label:BTP} \#16. Kolmogorov-Smirnov Test:}
-\addcontentsline{toc}{subsection}{Kolmogorov-Smirnov Test}
+{subsection}{Kolmogorov-Smirnov Test}
 The Kolmogorov-Smirnov test is a non-parametric test used to determine if two
 datasets differ significantly. This method makes no assumption about the distribution of data.
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
-\textbf{Complete a Komogorov-Smirnov test.} I will be carrying out two of these tests, to make it clear what influences the results we recieve, and what conclusions we can draw from this. First, we initialise $H_0$ \& $H_1$:\newline
-{\color{red}{$H_0:$}} The two datasets are from the same distribution.\newline
-{\color{red}{$H_1:$}} The data sets are not from the same distribution.\newline
+{subsubsection}{The Test}
+\textbf{Complete a Komogorov-Smirnov test.} I will be carrying out two of these tests, to make it clear what influences the results we recieve, and what conclusions we can draw from this. First, we initialise $H_0$ \& $H_1$:
+{\color{red}{$H_0:$}} The two datasets are from the same distribution.
+{\color{red}{$H_1:$}} The data sets are not from the same distribution.
 Then, we carry out the tests:
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > ks.test(TTTw,bp, alternative=c("two.sided"), exact=TRUE)
 
@@ -630,82 +591,82 @@ and,
 
 > ks.test(Wor,TE, alternative=c("two.sided"),exact=TRUE)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
+
+
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
-In the first test, I used samples from two different datasets (RealGDP \& Pima.tr), to try and attain a rejection of the null hypothesis. As we can see from the result, I succeeded in this, with the p-value being much lower than the 0.01 threshold (4.165$e^-7$ to be exact). Therefore, there is reason to believe that the datasets are not from the same distribution. However, for the second test, I fail to reject $H_1$ as the p-value is above 0.05. It is easier for the test to notice that datasets are from the same distribution in this regard, as there wasn't much difference in world growth and the growth in the transitional economies throughout the period of testing, therefore leading to results with low variation.\newline
+{subsubsection}{The Conclusion}
+In the first test, I used samples from two different datasets (RealGDP \& Pima.tr), to try and attain a rejection of the null hypothesis. As we can see from the result, I succeeded in this, with the p-value being much lower than the 0.01 threshold (4.165$e^-7$ to be exact). Therefore, there is reason to believe that the datasets are not from the same distribution. However, for the second test, I fail to reject $H_1$ as the p-value is above 0.05. It is easier for the test to notice that datasets are from the same distribution in this regard, as there wasn't much difference in world growth and the growth in the transitional economies throughout the period of testing, therefore leading to results with low variation.
 (See also, \#18. Shapiro-Wilk test.)
-\newpage
+
 \subsection*{\pageref{label:BTP} \#17. Welch \& Independent Two Sample Test:}
-\addcontentsline{toc}{subsection}{Welch \& Independent Test}
+{subsection}{Welch \& Independent Test}
 The t-test is used to determine if two sets of data are significantly different from each other. For this question, we are using 2 variations; the Welch and the Independent test. The Welch test is used under the assumption of unequal variances, whereas the independent samples t-test is used when two separate sets of independent and identically distributed samples are obtained, with equal variances.
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
-\textbf{Complete both a Welch \& Independent Two Sample t-test.} To simply see the variations in results we get from the two different tests, I will be conducting both experiments with the same datasets. For these procedures, the hypotheses will be:\newline
-{\color{red}{$H_0:$}} $\mu_1 = \mu_2$.\newline
+{subsubsection}{The Test}
+\textbf{Complete both a Welch \& Independent Two Sample t-test.} To simply see the variations in results we get from the two different tests, I will be conducting both experiments with the same datasets. For these procedures, the hypotheses will be:
+{\color{red}{$H_0:$}} $\mu_1 = \mu_2$.
 {\color{red}{$H_1:$}} $\mu_1 \neq \mu_2$.
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > t.test(TTE,TTTw,var.equal=FALSE)
 > t.test(TTE,TTTw,var.equal=TRUE)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
+
+
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
+{subsubsection}{The Conclusion}
 In this case, the difference is minimal, as we fail to reject the null hypothesis in both cases, with almost the exact same p-values achieved (0.6047 for unequal variance, 0.6022 for equal variance). In fact, the only differences between the two tests are the degrees of freedom and the 95\% Confidence Intervals. There is a case to be made on both sides as to which is the better test, as the lower degrees of freedom in the Welch Test indicates a wider range of data being tested, thus keeping it somewhat safe from sensitivity issues, whereas the the smaller C.I. interval on the Independent Test can represent a more accurate result.
-\newpage
+
 \subsection*{\pageref{label:BTP} \#18. Shapiro-Wilk Test:}
-\addcontentsline{toc}{subsection}{Shapiro-Wilk Test}
+{subsection}{Shapiro-Wilk Test}
 The Shapiro–Wilk test is used to test the validity of a suggestion that a sample $x_1, ..., x_n$ comes from a normally distributed population through the means of an hypothesis test.
 (See also, \#17. Kolmogorov-Smirnov test.)
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
-\textbf{Conduct a Shapiro-Wilk Test.} For this, I will be examining whether the blood pressure of women of Pima Indian origin that were tested for diabetes is normally distributed data. Setting the hypothesis test:\newline
-{\color{red}{$H_0:$}} The two datasets are normally distributed.\newline
-{\color{red}{$H_1:$}} The data sets are not normally distributed.\newline
+{subsubsection}{The Test}
+\textbf{Conduct a Shapiro-Wilk Test.} For this, I will be examining whether the blood pressure of women of Pima Indian origin that were tested for diabetes is normally distributed data. Setting the hypothesis test:
+{\color{red}{$H_0:$}} The two datasets are normally distributed.
+{\color{red}{$H_1:$}} The data sets are not normally distributed.
 And then executing the commands:
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > shapiro.test(bp)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
-\newpage
+
+
+
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
+{subsubsection}{The Conclusion}
 The p-value is above the 0.05 threshold, and so we fail to reject $H_0$. We conclude that there is evidence to support the claim that this is a normally distributed set of data. I have included a figure below that shows an almost perfectly normally distributed dataset, adding evidence to our claim, with the code used to create it.
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > hist(bp, col="red", prob=TRUE, col.main="darkslategray",
 + main="Normality of Blood Pressure in Pima Indian Women")
 + lines(density(bp), lty=5, lwd=2)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
+
+
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=120mm]{18.jpeg}
 \caption{Graphical representation of normally distributed data}
 \label{fig:5}
 \end{figure}
-\newpage
+
 \subsection*{\pageref{label:BTP} \#19. Q-Q Plot:}
-\addcontentsline{toc}{subsection}{Q-Q Plot}
+{subsection}{Q-Q Plot}
 A Q–Q plot is a graphical method used for comparing two probability distributions by plotting their quartiles against each other.
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
+{subsubsection}{The Test}
 \textbf{Construct a Q-Q Plot.} I will be including two different forms of the Q-Q plot in this test, one of the qqnorm, and one of the qqplot. A qqnorm is a generic function which displays a QQ plot of normality for the values in the dataset, whereas the qqplot is a representation of the method outlined above. I will again be using blood pressure as my base of computation, and will then be comparing it against the age of each tested subject.
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > qqnorm(bp,pch=15, main="Blood Pressure of Pima Indian Women
 + in Normal Q-Q Plot", col="goldenrod1", cex.main=0.9,
@@ -724,9 +685,9 @@ A Q–Q plot is a graphical method used for comparing two probability distributi
 + as old age takes hold   |"), col="indianred", srt = 63, pos = 1,
 + xpd = TRUE, cex=0.8)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
-\newpage
+
+
+
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=75mm]{191.jpeg}
@@ -740,31 +701,31 @@ A Q–Q plot is a graphical method used for comparing two probability distributi
 \label{fig:7}
 \end{figure}
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
+{subsubsection}{The Conclusion}
 As can be seen from the two graphs, there is a strong relationship between the 2 sets of data. In the normality plot, the data does not deviate much from the fitted line, indicating a recognisable normal distribution. Also, for the quartile-quartile plot, we can clearly see a massive increase in blood pressure as middle-age takes hold.
-\newpage
+
 \subsection*{\pageref{label:BTP} \#20. Bartlett Test:}
-\addcontentsline{toc}{subsection}{Bartlett Test}
+{subsection}{Bartlett Test}
 Bartlett's test is used to test if $k$ samples are from populations with homogeneous variances. It is best used when the dataset is normally distributed, as otherwise it will just end up testing for normality.
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
-\textbf{Perform a Bartlett Test on a set of data.} Using the hypotheses:\newline
-{\color{red}{$H_0:$}} All $k$ samples have equal variance.\newline
-{\color{red}{$H_1:$}} At least two of the population variances are unequal.\newline
+{subsubsection}{The Test}
+\textbf{Perform a Bartlett Test on a set of data.} Using the hypotheses:
+{\color{red}{$H_0:$}} All $k$ samples have equal variance.
+{\color{red}{$H_1:$}} At least two of the population variances are unequal.
 I will test the Bartlett test where the data tested is age {\underline{and}} type, and again where the data tested is age {\underline{by}} type, along with a graphic representation of the latter to easily identify the results.
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 1.
 
 > bartlett.test(age,type,Pima.tr)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
+
+
 \begin{verbatim}
 2.
 
@@ -794,9 +755,9 @@ I will test the Bartlett test where the data tested is age {\underline{and}} typ
 + "(82)", "(102)", "(106)"), cex.axis=0.5,
 + pos=1.5, par(las=1))
 \end{verbatim}}
-\end{framed}
-\end{shaded}
-\newpage
+
+
+
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=120mm]{20.jpeg}
@@ -804,70 +765,70 @@ I will test the Bartlett test where the data tested is age {\underline{and}} typ
 \label{fig:8}
 \end{figure}
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
+{subsubsection}{The Conclusion}
 We can see from both the p-values we achieved and the boxplot that the two samples seem to have equal variances, although there is a slight difference in the overall structure of the 2 sets of data (which is easily seen in the graph).
-\newline
+
 (See also, \#14. Equality of Variances.)
-\newpage
+
 \section*{\textbf{\underline{\#21. - \#23.}}}
-\addcontentsline{toc}{section}{\#21. - \#23.}
+{section}{\#21. - \#23.}
 \subsection*{\pageref{label:BTP} \#21. Paired t-test:}
-\addcontentsline{toc}{subsection}{Paired t-test}
+{subsection}{Paired t-test}
 Paired samples t-tests are t-test that are typically implemented for a sample of matched pairs, or one group of units that has been tested at two different time points (such as a before \& after drug). The output is then interpreted through the 95\% confidence interval, which is derived from the difference between the two sets of paired observations.
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
-\textbf{Complete a Paired t-test.} I will be conducting a paired t-test on whether the beginning of the global recession (in the year 2009) had a major impact on GDP growth throughout the world. I will be doing this by assessing the growth in 2010, which is taken as a staple of normal growth, and comparing the mean differences between the two samples. So I will be using the following hypotheses:\newline
-{\color{red}{$H_0:$}} $\mu_d = 0$.\newline
+{subsubsection}{The Test}
+\textbf{Complete a Paired t-test.} I will be conducting a paired t-test on whether the beginning of the global recession (in the year 2009) had a major impact on GDP growth throughout the world. I will be doing this by assessing the growth in 2010, which is taken as a staple of normal growth, and comparing the mean differences between the two samples. So I will be using the following hypotheses:
+{\color{red}{$H_0:$}} $\mu_d = 0$.
 {\color{red}{$H_1:$}} $\mu_d \neq 0$.
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > t.test(TTN,TTT,paired=TRUE)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
+
+
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
+{subsubsection}{The Conclusion}
 We see from the output that the 95\% Confidence Interval of the true mean does not pass through 0; we fail to reject $H_1$.  The is reason to suggest that there is a difference between the samples, and so the global recession had an impact on worldwide growth of real GDP.
-\newline
+
 (See also, \#22. Non-Parametric Procedure.)
-\newpage
+
 \subsection*{\pageref{label:BTP} \#22. Non-Parametric Procedure (Wilcox Test):}
-\addcontentsline{toc}{subsection}{Non-Parametric Procedure}
+{subsection}{Non-Parametric Procedure}
 Non-parametric procedures can be described as techniques that do not rely on data belonging to any particular distribution. For this, I will be implementing the Wilcox-Mann test, used when comparing two related samples to assess whether their population mean ranks differ.
 \subsubsection*{The Test:}
-\addcontentsline{toc}{subsubsection}{The Test}
-\textbf{Perform a Non-Parametric Procedure.} For this test, I will be studying the median difference between the body mass indices of a test subject in the Pima.tr experiment and their respective triceps skin fold thickness. {$\therefore$} the hypotheses are as follows:\newline
-{\color{red}{$H_0:$}} $\tilde{x_1} = \tilde{x_2}$.\newline
+{subsubsection}{The Test}
+\textbf{Perform a Non-Parametric Procedure.} For this test, I will be studying the median difference between the body mass indices of a test subject in the Pima.tr experiment and their respective triceps skin fold thickness. {$\therefore$} the hypotheses are as follows:
+{\color{red}{$H_0:$}} $\tilde{x_1} = \tilde{x_2}$.
 {\color{red}{$H_1:$}} $\tilde{x_1} \neq \tilde{x_2}$.
-\begin{shaded}
-\begin{framed}
-\footnotesize{\color{BrickRed}
+
+
+
 \begin{verbatim}
 > wilcox.test(bmi, skin, alternative = c("two.sided", "less",
 + "greater"), mu = 0, paired = FALSE, exact = NULL,
 + correct = TRUE,conf.int = FALSE, conf.level = 0.95)
 \end{verbatim}}
-\end{framed}
-\end{shaded}
+
+
 \subsubsection*{The Conclusion:}
-\addcontentsline{toc}{subsubsection}{The Conclusion}
+{subsubsection}{The Conclusion}
 The p-value we attain from this test, 0.0002173, is much lower than the 0.01 we set as an indicator. We reject the null hypothesis, the median difference between the two samples is not equal to 0.
-\newline
+
 (See also, \#21. Paired t-test.)
-\newpage
+
 \subsection*{\pageref{label:BTP} \#23. Logarithmic Transformation:}
-\addcontentsline{toc}{subsection}{Logarithmic Transformation}
+{subsection}{Logarithmic Transformation}
 Not Completed.
-\newpage
+
 \begin{center}
 \section*{\underline{\pageref{label:BTP} \#24. Conclusion:}}
-\addcontentsline{toc}{section}{Conclusion}
+{section}{Conclusion}
 \end{center}
 Using the methods explained in each test, I have been introduced to a wider range of options in achieving the results I would like. It has also improved my skills in both $R$ and \LaTeX, which I had outlined as being my ultimate goal from the start. It has also provided me with a better interpretation of the statistics that drive sets of data, and has enabled me to begin spotting patterns in data. Having completed 21 out of the 24 tests assigned, with the objective of completing 20, I would call this project a success.
 \vspace{6in}
-\newline
+
 \begin{flushright}
 \textit{\Large{\underline{- FIN.}}}
 \end{flushright}

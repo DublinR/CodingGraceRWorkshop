@@ -86,7 +86,7 @@ After Monty has shown a goat behind the door that he opens, the contestant is al
 \label{fig:MH1}
 \end{figure}
 
-\begin{itemize}
+
 \item What is the probability of winning the car if she stays with her original choice? 
 \item What if she decides to switch?
 \end{itemize}
@@ -113,7 +113,7 @@ In vos Savant's second followup, she went further into an explanation of her ass
 One way to think about this problem is to consider the sample space, which Monty alters by opening one of the doors that has a goat behind it. In doing so, he effectively removes one of the two losing doors from the sample space.
 We will assume that there is a winning door and that the two remaining doors, A and B, both have goats behind them. There are three options:
 
-\begin{itemize}
+
 \item The contestant first chooses the door with the car behind it. She is then shown either door A or door B, which reveals a goat. If she changes her choice of doors, she loses. If she stays with her original choice, she wins.
 
 \item The contestant first chooses door A. She is then shown door B, which has a goat behind it. If she switches to the remaining door, she wins the car. Otherwise, she loses.
@@ -131,13 +131,13 @@ command \texttt{sample(,n)} takes a sample of size n from a specified set of val
 want to select one door to be our \textbf{\textit{correct door}} and another to be \textbf{\textit{selected}} door (i.e. the door that the contestant selects).
 
 These events are independent. For the sake of simplicity, we will perform the selection for both doors separately, but this can be implemented in one command.
-\begin{framed}
+
 \begin{verbatim}}
 Doors = 1:3 
 Correct = sample(Doors,1)
 Choice = sample(Doors,1)
 \end{verbatim}
-\end{framed}
+
 
 
 \begin{verbatim}
@@ -150,12 +150,12 @@ Choice = sample(Doors,1)
 \end{verbatim}
 
 %--------------------------------------------%
-\newpage
+
 \subsection{ \texttt{R} Implementation (part 2)}
 In this part, we will use the set theory commands \texttt{union()} and \texttt{setdiff()}. Another related command is \texttt{intersect()}, but we will not be using it here.
 
 These commands are very simple, and can be best demonstrated with a simple example.
-\begin{framed}
+
 \begin{verbatim}
 X <- 1:6
 Y <- 5:9
@@ -164,7 +164,7 @@ intersect(X,Y)
 setdiff(X,Y)
 setdiff(Y,X)
 \end{verbatim}
-\end{framed}
+
 The output from these commands looks like this:
 \begin{verbatim}
 > X
@@ -183,14 +183,14 @@ The output from these commands looks like this:
 \end{verbatim}
 Going back to the Monty Hall problem. The Set Theory commands aver very useful in that they can avoid a lot of programming control statements to account for various scenarios. A wrong door must be selected to be opened. The door selected by the contestant can't be
 chosen. First let us select the doors that must stay closed, then find the doors that the contestant can choose from.
-\begin{framed}
+
 \begin{verbatim}
 StayClosed = union(Correct, Choice)
 CanOpen = setdiff(Doors, StayClosed)
 \end{verbatim}
-\end{framed}
+
 %-------------------------------------------------------%
-\newpage
+
 \subsection{Using the \texttt{sample command}}
 
 
@@ -198,12 +198,12 @@ The \texttt{R} command \texttt{sample()} poses an interesting problem. Lets look
 Create a single element vector (let's call it \textbf{Vec}, with that single element being 4. 
 
 Now sample a single value from that data set. You may expect to get 4 each time, as it is the only element in the set but \texttt{R} doesnt work that way in this instance.
-\begin{framed}
+
 \begin{verbatim}
 Vec=c(4)
 sample(Vec,1)
 \end{verbatim}
-\end{framed}
+
 Instead \texttt{R} interprets the argument 4 as the upper bound of a sequence of four integers (i.e. the sample space is 1 to 4)
 \begin{verbatim}
 > sample(Vec,1)
@@ -218,12 +218,12 @@ Problems will arise when the number of elements in the \textbf{CanOpen} set of n
 When there are more than one, things will work fine.
 %-------------------------------------------------------------------------------------%
 To overcome thisproblem, we need some control statements.
-\begin{itemize}
+
 \item  If there are two elements in the data set, we just select one of them at randomm using the \texttt{sample()} command.
 \item If there is only one element in the data set we avoid using the \texttt{sample()} command, and instead use the assignment operator.
 \end{itemize}
 We wish to select a door for opening, to reveal the goat.
-\begin{framed}
+
 \begin{verbatim}
 if(length(CanOpen)>1)
 {
@@ -231,12 +231,12 @@ Open = sample(CanOpen,1)
 }else {Open=CanOpen}
 Open # This door reveals a goat
 \end{verbatim}
-\end{framed}
+
 %-------------------------------------------------------------------------------------%
 \subsection{Stick or Switch?}
 There are two unopened doors. One is the correct door, but which one? Should the contestant \textbf{stick} or \textbf{switch} ?
 
-\begin{framed}
+
 \begin{verbatim}
 NotOpen = setdiff(Doors,Open)
 
@@ -246,28 +246,28 @@ Stick = Choice
 Switch = setdiff(NotOpen,Choice)
 # Switch to the other door
 \end{verbatim}
-\end{framed}
+
 
 Was sticking the right decision? Or was switching?
 
-\begin{framed}
+
 \begin{verbatim}
 # Was sticking the right decision? Or was switching?
 # The following logicial statements will tell us.
 Stick==Correct
 Switch==Correct
 \end{verbatim}
-\end{framed}
+
 
 An answer of 1 means that decision would have been correct. Equivalently, a response of 0 indicates a bad decision.
 %-------------------------------------------------------------------%
 
-\newpage
+
 \subsection{ Writing a Function}
 We are going to create a function \texttt{MHfunc()} to help us simulate a solution for the Monty Hall Problem. The function is constructed using R code we have seen already. The output of the
 function is returned as a data frame, with 7 columns:
 
-\begin{itemize}
+
 \item Correct : The number of the correct door.
 \item Choice : The door that the contestant chose originally, and the door selected if the contestant decided to "stick".
 \item Open : The door Monty Hall opens to reveal a goat
@@ -289,8 +289,8 @@ The output looks like this:
          1          2          3          2          1          0          1
 \end{verbatim}
 
-\newpage
-\begin{framed}
+
+
 \begin{verbatim}
 MHfunc <- function(numdoors=3){
 Doors = 1:numdoors
@@ -322,15 +322,15 @@ names(MHoutput)= c("Correct","Choice","Open(goat)","StickDoor",
 return(MHoutput)
 }
 \end{verbatim}
-\end{framed}
+
 
 %---------------------------------------------------------------%
-\newpage
+
 \subsection{ A Simulation Study of the Monty Hall Problem}
 Let us perform a simulation study of the Monty Hall problem. We are putting the code we have
 written already, placed in a for loop, although we alter the ending to make for more readable
 output.
-\begin{framed}
+
 \begin{verbatim}
 #Initialise Counters
 StickCount = 0   
@@ -350,7 +350,7 @@ for(i in 1:M)
 StickCount
 SwitchCount
 \end{verbatim}
-\end{framed}
+
 
 The output of this program would look like this. The proportion is approximately 2 to 1 in
 favour of the switching option.
@@ -360,6 +360,6 @@ favour of the switching option.
 > SwitchCount
 [1] 677
 \end{verbatim}
-\newpage
+
 
 \end{document}
