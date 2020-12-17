@@ -1,0 +1,69 @@
+
+\subsubsection{Comparison of variances}
+
+
+Even though it is possible in R to perform the two-sample t test without the assumption that the variances are the same, you may still be interested
+in testing that assumption, and R provides the var.test function for that purpose, implementing an F test on the ratio of the group variances. It is
+called the same way as ``t.test``:.
+
+\begin{verbatim}
+> var.test(expend~stature)
+\end{verbatim}
+
+
+
+
+
+%---------------------------------------------------------------------------Probability Distributions ----%
+\newpage
+\chapter{Probability Distributions}
+\section{Generating a set of random numbers}
+
+\begin{framed}
+\large \begin{verbatim}
+rnorm(10)
+\end{verbatim}\large
+\end{framed}
+
+
+%----------------------------------------------------------------------------Graphical Methods--%
+\newpage
+\chapter{Graphical methods}
+
+\section{Scatterplots}
+%\begin{figure}
+% Requires \usepackage{graphicx}
+% \includegraphics[scale=0.40]{MTCARSmpgwt.png}\\
+% \caption{Scatterplot}\label{mpgwt}
+% \end{figure}
+
+
+\section{Adding titles, lines, points to plots}
+
+
+\large \begin{verbatim}
+library(MASS)
+# Colour points and choose plotting symbols according to a levels of a factor
+plot(Cars93$Weight, Cars93$EngineSize, col=as.numeric(Cars93$Type),
+pch=as.numeric(Cars93$Type))
+
+# Adds x and y axes labels and a title.
+plot(Cars93$Weight, Cars93$EngineSize, ylab="Engine Size",
+xlab="Weight", main="My plot")
+# Add lines to the plot.
+lines(x=c(min(Cars93$Weight), max(Cars93$Weight)), y=c(min(Cars93$EngineSize),
+max(Cars93$EngineSize)), lwd=4, lty=3, col="green")
+abline(h=3, lty=2)
+abline(v=1999, lty=4)
+# Add points to the plot.
+\end{verbatim}\large
+
+
+
+
+
+
+
+
+
+
