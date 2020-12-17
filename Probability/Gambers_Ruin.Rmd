@@ -6,22 +6,22 @@ This gamblers places bets with the Banker, who has an initial fortune of B dolla
 
 (For the sake of simplicity, we will look at the game from the perspective of the gambler only. The Banker is, by convention, the richer of the two, and has a better chance of winning.)
 
-\begin{itemize}
-\item Probability of successful gamble for gambler : p
-\item Probability of unsuccessful gamble for gambler : q (where q = 1 - p )
-\item Ratio of success probability to failure success: s = p/q
-\item Conventionally the game is biased in favour of the Banker (i.e.$ q > p$ and $s < 1$)
-\end{itemize}
+
+*  Probability of successful gamble for gambler : p
+*  Probability of unsuccessful gamble for gambler : q (where q = 1 - p )
+*  Ratio of success probability to failure success: s = p/q
+*  Conventionally the game is biased in favour of the Banker (i.e.$ q > p$ and $s < 1$)
+
 
 
 \subsection{Simulation a Single Gamble}
 To simulate one single bet, compute a single random number between 0 and 1. For this, we 
 use the \texttt{runif()} command, which uses generates a \textbf{\textit{continuous uniform random variable}}. The upper and lower limits can be specified. In the absence of particular specifications, the defaults are 0 and 1.
-\begin{framed}
+
 \begin{verbatim}
 runif(1)
 \end{verbatim}
-\end{framed}
+
 Lets assume that the game is biased in favour of the Banker with $p = 0.45$ ,$q = 0.55$. If the
 number is less than 0.45, the gamble wins. Otherwise the Banker wins.
 \begin{verbatim}
@@ -41,21 +41,21 @@ number is less than 0.45, the gamble wins. Otherwise the Banker wins.
 [1] 0.8306269
 >#Gambler Loses
 \end{verbatim}
-\newpage
+
 %---------------------------------------------------%
 \subsection{Repeated Gambles}
 Let A be the Gambler's Kitty at the start of the gambling. Let B be the Banker's Wealth at the outset. (Therefore the total jackpot is A+ B )
 The probability of gambler winning a gamble is $p$.
 
-\begin{itemize}
-\item Let $Rn$ denote the Gamblers total fortune after the $n-$th gamble. If the Gambler wins the first game, his wealth becomes Rn = A + 1. 
-\item If he loses the first gamble, his wealth becomes Rn = A - 1. The entire sum of money at stake is the Jackpot i.e. A + B. 
-\item The game ends when the Gambler wins the Jackpot (Rn = A + B) or loses everything (Rn = 0).
-\item The vector \textbf{\textit{Rec}} records the gambler's worth on an ongoing basis, with the first element being the value of A. As the gambling progresses, the new value gets added to the vector.
-\end{itemize}
+
+*  Let $Rn$ denote the Gamblers total fortune after the $n-$th gamble. If the Gambler wins the first game, his wealth becomes Rn = A + 1. 
+*  If he loses the first gamble, his wealth becomes Rn = A - 1. The entire sum of money at stake is the Jackpot i.e. A + B. 
+*  The game ends when the Gambler wins the Jackpot (Rn = A + B) or loses everything (Rn = 0).
+*  The vector \textbf{\textit{Rec}} records the gambler's worth on an ongoing basis, with the first element being the value of A. As the gambling progresses, the new value gets added to the vector.
+
 
 Lets see how this plays out over a night of gambling. Lets start the gambler with 20 dollars, and the banker with 100. Unknown to the gambler is the fact that he or she has only a 47\% chance of winning a single bet.
-\begin{framed}
+
 \begin{verbatim}
 #initial values
 A=20;B=100;p=0.47
@@ -74,13 +74,13 @@ A = A+1; B =B-1
 #Save the values from each bet
 Rec=c(Rec,A)
 \end{verbatim}
-\end{framed}
+
 %-----------------------------------------------------------------------%
-\newpage
+
 \subsection{Using a \texttt{while} loop}
 So far we have managed to code for a single bet. Lets simulate the gambling in its entirety.
 For this, we will use a \texttt{while} loop. A a \texttt{while} loop will repeat a set of commands as long as a particular logical condition is met. (Here, that logical condition is that the gambler has money to gamble with.i.e. $A >0$). Once he loses everything, the while loop (and the gambling) terminates.
-\begin{framed}
+
 \begin{verbatim}
 A=20;B=100;p=0.47
 Rec=c(A)
@@ -96,9 +96,9 @@ while(A>0)
 
 }
 \end{verbatim}
-\end{framed}
+
 We will also include a break statement to stop the loop in the unlikely event that the Gambler wins the jackpot.
-\begin{framed}
+
 \begin{verbatim}
 A=20;B=100;p=0.47
 Rec=c(A)
@@ -115,20 +115,20 @@ while(A>0)
    if(A==Total){break}
    }
 \end{verbatim}
-\end{framed}
-\newpage
+
+
 \subsection{The Gambler's Performance}
 In all likelihood, the Gambler lost everything. But how long did he last in the game? how many gambles was he able to play? Also What was his highest level of wealth?
 We can look at the \textbf{\textit{Rec}} vector to answer these questions.
-\begin{framed}
+
 \begin{verbatim}
 length(Rec)
 max(Rec)
 \end{verbatim}
-\end{framed}
+
 
 We can construct a plot to depict the gambler's ongoing fortunes in the game.
-\begin{framed}
+
 \begin{verbatim}
 # Line plot, colour red
 plot(Rec,type="l",col="red")
@@ -141,12 +141,12 @@ abline(v=0)
 abline(h=A,col="red")
 abline(h=Total,col="green")
 \end{verbatim}
-\end{framed}
-\newpage
+
+
 \subsection{Simulation Study}
 Suppose we are interested in the probability distribution of durations. What is the probability of lasting more than 100 rounds? less than 200 etc? We can use a function called \texttt{GambRuinFunc()} to compute the durations from an number of nights of gambling (next page) . The function can easily be adjusted to consider the maximum value of the gambler's worth
 We can specify values for A , B and p different to that of the defaults. Here, they are picked so as to be quick to execute.
-\begin{framed}
+
 \begin{verbatim}
 Durations= numeric()
 M=1000
@@ -156,10 +156,10 @@ for(i in 1:M)
    Durations=c(Durations,NextDuration)
    } 
 \end{verbatim}
-\end{framed}
+
 
 We can study the Durations vector  using simple statistical functions.
-\begin{framed}
+
 \begin{verbatim}
 hist(Durations)
 mean(Durations)
@@ -167,11 +167,11 @@ median(Durations)
 IQR(Durations)
 quantile(Durations,1:20/20)
 \end{verbatim}
-\end{framed}
 
 
-\newpage
-\begin{framed}
+
+
+
 \begin{verbatim}
 GambRuinFunc=function(A=20,B=100,p=0.47)
 {
@@ -192,7 +192,4 @@ Duration=length(Rec)
 return(Duration)
 }
 \end{verbatim}
-\end{framed}
 
-%-----------------------------------------------------------------------------------------------------------------------------------%
-\end{document}
