@@ -1,0 +1,58 @@
+
+\section{Continuous Probability Distributions}
+In addition to the normal distribution and the $t-$distribution , we will look at two more continuous distribution functions: 
+
+*The Uniform Distribution
+*The Exponential Distributions
+
+\subsection{The Uniform Distribution}
+
+A random variable X is called a continuous uniform random variable over the interval $(a,b)$ if it's probability density function is given by
+\[ f_{X}(x) = { 1 \over b-a} \hspace{1cm} \mbox{ when } a \leq x \leq b \mbox{     (otherwise } f_X(x) = 0 ) \]
+The corresponding cumulative density function is
+\[ F_x(x) = { x-a \over b-a} \hspace{1cm} \mbox{ when } a \leq x \leq b\]
+
+
+\begin{center}
+\includegraphics[scale=0.35]{6AUniform}
+\end{center}
+The continuous distribution is very simple to understand and implement, and is commonly used in computer applications (e.g. computer simulation).
+It is known as the `Rectangle Distribution' for obvious reasons. We specify the word ``continuous" so as to distinguish it from it's discrete equivalent: the discrete uniform distribution.
+The continuous uniform distribution is characterized by the following parameters
+
+
+*The lower limit $a$ (or with \texttt{R}: \texttt{\textbf{min}} )
+*The upper limit $b$ (or with \texttt{R}: \texttt{\textbf{max}} )
+*We denote a uniform random variable $X$ as $X \sim U(a,b)$
+
+
+It is not possible to have an outcome that is lower than $a$ or larger than $b$ ,i.e. $ P(X < a) = P(X > b) = 0$.
+
+We wish to compute the probability of an outcome being within a range of values.
+We shall call this lower bound of this range $L$ and the upper bound $U$. 
+Necessarily $L$ and $U$ must be possible outcomes.The probability of $X$ being between $L$ and $U$ is denoted $P( L \leq X \leq U )$.
+
+In the absence of the specified upper and lower limits, the default values of 0 and 1 would be used.
+
+### Generating Random Values
+The most common use of the uniform distribution is the generation of uniformly distributed random variables. 
+The relevant command is ``runif()``. Functions that can be used to manage precision are useful when generating random values.
+
+\begin{verbatim}
+> runif(10)
+ [1] 0.2558100 0.8738507 0.4521578 0.7868320 0.2310644 0.5265236
+ [7] 0.9041761 0.3948904 0.1928505 0.5793142
+> runif(10,min=1,max=7)
+ [1] 2.822485 4.603547 5.794749 3.766398 2.016349 2.116504 5.863682
+ [8] 3.911420 3.434373 6.986899
+>
+> Another Way of Simulating Dice Rolls
+> floor(runif(10,min=1,max=7))
+ [1] 1 5 1 6 6 2 1 2 6 3
+\end{verbatim}
+
+
+
+
+
+
