@@ -1,0 +1,153 @@
+\frametitle{2.7 The \texttt{sessionInfo()} Function}
+ To get a description of the version of R and its attached packages used in the current session,
+ we can use the \texttt{sessionInfo()} function
+ 
+
+ 
+
+ 
+ \frametitle{2.7 The \texttt{sessionInfo()} Function}
+ \begin{figure}
+ \centering
+ \includegraphics[width=0.99\linewidth]{images/sessionInfo}
+ %\caption{}
+ %\label{fig:sessionInfo}
+ \end{figure}
+
+ %==============================================================================================%
+
+ \frametitle{2.8 Time and date functions}
+ \begin{itemize}
+ \item The commands \texttt{Sys.time()} and \texttt{Sys.Date()} returns the system’s idea of the current date
+ with and without time. 
+ \item We can perform some simple algebraic calculations to compute time
+ differences (i.e. to find out how long some code took to compile).
+ \end{itemize}
+ 
+
+ %==============================================================================================%
+
+ \frametitle{System Time}
+ \begin{figure}
+ \centering
+ \includegraphics[width=1.2\linewidth]{images/Systime}
+ %\caption{}
+ %\label{fig:Systime}
+ \end{figure}
+ 
+
+ %==============================================================================================%
+ 
+ \frametitle{2.9 Logical States}
+ \begin{itemize}
+ \item Logical states TRUE and FALSE are simply specified as such, all in capital letters. 
+ \item The
+ shortcuts T and F are also recognized
+ \end{itemize}
+
+ %==============================================================================================%
+
+ \frametitle{2.10 Missing Data}
+ \begin{itemize}
+ \item In some cases the entire contents of a vector may not be known. For example, missing data
+ from a particular data set. \item A place can be reserved for this by assigning it the special value
+ NA.
+ NA is a logical constant of length 1 which contains a missing value indicator.
+ \item  NA stands
+ for Not Available.
+ \item Missing values can adversely affect calculations. Add \texttt{na.rm=T} to commands
+ 
+ \begin{framed}
+ \texttt{mean(X,na.rm=T)}
+ \end{framed}
+ \end{itemize}
+
+ %==============================================================================================%
+
+ 
+ \frametitle{2.11 Files in the Working Directory}
+ It is possibel to call an R script from the working directory, using the \texttt{source()} function.
+ \begin{framed}
+ 
+ \texttt{source("myfunctions.r")\\
+ source("mydata.r")}
+ 
+ \end{framed} 
+ We can also send code put directly to a file in the working directory, using the \texttt{sink()}
+ command. The first time the command is used, the name of the created file is specified.
+ Subsequent commands print output directly to this file, until the command is used again to
+ cease the operation.
+
+ %==============================================================================================%
+
+ \begin{figure}
+ \centering
+ \includegraphics[width=1.2\linewidth]{images/sinkiris}
+ %\caption{}
+ %\label{fig:sinkiris}
+ \end{figure}
+ 
+
+
+ %==============================================================================================%
+ 
+
+ \Huge
+ \[\mbox{ Section 3 : Inspecting a Data Set } \]
+
+ %============================================================================= %
+
+ \frametitle{Section 3 - Inspecting a Data Set }
+ \begin{itemize}
+ \item[3.1] Dimensions of a data set 
+ \item[3.2] The \texttt{summary()} command   
+ \item[3.3] Structure of a Data Object 
+ \end{itemize}
+
+ % %============================================================================= %
+ %\begin{frame}
+ %\frametitle{Section 4 : Packages}
+ %
+ %  \begin{semiverbatim}
+ %  4.1 Packages 
+ %  4.2 Using and Installing packages 
+ %  4.2.1 Version of R 
+ %  \end{semiverbatim}
+ %
+ %
+ %
+ %\end{document}
+ %============================================================================= %
+ %
+ % \frametitle{Part 5 - Data Creation, Data Entry, Data Import and Export}
+ % \begin{framed}
+ % \begin{semiverbatim}
+ % 5.1 The c() command 
+ % 5.1.1 Vector of Numeric Values
+ % 5.1.2 Vector of Character Values
+ % 5.1.3 Vector of Logical Values 
+ % 5.2 The scan() command 
+ % 5.2.1 Characters with the scan() command
+ % 5.3 Using the data editor
+ % 5.4 Spreadsheet Interface 
+ % \end{semiverbatim}
+ % \end{framed}
+ % 
+ %
+ 
+ %==============================================================================================%
+
+ \frametitle{Section 3 Inspecting a Data Set}
+ \large 
+ \textbf{Summary of useful commands}
+ \begin{itemize}
+ \item \texttt{dim()} and \texttt{length()}
+ \item \texttt{nrow()} and \texttt{ncol()}
+ \item \texttt{names()}
+ \item \texttt{summary()}
+ \item \texttt{tail()}
+ \item \texttt{head()}
+ \item \texttt{describe()} (from the \textbf{psych} package)
+ \end{itemize}
+
+ %==============================================================================================%
