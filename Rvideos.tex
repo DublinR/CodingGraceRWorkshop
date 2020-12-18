@@ -1,0 +1,181 @@
+
+\subsection*{Packages}
+%===========================================================================================%
+\begin{frame}
+
+Packages
+"R"contains one or more libraries of packages. Packages contain
+various functions and data sets for numerous purposes, e.g.
+survival package, genetics package, fda package, etc.
+Some packages are part of the basic installation. Others can be
+downloaded from CRAN.
+To access all of the functions and data sets in a particular package,
+it must be loaded into the workspace. For example, to load the
+fda package:
+> library(fda)
+
+One important thing to note is that if you terminate your session
+and start a new session with the saved workspace, you must load
+the packages again.
+
+%===========================================================================================%
+\begin{frame}
+Packages
+To check what packages are currently loaded into the workspace
+> search()
+[1] ".GlobalEnv" "package:MASS" "package:stats"
+[4] "package:graphics" "package:grDevices" "package:utils"
+[7] "package:datasets" "package:methods" "Autoloads"
+[10] "package:base"
+
+Can remove a package you have loaded use:
+> detach("package:fda")
+
+%===========================================================================================%
+\begin{frame}
+
+For the purposes of this session, a data set already stored in R will
+be used. To access this data, must rst load the package
+containing the data. (R has many packages containing various
+functions that can be used to analyse data, e.g. if you want to
+analyse your data using splines, need to load the splines
+package). In this example, the data is stored in the MASS package.
+This is loaded with the command
+> library(MASS)
+Now have access to all functions and data sets stored in this
+package.
+
+
+%===========================================================================================%
+\begin{frame}
+An interactive session
+We will work with the data set titled \whiteside". To display the
+data:
+> whiteside
+Insul Temp Gas
+1 Before -0.8 7.2
+2 Before -0.7 6.9
+3 Before 0.4 6.4
+4 Before 2.5 6.0
+5 Before 2.9 5.8
+6 Before 3.2 5.8
+7 Before 3.6 5.6
+8 Before 3.9 4.7
+9 Before 4.2 5.8
+10 Before 4.3 5.2
+This is a particular type of object called a data frame.
+A full description of these data is found using
+> ? whiteside
+
+%===========================================================================================%
+\begin{frame}
+An interactive session
+To remind ourselves of the names of the columns:
+> names(whiteside)
+[1] "Insul" "Temp" "Gas"
+Summary statistics for each column are determined using
+> summary(whiteside)
+Insul Temp Gas
+Before:26 Min. :-0.800 Min. :1.300
+After :30 1st Qu.: 3.050 1st Qu.:3.500
+Median : 4.900 Median :3.950
+Mean : 4.875 Mean :4.071
+3rd Qu.: 7.125 3rd Qu.:4.625
+Max. :10.200 Max. :7.200
+Access the data in a particular column
+> whiteside$Temp
+
+%===========================================================================================%
+\begin{frame}
+An interactive session
+A plot of gas consumption versus temperature is now created.
+> plot(Gas ~ Temp, data=whiteside, pch=16)
+
+
+\begin{frame}
+Exercises I
+Vectors and Factors
+1. Create a vector x with the following entries
+3 4 1 1 2 1 4 2 1 1 5 3 1 1 1 2 4 5 5 3
+Check which elements of x are equal to 1 (Hint use ==
+operator). Modify x so that all of the 1's are changed to 0's.
+2. Create a vector y containing the elements of x that are
+greater than 1.
+3. Create a sequence of numbers from 1 to 20 in steps of 0.2
+and store.
+4. Concatenate x and y into a vector called newVec.
+5. Display all objects in the workspace and then remove newVec
+(see Lecture 1).
+
+Exercises II
+Vectors and Factors
+6. Six patients were asked to rate their pain from 0 to 3, with 0
+representing `no pain', 1 representing `mild' pain, 2
+representing `medium' pain and 3 representing `severe'
+pain. The following results were obtained:
+Patient 1 2 3 4 5 6
+Pain level 0 3 1 2 1 2
+Create a factor fpain to represent the above data.
+
+\end{frame}
+%=========================================================%
+\begin{frame}[fragile]
+\Large
+\frametitle{Exercise}
+
+1. Create a data frame called \texttt{club.points} with the following
+data.
+Firstname Lastname Age Gender Points
+Alice Ryan 37 F 278
+Paul Collins 34 M 242
+Jerry Burke 26 M 312
+Thomas Dolan 72 M 740
+Marguerite Black 18 F 177
+Linda McGrath 24 F 195
+
+\end{frame}
+%=========================================================%
+\begin{frame}[fragile]
+\Large
+\frametitle{Exercise}
+
+\begin{verbatim}
+Alice
+Paul
+Gerry
+Thomas
+Marguerite
+\end{verbatim}
+
+\end{frame}
+%=========================================================%
+\begin{frame}
+\Large
+\frametitle{Exercise}
+
+2. Store the points for every person into a vector called pts,
+then calculate the average number of points received. (Hint
+use mean() function).
+
+\end{frame}
+%=========================================================%
+\begin{frame}
+\Large
+\frametitle{Exercise}
+
+3. Store the data for the females only into a data frame called
+fpoints.
+Exercises II
+Data Frames
+4. The age for Jerry Burke was entered incorrectly. Change his
+age to 28.
+
+\end{frame}
+%=========================================================%
+\begin{frame}
+\Large
+\frametitle{Exercise}
+
+5. Determine the maximum age of the males.
+6. Extract the data for people with more than 100 points and are
+over the age of 30.

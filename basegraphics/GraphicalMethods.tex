@@ -1,0 +1,83 @@
+
+
+\chapter { R Graphics}
+\section Enhancing your scatter plots
+
+
+
+
+
+
+
+
+\section{Plot of single vectors}
+If only one vector is specified i.e. \texttt{plot(x)},  the plot created will simply be a scatter-plot of the values of x against their indices.
+
+$plot(x)$
+Suppose we wish to examine a trend that these points represent. We can connect each covariate using a line.
+
+$plot(x, type = "l")$
+If we wish to have both lines and points, we would input the following code. This is quite useful if we wish to see how a trend develops over time.
+$plot(x, type = "b")$
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------------------------------------------------Graphical Methods--%
+\newpage
+\chapter{Graphical methods}
+
+\section{Scatterplots}
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \includegraphics[scale=0.40]{MTCARSmpgwt.png}\\
+  \caption{Scatterplot}\label{mpgwt}
+\end{figure}
+
+
+\section{Adding titles, lines, points to plots}
+
+
+\footnotesize \begin{verbatim}
+library(MASS)
+# Colour points and choose plotting symbols according to a levels of a factor
+plot(Cars93$Weight, Cars93$EngineSize, col=as.numeric(Cars93$Type),
+pch=as.numeric(Cars93$Type))
+
+# Adds x and y axes labels and a title.
+plot(Cars93$Weight, Cars93$EngineSize, ylab="Engine Size",
+xlab="Weight", main="My plot")
+# Add lines to the plot.
+lines(x=c(min(Cars93$Weight), max(Cars93$Weight)), y=c(min(Cars93$EngineSize),
+max(Cars93$EngineSize)), lwd=4, lty=3, col="green")
+abline(h=3, lty=2)
+abline(v=1999, lty=4)
+# Add points to the plot.
+\end{verbatim}\normalsize
+
+\newpage
+
+Histograms
+
+
+
+Stem and Leaf Plots
+
+\subsection{Bivariate Data}
+\begin{verbatim}
+Simple Scatterplots, Correlation and Covariance
+X1 =
+Y1 =
+Plot(X1,Y1)
+cor(X1)
+cov(Y1)
+\end{verbatim}
+\end{document}
+%-----------------------------------------------------------------------------------------------%

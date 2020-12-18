@@ -1,0 +1,80 @@
+
+
+%-------------------------------------------------------------------------%
+Removing whitespace
+
+\begin{verbatim}
+# returns string w/o leading whitespace
+trim.leading <- function (x)  sub("^\\s+", "", x)
+ 
+# returns string w/o trailing whitespace
+trim.trailing <- function (x) sub("\\s+$", "", x)
+ 
+# returns string w/o leading or trailing whitespace
+trim <- function (x) gsub("^\\s+|\\s+$", "", x)
+\end{verbatim}
+
+%-------------------------------------------------------------------------%
+Append to list
+\begin{verbatim}
+
+lappend <- function(lst, obj) {  
+     
+    lst[[length(lst)+1]] <- obj
+ 
+    return(lst)
+\end{verbatim}
+
+%-------------------------------------------------------------------------%
+
+% statisical
+scale, confint, complete.cases, gl, dist, summary, median,quantile, 
+
+% Maths
+Ceiling, floor
+
+%-------------------------------------------------------------------------%
+sweep
+
+cut
+do.call
+get
+merge
+table, addmargin,
+history, debug,
+source, dir
+cat, list.files
+nchar, order
+by, search
+which, grep
+sub
+gsub
+if, 
+ifelse, 
+set.seed, 
+array, 
+sample, 
+deriv, 
+integrate, 
+gamma, 
+cumsum, 
+diff,
+sign, 
+
+cut, table, 
+tabulate, 
+cor, outer, 
+prod, diag, 
+dist, 
+rep, 
+paste, 
+substring, 
+cat, print, unlist, 
+data.dump,
+data.restore, 
+options, 
+density, 
+scatter.smooth, 
+stem, boxplot, 
+qqnorm, qqplot,
+arrows, legend, text, mtext, abline, pairs, persp, contour, postscript.

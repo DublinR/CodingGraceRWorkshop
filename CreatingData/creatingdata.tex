@@ -1,0 +1,186 @@
+	\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{framed}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode"CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 201113:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{Introduction to R} \rhead{Kevin O'Brien} \chead{Creating Data} %\input{tcilatex}
+
+\begin{document}
+
+
+%---------------------------------------------------%
+\section{Data Creation and Transfer}
+
+%------------------------------------------------------%
+\subsection{The Assignment operator}
+The assignment operator is used to assign names to particular values. Historically the assign-
+ment operator was ) a "<-". 
+The assignment operator can also be =. This is valid as of R
+version 1.4.0.
+Both will be used, although, you should learn one and stick with it. Many long term R
+users prefer the arrow approach. You can also use -> as an assignment operator, reversing the
+usual assignment positions. (This is actually really useful). Commands are separated either by
+a semi colon or by a newline.
+\begin{framed}
+\begin{verbatim}
+> a <- 6
+> b = 5
+> a + b -> d
+> # dont use "c" as a variable name.
+> d
+[1] 11
+>e=7;f<-4  # two commands on one line.
+\end{verbatim}
+\end{framed}
+
+
+%------------------------------------------------------%
+Before we continue, try using the up and down keys, and see what happens. Previously
+typed commands are re-presented, and can be re-executed.
+R stores both data and output from data analysis (as well as everything else) in objects.
+The variables we have created so far are objects. A list of all objects in the current session can
+be obtained with ls().
+%==========================================================================%
+\subsection*{Reserved Words}
+Some names are used by the system, e.g.T, F,q,c etc . Avoid using these as names when you create objects..
+
+\subsection*{ The \texttt{c()} command}
+To create a simple data set, known as a vector, we use the c() command to create the vector.
+\begin{verbatim}
+> Y=c(1,2,4,8,16 ) #create a data vector with specified elements
+> Y
+[1] 1 2 4 8 16
+\end{verbatim}
+\subsection*{ Vector of Numeric Values}
+Numvec = c(10,13,15,19,25);
+
+\subsection*{ Vector of Character Values}
+Charvec = c("LouLou","Oscar","Rasher");
+
+
+\subsection*{Vector of Logical Values}
+Charvec = c(TRUE,TRUE,FALSE,TRUE);
+Vectors can be bound together either by row or by column.
+\begin{verbatim}
+> X=1:3; Y=4:6
+> cbind(X,Y)
+X Y
+[1,] 1 4
+[2,] 2 5
+[3,] 3 6
+>
+> rbind(X,Y)
+[,1] [,2] [,3]
+X 1 2 3
+Y 4 5 6
+\end{verbatim}
+%==============================================================================%
+\subsection{The scan() command}
+The scan() function is a useful method of inputting data quickly. You can use to quickly copy
+and paste values into the R environment. It is best used in the manner as described in the
+following example. Create a variable "X" and use the scan() function to populate it with
+values. Type in a value, and then press return. Once you have entered all the values, press
+return again to return to normal operation.
+\begin{framed}
+\begin{verbatim}
+> X=scan()
+1: 4
+2: 5
+3: 5
+4: 6
+5:
+Read 4 items
+\end{verbatim}
+\end{framed}
+
+Remark: Try the \texttt{edit()} command on object X.
+%==========================================================================%
+\subsection*{Characters with the \texttt{scan()} command}
+The scan() command can also be used forinputting character data.
+\begin{verbatim}
+> Y=scan(what=" ")
+1: LouLou
+2: Oscar
+3: Charlie
+4:
+Read 3 items
+> Y
+[1] "LouLou" "Oscar" "Charlie"
+\end{verbatim}
+%==============================================================================%
+\subsection*{Using the data editor}
+%==============================================================================%
+\subsection*{Spreadsheet Interface}
+R provides a spreadsheet interface for editing the values of existing data sets. We use the
+command \texttt{data.entry()}, and name of the data object as the argument. (Also try out the
+fix() command)
+\begin{framed}
+\begin{verbatim}
+> data.entry(X) # Edit the data set and exit interface
+> X
+
+\end{verbatim}
+\end{framed}
+
+
+
+\subsection*{Creating a Data Frame}
+\begin{framed}
+\begin{verbatim}
+A <- data.frame(
+         name=c("a","b","c"),
+         ownership=c("Case 1","Case 1","Case 2"),
+         listed.at=c("NSE",NA,"BSE"),
+              # Firm "b" is unlisted.
+         is.listed=c(TRUE,FALSE,TRUE),
+              # R convention
+              # boolean variables are named "is.something"
+         x=c(2.2,3.3,4.4),
+         date=as.Date(c("2004-04-04","2005-05-05","2006-06-06"))
+         )
+\end{verbatim}
+\end{framed}
+%====================================================================================%
+
+\subsection*{Using the \texttt{scan()} command to input character data}
+Previously we have seen the \texttt{scan()} command used to quickly input numeric data. The command can also be used to input character data. The addition argument , \texttt{what=" "}, must be used.  
+Create a variable “grouping” that comprises, in order,  five “A”s and then six “B”s.
+
+\begin{verbatim}
+# inputting character data
+
+grouping = scan(what=" ")
+
+# Enter values
+# Hit return again when you have finished.
+
+\end{verbatim}
+
+
+\subsection*{Spreadsheet Interface}
+\texttt{R} provides a spreadsheet interface for editing the values of existing data sets.
+We use the command \texttt{data.entry()} , and name of the data object as the argument.
+
+\begin{verbatim}
+> data.entry(X) # Edit the data set and exit interface
+> X
+\end{verbatim}
+
+\end{document}

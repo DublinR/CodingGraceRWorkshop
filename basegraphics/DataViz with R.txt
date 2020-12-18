@@ -1,0 +1,2 @@
+install.packages("GGalt")
+install.packages("ggfortify")

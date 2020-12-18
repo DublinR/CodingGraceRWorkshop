@@ -1,0 +1,51 @@
+\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{fancyhdr}
+\usepackage{subfiles}
+
+%\usepackage{listings}
+\usepackage{framed}
+\usepackage{graphicx}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 2011 13:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{Module B} \rhead{Mr. Kevin O'Brien}
+\chead{Statistical Analysis with \texttt{R}}
+%\input{tcilatex}
+\begin{document}
+
+\tableofcontents
+
+%MS4024 Inference procedures
+
+In this section, we will look at various inference procedures ( confidence intervals and hypothesis tests that R can implement. We have already encountered the correlation test. 
+As with every hypothesis test, there is a null hypothesis and an alternative hypothesis.
+For each procedure, these will be formulated separately. The outcome of the test is either the rejection or the failure to reject the null hypothesis.
+
+The key characteristics of the output of each test is the p-value. If the p-value is below a certain threshold ( we will use 1% or 0.01) we reject the null hypothesis, and accept the alternative hypothesis. Otherwise we fail to reject the null hypothesis.
+
+It is also possible to implement one tailed tests (“greater than” or “less than tests”) by specifying an additional argument. You can use the alternative="less" or alternative="greater" option to specify a one tailed test. Access the help command for instructions on how to do this. 
+
+For the sake of time we will solely use the two tailed test (tests of equality) for this 
+module.
+
+\subsection{Confidence intervals}
+With most of these procedures, a confidence interval is specified automatically. We will interpret each confidence interval on a case by case basis.
+
+
+
+
