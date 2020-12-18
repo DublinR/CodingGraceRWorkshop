@@ -1,0 +1,8 @@
+###
+if("raster" %in% (.packages())){
+  detach("package:raster", unload=TRUE) 
+}
+
+if("MASS" %in% (.packages())){
+  detach("package:MASS", unload=TRUE) 
+}
