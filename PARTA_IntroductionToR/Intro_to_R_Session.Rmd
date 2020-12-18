@@ -1,19 +1,6 @@
 \documentclass{article}
 % http://www.dummies.com/how-to/content/how-to-use-regular-expressions-in-r.html
-\usepackage[english]{babel}
-\usepackage{framed}
-\usepackage{times}
 
-\topmargin = 0pt
-\marginparwidth = 6pt
-\textwidth = 445pt
-\oddsidemargin = 10pt
-\textheight = 632pt
-
-\title{Introduction to R Programming - Part B}
-\date{\vspace{-5ex}}
-\begin{document}
-\maketitle
 \tableofcontents
 
 \section{Basic R editing – Script Editor and \texttt{edit()}}
