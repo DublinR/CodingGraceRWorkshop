@@ -3,9 +3,9 @@
 	%======================================================================================= %
 	\begin{frame}[fragile]
 		\frametitle{The Exponential Distribution}
-\large
+
 \textbf{The Exponential Distribution}
-\begin{itemize}
+
 \item The exponential distribution is often used to model the waiting time X between events occurring randomly and independently in time (or space).\item  Because it is a continuous distribution, the height of the exponential curve at any X refers to probability density rather than probability.
 \item  Probability is instead represented by area under the exponential curve.
 \end{itemize}
@@ -23,8 +23,8 @@
 %===============================================================================%
 \begin{frame}[fragile]
 	\frametitle{The Exponential Distribution}
-		\large
-\begin{itemize}
+		
+
 \item The main assumption of the exponential distribution is that at any point in time, the probability of an event occurring in the next instant does not depend on how much time has already elapsed since the previous event. 
 \item The parameter of the exponential distribution is the \textbf{rate parameter} at which events occur (the number of events per unit time). \item The mean of the exponential distribution is 1/rate.
 \end{itemize}
@@ -33,7 +33,7 @@
 %===============================================================================%
 \begin{frame}[fragile]
 	\frametitle{The Exponential Distribution}
-	\large
+	
 
 Waiting time X to the next event has probability density
 
@@ -70,8 +70,8 @@ The default value for the rate is 1, so you must alter to fit your circumstance.
 %===============================================================================%
 \begin{frame}[fragile]
 	\frametitle{Exponential Distribution : Problem}
-	\large
-\begin{itemize}
+	
+
 
 \item The mean checkout time of a supermarket cashier is three minutes. 
 \item Find the probability of a customer checkout being completed by the cashier in less than two minutes, three minutes and four minutes. 
@@ -81,19 +81,13 @@ The default value for the rate is 1, so you must alter to fit your circumstance.
 %===============================================================================%
 \begin{frame}[fragile]
 	\frametitle{The Exponential Distribution}
-	\large
+	
 \textbf{\emph{Solution}} 
-\begin{itemize}
+
 \item The checkout processing rate is equals to one divided by the mean checkout completion time. 
 \item Hence the processing rate is 1/3 checkouts per minute. 
 \item We then apply the function \texttt{\textbf{pexp()}} of the exponential distribution with rate=1/3.
 \end{itemize} 
-\end{frame}
-%===============================================================================%
-\begin{frame}[fragile]
-	\frametitle{The Exponential Distribution}
-	\large
-
 
 \begin{framed}
 \begin{verbatim}
@@ -114,19 +108,14 @@ The default value for the rate is 1, so you must alter to fit your circumstance.
 %%===============================================================================%
 %\begin{frame}[fragile]
 %	\frametitle{The Exponential Distribution}
-%	\large
+%	
 %The probabilities of finishing a checkout in under two, three and four minutes by the cashier are approximately 48.6 \%, 63.21\% and 73.6\% respectively. 
-%\end{frame}
-%===============================================================================%
-\begin{frame}[fragile]
-	\frametitle{The Exponential Distribution}
-	\large
-\begin{itemize}
+
+
 \item What is the median waiting time? To answer this question we would use the \texttt{\textbf{qexp()}} function.
 \item Recall that the median is value of $x$ such that $P(X \leq x) = 0.50$.
 \item Also determine the first and third quartiles $Q_1$ and $Q_3$.
-\end{itemize}
-\begin{framed}
+
 \begin{verbatim}
 > qexp(0.5,rate=1/3)
 [1] 2.079442
@@ -135,6 +124,3 @@ The default value for the rate is 1, so you must alter to fit your circumstance.
 > qexp(0.75,rate=1/3)
 [1] 4.158883
 \end{verbatim}
-\end{framed}
-\end{frame}
-\end{document}
