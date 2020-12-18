@@ -1,0 +1,92 @@
+
+\subsection{ Charts}
+
+\begin{verbatim}
+# Define 2 vectors cars <- c(1, 3, 6, 4, 9) trucks <- c(2, 5, 4,
+5, 12)
+
+# Calculate range from 0 to max value of cars and trucks g_range
+<- range(0, cars, trucks)
+
+# Graph autos using y axis that ranges from 0 to max # value in
+cars or trucks vector.  Turn off axes and # annotations (axis
+labels) so we can specify them ourself plot(cars, type="o",
+col="blue", ylim=g_range,
+   axes=FALSE, ann=FALSE)
+
+# Make x axis using Mon-Fri labels axis(1, at=1:5,
+lab=c("Mon","Tue","Wed","Thu","Fri"))
+
+# Make y axis with horizontal labels that display ticks at # every
+4 marks. 4*0:g_range[2] is equivalent to c(0,4,8,12). axis(2,
+las=1, at=4*0:g_range[2])
+
+# Create box around plot box()
+
+# Graph trucks with red dashed line and square points
+lines(trucks, type="o", pch=22, lty=2, col="red")
+
+# Create a title with a red, bold/italic font title(main="Autos",
+col.main="red", font.main=4)
+
+# Label the x and y axes with dark green text title(xlab="Days",
+col.lab=rgb(0,0.5,0)) title(ylab="Total", col.lab=rgb(0,0.5,0))
+
+# Create a legend at (1, g_range[2]) that is slightly smaller #
+(cex) and uses the same line colors and points used by # the
+actual plots legend(1, g_range[2], c("cars","trucks"), cex=0.8,
+   col=c("blue","red"), pch=21:22, lty=1:2);
+
+\end{verbatim}
+\end{myindentpar}
+\subsection{Bar charts}
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+# Define the cars vector with 7 values
+cars <- c(1, 3, 6, 4, 9, 5, 7)
+# Graph cars
+barplot(cars)
+\end{verbatim}
+
+\subsection{Boxplots}
+\subsection{Setting graphical parameters}
+\subsection{Miscellaneous}
+The following code can be used to make variations of the plots.
+
+
+<p> 
+\begin{verbatim}
+# Make an empty chart
+plot(1, 1, xlim=c(1,5.5), ylim=c(0,7), type="n", ann=FALSE)
+
+# Plot digits 0-4 with increasing size and color
+text(1:5, rep(6,5), labels=c(0:4), cex=1:5, col=1:5)
+
+# Plot symbols 0-4 with increasing size and color
+points(1:5, rep(5,5), cex=1:5, col=1:5, pch=0:4)
+text((1:5)+0.4, rep(5,5), cex=0.6, (0:4))
+
+# Plot symbols 5-9 with labels
+points(1:5, rep(4,5), cex=2, pch=(5:9))
+text((1:5)+0.4, rep(4,5), cex=0.6, (5:9))
+
+# Plot symbols 10-14 with labels
+points(1:5, rep(3,5), cex=2, pch=(10:14))
+text((1:5)+0.4, rep(3,5), cex=0.6, (10:14))
+
+# Plot symbols 15-19 with labels
+points(1:5, rep(2,5), cex=2, pch=(15:19))
+text((1:5)+0.4, rep(2,5), cex=0.6, (15:19))
+
+# Plot symbols 20-25 with labels
+points((1:6)*0.8+0.2, rep(1,6), cex=2, pch=(20:25))
+text((1:6)*0.8+0.5, rep(1,6), cex=0.6, (20:25))
+\end{verbatim}
+\end{myindentpar}
+
+
+
+
+
+
+
