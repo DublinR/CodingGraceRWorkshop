@@ -1,9 +1,8 @@
 
 #### {Adding lines}
 
+Adding Lines to a Scatter Plot
 
-
-\section*{Adding Lines to a Scatter Plot}
 Previously we have used scatter plots to plot bivariate data. They were constructed using the ``plot()`` command.  
 
 Using the ``abline()`` command, we can add lines to our scatter plots. We specify the argument according to the type of line required. 
@@ -87,15 +86,9 @@ plot(wt,mpg,pch=18,col="red")
 abline(coef(Fit1))
 </code>
 </pre>
-%\begin{center}
-%\includegraphics[scale=0.35]{coefPlot}
-%\end{center}
-\[IMAGE\]
-%#### {Line Types and Line Width}
-%To specify a line width, we use the \texttt\textbf{{lwd=`` argument.
 
 
-#### *{``abline()``
+#### ``abline()``
 
 Using the ``abline()} command, we can add lines to our scatter plots. We specify the argument according to the type of line required. A demonstration of three types of line is provided below.
 Additionally we change the colour of the added lines, by specifying a colour in the ``col`` argument. We can also change the line type to one of four possible types, using the ``lty} argument.
@@ -108,20 +101,14 @@ The line types are follows
 * 	``lty =3``  Dotted line
 * 	``lty =4``   Dash-dot line
 
-\footnotesize 
-
-
-
-
 
 
 #### {Adding the regression model line}
 
 The ``abline()`` function can be used to add a regression model line  by supplying as an argument the ``coef()``` values for intercept and slope estimates .These estimates can be inputted directly by using both functions in conjunction.
-
-\footnotesize <code>
+ <code>
 Fit1 =lm(y1~x);  coef(Fit1)
 abline(coef(Fit1))	
 </code>
-\end{document}
+
 
