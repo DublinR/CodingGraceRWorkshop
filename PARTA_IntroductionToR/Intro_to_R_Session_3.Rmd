@@ -1,0 +1,208 @@
+\frametitle{1.9 Basic \texttt{R} Editor}
+ \begin{itemize}
+ \item \texttt{R} has an inbuilt script editor. We will use it for this class, but there are plenty of top quality
+ Integrated Development Environments out there. (Read up about \textbf{RStudio} for example).
+ \item For a while, we will use the in-built script editor. Although it is advisable to start using \textbf{Rstudio} or something similar in the not-too-distant future.
+ \end{itemize}
+ 
+
+ 
+ %==============================================================================================%
+
+ % % SLIDE 1 - COVER SLIDE
+ \begin{figure}
+ \centering
+ \includegraphics[width=1.2\linewidth]{images/Rscript}         
+ \end{figure}
+   
+ %==============================================================================================%
+
+ \frametitle{1.9 Basic \texttt{R} Editor}
+ \begin{itemize}
+ \item To start a new script, or open an existing script simply go to File and click the appropriate
+ options. A new dialogue box will appear. 
+ 
+ \item You can write and edit code using this editor.
+ \item To pass the code for compiling , press the run line or selection option (The third icon
+ on the menu).
+ \end{itemize}
+
+ %==============================================================================================%
+
+ 
+ \begin{itemize}
+ \item Another way to read code is to use the \texttt{edit()} function, which operates directly from the
+ command line. 
+ \item To see how the code defining an object X was written (or more importantly,
+ could have been written) simply type \texttt{edit(X)}. 
+ \item This command has some useful applications
+ that we will see later on (the \texttt{scan()} command).
+ \end{itemize}
+ 
+
+ %==============================================================================================%
+
+ 
+ \textbf{Script Files}
+ \begin{itemize}
+ \item Scripts are saved as \texttt{.R} files. 
+ \item These scripts can be called directly using the \texttt{source()} command.
+ \end{itemize}
+ 
+ \begin{framed}
+ \texttt{source(myScript.R)}
+ 
+ \texttt{source(myDatasets.R)}
+ 
+ \texttt{source(myFunctions.R)}
+ \end{framed}
+
+ 
+ %============================================================================= %
+
+ \frametitle{Introduction to R - Continued}
+ \begin{itemize}
+ \item[1.10] Built-In Data Sets      
+ \item[1.11] The \texttt{summary()} command     
+ \item[1.12] Working directories      
+ \item[1.13] Coming Unstuck    
+ \item[1.14] Quitting the \texttt{R} environment   
+ \item[1.15] Data Objects  
+ \item[1.16] Listing all items in a workspace     
+ \item[1.17] Removing items   
+ \item[1.18] Checking and Transforming Types
+ \item[1.19] Saving and Loading R Data Objects    
+ \end{itemize}
+
+ 
+ 
+ %==============================================================================================%
+
+ \frametitle{1.10 Built-In Data Sets}
+ \textbf{Inbuilt Data Sets}\\
+ Several data sets , intended as learning tools, are automatically installed when R is installed.
+ Many more are installed within packages to complement learning to use those packages. \\
+ \bigskip
+ 
+ \textbf{iris}\\ One
+ of these is the famous Iris data set, which is used in many data mining exercises.
+ 
+ \begin{itemize}
+ \item airquality  ( very useful )
+ \item mtcars
+ \item Nile
+ \end{itemize}
+ More are available once packages are loaded.
+ 
+
+ %==============================================================================================%
+
+ % % SLIDE 1 - COVER SLIDE
+ \begin{figure}
+ \centering
+ \includegraphics[width=1.2\linewidth]{images/Rdatasets}        
+ \end{figure}
+   
+ %==============================================================================================%
+
+ % % SLIDE 1 - COVER SLIDE
+ \begin{figure}
+ \centering
+ \includegraphics[width=1.2\linewidth]{images/RdatasetsMore}   
+ \end{figure}
+   
+ %==============================================================================================%
+
+ 
+ \begin{itemize}
+ \item To see what data sets are available, simply type \texttt{data()}.
+ \item  To load a data set, simply type in the
+ name of the data set. Some data sets are very large.
+ \item  To just see the first few (or last) rows, we
+ use the \texttt{head()} function or alternatively the \texttt{tail()} function. 
+ \item The default number of rows of
+ these commands is 6. Other numbers can be specified.
+ \end{itemize}
+ 
+
+ %==============================================================================================%
+
+ % % SLIDE 1 - COVER SLIDE
+ \begin{figure}
+ \centering 
+ \includegraphics[width=1.2\linewidth]{images/irishead}      
+ \end{figure}
+   
+ %==============================================================================================%
+
+ % % SLIDE 1 - COVER SLIDE
+ \begin{figure}
+ \centering
+ \includegraphics[width=1.2\linewidth]{images/iristail}     
+ \end{figure}
+   
+ %==============================================================================================%
+
+ \begin{itemize}
+ \item In many situations, it is useful to call a particular data set using the \texttt{attach()} command. This
+ will save having to specify the data sets over repeated operations. 
+ \item The file can then be detached
+ using the \texttt{detach()} command.
+ \end{itemize}
+ 
+ 
+ 
+
+ %==============================================================================================%
+
+ \frametitle{1.11 The summary() command}
+ 
+ \begin{itemize}
+ \item The R command \texttt{summary()} is a generic function used to produce result “summaries” of the
+ results of various objects, from simple vectors to the output of complex model fitting functions.
+ \item The function invokes particular methods which depend on the class of the first argument.
+ \end{itemize}
+
+ %==============================================================================================%
+
+ % % SLIDE 1 - COVER SLIDE
+ \begin{figure}
+ \centering
+ \includegraphics[width=1.2\linewidth]{images/rabbitsummary}   
+ \end{figure}
+ 
+ 
+ %==============================================================================================%
+
+ % % SLIDE 1 - COVER SLIDE
+ \begin{figure}  
+ \includegraphics[width=1.2\linewidth]{images/irisinspect}     
+ \end{figure}
+   
+ %==============================================================================================%
+
+ % % SLIDE 1 - COVER SLIDE
+ \begin{figure}
+ \centering
+ \includegraphics[width=1.2\linewidth]{images/irissummary}
+ %\caption{}
+ %\label{fig:irissummary}
+ \end{figure}
+   
+ 
+ 
+ 
+ 
+ %==============================================================================================%
+
+ \frametitle{1.12 Working directories}
+ \large
+ \begin{itemize}
+ \item You can change your working directly by using the appropriate options on the File menu. 
+ \item To
+ determine the current working directory, you can use the \texttt{getwd()} command. 
+ \item To change the
+ working directory , we would use the \texttt{setwd()} command.
+ \item  This is quite important as objects
+ will be imported and exported to and from the specified directory.
+ \end{itemize}
