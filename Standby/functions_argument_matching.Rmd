@@ -1,12 +1,4 @@
- \documentclass{beamer}
- 
- \usepackage{amsmath}
- \usepackage{graphicx}
- 
- \usepackage{framed}
- \usepackage{amssymb}
- 
- \begin{document}
+
 %-------------------------------------------------------------------------------%
 \begin{frame}[fragile]{Writing Basic Functions}
 \begin{itemize}
@@ -61,10 +53,7 @@ sf2(a1=2, a3=3, a2=4), sf2(a3=2, a1=3, a2=4), etc.
 used for any unmatched arguments.
 \end{itemize}
 \end{itemize}
-\end{frame}
 
-%-------------------------------------------------------------------------------%
-\begin{frame}[fragile]{Default values}
 We can also give some/all arguments default values.
 \begin{verbatim}
 mypower <- function(x, pow=2)
@@ -83,6 +72,4 @@ If a value for pow is specified, that value is used.
 mypower(4, 3)  #x=4, pow=3
 [1] 64
 \end{verbatim}
-\end{frame}
 
-\end{document}
