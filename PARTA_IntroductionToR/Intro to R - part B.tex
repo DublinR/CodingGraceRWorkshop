@@ -1,20 +1,4 @@
-\documentclass{article}
-% http://www.dummies.com/how-to/content/how-to-use-regular-expressions-in-r.html
-\usepackage[english]{babel}
-\usepackage{framed}
-\usepackage{times}
 
-\topmargin = 0pt
-\marginparwidth = 6pt
-\textwidth = 445pt
-\oddsidemargin = 10pt
-\textheight = 632pt
-
-\title{Introduction to R Programming - Part B}
-\date{\vspace{-5ex}}
-\begin{document}
-\maketitle
-\tableofcontents
 
 \section{Basic R editing – Script Editor and \texttt{edit()}}
 R has an inbuilt script editor. We will use it for this class, but there are plenty of top quality “Integrated Development Environments “ out there. (Read up about RStudio for  example.)
@@ -51,62 +35,12 @@ Some data sets are very large. To just see the first few rows, we use the head()
 6          5.4         3.9          1.7         0.4  setosa
 \end{verbatim}
 \end{framed}
-%---------------------------------------------------------------------------------------------%
-\subsection*{Dimensions of a data set}
-We have remarked that some data sets are very large. This is perhaps a good place to consider summary information about data objects.
-For a simple vector – a useful command to determine the length (remark: sample size) is the function \texttt{length()}.
-\begin{framed}
-\begin{verbatim}
-> Y=5:9
-> length(Y)
-[1] 5
-\end{verbatim}
-\end{framed}
-%---------------------------------------------------------------------------------------------%
-For more complex data sets (and data frames, which we will see later) – we have several tools for assessing the size of data.
-\begin{framed}
-\begin{verbatim}
-> dim(iris)  # dimensions of data set
-[1] 150   5
-> nrow(iris) # number of rows
-[1] 150
-> ncol(iris) # number of columns
-[1] 5
-\end{verbatim}
-\end{framed}
-%---------------------------------------------------------------------------------------------%
-We can also determine the row names and column names using the functions \texttt{rownames()} and \texttt{colnames()}.
-If there are no specific row or column names – the command will just return the indices.
-
-\begin{framed}
-\begin{verbatim}
-> colnames(iris)
-[1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"
-
-\end{verbatim}
-\end{framed}
-The command \texttt{summary()} is one of the most useful commands in R. It is a generic function used to produce result summaries of the results of various functions. The function invokes particular methods which depend on the class of the first argument. 
-In other words – \texttt{R} picks out the most suitable type of summary for that data.
-{
-	\small
-\begin{framed}
-\begin{verbatim}
-> summary(iris)
-  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width          Species  
- Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100   setosa    :50  
- 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300   versicolor:50  
- Median :5.800   Median :3.000   Median :4.350   Median :1.300   virginica :50  
- Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199                  
- 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800                  
- Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500                  
->
-\end{verbatim}
-\end{framed}
-}
 
 %---------------------------------------------------------------------------------------------%
-\texttt{summary()} is particularly useful for manipulating data from more complex data objects.
-Working directories
+
+
+
+### Working directories
 You can change your working directly by using the appropriate options on the File menu.
 To determine the current working directory – you can use the \texttt{getwd()} command:	
 \begin{framed}
@@ -127,8 +61,10 @@ To change the working directory – we would use the \texttt{setwd()} command.
 [1] "C:/Users/Kevin/Documents"
 \end{verbatim}
 \end{framed}
-%---------------------------------------------------------------------------------% 
-\section{Time and Date functions}
+
+
+
+### Time and Date functions}
 The commands \texttt{Sys.time()} and \texttt{Sys.Date()} returns the system's idea of the current date with and without time.
 We can perform some simple algebraic calculations to compute time differences (i.e. to find out how long some code took to compile.
 \begin{framed}
@@ -164,8 +100,7 @@ To list all items in an \texttt{R} environment, we use the \texttt{ls()} functio
 \end{framed}
 %---------------------------------------------------------------------------------------------%
 
- 
-\section{Removing items}
+### Removing items}
 Sometimes it is desirable to save a subset of your workspace instead of the entire workspace. One option is to use the \texttt{rm()} function to remove unwanted objects right before exiting your \texttt{R} session; another possibility is to use the save function. 
 
 The save function accepts multiple arguments to specify the objects you wish to save, or, alternatively, a character vector with the names of the objects can be passed to save through the \texttt{list=} argument. 
@@ -178,7 +113,7 @@ For example, to save the \texttt{R} objects x, y, and z to a file called \texttt
 > save(x,y,z,fil= ‘mydata.rda’)
 \end{verbatim}
 
-\section{Saving and Loading R Data Objects}
+### Saving and Loading R Data Objects}
 In situations where a good deal of processing must be used on a raw dataset in order to prepare it for analysis, it may be prudent to save the \texttt{R} objects you create in their internal binary form. 
 
 One attractive feature of this scheme is that the objects created can be read by \texttt{R} programs running on different computer architectures than the one on which they were created, making it very easy to move your data between different computers. 
@@ -190,4 +125,3 @@ So one method for saving your work is to always save your workspace image at the
 \section{Quitting the R environment}
 As the front page text indicates – all you have to do to quite the workspace is to type in \texttt{q()}. You will then be prompted to save your work.
 %-----------------------------------------------------------------------------%
-\end{document}
