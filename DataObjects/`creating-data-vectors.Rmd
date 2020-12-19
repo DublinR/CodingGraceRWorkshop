@@ -20,7 +20,7 @@ For numeric vectors, the values are simply numbers.
 >NumVec<-c(10.4,5.6,3.1,6.4)
 </code>
 
-Alternatively we can use the texttt{assign()} command
+Alternatively we can use the ``assign()`` command
 
 For character vectors, the values are simply characters, specified with quotation marks.A logical vectors is a vector whose elements are TRUE, FALSE or NA
 
@@ -32,7 +32,7 @@ For character vectors, the values are simply characters, specified with quotatio
 <p>
 ### {Graphical data entry interface}
 
-texttt{Data.entry()} is a useful  command for inputting or editing data sets. 
+``Data.entry()`` is a useful  command for inputting or editing data sets. 
 Any changes are saved automatically (i.e. dont need to use the assignment operator). 
 We can also used the ``edit()`` command, which calls the ``R Editor``.
 
@@ -53,13 +53,14 @@ You can then use the graphical data entry interface to populate your data sets.
 
 #### {Accessing specified elements of a vector}
 
-The $n$th element of vector ``Vec" can be accessed by specifying its index when calling ``Vec".
+The $n$th element of vector ***Vec*** can be accessed by specifying its index when calling ``Vec".
 <code>
   Vec[n]
 </code>
 A sequence of  elements of vector ``Vec" can be accessed by specifying its index when calling ``Vec".
 <code>>Vec[l:u]
 </code>
+<p>
 Omitting and deleting the $n$th element of vector ``Vec"
 <code>
 >Vec[-n]
