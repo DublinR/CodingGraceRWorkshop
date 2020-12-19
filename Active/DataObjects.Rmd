@@ -1,0 +1,15 @@
+Data Objects
+========================================
+Column {.tabset}
+---------------------
+
+### Objects 
+
+As mentioned previously, \texttt{R} saves data as objects. Examples of data objects are
+
+*  Vectors
+*  Lists
+*  Dataframes
+*  Matrices
+
+The simple objects we have created previously are simply single element vectors.
