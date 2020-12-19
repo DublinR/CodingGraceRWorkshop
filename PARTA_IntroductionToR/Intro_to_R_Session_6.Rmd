@@ -1,88 +1,5 @@
-\frametitle{3.1 Dimensions of a data set}
- \begin{itemize}
- \item We have remarked that some data sets are very large. 
- \item This is perhaps a good place to consider
- summary information about data objects. 
- \item For a simple vector, a useful command to determine
- the length (remark: sample size) is the function \texttt{length()}.
- \end{itemize}
- \begin{framed}
- \texttt{Y=4:18}
- \texttt{length(Y)}
- 
- \end{framed}
- For more complex data sets ( and data frames which we will see later) , we have several
- tools for assessing the size of data.
-
- %==============================================================================================%
-
- \begin{figure}
- \centering
- \includegraphics[width=1.2\linewidth]{images/dimsiris}
- %\caption{}
- %\label{fig:dimsiris}
- \end{figure}
- 
- 
- 
-
- %==============================================================================================%
-
- \frametitle{Column (Variable) names and Row names}
- \begin{itemize}
- \item We can also determine the row names and column names using the functions \texttt{rownames()}
- and \texttt{colnames()}. 
- \item If there are no specific row or column names, the command will just return
- the indices.
- \end{itemize}
- \begin{figure}
- \centering
- \includegraphics[width=1.0\linewidth]{images/colnamesiris}
- %\caption{}
- %\label{fig:colnamesiris}
- \end{figure}
- 
-
- %==============================================================================================%
-
- \frametitle{3.2 The \texttt{summary()} command}
- \begin{itemize}
- \item The command \texttt{summary()} is one of the most useful commands in \texttt{R}. 
- \item It is a generic function used
- to produce result summaries of the results of various functions. 
- \item The function invokes particular
- methods which depend on the class of the first argument. 
- \item In other words, \texttt{R} picks out the most
- suitable type of summary for that data.
- \end{itemize}
-
- %==============================================================================================%
 
  
- 
- \begin{figure}
- \centering
- \includegraphics[width=0.99\linewidth]{images/irissummary}
- 
- \end{figure}
- \texttt{summary()} is particularly useful for manipulating data from more complex data objects.
- 
-
- %==============================================================================================%
-
- 
- \frametitle{3.3 Structure of a Data Object}
- \large
- The structure, class and storage mode of an object can be determined using the following
- commands. Try out a few.
- \begin{itemize}
- \item  \texttt{str()}
- \item  \texttt{class()}
- \item  \texttt{mode()}
- \end{itemize}
- 
- 
-
  %==============================================================================================%
 
  \begin{figure}
@@ -105,9 +22,9 @@
  
 
  
- %==============================================================================================%
+### Checking and Transforming Types
 
- \frametitle{Checking and Transforming Types}
+(Section 3.3 approx)
  
  \begin{itemize}
  \item The \texttt{is} family of commands can check if an object is of a certain type.
@@ -116,25 +33,19 @@
 \end{itemize}
 
  
- 
- %==============================================================================================%
-
- \frametitle{Checking and Transforming Types}
+{Checking and Transforming Types}
  % % SLIDE 1 - COVER SLIDE
  \begin{figure}
  \centering
  \includegraphics[width=1.2\linewidth]{images/numerictypes}    
  \end{figure}
  
- %==============================================================================================%
-
- 
- \frametitle{Checking and Transforming Types}
+{Checking and Transforming Types}
  % % SLIDE 1 - COVER SLIDE
  \begin{figure}
  \centering
  \includegraphics[width=1.2\linewidth]{images/typeconversion} 
  \end{figure}
    
- %==============================================================================================%
+<p>
  
