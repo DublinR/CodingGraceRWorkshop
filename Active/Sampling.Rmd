@@ -3,44 +3,30 @@ Sampling {data-navmenu="Maths with R"}
 
 ### Sampling
 
-#### {Sequence of Integers}
+#### Sequence of Integers
 A sequence of integers can be created using the “:” operator, specifying the upper and lower bounds on either side. This is very useful for Dice experiments. Importantly this sequence is constructed as a numeric vector.
-<pre>
-<code>
+
+```{r}
 1:10
 5:1
 Dice = 1:6
 Dice
 class(Dice)
 mode(Dice)
-<\code>
-</pre>
-
-<code>
-> 1:10
- [1]  1  2  3  4  5  6  7  8  9 10
-> 5:1
-[1] 5 4 3 2 1
-> Dice = 1:6
-> Dice
-[1] 1 2 3 4 5 6
-> class(Dice)
-[1] "integer"
-> mode(Dice)
-[1] "numeric"
-<\code>
+```
 
 
-#### {Playing with Dice}
+#### Playing with Dice
 
 
-Another important command is the ``sample()`` command. This command causes ``R} to select $n$ items from the specified vector. We can use it to simulate one roll of a die.
-<pre>
-<code>
+Another important command is the ``sample()`` command. This command causes ``R`` to select $n$ items from the specified vector. We can use it to simulate one roll of a die.
+
+```{r}
 Dice = 1:6
 sample(Dice,1)
-<\code>
-</pre>
+```
+
+<pre>
 <code>
 > sample(Dice,1)
 [1] 2 
@@ -54,12 +40,14 @@ sample(Dice,1)
 > sample(Dice,1)
 [1] 2
 <\code>
+</pre>
 
-%--------------------------------------------------------------------------------------%
-#### {Sampling Without Replacement and With Replacement}
+#### Sampling Without Replacement and With Replacement
 
-Suppose we wish to simulate two rolls of a die. Surely we just specify 2 in the argument of the ``sample()`` command. In fact we do, but this is not enough.
-The ``sample()`` command works on the default basis of \textbf{\textit{sampling without replacement}}. That is to say: once a number has been selected, it can not be selected again.
+Suppose we wish to simulate two rolls of a die. Surely we just specify 2 in the argument of the ``sample()`` command. 
+In fact we do, but this is not enough.
+The ``sample()`` command works on the default basis of ***sampling without replacement***. 
+That is to say: once a number has been selected, it can not be selected again.
 
 <code>
 > sample(Dice,6)
@@ -76,7 +64,7 @@ Sampling without replacement is appropriate if we are selecting lottery numbers.
 > 
 <\code>
 
-Going back to multiple dice rolls, what we do here is to additionally specify ``replace=TRUE}. 
+Going back to multiple dice rolls, what we do here is to additionally specify ``replace=TRUE``. 
 
 This specifies an experiment where there is \textbf{\textit{sampling with replacement}}. Let us simulate 20 dice rolls. We can also use the ``table()`` function to study the outcomes of the simulation. 
 
@@ -97,8 +85,10 @@ X
 <\code>
 
 
-Let us roll dice 300 times.  Each of the six outcome is equally likely,  so we will expect 50 realisations of each number.  But that rarely happens, as ***Sampling fluctation*** comes into play.
-In the table below, we see that the number 2 comes up thirteen more times than the number 3. Is there something wrong? A hidden bias in our code? No. It is just a random occurence.
+Let us roll dice 300 times.  Each of the six outcome is equally likely,  so we will expect 50 realisations of each number.  
+But that rarely happens, as ***Sampling fluctation*** comes into play.
+In the table below, we see that the number 2 comes up thirteen more times than the number 3. 
+Is there something wrong? A hidden bias in our code? No. It is just a random occurence.
 
 %-----------------------------------%
 <code>
@@ -112,12 +102,14 @@ X
  hist(X,breaks=c(0:6 + 0.5),col=c("red","blue","green"))
 <\code>
  
-A bar chart known as a \textbf{\textit{histogram}} to accompany this frequency table can be constructed using the following code. The command ``hist()`` is used to construct the histogram. The argument ``breaks} is used to specify the lower and upper bounds of each interval (the sides of each of the columns).
+A bar chart known as a \textbf{\textit{histogram}} to accompany this frequency table can be constructed using the following code. 
+The command ``hist()`` is used to construct the histogram. 
+The argument ``breaks`` is used to specify the lower and upper bounds of each interval (the sides of each of the columns).
 <pre>
 <code>
  hist(X,breaks=c(0:6 + 0.5),col=c("red","blue","green"))
 </pre>
-<\code>
+</code>
 
 <p>
 #### {Rolling Two Dice}
@@ -146,10 +138,7 @@ Z
 \end{veratim}
 
 
-
-
-%---------------------------------------------------------------------------------------------%
-#### {Dice Rolls Sums Experiment}
+### {Dice Rolls Sums Experiment}
 Let work on the basis of 100 dice rolls, and for the sake of simplicity let us consider the \textbf{sum} of those 100 single die-rolls. Importantly, we are simulating a \textbf{fair} die. The lowest mathematially possible value is 100, while the highest possible value is 600. We expect to get a value of approximately 350, halfway between the minimum and maximum, but each time we perform the experiment there will be slight fluctuations.  Try the last line of the code below a few times. How many times do you get a figure less than 340 or greater than 360?
 <pre>
 <code>
