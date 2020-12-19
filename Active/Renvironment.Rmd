@@ -1,0 +1,24 @@
+R Environment {data-navmenu="R Environment"}
+=======================================
+
+Column {.tabset}
+---------------------------------------
+
+### Time and Date functions
+
+The commands ``Sys.time()`` and ``Sys.Date()`` returns the system's idea of the current date with and without time.
+We can perform some simple algebraic calculations to compute time differences (i.e. to find out how long some code took to compile.)
+
+<pre>
+<code>
+> X1=Sys.time()
+> #Wait a few seconds
+>
+> X2=Sys.time()
+> X2-X1
+Time difference of 8.439614 secs
+>
+> Sys.Date() 
+[1] "2012-09-01"
+</code>
+</pre>
