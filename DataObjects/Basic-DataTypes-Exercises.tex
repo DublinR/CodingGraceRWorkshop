@@ -1,0 +1,54 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Datatypes in R}
+\large
+	
+
+
+# integers, doubles & numerics
+
+a <- 2
+b <- 2L
+
+is.numeric(a) ;  is.numeric(b)    # TRUE / TRUE
+is.integer(a) ;  is.integer(b)    # FALSE / TRUE
+is.double(a)  ;  is.double(b)     # TRUE / FALSE
+
+
+\end{verbatim}
+\end{framed}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Datatypes in R}
+\large
+	
+# atomic data types 
+
+A <- c(3,4,6,1)            # Numeric Vector
+B <- c(T,F,T,F,F,F)        # Logical Vector
+C <- c("Oscar","LouLou")   # Character Vector
+D <- diag(3)               # 3x3 Identity Matrix
+E <- list (A,B,C,D)        # List
+
+\end{verbatim}
+\end{framed}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Datatypes in R}
+\large
+	
+\begin{framed}
+\begin{verbatim}	
+is.atomic(A)  #TRUE
+is.atomic(B)  #TRUE 
+is.atomic(C)  #TRUE   
+is.atomic(D)  #TRUE   Matrices are atomic
+is.atomic(E)  #FALSE  Lists are NOT atomic
+
+\end{verbatim}
+\end{framed}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5

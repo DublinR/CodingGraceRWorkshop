@@ -1,0 +1,67 @@
+---
+title: "Introduction to ggplot2"
+author: "Daniel McInerney, Kevin O'Brien"
+date: "18 February 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Getting Started with ggplot2
+
+This R markdown file is an introduction to data analysis and visualisation using tidyverse, specifically dplyr and ggplot2:
+
+The exercise uses a subset of the Sub-compartment database, which has been exported as a comma separated file (CSV). 
+
+### Data Import
+Let's start by reading in the data using `read.csv`. Note that you can specify if the file has a header and what the field separator is.
+```{r}
+scdb <- read.csv('../DATA/scdb_subset.csv', head=TRUE, sep=',')
+summary(scdb)
+```
+
+
+### First Graphic
+Load the ggplot2 library
+
+```{r}
+library(ggplot2)
+```
+
+Let's start by creating a bar chart of counts of species within the database.
+
+```{r}
+ggplot(data=scdb) + geom_bar(mapping = aes(x=spp1))
+```
+
+
+Let's make it more readable by limiting the chart to **spruce** only:
+
+```{r}
+ggplot(data=dplyr::filter(scdb, spp1=='SS'|spp1=='NS')) + geom_bar(mapping = aes(x=spp1))
+```
+
+
+Let's extend this idea by creating a bar chart using two variables: Yield Class and Species.
+
+```{r}
+ggplot(data=scdb, aes(yc1, fill=spp1)) +  geom_histogram()
+```
+
+This is a start, but a bit overloaded.
+
+**Exercise**:  From what you learnt earlier, re-create the graphic, but only create a histogram using SS. (hint: you can use the filter function).
+
+
+
+```{r, eval=TRUE}
+ggplot(data=dplyr::filter(scdb, spp1=='SS'), aes(yc1, fill=spp1)) + geom_histogram()
+```
+
+
+```{r, eval=TRUE}
+ggplot(data=scdb, aes(x=spp1, y=gis_area)) + geom_boxplot()
+```
+

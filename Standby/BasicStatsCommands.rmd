@@ -1,0 +1,21 @@
+Descriptive and Quantile Statistics
+
+
+Some simple ones to start with
+
+mean()
+range()
+min()
+max()
+median()
+IQR()
+fivenum()
+
+
+Measures of Dispersion
+  range
+  variance
+  covariance
+  standard deviation
+
+sum

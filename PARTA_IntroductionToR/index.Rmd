@@ -1,0 +1,173 @@
+---
+title: "PyCon Limerick 2020"
+output: 
+  flexdashboard::flex_dashboard:
+    theme: united
+    css: style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+library(arsenal)
+```
+
+
+
+PyCon Limerick {data-navmenu="PyCon Limerick"}
+=====================================
+
+Column 
+--------------------
+
+### PyCon Limerick 2020
+
+<p>
+
+<div>
+<center>
+<img src="./images/PyConLimerick.jpg" width=600 alt="">
+</center>
+</div>
+
+<p>
+
+<h4>Programme and Abstracts</h4>
+<p>
+* Date: Saturday 29th February 2020
+* Location: Strand Hotel Limerick 
+* Times: 10.00am to 17:10pm approx
+
+
+<div>
+<center>
+<img src="./images/Microsoft.png" width=300 alt="">
+<img src="./images/JumpingRivers.png" width=300 alt="">
+<img src="./images/ResourceKraft.png" width=300 alt="">
+</center>
+</div>
+
+About {data-navmenu="PyCon Limerick"}
+==============================================================
+
+Column
+-------------------------------------------------------------
+
+### Pycon Limerick 2020
+
+PyCon Limerick 2020 will be returing to Limerick on Saturday 29th February 2020.
+This one day conference is a mixture of talks and workshops on topics related to the Python Programming Language.
+
+Python Ireland is the Irish organization representing the various chapters of Python users. 
+One of our key activities is the organization of Python Conferences. We have organized PyCon Ireland in Dublin over the last ten years.
+
+PyCon Ireland is now a highlight in the Dublin Tech Community calendar, with 400 python users attending the conference each autumn. PyCons are very popular with companies looking to recruit new talent.
+
+PyCon Limerick will take place on Saturday 29th February 2020 at the Strand Hotel Limerick.
+We hope to bring 150-200 technologists and coders from around Ireland to the city next Spring.
+
+
+
+```{r child="tableby.internal.Rmd"}
+```
+
+```{r child="summary.compare.Rmd"}
+```
+
+
+
+Our code of conduct/anti-harassment policy can be found here.
+
+
+
+
+
+
+
+Morning Session 2 {data-navmenu="Schedule"}
+====================================
+Column
+-------------------------------
+
+
+### Schedule
+
+| Time   |  Room   |  Talk Title    |
+|:-------|:-------|:------------------------------------------------------------|
+|11:45-12:15 | Room 1	| **Dermot Canniffe** <br> Bias Engineering  |	
+|11:45-12:15 | Room 2 |   | 
+|11:45-12:15 | Room 3 | **Chidubem Iddianozie** <br> Discriminative Machine Learning models for semantifying IoT data: Why, How and Lessons Learnt.	| 
+| | | ***(Pause)***|
+|12:20-13.05 | Room 1| **Cheuk-Ho Ting** (PyData London) <br> Are you supporting the right politician? - Graph Visualization of Voting Data	|
+|12:20-13.05 | Room 2| **Stephen Finucane** (Red Hat) <br> Getting started with Sphinx and Docutils 	|
+|12:20-13.05 | Room 3| **Allyn Hunt** <br> Adding data visualisation to your Flask app with React Victory charts |
+| | | |
+| 11:20-11:45 | | ***Lunch Break*** |
+
+Afternoon Session 1 {data-navmenu="Schedule"}
+====================================
+
+Column
+----------------------------------------------
+
+### Schedule
+
+| Time   |  Room   |  Talk Title    |
+|:-------|:-------|:------------------------------------------------------------|
+|14.15 - 14:45| Room 1 | **Miguel Grinberg** <br> I Want To Know What You Did Last Summer (engaging with the Python Community)	|	 
+|14.15 - 14:45| Room 2 | **James Nagle** (Kerry Data Science) <br> Social Network of 1916 Rising |	
+|14.15 - 14:45| Room 3 |  **Olga Lyashevska** (GMIT) <br> Class imbalance in gradient boosting classification algorithms: application to experimental stroke data|	 
+|  |  |   |
+|14.50 - 15.20 | Room 1 |	 **Iain Keaney**  (Skellig  ai) <br> High-Level APIs for Machine Learning	|	 
+|14.50 - 15.20 | Room 2 |  **Prashant Chaubey** <br> Writing Good Python Code	|	
+|14.50 - 15.20 | Room 3 |  **Stephen McEntee** <br> Trees for structure and support in Python	|	 
+| | | |
+|15.20-15.45 | | Coffee Break | 
+
+
+
+Abstracts for Morning Session 1 {data-navmenu="Schedule"}
+=====================================
+
+
+
+Column {.tabset}
+-------------------------------------------------
+
+Abstracts for Morning Session 1
+
+### Room 1
+
+<h5>GraphQL with Python </h5>
+
+
+* The talk will be about GraphQL technology. What is GraphQL and why we might use it. 
+* What are the advantages and disadvantages of using GraphQL. 
+* I will talk about the main concepts in GraphQL like schemas, types, queries, mutations, and subscriptions.
+* I will show how to implement GraphQL with python using an example with Graphene and Django. 
+* I will have a demo with a sample app build in Django that will serve as a GraphQL API.
+
+
+
+### Room 2
+
+
+
+
+
+
+<h5> Social Network Analysis of the 1916 rising (James Nagle)</h5>
+
+In 2015 the National Archives released files which had been compiled by the Dublin Metropolitan Police 100 years beforehand. From June 1915 to April 1916 they followed members of groups such as Sinn F?in, the Irish Volunteers and the Gaelic League and reported on who they were seen talking to. Using these files, the python library networkX and the open source network analysis package Gephi, I was able to build a social network of the interactions recorded.
+
+
+### Room 3
+
+<h5>Building smarter solutions with no expertise in machine learning (Laurent Picard)</h5>
+
+
+<h5> ELK Stack with Python for Effective Logging	(Kartik Sharma)</h5>
+
+System logging becomes one of the necessary parts in system design because of the large scale and a wide variety of data information systems are handling. Through this platform, I want to give our techies and other people in the audience an insight into the importance of logging and facilitating its features through ELK stack. ELK stands for Elastic, Logstash and Kibana, Through these 3 technologies, developers can create, store and visualize the working of the systems. These visualization also helps all the stakeholders with the relevant information of the system health. Daily cron or triggers can be set up in order to monitor the health of the system continuously. 
+

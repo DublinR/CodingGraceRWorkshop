@@ -1,0 +1,220 @@
+---
+title: "Introduction to dplyr"
+author: "Daniel McInerney, Kevin O'Brien"
+date: "18 February 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction to dplyr
+
+This R markdown file is an introduction to data analysis and visualisation using tidyverse, specifically dplyr and ggplot2:
+
+The exercise uses a subset of the Sub-compartment database, which has been exported as a comma separated file (CSV). 
+
+### Getting Started
+Let's start by reading in the data using `read.csv`. Note that you can specify if the file has a header and what the field separator is.
+```{r}
+scdb <- read.csv('../DATA/scdb_subset.csv', head=TRUE, sep=',')
+```
+
+
+Check that the data has been correctly assigned to the scdb object
+
+```{r}
+ls()
+```
+
+Review the internal structure of the scdb object.  
+```{r}
+str(scdb)
+```
+
+Note that first line of the output, what data type is it?
+
+Do you know a function that can be used to confirm this data type?
+
+
+You can show the full contents of the object by simply typing `scdb`:
+```{r, eval=FALSE}
+scdb
+```
+
+Return the field names associated with the object
+`scdb`:
+```{r}
+names(scdb)
+```
+
+### Summarising your data
+
+And summarise the data stored in the object
+```{r, eval=TRUE}
+summary(scdb)
+```
+
+Extract subsets for summaries. Firstly for a specific field, note that you identify a field using the "$" and then the field name. Secondly, select the first five columns, using [1:5]
+
+```{r}
+summary(scdb$SURVEY_YEA)
+
+summary(scdb[1:5])
+```
+
+Note, summarise only the first 30 rows, note the use of the comma:
+
+```{r}
+summary(scdb[1:30,])
+```
+
+
+
+## Getting Started with dplyr
+
+load dplyr package
+```{r}
+library(dplyr)
+```
+
+We will present some of the key dplyr functions that facilitate data manipulation in R. These include:
+
+1. **select()** - pick variables by their names
+2. **filter()** - pick observations by their values
+3. **arrange()** - reorder the rows
+4. **mutate()** - create new variables with functions using existing variables
+5. **summarize()** - collapse many values down to a single summary
+
+One unique feature of dplyr is the 'pipe' function "%>%", which can be used to chain functions together.
+
+### select() function
+
+
+Let's start by selecting 3 columns (area, plant year and species) to a new object (scdb_subset):
+```{r}
+
+scdb %>% 
+    select(gis_area, pyr1, spp1) -> scdb_subset
+summary(scdb_subset)
+
+```
+
+You could do this in one step as follows:
+```{r}
+
+scdb %>% 
+  select(gis_area, pyr1, spp1) %>% 
+  summary()
+
+```
+
+
+
+More flexible select statements, for instance select all the species fields (i.e. SPP1, SPP2, SPP3, ...) using the **contains()** helper function:
+
+```{r}
+
+scdb %>% 
+  select(com_sub, gis_area, contains('spp')) -> scdb_subset_species
+
+names(scdb_subset_species)
+```
+
+
+Let's suppose, you want to omit Species 4 from the above command:
+
+```{r}
+
+scdb %>% 
+  select(com_sub, gis_area, contains('spp'), -(spp4)) %>%
+  summary()
+
+```
+
+Yet another way to achieve the same thing using the **num_range()** helper function
+
+```{r}
+
+scdb %>% 
+  select(com_sub, gis_area, num_range('spp',1:3)) %>%
+  summary()
+
+```
+
+**Exercise**: What happens if you include a variable name twice in the select function?
+
+
+Let's suppose that you want to move the above variables to the start of the data frame, than you can use the **everything()** function as follows:
+
+```{r, eval=FALSE}
+
+scdb %>% 
+  select(com_sub, gis_area, num_range('spp',1:3), everything()) %>%
+  summary()
+
+```
+
+
+
+**Exercise**: Select all fields, but exclude all species fields
+
+
+
+### filter() function
+
+**filter()** - pick observations by their values using specific expressions. The filter function is synonymous with queries in SQL. 
+
+
+
+Let's filter our data frame to retrieve all rows where the first species is Sitka spruce (SS):
+
+```{r}
+
+scdb %>% 
+  filter(spp1 == 'SS') %>% 
+  summary() 
+
+```
+
+
+Let's filter our data frame to retrieve all subs were the first species is Sitka spruce (SS) and where they are older than 30 years of age:
+
+```{r}
+
+scdb %>% 
+  filter(spp1 == 'SS' & age1 > 30) %>% 
+  summary() 
+
+```
+
+**Exercise**: From what you learned this morning, what function could you use to determine how many records are in your result?
+
+
+
+
+### arrange() function
+
+Order columns using the *arrange()* function. 
+
+Let's select some fields from our data frame and order them by area. 
+
+### 'arrange' function - to sort your data 
+```{r}
+
+scdb %>% 
+  select(compartmen, subid, gis_area) %>%
+  arrange(gis_area) %>% 
+  head()
+
+```
+
+### Combining select() and filter()
+
+**Exercise**: Using the SCDB, select all subs where the first species is Lodgepole and that were planted before 2010 and summarise the area 
+
+
+
+
+

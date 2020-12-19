@@ -1,0 +1,61 @@
+%-----------------------------------------------------------------------------------------------------------%
+%--------------------------------------------------------------------------------------DATA FRAMES----------%
+\frametitle{Data Frames}
+
+
+Another way that information is stored is in data frames. This is a way to take many vectors of different types and store them in the same variable. The vectors can be of all different types. For example, a data frame may contain many lists, and each list might be a list of factors, strings, or numbers.
+
+There are different ways to create and manipulate data frames. Most are beyond the scope of this introduction. They are only mentioned here to offer a more complete description.
+\frametitle{Data Frames}
+Technically, a data frame in R is a very important type of data object;  a type of table where the typical use employs the rows as observations (or cases) and the columns as variables.
+Inter alia, a data frame differs from a matrix in that it can contain character values.
+Many data sets are stored as data frames.
+Let us consider the following two variables; age and height.
+\begin{verbatim}
+> age=18:29
+> age
+[1] 18 19 20 21 22 23 24 25 26 27 28 29
+\end{verbatim}
+
+In similar fashion, we entered the average heights in a vector called height.
+\begin{verbatim}
+>height=c(76.1,77,78.1,78.2,78.8,79.7,79.9,81.1,81.2,81.8,82.8,83.5)
+> height
+[1] 76.1 77.0 78.1 78.2 78.8 79.7 79.9 81.1 81.2 81.8 82.8 83.5
+\end{verbatim}
+
+We will now use R's data.frame() command to create our first data frame and store the results in the data frame "village".
+\begin{verbatim}
+> village=data.frame(age=age,height=height)
+\end{verbatim}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+\begin{frame}[fragile]
+How do we access the data in each column? One way is to state the variable containing the data frame, followed by a dollar sign, then the name of the column we wish to access (as with Lists earlier).
+For example, if we wanted to access the data in the "age" column, we would do the following:
+\begin{verbatim}
+ > village$age
+ [1] 18 19 20 21 22 23 24 25 26 27 28 29
+\end{verbatim}
+The additional typing required by the "dollar sign" notation can quickly become tiresome, so R provides the ability to "attach" the variables in the dataframe to our workspace.
+> attach(village)
+
+Let's re-examine our workspace. ( The \texttt{ls()} command lists all data objects in the workspace )
+> ls()
+[1] "village"
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+\begin{frame}[fragile]
+No evidence of the variables in the workspace. However, R has made copies of the variables in the columns of the data frame, and most importantly, we can access them without the "dollar notation."
+\begin{verbatim}
+> age
+ [1] 18 19 20 21 22 23 24 25 26 27 28 29
+> height
+ [1] 76.1 77.0 78.1 78.2 78.8 79.7 79.9 81.1 81.2 81.8 82.8
+[12] 83.5
+\end{verbatim}
+
+Previously we have seen rownames() and colnames() to determine the names from an existing data frame. We can use these commands to create names for a new data frame.
+
+\end{frame}

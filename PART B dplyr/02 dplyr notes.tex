@@ -1,0 +1,47 @@
+
+
+% - http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
+
+\section*{Single table verbs}
+
+Dplyr aims to provide a function for each basic verb of data manipulating:
+\begin{itemize}
+	\item \texttt{ filter() } (and \texttt{  slice() })
+	\item \texttt{ arrange() }
+	\item \texttt{ select() } (and \texttt{  rename() })
+	\item \texttt{ distinct() }
+	\item \texttt{ mutate() } (and \texttt{  transmute() })
+	\item \texttt{ summarise() }
+	\item \texttt{ sample_n() } and \texttt{  sample_frac() }
+\end{itemize}
+
+% If you've used plyr before, many of these will be familar.
+
+%========================================================================%
+
+\section*{Grouped operations}
+
+These verbs are useful, but they become really powerful when you combine them with the idea of “group by”, repeating the operation individually on groups of observations within the dataset. In dplyr, you use the group_by()} function to describe how to break a dataset down into groups of rows. You can then use the resulting object in exactly the same functions as above; they'll automatically work “by group” when the input is a grouped.
+
+The verbs are affected by grouping as follows:
+\begin{itemize}
+	\item grouped \texttt{ select()} is the same ungrouped \texttt{ select()}, excepted that retains grouping variables are always retained. 
+	
+	\item 
+	grouped \texttt{  arrange()} orders first by grouping variables
+	
+	\item 
+	\texttt{ mutate()} and \texttt{ filter()} are most useful in conjunction with window functions (like \texttt{ rank()}, or \texttt{ min(x) == x), and are described in detail in vignette("window-function").
+		
+		\item 
+		\texttt{ sample_n()} and \texttt{ sample_frac()} sample the specified number/fraction of rows in each group.
+		
+		\item 
+		\texttt{ slice()} extracts rows within each group.
+		
+		\item 
+		\texttt{ summarise()} is easy to understand and very useful, and is described in more detail below.
+	\end{itemize}
+	
+	%=====================================%
+	

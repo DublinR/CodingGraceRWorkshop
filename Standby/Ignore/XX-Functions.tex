@@ -1,0 +1,35 @@
+
+%------------------------------------------------------------------------------------------------------%
+\newpage
+\frametitle{Functions}
+
+The function definition syntax of R is similar to that of JavaScript. For example:
+f <- function(a, b) { return (a+b)}
+The function function returns a function, which is usually assigned to a variable, f in this case, but need not be. You may use the function statement to create an anonymous function (lambda expression).
+
+Note that return is a function; its argument must be contained in parentheses, unlike C where parentheses are optional. The use of return is optional; otherwise the value of the last line executed in a function is its return value.
+Default values are defined similarly to C++. In the following example, b is set to 10 by default.
+f <- function(a, b=10) { return (a+b)}
+
+So f(5, 1) would return 6, and f(5) would return 15. R allows more sophisticated default values than does C++. A default value in R need not be a static type but could, for example, be a function of other arguments.
+C++ requires that if an argument has a default value then so do all values to the right. This is not the case in R, though it is still a good idea. The function definition
+
+\begin{framed}
+\begin{verbatim}
+f <- function(a=10, b) { return (a+b)}
+\end{verbatim}
+\end{framed}
+
+is legal, but calling f(5) would cause an error. The argument a would be assigned 5, but no value would be assigned to b. The reason such a function definition is not illegal is that one could still call the function with one named argument. For example, f(b=2) would return 12.
+
+Function arguments are passed by value. The most common mechanism for passing variables by reference is to use non-local variables. (Not necessary global variables, but variables in the calling routine's scope.) A safer alternative is to explicitly pass in all needed values and return a list as output.
+
+Scope
+
+R uses lexical scoping while S-PLUS uses static scope. The difference can be subtle, particularly when using closures.
+Since variables cannot be declared � they pop into existence on first assignment � it is not always easy to determine the scope of a variable. You cannot tell just by looking at the source code of a function whether a variable is local to that function.
+R Statistical Programming - Functions
+
+An important skill in R programming is the ability to write functions
+
+Please see the written example WriteFunction.R

@@ -1,0 +1,59 @@
+
+ \documentclass{beamer}
+ 
+ \usepackage{amsmath}
+ \usepackage{graphics}
+ \usepackage{graphicx}
+ \usepackage{framed}
+ \usepackage{amssymb}
+ 
+ \begin{document}
+
+ 	\begin{frame}
+\frametitle{Relational and Logical Operators}
+
+Relational operators allow for the comparison of values in vectors.
+\begin{center}
+\begin{tabular}{|c|c|}
+  \hline
+greater than &	$>$\\
+less than&	$<$\\
+equal to	&$==$\\
+less than or equal to&	$<=$\\
+greater than or equal to&	$>=$\\
+not equal to	&$!=$\\
+  \hline
+\end{tabular}
+\end{center}
+ 	\end{frame}
+ 	\begin{frame}
+
+Note the difference of the equality operator "==" with assignment operator "=".
+
+\& and \&\& indicate logical AND and $\|$ and $\|\|$ indicate logical OR.
+
+The shorter form performs element-wise comparisons in much the same way as arithmetic operators. The longer form is appropriate for programming control-flow and typically preferred in "if" clauses.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+\begin{frame}[fragile]
+
+\begin{itemize}
+\item We can use relational operators to subset vectors (as well as more complex data objects such as data frames, which we will meet later).
+\item We specify the  relational condition in square brackets.
+\item We can construct compound relational conditions too, using logical operators
+\end{itemize}
+%----------------------------------%
+\begin{framed}
+\begin{verbatim}
+> vec=1:19
+> vec[vec<5]
+[1] 1 2 3 4
+> vec[(vec<6)|(vec>16)]
+[1]  1  2  3  4  5 17 18 19
+\end{verbatim}
+\end{framed}
+\end{frame}
+\end{document}
+

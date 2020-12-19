@@ -13,10 +13,10 @@ Additionally we change the colour of the added lines, by specifying a colour in 
 
 The line types are follows
 
-      	texttt{lty =1}   Normal full line (default)
-      	texttt{lty =2}   Dashed line
-      	texttt{lty =3}   Dotted line
-      	texttt{lty =4}   Dash-dot line
+      texttt{lty =1}   Normal full line (default)
+      texttt{lty =2}   Dashed line
+      texttt{lty =3}   Dotted line
+      texttt{lty =4}   Dash-dot line
 
  <code>
 x=rnorm(10)
@@ -34,10 +34,10 @@ abline(a=0,b=1,col="green") # add a line to your plot with intercept "a" and slo
 To change the plot character (the symbol for each covariate, we supply an additional argument to the plot() function.  This argument is formulated as pch=n where n is some number.
 Additionally we change the colour of the characters, by specifying a colour in the col argument.
  <code>
-plot(x,y,pch=15,col="red")		#Square plot symbols
-plot(x,y,pch=16,col="green")		#Orb plot symbols
-plot(x,y,pch=17,col="mauve")		#Triangular plot symbols
-plot(x,y,pch=36	,col="amber")		#Dollar sign plot symbols
+plot(x,y,pch=15,col="red")#Square plot symbols
+plot(x,y,pch=16,col="green")#Orb plot symbols
+plot(x,y,pch=17,col="mauve")#Triangular plot symbols
+plot(x,y,pch=36,col="amber")#Dollar sign plot symbols
 </code>
 Recall that we can add new variates to an existing scatterplot using the points() function. Remember to set the vertical and horizontal limits accordingly.
  <code>
@@ -52,7 +52,7 @@ The texttt{abline()} function can be used to add a regression model line  by sup
 
  <code>
 Fit1 =lm(y1~x);  coef(Fit1)
-abline(coef(Fit1))	
+abline(coef(Fit1))
 </code>
 
 <p>
@@ -60,21 +60,21 @@ abline(coef(Fit1))
 
 It is good practice to label your scatterplots properly. You can specify the following argument
 
-      	main="Scatterplot Example", 	This provides the plot with a title
-      	sub="Subtitle",   This adds a subtitle
-      	xlab="X variable ",				This command labels the x axis 
-  ylab="y variable ",				This command labels the y-axis
+      main="Scatterplot Example", This provides the plot with a title
+      sub="Subtitle",   This adds a subtitle
+      xlab="X variable ",This command labels the x axis 
+  ylab="y variable ",This command labels the y-axis
 
 We can also add text to each margin, using the texttt{mtext()} command.  
 We simply require the number of the side. (1 = bottom, 2=left,3=top,4=right). 
 We can change the colour using the col argument.
  <code>
-plot(x,y,main="Scatterplot Example",   sub="subtitle",    xlab="X variable ", ylab="y variable ")	
+plot(x,y,main="Scatterplot Example",   sub="subtitle",    xlab="X variable ", ylab="y variable ")
 mtext("Enhanced Scatterplot", side=4,col="red ")
 </code>
 Alternatively , we can also use the command title() to add a title to an existing scatterplot.
  <code>
-title(main="Scatterplot Example)	
+title(main="Scatterplot Example)
 </code>
 
 

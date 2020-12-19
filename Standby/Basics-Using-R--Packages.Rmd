@@ -1,0 +1,17 @@
+Working with R Pacakges
+====================================
+
+\begin{itemize}
+\item Type `library()` onto the command line to find out what packages were installed on your computer
+when you put in `R`. 
+\item Now type `search()` to get a list of the packages from that list that are
+already loaded in (installed packages are not necessarily loaded in). 
+\end{itemize}
+
+Installing R Pacakges
+====================================
+
+```{r}
+install.package("packagename")
+download.package("packagename")
+```

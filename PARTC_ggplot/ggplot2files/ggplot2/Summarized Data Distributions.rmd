@@ -1,0 +1,86 @@
+Summarized Data Distributions
+========================================================
+
+Chapter 6 of ***R Graphics cookbook*** by Winston Chang
+
+### 1. Preliminaries
+- Load packages **ggplot2** and **MASS**
+- Prepare Data Sets **faithful**(base) and **birthwt**(MASS)
+
+```{r}
+# Preliminaries
+library(ggplot2)
+library(MASS) # Birth Weight data set
+
+# Make a copy of the data
+birthwt1 <- birthwt
+# Convert smoke to a factor
+birthwt1$smoke <- factor(birthwt1$smoke)
+```
+
+#### 1.1 Old Faithful Data Set
+Description: Waiting time between eruptions and the duration of the eruption for the Old Faithful geyser in Yellowstone National Park, Wyoming, USA.
+
+- `eruptions` (numeric)	Eruption time in mins
+- `waiting` (numeric)  Waiting time to next eruption (in mins)
+
+```{r}
+dim(faithful)
+head(faithful)
+```
+
+#### 1.2 Birthweight Data Set
+```{r}
+dim(birthwt1)
+head(birthwt1)
+```
+<hr>
+### 2. Making a Basic Histogram
+***Example 6.1***
+```{r fig.width=7, fig.height=6}
+ggplot(faithful, aes(x=waiting)) + geom_histogram()
+```
+
+
+#### 2.1 Adjusting binwidth
+We will focus on an overview of the geoms in general, but this warning message indicated that these can take additional arguments. Let's change the binwidth to 3.
+```{r fig.width=7, fig.height=6}
+ggplot(faithful, aes(x=waiting)) + geom_histogram(binwidth=3)
+# No Warning message
+```
+<hr>
+
+### 3. Making a Density Curve
+***Example 6.3***
+- use of `geom_density()`
+```{r fig.width=7, fig.height=6}
+ggplot(faithful, aes(x=waiting)) + geom_density()
+```
+<hr>
+
+```{r fig.width=7, fig.height=6}
+ggplot(faithful, aes(x=waiting)) +
+geom_line(stat="density", adjust=.25, colour="red") +
+geom_line(stat="density") +
+geom_line(stat="density", adjust=2, colour="blue")
+```
+<hr>
+### 4. Making Multiple Density Curves from Grouped Data
+***Example 6.5***
+```{r fig.width=7, fig.height=6}
+
+# Map smoke to colour
+ggplot(birthwt1, aes(x=bwt, colour=smoke)) + geom_density()
+# Map smoke to fill and make the fill semitransparent by setting alpha
+ggplot(birthwt1, aes(x=bwt, fill=smoke)) + geom_density(alpha=.3)
+```
+
+<hr>
+### 5. Making a Frequency Polygon
+***Example 6.6***
+
+- use of `geom_freqpoly()`
+
+```{r fig.width=7, fig.height=6}
+ggplot(faithful, aes(x=waiting)) + geom_freqpoly()
+```

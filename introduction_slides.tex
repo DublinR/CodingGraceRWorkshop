@@ -1,0 +1,147 @@
+\section{R Primer} 
+
+
+
+\subsection{Introduction to R}
+
+ %==============================================================================================%
+
+#### Objectives of Workshop}
+
+*  Provide an introduction to the R Language
+*  Packages \& Task-Views
+*  Briefly explain data types
+*  Demonstrate how to read and write data
+*  Manipulating data
+\end{itemize}
+
+
+ %==============================================================================================%
+ 
+ % % SLIDE 1 - COVER SLIDE
+ \begin{figure}
+ \centering
+ \includegraphics[width=0.9\linewidth]{./figures/R_logo}
+ \end{figure}
+ \[ \mbox{Introduction to R} \]
+ 
+ 
+
+ 
+ %============================================================================= %
+
+
+#### What is R?}
+
+*  R is a dialect of the S language (S-Plus)
+*  It follows S in terms of its linkage between graphics and data analysis
+*  It was initially written by Robert Gentleman and Ross Ihaka, who defined it as:
+*  "R is a language and environment for statistical computing and graphics"
+*  It is a programming environment within which statistical analysis  and visualisation is conducted.
+*  R has an extensive library of packages that offer state-of-the-art capabilities
+\end{itemize}
+
+
+
+ %==============================================================================================%
+ 
+#### R as a programming environment}
+ 
+ 
+ *  uses a well-developed but simple programming language
+ *  allows for rapid development of new tools according to user demand
+ *  these tools are distributed as packages, which any user can download to customize the R
+ environment.
+
+ 
+ 
+ %==============================================================================================%
+ 
+{Comprehensive R Archive Network}
+ 
+ *  Base R and most R packages are available for download from the Comprehensive R Archive Network
+ (CRAN) cran.r-project.org. 
+ *  Base R comes with a number of basic data management,
+ analysis, and graphical tools 
+ *  R’s power and flexibility, however, lie in its array of packages
+ (currently more than 6,000!)
+
+ 
+ 
+ %==============================================================================================%
+
+
+
+#### R-project Resources}
+\begin{block}{R Website}
+
+*  \url{http://r-project.org}
+\end{itemize}
+\end{block}
+
+
+ 
+{Comprehensive R Archive Network}
+ 
+ *  Base R and most R packages are available for download from the Comprehensive R Archive Network
+ (CRAN) cran.r-project.org. 
+ *  Base R comes with a number of basic data management,
+ analysis, and graphical tools 
+ *  R’s power and flexibility, however, lie in its array of packages
+ (currently more than 6,000!)
+
+ 
+ 
+
+
+\begin{block}{R Contributed Packages}
+
+*  \url{http://cran.r-project.org/web/packages/}
+\end{itemize}
+\end{block}
+\begin{block}{R Task View}
+
+*  \url{http://cran.r-project.org/web/views/}
+*  \url{http://cran.r-project.org/web/views/Spatial.html}
+\end{itemize}
+\end{block}
+
+
+
+#### Some Important R Packages}
+
+\begin{block}{\texttt{dplyr}}
+A fast, consistent tool for working with data frame like objects,
+both in memory and out of memory.
+\end{block}
+
+\begin{block}{\texttt{ggplot2}}
+The ggplot2 package, created by Hadley Wickham, offers a powerful graphics language for creating elegant and complex plots. Its popularity in the R community has exploded in recent years. Origianlly based on Leland Wilkinson's The Grammar of Graphics, ggplot2 allows you to create graphs that represent both univariate and multivariate numerical and categorical data in a straightforward manner. Grouping can be represented by color, symbol, size, and transparency. The creation of trellis plots (i.e., conditioning) is relatively simple. 
+\end{block}
+
+
+
+#### Some Important R-Spatial Packages}
+
+\begin{block}{\texttt{rgdal}}
+Provides bindings to Frank Warmerdam's Geospatial Data Abstraction Library (GDAL) (starting from 1.6.3, < 2) and access to projection/transformation operations from the PROJ.4 library. The GDAL and PROJ.4 libraries are external to the package, and, when installing the package from source, must be correctly installed first. Both GDAL raster and OGR vector map data can be imported into R, and GDAL raster data and OGR vector data exported. 
+\end{block}
+
+\begin{block}{\texttt{raster: Geographic data analysis and modeling}}
+Reading, writing, manipulating, analyzing and modeling of gridded spatial data. The package implements basic and high-level functions. Processing of very large files is supported.
+\end{block}
+
+%
+
+#### Some Important R-Spatial Packages}
+
+\begin{block}{\texttt{sp: classes and methods for spatial data}}
+A package that provides classes and methods for spatial data. The classes document where the spatial location information resides, for 2D or 3D data. Utility functions are provided, e.g. for plotting data as maps, spatial selection, as well as methods for retrieving coordinates, for subsetting, print, summary, etc.
+\end{block}
+
+\begin{block}{\texttt{RColorBrewer: ColorBrewer Palettes}}
+Provides color schemes for maps and other graphics designed by Cynthia Brewer as described at %http://colorbrewer2.org
+\end{block}
+
+
+

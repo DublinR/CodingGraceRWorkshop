@@ -1,0 +1,580 @@
+
+
+R Workshop
+Introduction to R
+The R environment
+Basic Mathematical Calculations
+Data Input and Output
+Data Manipulation
+Descriptive and Quantile Statistics
+Frequency Analysis
+Sequences
+Data Objects
+Preview
+Graphical Methods
+Task 1 : Bland Altman Plot
+Matrices
+Packages
+Precision
+Probability Distributions
+Task 2 : Simulating rolls of a die.
+Simulating a dice experiment
+Task 3: Implementing the Central Limit Theorem
+Hypothesis Tests
+GUIs and  IDEs
+ 
+ 
+  Introduction to R
+History of R
+
+
+
+Probability distributions
+The discrete uniform distribution
+parameters: min , max.
+The default values are 0 and 1.
+
+Other Mathematical Functions
+ 
+Complex numbers
+x = -1 ;  sqrt(x)  ;  str(x) ;               # variable is defined as numeric, not complex.
+y = -1 +0i ;  sqrt(y)  ;  str(y) ;                  #variable is defined as complex .
+Trigonometric  Functions
+pi                                                        #returns the value of pi to six decimal places
+sin(3.5*pi)                                          # correct answer is -1
+cos(3.5*pi)                         	             # correct answer is zero
+Useful R commands for linear algebra
+
+ 
+ 
+var( Mat1[,1] )                                          # determine the variance of the first column
+var ( Mat1[,2] )                                          # determine the variance of the second column
+var ( Mat1[3,] )                                          # determine the variance of the third row
+cov ( Mat1[,1], Mat1[,2] )              # covariance of the first two columsn
+var ( Mat1)                                          # variance covariance matrix of all columns
+VCmat=var( Mat1)                            # Save as matrix “VCmat”
+cor ( Mat1)                                          # correlation matrix of all columns
+cov2cor( VCmat)                            #convert a VC matrix to a correlation matrix
+ 
+seq() and rep() provide convenient ways to a construct vectors with a certain pattern. 
+> seq(10) 
+ [1]  1  2  3  4  5  6  7  8  9 10 
+> seq(0,1,length=10) 
+ [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667 
+ [8] 0.7777778 0.8888889 1.0000000 
+> seq(0,1,by=0.1) 
+ [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 
+> rep(1,3) 
+[1] 1 1 1 
+> c(rep(1,3),rep(2,2),rep(-1,4)) 
+[1]  1  1  1  2  2 -1 -1 -1 -1 
+> rep("Small",3) 
+[1] "Small" "Small" "Small" 
+> c(rep("Small",3),rep("Medium",4)) 
+[1] "Small"  "Small"  "Small"  "Medium" "Medium" "Medium" "Medium" 
+> rep(c("Low","High"),3) 
+[1] "Low"  "High" "Low"  "High" "Low"  "High"
+
+Descriptive Statistics and Basic Graphical Methods
+Measures of Centrality and Dispersion
+# Anscombe’s  Quartet
+X1 = c(
+Y1 =
+
+Histograms
+ 
+>sd(X)
+[1]
+ 
+Introduction to Statistical Computing
+Broadly speaking, the aim of statistics is to understand data and the relationships between variables. Due to the growth in information technology, data sets have grown considerably as the capacity for data collection and storage has increased.
+ 
+In addition, computer processors are more affordable, so that most modern applied statisticians are involved in computing. To analyse data, statisticians and programmers have developed statistical software and
+programming languages.
+ 
+A good example is the S Programming Language, which was designed especially for programming with data. There are now a large number of software libraries written in S which can be used to solve almost any practical statistical problem.
+ 
+To start R in Windows, double click the R icon. To start R in Unix or Linux, type ‘R’ at the command prompt. To get out of R, just type: q().
+R has an inbuilt help facility. To get more information on any specific named
+function, for example “boxplot”, the command is:
+?boxplot
+ 
+ 
+R has data handling and storage facilities, a suite of operators for calculations on arrays in particular matrices. A large coherent integrated collection of intermediate tools for data analysis
+A large selection of demonstration datasets used in the illustration of many statistical methods.
+Graphical facilities for data analysis and display either directly.at the computes or on hardcopy.
+ 
+ 
+%==============================================================% 
+ 
+ 
+
+
+
+
+Graphics
+
+# Goal: To make a panel of pictures.
+
+par(mfrow=c(3,2))                       # 3 rows, 2 columns.
+
+\begin{verbatim}
+# Now the next 6 pictures will be placed on these 6 regions. 
+
+# 1 --
+
+plot(density(runif(100)), lwd=2)
+text(x=0, y=0.2, "100 uniforms")        
+abline(h=0, v=0)
+	          # All these statements effect the 1st plot.
+
+x=seq(0.01,1,0.01)
+par(col="blue")                        # default colour to blue.
+
+# 2 --
+plot(x, sin(x), type="l")
+lines(x, cos(x), type="l", col="red")
+
+# 3 --
+plot(x, exp(x), type="l", col="green")
+lines(x, log(x), type="l", col="orange")
+
+# 4 --
+plot(x, tan(x), type="l", lwd=3, col="yellow")
+
+# 5 --
+plot(x, exp(-x), lwd=2)
+lines(x, exp(x), col="green", lwd=3)
+
+# 6 --
+plot(x, sin(x*x), type="l")
+lines(x, sin(1/x), col="pink")
+
+# code is committed
+ 
+\end{verbatim}
+
+ 
+%--------------------------------------------------------------------------------------------------------------------------------------%
+Probability distributions
+The discrete uniform distribution
+parameters: min , max.
+The default values are 0 and 1.
+ 
+
+
+
+var( Mat1[,1] )			# determine the variance of the first column 
+var ( Mat1[,2] )			# determine the variance of the second column
+var ( Mat1[3,] )			# determine the variance of the third row
+cov ( Mat1[,1], Mat1[,2] )	# covariance of the first two columsn
+var ( Mat1)			# variance covariance matrix of all columns
+VCmat=var( Mat1)		# Save as matrix “VCmat”
+cor ( Mat1)			# correlation matrix of all columns
+cov2cor( VCmat)		#convert a VC matrix to a correlation matrix
+
+ 
+Descriptive Statistics and Basic Graphical Methods
+Measures of Centrality and Dispersion
+# Anscombe’s  Quartet
+X1 = c(
+Y1 =
+ 
+
+Anscombe’s Quartet 
+The uniform distribution
+
+
+
+
+
+logical and relational operators
+ 
+||      logical "Or"      (i.e.  union)
+&&     logical "And"   (i.e. intersection)   
+
+ 
+
+
+
+Data Manipulation
+Types of vectors
+	logical
+	numeric
+	character
+    Others  - Complex and Colour
+
+creating a vector
+
+scan()
+
+X=c()
+
+data.entry()
+
+data manipulation
+sort()
+rev()
+rep()
+length()
+order()
+
+
+Indices
+
+ 
+
+ 
+
+ 
+conversion and coercion
+as.numeric()
+as.integer()
+Descriptive and Quantile Statistics
+fivenum
+quantiles
+mean
+Measures of Dispersion
+  range
+  variance
+  covariance
+  standard deviation
+
+sum
+
+ 
+ 
+
+Frequency Analysis
+table()
+ 
+Sequences 
+ 
+
+
+
+\section{Graphical Methods}
+
+barplot
+histograms
+jitter
+plot
+identify
+
+abline
+add a vertical line to a plot
+add a horizontal line to a plot
+ 
+boxplot.stats(count ~ spray, data = InsectSprays, col = "lightgray")
+# *add* notches (somewhat funny here):
+boxplot(count ~ spray, data = InsectSprays,        notch = TRUE, add = TRUE, col = "blue")
+
+
+
+ 
+Task 1 : Bland Altman Plot
+Computation of case-wise differences and averages.
+ 
+Standard deviation of differences
+ 
+abline()
+ 
+ 
+
+ 
+=======
+MS4024 Lecture notes set B
+
+MS4024 Lecture notes set B
+Basic statistics in R
+Probability distributions in R.
+Graphics in R
+Inference Procedures
+ 
+General Rules
+· Prompt for commands in command window: >
+· Continuation prompt when command incomplete: +
+· Neither of these ever typed by user
+· Command can be any length
+· If you want to break a long command into multiple lines for readability, make sure R knows that more is to come by making the current line incomplete (Example: end the line with one of the three characters ({,)
+· Multiple commands may appear on one line if separated by ;
+Basic statistics in R
+
+Summary statistics of a data set can be obtained from summary, or by using individual commands
+like mean, sd, mad, and IQR. Standard hypothesis tests are also available, e.g., t.test
+yields the standard tests for means of one or two normal samples. 
+ 
+Probability distributions in R.
+
+Standard probability distributions have short names in R as given by Table 2.1. Several
+probability functions are available. Their names consists of two parts: the first part is the
+name of the function (see Table 2.2), while the second part is the name as in Table 2.1.
+E.g., a sample of size 10 from an exponential distribution with mean 3 is generated in R by
+rexp(10,1/3) (R uses the failure intensity instead of the mean as parameter).
+
+Graphics in R
+
+The standard procedure in R to make 1D and 2D plots is plot. Histogram are available
+through hist. These commands can be supplied with options to allow for titles, subtitles,
+and labels on the x-axes:
+plot(data,main=‘‘Title’’,sub=‘‘Subtitle’’,xlab=‘‘X-axis’’,ylab=‘‘Y-axis’’)
+Quantile-quantile plots are available through qqplot, while qqnorm yields a plot of the quantiles
+of a data set against the quantiles of a fitted normal distribution (normal probability plot).
+A Box-and-Whisker plot is also available for exploratory data analysis through boxplot (if
+the data set is a data frame like produced by read.table, then multiple Box-and-Whisker
+plots are produced). The empirical cumulative distribution function is available through ecdf.
+Graphics can be saved to files by choosing File and Save as in the menu of the R console. 
+ 
+Inference Procedures
+ 
+Test
+Name in R
+Package
+Shapiro-Wilks
+shapiro.test
+stats
+Kolmogorov (1-sample)
+ks.test
+stats
+Smirnov (2-sample)
+ks.test
+stats
+Anderson-Darling
+ad.test
+nortest
+Cramér-von Mises
+cvm.test
+nortest
+Lilliefors
+lillie.test
+nortest
+
+ 
+\subsection*{What is R}
+
+R is an open-source statistical package based on the S language. It is a powerful computing tool that combines the usefulness of a statistical analysis package with that of a publication quality graphics package and a matrix-based programming language. It's easy enough to use for quick and simple tasks, yet powerful enough for the most demanding ones. The goal of this demonstration is to provide a basic introduction to using R. An R session differs from that of other statistical software. You will find it to be an interactive approach where the results from one step lead to the next. This introduction to R is necessarily limited in scope to only a handful of analyses. Once you become familiar with R and browse through some of the online help topics, you will discover tools for practically any type of analysis you need. S-PLUS is a commercial application also based on the S language. Much of R is identical to the command line useage of S-PLUS. There are differences though in some functions and their arguments so existing S-PLUS code may require some modification to run in R. 
+%================================================================================================== %
+Topics included in this tutorial: 
+1. Starting R the first time
+2. Some things to keep in mind
+3. Beginning an analysis
+4. Visualizing your data
+5. Simple Linear Regression
+6. Non-linear Regression
+7. Polynomial Regression
+8. Writing functions
+9. What to do next 
+Return to Mercury Home Page 
+%======================================================================================================== %
+\subsection*{1. Starting R the first time}
+
+
+When running R from the computer lab, your M drive will be the working directory where your work will be saved by default. You can easily change to another directory at any time by selecting Change Dir... from the File menu. 
+You can save your work at any time. Select Save Workspace from the File menu. You will usually save the workspace in the working directory. When you quit R you will be prompted to save your workspace. 
+%======================================================================================================= %
+\subsection*{2. Some things to keep in mind}
+
+
+Everything in R is some kind of object. Objects can have different modes (numeric, character, list, function, etc.) with different structures (scalar, vector, matrix, etc.) and different classes (data frame, linear models result, etc.). 
+Almost every command you execute in R uses one or more functions. Functions are called by their name followed by a set of parentheses. If any arguments are passed to the function, they are listed within the parentheses. The parentheses must always be present whether or not there are any arguments. For example, to get a listing of all the objects in your working directory, you would use objects(). If you wanted a list of objects in another directory in your search path, you might use objects(where=3). 
+
+Use the assignment operator to create objects. The assignment operator is the "less than" symbol followed by a hyphen ( <- ). With S-PLUS you can use the underscore for the assignment operator, but that will not work with R. Apparently the equal sign can be used, but then that will not work in S-PLUS. The best practice is to use the less than and hyphen for assignments. For example, to create an object called tmp and assign it the value 3, you would enter tmp <- 3. The equal sign (=) is mainly used for passing arguments to functions, like the last command in comment b above. 
+
+R is case sensitive. Keep that in mind when you're naming objects or calling functions. We could create another object called Tmp that would be separate and distinct from tmp. 
+
+If you already have an object with the name tmp and you assign something else to an object with that name, then the first object is overwritten. Be careful not to lose something you want to keep. 
+
+Once you've created objects, you may want to get rid of them later. Use the function rm() with the object names as arguments. For example, rm(tmp). 
+
+You can recall previous commands with the up-arrow and down-arrow keys. Once you've located the command you want, you can hit enter to execute the command as is, or you can edit the line first. This can save time, especially with complicated commands. 
+
+Open a graphics window with the function win.graph(). 
+
+Make use of the online help. Select HTML Help from the Help menu, click on Packages, then click on Graphics and look up win.graph. You'll find a description of all possible arguments that can be used, a full discussion on its use, and some examples of how it can be used. If you just need a reminder of what arguments can be passed to a particular function, use the args() function with the function name in the parentheses. For example, try args(win.graph) to see what arguments can be used with that function and what default values they may have. Most common functions can be found in the Base package. 
+
+In the examples that follow, pay very close attention to all associated punctuation. Things like commas and parentheses are absolutely critical to R understanding what you want to do. If you get an error after executing a command, the first thing to do is check the syntax. That is the cause of most errors. R almost always ignores spaces, so whether you type tmp<-c(1,2,3) or tmp <- c ( 1, 2, 3), you get the same result. 
+The Escape key serves as your abort button. If something goes wrong or you're suddenly seeing an endless array of numbers scrolling by, you can hit the Escape key to quit whatever you're doing and get you back to the command prompt. This does not kick you out of R altogether. 
+The command line interface in R uses a red font to show your input and a blue font to show results. I've tried to duplicate that in the examples in this tutorial. 
+
+%======================================================================================================== %
+\subsection*{3. Beginning an analysis}
+
+
+For the remainder of this tutorial, we will be analyzing the following dataset: 
+
+Concentration
+0.3330
+0.1670
+0.0833
+0.0416
+0.0208
+0.0104
+0.0052
+Velocity
+3.636
+3.636
+3.236
+2.666
+2.114
+1.466
+0.866
+
+These data are measurements of the rate or velocity of a chemical reaction for different concentrations of substrate. We are interested in fitting a model of the relationship between concentration and velocity. The first thing we need to do is enter the data. We can do this from the Commands Window, from a spreadsheet interface, or by importing an existing file. Most of this tutorial will focus on command line input so let's begin there. At the prompt, create two vectors: 
+> conc <- c(0.3330, 0.1670, 0.0833, 0.0416, 0.0208, 0.0104, 0.0052)
+> vel <- c(3.636, 3.636, 3.236, 2.660, 2.114, 1.466, 0.866)
+We use the function c(), which stands for concatenate, to create a vector. The individual elements can be numeric, as in this example, or character, or any other mode. However, all elements in a vector must be the same mode. Note that the elements are separated by commas. The spaces between elements are included for clarity and are not required by R. 
+Now, we will combine these two vectors into a single data frame: 
+> df <- data.frame(conc, vel)
+Let's look at the data frame to be sure we entered the data correctly. To view any object in R, simply type its name: 
+
+\begin{verbatim}
+> df
+    conc   vel
+1 0.3330 3.636
+2 0.1670 3.636
+3 0.0833 3.236
+4 0.0416 2.660
+5 0.0208 2.114
+6 0.0104 1.466
+7 0.0052 0.866
+\end{verbatim}
+Oops. It looks like there is an error in one of the velocity entries. The fourth one down, 2.660, should be 2.666. You could use the up-arrow to recall the command you used to create vel, make the change, and run it again. Then use the up-arrow again to recall the command you used to create df and run that one again. Let's look at another way to do it. First, we'll change just that one element in the vector vel. Individual elements in a vector are referenced in square brackets. We want to change the fourth element, so we type: 
+> vel[4] <- 2.666
+Take a look at vel to see that it has been changed. There are a couple ways to change elements in a data frame. Treating the data frame as a matrix, we can reference the element in the fourth row and second column like this: 
+> df[4,2] <- 2.666
+Note the order that the row and column are referenced: first the row, then the column. Data frames also allow us to reference individual columns by their names. This is done with the name of the data frame, followed by a dollar sign, and the name of the column. So the vel data can be referenced as df$vel. Now we can change the fourth element like this: 
+\begin{verbatim}
+> df$vel[4] <- 2.666
+\end{verbatimm}
+Note that df$vel is a vector so we only need one number in the brackets. Let's take another look at df to be sure we have it right this time. 
+\begin{framed}
+\begin{verbatim}
+> df
+    conc   vel 
+1 0.3330 3.636
+2 0.1670 3.636
+3 0.0833 3.236
+4 0.0416 2.666
+5 0.0208 2.114
+6 0.0104 1.466
+7 0.0052 0.866
+\end{verbatim}
+\end{framed}
+Looks good! We could have created this data frame in other ways. If the data were already entered into a spreadsheet, database, or ASCII file, you could import it using the appropriate commands. Alternatively, you could create a data frame using a spreadsheet-like interface right in R. From the Edit choose Data Editor... and follow the prompts. You can use the fix() command to edit existing data frames. 
+Now we're ready to do an analysis.
+
+%======================================================================================================== %
+4. Visualizing your data
+
+
+The first thing we want to do is plot the data. You can easily get a basic plot with the following:
+
+> plot(df$conc, df$vel)
+
+The first vector given is the independent variable to be plotted on the X-axis, the second is the dependent variable for the Y-axis. If you execute a plotting function and there is no active graphsheet, a default graphsheet will be opened for you. If you then do another plot, the first one will be lost and the new plot will be drawn in the 
+same graphics window. You can keep your first plot by opening another graphsheet by typing: 
+
+\begin{verbatim}
+> win.graph()
+\end{verbatim}
+The default is a square graphsheet. You can create portrait graphsheets, landscape graphsheets, any shape you want. Check win.graph in the help files to see how. 
+We're going to look at 3 different ways to analyze these data: simple linear regression, non-linear regression, and polynomial regression. 
+
+
+%======================================================================================================== %
+6. Non-linear Regression
+
+
+We can also directly fit the Michaelis-Menten function to our data using non-linear regression. Remember the term "sum-of-squares" from your old regression class? When you fit a regression model, you get a "fitted value" for every data point used to fit the model. If you take the difference between the fitted value and the observed value, you get what we call a residual. Then if you square all the residuals and add them up, you get the residual sum-of-squares. The smaller that is, the better the model fits your data. You may have heard this called the least-squares method. Well, non-linear regression works the same way. With non-linear regression, we specify the form of the model we want to fit and the parameters that need to be estimated. R then searches for parameter values that will minimize the residual sum-of-squares. 
+To run the analysis, we use the function nls(), which stands for non-linear least squares. Use the summary() function to view the results. 
+\begin{framed}
+\begin{verbatim}
+> nlsfit <- nls(vel~Vm*conc/(K+conc),data=df, start=list(K=0.0166, Vm=3.852))
+> summary(nlsfit)
+
+Formula: vel ~ Vm * conc/(K + conc)
+
+Parameters:
+    Estimate Std. Error t value Pr(>|t|)    
+K  0.0178867  0.0009928   18.02 9.68e-06 ***
+Vm 3.9109354  0.0557700   70.13 1.12e-08 ***
+---
+Signif. codes:  0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1 
+
+Residual standard error: 0.06719 on 5 degrees of freedom
+
+Correlation of Parameter Estimates:
+        K
+Vm 0.7535 
+\end{verbatim}
+\end{framed}
+
+You can view the estimates for K and Vm from the summary output, or you can use the coef() function again. How do the estimates compare with those from the previous analysis? We want to plot our non-linear fit to see how well it matches the data. First, plot the original variables again. Remember to create a new graphsheet if you want to keep your previous graph. 
+> plot(df$conc, df$vel, xlim=c(0,0.4), ylim=c(0,4))
+
+
+%======================================================================================================== %
+There's something new here. We used the xlim and ylim arguments to specify the limits for the x and y axes, respectively. By default, R will set the limits just enough to plot all the data. Sometimes you may want to plot beyond the data if you're going to add other things later or just to make the plot look a little better. 
+To add the model fit to the plot is going to take a little more work than with simple linear regression. The x-axis on our plot goes from 0 to 0.4, so we're going to need to generate a vector that covers this range and then calculate a y-value for each x-value using the parameters we just estimated. The number of x-values you generate will determine how smooth the line is going to look. You will almost always get a smooth line with 100 x-values. 
+> x <- seq(0, 0.4, length=100)
+This does just what you think it does. It generates a sequence of 100 numbers from 0 to 0.4. Now we calculate the associated y-values: 
+> y2 <- (coef(nlsfit)["Vm"]*x)/(coef(nlsfit)["K"]+x)
+
+
+%======================================================================================================== %
+This shows you another way that you can reference elements in a vector. If the elements are named, you can use that in the brackets instead of its position number. There's another way to get our y-values for the plot that's perhaps the simplest. We'll use the function predict() that will predict fitted response values for a given set of x-values. The function wants the x-values in a dataframe and with the same variable name(s) as the original data. Here's how we do it: 
+> y2 <- predict(nlsfit,data.frame(conc=x))
+The function predict() can be used with results from linear models, non-linear models, and generalized linear models. Check the online help to see all it can do. Now to add the line to our plot: 
+> lines(x, y2)
+I'm sure you noticed I called the y-values y2. This is the fit from our second model. Let's add a line from our first model to see how they compare. We can use the same vector of x-values to calculate a new set of y-values and add the line to our plot. 
+> y1 <- (Vm*x)/(K+x)
+> lines(x, y1, lty="dotted", col="red")
+\end{verbatim}
+\end{framed}
+For this to work, you must have created the objects Vm and K as we did in the previous section. Also note that we used the line type argument (lty) for a dotted line and the color argument (col) to get a different color. Here is what the resulting plot should look like: 
+
+
+%======================================================================================================== %
+\section*{7. Polynomial Regression}
+
+
+The last method we'll use to fit these data is polynomial regression, where the model takes on the form y = b0 + b1x + b2x2 + b3x3 + ... , etc. We're going to fit a second order polynomial like this: 
+\begin{framed}
+\begin{verbatim}
+> polyfit2 <- lm(vel~conc+I(conc^2), data=df)
+\end{verbatim}
+\end{framed}
+We're using the same function lm() as linear regression, but we're adding multiple instances of the explanatory variable to generate our polynomial formula. Note that we need to use the identity function, I(), because the caret (^) has special meaning in a formula. Another way to build this formula is to create a matrix where each column contains the explanatory variable raised to a power. Use the function cbind() to bind columns together to form a matrix. This is what that would look like: 
+> polyfit2a <- lm(vel~cbind(conc, conc^2), data=df)
+Run either of these commands and view the summary or just take a look at the coefficients: 
+\begin{framed}
+\begin{verbatim}
+> coef2 <- coef(polyfit2)
+> coef2
+(Intercept)        conc   I(conc^2) 
+   1.288439   25.652243  -56.500264 
+   \end{verbatim}
+\end{framed}
+Now we want to draw this line on our graph. We could add it to the plot with the other two lines, but let's create a new graph and label the x and y axes: 
+> plot(df$conc, df$vel, xlim=c(0,0.4), ylim=c(0,5), 
++ xlab="Substrate Concentration", ylab="Reaction Rate")
+There's something new with this line. You can enter the entire command on a single line if you want, but if you hit Enter before the command is complete, you get the "+" prompt on the second line where you finish the command. NOTE: the "+" on the second line IS NOT part of the command, it is the prompt to continue. So if you enter this all together on a single line, DO NOT include the "+". 
+There are a couple ways to generate the y-values for the line. Perhaps the most straightforward is the following: 
+> y3 <- coef2[1] + coef2[2]*x + coef2[3]*x^2
+We just plug in the coefficients and the appropriate x-values and we're done. There's another way that doesn't involve so much typing, especially when dealing with higher order polynomials. It involves matrix multiplication so hopefully you remember something about linear algebra. We're going to create a matrix of x-values and then multiply that by our coefficient vector. 
+\begin{framed}
+\begin{verbatim}
+> y3 <- cbind(1,x,x^2) %*% coef2
+You saw the function cbind() just a second ago. (FYI: There is also a function called rbind() that binds vectors together as rows instead of columns.) The operator %*% is used for matrix multiplication. Add the line to the graph: 
+> lines(x,y3)
+And it should look like this: 
+
+The last thing we're going to do is increase the polynomial order to the maximum. There are seven data points so the maximum order is six. (Why?) First we fit the new regression, then transform the coefficients, generate new y-values, and add the new line to our graph. 
+> polyfit6 <- lm(vel~conc+I(conc^2)+I(conc^3)+I(conc^4)+I(conc^5)+I(conc^6),data=df)
+> coef6 <- coef(polyfit6)
+> y4 <- cbind(1,x,x^2,x^3,x^4,x^5,x^6) %*% coef6
+> lines(x,y4,lty=2)
+When you add the lines, you will see several warnings go by because some of the resulting y-values greatly exceed the range of the graph. The plot should now look like this: 
+
+It's a good fit (the line goes through every point) but how useful is it for predicting new points? Take a look at the summaries from each fit. Ever seen an R2 of 1 before? 
+

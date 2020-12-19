@@ -1,0 +1,29 @@
+Creating your own scales
+========================================================
+
+- The default shapes and colors may not be very appealing. 
+- `scale_manual` expressions allow you to create your own discrete scale.
+- Other shapes can be used with `scale_shape_manual()`, and other colours can be used with `scale_colour_brewer()` or `scale_colour_manual()`.
+
+
+```{r fig.width=10, fig.height=6}
+library(ggplot2)
+p <- ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, colour = Species)) + geom_point(size=3)
+levels(iris$Species) # notice the order
+p + scale_colour_manual(values = c("red","blue", "green"))
+p + scale_colour_manual(
+  values = c("virginica" = "darkred","versicolor" = "orangered2","setosa" = "violetred"))
+```
+#### Digression on finding colours
+
+```{r fig.width=10, fig.height=6}
+head(colours(),12) # first twelve colours
+length(colours()) # how many named colours?
+grep("red",colours(),value=TRUE)
+```
+
+
+```{r fig.width=10, fig.height=6}
+p <- ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, shape = Species)) + geom_point(size=3)
+p + scale_shape_manual(values=c(12,16 ,22))
+```

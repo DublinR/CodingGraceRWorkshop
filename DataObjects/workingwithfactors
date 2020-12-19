@@ -1,0 +1,30 @@
+
+
+Settings <- c("High","High","high","Mid","Mid","Mid","mid","Low","Low","Low","low")
+
+table(Settings)
+
+# Notice the inconsistent spelling
+
+which(Settings == "High")
+
+which(Settings != "High"
+
+which(Settings %in% c("low","Low","LOW") )
+
+Settings[Settings %in% c("low","Low","LOW")] 
+
+Settings[Settings %in% c("low","Low","LOW")] <- "Low"
+
+
+####
+
+class(Settings)
+
+factor(Settings)
+
+Settings <- factor(Settings)
+
+####
+
+levels(Settings)

@@ -1,0 +1,4 @@
+
+\subsection{Packages}
+The capabilities of R are extended through user-submitted packages, which allow specialized statistical techniques, graphical devices, as well as and
+import/export capabilities to many external data formats.

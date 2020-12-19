@@ -1,0 +1,21 @@
+`stat_ecdf'
+========================================================
+Empirical Cumulative Density Functions
+
+```{r}
+library(ggplot2)
+df <- data.frame(x = c(rnorm(100, 0, 3), rnorm(100, 0, 10)),
+                 g = gl(2, 100))
+```
+
+You can also embed plots, for example:
+
+```{r fig.width=7, fig.height=6}
+qplot(rnorm(1000), stat = "ecdf", geom = "step")
+
+
+
+ggplot(df, aes(x, colour = g)) + stat_ecdf()
+
+```
+

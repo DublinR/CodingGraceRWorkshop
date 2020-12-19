@@ -1,0 +1,58 @@
+%---------------------------%
+\frametitle{Mathematical and Statistical Commands}
+
+\frametitle{Useful Statistical Commands}
+\begin{itemize}
+\item \texttt{mean()} mean of a data set
+\item \texttt{median()} median of a data set
+\item \texttt{length()} Sample Size
+\item \texttt{IQR()} Inter-Quartile Range
+\item \texttt{var()} variance
+\item \texttt{sd()} Standard Deviation
+\item \texttt{range()} Range of a data set
+\end{itemize}
+
+\frametitle{useful operators}
+
+Factorials
+$n! = n \times n-1 \times \ldots \times 2 \times 1 $
+Binomial Coefficients
+\[ { n \choose k }  = \frac{n!}{(n-k)! \times k!}\]
+%--------------------%
+\frametitle{Managing Precision}
+
+\begin{itemize}
+\item \texttt{floor()} Floor function of x, $\lfloor x \rfloor$.
+\item \texttt{ceiling()} Ceiling function of x, $\lceil x \rceil$.
+\item \texttt{round()} Rounding a number to a specified number of decimal places.
+\end{itemize}
+%--------------------------------------------%
+\frametitle{The Birthday function}
+The R command pbirthday() computes the probability of a coincidence of a number of randomly chosen people sharing a birthday, given that there are n people to choose from.
+Suppose there are four people in a room. The probability of two of them sharing a birthday is computed as about 1.6 \%
+\begin{verbatim}
+> pbirthday(4)
+[1] 0.01635591
+\end{verbatim}
+
+How many people do you need for a greater than 50\% chance of a shared birthday? (choose from 23,43,63,83)?
+
+%--------------------%
+\frametitle{Set Theory Operations}
+\begin{itemize}
+\item \texttt{union()} union of sets A and B
+\item \texttt{intersect()} intersection of sets A and B
+\item \texttt{setdiff()} set difference A-B (order is important)
+\end{itemize}
+
+\begin{framed}
+\begin{verbatim}
+x = 5:10
+y = 8:12
+union(x,y)
+intersect(x,y)
+setdiff(x,y)
+setdiff(y,x)
+\end{verbatim}
+\end{framed}
+

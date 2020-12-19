@@ -1,0 +1,178 @@
+\documentclass{beamer}  
+\mode<presentation>
+
+%\usetheme{Singapore}
+\usecolortheme{lily}
+\usefonttheme[onlylarge]{structurebold}
+\setbeamerfont*{frametitle}{size=\normalsize,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{frametitle}{bg=}
+\setbeamercolor{titlelike}{parent=structure}
+
+\definecolor{VitoBlue}{RGB}{83,163,220}
+\definecolor{VitoOrange}{RGB}{245,130,32}
+\definecolor{VitoGreen}{RGB}{103,175,62}
+\definecolor{DarkBlue}{RGB}{0,46,86}
+%\setbeamercolor{structure}{fg=VitoBlue}
+%\setbeamercolor{normal text}{fg=DarkBlue}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+%% \setbeamercolor{block title}{fg=VitoBlue}
+%% \setbeamercolor{block title alerted}{fg=VitoBlue}
+%% \setbeamercolor{block title example}{bg=blue!10,fg=VitoBlue}
+%% \setbeamercolor{block body example}{bg=blue!5,fg=black!90}
+%% \setbeamercolor{framesubtitle}{fg=VitoBlue}
+%% \setbeamercolor{frametitle}{fg=VitoBlue}
+%% \setbeamercolor{frametitle right}{fg=VitoBlue}
+%% \setbeamercolor{title in head/foot}{fg=VitoBlue}
+%% \setbeamercolor{title in sidebar}{fg=VitoBlue}
+%% \setbeamercolor{titlegraphic}{fg=VitoBlue}
+%% \setbeamercolor{titlelike}{fg=VitoBlue}
+
+\setbeamertemplate{frametitle}
+{
+\begin{beamercolorbox}[wd=0.7\paperwidth]{frametitle}
+  \insertframetitle
+\end{beamercolorbox}
+}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage[overlay,absolute]{textpos}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{subfig}       % allows subfigures in single fig env
+\usepackage{longtable} 
+\usepackage{caption}
+%\usepackage[pdftex]{color}
+
+\def\myinline{\lstinline[basicstyle=\small\ttfamily,keywordstyle={}]}
+\lstset{ %
+%  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize\ttfamily,
+%  basicstyle=\small,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+}
+
+\def\postbreak{\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}}}
+
+\lstset{postbreak={\textbf{marker}\\space\\space\\space\\space}}
+%\lstset{prebreak=\raisebox{0ex}[0ex][0ex]
+%        {\ensuremath{\rhookswarrow}}}
+\lstset{postbreak=\raisebox{0ex}[0ex][0ex]
+        {\ensuremath{\hookrightarrow\space}}}
+\lstset{breaklines=true, breakatwhitespace=true}
+
+\newcommand\optionlabel[1]{\hspace{\labelsep}\textbf{\texttt{#1}}}
+\newenvironment{option}
+{%
+   \let\descriptionlabel\optionlabel
+   \description
+   \setlength{\labelsep}{\textwidth}
+}
+{%
+   \enddescription
+}
+
+\newcommand\optionlabelnb[1]{\hspace{\labelsep}\texttt{#1}}
+\newenvironment{optionnb}
+{%
+   \let\descriptionlabel\optionlabelnb
+   \description
+   \setlength{\labelsep}{\textwidth}
+}
+{%
+   \enddescription
+}
+
+\newcommand{\gdallogo}{
+  \setlength{\TPHorizModule}{1pt}
+  \setlength{\TPVertModule}{1pt}
+   % textblock{}{x,y}: pos(x) = leftUpperCorner + (x * \TPHorizModule), pos(y) = leftUpperCorner - (y * \TPVertModule)
+  \begin{textblock}{1}(330,220)
+   \includegraphics[scale=0.15]{figures/logo_gdal}
+  \end{textblock}
+} 
+
+\newcommand{\orfeologo}{
+  \setlength{\TPHorizModule}{1pt}
+  \setlength{\TPVertModule}{1pt}
+   % textblock{}{x,y}: pos(x) = leftUpperCorner + (x * \TPHorizModule), pos(y) = leftUpperCorner - (y * \TPVertModule)
+  \begin{textblock}{1}(330,220)
+   \includegraphics[scale=0.2]{figures/logo_orfeo}
+  \end{textblock}
+} 
+
+\newcommand{\pktoolslogo}{
+  \setlength{\TPHorizModule}{1pt}
+  \setlength{\TPVertModule}{1pt}
+   % textblock{}{x,y}: pos(x) = leftUpperCorner + (x * \TPHorizModule), pos(y) = leftUpperCorner - (y * \TPVertModule)
+  \begin{textblock}{1}(330,220)
+   \includegraphics[scale=0.1]{figures/logo_pktools}
+  \end{textblock}
+} 
+
+\newcommand{\rlogo}{
+  \setlength{\TPHorizModule}{1pt}
+  \setlength{\TPVertModule}{1pt}
+   % textblock{}{x,y}: pos(x) = leftUpperCorner + (x * \TPHorizModule), pos(y) = leftUpperCorner - (y * \TPVertModule)
+  \begin{textblock}{1}(330,220)
+   \includegraphics[scale=1.0]{figures/logo_r}
+%   \includegraphics[width=0.1\columnwidth]{figures/logo_r}
+  \end{textblock}
+} 
+
+
+\setbeamertemplate{footline}{
+%   \vitologo
+   \begin{beamercolorbox}[ht=4ex,leftskip=1.4cm,rightskip=.3cm]{author in head/foot}
+    \usebeamercolor{UniBlue}
+    \hrule
+    \vspace{0.1cm}
+    \insertdate \hfill \inserttitle \newline
+    %\insertshortauthor \ - \insertshortinstitute \hfill \insertframenumber
+   \end{beamercolorbox}
+   \vspace*{0.1cm}
+} 
+
+\newenvironment<>{varblock}[2][.9\textwidth]{%
+  \setlength{\textwidth}{#1}
+  \begin{actionenv}#3%
+    \def\insertblocktitle{#2}%
+    \par%
+    \usebeamertemplate{block begin}}
+  {\par%
+    \usebeamertemplate{block end}%
+  \end{actionenv}}
+
+\title{Resource Planning Training Workshop - R-Statistics}
+\subtitle{Coillte Forest (Limerick)}
+
+\author{Daniel McInerney, Kevin O'Brien}
+
+\date{}
+ 
+\begin{document} 
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Content}
+%\tableofcontents
+%\end{frame}
+
+%\addtobeamertemplate{frametitle}{}{%
+%% \begin{tikzpicture}[remember picture,overlay]
+%% \node[anchor=north east,yshift=-2pt] at (current page.north east) {\includegraphics[height=0.8cm]{figures/vito_basislogo}};
+%% \end{tikzpicture}
+\captionsetup[figure]{labelformat=empty}% redefines the caption setup of the figures environment in the beamer class.
+%\setbeamertemplate{caption}{\insertcaption}
+
+\include{workshop_series}
+\include{introduction_slides}
+\include{installation}
+
+\end{document}
