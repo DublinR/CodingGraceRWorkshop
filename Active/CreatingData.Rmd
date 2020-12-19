@@ -1,5 +1,8 @@
 Data Entry, Data Import and Export
 ============================================
+
+### Creating Data
+
 The scan() function is a useful method of inputting data quickly. You can use to quickly copy and paste values into the R environment.
 It is best used in the manner as described in the following example.  Create a variable “X” and use the scan() function to populate it with values.
 Type in a value, and then press return.
@@ -18,20 +21,22 @@ Read 4 items
 #### Spreadsheet Interface
 R provides a spreadsheet interface for editing the values of existing data sets.
 We use the command data.entry() , and name of the data object as the argument.
-```{r}
+
+<pre><code>
 > data.entry(X) # Edit the data set and exit interface
 > X
-```
+</code></pre>
  
 
 #### Data Import
 It is necessary to import outside data into R before you start analysing it
 Quite often, the sample data is in Excel format, and needs to be imported into R prior to use. For this, we use the read.xls() function from the “gdata” package. It reads from an Excel spreadsheet and returns a data frame. The following shows how to load an Excel spreadsheet named "mydata.xls". As the package is not in the core R library, it has to be installed and loaded into the R workspace.
-```{r}
+
+<pre><code>
 > library(gdata)                   # load the gdata package 
 > help(read.xls)                   # documentation 
 > mydata = read.xls("mydata.xls")  # read from first sheet
-```
+</code></pre>
 
 #### Data Entry, Data Import and Export
 
@@ -48,11 +53,13 @@ Once you have entered all the values, press return again to return to normal ope
 4: 6
 5: 
 Read 4 items
+
 </code></pre>
+
 #### Spreadsheet Interface
 R provides a spreadsheet interface for editing the values of existing data sets.
 We use the command data.entry() , and name of the data object as the argument.
-```{r}
+<pre><code>
 > data.entry(X) # Edit the data set and exit interface
 > X
 ```
@@ -61,11 +68,13 @@ We use the command data.entry() , and name of the data object as the argument.
 #### Data Import
 It is necessary to import outside data into R before you start analysing it
 Quite often, the sample data is in Excel format, and needs to be imported into R prior to use. For this, we use the read.xls() function from the “gdata” package. It reads from an Excel spreadsheet and returns a data frame. The following shows how to load an Excel spreadsheet named "mydata.xls". As the package is not in the core R library, it has to be installed and loaded into the R workspace.
-```{r}
+<pre><code>
 > library(gdata)                   # load the gdata package 
 > help(read.xls)                   # documentation 
 > mydata = read.xls("mydata.xls")  # read from first sheet
-```
+
+<code></pre>
+
 #### Table File
  A data table can resides in a text file. The cells inside the table are separated by blank characters. Here is an example of a table with 4 rows and 3 columns.
 100   a1   b1 
@@ -84,6 +93,7 @@ Now copy and paste the table above in a file named "mydata.txt" with a text edit
 2 200 a2 b2 
 3 300 a3 b3 
 4 400 a4 b4 
+
 </code></pre>
 
 > help(read.table) 
@@ -146,7 +156,9 @@ After we copy and paste the data above in a file named "mydata.csv" with a text 
 2  200   a2   b2 
 3  300   a3   b3 
 > help(read.csv)
+
 </code></pre>
+
 In various European locales, as the comma character serves as decimal point, the read.csv2 function should be used instead.
 
 #### CSV File
@@ -190,4 +202,5 @@ mydata = read.table("mydata.txt")  # read text file
 4 400 a4 b4 
 
 > help(read.table) 
+
 </code></pre>

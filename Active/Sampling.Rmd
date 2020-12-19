@@ -1,8 +1,8 @@
+Sampling {data-navmenu="Maths with R"}
+==================================
 
-\maketitle
+### Sampling
 
-\section{Probability}
-%-------------------------------------------------------------------------%
 #### {Sequence of Integers}
 A sequence of integers can be created using the “:” operator, specifying the upper and lower bounds on either side. This is very useful for Dice experiments. Importantly this sequence is constructed as a numeric vector.
 <pre>

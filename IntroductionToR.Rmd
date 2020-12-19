@@ -1225,6 +1225,20 @@ Column{.tabset}
  > data.entry(X) # Edit the data set and exit interface
  > X
  </code></pre>
- 
- 
 
+ 
+```{r child = "Active/Plots.Rmd"}
+```
+
+```{r child = "Active/Apply.Rmd"}
+```
+
+```{r child = "Active/Matrices.Rmd"}
+```
+
+```{r child = "Active/Sampling.Rmd"}
+```
+
+ 
+```{r child = "Active/CreatingData.Rmd"}
+```

@@ -3339,6 +3339,465 @@ Summary of useful commands
 </div>
 </div>
 </div>
+<div id="plots" class="section level1">
+<h1>Plots</h1>
+<div id="plots-1" class="section level3">
+<h3>Plots</h3>
+This section is an introduction for producing simple graphs with the R Programming Language.
+
+<div id="histograms" class="section level4">
+<h4>Histograms</h4>
+<p>Histograms can be created using the <code>hist()</code> command. To create a histogram of the car weights from the Cars93 data set</p>
+<pre>
+<code>
+hist(mtcars$mpg, main=&quot;Histogram of MPG (Data: MTCARS) &quot;)
+</code>
+</pre>
+<p>``R} automatically chooses the number and width of the bars. We can change this by specifying the location of the break points.</p>
+<pre>
+<code>hist(Cars93$Weight, breaks=c(1500, 2050, 2300, 2350, 2400,
+2500, 3000, 3500, 3570, 4000, 4500), xlab=&quot;Weight&quot;,
+main=&quot;Histogram of Weight&quot;)
+</code>
+</pre>
+
+<p>Boxplots can be used to identify outliers.</p>
+<p>By default, the <code>boxplot()</code> command sets the orientation as vertical. By adding the argument ``horizontal=TRUE}, the orientation can be changed to horizontal.</p>
+<pre>
+<code>
+boxplot(mtcars$mpg, horizontal=TRUE, xlab=&quot;Miles Per Gallon&quot;,
+main=&quot;Boxplot of MPG&quot;)
+</code>
+</pre>
+
+</div>
+</div>
+</div>
+<div id="the-apply-family" class="section level1">
+<h1>The Apply family</h1>
+<div id="apply" class="section level3">
+<h3>Apply</h3>
+<p>Sometimes want to apply a function to each element of a vector/data frame/list/array. \ Four members: lapply, sapply, tapply, apply \ lapply: takes any structure and gives a list of results (hence the <code>l') \\ sapply: like lapply, but tries to simplify the result to a vector or matrix if possible (hence the</code>s’) \ apply: only used for arrays/matrices \ tapply: allows you to create tables (hence the `t’) of values from subgroups defined by one or more factors. </p>
+</div>
+</div>
+<div id="matrices" class="section level1" data-navmenu="Maths with R">
+<h1>Matrices</h1>
+<div id="matrices-1" class="section level3">
+<h3>{Matrices}</h3>
+<p>
+<div id="creating-a-matrix" class="section level4">
+<h4>{Creating a matrix}</h4>
+<p>Matrices can be created using the texttt{matrix()} command. The arguments to be supplied are begin{enumerate} * vector of values to be entered * Dimensions of the matrix, specifying either the numbers of rows or columns. end{enumerate}</p>
+<p>Additionally you can specify if the values are to be allocated by row or column. By default they are allocated by column.</p>
+<pre>
+    <code>
+    Vec1=c(1,4,5,6,4,5,5,7,9)       # 9 elements
+    A=matrix(Vec,nrow=3)        #3 by 3 matrix. Values assigned by column.
+    A
+    B= matrix(c(1,6,7,0.6,0.5,0.3,1,2,1),ncol=3,byrow =TRUE)
+    B                         #3 by 3 matrix. Values assigned by row.
+    </code>
+</pre>
+<p>
+%—————————————————————-%
+<p>
+</div>
+</div>
+<div id="matrices-2" class="section level3">
+<h3>{Matrices}</h3>
+<p>
+<div id="creating-a-matrix-1" class="section level4">
+<h4>{Creating a matrix}</h4>
+<p>Matrices can be created using the texttt{matrix()} command. The arguments to be supplied are begin{enumerate} * vector of values to be entered * Dimensions of the matrix, specifying either the numbers of rows or columns. end{enumerate}</p>
+<p>Additionally you can specify if the values are to be allocated by row or column. By default they are allocated by column.</p>
+<pre>
+<code>
+Vec1=c(1,4,5,6,4,5,5,7,9)# 9 elements
+A=matrix(Vec,nrow=3)#3 by 3 matrix. Values assigned by column.
+A
+B= matrix(c(1,6,7,0.6,0.5,0.3,1,2,1),ncol=3,byrow =TRUE)
+B          #3 by 3 matrix. Values assigned by row.
+</code>
+</pre>
+<p>
+If you have assigned values by column, but require that they are assigned by row, you can use the transpose function texttt{t()}.
+<pre>
+<code>
+t(A)# Transpose
+A=t(A)
+</code>
+</pre>
+<p>
+<p>Another method of creating a matrix is to “bind” a number of vectors together, either by row or by column. The commands are texttt{rbind() }.and texttt{cbind()} respectively.</p>
+<pre>
+<code>
+x1 =c(1,2) ; x2 = c(3,6)
+rbind(x1,x2)
+cbind(x1,x2)
+</code>
+</pre>
+<p>
+<p>
+</div>
+</div>
+<div id="matrices-3" class="section level3">
+<h3>{Matrices}</h3>
+<p>
+<div id="creating-a-matrix-2" class="section level4">
+<h4>{Creating a matrix}</h4>
+<p>Matrices can be created using the texttt{matrix()} command. The arguments to be supplied are 1) vector of values to be entered 2) Dimensions of the matrix, specifying either the numbers of rows or columns.</p>
+<p>Additionally you can specify if the values are to be allocated by row or column. By default they are allocated by column. <code> Vec1=c(1,4,5,6,4,5,5,7,9)# 9 elements A=matrix(Vec,nrow=3)#3 by 3 matrix. Values assigned by column. A B= matrix(c(1,6,7,0.6,0.5,0.3,1,2,1),ncol=3,byrow =TRUE) B #3 by 3 matrix. Values assigned by row. </code> If you have assigned values by column, but require that they are assigned by row, you can use the transpose function <code> t(). t(A)# Transpose A=t(A) </code></p>
+<p>Another methods of creating a matrix is to “bind” a number of vectors together, either by row or by column. The commands are rbind() and cbind() respectively. <code> x1 =c(1,2) ; x2 = c(3,6) rbind(x1,x2) cbind(x1,x2) </code></p>
+<p>Particular rows and columns can be accessed by specifying the row number or column number, leaving the other value blank. <code> A[1,] # access first row of A B[,2] # access first column of B </code> Addition and subtractions For matrices, addition and subtraction works on an element- wise basis. The first elements of the respective matrices are added, and so on. A+B A-B</p>
+Matrix Multiplication To multiply matrices, we require a special operator for matrices; “% * %”. If we just used the normal multiplication, we would get an element-wise multiplication. A * B #Element-wise multiplication A % * % B #Matrix multiplication We can compute crossproducts using the crossprod () command. If only one matrix is used it
+<pre>
+<code>
+crossprod(A,B) # A'B
+crossprod(A) # A'A
+</code>
+</pre>
+<p>
+<p>Diagonals The diag() command is a very versatile function for using matrices. It can be used to create a diagonal matrix with elements of a vector in the principal diagonal. For an existing matrix, it can be used to return a vector containing the elements of the principal diagonal.</p>
+<p>Most importantly, if k is a scalar, diag() will create a k x k identity matrix.</p>
+<pre>
+<code>
+Vec2=c(1,2,3)
+diag(Vec2)#Constructs a diagonal matrix based on values of Vec2
+diag(A)#        Returns diagonal elements of A as a vector
+diag(3)#creates a 3 x 3 identity matrix
+diag(diag(A)) #  Diagonal matrix D of matrix A ( Jacobi Method)
+</code>
+</pre>
+<p>
+<p>Determinants, Inverse Matrices and solving Linear systems To compute the determinant of a square matrix, we simply use the det() command det(A) det(B) To find the inverse of a square matrix, we use the solve() command, specifying only the matrix in question solve(A)</p>
+<p>To solve a system of linear equations in the form Ax=b , where A is a square matrix, and b is a column vector of known values, we use the solve() command to determine the values of the unknown vector x. b=vec2 # from before solve(A, b) Row and Column Statistics. Statistic on the rows and columns can easily be computed if required. %rowMeans(A) # Returns vector of row means. %rowSums(A) # Returns vector of row sums. %colMeans(A) # Returns vector of column means. %colSums(A) # Returns vector of coumn means.</p>
+<p>
+</div>
+<div id="eigenvalues-and-eigenvectors" class="section level4">
+<h4>{Eigenvalues and Eigenvectors}</h4>
+<p>The eigenvalues and eigenvectors can be computed using the eigen() function. A data object is created. This is a very important type of matrix analysis, and many will encounter it again in future modules.</p>
+<p>Y = eigen(A) names(Y) “y<span class="math inline">\(val are the eigenvalues of A &quot;y\)</span>vec are the eigenvectors of A</p>
+<p>? Part 2 Revision on Earlier Material “Accessing a column of a data frame”Accessing a row of a data frame</p>
+<p>A particular row can be accessed by specifying the row index , while leaving the column index empty</p>
+<p>Info [4,]# Fourth row of “Info” is called</p>
+<p>A sequence of rows can be accessed by specifying a sequence of rows as follows.</p>
+<p>Info [10:15,]# tenth row to fifteenth row of “Info” is called</p>
+If you have assigned values by column, but require that they are assigned by row, you can use the transpose function texttt{t()}.
+<pre>
+    <code>
+    t(A)    # Transpose
+    A=t(A)  
+    </code>
+</pre>
+<p>
+<p>Another method of creating a matrix is to “bind” a number of vectors together, either by row or by column. The commands are texttt{rbind() }.and texttt{cbind()} respectively.</p>
+<pre>
+    <code>
+    x1 =c(1,2) ; x2 = c(3,6)
+    rbind(x1,x2)
+    cbind(x1,x2)
+    </code>
+</pre>
+<p>
+<p>
+</div>
+</div>
+<div id="matrices-4" class="section level3">
+<h3>{Matrices}</h3>
+<p>
+<div id="creating-a-matrix-3" class="section level4">
+<h4>{Creating a matrix}</h4>
+<p>Matrices can be created using the texttt{matrix()} command. The arguments to be supplied are 1) vector of values to be entered 2) Dimensions of the matrix, specifying either the numbers of rows or columns.</p>
+<p>Additionally you can specify if the values are to be allocated by row or column. By default they are allocated by column. <code> Vec1=c(1,4,5,6,4,5,5,7,9) # 9 elements A=matrix(Vec,nrow=3) #3 by 3 matrix. Values assigned by column. A B= matrix(c(1,6,7,0.6,0.5,0.3,1,2,1),ncol=3,byrow =TRUE) B #3 by 3 matrix. Values assigned by row. </code> If you have assigned values by column, but require that they are assigned by row, you can use the transpose function <code> t(). t(A) # Transpose A=t(A)<br />
+</code></p>
+<p>Another methods of creating a matrix is to “bind” a number of vectors together, either by row or by column. The commands are rbind() and cbind() respectively. <code> x1 =c(1,2) ; x2 = c(3,6) rbind(x1,x2) cbind(x1,x2) </code></p>
+<p>Particular rows and columns can be accessed by specifying the row number or column number, leaving the other value blank. <code> A[1,] # access first row of A B[,2] # access first column of B </code> Addition and subtractions For matrices, addition and subtraction works on an element- wise basis. The first elements of the respective matrices are added, and so on. A+B A-B</p>
+Matrix Multiplication To multiply matrices, we require a special operator for matrices; “% * %”. If we just used the normal multiplication, we would get an element-wise multiplication. A * B #Element-wise multiplication A % * % B #Matrix multiplication We can compute crossproducts using the crossprod () command. If only one matrix is used it
+<pre>
+    <code>
+    crossprod(A,B)      # A'B
+    crossprod(A)            # A'A
+    </code>
+</pre>
+<p>
+<p>Diagonals The diag() command is a very versatile function for using matrices. It can be used to create a diagonal matrix with elements of a vector in the principal diagonal. For an existing matrix, it can be used to return a vector containing the elements of the principal diagonal.</p>
+<p>Most importantly, if k is a scalar, diag() will create a k x k identity matrix.</p>
+<pre>
+    <code>
+    Vec2=c(1,2,3)
+    diag(Vec2)  #   Constructs a diagonal matrix based on values of Vec2
+    diag(A) #        Returns diagonal elements of A as a vector
+    diag(3) #   creates a 3 x 3 identity matrix
+    diag(diag(A)) #     Diagonal matrix D of matrix A ( Jacobi Method)
+    </code>
+</pre>
+<p>
+<p>Determinants, Inverse Matrices and solving Linear systems To compute the determinant of a square matrix, we simply use the det() command det(A) det(B) To find the inverse of a square matrix, we use the solve() command, specifying only the matrix in question solve(A)</p>
+<p>To solve a system of linear equations in the form Ax=b , where A is a square matrix, and b is a column vector of known values, we use the solve() command to determine the values of the unknown vector x. b=vec2 # from before solve(A, b) Row and Column Statistics. Statistic on the rows and columns can easily be computed if required. %rowMeans(A) # Returns vector of row means. %rowSums(A) # Returns vector of row sums. %colMeans(A) # Returns vector of column means. %colSums(A) # Returns vector of coumn means.</p>
+<p>
+</div>
+<div id="eigenvalues-and-eigenvectors-1" class="section level4">
+<h4>{Eigenvalues and Eigenvectors}</h4>
+<p>The eigenvalues and eigenvectors can be computed using the eigen() function. A data object is created. This is a very important type of matrix analysis, and many will encounter it again in future modules.</p>
+<p>Y = eigen(A) names(Y) &quot; y<span class="math inline">\(val are the eigenvalues of A &quot; y\)</span>vec are the eigenvectors of A</p>
+<p>? Part 2 Revision on Earlier Material &quot; Accessing a column of a data frame &quot; Accessing a row of a data frame</p>
+<p>A particular row can be accessed by specifying the row index , while leaving the column index empty</p>
+<p>Info [4,] # Fourth row of “Info” is called</p>
+<p>A sequence of rows can be accessed by specifying a sequence of rows as follows.</p>
+<p>Info [10:15,] # tenth row to fifteenth row of “Info” is called</p>
+</div>
+</div>
+</div>
+<div id="sampling" class="section level1" data-navmenu="Maths with R">
+<h1>Sampling</h1>
+<div id="sampling-1" class="section level3">
+<h3>Sampling</h3>
+<div id="sequence-of-integers" class="section level4">
+<h4>{Sequence of Integers}</h4>
+A sequence of integers can be created using the “:” operator, specifying the upper and lower bounds on either side. This is very useful for Dice experiments. Importantly this sequence is constructed as a numeric vector.
+<pre>
+<code>
+1:10
+5:1
+Dice = 1:6
+Dice
+class(Dice)
+mode(Dice)
+&lt;\code&gt;
+</pre>
+<p><code> &gt; 1:10 [1] 1 2 3 4 5 6 7 8 9 10 &gt; 5:1 [1] 5 4 3 2 1 &gt; Dice = 1:6 &gt; Dice [1] 1 2 3 4 5 6 &gt; class(Dice) [1] “integer” &gt; mode(Dice) [1] “numeric” &lt;&gt;</p>
+</div>
+<div id="playing-with-dice" class="section level4">
+<h4>{Playing with Dice}</h4>
+Another important command is the <code>sample()</code> command. This command causes ``R} to select <span class="math inline">\(n\)</span> items from the specified vector. We can use it to simulate one roll of a die.
+<pre>
+<code>
+Dice = 1:6
+sample(Dice,1)
+&lt;\code&gt;
+</pre>
+<p><code> &gt; sample(Dice,1) [1] 2 &gt; &gt; sample(Dice,1) [1] 4 &gt; &gt; sample(Dice,1) [1] 1 &gt; &gt; sample(Dice,1) [1] 2 &lt;&gt;</p>
+<p>%————————————————————————————–% #### {Sampling Without Replacement and With Replacement}</p>
+<p>Suppose we wish to simulate two rolls of a die. Surely we just specify 2 in the argument of the <code>sample()</code> command. In fact we do, but this is not enough. The <code>sample()</code> command works on the default basis of . That is to say: once a number has been selected, it can not be selected again.</p>
+<p><code> &gt; sample(Dice,6) [1] 4 3 6 1 2 5 &gt; sample(Dice,7) Error in sample(Dice, 7) : cannot take a sample larger than the population when ‘replace = FALSE’ &lt;&gt; Sampling without replacement is appropriate if we are selecting lottery numbers. You can only pick a particular number once. <code> &gt; Lotto=1:42 &gt; sample(Lotto,6) [1] 2 38 19 10 3 27 &gt; &lt;&gt;</p>
+<p>Going back to multiple dice rolls, what we do here is to additionally specify ``replace=TRUE}.</p>
+<p>This specifies an experiment where there is . Let us simulate 20 dice rolls. We can also use the <code>table()</code> function to study the outcomes of the simulation.</p>
+<p>This command tells use how many times each outcome (number) came up. (This is called a ).</p>
+<p>Out of interest, we will compute the mean value of the dice rolls using the <code>mean()</code> command. <code> &gt; sample(Dice,20,replace=TRUE) [1] 4 1 3 2 5 4 4 4 6 5 6 6 5 6 6 5 1 1 1 3 &gt; &gt; X= sample(Dice,20,replace=TRUE) &gt; table(X) X 1 2 3 4 5 6 4 4 2 3 3 4 &gt; mean(X) [1] 3.45 &lt;&gt;</p>
+<p>Let us roll dice 300 times. Each of the six outcome is equally likely, so we will expect 50 realisations of each number. But that rarely happens, as <strong><em>Sampling fluctation</em></strong> comes into play. In the table below, we see that the number 2 comes up thirteen more times than the number 3. Is there something wrong? A hidden bias in our code? No. It is just a random occurence.</p>
+<p>%———————————–% <code> &gt; X=sample(Dice,300,replace=TRUE) &gt; table(X) X 1 2 3 4 5 6 48 57 44 55 51 45 &gt; mean(X) [1] 3.463333 hist(X,breaks=c(0:6 + 0.5),col=c(“red”,“blue”,“green”)) &lt;&gt;</p>
+A bar chart known as a  to accompany this frequency table can be constructed using the following code. The command <code>hist()</code> is used to construct the histogram. The argument ``breaks} is used to specify the lower and upper bounds of each interval (the sides of each of the columns).
+<pre>
+<code>
+ hist(X,breaks=c(0:6 + 0.5),col=c(&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;))
+</pre>
+<p>&lt;&gt;</p>
+<p>
+</div>
+<div id="rolling-two-dice" class="section level4">
+<h4>{Rolling Two Dice}</h4>
+<p>So far we have simulated the roll of one die. Many games would use two dice rolled together, with an outcome between 2 and 12. A first guess would simply be to specify a certain numbers sampled with replacement from a sequence of integers 2 to 12. Wrong! For one die, each outcome is equally likely. For a two dice experiment, there are differences in the probability of each outcome occuring, with 2 and 12 being the least likely outcomes, while 7 is the most likely outcome. Let roll two dice <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> seperately, and then add the two numbers from each together (calling this addition <span class="math inline">\(Z\)</span>.)</p>
+<pre>
+<code>
+X=sample(Dice,300,replace=TRUE)
+Y=sample(Dice,300,replace=TRUE)
+Z=X+Y
+table(Z)
+hist(Z,breaks=c(1:12 + 0.5),col=c(&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;,&quot;yellow&quot;))
+&lt;\code&gt;
+</pre>
+<p><code> &gt; X=sample(Dice,300,replace=TRUE) &gt; Y=sample(Dice,300,replace=TRUE) &gt; Z=X+Y &gt; table(Z) Z 2 3 4 5 6 7 8 9 10 11 12 8 18 19 38 41 56 32 28 26 23 11 \end{veratim}</p>
+%———————————————————————————————% #### {Dice Rolls Sums Experiment} Let work on the basis of 100 dice rolls, and for the sake of simplicity let us consider the  of those 100 single die-rolls. Importantly, we are simulating a  die. The lowest mathematially possible value is 100, while the highest possible value is 600. We expect to get a value of approximately 350, halfway between the minimum and maximum, but each time we perform the experiment there will be slight fluctuations. Try the last line of the code below a few times. How many times do you get a figure less than 340 or greater than 360?
+<pre>
+<code>
+X= sample(Dice,100,replace=TRUE)
+sum(X)
+
+#Equivalently
+sum(sample(Dice,100,replace=TRUE))
+&lt;\code&gt;
+</pre>
+<p>
+</div>
+<div id="simulation-study-of-dice-rolls-sums-experiment" class="section level4">
+<h4>{Simulation Study of Dice Rolls Sums Experiment}</h4>
+<p>Lets consider this Dice Roll Summation experiment. We will perform the experiment 100000 times, and see what sort of distribution of summations we get. We will save the results in a vector called ``sums}.</p>
+<pre>
+<code>
+Sums=numeric()    # Initialize An Empty Vector
+M=100000  # Number of Iterations
+
+for (i in 1:M)
+    {
+     NewSum=sum(sample(Dice,100,replace=TRUE))
+     Sums = c(Sums, NewSum)
+     }
+&lt;\code&gt;
+</pre>
+<p>We can perform some basic statistical operations to study this vector. In particular we are interested in the extremes: How many times was there a summation less than 300, and how many times was there a summation greated than 400? (around 1.5% probability in each case)</p>
+<p><code> &gt; length(Sums[Sums&lt;300]) [1] 144 &gt; length(Sums[Sums&gt;400]) [1] 160<br />
+&lt;&gt;</p>
+Lets us look at a histogram (a type of bar chart) of the ``Sums} vector ( Use around breaks =100 to specify more intervals). What sort of shape is this histogram?
+<pre>
+<code>
+hist(Sums, breaks=100)
+&lt;\code&gt;
+</pre>
+<p>This is a ver crude introduction to the Central Limit Theorem. Even though the Dice Rolls are not normally distributed, the distribution of summations, are described in this experiment, are from a normally distributed sampling population.</p>
+<p>Also consider the probability of getting a sum more than 400. Recalling that dice simulation is for fair dice, the probability of getting a score more extreme than 400 is 1.5% approximately. This provides (again crudely) an introduction to the idea of p-values , which are used a lot in statistical inference procedures.</p>
+<p>Suppose it was not certain whether a die was fair or crooked favouring higher values such as 4,5 and 6. The 100 roll experiment was performed and the score turned out to be 400.<br />
+It would be a very unusual outcome for a fair die, but not impossible. For crooked dice, larger summations would be expected and a score of approximately 400 would be common. Would you think the die was fair or crooked.</p>
+<p>Footnote: Arbitrarily, let us consider a crooked dice, where 4,5 and 6 are twice a likely to appear. Try out the following code. <code> CrookedDice=c(1,2,3,4,4,5,5,6,6) sum(sample(CrookedDice,100,replace=TRUE)) &lt;&gt;</p>
+</div>
+</div>
+</div>
+<div id="data-entry-data-import-and-export-1" class="section level1">
+<h1>Data Entry, Data Import and Export</h1>
+<div id="creating-data-1" class="section level3">
+<h3>Creating Data</h3>
+<p>The scan() function is a useful method of inputting data quickly. You can use to quickly copy and paste values into the R environment. It is best used in the manner as described in the following example. Create a variable “X” and use the scan() function to populate it with values. Type in a value, and then press return. Once you have entered all the values, press return again to return to normal operation.</p>
+<pre><code>
+&gt; X=scan()
+1: 4
+2: 5
+3: 5
+4: 6
+5: 
+Read 4 items
+</code></pre>
+<div id="spreadsheet-interface" class="section level4">
+<h4>Spreadsheet Interface</h4>
+<p>R provides a spreadsheet interface for editing the values of existing data sets. We use the command data.entry() , and name of the data object as the argument.</p>
+<pre><code>
+&gt; data.entry(X) # Edit the data set and exit interface
+&gt; X
+</code></pre>
+</div>
+<div id="data-import" class="section level4">
+<h4>Data Import</h4>
+<p>It is necessary to import outside data into R before you start analysing it Quite often, the sample data is in Excel format, and needs to be imported into R prior to use. For this, we use the read.xls() function from the “gdata” package. It reads from an Excel spreadsheet and returns a data frame. The following shows how to load an Excel spreadsheet named “mydata.xls”. As the package is not in the core R library, it has to be installed and loaded into the R workspace.</p>
+<pre><code>
+&gt; library(gdata)                   # load the gdata package 
+&gt; help(read.xls)                   # documentation 
+&gt; mydata = read.xls(&quot;mydata.xls&quot;)  # read from first sheet
+</code></pre>
+</div>
+<div id="data-entry-data-import-and-export-2" class="section level4">
+<h4>Data Entry, Data Import and Export</h4>
+<p>The scan() function is a useful method of inputting data quickly. You can use to quickly copy and paste values into the R environment. It is best used in the manner as described in the following example. Create a variable “X” and use the scan() function to populate it with values. Type in a value, and then press return. Once you have entered all the values, press return again to return to normal operation.</p>
+<pre><code>
+&gt; X=scan()
+1: 4
+2: 5
+3: 5
+4: 6
+5: 
+Read 4 items
+
+</code></pre>
+</div>
+<div id="spreadsheet-interface-1" class="section level4">
+<h4>Spreadsheet Interface</h4>
+R provides a spreadsheet interface for editing the values of existing data sets. We use the command data.entry() , and name of the data object as the argument.
+<pre>
+<p><code> &gt; data.entry(X) # Edit the data set and exit interface &gt; X ```</p>
+</div>
+<div id="data-import-1" class="section level4">
+<h4>Data Import</h4>
+It is necessary to import outside data into R before you start analysing it Quite often, the sample data is in Excel format, and needs to be imported into R prior to use. For this, we use the read.xls() function from the “gdata” package. It reads from an Excel spreadsheet and returns a data frame. The following shows how to load an Excel spreadsheet named “mydata.xls”. As the package is not in the core R library, it has to be installed and loaded into the R workspace.
+<pre><code>
+&gt; library(gdata)                   # load the gdata package 
+&gt; help(read.xls)                   # documentation 
+&gt; mydata = read.xls(&quot;mydata.xls&quot;)  # read from first sheet
+
+<code></pre>
+</div>
+<div id="table-file" class="section level4">
+<h4>Table File</h4>
+<p>A data table can resides in a text file. The cells inside the table are separated by blank characters. Here is an example of a table with 4 rows and 3 columns. 100 a1 b1 200 a2 b2 300 a3 b3 400 a4 b4</p>
+Now copy and paste the table above in a file named “mydata.txt” with a text editor. Then load the data into the workspace with the read.table() function.
+<pre><code>
+&gt; mydata = read.table(&quot;mydata.txt&quot;)  # read text file 
+&gt; mydata                             # print data frame 
+   V1 V2 V3 
+1 100 a1 b1 
+2 200 a2 b2 
+3 300 a3 b3 
+4 400 a4 b4 
+
+</code></pre>
+<blockquote>
+<p>help(read.table)</p>
+</blockquote>
+</div>
+<div id="data-export" class="section level4">
+<h4>Data export</h4>
+<p>The basic tool to produce output files is write.table().</p>
+<p>The only required argument to write.table()is the name of a dataset or matrix; with just a single argument, the output will be printed on the console, making it easy to test that the file you’ll be creating is in the correct format.</p>
+<p>Usually, the second argument, file= will be used to specify the destination as either a character string to represent a file, or a connection (i.e. database connectivity).</p>
+<p>By default, character strings are surrounded by quotes by write.table(); use the quote=FALSE argument to suppress this feature. To suppress row names or column names from being written to the file, use the row.names=FALSE or col.names=FALSE arguments, respectively. Note that col.names=TRUE (the default) produces the same sort of headers that are read using the header=TRUE argument of read.table().</p>
+<p>Finally, the sep= argument can be used to specify a separator other than a blank space. Using sep=’,’ (comma separated) or sep=’’ (tab-separated) are two common choices.</p>
+<pre><code>
+write.table(CO2 ,file=’co2.txt’, row.names=FALSE, sep=’,’)
+</code></pre>
+<blockquote>
+<p>Similarly to read.csv and read.csv2, the functions write.csv and write.csv2 are provided as wrappers to read.table, with appropriate options set to produce comma- or semicolon-separated files.</p>
+</blockquote>
+</div>
+<div id="data-export-1" class="section level4">
+<h4>Data export</h4>
+<p>The basic tool to produce output files is write.table().</p>
+<p>The only required argument to write.table()is the name of a dataset or matrix; with just a single argument, the output will be printed on the console, making it easy to test that the file you’ll be creating is in the correct format.</p>
+<p>Usually, the second argument, file= will be used to specify the destination as either a character string to represent a file, or a connection (i.e. database connectivity).</p>
+<p>By default, character strings are surrounded by quotes by write.table(); use the quote=FALSE argument to suppress this feature. To suppress row names or column names from being written to the file, use the row.names=FALSE or col.names=FALSE arguments, respectively.</p>
+<p>Note that col.names=TRUE (the default) produces the same sort of headers that are read using the header=TRUE argument of <code>read.table()</code>.</p>
+<p>Finally, the sep= argument can be used to specify a separator other than a blank space. Using sep=’,’ (comma separated) or sep=’’ (tab-separated) are two common choices.</p>
+<p>write.table(CO2 ,file=’co2.txt’, row.names=FALSE, sep=’,’)</p>
+<blockquote>
+<p>Similarly to read.csv and read.csv2, the functions write.csv and write.csv2 are provided as wrappers to read.table, with appropriate options set to produce comma- or semicolon-separated files.</p>
+</blockquote>
+</div>
+<div id="csv-file" class="section level4">
+<h4>CSV File</h4>
+<p>The sample data can also be in comma separated values (CSV) format. Each cell inside such data file is separated by a special character, which usually is a comma, although other characters can be used as well. The first row of the data file should contain the column names instead of the actual data. Here is a sample of the expected format. Col1,Col2,Col3 100,a1,b1 200,a2,b2 300,a3,b3</p>
+After we copy and paste the data above in a file named “mydata.csv” with a text editor, we can read the data with the read.csv function.
+<pre><code>
+&gt; mydata = read.csv(&quot;mydata.csv&quot;)  # read csv file 
+&gt; mydata                           # print data frame 
+  Col1 Col2 Col3 
+1  100   a1   b1 
+2  200   a2   b2 
+3  300   a3   b3 
+&gt; help(read.csv)
+
+</code></pre>
+<p>In various European locales, as the comma character serves as decimal point, the read.csv2 function should be used instead.</p>
+</div>
+<div id="csv-file-1" class="section level4">
+<h4>CSV File</h4>
+<p>The sample data can also be in comma separated values (CSV) format. Each cell inside such data file is separated by a special character, which usually is a comma, although other characters can be used as well. The first row of the data file should contain the column names instead of the actual data. Here is a sample of the expected format. Col1,Col2,Col3 100,a1,b1 200,a2,b2 300,a3,b3</p>
+<p>After we copy and paste the data above in a file named “mydata.csv” with a text editor, we can read the data with the read.csv function. &gt; mydata = read.csv(“mydata.csv”) # read csv file &gt; mydata # print data frame Col1 Col2 Col3 1 100 a1 b1 2 200 a2 b2 3 300 a3 b3 &gt; help(read.csv)</p>
+<p>In various European locales, as the comma character serves as decimal point, the read.csv2 function should be used instead.</p>
+</div>
+<div id="table-file-1" class="section level4">
+<h4>Table File</h4>
+<p>A data table can resides in a text file. The cells inside the table are separated by blank characters. Here is an example of a table with 4 rows and 3 columns. 100 a1 b1 200 a2 b2 300 a3 b3 400 a4 b4</p>
+<p>Now copy and paste the table above in a file named “mydata.txt” with a text editor. Then load the data into the workspace with the <code>read.table()</code> function.</p>
+<pre><code> 
+mydata = read.table(&quot;mydata.txt&quot;)  # read text file 
+&gt; mydata                             # print data frame 
+   V1 V2 V3 
+1 100 a1 b1 
+2 200 a2 b2 
+3 300 a3 b3 
+4 400 a4 b4 
+
+&gt; help(read.table) 
+
+</code></pre>
+</div>
+</div>
+</div>
 
 </div>
 

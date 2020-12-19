@@ -1,0 +1,52 @@
+Plots
+===========================
+
+### Plots
+
+This section is an introduction for producing simple graphs with
+the R Programming Language.
+\begin{itemize}
+*  Line Charts  *  Bar Charts *  Histograms *  Pie
+Charts *  Dotcharts
+\end{itemize}
+
+
+#### Histograms
+Histograms can be created using the ``hist()`` command.
+To create a histogram of the car weights from the Cars93 data set
+
+<pre>
+<code>
+hist(mtcars$mpg, main="Histogram of MPG (Data: MTCARS) ")
+</code>
+</pre>
+``R} automatically chooses the number and width of the bars. We can
+change this by specifying the location of the break points.
+
+<pre>
+<code>hist(Cars93$Weight, breaks=c(1500, 2050, 2300, 2350, 2400,
+2500, 3000, 3500, 3570, 4000, 4500), xlab="Weight",
+main="Histogram of Weight")
+</code>
+</pre>
+
+
+
+\section{Boxplot}
+Boxplots can be used to identify outliers.
+
+By default, the ``boxplot()`` command sets the orientation as vertical. By adding the argument ``horizontal=TRUE}, the orientation can be changed to horizontal.
+
+<pre>
+<code>
+boxplot(mtcars$mpg, horizontal=TRUE, xlab="Miles Per Gallon",
+main="Boxplot of MPG")
+</code>
+</pre>
+
+\begin{figure}
+% Requires \usepackage{graphicx}
+\includegraphics[scale=0.4]{MTCARSboxplot.png}\\
+\caption{Boxplot}\label{boxplot}
+\end{figure}
+
