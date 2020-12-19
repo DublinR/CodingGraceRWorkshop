@@ -1,14 +1,4 @@
-\documentclass{beamer}
 
-\usepackage{graphics}
-\usepackage{amsmath}
-\usepackage{framed}
-
-
-\begin{document}
-
-%------------------------------------%
-\begin{frame}
 \frametitle{\texttt{R} Computing}
 {
 \Huge
@@ -22,9 +12,6 @@
 
 
 
-\end{frame}
-%------------------------------------%
-\begin{frame}
 \frametitle{\texttt{R} Computing}
 \texttt{R} has no single precision data type. All \textit{\textbf{real}} numbers are stored in double precision format.
 \texttt{is.numeric} is a more general test of an object being interpretable as numbers.
@@ -34,15 +21,3 @@
 \item \texttt{is.double()} : double-precision vector.
 \end{itemize}
 
-\end{frame}
-
-%------------------------------------%
-\begin{frame}
-\frametitle{\texttt{R} Computing}
-\begin{itemize}
-\item
-\item
-\end{itemize}
-\end{frame}
-%------------------------------------%
-\end{document}
