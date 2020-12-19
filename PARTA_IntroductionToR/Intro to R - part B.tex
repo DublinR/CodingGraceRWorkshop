@@ -64,7 +64,8 @@ To change the working directory – we would use the \texttt{setwd()} command.
 
 
 
-### Time and Date functions}
+### Time and Date functions
+
 The commands \texttt{Sys.time()} and \texttt{Sys.Date()} returns the system's idea of the current date with and without time.
 We can perform some simple algebraic calculations to compute time differences (i.e. to find out how long some code took to compile.
 \begin{framed}
@@ -80,14 +81,14 @@ Time difference of 8.439614 secs
 [1] "2012-09-01"
 \end{verbatim}
 \end{framed}
-%---------------------------------------------------------------------------------------------%
-\subsection*{Coming unstuck}
-If you are having trouble with a piece of code that is currently compiling – all you have to do is press ESC. Just like other computing environments.
 
-\subsection*{Listing all items in a workspace}
+<p>
+
+#### Listing all items in a workspace
+
 To list all items in an \texttt{R} environment, we use the \texttt{ls()} function. This provides a list of all data objects  accessible.
-\begin{framed}
-\begin{verbatim}
+
+<pre><code>
 > ls()
  [1] "a"          "A"          "authors"    "b"          "books"     
  [6] "C"          "D"          "ex1"        "Gerb"       "Lst"       
@@ -96,11 +97,9 @@ To list all items in an \texttt{R} environment, we use the \texttt{ls()} functio
 [21] "Trig"       "Vec1"       "x"          "X"          "x.at"      
 [26] "x1"         "x2"         "x3R"        "y"          "Y"         
 [31] "y.at"      
-\end{verbatim}
-\end{framed}
-%---------------------------------------------------------------------------------------------%
+</code></pre>
 
-### Removing items}
+#### Removing items
 Sometimes it is desirable to save a subset of your workspace instead of the entire workspace. One option is to use the \texttt{rm()} function to remove unwanted objects right before exiting your \texttt{R} session; another possibility is to use the save function. 
 
 The save function accepts multiple arguments to specify the objects you wish to save, or, alternatively, a character vector with the names of the objects can be passed to save through the \texttt{list=} argument. 
@@ -113,7 +112,9 @@ For example, to save the \texttt{R} objects x, y, and z to a file called \texttt
 > save(x,y,z,fil= ‘mydata.rda’)
 \end{verbatim}
 
-### Saving and Loading R Data Objects}
+<p>
+
+### Saving and Loading R Data Objects
 In situations where a good deal of processing must be used on a raw dataset in order to prepare it for analysis, it may be prudent to save the \texttt{R} objects you create in their internal binary form. 
 
 One attractive feature of this scheme is that the objects created can be read by \texttt{R} programs running on different computer architectures than the one on which they were created, making it very easy to move your data between different computers. 
@@ -122,6 +123,3 @@ Each time an \texttt{R} session is completed, you are prompted to save the works
 
 Whenever \texttt{R} encounters such a file in the working directory at the beginning of a session, it automatically loads it making all your saved objects available again. 
 So one method for saving your work is to always save your workspace image at the end of an R session. If you’d like to save your workspace image at some other time during your R session, you can use the \texttt{save.image()} function, which, when called with no arguments, will also save the current workspace to a file called .RData in the working directory.
-\section{Quitting the R environment}
-As the front page text indicates – all you have to do to quite the workspace is to type in \texttt{q()}. You will then be prompted to save your work.
-%-----------------------------------------------------------------------------%
