@@ -36,14 +36,7 @@
  \end{figure}
  
 
- %==============================================================================================%
  
- \frametitle{2.9 Logical States}
- \begin{itemize}
- \item Logical states TRUE and FALSE are simply specified as such, all in capital letters. 
- \item The
- shortcuts T and F are also recognized
- \end{itemize}
 
  %==============================================================================================%
 
@@ -65,35 +58,6 @@
  %==============================================================================================%
 
  
- \frametitle{2.11 Files in the Working Directory}
- It is possibel to call an R script from the working directory, using the \texttt{source()} function.
- \begin{framed}
- 
- \texttt{source("myfunctions.r")\\
- source("mydata.r")}
- 
- \end{framed} 
- We can also send code put directly to a file in the working directory, using the \texttt{sink()}
- command. The first time the command is used, the name of the created file is specified.
- Subsequent commands print output directly to this file, until the command is used again to
- cease the operation.
-
- %==============================================================================================%
-
- \begin{figure}
- \centering
- \includegraphics[width=1.2\linewidth]{images/sinkiris}
- %\caption{}
- %\label{fig:sinkiris}
- \end{figure}
- 
-
-
- %==============================================================================================%
- 
-
- \Huge
- \[\mbox{ Section 3 : Inspecting a Data Set } \]
 
  %============================================================================= %
 
@@ -132,22 +96,4 @@
  % 5.4 Spreadsheet Interface 
  % \end{semiverbatim}
  % \end{framed}
- % 
- %
  
- %==============================================================================================%
-
- \frametitle{Section 3 Inspecting a Data Set}
- \large 
- \textbf{Summary of useful commands}
- \begin{itemize}
- \item \texttt{dim()} and \texttt{length()}
- \item \texttt{nrow()} and \texttt{ncol()}
- \item \texttt{names()}
- \item \texttt{summary()}
- \item \texttt{tail()}
- \item \texttt{head()}
- \item \texttt{describe()} (from the \textbf{psych} package)
- \end{itemize}
-
- %==============================================================================================%
