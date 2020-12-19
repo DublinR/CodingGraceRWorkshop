@@ -1,36 +1,12 @@
 Matrices {data-navmenu="Maths with R"}
 ==============================
+Column {.tabset}
 
-### {Matrices}
-<p>
-#### {Creating a matrix}
+------------------------------
 
-Matrices can be created using the texttt{matrix()} command. The arguments to be supplied are 
-begin{enumerate}
-	         * vector of values to be entered
-	          * Dimensions of the matrix, specifying either the numbers of rows or columns.
-end{enumerate}
+### Creating a matrix
 
-Additionally you can specify if the values are to be allocated by row or column. By default they are allocated by column.
-
-<pre>
-	<code>
-	Vec1=c(1,4,5,6,4,5,5,7,9)		# 9 elements
-	A=matrix(Vec,nrow=3)		#3 by 3 matrix. Values assigned by column.
-	A
-	B= matrix(c(1,6,7,0.6,0.5,0.3,1,2,1),ncol=3,byrow =TRUE)
-	B				          #3 by 3 matrix. Values assigned by row.
-	</code>
-</pre>
-<p>
-
-%----------------------------------------------------------------%
-<p>
-### {Matrices}
-<p>
-#### {Creating a matrix}
-
-Matrices can be created using the texttt{matrix()} command. The arguments to be supplied are 
+Matrices can be created using the ``matrix()`` command. The arguments to be supplied are 
 begin{enumerate}
          * vector of values to be entered
           * Dimensions of the matrix, specifying either the numbers of rows or columns.
@@ -50,7 +26,6 @@ B          #3 by 3 matrix. Values assigned by row.
 <p>
 
 
-
 If you have assigned values by column, but require that they are assigned by row, you can use the transpose function texttt{t()}.
 <pre>
 <code>
@@ -59,6 +34,8 @@ A=t(A)
 </code>
 </pre>
 <p>
+
+
 
 Another method of creating a matrix is to “bind” a number of vectors together, either by row or by column. The commands are texttt{rbind() }.and texttt{cbind()} respectively.
 
@@ -73,34 +50,7 @@ cbind(x1,x2)
 <p>
 
 
-<p>
-### {Matrices}
-<p>
-#### {Creating a matrix}
-Matrices can be created using the texttt{matrix()} command. The arguments to be supplied are 1) vector of values to be entered
-2) Dimensions of the matrix, specifying either the numbers of rows or columns.
 
-Additionally you can specify if the values are to be allocated by row or column. By default they are allocated by column.
-<code>
-Vec1=c(1,4,5,6,4,5,5,7,9)# 9 elements
-A=matrix(Vec,nrow=3)#3 by 3 matrix. Values assigned by column.
-A
-B= matrix(c(1,6,7,0.6,0.5,0.3,1,2,1),ncol=3,byrow =TRUE)
-B          #3 by 3 matrix. Values assigned by row.
-</code>
-If you have assigned values by column, but require that they are assigned by row, you can use the transpose function
-<code>
-t().
-t(A)# Transpose
-A=t(A)
-</code>
-
-Another methods of creating a matrix is to "bind" a number of vectors together, either by row or by column. The commands are rbind() and cbind() respectively.
-<code>
-x1 =c(1,2) ; x2 = c(3,6)
-rbind(x1,x2)
-cbind(x1,x2)
-</code>
 
 
 
@@ -110,7 +60,8 @@ Particular rows and columns can be accessed by specifying the row number or colu
 A[1,]  # access first row of A
 B[,2]   # access first column of B
 </code>
-Addition and subtractions
+
+### Addition and subtractions
 For matrices, addition and subtraction works on an element- wise basis. The first elements of the respective matrices are added, and so on.
 A+B
 A-B
@@ -128,7 +79,8 @@ crossprod(A) # A'A
 </code>
 </pre>
 <p>
-Diagonals
+
+### Diagonals
 The diag() command is a very versatile function for using matrices.
 It can be used to create a diagonal matrix with elements of a vector in the principal diagonal. For an existing matrix, it can be used to return a vector containing the elements of the principal diagonal.
 
@@ -155,7 +107,8 @@ solve(A)
 To solve a system of linear equations in the form Ax=b , where A is a square matrix, and b is a column vector of known values, we use the solve() command to determine the values of the unknown vector x.
 b=vec2  # from before
 solve(A, b)
-Row and Column Statistics.
+
+### Row and Column Statistics.
 Statistic on the rows and columns can easily be computed if required.
 %rowMeans(A)  # Returns vector of row means.
 %rowSums(A)  # Returns vector of row sums.
@@ -163,7 +116,7 @@ Statistic on the rows and columns can easily be computed if required.
 %colSums(A)  # Returns vector of coumn means.
 
 <p>
-#### {Eigenvalues and Eigenvectors}
+### Eigenvalues and Eigenvectors
 The eigenvalues and eigenvectors can be computed using the eigen() function.  A data object is created.
 This is a very important type of matrix analysis, and many will encounter it again in future modules.
 
@@ -187,56 +140,7 @@ Info [10:15,]# tenth row to fifteenth row of "Info" is called
 
 
 
-If you have assigned values by column, but require that they are assigned by row, you can use the transpose function texttt{t()}.
-<pre>
-	<code>
-	t(A)	# Transpose
-	A=t(A)	
-	</code>
-</pre>
-<p>
 
-Another method of creating a matrix is to “bind” a number of vectors together, either by row or by column. The commands are texttt{rbind() }.and texttt{cbind()} respectively.
-
-
-<pre>
-	<code>
-	x1 =c(1,2) ; x2 = c(3,6)
-	rbind(x1,x2)
-	cbind(x1,x2)
-	</code>
-</pre>
-<p>
-
-
-<p>
-### {Matrices}
-<p>
-#### {Creating a matrix}
-Matrices can be created using the texttt{matrix()} command. The arguments to be supplied are 1) vector of values to be entered
-2) Dimensions of the matrix, specifying either the numbers of rows or columns.
-
-Additionally you can specify if the values are to be allocated by row or column. By default they are allocated by column.
-<code>
-Vec1=c(1,4,5,6,4,5,5,7,9)		# 9 elements
-A=matrix(Vec,nrow=3)		#3 by 3 matrix. Values assigned by column.
-A
-B= matrix(c(1,6,7,0.6,0.5,0.3,1,2,1),ncol=3,byrow =TRUE)
-B				          #3 by 3 matrix. Values assigned by row.
-</code>	
-If you have assigned values by column, but require that they are assigned by row, you can use the transpose function
-<code>
-t().
-t(A)				# Transpose
-A=t(A)	
-</code>
-
-Another methods of creating a matrix is to "bind" a number of vectors together, either by row or by column. The commands are rbind() and cbind() respectively.
-<code>
-x1 =c(1,2) ; x2 = c(3,6)
-rbind(x1,x2)
-cbind(x1,x2)
-</code>
 
 
 
@@ -281,7 +185,14 @@ Most importantly, if k is a scalar, diag() will create a k x k identity matrix.
 	</code>
 </pre>
 <p>
-Determinants, Inverse Matrices and solving Linear systems
+
+Linear Algebra {data-navmenu="Maths with R"}
+==============================
+
+Column {.tabset}
+------------------------------
+
+### Determinants, Inverse Matrices and solving Linear systems
 To compute the determinant of a square matrix, we simply use the det() command
 det(A)
 det(B)
@@ -299,7 +210,7 @@ Statistic on the rows and columns can easily be computed if required.
 %colSums(A)  # Returns vector of coumn means.
 
 <p>
-#### {Eigenvalues and Eigenvectors}
+### Eigenvalues and Eigenvectors
 The eigenvalues and eigenvectors can be computed using the eigen() function.  A data object is created.
 This is a very important type of matrix analysis, and many will encounter it again in future modules.
 
