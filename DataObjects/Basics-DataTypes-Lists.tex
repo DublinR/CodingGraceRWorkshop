@@ -11,12 +11,7 @@ Lists
 *  single bracket notation for sublists;
 * double bracket notation for individual components;
 * construct using the function list().
-\end{itemize}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#### Introducton to R : Lists}
 A simple example of a list is as follows:
 
 begin{framed}
@@ -28,9 +23,8 @@ child.ages=c(4,7,9))
 end{verbatim}
 end{framed}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<p>
 
-#### Introducton to R : Lists}
 Each component of the list is given a name (i.e. name, wife, no.children, child.ages).
 
 We can construct a second list omitting the component names:
@@ -40,12 +34,7 @@ begin{verbatim}
 
 L2 <- list("Fred", "Mary", 3, c(4,7,9))
 
-end{verbatim}
-end{framed}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#### Introducton to R : Lists}
 What is the difference between the two? Three equivalent ways of accessing the first component.
 
 begin{framed}
@@ -55,13 +44,7 @@ L1[["name"]]
 L1$name
 L1[[1]]
 
-
-end{verbatim}
-end{framed}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#### Introducton to R : Lists}
+<p>
 
 A sublist consisting of the first component only
 > L1[1]
@@ -69,10 +52,6 @@ $name
 [1] "Fred"
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#### Introducton to R : Lists}
 The names of each component of the list can be accessed using
 
 \begin{framed}
@@ -82,11 +61,7 @@ names(L1)
 names(L2)
 
 \end{verbatim}
-\end{framed}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#### Introducton to R : Lists}
 
 We can set the names for the list components after the list has been
 created.
@@ -106,13 +81,7 @@ names(L2)
 
 We can also concatenate lists:
 
-begin{framed}
-begin{verbatim}
-
+```{r}
 L3 <- c(L1, L2)
 
-end{verbatim}
-end{framed}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+```
