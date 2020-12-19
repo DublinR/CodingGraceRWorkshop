@@ -1230,6 +1230,12 @@ Column{.tabset}
 ```{r child = "Active/Plots.Rmd"}
 ```
 
+```{r child = "Active/Renvironment.Rmd"}
+```
+
+```{r child = "Active/DataObjects.Rmd"}
+```
+
 ```{r child = "Active/Apply.Rmd"}
 ```
 

@@ -3373,42 +3373,129 @@ main=&quot;Boxplot of MPG&quot;)
 </div>
 </div>
 </div>
-<div id="the-apply-family" class="section level1">
+<div id="r-environment" class="section level1" data-navmenu="R Environment">
+<h1>R Environment</h1>
+<div id="column-6" class="section level2 tabset">
+<h2>Column</h2>
+<div id="time-and-date-functions" class="section level3">
+<h3>Time and Date functions</h3>
+<p>The commands <code>Sys.time()</code> and <code>Sys.Date()</code> returns the system’s idea of the current date with and without time. We can perform some simple algebraic calculations to compute time differences (i.e. to find out how long some code took to compile.)</p>
+<pre>
+<code>
+&gt; X1=Sys.time()
+&gt; #Wait a few seconds
+&gt;
+&gt; X2=Sys.time()
+&gt; X2-X1
+Time difference of 8.439614 secs
+&gt;
+&gt; Sys.Date() 
+[1] &quot;2012-09-01&quot;
+</code>
+</pre>
+</div>
+<div id="built-in-data-sets" class="section level3">
+<h3>Built-In Data Sets</h3>
+Several data sets , intended as learning tools, are automatically installed when R is installed. Many more are installed within packages to complement learning to use those packages. One of these is the famous Iris data set, which is used in many data mining exercises. * iris * mtcars * Nile To see what data sets are available, simply type data(). To load a data set, simply type in the name of the data set. Some data sets are very large. To just see the first few (or last) rows, we use the head() function or alternatively the tail() function. The default number of rows of these commands is 6. Other numbers can be specified.
+<pre><code>
+&gt; head(iris)
+Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1 5.1 3.5 1.4 0.2 setosa
+2 4.9 3.0 1.4 0.2 setosa
+3 4.7 3.2 1.3 0.2 setosa
+4 4.6 3.1 1.5 0.2 setosa
+5 5.0 3.6 1.4 0.2 setosa
+6 5.4 3.9 1.7 0.4 setosa
+&gt;
+&gt; tail(iris,4)
+Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+147 6.3 2.5 5.0 1.9 virginica
+148 6.5 3.0 5.2 2.0 virginica
+149 6.2 3.4 5.4 2.3 virginica
+150 5.9 3.0 5.1 1.8 virginic
+
+</code></pre>
+<p>In many situations, it is useful to call a particular data set using the attach() command. This will save having to specify the data sets over repeated operations. The file can then be detached using the detach() command.</p>
+</div>
+<div id="the-summary-command-1" class="section level3">
+<h3>The <code>summary()</code> command</h3>
+<p>The R command summary() is a generic function used to produce result “summaries” of the results of various objects, from simple vectors to the output of complex model fitting functions. The function invokes particular methods which depend on the class of the first argument.</p>
+<pre><code>
+&gt; summary(Nile)
+Min. 1st Qu. Median Mean 3rd Qu. Max.
+456.0 798.5 893.5 919.4 1032.0 1370.0
+&gt;
+&gt; summary(Indometh)
+Subject time conc
+1:11 Min. :0.250 Min. :0.0500
+4:11 1st Qu.:0.750 1st Qu.:0.1100
+2:11 Median :2.000 Median :0.3400
+5:11 Mean :2.886 Mean :0.5918
+6:11 3rd Qu.:5.000 3rd Qu.:0.8325
+3:11 Max. :8.000 Max. :2.7200
+
+</code></pre>
+</div>
+<div id="working-directories" class="section level3">
+<h3>Working directories</h3>
+You can change your working directly by using the appropriate options on the File menu. To determine the current working directory, you can use the getwd() command. To change the working directory , we would use the  command. This is quite important as objects will be imported and exported to and from the specified directory.
+<pre><code>
+&gt; getwd()
+[1] &quot;C:/Users/Kevin&quot;
+&gt;
+&gt; setwd(&quot;C:/Users/Kevin/Documents&quot;)
+&gt;
+&gt; getwd()
+[1] &quot;C:/Users/Kevin/Documents&quot;
+
+</code></pre>
+</div>
+<div id="coming-unstuck" class="section level3">
+<h3>Coming Unstuck</h3>
+<p>If you are having trouble with a piece of code that is currently compiling , all you have to do is press ESC, just like many other computing environments.</p>
+</div>
+<div id="quitting-the-environment" class="section level3">
+<h3>Quitting the  environment</h3>
+<p>As the front page text indicates, all you have to do to quite the workspace is to type in . You will then be prompted to save your work.</p>
+</div>
+</div>
+</div>
+<div id="data-objects-2" class="section level1">
+<h1>Data Objects</h1>
+<div id="column-7" class="section level2 tabset">
+<h2>Column</h2>
+<div id="objects" class="section level3">
+<h3>Objects</h3>
+<p>As mentioned previously,  saves data as objects. Examples of data objects are</p>
+<ul>
+<li>Vectors</li>
+<li>Lists</li>
+<li>Dataframes</li>
+<li>Matrices</li>
+</ul>
+<p>The simple objects we have created previously are simply single element vectors.</p>
+</div>
+</div>
+</div>
+<div id="the-apply-family" class="section level1" data-navmenu="Programming">
 <h1>The Apply family</h1>
 <div id="apply" class="section level3">
 <h3>Apply</h3>
-<p>Sometimes want to apply a function to each element of a vector/data frame/list/array. \ Four members: lapply, sapply, tapply, apply \ lapply: takes any structure and gives a list of results (hence the <code>l') \\ sapply: like lapply, but tries to simplify the result to a vector or matrix if possible (hence the</code>s’) \ apply: only used for arrays/matrices \ tapply: allows you to create tables (hence the `t’) of values from subgroups defined by one or more factors. </p>
+<p>Sometimes want to apply a function to each element of a vector/data frame/list/array.</p>
+<p>Four members: 1. lapply, 2. sapply, 3. tapply, 4. apply</p>
+<p>lapply: takes any structure and gives a list of results (hence the `l’)</p>
+<p>sapply: like lapply, but tries to simplify the result to a vector or matrix if possible (hence the `s’)</p>
+<p>apply: only used for arrays/matrices</p>
+<p>tapply: allows you to create tables (hence the `t’) of values from subgroups defined by one or more factors.</p>
 </div>
 </div>
 <div id="matrices" class="section level1" data-navmenu="Maths with R">
 <h1>Matrices</h1>
-<div id="matrices-1" class="section level3">
-<h3>{Matrices}</h3>
-<p>
-<div id="creating-a-matrix" class="section level4">
-<h4>{Creating a matrix}</h4>
-<p>Matrices can be created using the texttt{matrix()} command. The arguments to be supplied are begin{enumerate} * vector of values to be entered * Dimensions of the matrix, specifying either the numbers of rows or columns. end{enumerate}</p>
-<p>Additionally you can specify if the values are to be allocated by row or column. By default they are allocated by column.</p>
-<pre>
-    <code>
-    Vec1=c(1,4,5,6,4,5,5,7,9)       # 9 elements
-    A=matrix(Vec,nrow=3)        #3 by 3 matrix. Values assigned by column.
-    A
-    B= matrix(c(1,6,7,0.6,0.5,0.3,1,2,1),ncol=3,byrow =TRUE)
-    B                         #3 by 3 matrix. Values assigned by row.
-    </code>
-</pre>
-<p>
-%—————————————————————-%
-<p>
-</div>
-</div>
-<div id="matrices-2" class="section level3">
-<h3>{Matrices}</h3>
-<p>
-<div id="creating-a-matrix-1" class="section level4">
-<h4>{Creating a matrix}</h4>
-<p>Matrices can be created using the texttt{matrix()} command. The arguments to be supplied are begin{enumerate} * vector of values to be entered * Dimensions of the matrix, specifying either the numbers of rows or columns. end{enumerate}</p>
+<p>Column {.tabset}</p>
+<hr />
+<div id="creating-a-matrix" class="section level3">
+<h3>Creating a matrix</h3>
+<p>Matrices can be created using the <code>matrix()</code> command. The arguments to be supplied are begin{enumerate} * vector of values to be entered * Dimensions of the matrix, specifying either the numbers of rows or columns. end{enumerate}</p>
 <p>Additionally you can specify if the values are to be allocated by row or column. By default they are allocated by column.</p>
 <pre>
 <code>
@@ -3437,18 +3524,11 @@ cbind(x1,x2)
 </code>
 </pre>
 <p>
-<p>
+<p>Particular rows and columns can be accessed by specifying the row number or column number, leaving the other value blank. <code> A[1,] # access first row of A B[,2] # access first column of B </code></p>
 </div>
-</div>
-<div id="matrices-3" class="section level3">
-<h3>{Matrices}</h3>
-<p>
-<div id="creating-a-matrix-2" class="section level4">
-<h4>{Creating a matrix}</h4>
-<p>Matrices can be created using the texttt{matrix()} command. The arguments to be supplied are 1) vector of values to be entered 2) Dimensions of the matrix, specifying either the numbers of rows or columns.</p>
-<p>Additionally you can specify if the values are to be allocated by row or column. By default they are allocated by column. <code> Vec1=c(1,4,5,6,4,5,5,7,9)# 9 elements A=matrix(Vec,nrow=3)#3 by 3 matrix. Values assigned by column. A B= matrix(c(1,6,7,0.6,0.5,0.3,1,2,1),ncol=3,byrow =TRUE) B #3 by 3 matrix. Values assigned by row. </code> If you have assigned values by column, but require that they are assigned by row, you can use the transpose function <code> t(). t(A)# Transpose A=t(A) </code></p>
-<p>Another methods of creating a matrix is to “bind” a number of vectors together, either by row or by column. The commands are rbind() and cbind() respectively. <code> x1 =c(1,2) ; x2 = c(3,6) rbind(x1,x2) cbind(x1,x2) </code></p>
-<p>Particular rows and columns can be accessed by specifying the row number or column number, leaving the other value blank. <code> A[1,] # access first row of A B[,2] # access first column of B </code> Addition and subtractions For matrices, addition and subtraction works on an element- wise basis. The first elements of the respective matrices are added, and so on. A+B A-B</p>
+<div id="addition-and-subtractions" class="section level3">
+<h3>Addition and subtractions</h3>
+<p>For matrices, addition and subtraction works on an element- wise basis. The first elements of the respective matrices are added, and so on. A+B A-B</p>
 Matrix Multiplication To multiply matrices, we require a special operator for matrices; “% * %”. If we just used the normal multiplication, we would get an element-wise multiplication. A * B #Element-wise multiplication A % * % B #Matrix multiplication We can compute crossproducts using the crossprod () command. If only one matrix is used it
 <pre>
 <code>
@@ -3457,7 +3537,10 @@ crossprod(A) # A'A
 </code>
 </pre>
 <p>
-<p>Diagonals The diag() command is a very versatile function for using matrices. It can be used to create a diagonal matrix with elements of a vector in the principal diagonal. For an existing matrix, it can be used to return a vector containing the elements of the principal diagonal.</p>
+</div>
+<div id="diagonals" class="section level3">
+<h3>Diagonals</h3>
+<p>The diag() command is a very versatile function for using matrices. It can be used to create a diagonal matrix with elements of a vector in the principal diagonal. For an existing matrix, it can be used to return a vector containing the elements of the principal diagonal.</p>
 <p>Most importantly, if k is a scalar, diag() will create a k x k identity matrix.</p>
 <pre>
 <code>
@@ -3470,11 +3553,15 @@ diag(diag(A)) #  Diagonal matrix D of matrix A ( Jacobi Method)
 </pre>
 <p>
 <p>Determinants, Inverse Matrices and solving Linear systems To compute the determinant of a square matrix, we simply use the det() command det(A) det(B) To find the inverse of a square matrix, we use the solve() command, specifying only the matrix in question solve(A)</p>
-<p>To solve a system of linear equations in the form Ax=b , where A is a square matrix, and b is a column vector of known values, we use the solve() command to determine the values of the unknown vector x. b=vec2 # from before solve(A, b) Row and Column Statistics. Statistic on the rows and columns can easily be computed if required. %rowMeans(A) # Returns vector of row means. %rowSums(A) # Returns vector of row sums. %colMeans(A) # Returns vector of column means. %colSums(A) # Returns vector of coumn means.</p>
+<p>To solve a system of linear equations in the form Ax=b , where A is a square matrix, and b is a column vector of known values, we use the solve() command to determine the values of the unknown vector x. b=vec2 # from before solve(A, b)</p>
+</div>
+<div id="row-and-column-statistics." class="section level3">
+<h3>Row and Column Statistics.</h3>
+<p>Statistic on the rows and columns can easily be computed if required. %rowMeans(A) # Returns vector of row means. %rowSums(A) # Returns vector of row sums. %colMeans(A) # Returns vector of column means. %colSums(A) # Returns vector of coumn means.</p>
 <p>
 </div>
-<div id="eigenvalues-and-eigenvectors" class="section level4">
-<h4>{Eigenvalues and Eigenvectors}</h4>
+<div id="eigenvalues-and-eigenvectors" class="section level3">
+<h3>Eigenvalues and Eigenvectors</h3>
 <p>The eigenvalues and eigenvectors can be computed using the eigen() function. A data object is created. This is a very important type of matrix analysis, and many will encounter it again in future modules.</p>
 <p>Y = eigen(A) names(Y) “y<span class="math inline">\(val are the eigenvalues of A &quot;y\)</span>vec are the eigenvectors of A</p>
 <p>? Part 2 Revision on Earlier Material “Accessing a column of a data frame”Accessing a row of a data frame</p>
@@ -3482,35 +3569,6 @@ diag(diag(A)) #  Diagonal matrix D of matrix A ( Jacobi Method)
 <p>Info [4,]# Fourth row of “Info” is called</p>
 <p>A sequence of rows can be accessed by specifying a sequence of rows as follows.</p>
 <p>Info [10:15,]# tenth row to fifteenth row of “Info” is called</p>
-If you have assigned values by column, but require that they are assigned by row, you can use the transpose function texttt{t()}.
-<pre>
-    <code>
-    t(A)    # Transpose
-    A=t(A)  
-    </code>
-</pre>
-<p>
-<p>Another method of creating a matrix is to “bind” a number of vectors together, either by row or by column. The commands are texttt{rbind() }.and texttt{cbind()} respectively.</p>
-<pre>
-    <code>
-    x1 =c(1,2) ; x2 = c(3,6)
-    rbind(x1,x2)
-    cbind(x1,x2)
-    </code>
-</pre>
-<p>
-<p>
-</div>
-</div>
-<div id="matrices-4" class="section level3">
-<h3>{Matrices}</h3>
-<p>
-<div id="creating-a-matrix-3" class="section level4">
-<h4>{Creating a matrix}</h4>
-<p>Matrices can be created using the texttt{matrix()} command. The arguments to be supplied are 1) vector of values to be entered 2) Dimensions of the matrix, specifying either the numbers of rows or columns.</p>
-<p>Additionally you can specify if the values are to be allocated by row or column. By default they are allocated by column. <code> Vec1=c(1,4,5,6,4,5,5,7,9) # 9 elements A=matrix(Vec,nrow=3) #3 by 3 matrix. Values assigned by column. A B= matrix(c(1,6,7,0.6,0.5,0.3,1,2,1),ncol=3,byrow =TRUE) B #3 by 3 matrix. Values assigned by row. </code> If you have assigned values by column, but require that they are assigned by row, you can use the transpose function <code> t(). t(A) # Transpose A=t(A)<br />
-</code></p>
-<p>Another methods of creating a matrix is to “bind” a number of vectors together, either by row or by column. The commands are rbind() and cbind() respectively. <code> x1 =c(1,2) ; x2 = c(3,6) rbind(x1,x2) cbind(x1,x2) </code></p>
 <p>Particular rows and columns can be accessed by specifying the row number or column number, leaving the other value blank. <code> A[1,] # access first row of A B[,2] # access first column of B </code> Addition and subtractions For matrices, addition and subtraction works on an element- wise basis. The first elements of the respective matrices are added, and so on. A+B A-B</p>
 Matrix Multiplication To multiply matrices, we require a special operator for matrices; “% * %”. If we just used the normal multiplication, we would get an element-wise multiplication. A * B #Element-wise multiplication A % * % B #Matrix multiplication We can compute crossproducts using the crossprod () command. If only one matrix is used it
 <pre>
@@ -3532,12 +3590,20 @@ Matrix Multiplication To multiply matrices, we require a special operator for ma
     </code>
 </pre>
 <p>
-<p>Determinants, Inverse Matrices and solving Linear systems To compute the determinant of a square matrix, we simply use the det() command det(A) det(B) To find the inverse of a square matrix, we use the solve() command, specifying only the matrix in question solve(A)</p>
+</div>
+</div>
+<div id="linear-algebra" class="section level1" data-navmenu="Maths with R">
+<h1>Linear Algebra</h1>
+<div id="column-8" class="section level2 tabset">
+<h2>Column</h2>
+<div id="determinants-inverse-matrices-and-solving-linear-systems" class="section level3">
+<h3>Determinants, Inverse Matrices and solving Linear systems</h3>
+<p>To compute the determinant of a square matrix, we simply use the det() command det(A) det(B) To find the inverse of a square matrix, we use the solve() command, specifying only the matrix in question solve(A)</p>
 <p>To solve a system of linear equations in the form Ax=b , where A is a square matrix, and b is a column vector of known values, we use the solve() command to determine the values of the unknown vector x. b=vec2 # from before solve(A, b) Row and Column Statistics. Statistic on the rows and columns can easily be computed if required. %rowMeans(A) # Returns vector of row means. %rowSums(A) # Returns vector of row sums. %colMeans(A) # Returns vector of column means. %colSums(A) # Returns vector of coumn means.</p>
 <p>
 </div>
-<div id="eigenvalues-and-eigenvectors-1" class="section level4">
-<h4>{Eigenvalues and Eigenvectors}</h4>
+<div id="eigenvalues-and-eigenvectors-1" class="section level3">
+<h3>Eigenvalues and Eigenvectors</h3>
 <p>The eigenvalues and eigenvectors can be computed using the eigen() function. A data object is created. This is a very important type of matrix analysis, and many will encounter it again in future modules.</p>
 <p>Y = eigen(A) names(Y) &quot; y<span class="math inline">\(val are the eigenvalues of A &quot; y\)</span>vec are the eigenvectors of A</p>
 <p>? Part 2 Revision on Earlier Material &quot; Accessing a column of a data frame &quot; Accessing a row of a data frame</p>
@@ -3553,45 +3619,65 @@ Matrix Multiplication To multiply matrices, we require a special operator for ma
 <div id="sampling-1" class="section level3">
 <h3>Sampling</h3>
 <div id="sequence-of-integers" class="section level4">
-<h4>{Sequence of Integers}</h4>
-A sequence of integers can be created using the “:” operator, specifying the upper and lower bounds on either side. This is very useful for Dice experiments. Importantly this sequence is constructed as a numeric vector.
-<pre>
-<code>
-1:10
-5:1
-Dice = 1:6
-Dice
-class(Dice)
-mode(Dice)
-&lt;\code&gt;
-</pre>
-<p><code> &gt; 1:10 [1] 1 2 3 4 5 6 7 8 9 10 &gt; 5:1 [1] 5 4 3 2 1 &gt; Dice = 1:6 &gt; Dice [1] 1 2 3 4 5 6 &gt; class(Dice) [1] “integer” &gt; mode(Dice) [1] “numeric” &lt;&gt;</p>
+<h4>Sequence of Integers</h4>
+<p>A sequence of integers can be created using the “:” operator, specifying the upper and lower bounds on either side. This is very useful for Dice experiments. Importantly this sequence is constructed as a numeric vector.</p>
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></code></pre></div>
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span><span class="op">:</span><span class="dv">1</span></code></pre></div>
+<pre><code>[1] 5 4 3 2 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Dice =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>
+Dice</code></pre></div>
+<pre><code>[1] 1 2 3 4 5 6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(Dice)</code></pre></div>
+<pre><code>[1] &quot;integer&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mode</span>(Dice)</code></pre></div>
+<pre><code>[1] &quot;numeric&quot;</code></pre>
 </div>
 <div id="playing-with-dice" class="section level4">
-<h4>{Playing with Dice}</h4>
-Another important command is the <code>sample()</code> command. This command causes ``R} to select <span class="math inline">\(n\)</span> items from the specified vector. We can use it to simulate one roll of a die.
+<h4>Playing with Dice</h4>
+<p>Another important command is the <code>sample()</code> command. This command causes <code>R</code> to select <span class="math inline">\(n\)</span> items from the specified vector. We can use it to simulate one roll of a die.</p>
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Dice =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>
+<span class="kw">sample</span>(Dice,<span class="dv">1</span>)</code></pre></div>
+<pre><code>[1] 4</code></pre>
 <pre>
 <code>
-Dice = 1:6
-sample(Dice,1)
+&gt; sample(Dice,1)
+[1] 2 
+&gt; 
+&gt; sample(Dice,1)
+[1] 4 
+&gt;
+&gt; sample(Dice,1)
+[1] 1
+&gt; 
+&gt; sample(Dice,1)
+[1] 2
 &lt;\code&gt;
 </pre>
-<p><code> &gt; sample(Dice,1) [1] 2 &gt; &gt; sample(Dice,1) [1] 4 &gt; &gt; sample(Dice,1) [1] 1 &gt; &gt; sample(Dice,1) [1] 2 &lt;&gt;</p>
-<p>%————————————————————————————–% #### {Sampling Without Replacement and With Replacement}</p>
-<p>Suppose we wish to simulate two rolls of a die. Surely we just specify 2 in the argument of the <code>sample()</code> command. In fact we do, but this is not enough. The <code>sample()</code> command works on the default basis of . That is to say: once a number has been selected, it can not be selected again.</p>
+</div>
+<div id="sampling-without-replacement-and-with-replacement" class="section level4">
+<h4>Sampling Without Replacement and With Replacement</h4>
+<p>Suppose we wish to simulate two rolls of a die. Surely we just specify 2 in the argument of the <code>sample()</code> command. In fact we do, but this is not enough. The <code>sample()</code> command works on the default basis of <strong><em>sampling without replacement</em></strong>. That is to say: once a number has been selected, it can not be selected again.</p>
 <p><code> &gt; sample(Dice,6) [1] 4 3 6 1 2 5 &gt; sample(Dice,7) Error in sample(Dice, 7) : cannot take a sample larger than the population when ‘replace = FALSE’ &lt;&gt; Sampling without replacement is appropriate if we are selecting lottery numbers. You can only pick a particular number once. <code> &gt; Lotto=1:42 &gt; sample(Lotto,6) [1] 2 38 19 10 3 27 &gt; &lt;&gt;</p>
-<p>Going back to multiple dice rolls, what we do here is to additionally specify ``replace=TRUE}.</p>
+<p>Going back to multiple dice rolls, what we do here is to additionally specify <code>replace=TRUE</code>.</p>
 <p>This specifies an experiment where there is . Let us simulate 20 dice rolls. We can also use the <code>table()</code> function to study the outcomes of the simulation.</p>
 <p>This command tells use how many times each outcome (number) came up. (This is called a ).</p>
 <p>Out of interest, we will compute the mean value of the dice rolls using the <code>mean()</code> command. <code> &gt; sample(Dice,20,replace=TRUE) [1] 4 1 3 2 5 4 4 4 6 5 6 6 5 6 6 5 1 1 1 3 &gt; &gt; X= sample(Dice,20,replace=TRUE) &gt; table(X) X 1 2 3 4 5 6 4 4 2 3 3 4 &gt; mean(X) [1] 3.45 &lt;&gt;</p>
-<p>Let us roll dice 300 times. Each of the six outcome is equally likely, so we will expect 50 realisations of each number. But that rarely happens, as <strong><em>Sampling fluctation</em></strong> comes into play. In the table below, we see that the number 2 comes up thirteen more times than the number 3. Is there something wrong? A hidden bias in our code? No. It is just a random occurence.</p>
+<p>Let us roll dice 300 times. Each of the six outcome is equally likely, so we will expect 50 realisations of each number.<br />
+But that rarely happens, as <strong><em>Sampling fluctation</em></strong> comes into play. In the table below, we see that the number 2 comes up thirteen more times than the number 3. Is there something wrong? A hidden bias in our code? No. It is just a random occurence.</p>
 <p>%———————————–% <code> &gt; X=sample(Dice,300,replace=TRUE) &gt; table(X) X 1 2 3 4 5 6 48 57 44 55 51 45 &gt; mean(X) [1] 3.463333 hist(X,breaks=c(0:6 + 0.5),col=c(“red”,“blue”,“green”)) &lt;&gt;</p>
-A bar chart known as a  to accompany this frequency table can be constructed using the following code. The command <code>hist()</code> is used to construct the histogram. The argument ``breaks} is used to specify the lower and upper bounds of each interval (the sides of each of the columns).
+A bar chart known as a  to accompany this frequency table can be constructed using the following code. The command <code>hist()</code> is used to construct the histogram. The argument <code>breaks</code> is used to specify the lower and upper bounds of each interval (the sides of each of the columns).
 <pre>
 <code>
  hist(X,breaks=c(0:6 + 0.5),col=c(&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;))
 </pre>
-<p>&lt;&gt;</p>
+<p></code></p>
 <p>
 </div>
 <div id="rolling-two-dice" class="section level4">
@@ -3607,7 +3693,11 @@ hist(Z,breaks=c(1:12 + 0.5),col=c(&quot;red&quot;,&quot;blue&quot;,&quot;green&q
 &lt;\code&gt;
 </pre>
 <p><code> &gt; X=sample(Dice,300,replace=TRUE) &gt; Y=sample(Dice,300,replace=TRUE) &gt; Z=X+Y &gt; table(Z) Z 2 3 4 5 6 7 8 9 10 11 12 8 18 19 38 41 56 32 28 26 23 11 \end{veratim}</p>
-%———————————————————————————————% #### {Dice Rolls Sums Experiment} Let work on the basis of 100 dice rolls, and for the sake of simplicity let us consider the  of those 100 single die-rolls. Importantly, we are simulating a  die. The lowest mathematially possible value is 100, while the highest possible value is 600. We expect to get a value of approximately 350, halfway between the minimum and maximum, but each time we perform the experiment there will be slight fluctuations. Try the last line of the code below a few times. How many times do you get a figure less than 340 or greater than 360?
+</div>
+</div>
+<div id="dice-rolls-sums-experiment" class="section level3">
+<h3>{Dice Rolls Sums Experiment}</h3>
+Let work on the basis of 100 dice rolls, and for the sake of simplicity let us consider the  of those 100 single die-rolls. Importantly, we are simulating a  die. The lowest mathematially possible value is 100, while the highest possible value is 600. We expect to get a value of approximately 350, halfway between the minimum and maximum, but each time we perform the experiment there will be slight fluctuations. Try the last line of the code below a few times. How many times do you get a figure less than 340 or greater than 360?
 <pre>
 <code>
 X= sample(Dice,100,replace=TRUE)
@@ -3618,7 +3708,6 @@ sum(sample(Dice,100,replace=TRUE))
 &lt;\code&gt;
 </pre>
 <p>
-</div>
 <div id="simulation-study-of-dice-rolls-sums-experiment" class="section level4">
 <h4>{Simulation Study of Dice Rolls Sums Experiment}</h4>
 <p>Lets consider this Dice Roll Summation experiment. We will perform the experiment 100000 times, and see what sort of distribution of summations we get. We will save the results in a vector called ``sums}.</p>
