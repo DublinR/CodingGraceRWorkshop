@@ -1,0 +1,182 @@
+%======================================================================================================== %
+\subsection*{3. Beginning an analysis}
+
+
+For the remainder of this tutorial, we will be analyzing the following dataset: 
+
+Concentration
+0.3330
+0.1670
+0.0833
+0.0416
+0.0208
+0.0104
+0.0052
+Velocity
+3.636
+3.636
+3.236
+2.666
+2.114
+1.466
+0.866
+
+These data are measurements of the rate or velocity of a chemical reaction for different concentrations of substrate. We are interested in fitting a model of the relationship between concentration and velocity. The first thing we need to do is enter the data. We can do this from the Commands Window, from a spreadsheet interface, or by importing an existing file. Most of this tutorial will focus on command line input so let's begin there. At the prompt, create two vectors: 
+> conc <- c(0.3330, 0.1670, 0.0833, 0.0416, 0.0208, 0.0104, 0.0052)
+> vel <- c(3.636, 3.636, 3.236, 2.660, 2.114, 1.466, 0.866)
+We use the function c(), which stands for concatenate, to create a vector. The individual elements can be numeric, as in this example, or character, or any other mode. However, all elements in a vector must be the same mode. Note that the elements are separated by commas. The spaces between elements are included for clarity and are not required by R. 
+Now, we will combine these two vectors into a single data frame: 
+> df <- data.frame(conc, vel)
+Let's look at the data frame to be sure we entered the data correctly. To view any object in R, simply type its name: 
+
+\begin{verbatim}
+> df
+    conc   vel
+1 0.3330 3.636
+2 0.1670 3.636
+3 0.0833 3.236
+4 0.0416 2.660
+5 0.0208 2.114
+6 0.0104 1.466
+7 0.0052 0.866
+\end{verbatim}
+Oops. It looks like there is an error in one of the velocity entries. The fourth one down, 2.660, should be 2.666. You could use the up-arrow to recall the command you used to create vel, make the change, and run it again. Then use the up-arrow again to recall the command you used to create df and run that one again. Let's look at another way to do it. First, we'll change just that one element in the vector vel. Individual elements in a vector are referenced in square brackets. We want to change the fourth element, so we type: 
+> vel[4] <- 2.666
+Take a look at vel to see that it has been changed. There are a couple ways to change elements in a data frame. Treating the data frame as a matrix, we can reference the element in the fourth row and second column like this: 
+> df[4,2] <- 2.666
+Note the order that the row and column are referenced: first the row, then the column. Data frames also allow us to reference individual columns by their names. This is done with the name of the data frame, followed by a dollar sign, and the name of the column. So the vel data can be referenced as df$vel. Now we can change the fourth element like this: 
+\begin{verbatim}
+> df$vel[4] <- 2.666
+\end{verbatimm}
+Note that df$vel is a vector so we only need one number in the brackets. Let's take another look at df to be sure we have it right this time. 
+\begin{framed}
+\begin{verbatim}
+> df
+    conc   vel 
+1 0.3330 3.636
+2 0.1670 3.636
+3 0.0833 3.236
+4 0.0416 2.666
+5 0.0208 2.114
+6 0.0104 1.466
+7 0.0052 0.866
+\end{verbatim}
+\end{framed}
+Looks good! We could have created this data frame in other ways. If the data were already entered into a spreadsheet, database, or ASCII file, you could import it using the appropriate commands. Alternatively, you could create a data frame using a spreadsheet-like interface right in R. From the Edit choose Data Editor... and follow the prompts. You can use the fix() command to edit existing data frames. 
+Now we're ready to do an analysis.
+
+%======================================================================================================== %
+4. Visualizing your data
+
+
+The first thing we want to do is plot the data. You can easily get a basic plot with the following:
+
+> plot(df$conc, df$vel)
+
+The first vector given is the independent variable to be plotted on the X-axis, the second is the dependent variable for the Y-axis. If you execute a plotting function and there is no active graphsheet, a default graphsheet will be opened for you. If you then do another plot, the first one will be lost and the new plot will be drawn in the 
+same graphics window. You can keep your first plot by opening another graphsheet by typing: 
+
+\begin{verbatim}
+> win.graph()
+\end{verbatim}
+The default is a square graphsheet. You can create portrait graphsheets, landscape graphsheets, any shape you want. Check win.graph in the help files to see how. 
+We're going to look at 3 different ways to analyze these data: simple linear regression, non-linear regression, and polynomial regression. 
+
+
+%======================================================================================================== %
+6. Non-linear Regression
+
+
+We can also directly fit the Michaelis-Menten function to our data using non-linear regression. Remember the term "sum-of-squares" from your old regression class? When you fit a regression model, you get a "fitted value" for every data point used to fit the model. If you take the difference between the fitted value and the observed value, you get what we call a residual. Then if you square all the residuals and add them up, you get the residual sum-of-squares. The smaller that is, the better the model fits your data. You may have heard this called the least-squares method. Well, non-linear regression works the same way. With non-linear regression, we specify the form of the model we want to fit and the parameters that need to be estimated. R then searches for parameter values that will minimize the residual sum-of-squares. 
+To run the analysis, we use the function nls(), which stands for non-linear least squares. Use the summary() function to view the results. 
+\begin{framed}
+\begin{verbatim}
+> nlsfit <- nls(vel~Vm*conc/(K+conc),data=df, start=list(K=0.0166, Vm=3.852))
+> summary(nlsfit)
+
+Formula: vel ~ Vm * conc/(K + conc)
+
+Parameters:
+    Estimate Std. Error t value Pr(>|t|)    
+K  0.0178867  0.0009928   18.02 9.68e-06 ***
+Vm 3.9109354  0.0557700   70.13 1.12e-08 ***
+---
+Signif. codes:  0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1 
+
+Residual standard error: 0.06719 on 5 degrees of freedom
+
+Correlation of Parameter Estimates:
+        K
+Vm 0.7535 
+\end{verbatim}
+\end{framed}
+
+You can view the estimates for K and Vm from the summary output, or you can use the coef() function again. How do the estimates compare with those from the previous analysis? We want to plot our non-linear fit to see how well it matches the data. First, plot the original variables again. Remember to create a new graphsheet if you want to keep your previous graph. 
+> plot(df$conc, df$vel, xlim=c(0,0.4), ylim=c(0,4))
+
+
+%======================================================================================================== %
+There's something new here. We used the xlim and ylim arguments to specify the limits for the x and y axes, respectively. By default, R will set the limits just enough to plot all the data. Sometimes you may want to plot beyond the data if you're going to add other things later or just to make the plot look a little better. 
+To add the model fit to the plot is going to take a little more work than with simple linear regression. The x-axis on our plot goes from 0 to 0.4, so we're going to need to generate a vector that covers this range and then calculate a y-value for each x-value using the parameters we just estimated. The number of x-values you generate will determine how smooth the line is going to look. You will almost always get a smooth line with 100 x-values. 
+> x <- seq(0, 0.4, length=100)
+This does just what you think it does. It generates a sequence of 100 numbers from 0 to 0.4. Now we calculate the associated y-values: 
+> y2 <- (coef(nlsfit)["Vm"]*x)/(coef(nlsfit)["K"]+x)
+
+
+%======================================================================================================== %
+This shows you another way that you can reference elements in a vector. If the elements are named, you can use that in the brackets instead of its position number. There's another way to get our y-values for the plot that's perhaps the simplest. We'll use the function predict() that will predict fitted response values for a given set of x-values. The function wants the x-values in a dataframe and with the same variable name(s) as the original data. Here's how we do it: 
+> y2 <- predict(nlsfit,data.frame(conc=x))
+The function predict() can be used with results from linear models, non-linear models, and generalized linear models. Check the online help to see all it can do. Now to add the line to our plot: 
+> lines(x, y2)
+I'm sure you noticed I called the y-values y2. This is the fit from our second model. Let's add a line from our first model to see how they compare. We can use the same vector of x-values to calculate a new set of y-values and add the line to our plot. 
+> y1 <- (Vm*x)/(K+x)
+> lines(x, y1, lty="dotted", col="red")
+\end{verbatim}
+\end{framed}
+For this to work, you must have created the objects Vm and K as we did in the previous section. Also note that we used the line type argument (lty) for a dotted line and the color argument (col) to get a different color. Here is what the resulting plot should look like: 
+
+
+%======================================================================================================== %
+\section*{7. Polynomial Regression}
+
+
+The last method we'll use to fit these data is polynomial regression, where the model takes on the form y = b0 + b1x + b2x2 + b3x3 + ... , etc. We're going to fit a second order polynomial like this: 
+\begin{framed}
+\begin{verbatim}
+> polyfit2 <- lm(vel~conc+I(conc^2), data=df)
+\end{verbatim}
+\end{framed}
+We're using the same function lm() as linear regression, but we're adding multiple instances of the explanatory variable to generate our polynomial formula. Note that we need to use the identity function, I(), because the caret (^) has special meaning in a formula. Another way to build this formula is to create a matrix where each column contains the explanatory variable raised to a power. Use the function cbind() to bind columns together to form a matrix. This is what that would look like: 
+> polyfit2a <- lm(vel~cbind(conc, conc^2), data=df)
+Run either of these commands and view the summary or just take a look at the coefficients: 
+\begin{framed}
+\begin{verbatim}
+> coef2 <- coef(polyfit2)
+> coef2
+(Intercept)        conc   I(conc^2) 
+   1.288439   25.652243  -56.500264 
+   \end{verbatim}
+\end{framed}
+Now we want to draw this line on our graph. We could add it to the plot with the other two lines, but let's create a new graph and label the x and y axes: 
+> plot(df$conc, df$vel, xlim=c(0,0.4), ylim=c(0,5), 
++ xlab="Substrate Concentration", ylab="Reaction Rate")
+There's something new with this line. You can enter the entire command on a single line if you want, but if you hit Enter before the command is complete, you get the "+" prompt on the second line where you finish the command. NOTE: the "+" on the second line IS NOT part of the command, it is the prompt to continue. So if you enter this all together on a single line, DO NOT include the "+". 
+There are a couple ways to generate the y-values for the line. Perhaps the most straightforward is the following: 
+> y3 <- coef2[1] + coef2[2]*x + coef2[3]*x^2
+We just plug in the coefficients and the appropriate x-values and we're done. There's another way that doesn't involve so much typing, especially when dealing with higher order polynomials. It involves matrix multiplication so hopefully you remember something about linear algebra. We're going to create a matrix of x-values and then multiply that by our coefficient vector. 
+\begin{framed}
+\begin{verbatim}
+> y3 <- cbind(1,x,x^2) %*% coef2
+You saw the function cbind() just a second ago. (FYI: There is also a function called rbind() that binds vectors together as rows instead of columns.) The operator %*% is used for matrix multiplication. Add the line to the graph: 
+> lines(x,y3)
+And it should look like this: 
+
+The last thing we're going to do is increase the polynomial order to the maximum. There are seven data points so the maximum order is six. (Why?) First we fit the new regression, then transform the coefficients, generate new y-values, and add the new line to our graph. 
+> polyfit6 <- lm(vel~conc+I(conc^2)+I(conc^3)+I(conc^4)+I(conc^5)+I(conc^6),data=df)
+> coef6 <- coef(polyfit6)
+> y4 <- cbind(1,x,x^2,x^3,x^4,x^5,x^6) %*% coef6
+> lines(x,y4,lty=2)
+When you add the lines, you will see several warnings go by because some of the resulting y-values greatly exceed the range of the graph. The plot should now look like this: 
+
+It's a good fit (the line goes through every point) but how useful is it for predicting new points? Take a look at the summaries from each fit. Ever seen an R2 of 1 before? 
+
