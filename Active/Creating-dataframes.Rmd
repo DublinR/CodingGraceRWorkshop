@@ -1,4 +1,4 @@
-Data Frames
+Data Frames {data-navmenu="Data Objects"}
 =====================================
 
 Column{.tabset}
@@ -26,12 +26,13 @@ In similar fashion, we entered the average heights in a vector called height.
 [1] 76.1 77.0 78.1 78.2 78.8 79.7 79.9 81.1 81.2 81.8 82.8 83.5
 \end{verbatim}
 
-We will now use R's data.frame() command to create our first data frame and store the results in the data frame "village".
+We will now use R's ``data.frame()`` command to create our first data frame and store the results in the data frame "village".
 \begin{verbatim}
 > village=data.frame(age=age,height=height)
 \end{verbatim}
 
 How do we access the data in each column? One way is to state the variable containing the data frame, followed by a dollar sign, then the name of the column we wish to access (as with Lists earlier).
+
 For example, if we wanted to access the data in the "age" column, we would do the following:
 \begin{verbatim}
  > village$age
@@ -55,5 +56,6 @@ However, R has made copies of the variables in the columns of the data frame, an
 [12] 83.5
 \end{verbatim}
 
-Previously we have seen rownames() and colnames() to determine the names from an existing data frame. We can use these commands to create names for a new data frame.
+Previously we have seen rownames() and colnames() to determine the names from an existing data frame. 
+We can use these commands to create names for a new data frame.
 
