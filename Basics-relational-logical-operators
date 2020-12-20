@@ -1,16 +1,5 @@
-
- \documentclass{beamer}
- 
- \usepackage{amsmath}
- \usepackage{graphics}
- \usepackage{graphicx}
- \usepackage{framed}
- \usepackage{amssymb}
- 
- \begin{document}
-
- 	\begin{frame}
-\frametitle{Relational and Logical Operators}
+Relational and Logical Operators
+================================================
 
 Relational operators allow for the comparison of values in vectors.
 \begin{center}
@@ -34,12 +23,7 @@ Note the difference of the equality operator "==" with assignment operator "=".
 
 The shorter form performs element-wise comparisons in much the same way as arithmetic operators. The longer form is appropriate for programming control-flow and typically preferred in "if" clauses.
 
-\end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
-\begin{frame}[fragile]
-
-\begin{itemize}
 \item We can use relational operators to subset vectors (as well as more complex data objects such as data frames, which we will meet later).
 \item We specify the  relational condition in square brackets.
 \item We can construct compound relational conditions too, using logical operators
@@ -54,6 +38,4 @@ The shorter form performs element-wise comparisons in much the same way as arith
 [1]  1  2  3  4  5 17 18 19
 \end{verbatim}
 \end{framed}
-\end{frame}
-\end{document}
 
