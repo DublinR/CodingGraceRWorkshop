@@ -1,0 +1,15 @@
+Boxplots
+=====================================
+
+### Boxplots
+
+Boxplots can be used to identify outliers.
+
+By default, the ``boxplot()`` command sets the orientation as vertical. 
+
+By adding the argument ``horizontal=TRUE``, the orientation can be changed to horizontal.
+
+```{r}
+boxplot(mtcars$mpg, horizontal=TRUE, xlab="Miles Per Gallon",
+main="Boxplot of MPG")
+```
