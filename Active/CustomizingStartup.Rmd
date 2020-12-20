@@ -1,4 +1,8 @@
-\section{Customizing Startup}
+Customizing Startup
+=============================================
+Column {.tabset}
+------------------------
+<h3>Customizing Startup</h3>
 
 You can customize the R environment through a site initialization file or a directory initialization file. 
 R will always source the Rprofile.site file first. 
