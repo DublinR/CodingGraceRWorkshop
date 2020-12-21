@@ -1227,53 +1227,11 @@ Column{.tabset}
  </code></pre>
 
  
-```{r child = "Active/Plots.Rmd"}
-```
 
-```{r child = "Active/Renvironment.Rmd"}
-```
-
-```{r child = "Active/DataObjects.Rmd"}
-```
- 
-```{r child = "Active/Installing_R.Rmd"}
-```
 
  
 ```{r child = "Active/Creating-dataframes.Rmd"}
 ```
-
-```{r child = "Active/Writing_Functions.Rmd"}
-```
-
- 
-```{r child = "Active/CustomizingStartup.Rmd"}
-```
-
- 
-```{r child = "Active/Base_Graphics_1.Rmd"}
-```
-
- 
-```{r child = "Active/Boxplots.Rmd"}
-```
-
- 
-```{r child = "Active/BasicStatsCommands.Rmd"}
-```
-
- 
-```{r child = "Active/Inference_Procedures_with_R.Rmd"}
-```
-
-
-
-
-
-
-
-
-
 
 ```{r child = "Active/Apply.Rmd"}
 ```
@@ -1287,3 +1245,9 @@ Column{.tabset}
  
 ```{r child = "Active/CreatingData.Rmd"}
 ```
+
+
+
+
+
+

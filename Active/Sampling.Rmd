@@ -1,6 +1,9 @@
 Sampling {data-navmenu="Maths with R"}
 ==================================
 
+Column {.tabset}
+------------------------------
+
 ### Sampling
 
 #### Sequence of Integers

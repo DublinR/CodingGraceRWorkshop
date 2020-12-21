@@ -1,4 +1,4 @@
-Inference Procedures
+Inference Procedures {data-navmenu="Statistics"}
 ======================================
 Column {.tabset}
 ---------------------------------------
@@ -152,7 +152,7 @@ sample estimates:
 
 
 
-### {Test of Equality for Two Sample Proportions (a)}
+#### Test of Equality for Two Sample Proportions 
 The null hypothesis is that two populations have the same proportions for a particular characteristic.
 [H_0 : pi_1 = pi_2 ]
 [H_1 : pi_1 neq pi_2 ]
@@ -191,6 +191,7 @@ sample estimates:
 *  You would be required to compute the differences in observed proportions.
 *  Additionally you will given the R code for one sample procedures. This may or may not be relevant for answering the question.
 
+<pre>
 <code>
 > prop.test(60,90,0.80)
 ...
@@ -203,16 +204,9 @@ sample estimates:
         p
 0.6666667
 </code>
+</pre>
 
-
-
-
-
-
-### {Shapiro-Wilk Test(a)}
-
-
-
+### Shapiro-Wilk Test
 
 *  We will often be required to determine whether or not a data set is normally distributed.
 *  Again, this assumption underpins many statistical models.
@@ -220,12 +214,10 @@ sample estimates:
 *  The alternative hypothesis is that the data set is not normally distributed.
 *  One procedure for testing these hypotheses is the Shapiro-Wilk test, implemented in R using the command texttt{shapiro.test()}.
 *  (Remark: You will not be required to compute the test statistic for this test.)
+<p>
 
-
-%----------------------------------------%
-
-### {Shapiro Wilk Test(b)}
 For the data set used previously; $x$ and $y$, we use the Shapiro-Wilk test to determine that both data sets are normally distributed.
+<pre>
 <code>
 
 > shapiro.test(x)
@@ -242,11 +234,8 @@ W = 0.9474, p-value = 0.6378
 data:  y
 W = 0.9347, p-value = 0.5273
 </code>
+</pre>
 
-
-
-
-%-------------------------------------------------%
 
 ### {Graphical Procedures for assessing Normality}
 

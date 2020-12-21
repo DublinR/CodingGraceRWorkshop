@@ -1,5 +1,6 @@
-Data Objects
+Data Objects {data-navmenu="R Environment"}
 ========================================
+
 Column {.tabset}
 ---------------------
 

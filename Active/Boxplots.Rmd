@@ -1,5 +1,8 @@
-Boxplots
+Boxplots {data-navmenu="Statistics"}
 =====================================
+
+Column
+------------------------------
 
 ### Boxplots
 

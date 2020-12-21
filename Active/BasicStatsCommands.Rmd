@@ -1,10 +1,10 @@
-Descriptive and Quantile Statistics
+Descriptive and Quantile Statistics {data-navmenu="Statistics"}
 ===========================================
 
 Column {.tabset}
 ------------------------------------
 
-###
+### Statistics
 
 Some simple ones to start with
 

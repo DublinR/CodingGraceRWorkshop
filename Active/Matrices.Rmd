@@ -1,16 +1,16 @@
 Matrices {data-navmenu="Maths with R"}
 ==============================
-Column {.tabset}
 
+Column {.tabset}
 ------------------------------
 
 ### Creating a matrix
 
 Matrices can be created using the ``matrix()`` command. The arguments to be supplied are 
-begin{enumerate}
-         * vector of values to be entered
-          * Dimensions of the matrix, specifying either the numbers of rows or columns.
-end{enumerate}
+
+* vector of values to be entered
+* Dimensions of the matrix, specifying either the numbers of rows or columns.
+
 
 Additionally you can specify if the values are to be allocated by row or column. By default they are allocated by column.
 

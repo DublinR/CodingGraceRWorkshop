@@ -1,14 +1,19 @@
-Plots
+Plots {data-navmenu="Maths with R"}
 ===========================
+
+Column {.tabset}
+---------------------
 
 ### Plots
 
 This section is an introduction for producing simple graphs with
 the R Programming Language.
-\begin{itemize}
-*  Line Charts  *  Bar Charts *  Histograms *  Pie
-Charts *  Dotcharts
-\end{itemize}
+
+*  Line Charts  
+*  Bar Charts 
+*  Histograms 
+*  Pie Charts 
+*  Dotcharts
 
 
 #### Histograms
