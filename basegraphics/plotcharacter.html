@@ -1,28 +1,3 @@
-	\documentclass[a4paper,12pt]{article}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{eurosym}
-\usepackage{framed}
-\usepackage{vmargin}
-\usepackage{amsmath}
-\usepackage{graphics}
-\usepackage{epsfig}
-\usepackage{subfigure}
-\usepackage{enumerate}
-\usepackage{fancyhdr}
-
-\setcounter{MaxMatrixCols}{10}
-%TCIDATA{OutputFilter=LATEX.DLL}
-%TCIDATA{Version=5.00.0.2570}
-%TCIDATA{<META NAME="SaveForMode"CONTENT="1">}
-%TCIDATA{LastRevised=Wednesday, February 23, 201113:24:34}
-%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
-%TCIDATA{Language=American English}
-
-\pagestyle{fancy}
-\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
-\lhead{Introduction to \texttt{R}} \rhead{Kevin O'Brien} \chead{Base Graphics} %\input{tcilatex}
-
-\begin{document}
 
 \section*{Plot Character}
 The default plot character is a “hollow” circle. We can change the type of plot character used by specifying a value to the \textbf{\texttt{pch=}} argument. We can  change the colour using the \textbf{\texttt{col=}} argument.
@@ -33,25 +8,6 @@ The default plot character is a “hollow” circle. We can change the type of p
 \end{framed}
 
 \section*{Changing your plot character}
-
-To change the plot character (the symbol for each covariate, we supply an additional argument to the plot() function.  This argument is formulated as pch=n where n is some number.
-Additionally we change the colour of the characters, by specifying a colour in the col argument.
-\footnotesize \begin{verbatim}
-plot(x,y,pch=15,col="red")		#Square plot symbols
-plot(x,y,pch=16,col="green")		#Orb plot symbols
-plot(x,y,pch=17,col="mauve")		#Triangular plot symbols
-plot(x,y,pch=36	,col="amber")		#Dollar sign plot symbols
-\end{verbatim}
-
-
-Recall that we can add new variates to an existing scatterplot using the points() function. Remember to set the vertical and horizontal limits accordingly.
-\begin{framed}
-\begin{verbatim}
-y1 = rnorm(10); y2 = rnorm(10)
-plot(x,y1, pch=8,col="purple" ,xlim=c(-5,5),ylim=c(-5,5))
-points(x,y2,pch=12,col="green")
-\end{verbatim}
-\end{framed}
 
 
 For a list of plot characters see: \begin{verbatim}
