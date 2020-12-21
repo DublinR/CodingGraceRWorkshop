@@ -1,0 +1,12 @@
+
+
+
+Particular rows and columns can be accessed by specifying the row number or column number, leaving the other value blank.
+<code>
+A[1,]	  # access first row of A
+B[,2]   # access first column of B
+</code>
+Addition and subtractions
+For matrices, addition and subtraction works on an element- wise basis. The first elements of the respective matrices are added, and so on.
+A+B
+A-B
