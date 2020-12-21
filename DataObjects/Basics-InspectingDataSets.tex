@@ -46,41 +46,7 @@ Some data sets are very large. To just see the first few rows, we use the head()
 }
 \end{frame}
 
-%------------------------------------------------------%
 
-
-### Working directories
-You can change your working directly by using the appropriate options on the File menu.
-To determine the current working directory – you can use the \texttt{getwd()} command:	
-\begin{framed}
-\begin{verbatim}
-> getwd()
-[1] "C:/Users/Kevin/Documents"
-\end{verbatim}
-\end{framed}
-\end{frame}
-
-%------------------------------------------------------%
-
-To change the working directory – we would use the \texttt{setwd()} command.
-\begin{framed}
-\begin{verbatim}
-> getwd()
-[1] "C:/Users/Kevin"
->
-> setwd("C:/Users/Kevin/Documents")
->
-> getwd()
-[1] "C:/Users/Kevin/Documents"
-\end{verbatim}
-\end{framed}
-\end{frame}
-
-### Removing items
-
-Sometimes it is desirable to save a subset of your workspace instead of the entire workspace. One option is to use the \texttt{rm()} function to remove unwanted objects right before exiting your \texttt{R} session; another possibility is to use the save function. 
-
-%------------------------------------------------------%
 
 The save function accepts multiple arguments to specify the objects you wish to save, or, alternatively, a character vector with the names of the objects can be passed to save through the \texttt{list=} argument. 
 
@@ -97,32 +63,4 @@ Whenever \texttt{R} encounters such a file in the working directory at the begin
 So one method for saving your work is to always save your workspace image at the end of an R session. If you’d like to save your workspace image at some other time during your R session, you can use the \texttt{save.image()} function, which, when called with no arguments, will also save the current workspace to a file called .RData in the working directory.
 \end{frame}
 %---------------------------------------------------------------------------------------------%
-
-\frametitle{Quitting the R environment}
-As the front page text indicates – all you have to do to quite the workspace is to type in \texttt{q()}. You will then be prompted to save your work.
-\end{frame}
-%---------------------------------------------------------------------------------------------%
-
-
-\frametitle{Coming unstuck}
-If you are having trouble with a piece of code that is currently compiling – all you have to do is press ESC. Just like other computing environments.
-\end{frame}
-%------------------------------------------------------%
-
-\frametitle{Listing all items in a workspace}
-To list all items in an \texttt{R} environment, we use the \texttt{ls()} function. This provides a list of all data objects  accessible.
-\begin{framed}
-\begin{verbatim}
-> ls()
- [1] "a"          "A"          "authors"    "b"          "books"     
- [6] "C"          "D"          "ex1"        "Gerb"       "Lst"       
-[11] "m"          "m1"         "op"         "presidents" "r"         
-[16] "showSmooth" "sm"         "sm.3RS"     "sm2"        "sm3"       
-[21] "Trig"       "Vec1"       "x"          "X"          "x.at"      
-[26] "x1"         "x2"         "x3R"        "y"          "Y"         
-[31] "y.at"      
-\end{verbatim}
-\end{framed}
-\end{frame}
-
 
