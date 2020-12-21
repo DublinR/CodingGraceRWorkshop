@@ -1,17 +1,4 @@
 
-
-\section*{Combining plots}
-It is possible to combine two plots. We used the graphical parameters command ``par()`` to create an array. 
-Often we just require two plots side by side or above and below. 
-We simply specify the numbers of rows and columns of this array using the ``mfrow`` argument, passed as a vector.
-
-<code>
-par(mfrow=c(1,2))
-plot(x,y1)			# draw first plot
-plot(x,y2)			# draw second plot
-par(mfrow=c(1,1))		# reset to default setting.
-</code>
-
 #### *{Combining Plots}
 Multiple plots can be combined into a single graph, arranged vertically, horizontally or in a grid.
 
