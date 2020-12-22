@@ -1,0 +1,191 @@
+%----------------------------------------------------------------%
+\section{Vector Operations}
+\begin{itemize}
+\item $R$ operates on named data structures. The simplest such
+structure is the vector, which is a single entity consisting of an
+ordered collection of numbers or characters.
+
+\item The most common types of vectors are:
+\begin{itemize}
+\item Numeric vectors \item Character vectors \item Logical
+vectors
+\end{itemize}
+
+\item There are, of course, other types of vectors.
+\begin{itemize}
+\item Colour vectors - potentially useful later on.
+\item Order vectors - The rankings of items in a vector.
+\item Complex number vectors - not part of this course.
+\end{itemize}
+\end{itemize}
+\subsection{Ordering Vector Operations}
+\begin{framed}
+\begin{verbatim}
+sort(x)  # sort x into ascending order
+rev(x)
+rev(sort(x))
+\end{verbatim}
+\end{framed}
+
+\begin{framed}
+\begin{verbatim}
+x=c(15, 34, 7, 12, 18, 9, 1, 42, 56, 28, 13, 24, 35)
+
+length(x)         # How many items in x
+median(x)         # median of data set x
+sort(x)[7]        # 7th item when x is in ascending order
+quantile(x,0.75)  # Compute the third quartile
+quantile(x,0.25)  # Compute the first quartile
+IQR(x)            
+fivenum(x)
+
+# code is committed
+\end{verbatim}
+\end{framed}
+
+
+
+
+%----------------------------------------------------------------%
+\section{Some Useful Operations}
+\subsection{Sampling}
+
+The \texttt{sample()} function.
+
+\subsection{Set Theory Operations}
+
+\subsection{Controlling Precision and Integerization}
+\begin{framed}
+\begin{verbatim}
+pi
+round(pi,3)
+round(pi,2)
+floor(pi)
+ceiling(pi)
+\end{verbatim}
+\end{framed}
+
+%----------------------------------------------------------------%
+
+\section{Important Introductory Topics}
+\subsection{The \texttt{head()} and \texttt{tail()} functions}
+\subsection{Randomly Generated Numbers}
+With $a$ and $b$ as the lower and upper bound of the continous uniform distribution.
+\[X \sim U(a,b)\]
+\subsection{The \texttt{as} and \texttt{is} families of functions}
+\subsection{The \texttt{apply} family of functions}
+\subsection{Writing your own function}
+
+
+%----------------------------------------------------------------%
+\section{Lists and Data Frames}
+\subsection{Lists}
+\subsection{Named Components}
+\subsection{Data Frames}
+\begin{framed}
+\begin{verbatim}
+framename = data.frame()
+\end{verbatim}
+\end{framed}
+%----------------------------------------------------------------%
+\section{Important Graphical Procedures}
+\begin{enumerate}
+\item Histograms
+\item Box-plots
+\item Scatter-plots
+\end{enumerate}
+
+
+%----------------------------------------------------------------%
+
+\subsection{Correlation  and Regression tests }
+\subsubsection{Correlation Coefficient}
+Strength of a linear relationship between $X$ and $Y$
+
+%\begin{framed}
+\begin{verbatim}
+M=1000
+CorrData=numeric(M)
+for (i in 1:M)
+{
+CorrData[i] = cor(rnorm(10),rnorm(10))
+}
+\end{verbatim}
+%\end{framed}
+The null hypothesis is that the correlation coefficient is zero. 
+
+The alternative hypothesis is that the correlation coefficients is greater than zero. 
+
+The slope and intercept estimates 
+
+These tests are given in the "Two Tailed" format. 
+The one tailed format compares a null hypothesis where the parameter of interest has a true value of less than or equalt to one versus an alternative hypothesis stating that it has a value greater than zero. 
+  
+
+
+\newpage
+\section{Programming Paradigms}
+\subsection{While Loops}
+The while loop can be used if the number of iterations required is not known beforehand. For example, if we want to continue looping until a certain condition is met, a while loop is useful.
+
+The following is the syntax for a while loop:
+
+\begin{verbatim}
+while (condition){
+   command
+   command
+}
+\end{verbatim}
+The loop continues while \texttt{condition == TRUE}.
+
+
+Note: \texttt{sample()} takes a sample of the specified size (here just one) from a range of values (here integers 1 to 100).
+\begin{framed}
+\begin{verbatim}
+
+#initialise a counter to zero
+niter = 0		
+#initialize an empty vector
+numvec = numeric()
+
+
+num = sample(1:100, 1)
+
+#while loop
+while(num != 20)
+   {
+   num = sample(1:100, 1)
+   niter = niter + 1
+   numvec = c(numvec,num)
+   }
+numvec
+niter
+
+\end{verbatim}
+\end{framed}
+
+
+\subsection{Nested Loops}
+
+\subsection{Sums of two dice rolls}
+\begin{framed}
+\begin{verbatim}
+#Set Up an Empty Matrix of 6 rows and 6 columns
+Dice = matrix(0,6,6)
+
+#Main Loop
+for(i in 1:6)
+	{
+    #Nested Loop
+	for(j in 1:6)
+		{
+		Dice[i,j] = i+j
+		}
+	}		
+Dice   # Print your Results
+\end{verbatim}
+\end{framed}
+\subsection{Correlation Structure Example}
+
+
+
