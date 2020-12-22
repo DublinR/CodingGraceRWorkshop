@@ -1,0 +1,19 @@
+
+
+\subsection{Installation}
+	
+*  R is available as binaries \& source code for Windows, Mac and Linux
+*  \url{https://ftp.heanet.ie/mirrors/cran.r-project.org/}
+	
+However, R is also packaged within Rstudio
+	
+*  open-source, IDE for R
+*  very user-friendly
+*  https://www.rstudio.com/products/rstudio/download/
+	
+
+	\frametitle{Let's spend some time checking our installation}
+ 		% % SLIDE 1 - COVER SLIDE
+		\includegraphics[scale=0.2]{./figures/rstudio}
+
+ 	
