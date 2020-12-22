@@ -1,0 +1,440 @@
+\newpage
+\chapter{Data Visualization}
+\section{Plots}
+This section is an introduction for producing simple graphs with
+the R Programming Language.
+\begin{itemize}
+\item Line Charts  \item Bar Charts \item Histograms \item Pie
+Charts \item Dotcharts
+\end{itemize}
+
+\subsubsection{Comparison of variances}
+
+
+Even though it is possible in R to perform the two-sample t test without
+the assumption that the variances are the same, you may still be interested
+in testing that assumption, and R provides the var.test function for that
+purpose, implementing an F test on the ratio of the group variances. It is
+called the same way as \texttt{t.test}:.
+\begin{verbatim}
+> var.test(expend~stature)
+\end{verbatim}
+\begin{itemize}
+\item
+\item
+\end{itemize}
+\footnotesize \begin{verbatim}
+> code here
+ \end{verbatim}\normalsize
+
+
+\subsection{ Charts}
+
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+# Define 2 vectors cars <- c(1, 3, 6, 4, 9) trucks <- c(2, 5, 4,
+5, 12)
+
+# Calculate range from 0 to max value of cars and trucks g_range
+<- range(0, cars, trucks)
+
+# Graph autos using y axis that ranges from 0 to max # value in
+cars or trucks vector.  Turn off axes and # annotations (axis
+labels) so we can specify them ourself plot(cars, type="o",
+col="blue", ylim=g_range,
+   axes=FALSE, ann=FALSE)
+
+# Make x axis using Mon-Fri labels axis(1, at=1:5,
+lab=c("Mon","Tue","Wed","Thu","Fri"))
+
+# Make y axis with horizontal labels that display ticks at # every
+4 marks. 4*0:g_range[2] is equivalent to c(0,4,8,12). axis(2,
+las=1, at=4*0:g_range[2])
+
+# Create box around plot box()
+
+# Graph trucks with red dashed line and square points
+lines(trucks, type="o", pch=22, lty=2, col="red")
+
+# Create a title with a red, bold/italic font title(main="Autos",
+col.main="red", font.main=4)
+
+# Label the x and y axes with dark green text title(xlab="Days",
+col.lab=rgb(0,0.5,0)) title(ylab="Total", col.lab=rgb(0,0.5,0))
+
+# Create a legend at (1, g_range[2]) that is slightly smaller #
+(cex) and uses the same line colors and points used by # the
+actual plots legend(1, g_range[2], c("cars","trucks"), cex=0.8,
+   col=c("blue","red"), pch=21:22, lty=1:2);
+
+\end{verbatim}
+\end{myindentpar}
+\subsection{Bar charts}
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+# Define the cars vector with 7 values
+cars <- c(1, 3, 6, 4, 9, 5, 7)
+# Graph cars
+barplot(cars)
+\end{verbatim}
+\end{myindentpar}
+\subsection{Boxplots}
+\subsection{Setting graphical parameters}
+\subsection{Miscellaneous}
+The following code can be used to make variations of the plots.
+
+\begin{myindentpar}{1cm}
+\footnotesize \begin{verbatim}
+# Make an empty chart
+plot(1, 1, xlim=c(1,5.5), ylim=c(0,7), type="n", ann=FALSE)
+
+# Plot digits 0-4 with increasing size and color
+text(1:5, rep(6,5), labels=c(0:4), cex=1:5, col=1:5)
+
+# Plot symbols 0-4 with increasing size and color
+points(1:5, rep(5,5), cex=1:5, col=1:5, pch=0:4)
+text((1:5)+0.4, rep(5,5), cex=0.6, (0:4))
+
+# Plot symbols 5-9 with labels
+points(1:5, rep(4,5), cex=2, pch=(5:9))
+text((1:5)+0.4, rep(4,5), cex=0.6, (5:9))
+
+# Plot symbols 10-14 with labels
+points(1:5, rep(3,5), cex=2, pch=(10:14))
+text((1:5)+0.4, rep(3,5), cex=0.6, (10:14))
+
+# Plot symbols 15-19 with labels
+points(1:5, rep(2,5), cex=2, pch=(15:19))
+text((1:5)+0.4, rep(2,5), cex=0.6, (15:19))
+
+# Plot symbols 20-25 with labels
+points((1:6)*0.8+0.2, rep(1,6), cex=2, pch=(20:25))
+text((1:6)*0.8+0.5, rep(1,6), cex=0.6, (20:25))
+\end{verbatim}\normalsize
+\end{myindentpar}
+
+\subsection{Lattice Graphs}
+\subsection{setting up}
+Execute the following command:
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+library(lattice)
+\end{verbatim}
+\end{myindentpar}
+For information on lattice, type:
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+help(package = lattice)
+\end{verbatim}
+\end{myindentpar}
+The examples in this section are generally drawn from the R documentation and Murrell (2006).
+
+Murrell gives three reasons for using Lattice Graphics:
+
+They usually look better.
+They can be extended in powerful ways.
+The resulting output can be annotated, edited, and saved
+
+\subsection{3 Dimensional Graphs}
+How to do a 3-d graph
+
+\newpage
+\chapter{Statistical Analysis using R}
+\section{Confidence Intervals}
+\subsection{Confidence Intervals for Large Samples}
+\subsection{Confidence Intervals for Small Samples}
+
+\section{Linear Models}
+
+The Slope and Intercept
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+
+\end{verbatim}
+\end{myindentpar}
+
+\section{ANOVA}
+
+
+%--------------------------------------------------------Inference Procedures and testing for Normality-%
+\newpage
+%\chapter{Normality Assumptions and Outliers}
+%\subsubsection{Grubbs Test for outliers}
+%\subsection{Anderson Darling Test}
+%\subsection{Normal Probability plots}
+%\subsubsection{ Kolmogorov Smirnov Test}
+
+
+
+
+
+\subsection{Subsetting datasets by rows}
+
+Suppose we wish to divide a data frame into two different section. The simplest approach we can take is to create two new data sets, each assigned data from the relevant rows of the original data set.
+
+Suppose our dataset ``Info" has the dimensions of 200 rows and 4 columns. We wish to separate "Info" into two subsets , with the first and second 100 rows respectively. ( We call these new subsets "Info.1" and "Info.2".)
+\begin{verbatim}
+Info.1 = Info[1:100,]		#assigning "info" rows 1 to 100
+Info.2 = Info[101:200,]		#assigning "info" rows 101 to 200
+\end{verbatim}
+
+More useful commands such as rbind() and cbind()  can be used to manipulate vectors.
+
+Part 2 Strategies for Data project
+\begin{itemize}
+\item Exploratory Data Analysis
+
+The first part of your report should contain some descriptive statistics and summary values. Also include some tests for normality.
+
+\item{Regression}
+You should have a data set with multiple columns, suitable for regression analysis.
+Familiarize yourself with the data, and decide which variable is the dependent variable.
+
+Also determine the independent variables that you will use as part of your analysis.
+
+\item{Correlation Analysis}
+Compute the Pearson correlation for the dependent variable with the respective independent variables.  As part of your report, mention the confidence interval for the correlation estimate
+Choose the independent variables with the highest correlation as your candidate variables.
+For these independent variables, perform a series of simple linear regression procedures.
+\begin{verbatim}
+lm(y~x1)
+lm(y~x2)
+\end{verbatim}
+Comment on the slope and intercept estimates and their respective p-values. Also comment on the coefficient of determination (multiple R squared). Remember to write the regression equations.
+Perform a series of multiple linear regressions, using pairs of candidate independent variables.
+\begin{verbatim}
+lm(y~x1 +x2)
+lm(y~x2 +x3)
+\end{verbatim}
+Again, comment on the slope and intercept estimates, and their respective p-values.
+In this instance, compare each of the models using the coefficient of determinations. Which model explains the data best?
+\subsection{Analysis of residuals}
+Perform an analysis of regression residuals ( you can pick the best regression model from last section).
+Are the residuals normally distributed?
+	Histogram /  Boxplot / QQ plot / Shapiro Wilk Test
+Also you can plot the residuals to check that there is constant variance.
+\begin{verbatim}
+y=rnorm(10)
+x=rnorm(10)
+fit1=lm(y~x)
+res.fit1 = resid(fit1)
+plot(res.fit1)
+\end{verbatim}
+
+
+
+
+%---------------------------------------------------------------------------Probability Distributions ----%
+\newpage
+\chapter{Probability Distributions}
+\section{Generating a set of random numbers}
+
+\begin{myindentpar}{1cm}
+\footnotesize \begin{verbatim}
+rnorm(10)
+\end{verbatim}\normalsize
+\end{myindentpar}
+
+\section{The Poisson Distribution}
+\section{The Binomial Distribution}
+\section{Using probability distributions for simulations}
+\section{Probability Distributions}
+\subsection{Generate random numbers }
+
+%----------------------------------------------------------------------------Graphical Methods--%
+\newpage
+\chapter{Graphical methods}
+
+\section{Scatterplots}
+%\begin{figure}
+  % Requires \usepackage{graphicx}
+  % \includegraphics[scale=0.40]{MTCARSmpgwt.png}\\
+  % \caption{Scatterplot}\label{mpgwt}
+% \end{figure}
+
+
+\section{Adding titles, lines, points to plots}
+
+
+\footnotesize \begin{verbatim}
+library(MASS)
+# Colour points and choose plotting symbols according to a levels of a factor
+plot(Cars93$Weight, Cars93$EngineSize, col=as.numeric(Cars93$Type),
+pch=as.numeric(Cars93$Type))
+
+# Adds x and y axes labels and a title.
+plot(Cars93$Weight, Cars93$EngineSize, ylab="Engine Size",
+xlab="Weight", main="My plot")
+# Add lines to the plot.
+lines(x=c(min(Cars93$Weight), max(Cars93$Weight)), y=c(min(Cars93$EngineSize),
+max(Cars93$EngineSize)), lwd=4, lty=3, col="green")
+abline(h=3, lty=2)
+abline(v=1999, lty=4)
+# Add points to the plot.
+\end{verbatim}\normalsize
+
+\newpage
+\chapter{Programming}
+
+\section{Writing Functions}
+
+A simple function can be constructed as follows:
+
+\begin{verbatim}
+function_name <- function(arg1, arg2, ...){
+commands
+output
+}
+\end{verbatim}
+
+You decide on the name of the function. The function command shows R that you are writing a function. Inside the parenthesis you outline the input objects required and decide what to call them. The commands occur inside the { }.
+
+The name of whatever output you want goes at the end of the function. Comments lines (usually a description of what the function does is placed at the beginning) are denoted by "\#".
+
+\begin{verbatim}sf1 <- function(x){
+x^2
+}
+\end{verbatim}
+
+This function is called sf1. It has one argument, called x.
+Whatever value is inputted for x will be squared and the result outputted to the screen. This function must be loaded into \texttt{R} and can then be called. We can call the function using:
+\begin{verbatim}
+sf1(x = 3)
+#sf1(3)
+[1] 9
+To store the result into a variable x.sq
+x.sq <- sf1(x = 3)
+x.sq <- sf1(3)
+> x.sq
+[1] 9
+\end{verbatim}
+Example
+\begin{verbatim}
+sf2 <- function(a1, a2, a3){
+x <- sqrt(a1^2 + a2^2 + a3^2)
+return(x)
+}
+\end{verbatim}
+
+This function is called sf2 with 3 arguments. The values inputted for a1, a2, a3 will be squared, summed and the square root of the sum calculated and stored in x. (There will be no output to the screen as in the last example.)
+The return command specifies what the function returns, here the value of x. We will not be able to view the result of the function unless we store it.
+\begin{verbatim}sf2(a1=2, a2=3, a3=4)
+sf2(2, 3, 4) # Can't see result.
+res <- sf2(a1=2, a2=3, a3=4)
+res <- sf2(2, 3, 4) # Need to use this.
+res
+[1] 5.385165
+\end{verbatim}
+We can also give some/all arguments default values.
+\begin{verbatim}mypower <- function(x, pow=2){
+x^pow
+}
+\end{verbatim}
+If a value for the argument pow is not specified in the function call,
+a value of 2 is used.
+\begin{verbatim}mypower(4)
+[1] 16
+\end{verbatim}
+If a value for "pow" is specified, that value is used.
+\begin{verbatim}
+mypower(4, 3)
+[1] 64
+mypower(pow=5, x=2)
+[1] 32
+\end{verbatim}
+
+
+
+
+
+
+
+
+%----------------------------------------------------%
+
+
+\footnotesize \begin{verbatim}
+> code here
+ \end{verbatim}\normalsize
+
+
+\footnotesize \begin{verbatim}
+> code here
+ \end{verbatim}\normalsize
+
+
+
+%---------------------------------------------------%
+\subsubsection{slide234}
+The TS are <equation here>  
+The p-values for both of these tests are 0 and so there is enough evidence to reject $H_0$ and conclude that both 0 and 1 are not 0, i.e. there is a significant linear relationship between x and y. 
+Also given are the $R^2$ and $R^2$ adjusted values. Here $R^2 = SSR/SST = 0.8813$ and so $88.13\%$ of the variation in y is being explained by x. 
+The final line gives the result of using the ANOVA table to assess the model t.
+
+%----------------------------------------------------%
+
+\subsubsection{slide235}
+
+In SLR, the ANOVA table tests <EQN>The TS is the F value and the critical value and p-values are found
+in the F tables with (p - 1) and (n - p) degrees of freedom.
+
+This output gives the p-value = 0, therefore there is enough evidence to reject H0 and conclude that there is a signicant linear relationship between y and x. The full ANOVA table can be accessed using :
+
+<TABLE HERE>
+
+
+
+\subsubsection{slide236}
+Once the model has been tted, must then check the residuals.
+The residuals should be independent and normally distributed with
+mean of 0 and constant variance.
+A Q-Q plot checks the assumption of normality (can also use a
+histogram as in MINITAB) while a, plot of the residuals versus fitted values gives an indication as to whether the assumption of constant variance holds.
+
+<HISTOGRAM>
+
+
+%----------------------------------------------------%
+\subsubsection{slidename}
+
+\footnotesize \begin{verbatim}
+> xbar <- 83
+> sigma <- 12
+> n <- 5
+> sem <- sigma/sqrt(n)
+> sem
+[1] 5.366563
+> xbar + sem * qnorm(0.025)
+[1] 72.48173
+> xbar + sem * qnorm(0.975)
+[1] 93.51827
+ \end{verbatim}\normalsize
+
+
+\subsubsection{Testing the slope (II)}
+
+You can compute a
+t test for that hypothesis simply by dividing the estimate by its standard
+error
+\begin{equation}
+t = \frac{\hat{\beta}}{S.E.(\hat{\beta})}
+\end{equation}
+which follows a t distribution on n - 2 degrees of freedom if the true $\beta$ is
+zero.
+
+
+%----------------------------------------------------%
+\begin{itemize}
+\item The standard $\chi^{2}$ test  in chisq.test works with data in matrix form, like fisher.test does.
+\item For a 2 by 2 table, the test is exactly equivalent to prop.test.
+\end{itemize}
+
+
+\footnotesize \begin{verbatim}
+> chisq.test(lewitt.machin)
+\end{verbatim}\normalsize
+
+
+
+
+
