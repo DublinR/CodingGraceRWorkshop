@@ -4,8 +4,7 @@
 
 \section{Basic Statistics}
 
-\footnotesize
-\begin{myindentpar}{1cm}
+
 \begin{verbatim}
 > X=c(1,4,5,7,8,9,5,8,9)
 > mean(X);median(X)       #mean and median of vector
@@ -26,18 +25,15 @@
 > X[1:5]
 [1] 1 4 5 7 8
 \end{verbatim}
-\end{myindentpar}
-\normalsize
-%------------------------------------------------------------------------------------------------%
 
+<p>
 
 \section{Summary Statistics}
 The \texttt{R} command \texttt{summary()} returns a summary statistics for a simple dataset.
 The \texttt{R} command \texttt{fivenum()} returns a summary statistics for a simple dataset, but without the mean.
 Also, the quartiles are computed a different way.
 
-\footnotesize
-\begin{myindentpar}{1cm}
+<p>
 \begin{verbatim}
 > summary(mtcars$mpg)
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
@@ -46,12 +42,9 @@ Also, the quartiles are computed a different way.
 > fivenum(mtcars$mpg)
 [1] 10.40 15.35 19.20 22.80 33.90
 \end{verbatim}
-\end{myindentpar}
-\normalsize
-
-%------------------------------------------------------------------------------------------------%
 
 
+<p>
 
 \section{Bivariate Data}
 \footnotesize \begin{myindentpar}{1cm}
@@ -65,28 +58,25 @@ Also, the quartiles are computed a different way.
 > cov(X,Y)          #Covariance
 [1] -5.116685
 \end{verbatim}
-\end{myindentpar}\normalsize
 
-%------------------------------------------------------------------------------------------------%
+<p>
 
 \section{Histograms}
 Histograms can be created using the \texttt{hist()} command.
 To create a histogram of the car weights from the Cars93 data set
-\footnotesize
-\begin{myindentpar}{1cm}
+
 \begin{verbatim}
 hist(mtcars$mpg, main="Histogram of MPG (Data: MTCARS) ")
 \end{verbatim}
-\end{myindentpar}\normalsize
+
 \texttt{R} automatically chooses the number and width of the bars. We can
 change this by specifying the location of the break points.
-\footnotesize
-\begin{myindentpar}{1cm}
+
 \begin{verbatim}hist(Cars93$Weight, breaks=c(1500, 2050, 2300, 2350, 2400,
 2500, 3000, 3500, 3570, 4000, 4500), xlab="Weight",
 main="Histogram of Weight")
 \end{verbatim}
-\end{myindentpar}\normalsize
+<p>
 
 
 %------------------------------------------------------------------------------------------------%
@@ -95,22 +85,16 @@ main="Histogram of Weight")
 \section{Boxplot}
 Boxplots can also be used to identify outliers.
 
-By default, the \texttt{boxplot()} command sets the orientation as vertical. By adding the argument \texttt{horizontal=TRUE}, the orientation can be changed to horizontal.
-\footnotesize
-\begin{myindentpar}{1cm}
+By default, the \texttt{boxplot()} command sets the orientation as vertical. 
+By adding the argument \texttt{horizontal=TRUE}, the orientation can be changed to horizontal.
+
 \begin{verbatim}
 boxplot(mtcars$mpg, horizontal=TRUE, xlab="Miles Per Gallon",
 main="Boxplot of MPG")
 \end{verbatim}
-\end{myindentpar}\normalsize
 
-\begin{figure}
   % Requires \usepackage{graphicx}
   \includegraphics[scale=0.4]{MTCARSboxplot.png}\\
   \caption{Boxplot}\label{boxplot}
-\end{figure}
-
-%------------------------------------------------------------------------------------------------%
-
 
 
