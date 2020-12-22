@@ -1,0 +1,67 @@
+%\end{document}
+
+\subsection{Matrices}
+A matrix refers to a numeric array of rows and columns.
+
+One of the easiest ways to create a matrix is to combine vectors of equal
+length using cbind(), meaning "column bind". Alternatively one can use rbind(), meaning ``row bind".
+
+
+\subsubsection{Matrices Inversion}
+\subsubsection{Matrices Multiplication}
+
+
+\subsection{Data frame}
+A Data frame is
+\newpage
+
+%------------------------------------------------------------------------------------------------%
+
+\chapter{Descriptive Statistics}
+
+\section{Basic Statistics}
+
+\footnotesize
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+> X=c(1,4,5,7,8,9,5,8,9)
+> mean(X);median(X)       #mean and median of vector
+[1] 6.222222
+[2] 7
+> sd(X)                   #standard deviation of Vector
+[1] 2.682246
+> length(X)               #sample size of vector
+[1] 9
+> sum(X)
+[1] 56
+> X^2
+[1]  1 16 25 49 64 81 25 64 81
+> rev(X)
+[1] 9 8 5 9 8 7 5 4 1
+> sort(X)                 #items in ascending order
+[1] 1 4 5 5 7 8 8 9 9
+> X[1:5]
+[1] 1 4 5 7 8
+\end{verbatim}
+\end{myindentpar}
+\normalsize
+
+
+\section{Summary Statistics}
+The \texttt{R} command \texttt{summary()} returns a summary statistics for a simple dataset.
+The \texttt{R} command \texttt{fivenum()} returns a summary statistics for a simple dataset, but without the mean.
+Also, the quartiles are computed a different way.
+
+\footnotesize
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+> summary(mtcars$mpg)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+  10.40   15.43   19.20   20.09   22.80   33.90 
+>
+> fivenum(mtcars$mpg)
+[1] 10.40 15.35 19.20 22.80 33.90
+\end{verbatim}
+\end{myindentpar}
+\normalsize
+
