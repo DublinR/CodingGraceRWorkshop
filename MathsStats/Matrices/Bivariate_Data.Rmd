@@ -1,0 +1,110 @@
+
+
+\section{Bivariate Data}
+\footnotesize \begin{myindentpar}{1cm}
+\begin{verbatim}
+> Y=mtcars$mpg
+> X=mtcars$wt
+>
+> cor(X,Y)          #Correlation
+[1] -0.8676594
+>
+> cov(X,Y)          #Covariance
+[1] -5.116685
+\end{verbatim}
+\end{myindentpar}\normalsize
+
+
+\section{Histograms}
+Histograms can be created using the \texttt{hist()} command.
+To create a histogram of the car weights from the Cars93 data set
+\footnotesize
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+hist(mtcars$mpg, main="Histogram of MPG (Data: MTCARS) ")
+\end{verbatim}
+\end{myindentpar}\normalsize
+\texttt{R} automatically chooses the number and width of the bars. We can
+change this by specifying the location of the break points.
+\footnotesize
+\begin{myindentpar}{1cm}
+\begin{verbatim}hist(Cars93$Weight, breaks=c(1500, 2050, 2300, 2350, 2400,
+2500, 3000, 3500, 3570, 4000, 4500), xlab="Weight",
+main="Histogram of Weight")
+\end{verbatim}
+\end{myindentpar}\normalsize
+
+
+
+\section{Boxplot}
+Boxplots can be used to identify outliers.
+
+By default, the \texttt{boxplot()} command sets the orientation as vertical. By adding the argument \texttt{horizontal=TRUE}, the orientation can be changed to horizontal.
+\footnotesize
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+boxplot(mtcars$mpg, horizontal=TRUE, xlab="Miles Per Gallon",
+main="Boxplot of MPG")
+\end{verbatim}
+\end{myindentpar}\normalsize
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \includegraphics[scale=0.4]{MTCARSboxplot.png}\\
+  \caption{Boxplot}\label{boxplot}
+\end{figure}
+
+
+
+\newpage
+\chapter{Advanced R code}
+\section{Data frame}
+A Data frame is
+\subsection{Merging Data frames}
+
+\section{Functions}
+Syntax to define functions
+
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+        myfct <- function(arg1, arg2, ...) { function_body }
+\end{verbatim}
+\end{myindentpar}
+The value returned by a function is the value of the function body, which is usually an unassigned final expression, e.g.: return()
+
+Syntax to call functions
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+        myfct(arg1=..., arg2=...)
+\end{verbatim}
+\end{myindentpar}
+
+
+\section{Time and Date}
+It is useful . The length of time a program takes is interesting.
+
+
+\begin{myindentpar}{1cm}
+\begin{verbatim}
+date() # returns the current system date and time
+\end{verbatim}
+\end{myindentpar}
+
+
+\section{The Apply family}
+
+Sometimes want to apply a function to each element of a
+vector/data frame/list/array.
+\\
+Four members: lapply, sapply, tapply, apply
+\\
+lapply: takes any structure and gives a list of results (hence
+the `l')
+\\
+sapply: like lapply, but tries to simplify the result to a
+vector or matrix if possible (hence the `s')
+\\
+apply: only used for arrays/matrices
+\\
+tapply: allows you to create tables (hence the `t') of values
+from subgroups defined by one or more factors.
