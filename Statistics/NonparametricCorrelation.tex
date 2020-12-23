@@ -25,3 +25,18 @@ cor(iris$Sepal.Length,iris$Sepal.Width,
 Non parametric statistics are statistics that do not require any special assumptions (i.e. Assumption of normality).
 
 <p>
+#### {Spearman and Kendall Correlation}
+Spearman and Kendall correlations are both textbf{emph{rank correlations}}. 
+To implement Spearman and Kendall correlation, simply specify the type in the texttt{method=" "} argument.
+<code>
+> cor(G,D)
+[1] 0.3167869
+>
+> cor(G,D,method="spearman")
+[1] 0.1785714
+>
+> cor(G,D,method="kendall")
+[1] 0.1428571
+> 
+</code>
+The interpretation is very similar, but there are no confidence intervals for the estimates.
