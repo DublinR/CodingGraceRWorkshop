@@ -1,0 +1,10 @@
+
+### Inspecting a Data Set
+
+	\item \texttt{dim()}
+	\item \texttt{nrow()} and \texttt{ncol()}
+	\item \texttt{names()}
+	\item summary()
+	\item \texttt{tail()}
+	\item \texttt{head()}
+	\item \texttt{describe()} (from the psych package)
