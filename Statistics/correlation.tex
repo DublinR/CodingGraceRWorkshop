@@ -1,9 +1,21 @@
 
 
 
-
+\section{Bivariate Data}
+ 
+<code>
+> Y=mtcars$mpg
+> X=mtcars$wt
+>
+> cor(X,Y)          #Correlation
+[1] -0.8676594
+>
+> cov(X,Y)          #Covariance
+[1] -5.116685
+</code>
 <p>
-### {Correlation and Simple Regression Models}
+
+
 
 <p>
 #### {Correlation}
@@ -42,21 +54,6 @@ sample estimates:
 
 
 <p>
-#### {Spearman and Kendall Correlation}
-Spearman and Kendall correlations are both textbf{emph{rank correlations}}. 
-To implement Spearman and Kendall correlation, simply specify the type in the texttt{method=" "} argument.
-<code>
-> cor(G,D)
-[1] 0.3167869
->
-> cor(G,D,method="spearman")
-[1] 0.1785714
->
-> cor(G,D,method="kendall")
-[1] 0.1428571
-> 
-</code>
-The interpretation is very similar, but there are no confidence intervals for the estimates.
 
 <p>
 #### {Fitting a Regression Model}
@@ -126,9 +123,6 @@ H1: There is an association.
 Work out the expected values. For example, you should work out the expected value for
 the number of males who use no aids from the following: (95/195) × 22 = 10.7.
 
-
-<p>
-### {Probability Distributions}
 <p>
 #### {Discrete Probability Distribution}
 
