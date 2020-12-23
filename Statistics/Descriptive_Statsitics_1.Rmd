@@ -1,118 +1,4 @@
 
-%------------------------------------------------------------------------------------------------%
-
-chapter{Descriptive Statistics}
-
-<p>
-### {Basic Statistics}
-
-
-begin{myindentpar}{1cm}
-<code>
-> X=c(1,4,5,7,8,9,5,8,9)
-> mean(X);median(X)#mean and median of vector
-[1] 6.222222
-[2] 7
-> sd(X)     #standard deviation of Vector
-[1] 2.682246
-> length(X) #sample size of vector
-[1] 9
-> sum(X)
-[1] 56
-> X^2
-[1]  1 16 25 49 64 81 25 64 81
-> rev(X)
-[1] 9 8 5 9 8 7 5 4 1
-> sort(X)   #      s in ascending order
-[1] 1 4 5 5 7 8 8 9 9
-> X[1:5]
-[1] 1 4 5 7 8
-</code>
-end{myindentpar}
-
-
-
-<p>
-### {Summary Statistics}
-The texttt{R} command texttt{summary()} returns a summary statistics for a simple dataset.
-The texttt{R} command texttt{fivenum()} returns a summary statistics for a simple dataset, but without the mean.
-Also, the quartiles are computed a different way.
-
-
-begin{myindentpar}{1cm}
-<code>
-> summary(mtcars$mpg)
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-  10.40   15.43   19.20   20.09   22.80   33.90 
->
-> fivenum(mtcars$mpg)
-[1] 10.40 15.35 19.20 22.80 33.90
-</code>
-end{myindentpar}
-
-
-
-
-
-<p>
-### {Bivariate Data}
- begin{myindentpar}{1cm}
-<code>
-> Y=mtcars$mpg
-> X=mtcars$wt
->
-> cor(X,Y)   #Correlation
-[1] -0.8676594
->
-> cov(X,Y)   #Covariance
-[1] -5.116685
-</code>
-end{myindentpar}
-
-
-<p>
-### {Histograms}
-Histograms can be created using the texttt{hist()} command.
-To create a histogram of the car weights from the Cars93 data set
-
-begin{myindentpar}{1cm}
-<code>
-hist(mtcars$mpg, main="Histogram of MPG (Data: MTCARS) ")
-</code>
-end{myindentpar}
-texttt{R} automatically chooses the number and width of the bars. We can
-change this by specifying the location of the break points.
-
-
-<code>hist(Cars93$Weight, breaks=c(1500, 2050, 2300, 2350, 2400,
-2500, 3000, 3500, 3570, 4000, 4500), xlab="Weight",
-main="Histogram of Weight")
-</code>
-
-
-end{document}
-
-<p>
-### {Boxplot}
-Boxplots can be used to identify outliers.
-
-By default, the texttt{boxplot()} command sets the orientation as vertical. By adding the argument texttt{horizontal=TRUE}, the orientation can be changed to horizontal.
-
-<pre>
-<code>
-boxplot(mtcars$mpg, horizontal=TRUE, xlab="Miles Per Gallon",
-main="Boxplot of MPG")
-</code>
-</pre>
-<p>
-
-%begin{figure}
-%  Requires usepackage{graphicx}
-%  includegraphics[scale=0.4]{MTCARSboxplot.png}
-%  caption{Boxplot}label{boxplot}
-%end{figure}
-
-
 
 
 chapter{Advanced R code}
@@ -195,6 +81,27 @@ Charts Dotcharts
 > code here
  </code>
 
+
+
+\section{Adding titles,lines,points to plots}
+
+
+\footnotesize \begin{verbatim}
+library(MASS)
+# Colour points and choose plotting symbols according to a levels of a factor
+plot(Cars93$Weight,Cars93$EngineSize,col=as.numeric(Cars93$Type),
+pch=as.numeric(Cars93$Type))
+
+# Adds x and y axes labels and a title.
+plot(Cars93$Weight,Cars93$EngineSize,ylab="Engine Size",
+xlab="Weight",main="My plot")
+# Add lines to the plot.
+lines(x=c(min(Cars93$Weight),max(Cars93$Weight)),y=c(min(Cars93$EngineSize),
+max(Cars93$EngineSize)),lwd=4,lty=3,col="green")
+abline(h=3,lty=2)
+abline(v=1999,lty=4)
+# Add points to the plot.
+\end{verbatim}\normalsize
 
 <p>
 #### { Charts}
