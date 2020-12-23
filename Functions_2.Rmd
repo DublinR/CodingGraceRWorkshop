@@ -1,13 +1,4 @@
 
-
-
-
-\newpage
-\chapter{Advanced R code}
-\section{Data frame}
-A Data frame is
-\subsection{Merging Data frames}
-
 \section{Functions}
 Syntax to define functions
 
