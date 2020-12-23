@@ -7,9 +7,7 @@
 \item The lattice package, written by Deepayan Sarkar, attempts to improve on base R graphics by providing better defaults and the ability to easily display multivariate relationships.
 \item In particular, the package supports the creation of trellis graphs - graphs that display a variable or the relationship between variables, conditioned on one or more other variables.
 \end{itemize}
-\end{frame}
-%==============================================%
-\begin{frame}[fragile]
+
 \begin{framed}
 \begin{verbatim}
 The typical format is
@@ -37,9 +35,8 @@ wireframe	3D wireframe graph	z~y*x
 
 Here are some examples. They use the car data (mileage, weight, number of gears, number of cylinders, etc.) from the mtcars data frame.
 
-\end{frame}
-%==============================================%
-\begin{frame}[fragile]
+<p>
+
 \begin{framed}
 \begin{verbatim}
 # Lattice Examples 
@@ -47,9 +44,7 @@ library(lattice)
 attach(mtcars)
 \end{verbatim}
 \end{framed}
-\end{frame}
-%==============================================%
-\begin{frame}[fragile]
+<p>
 \begin{framed}
 \begin{verbatim}
 # create factors with value labels 
@@ -59,9 +54,8 @@ cyl.f <-factor(cyl,levels=c(4,6,8),
    labels=c("4cyl","6cyl","8cyl")) 
 \end{verbatim}
 \end{framed}
-\end{frame}
-%==============================================%
-\begin{frame}[fragile]
+<p>
+
 \begin{framed}
 \begin{verbatim}
 # kernel density plot 
@@ -70,9 +64,7 @@ densityplot(~mpg,
   	xlab="Miles per Gallon")
 \end{verbatim}
 \end{framed}
-\end{frame}
-%==============================================%
-\begin{frame}[fragile]
+
 \begin{framed}
 \begin{verbatim}
 # kernel density plots by factor level 
@@ -81,9 +73,8 @@ densityplot(~mpg|cyl.f,
    xlab="Miles per Gallon")
 \end{verbatim}
 \end{framed}
-\end{frame}
-%==============================================%
-\begin{frame}[fragile]
+<p>
+
 \begin{framed}
 \begin{verbatim}
 # kernel density plots by factor level (alternate layout) 
@@ -94,9 +85,7 @@ densityplot(~mpg|cyl.f,
 
 \end{verbatim}
 \end{framed}
-\end{frame}
-%==============================================%
-\begin{frame}[fragile]
+
 \begin{framed}
 \begin{verbatim}
 # boxplots for each combination of two factors 
@@ -105,11 +94,7 @@ bwplot(cyl.f~mpg|gear.f,
    main="Mileage by Cylinders and Gears", 
    layout=(c(1,3))
 \end{verbatim}
-\end{framed}
-\end{frame}
-%==============================================%
-\begin{frame}[fragile]
-\begin{framed}
+<p>
 \begin{verbatim}
 # scatterplots for each combination of two factors 
 xyplot(mpg~wt|cyl.f*gear.f, 
@@ -132,9 +117,7 @@ dotplot(cyl.f~mpg|gear.f,
    xlab="Miles Per Gallon")
 \end{verbatim}
 \end{framed}
-\end{frame}
-%==============================================%
-\begin{frame}[fragile]
+
 \begin{framed}
 \begin{verbatim}
 # scatterplot matrix 
@@ -144,15 +127,15 @@ density1density 2density 3boxplot
 scatterplot3D scatterplot dotplotscatterplot matrix
 click to view
 Note, as in graph 1, that you specifying a conditioning variable is optional. The difference between graphs 2 & 3 is the use of the layout option to contol the placement of panels.
-\end{frame}
-%==============================================%
-\begin{frame}
+
+<p>
+
 Customizing Lattice Graphs
 
 Unlike base R graphs, lattice graphs are not effected by many of the options set in the par( ) function. To view the options that can be changed, look at help(xyplot). It is frequently easiest to set these options within the high level plotting functions described above. Additionally, you can write functions that modify the rendering of panels. 
-\end{frame}
-%==============================================%
-\begin{frame}
+
+<p>
+
 Here is an example.
 # Customized Lattice Example
 library(lattice)
@@ -161,11 +144,7 @@ panel.smoother <- function(x, y) {
   panel.loess(x, y)  # show smoothed line 
 }
 \end{verbatim}
-\end{framed}
-\end{frame}
-%==============================================%
-\begin{frame}[fragile]
-\begin{framed}
+<p>
 \begin{verbatim}
 attach(mtcars)
 hp <- cut(hp,3) # divide horse power into three bands 
@@ -174,13 +153,9 @@ xyplot(mpg~wt|hp, scales=list(cex=.8, col="red"),
    xlab="Weight", ylab="Miles per Gallon", 
    main="MGP vs Weight by Horse Power")
 custom trellis graph click to view
-\end{frame}
-%==============================================%
-\begin{frame}
-Going Further
+
+### Going Further
 Lattice graphics are a comprehensive graphical system in their own right. Deepanyan Sarkar's book Lattice: Multivariate Data Visualization with R is the definitive reference. Additionally, see the Trellis Graphics homepage and the Trellis User's Guide. Dr. Ihaka has created a wonderful set of slides on the subject. An excellent early consideration of trellis graphs can be found in W.S. Cleavland's classic book Visualizing Data.
 \end{verbatim}
 \end{framed}
-\end{frame}
-%==============================================%
-\end{document}
+
