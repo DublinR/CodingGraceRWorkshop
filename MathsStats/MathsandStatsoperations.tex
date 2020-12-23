@@ -10,6 +10,135 @@
 * ``fivenum()`` Tukey's five number summary
 
 
+
+\subsubsection{exponentials, powers and logarithms}
+<pre>
+<code>
+>x^y
+>exp(x)
+>log(x)
+>log(y)
+#determining the square root of x
+>sqrt(x)
+</code>
+</pre>
+
+\subsection{vectors}
+<pre>
+<code>
+R handles vector objects quite easily and intuitively.
+
+> x<-c(1,3,2,10,5)    #create a vector x with 5 components
+> x
+[1]  1  3  2 10  5
+> y<-1:5              #create a vector of consecutive integers
+> y
+[1] 1 2 3 4 5
+> y+2                 #scalar addition
+[1] 3 4 5 6 7
+> 2*y                 #scalar multiplication
+[1]  2  4  6  8 10
+> y^2                 #raise each component to the second power
+[1]  1  4  9 16 25
+> 2^y                 #raise 2 to the first through fifth power
+[1]  2  4  8 16 32
+> y                   #y itself has not been unchanged
+[1] 1 2 3 4 5
+> y<-y*2
+> y                   #it is now changed
+[1]  2  4  6  8 10
+</code>
+</pre>
+
+\subsubsection{Misc}
+``seq()`` and ``rep()`` are useful commands for constructing vectors with a certain pattern.
+
+%\end{document}
+
+\subsection{Matrices}
+A matrix refers to a numeric array of rows and columns.
+
+One of the easiest ways to create a matrix is to combine vectors of equal
+length using cbind(), meaning "column bind". Alternatively one can use rbind(), meaning ``row bind".
+
+
+\subsubsection{Matrices Inversion}
+\subsubsection{Matrices Multiplication}
+
+
+\subsection{Data frame}
+A Data frame is
+\newpage
+
+%------------------------------------------------------------------------------------------------%
+
+\chapter{Descriptive Statistics}
+
+\section{Basic Statistics}
+
+
+<pre>
+<code>
+> X=c(1,4,5,7,8,9,5,8,9)
+> mean(X);median(X)       #mean and median of vector
+[1] 6.222222
+[2] 7
+> sd(X)                   #standard deviation of Vector
+[1] 2.682246
+> length(X)               #sample size of vector
+[1] 9
+> sum(X)
+[1] 56
+> X^2
+[1]  1 16 25 49 64 81 25 64 81
+> rev(X)
+[1] 9 8 5 9 8 7 5 4 1
+> sort(X)                 #items in ascending order
+[1] 1 4 5 5 7 8 8 9 9
+> X[1:5]
+[1] 1 4 5 7 8
+</code>
+</pre>
+
+
+
+\section{Summary Statistics}
+The ``R} command ``summary()`` returns a summary statistics for a simple dataset.
+The ``R} command ``fivenum()`` returns a summary statistics for a simple dataset, but without the mean.
+Also, the quartiles are computed a different way.
+
+
+<pre>
+<code>
+> summary(mtcars$mpg)
+Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+10.40   15.43   19.20   20.09   22.80   33.90 
+>
+> fivenum(mtcars$mpg)
+[1] 10.40 15.35 19.20 22.80 33.90
+</code>
+</pre>
+
+
+
+
+
+\section{Bivariate Data}
+ <pre>
+<code>
+> Y=mtcars$mpg
+> X=mtcars$wt
+>
+> cor(X,Y)          #Correlation
+[1] -0.8676594
+>
+> cov(X,Y)          #Covariance
+[1] -5.116685
+</code>
+</pre>
+
+
+
 #### {Set Theory Operations}
 
 * ``union()`` union of sets A and B
