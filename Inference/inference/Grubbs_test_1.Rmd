@@ -1,0 +1,27 @@
+
+%------------------------------------------
+
+\begin{slide}{Grubbs test}
+\begin{verbatim}
+
+> library(outliers)
+> grubbs.test(x)
+        Grubbs test for one outlier
+data:  x
+G = 2.4180, U = 0.4202, p-value = 0.02405
+alternative hypothesis:
+    lowest value 3.51 is an outlier
+\end{verbatim}
+\end{slide}
+%------------------------------------------
+
+\begin{slide}{Grubbs test: conclusion}
+\begin{itemize}
+\item The null hypothesis is that lowest value (highest in other cases) is not an outlier.
+\item The alternative hypothesis that it is an outlier.
+\item The p-value (0.02405) is less than 5\% (usual value for $\alpha$).
+\item Therefore we reject the null hypothesis.
+\item Lowest value is an outlier.
+\end{itemize}
+\end{slide}
+
