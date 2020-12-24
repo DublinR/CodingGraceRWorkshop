@@ -1,0 +1,47 @@
+
+\subsection{Power }
+ The power of a statistical hypothesis test measures the test's ability to reject the null hypothesis when it is actually false - that is, to make a correct decision. In other words, the power of a hypothesis test is the probability of not committing a type II error. It is calculated by subtracting the probability of a type II error from 1, usually expressed as: 
+\[\mbox{Power} = 1 - \mbox{P(type II error) } = 1- \beta \]The maximum power a test can have is 1, the minimum is 0. Ideally we want a test to have high power, close to 1.
+
+\section{Single Sample Inference Procedures}
+If we have a single sample we might want to answer several
+questions:
+\begin{itemize}
+\item What is the mean value? \item Is the mean value
+significantly different from current theory? (Hypothesis test)
+\item What is the level of uncertainty associated with our
+estimate of the mean value? (Confidence interval)
+\end{itemize}
+
+\begin{itemize}
+\item (Last week : confidence interval for a mean) \item Revision:
+For large samples ($n > 30$) and/or if the population standard
+deviation ($\sigma$) is known, the usual test statistic is given
+by: \[Z =\frac{\bar{X} - \mu}{SE(\bar{X})}\]
+
+\item $S.E.(\bar{X}) = { \sigma \over \sqrt{n}} $ or ${s \over \sqrt{n}}$. 
+\item For small samples, use the $t-$distribution with $n-1$ degrees of freedom.
+\item Critical value from tables.
+\item Compare test statistics and critical values.
+\end{itemize}
+
+To ensure that our analysis is correct we need to check for
+outliers in the data (i.e. boxplots) and we also need to check
+whether the data are normally distributed or not.
+
+\begin{framed}
+\begin{verbatim}
+> t.test(X,mu=10)
+
+        One Sample t-test
+
+data:  X 
+t = 14.1421, df = 4, p-value = 0.0001451
+alternative hypothesis: true mean is not equal to 10 
+95 percent confidence interval:
+ 10.08037 10.11963 
+sample estimates:
+mean of x 
+     10.1 
+\end{verbatim}
+\end{framed}
