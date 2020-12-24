@@ -83,34 +83,3 @@ A convention is to use define a variable name with a capital letter (R is case s
 reduces the chance of overwriting in-build R functions, which are usually written in lowercase
 letters. Commonly used variable names such as x,y and z (in lower case letters) are not \re-
 served".
-%--------------------------------------------------------%
-\subsection{1.6 Help Functions}
-Help files for R functions are accessed by preceding the name of the function with ? (e.g. ?sort
-). Alternatively you can use the command help() (e.g. ?sqrt
-A HTML document appears on screen with information on the function typed in. As well
-as the list of arguments that the particular function accepts, and how to specify them, there is
-example code at the bottom of the file. These code segments are often invaluable in learning
-how to master the function.
-
-%------------------------------------------------------%
-\subsection{1.7 The help.start() command}
-As mentioned by the text on the main console, the help.start() command can be usd to
-access detailed help documentation that comes as part of the installation.
-
-%1.8 Removed
-
-\subsection{1.9 Basic R Editor}
-R has an inbuilt script editor. We will use it for this class, but there are plenty of top quality
-Integrated Development Environments out there. (Read up about RStudio for example).
-For these workshops, we will use the in-built script editor.
-To start a new script, or open an existing script simply go to File and click the appropriate
-options. A new dialogue box will appear. You can write and edit code using this editor.
-To pass the code for compiling , press the run line or selection option (The third icon
-on the menu).
-Another way to read code is to use the edit() function , which operates directly from the
-command line. To see how the code defining an object X was written (or more importantly,
-could have been written) simply type edit(X). This command has some useful applications
-that we will see later on.
-Scripts are saved as .R files. These scripts can be called directly using the source() com-
-mand.
-
