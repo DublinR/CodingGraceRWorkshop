@@ -1,0 +1,138 @@
+%------------------------------------------%
+### 
+{Useful Commands For Vectors}
+
+<pre>
+<code>
+x  = c(13,16,36,55,23,11)
+
+sort(x )
+rev(x)
+rep(x ,2)
+rep(x ,3)
+rep(x ,each=3)
+diff(x )
+order(x )
+rank(x )
+</code>
+</pre>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+### 
+<pre>
+<code>
+> x  = c(13,16,36,55,23,11)
+>
+> sort(x )
+[1] 11 13 16 23 36 55
+>
+> rev(x )
+[1] 11 23 55 36 16 13
+</code>
+</pre>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+### 
+<pre>
+<code>
+> rep(x ,2)
+ [1] 13 16 36 55 23 11 13 16 36 55 23 11
+> rep(x ,3)
+ [1] 13 16 36 55 23 11 13 16 36 55 23 11 13 16 36 55 23 11
+>
+> rep(x ,each=3)
+ [1] 13 13 13 16 16 16 36 36 36 55 55 55 23 23 23 11 11 11
+ </code>
+</pre>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+### 
+<pre>
+<code>
+> diff(x )
+[1]   3  20  19 -32 -12
+>
+> order(x )
+[1] 6 1 2 5 3 4
+>
+> rank(x )
+[1] 2 3 5 6 4 1
+</code>
+</pre>
+</code>
+</pre>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+### 
+
+{Sequences}
+{Using the colon operator}
+A `count-up' or a `count-down' will be determined automatically.
+<pre>
+<code>
+1:20
+20:1
+10:20
+</code>
+</pre>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+### 
+{Using the \texttt{seq()} operator}
+Firstly we will mimic the sequences that we have created using the colon operator.
+<pre>
+<code>
+seq(1,20)
+seq(20,1)
+</code>
+</pre>
+
+
+%---------------------------------------------------------------------------------%
+### 
+{Examples using operators}
+
+We can use relational and logical operators to selecting elements
+of a vector with specified criteria.
+
+<pre>
+<code>
+x <- 1:12
+
+#selecting all elements of x greater than 5
+x[x>5]
+
+#selecting all elements of x greater or equal to than 5
+x[x>=5]
+
+#selecting all elements of x greater than 5 #or less than 3
+x[(x>5)|(x<3)]
+
+#selecting all elements of x between 3 and 5
+x[(x>3)&(x<5)]
+</code>
+</pre>
+
+%============%
+### 
+{Data Selection and manipulation}
+
+
+*  \texttt{sort(x)} : sorts the object $x$ in ascending order.
+*  \texttt{rev(x)} : reverses the order of $x$ without sorting it
+
+
+%---------------------------------------------------------------------------------%
+\end{document}
+
+
+<pre>
+<code>
+
+Logvec <- c(TRUE, FALSE,TRUE,TRUE )
+
+</code>
+</pre>
+
+
+
