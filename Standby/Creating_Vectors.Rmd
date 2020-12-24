@@ -1,0 +1,127 @@
+
+%---------------------------------------------------------------------------------%
+### 
+{Vectors: Creating and editing a vector}
+
+*  From last class.
+*  To create a vector, use the assignment operator ``$=$" or ( $<-$ )and
+the concatenate function ``c()". *  For numeric vectors, the values
+entered are simply numbers.
+<pre>
+<code>
+>x =c(10.4,5.6,3.1,6.4,8.9)
+>
+</code>
+</pre>
+% And, from last week, we can use the ``data.entry()" function to edit our vector.
+% <code>
+% >data.entry(x)
+% >
+% </code>
+
+
+
+
+
+%---------------------------------------------------------------------------------%
+### 
+{Vectors: Character \& logical vector}
+
+
+*  For character vectors, the values are simply characters,
+specified with quotation marks.
+*  Single quotation marks
+<pre>
+<code>
+
+Charvec <- c(`Dog', `Cat', `Shed', `Spoon')
+
+</code>
+</pre>
+
+*  A logical vectors is a vector whose elements are TRUE, FALSE
+or NA (i.e. null)
+
+<pre>
+<code>
+
+Logvec <- c(TRUE, FALSE,TRUE,TRUE )
+
+</code>
+</pre>
+
+
+
+
+
+
+%---------------------------------------------------------------------------------%
+
+### {Vectors: Empty vectors}
+
+
+*  Another method of creating vectors is to use the follow
+
+
+*  \texttt{numeric(length = n)} 
+*  \texttt{character (length = n)} 
+*  \texttt{logical (length = n)}
+
+
+*  These commands create empty vectors, of the appropriate
+kind, of length n.
+
+<pre>
+<code>
+> x<-numeric(4)
+> x
+[1] 0 0 0 0
+</code>
+</pre>
+%*  You can use the graphical data entry interface to populate your data sets.
+
+
+
+%---------------------------------------------------------------------------------%
+### {Vectors: Characteristics}
+
+
+*  We can use several $R$ commands to gather information about
+a vector.
+
+
+*  \texttt{length(x)} - how many elements in a vector.  
+*  \texttt{unique(x)} - display each unique item in a vector.  
+*  \texttt{sum(x)} - the sum of the elements in a vector. 
+*  \texttt{prod(x)} - the product of the elements in a vector.
+
+
+*  We can also find statistical information about a vector
+
+*  \texttt{summary(x)} - summary statistics of a vector.  *  \texttt{mean(x)} -
+the mean value of a vector. *  \texttt{sd(x)} -  the standard deviation
+of a vector.
+
+
+% *  Refer to the reference card for more commands to try out.
+
+
+<p>
+
+<pre>
+<code>
+> mean(x)
+[1] 6.375
+> sd(y)
+[1] 2.858846
+>
+> median(z)
+[1] 16
+>
+> summary(x)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+  3.100   4.975   6.000   6.375   7.400  10.400
+</code>
+</pre>
+
+
