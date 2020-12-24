@@ -1,0 +1,38 @@
+%------------------------------------------
+\begin{slide}{Anderson-Darling normality test}
+\begin{verbatim}
+> ad.test(x)
+
+        Anderson-Darling normality test
+
+data:  x
+A = 0.3859, p-value = 0.3325
+\end{verbatim}
+\end{slide}
+
+%------------------------------------------
+\begin{slide}{The Shapiro Wilk normality test}
+The Shapiro Wilk is another commonly used procedure used to test normality.
+Again, the null hypothesis is that the data set is normally distributed.
+\begin{verbatim}
+> x=rnorm(40)
+> shapiro.test(x)
+
+        Shapiro-Wilk normality test
+
+data:  x
+W = 0.9601, p-value = 0.1689
+\end{verbatim}
+Here, the P-value is greater than 1\%. We fail to reject the null hypothesis.
+\end{slide}
+%------------------------------------------
+
+\begin{slide}{A-D test: conclusion}
+\begin{itemize}
+\item The null hypothesis is that data set is normally distributed.
+\item The alternative hypothesis is that it is not normally distributed.
+\item The p-value (0.3325) is greater than than 1\%.
+\item Therefore we fail to reject the null hypothesis.
+\end{itemize}
+\end{slide}
+
