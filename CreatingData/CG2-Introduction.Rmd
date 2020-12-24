@@ -23,34 +23,3 @@ The semi-colon operator at the end of each line of code is not necessary in gene
 overcomes errors due to copying and pasting from document soft copies. In other programming
 languages, such as Octave, using the semicolon in this way has a distinct purpose.
 %-----------------------------------------------------------------%
-%-----------------------------------------------------------------%
-\subsection*{2.5 The apropos() Function}
-This function is very useful for determining what functions are available for a particular topic,
-although the process requires a great deal of trial and error. Suppose we are looking for a
-command to compute the correlation coefficient. We would use a very short string (e.g. cor)
-that would plausibly be part of useful function names.
-\begin{framed}
-\begin{verbatim}
-apropos("cor")
-\end{verbatim}
-\end{framed}
-%-----------------------------------------------------------------%
-\subsection*{2.6 History}
-The command \texttt{history()} is used to obtain the most recent commands typed into R. 
-By default the command returns the last 25 commands. To specify more (or less, simply type in the number your require as an argument to the function.
-history()
-%-----------------------------------------------------------------%
-\subsection{2.7 The sessionInfo() Function}
-To get a description of the version of R and its attached packages used in the current session,
-we can use the sessionInfo() function
-sessionInfo()
-%-----------------------------------------------------------------%
-
-%-----------------------------------------------------------------%
-2.9 Logical States
-Logical states TRUE and FALSE are simply specified as such, all in capital letters. The
-shortcuts T and F are also recognized.
-%-----------------------------------------------------------------%
-
-
-
