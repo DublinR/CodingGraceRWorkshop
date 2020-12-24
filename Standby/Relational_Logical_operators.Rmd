@@ -1,0 +1,46 @@
+
+%---------------------------------------------------------------------------------%
+### {Relational operators}
+A relational operator tests some kind of relation between two
+entities. For $R$ the relational operators are as follows:
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+  \hline
+
+  Equals & == & Less or equal to  & <= \\
+  \hline
+  Not Equal & != & Greater than & > \\
+  \hline
+  Less than & < & Greater than & >= \\
+  \hline
+\end{tabular}
+\end{center}
+
+%---------------------------------------------------------------------------------%
+### 
+{Logical operators}
+
+*  The logical operators are AND, OR and NOT
+
+*  if c1 and c2 are logical expressions, then $c1 \& c2$ is
+their intersection (`AND'), $c1 | c2$ is their union (`OR'), and
+$!c1$ is the negation of c1.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  AND & $ \& $ & also  & $\&\&$ \\
+  \hline
+  OR & $|$ & also & $||$ \\
+  \hline
+  NOT & $!$ & &  \\
+  \hline
+\end{tabular}
+\end{center}
+
+%numeric
+%
+%Creates or coerces objects of type "numeric".
+%numeric(length = 0)
+%as.numeric(x, ...)
+%is.numeric(x)
