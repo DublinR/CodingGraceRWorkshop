@@ -1,0 +1,160 @@
+
+%---------------------------------------------------------------------
+\begin{slide}{Chi Square test}
+
+Chi Square test are used when one wants to check whether a sample comes from some type of population,
+or when one wants to check that two samples are from the same population.
+
+\begin{itemize}
+\item Goodness of fit tests.
+\item Testing for association in contingency tables.
+\end{itemize}
+
+The $R$ command for chi squared tests is chisq.test().
+\end{slide}
+
+
+%---------------------------------------------------------------------
+\begin{slide}{Chi-Square test}
+\begin{itemize}
+\item Goodness of fit test is used to test whether a sample comes from a specified distribution.
+\item The sample is univariate.
+\item $R$ assumes a null hypothesis that each outcome is equally likely ( uniformly distributed).
+\item chisq.test(x)
+\item Can specify the distribution of expected values under the null hypothesis for other cases using the `p' parameter.
+\item chisq.test(x,p)
+\end{itemize}
+\end{slide}
+%---------------------------------------------------------------------
+\begin{slide}{Chi Square}
+\begin{itemize}
+\item Example: In an experiment of 100 trials, the number of times that each of the four possible outcomes
+occured was recorded.\\
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+  Event & A & B & C & D \\\hline
+  Outcomes & 59 & 20 & 11 & 10 \\
+  \hline
+\end{tabular}
+
+\item It was presupposed that each outcome was equally likely \\(i.e. The null hypothesis is $H_{0} : P_{A} = P_{B} = P_{C} = P_{D}$.)\\
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+  Event & A & B & C & D \\\hline
+  Expected & 25 & 25 & 25 & 25 \\
+  \hline
+\end{tabular}
+\item Under the null hypothesis, any deviations from the expected values are attributable to random error.
+
+\end{itemize}
+\end{slide}
+%---------------------------------------------------------------------
+\begin{slide}{Chi Square tests}
+
+
+\begin{verbatim}
+> chisq.test(c(59,20,11,10))
+
+Chi-squared test for given probabilities
+
+data:  c(59, 20, 11, 10)
+X-squared = 64.08, df = 3,
+p-value = 7.891e-14
+\end{verbatim}
+
+The p-value indicates that we should reject the hypothesis that there is an equal likely outcomes.
+
+\end{slide}
+%---------------------------------------------------------------------
+\begin{slide}{Chi Square test}
+\begin{itemize}
+\item If you do not want equal proportions, you need to give a set of
+proportions for each cell (using the `p' parameter).
+\item Genetic theory predicts that certain fruit flies
+will fall into four categories in proportions 9:3:3:1.
+\item Data showed counts of 59, 20, 11 and 10.
+\end{itemize}
+\begin{verbatim}
+> chisq.test(c(59,20,11,10),
+ p=c(9/16,3/16,3/16,1/16))
+
+Chi-squared test for given probabilities
+
+data:  c(59, 20, 11, 10)
+X-squared = 5.6711, df = 3, p-value = 0.1288
+\end{verbatim}
+\end{slide}
+\begin{slide}{Chi Square test}
+\begin{itemize}
+\item We would not reject the theoretical hypothesis with these data.
+\item Deviations from expected values are attributed to random error.
+\end{itemize}
+\end{slide}
+
+%--------------------------------------------------------------------
+\begin{slide}{Contingency Tables}
+
+\begin{itemize}
+\item We also use the Chi square test for testing association in two way
+contingency tables.
+\item Contingency tables: Outcomes are categorized into rows and columns.
+\item This can be used to test the differences between several groups.
+\item The null hypothesis is that there is not differences between the groups.
+\item The alternative is that there is difference between the groups.
+\item Independence or association?
+\end{itemize}
+
+\end{slide}
+
+
+%--------------------------------------------------------------------
+
+\begin{slide}{Chi Square: Contingency table}
+
+Example: Test the association between smoking and exercise.
+
+\begin{verbatim}
+> library(MASS)     # load the MASS package
+> tbl = table(survey$Smoke, survey$Exer)
+> tbl               # the contingency table
+
+        Freq None Some
+  Heavy    7    1    3
+  Never   87   18   84
+  Occas   12    3    4
+  Regul    9    1    7
+
+
+\end{verbatim}
+\end{slide}
+
+\begin{slide}{Chi Square: Contingency table}
+Test the hypothesis whether the students smoking habit is independent of their exercise level at .05 significance level.
+\begin{verbatim}
+> chisq.test(tbl)
+
+Pearson's Chi-squared test
+
+data:  tbl
+X-squared = 5.4885, df = 6, p-value = 0.4828
+
+Warning message:
+In chisq.test(tbl) : Chi-squared
+approximation may be incorrect
+
+\end{verbatim}
+\end{slide}
+
+
+
+%---------------------------------------------------------------------
+\begin{slide}{Chi Square: Contingency table}
+\begin{itemize}
+\item We have applied the chisq.test() function to the contingency table tbl, and found the p-value to be 0.4828.
+\item We fail to reject the null hypothesis.
+
+
+\item The warning message found in the solution above is due to the small cell values in the contingency table. \item To avoid such warning, we could combine the second and third columns of tbl.
+\end{itemize}
+\end{slide}
+\end{document}
