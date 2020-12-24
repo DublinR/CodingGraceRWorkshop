@@ -14,30 +14,7 @@ Another way to edit code is to use the \texttt{edit()} function – which operat
 \section{Changing GUI options}
 We can change the GUI options using the “GUI preferences” option on the Edit menu. (Important when teaching R)
 A demonstration will be done in class. 
-%------------------------------------------------------%
-\section{Embedded Datasets}
-Several data sets – intended as learning tools – are automatically installed when \texttt{R} is installed. Many more are installed within packages to complement learning to use those packages.  One of these is the famous ``\textit{iris}" data set, which is used in many data mining exercises.
-\begin{itemize}
-\item To see what data sets are available – type \texttt{data()}.
-\item To load a data set, simply type in the name of the data set. 
-\item To specify that a specific data set is to be used for analysis, use the command \texttt{attach()}.
 
-\end{itemize}
-
-Some data sets are very large. To just see the first few rows, we use the head() function.
-
-\begin{framed}
-\begin{verbatim}
-> head(iris)
-  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-1          5.1         3.5          1.4         0.2  setosa
-2          4.9         3.0          1.4         0.2  setosa
-3          4.7         3.2          1.3         0.2  setosa
-4          4.6         3.1          1.5         0.2  setosa
-5          5.0         3.6          1.4         0.2  setosa
-6          5.4         3.9          1.7         0.4  setosa
-\end{verbatim}
-\end{framed}
 %---------------------------------------------------------------------------------------------%
 \subsection*{Dimensions of a data set}
 We have remarked that some data sets are very large. This is perhaps a good place to consider summary information about data objects.
@@ -114,23 +91,7 @@ To change the working directory – we would use the \texttt{setwd()} command.
 [1] "C:/Users/Kevin/Documents"
 \end{verbatim}
 \end{framed}
-%---------------------------------------------------------------------------------% 
-\section{Time and Date functions}
-The commands \texttt{Sys.time()} and \texttt{Sys.Date()} returns the system's idea of the current date with and without time.
-We can perform some simple algebraic calculations to compute time differences (i.e. to find out how long some code took to compile.
-\begin{framed}
-\begin{verbatim}
-> X1=Sys.time()
-> #Wait a few seconds
->
-> X2=Sys.time()
-> X2-X1
-Time difference of 8.439614 secs
->
-> Sys.Date() 
-[1] "2012-09-01"
-\end{verbatim}
-\end{framed}
+
 %---------------------------------------------------------------------------------------------%
 \subsection*{Coming unstuck}
 If you are having trouble with a piece of code that is currently compiling – all you have to do is press ESC. Just like other computing environments.
@@ -165,16 +126,3 @@ For example, to save the \texttt{R} objects x, y, and z to a file called \texttt
 > save(x,y,z,fil= ‘mydata.rda’)
 \end{verbatim}
 
-\section{Saving and Loading R Data Objects}
-In situations where a good deal of processing must be used on a raw dataset in order to prepare it for analysis, it may be prudent to save the \texttt{R} objects you create in their internal binary form. 
-
-One attractive feature of this scheme is that the objects created can be read by \texttt{R} programs running on different computer architectures than the one on which they were created, making it very easy to move your data between different computers. 
-
-Each time an \texttt{R} session is completed, you are prompted to save the workspace image, which is a binary file called \texttt{.RData} in the working directory. 
-
-Whenever \texttt{R} encounters such a file in the working directory at the beginning of a session, it automatically loads it making all your saved objects available again. 
-So one method for saving your work is to always save your workspace image at the end of an R session. If you’d like to save your workspace image at some other time during your R session, you can use the \texttt{save.image()} function, which, when called with no arguments, will also save the current workspace to a file called .RData in the working directory.
-\section{Quitting the R environment}
-As the front page text indicates – all you have to do to quite the workspace is to type in \texttt{q()}. You will then be prompted to save your work.
-%-----------------------------------------------------------------------------%
-\end{document}

@@ -17,4 +17,19 @@ http://voteview.com/symbols_pch.htm
 
 
 	
-\end{document}
+### Changing your plot character}
+
+To change the plot character (the symbol for each covariate, we supply an additional argument to the plot() function.  This argument is formulated as pch=n where n is some number.
+Additionally we change the colour of the characters, by specifying a colour in the col argument.
+\large <pre><code>
+plot(x,y,pch=15,col="red")#Square plot symbols
+plot(x,y,pch=16,col="green")#Orb plot symbols
+plot(x,y,pch=17,col="mauve")#Triangular plot symbols
+plot(x,y,pch=36,col="amber")#Dollar sign plot symbols
+</code></pre>\large
+Recall that we can add new variates to an existing scatterplot using the points() function. Remember to set the vertical and horizontal limits accordingly.
+\large <pre><code>
+y1 = rnorm(10); y2 = rnorm(10)
+plot(x,y1, pch=8,col="purple" ,xlim=c(-5,5),ylim=c(-5,5))
+points(x,y2,pch=12,col="green")
+</code></pre>

@@ -1,9 +1,3 @@
-\chapter{ R Graphics}
-\section{Enhancing your scatter plots}
-
-
-
-%=====================================================================================================================%
 
 \subsection{Adding a title }
 
@@ -18,14 +12,16 @@ We can also add text to each margin, using the \texttt{mtext()} command.
 We simply require the number of the side. (1 = bottom, 2=left,3=top,4=right). 
 We can change the colour using the col argument.
 <p> 
-\begin{verbatim}
+<pre><code>
 plot(x,y,main="Scatterplot Example",   sub="subtitle",    xlab="X variable ", ylab="y variable ")	
 mtext("Enhanced Scatterplot", side=4,col="red ")
-\end{verbatim}\normalsize
+</code></pre>\normalsize
 Alternatively , we can also use the command title() to add a title to an existing scatterplot.
-<p> \begin{verbatim}
+<p> <pre><code>
 title(main="Scatterplot Example)	
-\end{verbatim}\normalsize
+</code></pre>\normalsize
+
+
 
 
 \section{Plot of single vectors}
@@ -37,52 +33,5 @@ Suppose we wish to examine a trend that these points represent. We can connect e
 $plot(x, type = "l")$
 If we wish to have both lines and points, we would input the following code. This is quite useful if we wish to see how a trend develops over time.
 $plot(x, type = "b")$
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\section{Boxplot}
-Boxplots can be used to identify outliers.
-
-By default, the \texttt{boxplot()} command sets the orientation as vertical. By adding the argument \texttt{horizontal=TRUE}, the orientation can be changed to horizontal.
-<p>
-\begin{framed}
-	\begin{verbatim}
-	boxplot(mtcars$mpg, horizontal=TRUE, xlab="Miles Per Gallon",
-	main="Boxplot of MPG")
-	\end{verbatim}
-\end{framed}
-
-%\begin{figure}
-%  Requires \usepackage{graphicx}
-%  \includegraphics[scale=0.4]{MTCARSboxplot.png}\\
-%  \caption{Boxplot}\label{boxplot}
-%\end{figure}
-
-
-
-\newpage
-
-
-\chapter{Data Visualization}
-\section{Plots}
-This section is an introduction for producing simple graphs with
-the R Programming Language.
-
-*  Line Charts  \item Bar Charts \item Histograms \item Pie
-	Charts \item Dotcharts
-
-
-
 
 

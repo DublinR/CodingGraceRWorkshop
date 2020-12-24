@@ -1,0 +1,21 @@
+### Working directories
+You can change your working directly by using the appropriate options on the File menu.
+To determine the current working directory – you can use the \texttt{getwd()} command:	
+\begin{framed}
+\begin{verbatim}
+> getwd()
+[1] "C:/Users/Kevin/Documents"
+\end{verbatim}
+\end{framed}
+To change the working directory – we would use the \texttt{setwd()} command.
+\begin{framed}
+\begin{verbatim}
+> getwd()
+[1] "C:/Users/Kevin"
+>
+> setwd("C:/Users/Kevin/Documents")
+>
+> getwd()
+[1] "C:/Users/Kevin/Documents"
+\end{verbatim}
+\end{framed}

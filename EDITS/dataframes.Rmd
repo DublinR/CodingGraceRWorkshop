@@ -1,0 +1,179 @@
+Data Frames {data-navmenu="Data Objects"}
+==============================================
+
+Column {.tabset}
+----------------
+
+### Data Frames
+
+Another way that information is stored is in data frames. This is a way to take many vectors of different types and store them in the same variable. The vectors can be of all different types. For example, a data frame may contain many lists, and each list might be a list of factors, strings, or numbers.
+
+There are different ways to create and manipulate data frames. Most are beyond the scope of this introduction. They are only mentioned here to offer a more complete description.
+
+<h6>Data Frames</h6>
+Technically, a data frame in \texttt{R} is a very important type of data object;  a type of table where the typical use employs the rows as observations (or cases) and the columns as variables.
+Inter alia, a data frame differs from a matrix in that it can contain character values.
+Many data sets are stored as data frames.
+Let us consider the following two variables; age and height.
+<pre><code>
+> age=18:29
+> age
+[1] 18 19 20 21 22 23 24 25 26 27 28 29
+</code></pre>
+
+
+In similar fashion, we entered the average heights in a vector called height.
+<pre><code>
+>height=c(76.1,77,78.1,78.2,78.8,79.7,79.9,81.1,81.2,81.8,82.8,83.5)
+> height
+[1] 76.1 77.0 78.1 78.2 78.8 79.7 79.9 81.1 81.2 81.8 82.8 83.5
+</code></pre>
+
+We will now use \texttt{R}'s \texttt{data.frame()} command to create our first data frame and store the results in the data frame "village".
+
+<pre><code>
+> village=data.frame(age=age,height=height)
+</code></pre>
+
+
+How do we access the data in each column? One way is to state the variable containing the data frame, followed by a dollar sign, then the name of the column we wish to access (as with Lists earlier).
+For example, if we wanted to access the data in the "age" column, we would do the following:
+<pre><code>
+ > village$age
+ [1] 18 19 20 21 22 23 24 25 26 27 28 29
+</code></pre>
+The additional typing required by the "dollar sign" notation can quickly become tiresome, so R provides the ability to "attach" the variables in the dataframe to our workspace.
+\begin{verbatim}
+> attach(village)
+\end{verbatim}
+
+Let's re-examine our workspace. ( The \texttt{ls()} command lists all data objects in the workspace )
+\begin{verbatim}
+> ls()
+[1] "village"
+\end{verbatim}
+
+
+No evidence of the variables in the workspace. However, \texttt{R} has made copies of the variables in the columns of the data frame, and most importantly, we can access them without the "dollar notation." (later)
+\begin{verbatim}
+> age
+ [1] 18 19 20 21 22 23 24 25 26 27 28 29
+> height
+ [1] 76.1 77.0 78.1 78.2 78.8 79.7 79.9 81.1 81.2 81.8 82.8
+[12] 83.5
+\end{verbatim}
+
+Previously we have seen \texttt{rownames()} and \texttt{colnames()} to determine the names from an existing data frame. We can use these commands to create names for a new data frame also.
+
+
+<h5>Data Frames</h5>
+
+A data frame
+
+<ul>
+<li> can be thought of as a data matrix or data set;
+<li>
+ is a generalization of a matrix;
+<li>
+ is a list of vectors and/or factors of the same length;
+<li>
+ has a unique set of row names
+</ul>
+
+
+Data in the same position across columns come from the same experimental unit.
+
+
+We can create data frames from pre-existing variables:
+
+<pre><code>
+> d <- data.frame(mean_weight, Gender)
+</code></pre>
+
+<pre><code>
+
+# Creating a more complex data frame
+
+A <- data.frame(
+      name=c("a","b","c"),
+      ownership=c("Case 1","Case 1","Case 2"),
+      listed.at=c("NSE",NA,"BSE"),
+          # Firm "b" is unlisted.
+      is.listed=c(TRUE,FALSE,TRUE),
+          # R convention
+          # boolean variables are named "is.something"
+      x=c(2.2,3.3,4.4),
+      date=as.Date(c("2004-04-04","2005-05-05","2006-06-06"))
+)
+</code></pre>
+
+<pre><code>
+# Characteristics of a Data Frame
+summary(A)
+dim(A)
+nrow(A) ; ncol(A)
+names(A)
+</code></pre>
+Data set : mtcars
+
+
+R contains several embedded data sets. One that is commonly used is mtcars
+
+<pre><code>
+>mtcars
+</code></pre>
+
+(for some background on mtcars, type ?mtcars)
+
+
+Each of the columns has a name. Use the commands <code>names()</code> and <code>dim()</code> to find more information about mtcars.
+
+
+Another useful command is <code>summary()</code>.  It will give revelant information on the data object.
+
+
+
+We can use the command rownames() to access the names of each row.
+
+
+To access a particular column, use the dollar sign to specify it
+<pre><code>
+>mtcars$mpg
+</code></pre>
+
+We can now perform calculations on this column.
+
+</td>
+    </tr>
+
+</table>
+</center>
+
+
+
+
+    </div>
+    
+    
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+
+    </div>
+
+    
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

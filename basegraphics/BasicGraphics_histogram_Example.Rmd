@@ -1,3 +1,45 @@
+
+
+
+\section{Exercise}
+
+Generate a histogram for data set 'scores', with an accompanying box-and-whisker plot.
+The colour of the histogram's bar should be yellow. The orientation for the boxplot should be horizontal.
+
+<pre><code>
+scores <-c(23,19,22,22,19,20,25,26,26,19,24,23,17,21,28,26)
+
+par(mfrow=c(2,1)) # two rows , one column
+
+hist(scores,main="Distribution of scores",xlab="scores",col="yellow")
+
+boxplot(scores ,horizontal=TRUE)
+
+par(mfrow =c(1,1)) #reset
+</code></pre>
+
+
+
+\section{Histograms}
+Histograms can be created using the \texttt{hist()} command.
+To create a histogram of the car weights from the Cars93 data set
+
+
+<code>
+hist(mtcars$mpg, main="Histogram of MPG (Data: MTCARS) ")
+</code>
+
+\texttt{R} automatically chooses the number and width of the bars. We can
+change this by specifying the location of the break points.
+
+
+<code>hist(Cars93$Weight, breaks=c(1500, 2050, 2300, 2350, 2400,
+2500, 3000, 3500, 3570, 4000, 4500), xlab="Weight",
+main="Histogram of Weight")
+</code>
+
+
+
 ```{r}
 hist(speed,col=c("blue","red"),main=paste("Histogram of the speed of the cars"))
 boxplot(cars,col=c("yellow","green"),main=paste("boxplotsof speed and stopping distance of the cars"))

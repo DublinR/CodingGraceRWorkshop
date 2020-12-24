@@ -1,5 +1,28 @@
 
-\begin{document}
+
+
+\section{Boxplot}
+Boxplots can be used to identify outliers.
+
+By default, the \texttt{boxplot()} command sets the orientation as vertical. By adding the argument \texttt{horizontal=TRUE}, the orientation can be changed to horizontal.
+<p>
+\begin{framed}
+	<pre><code>
+	boxplot(mtcars$mpg, horizontal=TRUE, xlab="Miles Per Gallon",
+	main="Boxplot of MPG")
+	</code></pre>
+\end{framed}
+
+%\begin{figure}
+%  Requires \usepackage{graphicx}
+%  \includegraphics[scale=0.4]{MTCARSboxplot.png}\\
+%  \caption{Boxplot}\label{boxplot}
+%\end{figure}
+
+
+
+
+
 
 
 %---------------------------------------------------%
@@ -20,21 +43,21 @@ Boxplots can be used to identify \textbf{\textit{potential}} outliers, but is no
 \texttt{\textbf{horizontal=TRUE}}.
 \end{itemize}
 \begin{framed}
-\begin{verbatim}
+<pre><code>
 boxplot(DAT,horizontal=TRUE)
-\end{verbatim}
+</code></pre>
 \end{framed}
 
 %image of boxplot here
 
 
 
-\footnotesize
+
 \begin{framed}
-\begin{verbatim}
+<pre><code>
 boxplot(mtcars$mpg, horizontal=TRUE, xlab="Miles Per Gallon",
 main="Boxplot of MPG")
-\end{verbatim}
+</code></pre>
 \end{framed}
 
 %\begin{figure}
@@ -47,7 +70,7 @@ main="Boxplot of MPG")
 \subsection*{Boxplots for the Iris Data Set}
 
 \begin{framed}
-\begin{verbatim}
+<pre><code>
 
 boxplot(iris$Petal.Lengths)
 title("boxplot 1")
@@ -58,7 +81,7 @@ title("boxplot 2")
 boxplot(iris$Petal.Lengths,horizontal=TRUE)
 title("boxplot 3")
 
-\end{verbatim}
+</code></pre>
 \end{framed}
 
 
@@ -67,10 +90,10 @@ title("boxplot 3")
 \subsection*{Comparing Multiple Groups}
 
 Boxplots are especially useful when comparing two or more sets of data. 
-\begin{verbatim}
+<pre><code>
 # boxplot on a formula:
 boxplot.stats(count ~ spray, data = InsectSprays, col = "lightgray")
 # *add* notches (somewhat funny here):
 boxplot(count ~ spray, data = InsectSprays,        notch = TRUE, add = TRUE, col = "blue")
-\end{verbatim}
+</code></pre>
 \end{document}

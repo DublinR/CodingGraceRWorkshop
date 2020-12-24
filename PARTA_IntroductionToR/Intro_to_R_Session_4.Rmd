@@ -33,18 +33,6 @@
  \end{itemize}
  
 
- %==============================================================================================%
-
- \frametitle{2.2 Changing GUI options}
- \begin{itemize}
- \item We can change the GUI options using the GUI preferences option on the Edit menu.
- \item  (Important
- when teaching R) 
- \item A demonstration will be done in class.
- \end{itemize}
- 
-
- 
  
  %==============================================================================================%
 

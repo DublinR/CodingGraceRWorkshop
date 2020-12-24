@@ -1,54 +1,14 @@
-	\chapter { R Graphics}
-	
-	\section{Important Graphical Procedures}
-	\begin{enumerate}
-		\item Histograms
-		\item Box-plots
-		\item Scatter-plots
-	\end{enumerate}
-	
-	
-	%----------------------------------------------------------------%
-	
-	
-			
-			\subsection{Adding a title }
-			
-			It is good practice to label your scatterplots properly. You can specify the following argument
-			\begin{itemize}
-				\item	main="Scatterplot Example", 	This provides the plot with a title
-				\item	sub="Subtitle",                 This adds a subtitle
-				\item	xlab="X variable ",				This command labels the x axis 
-				\item   ylab="y variable ",				This command labels the y-axis
-			\end{itemize}
-			We can also add text to each margin, using the \texttt{mtext()} command.  
-			We simply require the number of the side. (1 = bottom, 2=left,3=top,4=right). 
-			We can change the colour using the col argument.
-			\footnotesize \begin{verbatim}
-			plot(x,y,main="Scatterplot Example",   sub="subtitle",    xlab="X variable ", ylab="y variable ")	
-			mtext("Enhanced Scatterplot", side=4,col="red ")
-			\end{verbatim}\normalsize
-			Alternatively , we can also use the command title() to add a title to an existing scatterplot.
-			\footnotesize \begin{verbatim}
-			title(main="Scatterplot Example)	
-			\end{verbatim}\normalsize
-			
-			
 
-			
-			\section{Exercise}
-			
-			Generate a histogram for data set 'scores', with an accompanying box-and-whisker plot.
-			The colour of the histogram's bar should be yellow. The orientation for the boxplot should be horizontal.
-			
-			\begin{verbatim}
-			scores <-c(23,19,22,22,19,20,25,26,26,19,24,23,17,21,28,26)
-			
-			par(mfrow=c(2,1)) 	# two rows , one column
-			
-			hist(scores,main="Distribution of scores",xlab="scores",col="yellow")
-			
-			boxplot(scores ,horizontal=TRUE)
-			
-			par(mfrow =c(1,1)) 	#reset
-			\end{verbatim}
+
+\section{Bivariate Data}
+ 
+<code>
+> Y=mtcars$mpg
+> X=mtcars$wt
+>
+> cor(X,Y)          #Correlation
+[1] -0.8676594
+>
+> cov(X,Y)          #Covariance
+[1] -5.116685
+</code>

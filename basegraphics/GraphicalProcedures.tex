@@ -1,36 +1,24 @@
 
 
 
-\section{Bivariate Data}
- 
-<code>
-> Y=mtcars$mpg
-> X=mtcars$wt
->
-> cor(X,Y)          #Correlation
-[1] -0.8676594
->
-> cov(X,Y)          #Covariance
-[1] -5.116685
-</code>
+
+\chapter { R Graphics}
+
+\section{Important Graphical Procedures}
+\begin{enumerate}
+\item Histograms
+\item Box-plots
+\item Scatter-plots
+\end{enumerate}
 
 
-
-\section{Histograms}
-Histograms can be created using the \texttt{hist()} command.
-To create a histogram of the car weights from the Cars93 data set
+\newpage
 
 
-<code>
-hist(mtcars$mpg, main="Histogram of MPG (Data: MTCARS) ")
-</code>
+\chapter{Data Visualization}
+\section{Plots}
+This section is an introduction for producing simple graphs with
+the R Programming Language.
 
-\texttt{R} automatically chooses the number and width of the bars. We can
-change this by specifying the location of the break points.
-
-
-<code>hist(Cars93$Weight, breaks=c(1500, 2050, 2300, 2350, 2400,
-2500, 3000, 3500, 3570, 4000, 4500), xlab="Weight",
-main="Histogram of Weight")
-</code>
-
+*  Line Charts  \item Bar Charts \item Histograms \item Pie
+	Charts \item Dotcharts

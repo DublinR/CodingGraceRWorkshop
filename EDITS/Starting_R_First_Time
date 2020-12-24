@@ -1,0 +1,10 @@
+%======================================================================================================== %
+\subsection*{1. Starting R the first time}
+
+
+When running R from the computer lab, your M drive will be the working directory where your work will be saved by default. 
+You can easily change to another directory at any time by selecting Change Dir... from the File menu. 
+You can save your work at any time. Select Save Workspace from the File menu. 
+You will usually save the workspace in the working directory. 
+When you quit R you will be prompted to save your workspace. 
+%======================================================================================================= %

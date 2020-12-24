@@ -1,0 +1,18 @@
+%---------------------------------------------------------------------------------% 
+\section{Time and Date functions}
+The commands \texttt{Sys.time()} and \texttt{Sys.Date()} returns the system's idea of the current date with and without time.
+We can perform some simple algebraic calculations to compute time differences (i.e. to find out how long some code took to compile.
+\begin{framed}
+\begin{verbatim}
+> X1=Sys.time()
+> #Wait a few seconds
+>
+> X2=Sys.time()
+> X2-X1
+Time difference of 8.439614 secs
+>
+> Sys.Date() 
+[1] "2012-09-01"
+\end{verbatim}
+\end{framed}
+

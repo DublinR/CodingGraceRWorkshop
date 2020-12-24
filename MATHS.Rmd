@@ -1,0 +1,62 @@
+---
+title: "Introduction to R"
+output: 
+  flexdashboard::flex_dashboard:
+    theme: united
+    css: style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+```{r  child ="EDITS/apply_functions.Rmd"} 
+```     
+
+```{r  child = "EDITS/binomialcoefficients.Rmd"} 
+```
+
+
+```{r  child ="EDITS/dataframes.Rmd"} 
+```          
+
+```{r  child ="EDITS/grubbs_test.Rmd"} 
+```         
+
+
+```{r  child ="EDITS/lattice_examples.Rmd"} 
+```    
+
+```{r  child ="EDITS/MatriceswithR.Rmd"} 
+```       
+
+
+```{r  child = "EDITS/MissingData.Rmd"} 
+```         
+
+```{r  child ="EDITS/mtcars_stepwise.Rmd"} 
+```     
+
+
+```{r  child ="EDITS/Poisson.Rmd"} 
+```             
+
+```{r  child ="EDITS/ProbabilityWithR.Rmd"} 
+```    
+
+
+```{r  child ="EDITS/regression_diagnostics.Rmd"}
+```
+
+```{r  child ="EDITS/sequences.Rmd"} 
+```           
+
+```{r  child ="EDITS/settheoryandsamples.tex"} 
+``` 
+
+```{r  child ="EDITS/SetTheoryAndSampling.Rmd"} 
+```
+
+
+```{r  child ="EDITS/Statistics_Examples.Rmd"} 
+``` 

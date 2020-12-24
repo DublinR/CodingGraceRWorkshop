@@ -1,0 +1,22 @@
+
+<h4>Binomial coefficients</h4>
+
+``choose()`` can be used to determine the number of ways $k$objects can be chosen from
+
+
+\[
+n \choose k = \frac{n!}{k!(n-k)!}
+\]
+
+The command takes the form <pre><code>choose(n,k)</code></pre><p>
+
+<pre><code>
+> choose(9,2)
+[1] 36
+</code></pre><p>
+
+The factorial of a number can be computers using the ``factorial()`` command.
+<pre><code>
+> factorial(4)
+[1] 24
+</code></pre><p>

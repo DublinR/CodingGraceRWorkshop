@@ -1,7 +1,7 @@
 \section{Adding titles, lines, points to plots}
 
 
-\footnotesize \begin{verbatim}
+\footnotesize <pre><code>
 library(MASS)
 # Colour points and choose plotting symbols according to a levels of a factor
 plot(Cars93$Weight, Cars93$EngineSize, col=as.numeric(Cars93$Type),
@@ -16,7 +16,7 @@ max(Cars93$EngineSize)), lwd=4, lty=3, col="green")
 abline(h=3, lty=2)
 abline(v=1999, lty=4)
 # Add points to the plot.
-\end{verbatim}
+</code></pre>
 
 
 

@@ -1,0 +1,95 @@
+The Poisson Distribution {data-navmenu="Maths"}
+===================================
+
+Column
+-----------------------------
+
+### Poisson
+
+A Poisson distribution is the probability distribution that results from a Poisson experiment. A Poisson experiment, ,with $X$ as the number of successes, is a statistical experiment that has the following properties: 
+
+#### Attributes of a Poisson Experiment
+
+* The experiment results in outcomes that can be classified as successes or failures.
+* The average number of successes ($\lambda$ or lambda) that occurs in a specified region is known.
+* The probability that a success will occur is proportional to the size of the region.
+* The probability that a success will occur in an extremely small region is virtually zero. 
+
+Note that the specified region could take many forms. For instance, it could be a length, an area, a volume, a period of time, etc. The Poisson distribution will feature significantly in the \textbf{\textit{Stochastic Processes}} module that many of you will study in the future.
+
+There are four functions that can be used to generate the values associated with the Poisson distribution. 
+The commands follow the same kind of naming convention, and the names of the commands are <i><b>dpois()</b></i>, <i><b>ppois()</b></i>, <i><b>qpois()</b></i>, and <i><b>rpois()</b></i>.
+
+These commands work just like the commands for the other distribution. The Poisson distribution requires the lambda. parameters. A few examples are given below to show how to use the different commands. First we have the density function, <i><b>dpois()</b></i>.
+
+### Example
+Suppose that the expected number of occurences per unit space is 5, compute the probability of exactly 4 and exactly 5 occurences, i.e. $P(X = 4)$ and $P(X = 5)$ respectively.
+
+<pre>
+<code>
+dpois(4,lambda=5)
+dpois(5,lambda=5)
+</code>
+
+The probability of both 4 and 5 successes is 17.5\%.
+<code>
+> dpois(4,lambda=5)
+[1] 0.1754674
+> dpois(5,lambda=5)
+[1] 0.1754674
+</code>
+
+\begin{center}
+\includegraphics[scale=0.50]{dpoisPlot}
+% \caption{Some function f(x) evaluated at x=1}
+\end{center}
+
+This plot was implemented with the following \texttt{R} code.
+The upper limit of 15 was arbitrarily chosen. There is no upper bound in the sample space of potential successes.
+<pre>
+<code>
+x = seq(0,15,by=1)
+y = dpois(x,lambda=5)
+plot(x,y,type="h",col="red",lwd=2,font.lab=2,font.axis=2)
+points(x,y,type="p",col="red",cex=1.60,pch=18)
+</code>
+
+Compute the probability that the number of successes is less than or equal to 15, i.e. $P(X \leq 15)$. To compute this, we would use the \textbf{\texttt{ppois()</b></i> command. The answer is 99.99\%.
+
+<pre>
+<code>
+ppois(3,lambda=5)
+</code>
+\end{framed}
+<code>
+> ppois(15,lambda=5)
+[1] 0.999931
+</code>
+
+As mentioned previously, the Poisson distribution is particularly useful in simulating stochastic processes, by generating suitable random values.
+Suppose the expected number of occurrences is 5 per month. To simulate the number of occurences for two year (i.e. 24 months), we use the <i><b>rpois()</b></i> function.
+
+<code>
+> rpois(24,lambda=5)
+[1] 4 6 5 6 5 4 7 7 1 2 3 6 7 1 2 6 2 2 7 9 1 4 5 1
+</code>
+
+<h4>Exercise</h4>
+
+If there are twelve cars crossing a bridge per minute on average, find the probability of having seventeen or more cars crossing the bridge in a particular minute (i.e. $P(X\geq 17)$). 
+
+The probability of having sixteen or less cars crossing the bridge in a particular minute is given by the  <i><b>ppois()</b></i> function. 
+<code>
+> ppois(16, lambda=12)   
+[1] 0.89871 
+</code>
+
+Hence the probability of having seventeen or more cars crossing the bridge in a minute is in the upper tail of the probability density function. 
+
+<code>
+> ppois(16, lambda=12, lower=FALSE)   # upper tail 
+[1] 0.10129 
+</code>
+
+If there are twelve cars crossing a bridge per minute on average, the probability of having seventeen or more cars crossing the bridge in a particular minute is 10.1\%. 
+

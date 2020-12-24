@@ -15,7 +15,7 @@
 
 {Data used today}
 
-\begin{verbatim}
+<pre><code>
 >x<-c(5.98, 8.80, 6.89, 8.49, 8.48, 7.47,
     7.97,5.94, 7.32, 6.64, 6.94, 3.51)
 >
@@ -23,13 +23,13 @@
 >y<-c(5.56, 7.80, 6.13, 8.15, 7.95, 7.87,
     8.03, 5.67, 7.11, 6.65, 7.02, 3.88)
 
-\end{verbatim}
+</code></pre>
 It is important the both data sets have same length.
-\begin{verbatim}
+<pre><code>
 >length(x)
 >length(y)
 
-\end{verbatim}
+</code></pre>
 
 
 <p>
@@ -91,9 +91,9 @@ In other cases, such as quadratic relationships, other types of regression may b
 
 * To make a simple scatterplot of the bivariate data, we simply use the
 ``plot()" command. * The independent variable (the variable to go along the x-axis) is always specified first.
-\begin{verbatim}
+<pre><code>
 >plot(x,y)
-\end{verbatim}
+</code></pre>
 * In future classes, we will look at how to improve and enhance scatter-plots, by controlling graphical parameters.
 
 
@@ -113,10 +113,10 @@ In other cases, such as quadratic relationships, other types of regression may b
 {Correlation}
 
 * To compute the Pearson correlation coefficient (``r"), we use the ``cor()" command.
-\begin{verbatim}
+<pre><code>
 > cor(x,y)
 [1] 0.9581898
-\end{verbatim}
+</code></pre>
 * The coefficient should be between $-1$ and $1$.
 * Recall, the higher the absolute value of the correlation coefficient, the stronger the linear relationship.
 * A positive correlation coefficient indicates a positive relationship.
@@ -128,18 +128,18 @@ In other cases, such as quadratic relationships, other types of regression may b
 
 * Other types of correlation coefficient are possible, such as the Spearman coefficient, and the Kendall Tau coefficient.
 * To specify one of these methods, add the argument to the command, as shown below.
- \begin{verbatim}
+ <pre><code>
 > cor(x,y,method="kendall")
 [1] 0.7878788
 > cor(x,y,method="spearman")
 [1] 0.909091
-\end{verbatim}
+</code></pre>
 
 * To compute the covariance, we use the ``cov()" command.
-\begin{verbatim}
+<pre><code>
 > cov(x,y)
 [1] 1.824429
-\end{verbatim}
+</code></pre>
 
 
 
@@ -180,7 +180,7 @@ the y axis
 * The tilde sign is used to denote the dependent relationship (i.e. y depends on x).
 * The regression coefficients are then determined.
 
-\begin{verbatim}
+<pre><code>
 > lm(y~x)
 
 Call:
@@ -189,7 +189,7 @@ lm(formula = y ~ x)
 Coefficients:
 (Intercept)            x
      0.7812       0.8581
-\end{verbatim}
+</code></pre>
 
 
 <p>
@@ -206,7 +206,7 @@ In common with all data structures we can use the names() function and `\$' to a
 
 {Simple linear regression}
 
-\begin{verbatim}
+<pre><code>
 > fit1 = lm(y~x)
 >
 > names(fit1)
@@ -218,7 +218,7 @@ In common with all data structures we can use the names() function and `\$' to a
 [11] "terms"         "model"
 >
 >summary(fit1)
-\end{verbatim}
+</code></pre>
 
 
 
@@ -226,7 +226,7 @@ In common with all data structures we can use the names() function and `\$' to a
 
 {Simple linear regression}
 We can access components using the `\$'.
-\begin{verbatim}
+<pre><code>
 >
 > fit1$coefficients
 (Intercept)           x
@@ -240,7 +240,7 @@ We can access components using the `\$'.
 > fit1$coefficients[2] #slope
        x
 0.8580521
-\end{verbatim}
+</code></pre>
 
 
 <p>
@@ -254,11 +254,11 @@ An alternative method is to use the following commands.
 
 
 
- \begin{verbatim}
+ <pre><code>
  > coef(fit1)
 (Intercept)           x
   0.7812216   0.8580521
-\end{verbatim}
+</code></pre>
 
 
 
@@ -273,10 +273,10 @@ that is accounted for by the linear model.
 * For simple linear regression, it can also be computed by squaring the correlation coefficient.
 
 
-\begin{verbatim}
+<pre><code>
 > summary(fit1)$r.squared
 [1] 0.9181277
-\end{verbatim}
+</code></pre>
 
 
 
@@ -311,7 +311,7 @@ regression coefficients.
 <p>
 
 {Inference for regression}
-\begin{verbatim}
+<pre><code>
 > summary(fit1)
 
 Call:
@@ -328,7 +328,7 @@ x       0.85805    0.08103  10.590 9.38e-07 ***
 
 .....
 
-\end{verbatim}
+</code></pre>
 
 <p>
 
@@ -348,11 +348,11 @@ x       0.85805    0.08103  10.590 9.38e-07 ***
 
 * The cor() function in R can be extended to provide the significance testing required. 
 * The function is ``cor.test()".
-\begin{verbatim}
+<pre><code>
 > cor(x,y)
 [1] 0.9581898
 
-\end{verbatim}
+</code></pre>
 * For this test, the null hypothesis is that the true correlation coefficient is zero.
 * The alternative is that the true value is not zero, and a linear relationship exists.
 
@@ -361,7 +361,7 @@ x       0.85805    0.08103  10.590 9.38e-07 ***
 
 <p>
 {Inference for correlation (contd)}
-\begin{verbatim}
+<pre><code>
 
 > cor.test(x,y)
 
@@ -376,7 +376,7 @@ sample estimates:
       cor
 0.9581898 
 
-\end{verbatim}
+</code></pre>
 
 
 <p>

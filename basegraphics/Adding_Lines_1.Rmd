@@ -32,6 +32,18 @@ Additionally we change the colour of the added lines, by specifying a colour in 
 
 We can also change the line type to one of four possible types, using the ``lty`` argument.
 
+
+
+### Adding the regression model line}
+
+The ``abline()`` function can be used to add a regression model line  by supplying as an argument the ``coef()`` values for intercept and slope estimates .These estimates can be inputted directly by using both functions in conjunction.
+
+\large <pre><code>
+Fit1 =lm(y1~x);  coef(Fit1)
+abline(coef(Fit1))
+</code></pre>\large
+
+
 %=====================================================================================================================%
 
 ### Adding a Regresion Line to a Plot

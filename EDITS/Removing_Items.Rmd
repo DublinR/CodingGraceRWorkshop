@@ -1,0 +1,15 @@
+#### Removing items
+Sometimes it is desirable to save a subset of your workspace instead of the entire workspace. One option is to use the \texttt{rm()} function to remove unwanted objects right before exiting your \texttt{R} session; another possibility is to use the save function. 
+
+The save function accepts multiple arguments to specify the objects you wish to save, or, alternatively, a character vector with the names of the objects can be passed to save through the \texttt{list=} argument. 
+
+Once the objects to be saved are specified, the only other required option is the \texttt{file=option}, specifying the destination of the saved R object. Although there is no requirement to do so, it is common to use a suffix of \texttt{.rda} or \texttt{.RData} for saved \texttt{R} workspace files.
+
+For example, to save the \texttt{R} objects x, y, and z to a file called \texttt{myData.rda} ,the following statements could be used:
+
+\begin{verbatim}
+> save(x,y,z,fil= ‘mydata.rda’)
+\end{verbatim}
+
+
+

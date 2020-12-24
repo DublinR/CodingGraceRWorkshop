@@ -1,0 +1,34 @@
+<h3>Generating Sequences</h3>
+ Sequences can generated in a number of ways. The simplest way is to specify the
+lower and upper bound and use the ":" between them. Specifying the upper bound first gives
+a decreasing sequence.
+
+<pre><code>
+> 1:4
+[1] 1 2 3 4
+> 4:1
+[1] 4 3 2 1
+</code></pre>
+
+ Another way is to use the seq() command. We dont necessarily need to use
+`from' and 'to' in our code.
+<pre><code>
+> seq(from=1,to=4)
+[1] 1 2 3 4
+> seq(4,1)	
+[1] 4 3 2 1
+</code></pre>
+
+
+ 
+We can specify the length of the sequence, which will give increments between values accordingly.
+<pre><code>
+> seq(from=1,to=4,length=3)
+[1] 1.0 2.5 4.0
+</code></pre>
+
+Alternatively We can specify the increments between values..
+<pre><code>
+> seq(from=1,to=4,by=0.5)
+[1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0
+</code></pre>

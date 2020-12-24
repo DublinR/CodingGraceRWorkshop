@@ -1,0 +1,131 @@
+Apply {data-navmenu="Programming"}
+================================
+Column {.tabset}
+--------------------------------
+### Apply
+<h5>Using the “Apply” family of functions</h5>
+
+
+<h4>Introduction</h4>
+The "apply" family of functions keep you from having to write loops to perform some operation on every row or every column of a matrix or data frame, or on every element in a list.
+
+<h6>The <code>apply()</code> function</h6>
+The <code>apply()</code> function is a powerful device that operates on arrays and, in particular, matrices.
+The <code>apply()</code> function returns a vector (or array or list of values) obtained by applying a specified function to either the row or columns of an array or matrix.
+To specify use for rows or columns, use the additional argument of 1 for rows, and 2 for columns.
+
+<pre><code>
+# create a matrix of 10 rows x 2 columns
+m <- matrix(c(1:10, 11:20), nrow = 10, ncol = 2)
+
+# mean of the rows
+
+apply(m, 1, mean)
+# [1]  6  7  8  9 10 11 12 13 14 15
+
+# mean of the columns
+apply(m, 2, mean)
+#[1]  5.5 15.5
+</code></pre>
+<p>
+<h4>Apply functions</h4>
+
+A group of functions useful for avoiding loops:
+<ol>
+<li> lapply, 
+<li> sapply, 
+<li> apply, 
+<li> tapply
+</ol>
+lapply and sapply are used to iterate along a list or a vector.
+
+lapply( listname , length)will return a list with components the length of the components of the list.
+
+sapply( listname , length) will return a vector with elements the lengths of the components of the list.
+<p>
+
+
+<h4>tapply</h4>
+apply and tapply operate in a similar way on parts of arrays or
+vectors.
+
+apply and tapply have extra parameters, to indicate which part
+of the array or vector to use. 
+
+For apply it is the dimension(s) of the array over which to iterate. e.g.
+apply(matrixname,2,sum,na.rm=TRUE)
+will produce the sum of each column of the matrix, after missing
+values have been removed.
+
+Note how to pass extra arguments to the function to be applied.
+
+Can be used on data frames, but will turn them into matrices first.
+If there are factor variables, all the variables will end up as
+character. 
+<p>
+
+<h4>lapply()</h4>
+The local version of <code>apply()</code> is <code>lapply()</code>, which computes a function for each argument of a list., 
+provided each argument is compatible with the function argument (e.g. that is numeric). 
+
+The <code>lapply()</code> command returns a list of the same length as a list “X”, each element of which is the result of applying a specified function to the corresponding element of X.
+
+<p>
+
+<h4>sapply()</h4>
+A user friendly version of lapply() is sapply().
+
+The <code>sapply()</code> command  is a variant of <code>lapply()</code> – returning a matrix instead of a list - again of the same length as a list X, 
+each element of which is the result of applying a specified function to the corresponding element of X.
+<pre><code>
+> x <- list(a=1:10, b=exp(-3:3), logic=c(T,F,F,T))
+>
+> # compute the list mean for each list element
+>
+> lapply(x,mean)
+$a
+[1] 5.5
+
+$b
+[1] 4.535125
+
+$logic
+[1] 0.5
+>
+> sapply(x,mean)
+       a        b    logic 
+5.500000 4.535125 0.500000
+>
+</code></pre>
+
+Complex Simulation Program
+
+1)	Create a function called SumDice().
+2)	Apply SumDice() n times to an initial value x
+3)	Graph the data
+
+<pre><code>
+SumDice = function(x){
+	Temp1=sum(sample(1:6,x,replace=TRUE))
+	return(Temp1)
+	}
+
+X=sapply(rep(100,100),SumDice)
+
+DF1=data.frame(Index=1:1000,Sum=X)	
+	
+</code></pre>
+
+
+
+Histogram and Cumulative Frequency Chart
+Range of values quite interesting!!
+Palette = c("blue","yellow","red","green")
+hist(X,breaks=60:80*5,col=Palette)
+
+
+
+ 
+
+ 
+

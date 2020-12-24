@@ -1,0 +1,16 @@
+
+#### Listing all items in a workspace
+
+To list all items in an \texttt{R} environment, we use the \texttt{ls()} function. This provides a list of all data objects  accessible.
+
+<pre><code>
+> ls()
+ [1] "a"          "A"          "authors"    "b"          "books"     
+ [6] "C"          "D"          "ex1"        "Gerb"       "Lst"       
+[11] "m"          "m1"         "op"         "presidents" "r"         
+[16] "showSmooth" "sm"         "sm.3RS"     "sm2"        "sm3"       
+[21] "Trig"       "Vec1"       "x"          "X"          "x.at"      
+[26] "x1"         "x2"         "x3R"        "y"          "Y"         
+[31] "y.at"      
+</code></pre>
+

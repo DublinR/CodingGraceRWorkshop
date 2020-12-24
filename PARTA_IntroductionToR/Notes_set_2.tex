@@ -125,10 +125,6 @@ lillie.test
 nortest
 
  
-\subsection*{What is R}
-
-R is an open-source statistical package based on the S language. It is a powerful computing tool that combines the usefulness of a statistical analysis package with that of a publication quality graphics package and a matrix-based programming language. It's easy enough to use for quick and simple tasks, yet powerful enough for the most demanding ones. The goal of this demonstration is to provide a basic introduction to using R. An R session differs from that of other statistical software. You will find it to be an interactive approach where the results from one step lead to the next. This introduction to R is necessarily limited in scope to only a handful of analyses. Once you become familiar with R and browse through some of the online help topics, you will discover tools for practically any type of analysis you need. S-PLUS is a commercial application also based on the S language. Much of R is identical to the command line useage of S-PLUS. There are differences though in some functions and their arguments so existing S-PLUS code may require some modification to run in R. 
-%================================================================================================== %
 Topics included in this tutorial: 
 1. Starting R the first time
 2. Some things to keep in mind
@@ -140,34 +136,4 @@ Topics included in this tutorial:
 8. Writing functions
 9. What to do next 
 Return to Mercury Home Page 
-%======================================================================================================== %
-\subsection*{1. Starting R the first time}
-
-
-When running R from the computer lab, your M drive will be the working directory where your work will be saved by default. You can easily change to another directory at any time by selecting Change Dir... from the File menu. 
-You can save your work at any time. Select Save Workspace from the File menu. You will usually save the workspace in the working directory. When you quit R you will be prompted to save your workspace. 
-%======================================================================================================= %
-\subsection*{2. Some things to keep in mind}
-
-
-Everything in R is some kind of object. Objects can have different modes (numeric, character, list, function, etc.) with different structures (scalar, vector, matrix, etc.) and different classes (data frame, linear models result, etc.). 
-Almost every command you execute in R uses one or more functions. Functions are called by their name followed by a set of parentheses. If any arguments are passed to the function, they are listed within the parentheses. The parentheses must always be present whether or not there are any arguments. For example, to get a listing of all the objects in your working directory, you would use objects(). If you wanted a list of objects in another directory in your search path, you might use objects(where=3). 
-
-Use the assignment operator to create objects. The assignment operator is the "less than" symbol followed by a hyphen ( <- ). With S-PLUS you can use the underscore for the assignment operator, but that will not work with R. Apparently the equal sign can be used, but then that will not work in S-PLUS. The best practice is to use the less than and hyphen for assignments. For example, to create an object called tmp and assign it the value 3, you would enter tmp <- 3. The equal sign (=) is mainly used for passing arguments to functions, like the last command in comment b above. 
-
-R is case sensitive. Keep that in mind when you're naming objects or calling functions. We could create another object called Tmp that would be separate and distinct from tmp. 
-
-If you already have an object with the name tmp and you assign something else to an object with that name, then the first object is overwritten. Be careful not to lose something you want to keep. 
-
-Once you've created objects, you may want to get rid of them later. Use the function rm() with the object names as arguments. For example, rm(tmp). 
-
-You can recall previous commands with the up-arrow and down-arrow keys. Once you've located the command you want, you can hit enter to execute the command as is, or you can edit the line first. This can save time, especially with complicated commands. 
-
-Open a graphics window with the function win.graph(). 
-
-Make use of the online help. Select HTML Help from the Help menu, click on Packages, then click on Graphics and look up win.graph. You'll find a description of all possible arguments that can be used, a full discussion on its use, and some examples of how it can be used. If you just need a reminder of what arguments can be passed to a particular function, use the args() function with the function name in the parentheses. For example, try args(win.graph) to see what arguments can be used with that function and what default values they may have. Most common functions can be found in the Base package. 
-
-In the examples that follow, pay very close attention to all associated punctuation. Things like commas and parentheses are absolutely critical to R understanding what you want to do. If you get an error after executing a command, the first thing to do is check the syntax. That is the cause of most errors. R almost always ignores spaces, so whether you type tmp<-c(1,2,3) or tmp <- c ( 1, 2, 3), you get the same result. 
-The Escape key serves as your abort button. If something goes wrong or you're suddenly seeing an endless array of numbers scrolling by, you can hit the Escape key to quit whatever you're doing and get you back to the command prompt. This does not kick you out of R altogether. 
-The command line interface in R uses a red font to show your input and a blue font to show results. I've tried to duplicate that in the examples in this tutorial. 
 
