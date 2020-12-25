@@ -1,0 +1,22 @@
+
+#### {Analysis of residuals}
+Perform an analysis of regression residuals ( you can pick the best regression model from last <p>
+### ).
+Are the residuals normally distributed?
+	Histogram /  Boxplot / QQ plot / Shapiro Wilk Test
+Also you can plot the residuals to check that there is constant variance.
+<code>
+y=rnorm(10)
+x=rnorm(10)
+fit1=lm(y~x)
+res.fit1 = resid(fit1)
+plot(res.fit1)
+</code>
+
+
+
+
+
+
+
+
