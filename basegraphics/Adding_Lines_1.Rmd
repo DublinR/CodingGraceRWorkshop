@@ -18,6 +18,32 @@ abline(a=5,b=-1/6)
 </code>
 </pre>
 
+
+
+\section{Adding titles, lines, points to plots}
+
+
+\footnotesize <pre><code>
+library(MASS)
+# Colour points and choose plotting symbols according to a levels of a factor
+plot(Cars93$Weight, Cars93$EngineSize, col=as.numeric(Cars93$Type),
+pch=as.numeric(Cars93$Type))
+
+# Adds x and y axes labels and a title.
+plot(Cars93$Weight, Cars93$EngineSize, ylab="Engine Size",
+xlab="Weight", main="My plot")
+# Add lines to the plot.
+lines(x=c(min(Cars93$Weight), max(Cars93$Weight)), y=c(min(Cars93$EngineSize),
+max(Cars93$EngineSize)), lwd=4, lty=3, col="green")
+abline(h=3, lty=2)
+abline(v=1999, lty=4)
+# Add points to the plot.
+</code></pre>
+
+
+
+
+
 #### Adding lines
 
 Recall that we can use the arguments ``xlim`` and ``ylim`` to control the vertical and horizontal range of the plots, by specifying a two element vector (min and max) for each.
@@ -34,17 +60,6 @@ We can also change the line type to one of four possible types, using the ``lty`
 
 
 
-### Adding the regression model line}
-
-The ``abline()`` function can be used to add a regression model line  by supplying as an argument the ``coef()`` values for intercept and slope estimates .These estimates can be inputted directly by using both functions in conjunction.
-
-\large <pre><code>
-Fit1 =lm(y1~x);  coef(Fit1)
-abline(coef(Fit1))
-</code></pre>\large
-
-
-%=====================================================================================================================%
 
 ### Adding a Regresion Line to a Plot
 

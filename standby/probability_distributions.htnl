@@ -1,0 +1,107 @@
+Simulation and Probability Distributions
+===================================================
+
+Probability Distributions
+  
+Distribution
+R name
+Additional Arguments
+beta
+beta
+shape1, shape2, ncp
+binomial
+binom
+size, prob
+Cauchy
+cauchy
+location, scale
+Chi-squared
+chisq
+df, ncp
+exponential
+exp
+rate
+F
+f
+df1, df2
+geometric
+geom
+prob
+hypergeometric
+hyper
+values m,n,k
+normal
+norm
+mean,sd
+Poisson
+pois
+lambda
+Student's
+r
+df,ncp
+uniform
+unif
+min,max
+Weibull
+weibul
+shape,scale
+Wilcoxon
+wilcox
+m,n
+
+
+
+
+
+
+Probability
+ Simulation Study: Simulating dice throws
+
+  
+
+
+X = runif(100,0,6)
+
+
+### Discrete Probability Distributions
+
+The two most accessible discrete distributions are the binomial and poisson distributions
+The binomial distribution is characterized by the number of trials, which in R is denoted as ``size`` rather than ‘n’, and the probability of success ``prob``.
+
+<pre><code>
+rbinom(n=5,size=100,p=0.25)		#generate five random numbers
+</code></pre>
+
+The Poisson distribution is characterized the by the arrival rate ``lambda``.
+
+<pre><code>
+rpois(n=5,lambda=4)			#generate five random numbers
+</code></pre>
+
+<h5>Simple population study</h5>
+
+Suppose a small island has population 1,000 at the start of a decade. 
+The birth rate on this island is expected to 25 births per annum, while there is on average 10 deaths.  Forecast the population after five years.
+
+<pre><code>
+Base = 1000
+Births =rpois(5,25)
+Deaths=rpois(5,10)
+Yrly.Incr =Births - Deaths
+Increase =cumsum(Yrly.Incr)
+Popn = Base + Births +Deaths
+</code></pre>
+
+<p>
+
+<h5>Continuous Probability Distributions</h5>
+
+The continuous uniform distribution is commonly used in simulation.
+The Normal distribution
+The normal distribution is perhaps the most w
+rnorm(n=15)				#15 random numbers, mean  = 0 , std. deviation = 1
+rnorm(n=15,mean= 17)			#set the mean to 17
+rnorm(n=15,mean= 17,sd=4)		#set the standard deviation to 4
+rnorm(15,17,4)				#argument matching : default positions
+
+

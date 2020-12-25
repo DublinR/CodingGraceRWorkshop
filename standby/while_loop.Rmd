@@ -1,0 +1,30 @@
+
+
+<h3>While Loops</h3>
+==================================================
+The while loop can be used if the number of iterations required is not known beforehand. 
+For example, if we want to continue looping until a certain condition is met, a while loop is useful.
+		
+The following is the syntax for a while loop:
+		
+<pre><code>
+		while (condition){
+		command
+		command
+		}
+<code><pre>
+		The loop continues while \texttt{condition == TRUE}.
+
+
+<!--###########################################################################-->  
+  
+
+
+
+<h5>While Loops in <code>R</code></h5>
+The <code>while</code> operator allows a set of commands to be repeated until a specific logical condition is met.
+
+Importantly the logical condition you specify as an argument is the opposite of what you are trying to do.
+<h6>Example: The Clever Lecturer</h6>
+
+<pre><code>while( logical condition is meet)</code></pre>

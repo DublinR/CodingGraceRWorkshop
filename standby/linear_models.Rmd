@@ -1,0 +1,138 @@
+
+        <h2>Simple Linear Regression</h2>
+Simple linear regression is used to describe the relationship between two variables. For example, you may want to describe the relationship between age and blood pressure or the relationship between scores in a midterm exam and scores in the final exam,
+etc.
+<p>
+The intercept $\beta_{0}$ describes the point at which the line intersects
+the y axis
+
+The slope $\beta_{1}$ describes the change in y (response/dependent variable) for every unit increase in x
+(explanatory/independent variable).
+<p>
+One of the first steps in a regression analysis is to determine if any kind of relationship exists between the two variables.
+A scatterplot is created and can initially be used to get an idea about the nature of the relationship between the variables, e.g. if the relationship is linear, curvilinear, or no relationship exists.
+
+Can see from the scatterplot that there is a linear relationship between x and y. To measure the strength of this relationship,
+calculate the correlation coefficient (cor())
+
+Can add the fitted regression line to the scatterplot:
+
+<pre><code>
+plot(x,y,main="Scatterplot")
+abline(coef(model), lty=2)
+abline(model$coef, lty=2)
+</code></pre>
+
+<h3>Linear Regression Model</h3>
+
+A linear relationship can be defined by the simple linear regression model
+\[y = \beta_0 + \beta_1x + \epsilon\]
+
+The intercept $\beta_0$ describes the point at which the line intersects the y axis.
+The slope $\beta_1$ describes the change in ‘y’ for every unit increase in the predictor variable $x$.
+
+From the data set, we determine the regression coefficients, i.e. estimates for slope and intercept. (N.B. There are variations on this notation in textbooks).
+
+<ul>	
+<li> $b_0$ : the intercept estimate.</li>
+<li> $b_1$ : the slope estimate.</li>
+</ul>
+Therefore the fitted model can be expressed as
+
+\[ \hat{y} = b_0 + b_1x \]
+Recall $\hat{y}$  denotes the predicted value for y, given some value x.
+
+        
+        
+<pre><code>
+summary(model)
+Call:
+lm(formula = y ~ x)
+Residuals:
+Min 1Q Median 3Q Max
+-19.433 -8.580 -1.188 9.064 19.787
+Coefficients:
+Estimate Std. Error t value Pr(>|t|)
+(Intercept) 19.9438 3.4466 5.786 5.66e-07 ***
+x 2.0750 0.1111 18.679 < 2e-16 ***
+---
+Signif. codes: 0 *** 0.001 ** 0.01 * 0.05 . 0.1 1
+Residual standard error: 10.88 on 47 degrees of freedom
+Multiple R-squared: 0.8813, Adjusted R-squared: 0.8788
+F-statistic: 348.9 on 1 and 47 DF, p-value: < 2.2e-16
+</code></pre>
+
+
+
+<h3>Simple Linear Regression<h3>
+
+\[
+y = b_0 + b_1x_1 + e
+\]
+
+$b_0$ is the intercept estimate. $b_1$ is the slope estimate.
+
+
+<p>
+<h3> Simple Linear Regression</h3>
+
+
+You're probably thinking that it would be a mistake to use simple linear regression considering the plot we just produced. Well, there are ways of transforming data so that we can use linear regression methods. We'll fit a Michaelis-Menten function to these data. Using our data, the form of this function is as follows: 
+<p>
+Vm and K are the parameters we are interested in estimating from these data. With a little bit of algebraic gymnastics, we can get the above equation to look like this: 
+<p>
+It may not look like this helped, but it did. If you look closely, you'll see that this has the form of a simple linear regression model. Making these substitutions, conc/vel=ytrans, K/Vm=a, and 1/Vm=b, the equation becomes: 
+
+Here's our game plan. We'll first create the new transformed variable ytrans, then fit the linear regression to estimate the parameter a and b. Then we can calculate Vm and K from there. 
+We can easily add another variable to our data frame: 
+> df$ytrans <- df$conc/df$vel
+Take a look at df and see that there is a new column added. 
+Plot the new variable against conc to check whether a linear regression model is appropriate. 
+> plot(df$conc, df$ytrans)
+
+Now we are ready to fit our regression model. We'll use the function lm(), which stands for linear model. 
+<pre><code>
+> lmfit <- lm(ytrans~conc, data=df)
+</code></pre>
+<p>
+By default, you will get an error if there are any missing values in your data when you run this function. 
+If this happens, you may want to omit those cases that contain missing values and fit the model on the remaining cases. 
+To do so, run the same function with an argument to specify the desired action. 
+<pre><code>
+> lmfit <- lm(ytrans~conc, data=df, na.action=na.omit)
+</code></pre>
+<p>
+This might make more sense if you know that R designates missing values by NA. Now let's look at this function call. The desired model is specified with ytrans~conc. Think of the tilde as an equal sign when specifying a model. ytrans is our response, so it goes on the left side. conc is our explanatory variable, so it goes on the right. An intercept term is assumed so you do not need to include it in the model definition. However, it is possible to force a zero intercept if you wanted. 
+Notice that there was not any output automatically generated when you fit the regression. The results have been saved in an object we called lmfit. This object is actually a list that contains several objects, which you can see with the function names() 
+
+<pre><code>
+> names(lmfit)
+[1] "coefficients"  "residuals"     "effects"       "rank"      
+[5] "fitted.values" "assign"        "qr"            "df.residual"  
+[9] "xlevels"       "call"          "terms"         "model"  
+</code></pre>
+
+Any of these terms can be viewed or used with the same method you used to view a variable in a data frame: object name, followed by a dollar sign, then the element name. For example, lmfit$call. If you want to view most of the standard regression output, use the summary() function: 
+
+<pre><code>	
+> summary(lmfit)
+
+Call:
+lm(formula = ytrans ~ conc, data = df)
+
+Residuals:
+1          2          3          4          5          6          7 
+8.333e-04 -1.727e-03 -1.864e-04  5.013e-04  1.363e-04  9.112e-05  3.515e-04 
+
+Coefficients:
+Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 0.004303   0.000451   9.541 0.000214 ***
+conc        0.259603   0.003102  83.703 4.61e-09 ***
+---
+Signif. codes:  0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1 
+
+Residual standard error: 0.0009071 on 5 degrees of freedom
+Multiple R-Squared: 0.9993,     Adjusted R-squared: 0.9991 
+F-statistic:  7006 on 1 and 5 DF,  p-value: 4.612e-09 
+</code></pre>
+

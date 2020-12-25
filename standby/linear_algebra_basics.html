@@ -1,0 +1,68 @@
+
+</style>
+<title>Matrices</title>
+</head>
+
+<body>
+<h1>Basics Linear Algebra</h1>
+
+Before we begin, let's set up some matrices to work with.
+</p>
+<div class="chunk" id="unnamed-chunk-1"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">x1</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">c</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span><span class="hl num">2</span><span class="hl std">,</span><span class="hl num">4</span><span class="hl std">);x2</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">c</span><span class="hl std">(</span><span class="hl num">3</span><span class="hl std">,</span><span class="hl num">8</span><span class="hl std">,</span><span class="hl num">4</span><span class="hl std">);x3</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">c</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span><span class="hl num">4</span><span class="hl std">,</span><span class="hl num">3</span><span class="hl std">)</span>
+<span class="hl std">A</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">rbind</span><span class="hl std">(x1,x2,x3); C</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">cbind</span><span class="hl std">(x1,x2,x3)</span>
+<span class="hl std">b</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">c</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span><span class="hl num">5</span><span class="hl std">,</span><span class="hl num">4</span><span class="hl std">)</span>
+<span class="hl kwd">rownames</span><span class="hl std">(A)</span> <span class="hl kwb">&lt;-</span> <span class="hl kwa">NULL</span><span class="hl std">;</span>
+</pre></div>
+</div></div>
+
+
+<h3>Inverting a matrix</h3>
+
+To invert a matrix we use the command solve() with no additional argument. Remember - Not all matrices are invertible. It the determinant of a matrix is zero, then no inverse exists.
+<div class="chunk" id="unnamed-chunk-2"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">solve</span><span class="hl std">(C)</span>
+</pre></div>
+<div class="output"><pre class="knitr r">##          [,1]        [,2]       [,3]
+## x1  0.5714286 -0.35714286  0.2857143
+## x2  0.7142857 -0.07142857 -0.1428571
+## x3 -1.7142857  0.57142857  0.1428571
+</pre></div>
+</div></div>
+
+We can use this same command to solve a system of linear equations Ax=b. We would specify the vector b as the additional argument. 
+
+<h4>Computing the determinant</h4>
+To compute the determinant, the command is simply det() 
+
+
+<h3>Solving a System of Linear Equations</h3>
+To solve a system of linear equations in the form Ax=b , where A is a square matrix, and b is a column vector of known values, we use the solve() command to determine the values of the unknown vector x.
+
+	
+<div class="chunk" id="unnamed-chunk-3"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">solve</span><span class="hl std">(A, b)</span>
+</pre></div>
+<div class="output"><pre class="knitr r">## [1] -2.7142857  1.5714286  0.1428571
+</pre></div>
+</div></div>
+
+
+We can compute crossproducts using the ``crossprod()`` command. If only one matrix is used it
+<div class="chunk" id="unnamed-chunk-4"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">crossprod</span><span class="hl std">(A,C)</span>          <span class="hl com"># A'C</span>
+</pre></div>
+<div class="output"><pre class="knitr r">##      x1 x2 x3
+## [1,] 11 31 16
+## [2,] 34 86 46
+## [3,] 24 56 29
+</pre></div>
+<div class="source"><pre class="knitr r"><span class="hl kwd">crossprod</span><span class="hl std">(A)</span>                    
+<span class="hl com"># A'A</span>
+</pre></div>
+<div class="output"><pre class="knitr r">##      [,1] [,2] [,3]
+## [1,]   11   30   19
+## [2,]   30   84   52
+## [3,]   19   52   41
+</pre></div>
+</div></div>
+
+<p>You can also embed plots, for example:</p>
+
+
