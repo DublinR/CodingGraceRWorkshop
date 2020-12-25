@@ -1,0 +1,69 @@
+    {Correlation Analysis}
+Compute the Pearson correlation for the dependent variable with the respective independent variables.  As part of your report, mention the confidence interval for the correlation estimate
+Choose the independent variables with the highest correlation as your candidate variables.
+For these independent variables, perform a series of simple linear regression procedures.
+<code>
+lm(y~x1)
+lm(y~x2)
+</code>
+Comment on the slope and intercept estimates and their respective p-values. Also comment on the coefficient of determination (multiple R squared). Remember to write the regression equations.
+Perform a series of multiple linear regressions, using pairs of candidate independent variables.
+<code>
+lm(y~x1 +x2)
+lm(y~x2 +x3)
+</code>
+Again, comment on the slope and intercept estimates, and their respective p-values.
+In this instance, compare each of the models using the coefficient of determinations. Which model explains the data best?
+<p>
+#### {Analysis of residuals}
+Perform an analysis of regression residuals ( you can pick the best regression model from last <p>
+### ).
+Are the residuals normally distributed?
+	Histogram /  Boxplot / QQ plot / Shapiro Wilk Test
+Also you can plot the residuals to check that there is constant variance.
+<code>
+y=rnorm(10)
+x=rnorm(10)
+fit1=lm(y~x)
+res.fit1 = resid(fit1)
+plot(res.fit1)
+</code>
+
+
+
+
+%---------------------------------------------------------------------------Probability Distributions ----%
+
+chapter{Probability Distributions}
+<p>
+### {Generating a set of random numbers}
+
+%begin{myindentpar}{1cm}
+ <code>
+rnorm(10)
+</code>
+%end{myindentpar}
+
+<p>
+### {The Poisson Distribution}
+<p>
+### {The Binomial Distribution}
+<p>
+### {Using probability distributions for simulations}
+<p>
+### {Probability Distributions}
+<p>
+#### {Generate random numbers }
+
+%----------------------------------------------------------------------------Graphical Methods--%
+
+chapter{Graphical methods}
+
+<p>
+### {Scatterplots}
+%begin{figure}
+%  % Requires usepackage{graphicx}
+%  includegraphics[scale=0.40]{MTCARSmpgwt.png}
+%  caption{Scatterplot}label{mpgwt}
+%end{figure}
+
