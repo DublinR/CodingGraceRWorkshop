@@ -1,0 +1,63 @@
+### {2.5 The texttt{apropos()} Function}
+ 
+*  This function is very useful for determining what functions are available for a particular topic,
+ although the process requires a great deal of trial and error. 
+*  Suppose we are looking for a
+ command to print out the session information. 
+*  We would use a very short string (e.g. textbf{essio})
+ that would plausibly be part of useful function names.
+ 
+ 
+ 
+ %==============================================================================================%
+ 
+ % % SLIDE 1 - COVER SLIDE
+ begin{figure}
+ centering
+ includegraphics[width=1.2linewidth]{images/Rapropos1}       
+ end{figure}
+    
+ %==============================================================================================%
+ 
+ % % SLIDE 1 - COVER SLIDE
+ begin{figure}
+ centering
+ includegraphics[width=1.2linewidth]{images/Rapropos2}       
+ end{figure}
+    
+ %==============================================================================================%
+ 
+### {2.6 History}
+ 
+*  The command texttt{history()} is used to obtain the last 25 commands used by ***R***.
+*  25 is the default number, you can specify another number.
+ 
+ 
+ 
+ 
+ %==============================================================================================%
+ 
+ % % SLIDE 1 - COVER SLIDE
+ begin{figure}
+ centering
+ includegraphics[width=1.2linewidth]{images/Rhistory}        
+ end{figure}
+    
+ %==============================================================================================%
+ 
+### {2.7 The texttt{sessionInfo()} Function}
+ To get a description of the version of R and its attached packages used in the current session,
+ we can use the texttt{sessionInfo()} function
+ 
+ 
+ 
+ 
+ 
+### {2.7 The texttt{sessionInfo()} Function}
+ begin{figure}
+ centering
+ includegraphics[width=0.99linewidth]{images/sessionInfo}
+ %caption{}
+ %label{fig:sessionInfo}
+ end{figure}
+ 
