@@ -40,22 +40,3 @@ This can be carried out in R by hand:
 %------------------------------------------------------%
 
 
-
-#### {Comparison of variances}
-
-
-Even though it is possible in R to perform the two-sample t test without
-the assumption that the variances are the same, you may still be interested
-in testing that assumption, and R provides the var.test function for that
-purpose, implementing an F test on the ratio of the group variances. It is
-called the same way as texttt{t.test}:.
-<code>
-> var.test(expend~stature)
-</code>
-
-      
-      
-
- <code>
-> code here
- </code>
