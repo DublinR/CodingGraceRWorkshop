@@ -21,3 +21,29 @@ In other words – texttt{R} picks out the most suitable type of summary for tha
 <p>
 }
 
+### {3.2 The texttt{summary()} command}
+ 
+*  The command texttt{summary()} is one of the most useful commands in ***R***. 
+*  It is a generic function used
+ to produce result summaries of the results of various functions. 
+*  The function invokes particular
+ methods which depend on the class of the first argument. 
+*  In other words, ***R*** picks out the most
+ suitable type of summary for that data.
+ 
+ 
+ %==============================================================================================%
+ 
+ 
+ 
+ begin{figure}
+ centering
+ includegraphics[width=0.99linewidth]{images/irissummary}
+ 
+ end{figure}
+ texttt{summary()} is particularly useful for manipulating data from more complex data objects.
+ 
+ 
+ %==============================================================================================%
+ 
+ 
