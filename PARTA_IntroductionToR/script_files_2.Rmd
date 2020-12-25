@@ -1,0 +1,108 @@
+\textbf{Script Files}
+
+* Scripts are saved as ``.R} files. 
+* These scripts can be called directly using the ``source()`` command.
+
+
+\begin{framed}
+``source(myScript.R)}
+
+``source(myDatasets.R)}
+
+``source(myFunctions.R)}
+\end{framed}
+
+
+% %
+
+{Introduction to R - Continued}
+
+\item[1.10] Built-In Data Sets      
+\item[1.11] The ``summary()`` command     
+\item[1.12] Working directories      
+\item[1.13] Coming Unstuck    
+\item[1.14] Quitting the ``R} environment   
+\item[1.15] Data Objects  
+\item[1.16] Listing all items in a workspace     
+\item[1.17] Removing items   
+\item[1.18] Checking and Transforming Types
+\item[1.19] Saving and Loading R Data Objects    
+
+
+
+
+%===
+
+{1.10 Built-In Data Sets}
+\textbf{Inbuilt Data Sets}\\
+Several data sets , intended as learning tools, are automatically installed when R is installed.
+Many more are installed within packages to complement learning to use those packages. \\
+
+
+\textbf{iris}\\ One
+of these is the famous Iris data set, which is used in many data mining exercises.
+
+
+* airquality  ( very useful )
+* mtcars
+* Nile
+
+More are available once packages are loaded.
+
+
+%===
+
+% % SLIDE 1 - COVER SLIDE
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/Rdatasets}        
+\end{figure}
+   
+%===
+
+% % SLIDE 1 - COVER SLIDE
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/RdatasetsMore}   
+\end{figure}
+   
+%===
+
+
+
+* To see what data sets are available, simply type ``data()``.
+*  To load a data set, simply type in the
+name of the data set. Some data sets are very large.
+*  To just see the first few (or last) rows, we
+use the ``head()`` function or alternatively the ``tail()`` function. 
+* The default number of rows of
+these commands is 6. Other numbers can be specified.
+
+
+
+%===
+
+% % SLIDE 1 - COVER SLIDE
+\begin{figure}
+\centering 
+\includegraphics[width=1.2\linewidth]{images/irishead}      
+\end{figure}
+   
+%===
+
+% % SLIDE 1 - COVER SLIDE
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/iristail}     
+\end{figure}
+   
+%===
+
+
+* In many situations, it is useful to call a particular data set using the ``attach()`` command. This
+will save having to specify the data sets over repeated operations. 
+* The file can then be detached
+using the ``detach()`` command.
+
+
+
