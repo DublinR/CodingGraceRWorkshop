@@ -1,0 +1,150 @@
+%==============================================================================================%
+ 
+### {1.10 Built-In Data Sets}
+ textbf{Inbuilt Data Sets}
+ Several data sets , intended as learning tools, are automatically installed when R is installed.
+ Many more are installed within packages to complement learning to use those packages. 
+ bigskip
+ 
+ textbf{iris} One
+ of these is the famous Iris data set, which is used in many data mining exercises.
+ 
+ 
+*  airquality  ( very useful )
+*  mtcars
+*  Nile
+ 
+ More are available once packages are loaded.
+ 
+ 
+ %==============================================================================================%
+ 
+ % % SLIDE 1 - COVER SLIDE
+ begin{figure}
+ centering
+ includegraphics[width=1.2linewidth]{images/Rdatasets}        
+ end{figure}
+    
+ %==============================================================================================%
+ 
+ % % SLIDE 1 - COVER SLIDE
+ begin{figure}
+ centering
+ includegraphics[width=1.2linewidth]{images/RdatasetsMore}   
+ end{figure}
+    
+ %==============================================================================================%
+ 
+ 
+ 
+*  To see what data sets are available, simply type texttt{data()}.
+ *  To load a data set, simply type in the
+ name of the data set. Some data sets are very large.
+ *  To just see the first few (or last) rows, we
+ use the texttt{head()} function or alternatively the texttt{tail()} function. 
+*  The default number of rows of
+ these commands is 6. Other numbers can be specified.
+ 
+ 
+ 
+ %==============================================================================================%
+ 
+ 
+*  In many situations, it is useful to call a particular data set using the texttt{attach()} command. This
+ will save having to specify the data sets over repeated operations. 
+*  The file can then be detached
+ using the texttt{detach()} command.
+ 
+ 
+ 
+ 
+ ## {1.19 Saving and Loading R Data Objects}
+ In situations where a good deal of processing must be used on a raw dataset in order to prepare
+ it for analysis, it may be prudent to save the R objects you create in their internal binary form.
+ One attractive feature of this scheme is that the objects created can be read by R programs
+ running on different computer architectures than the one on which they were created, making it
+ very easy to move your data between different computers. Each time an R session is completed,
+ you are prompted to save the workspace image, which is a binary file called .RData in the
+ working directory.
+ 
+ %==============================================================================================%
+ 
+ Whenever R encounters such a file in the working directory at the beginning of a session,
+ it automatically loads it making all your saved objects available again. So one method for
+ 
+ saving your work is to always save your workspace image at the end of an R session. If you
+ would like to save your workspace image at some other time during your R session, you can use
+ the save.image() function, which, when called with no arguments, will also save the current
+ workspace to a file called .RData in the working directory.
+ 
+ 
+ %============================================================================= %
+ 
+### {Introduction to R (Continued) }
+ 
+*  [2.1] Three particularly useful commands    
+*  [2.2] Changing GUI options     
+*  [2.3] Colours      
+*  [2.4] Use of the Semi-Colon Operator     
+*  [2.5] The texttt{apropos()} Function     
+*  [2.6] History       
+*  [2.7] The texttt{sessionInfo()} Function     
+*  [2.8] Time and date functions     
+*  [2.9] Logical States      
+*  [2.10] Missing Data      
+*  [2.11] Files in the Working Directory     
+ 
+ 
+ 
+ %==============================================================================================%
+ 
+ %    2 Introduction to R (Continued)
+### {2.1 Some particularly useful commands}
+ 
+ 
+ The Holy Trinity
+ 
+*  texttt{help()}
+*  texttt{summary()}
+*  texttt{help.start()}
+*  texttt{apropos()}
+ 
+ 
+ 
+ %==============================================================================================%
+ 
+### {2.2 Changing GUI options}
+ 
+*  We can change the GUI options using the GUI preferences option on the Edit menu.
+ *  (Important
+ when teaching R) 
+*  A demonstration will be done in class.
+ 
+ 
+ 
+ %==============================================================================================%
+ 
+### {2.3 Colours}
+ 
+*  R supported a massive number of colours.
+*  Type in colours() (or colors()) to see what colours
+ are supported.
+ 
+ 
+ 
+ 
+  %==============================================================================================%
+ 
+### {2.4 Use of the Semi-Colon Operator}
+ 
+*  The semi-colon operator at the end of each line of code is not necessary in general, but using it
+ overcomes errors due to copying and pasting from document soft copies. 
+*  It is also useful for compacting multiple short statements onto a single line.
+*  In other programming
+ languages, such as Octave, using the semicolon in this way has a distinct purpose.
+ 
+ 
+ %==============================================================================================%
+ 
+
+ 
