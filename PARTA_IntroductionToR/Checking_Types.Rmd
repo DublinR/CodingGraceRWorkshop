@@ -6,11 +6,8 @@
 
 (Section 3.3 approx)
  
- \begin{itemize}
- \item The \texttt{is} family of commands can check if an object is of a certain type.
-
-\item The \texttt{as} family of commands can (often) convert an object to a specified type (in some cases not feasible). 
-\end{itemize}
+* The \texttt{is} family of commands can check if an object is of a certain type.
+* The \texttt{as} family of commands can (often) convert an object to a specified type (in some cases not feasible). 
 
  
 {Checking and Transforming Types}
