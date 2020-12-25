@@ -1,0 +1,31 @@
+ %==============================================================================================%
+ 
+### {2.8 Time and date functions}
+ 
+*  The commands texttt{Sys.time()} and texttt{Sys.Date()} returns the system’s idea of the current date
+ with and without time. 
+*  We can perform some simple algebraic calculations to compute time
+ differences (i.e. to find out how long some code took to compile).
+ 
+ 
+ 
+ %==============================================================================================%
+ 
+### {System Time}
+ begin{figure}
+ centering
+ includegraphics[width=1.2linewidth]{images/Systime}
+ %caption{}
+ %label{fig:Systime}
+ end{figure}
+ 
+ 
+ %==============================================================================================%
+  
+### {2.9 Logical States}
+ 
+*  Logical states TRUE and FALSE are simply specified as such, all in capital letters. 
+*  The
+ shortcuts T and F are also recognized
+ 
+ 
