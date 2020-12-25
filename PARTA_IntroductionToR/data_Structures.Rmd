@@ -1,0 +1,227 @@
+
+
+Section 3 : Data Structures
+Vectors, Arrays and Matrices
+
+Lists
+
+Frames
+
+Indexing
+
+Subsetting
+
+Section 4 : Regression models
+
+Simple Linear Regression
+
+
+Summary of SLR
+
+
+SLR analysis involves
+
+Creating a scatterplot to determine the nature of the relationship between x and y
+
+If the relationship is linear, measuring the strength of the relationship using the correlation coe cient
+
+Fitting the best model by estimating parameter values from data
+
+There are always lots of di erent possible models to describe a given data set
+
+Using diagnostic plots of the residuals to check the adequacy of the fitted model. Must check for non-constant variance and non-normal errors.
+
+If the relationship is non-linear, t e.g. polynomial, exponential, non-linear model and use predict to generate the fitted curve for plotting
+
+
+
+lm (y ~ x)
+Multiple Linear Regression
+variable selection procedures
+
+Backward Selection
+
+Forward Selection
+
+Stepwise Selection
+Non Linear Regression
+Quadratic Regression
+
+
+
+
+
+Histogram: sample code
+x <- rnorm(1000) 
+hx <- hist(x, breaks=100, plot=FALSE) 
+plot(hx, col=ifelse(abs(hx$breaks) < 1.669, 4, 2)) 
+
+# What is cool is that "col" is supplied a vector.
+
+Data Management
+
+Creating New Variables
+Operators
+Built-in Functions
+Control Structures
+User-defined Functions
+Sorting Data
+Merging Data
+Aggregating Data
+Aggregating Data
+Reshaping Data
+Subsetting Data
+Data Type Conversion
+Vector Functions
+
+range(x) 	    # range
+sum(x) 		  # sum
+min(x)	        # minimum
+max(x)	       # maximum
+diff(x, lag=2)   # lagged differences, with lag indicating which lag to use
+
+
+
+ 
+
+
+ 
+Section 8: Hypothesis Tests
+
+The Correlation Test
+
+cor.test(X,Y)
+
+
+The Chi Square Test
+
+
+
+
+
+The Shapiro Wilk Test
+
+The Shapiro Wilk Test is another test for distribution test
+
+
+
+
+
+The Chi Square Test for Independence
+
+
+
+
+
+The PropTest
+
+
+
+
+
+The F Test
+
+
+
+
+
+The Kolmogorov Smirnov Test
+
+X = rnorm(5,1,5)
+Y = rexp(5)
+ks.test(X,Y)
+
+
+The Anderson Darling Test
+
+
+
+
+
+
+The t-test
+
+
+
+
+
+
+
+The ANOVA F-Test
+
+ 
+Section 9: Graphics
+
+
+Graphics Parameters
+
+
+Section 10: Simulation
+
+Simulation Study : Random Walks
+
+
+
+P = 0.5 					#probability of a move to the right
+Q = 1-P; S=Q/P;
+
+Posn =0;N= 200;Trkr=numeric(N);Orgn=0; 
+
+for (i in 1:N)
+	{
+	Trkr[i]=Posn
+	if (P < runif(1)) Posn=Posn+1 else Posn=Posn-1
+	if(Posn==0) Orgn=c(Orgn,i)
+	}
+
+
+plot(Trkr,type="o")
+abline(h=0, col="red")
+diff(Orgn)
+Rogn = sort(diff(Orgn))
+length(Rogn)
+summary(as.factor(Rogn))
+summary(as.factor(Rogn))[[1:10]]
+
+Simulation Study: Distribution of pairwise maxima and minima
+
+
+
+n=20
+X<-rnorm(n) ; Y = rnorm(n); 
+Mn =numeric(n) ;Mx = numeric(n);
+for( i in 1:n)
+{
+W[i]=min(X[i],Y[i])
+Z[i]=max(X[i],Y[i])
+}
+
+cbind(X,Y,W,Z)
+
+
+
+
+
+Simulation Study: estimating a quantile from a probability distributions
+
+
+
+N = 2000 #number of Loops
+n = 200 #size of each sample
+
+Qvec = numeric(N)
+Q = 0.975
+
+for (i in 1:N){
+X = rnorm(n)
+Qtl = quantile (X,Q)
+Qvec[i] = Qtl
+}
+
+Qvec
+
+mean(Qvec)
+# Alternative method
+
+# Qtls[i] =quantile(rnorm(n),Q)
+
