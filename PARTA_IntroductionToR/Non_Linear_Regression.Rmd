@@ -1,0 +1,54 @@
+
+%======================================================================================================== %
+6. Non-linear Regression
+
+
+We can also directly fit the Michaelis-Menten function to our data using non-linear regression. Remember the term "sum-of-squares" from your old regression class? When you fit a regression model, you get a "fitted value" for every data point used to fit the model. If you take the difference between the fitted value and the observed value, you get what we call a residual. Then if you square all the residuals and add them up, you get the residual sum-of-squares. The smaller that is, the better the model fits your data. You may have heard this called the least-squares method. Well, non-linear regression works the same way. With non-linear regression, we specify the form of the model we want to fit and the parameters that need to be estimated. R then searches for parameter values that will minimize the residual sum-of-squares. 
+To run the analysis, we use the function nls(), which stands for non-linear least squares. Use the summary() function to view the results. 
+\begin{framed}
+\begin{verbatim}
+> nlsfit <- nls(vel~Vm*conc/(K+conc),data=df, start=list(K=0.0166, Vm=3.852))
+> summary(nlsfit)
+
+Formula: vel ~ Vm * conc/(K + conc)
+
+Parameters:
+    Estimate Std. Error t value Pr(>|t|)    
+K  0.0178867  0.0009928   18.02 9.68e-06 ***
+Vm 3.9109354  0.0557700   70.13 1.12e-08 ***
+---
+Signif. codes:  0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1 
+
+Residual standard error: 0.06719 on 5 degrees of freedom
+
+Correlation of Parameter Estimates:
+        K
+Vm 0.7535 
+\end{verbatim}
+\end{framed}
+
+You can view the estimates for K and Vm from the summary output, or you can use the coef() function again. How do the estimates compare with those from the previous analysis? We want to plot our non-linear fit to see how well it matches the data. First, plot the original variables again. Remember to create a new graphsheet if you want to keep your previous graph. 
+> plot(df$conc, df$vel, xlim=c(0,0.4), ylim=c(0,4))
+
+
+%======================================================================================================== %
+There's something new here. We used the xlim and ylim arguments to specify the limits for the x and y axes, respectively. By default, R will set the limits just enough to plot all the data. Sometimes you may want to plot beyond the data if you're going to add other things later or just to make the plot look a little better. 
+To add the model fit to the plot is going to take a little more work than with simple linear regression. The x-axis on our plot goes from 0 to 0.4, so we're going to need to generate a vector that covers this range and then calculate a y-value for each x-value using the parameters we just estimated. The number of x-values you generate will determine how smooth the line is going to look. You will almost always get a smooth line with 100 x-values. 
+> x <- seq(0, 0.4, length=100)
+This does just what you think it does. It generates a sequence of 100 numbers from 0 to 0.4. Now we calculate the associated y-values: 
+> y2 <- (coef(nlsfit)["Vm"]*x)/(coef(nlsfit)["K"]+x)
+
+
+%======================================================================================================== %
+This shows you another way that you can reference elements in a vector. If the elements are named, you can use that in the brackets instead of its position number. There's another way to get our y-values for the plot that's perhaps the simplest. We'll use the function predict() that will predict fitted response values for a given set of x-values. The function wants the x-values in a dataframe and with the same variable name(s) as the original data. Here's how we do it: 
+> y2 <- predict(nlsfit,data.frame(conc=x))
+The function predict() can be used with results from linear models, non-linear models, and generalized linear models. Check the online help to see all it can do. Now to add the line to our plot: 
+> lines(x, y2)
+I'm sure you noticed I called the y-values y2. This is the fit from our second model. Let's add a line from our first model to see how they compare. We can use the same vector of x-values to calculate a new set of y-values and add the line to our plot. 
+> y1 <- (Vm*x)/(K+x)
+> lines(x, y1, lty="dotted", col="red")
+\end{verbatim}
+\end{framed}
+For this to work, you must have created the objects Vm and K as we did in the previous section. Also note that we used the line type argument (lty) for a dotted line and the color argument (col) to get a different color. Here is what the resulting plot should look like: 
+
+
