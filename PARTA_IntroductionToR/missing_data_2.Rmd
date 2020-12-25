@@ -1,0 +1,47 @@
+ %==============================================================================================%
+ 
+### {2.10 Missing Data}
+ 
+*  In some cases the entire contents of a vector may not be known. For example, missing data
+ from a particular data set.*  A place can be reserved for this by assigning it the special value
+ NA.
+ NA is a logical constant of length 1 which contains a missing value indicator.
+ *  NA stands
+ for Not Available.
+*  Missing values can adversely affect calculations. Add texttt{na.rm=T} to commands
+ 
+ <pre>
+ texttt{mean(X,na.rm=T)}
+ </pre>
+<p>
+ 
+ 
+ %==============================================================================================%
+ 
+ 
+### {2.11 Files in the Working Directory}
+ It is possibel to call an R script from the working directory, using the texttt{source()} function.
+ <pre>
+ 
+ texttt{source("myfunctions.r")
+ source("mydata.r")}
+ 
+ </pre>
+<p> 
+ We can also send code put directly to a file in the working directory, using the texttt{sink()}
+ command. The first time the command is used, the name of the created file is specified.
+ Subsequent commands print output directly to this file, until the command is used again to
+ cease the operation.
+ 
+ %==============================================================================================%
+ 
+ begin{figure}
+ centering
+ includegraphics[width=1.2linewidth]{images/sinkiris}
+ %caption{}
+ %label{fig:sinkiris}
+ end{figure}
+ 
+ 
+
+ %==============================================================================================%
