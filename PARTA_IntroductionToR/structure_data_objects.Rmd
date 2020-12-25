@@ -1,0 +1,47 @@
+
+### {3.3 Structure of a Data Object}
+ large
+ The structure, class and storage mode of an object can be determined using the following
+ commands. Try out a few.
+ 
+ *  texttt{str()}
+ *  texttt{class()}
+ *  texttt{mode()}
+ 
+ 
+ 
+ 
+ 
+ %==============================================================================================%
+ 
+### {Checking and Transforming Types}
+ 
+ 
+*  The texttt{is} family of commands can check if an object is of a certain type.
+
+*  The texttt{as} family of commands can (often) convert an object to a specified type (in some cases not feasible). 
+
+ 
+ 
+ 
+ %==============================================================================================%
+ 
+### {Checking and Transforming Types}
+ % % SLIDE 1 - COVER SLIDE
+ begin{figure}
+ centering
+ includegraphics[width=1.2linewidth]{images/numerictypes}    
+ end{figure}
+  
+ %==============================================================================================%
+ 
+ 
+### {Checking and Transforming Types}
+ % % SLIDE 1 - COVER SLIDE
+ begin{figure}
+ centering
+ includegraphics[width=1.2linewidth]{images/typeconversion} 
+ end{figure}
+    
+ %==============================================================================================%
+ 
