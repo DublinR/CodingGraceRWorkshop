@@ -1,0 +1,250 @@
+%===
+
+{2.10 Missing Data}
+
+* In some cases the entire contents of a vector may not be known. For example, missing data
+from a particular data set. * A place can be reserved for this by assigning it the special value
+NA.
+NA is a logical constant of length 1 which contains a missing value indicator.
+*  NA stands
+for Not Available.
+* Missing values can adversely affect calculations. Add ``na.rm=T} to commands
+
+\begin{framed}
+``mean(X,na.rm=T)}
+\end{framed}
+
+
+%===
+
+
+{2.11 Files in the Working Directory}
+It is possibel to call an R script from the working directory, using the ``source()`` function.
+\begin{framed}
+
+``source("myfunctions.r")\\
+source("mydata.r")}
+
+\end{framed} 
+We can also send code put directly to a file in the working directory, using the ``sink()``
+command. The first time the command is used, the name of the created file is specified.
+Subsequent commands print output directly to this file, until the command is used again to
+cease the operation.
+
+%===
+
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/sinkiris}
+%\caption{}
+%\label{fig:sinkiris}
+\end{figure}
+
+
+
+%===
+
+
+
+\[\mbox{ Section 3 : Inspecting a Data Set } \]
+
+% %
+
+{Section 3 - Inspecting a Data Set }
+
+\item[3.1] Dimensions of a data set 
+\item[3.2] The ``summary()`` command   
+\item[3.3] Structure of a Data Object 
+
+
+% % %
+%
+%{Section 4 : Packages}
+%
+%  \begin{semiverbatim}
+%  4.1 Packages 
+%  4.2 Using and Installing packages 
+%  4.2.1 Version of R 
+%  \end{semiverbatim}
+%
+% 
+%
+%\end{document}
+% %
+%
+%{Part 5 - Data Creation, Data Entry, Data Import and Export}
+%\begin{framed}
+%\begin{semiverbatim}
+%5.1 The c() command 
+%5.1.1 Vector of Numeric Values
+%5.1.2 Vector of Character Values
+%5.1.3 Vector of Logical Values 
+%5.2 The scan() command 
+%5.2.1 Characters with the scan() command
+%5.3 Using the data editor
+%5.4 Spreadsheet Interface 
+%\end{semiverbatim}
+%\end{framed}
+%
+%
+
+%===
+
+{Section 3 Inspecting a Data Set}
+ 
+\textbf{Summary of useful commands}
+
+* ``dim()`` and ``length()``
+* ``nrow()`` and ``ncol()``
+* ``names()``
+* ``summary()``
+* ``tail()``
+* ``head()``
+* ``describe()`` (from the \textbf{psych} package)
+
+
+%===
+
+
+{3.1 Dimensions of a data set}
+
+* We have remarked that some data sets are very large. 
+* This is perhaps a good place to consider
+summary information about data objects. 
+* For a simple vector, a useful command to determine
+the length (remark: sample size) is the function ``length()``.
+
+\begin{framed}
+``Y=4:18}
+``length(Y)}
+
+\end{framed}
+For more complex data sets ( and data frames which we will see later) , we have several
+tools for assessing the size of data.
+
+%===
+
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/dimsiris}
+%\caption{}
+%\label{fig:dimsiris}
+\end{figure}
+
+
+
+
+%===
+
+{Column (Variable) names and Row names}
+
+* We can also determine the row names and column names using the functions ``rownames()``
+and ``colnames()``. 
+* If there are no specific row or column names, the command will just return
+the indices.
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\linewidth]{images/colnamesiris}
+%\caption{}
+%\label{fig:colnamesiris}
+\end{figure}
+
+
+%===
+
+{3.2 The ``summary()`` command}
+
+* The command ``summary()`` is one of the most useful commands in ``R}. 
+* It is a generic function used
+to produce result summaries of the results of various functions. 
+* The function invokes particular
+methods which depend on the class of the first argument. 
+* In other words, ``R} picks out the most
+suitable type of summary for that data.
+
+
+%===
+
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\linewidth]{images/irissummary}
+
+\end{figure}
+``summary()`` is particularly useful for manipulating data from more complex data objects.
+
+
+%===
+
+
+{3.3 Structure of a Data Object}
+
+The structure, class and storage mode of an object can be determined using the following
+commands. Try out a few.
+
+*  ``str()``
+*  ``class()``
+*  ``mode()``
+
+
+
+
+%===
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{images/classnile}
+%\caption{}
+%\label{fig:classnile}
+\end{figure}
+
+
+
+%===
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{images/modeclass}
+
+\end{figure}
+
+
+
+
+%===
+
+{Checking and Transforming Types}
+
+
+* The ``is} family of commands can check if an object is of a certain type.
+
+* The ``as} family of commands can (often) convert an object to a specified type (in some cases not feasible).
+
+
+
+
+%===
+
+{Checking and Transforming Types}
+% % SLIDE 1 - COVER SLIDE
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/numerictypes}    
+\end{figure}
+ 
+%===
+
+
+{Checking and Transforming Types}
+% % SLIDE 1 - COVER SLIDE
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/typeconversion} 
+\end{figure}
+   
+%===
+
+
+
