@@ -1,0 +1,311 @@
+
+
+%===
+
+{1.11 The summary() command}
+
+
+* The R command ``summary()`` is a generic function used to produce result “summaries” of the
+results of various objects, from simple vectors to the output of complex model fitting functions.
+* The function invokes particular methods which depend on the class of the first argument.
+
+
+%===
+
+% % SLIDE 1 - COVER SLIDE
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/rabbitsummary}   
+\end{figure}
+ 
+
+%===
+
+% % SLIDE 1 - COVER SLIDE
+\begin{figure}  
+\includegraphics[width=1.2\linewidth]{images/irisinspect}     
+\end{figure}
+   
+%===
+
+% % SLIDE 1 - COVER SLIDE
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/irissummary}
+%\caption{}
+%\label{fig:irissummary}
+\end{figure}
+   
+
+
+
+
+%===
+
+{1.12 Working directories}
+
+
+* You can change your working directly by using the appropriate options on the File menu. 
+* To
+determine the current working directory, you can use the ``getwd()`` command. 
+* To change the
+working directory , we would use the ``setwd()`` command.
+*  This is quite important as objects
+will be imported and exported to and from the specified directory.
+
+
+%===
+
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/workingdir}
+
+\end{figure}
+
+
+
+
+%===
+
+{1.13 Coming Unstuck}
+\Large
+
+*  If you are having trouble with a piece of code that is currently compiling , all you have to do is press ESC, just like many other computing environments.
+  
+
+%===
+
+{1.14 Quitting the R environment}
+As the front page text indicates, all you have to do to quite the workspace is to type in ``q()``.
+You will then be prompted to save your work.
+
+%===
+
+{1.15 Data Objects}
+As mentioned previously, R saves data as \textbf{objects}. Examples of data objects are
+
+* Vectors
+* Lists
+* Dataframes
+* Matrices
+
+The simple objects we have created previously are simply single element vectors.
+
+%===
+
+{1.16 Listing all items in a workspace}
+To list all items in an R environment, we use the ``ls()`` function. This provides a list of all data
+objects accessible. Another useful command is ``objects()``.
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/ObjectsList}
+%\caption{}
+%\label{fig:ObjectsList}
+\end{figure}
+
+
+%===
+
+{1.17 Removing items}
+
+* Sometimes it is desirable to save a subset of your workspace instead of the entire workspace.
+* One option is to use the ``rm()`` function to remove unwanted objects right before exiting your R
+session; another possibility is to use the ``save()`` function.
+
+
+
+
+ 
+%===
+
+{1.19 Saving and Loading R Data Objects}
+In situations where a good deal of processing must be used on a raw dataset in order to prepare
+it for analysis, it may be prudent to save the R objects you create in their internal binary form.
+One attractive feature of this scheme is that the objects created can be read by R programs
+running on different computer architectures than the one on which they were created, making it
+very easy to move your data between different computers. Each time an R session is completed,
+you are prompted to save the workspace image, which is a binary file called .RData in the
+working directory.
+
+%===
+
+Whenever R encounters such a file in the working directory at the beginning of a session,
+it automatically loads it making all your saved objects available again. So one method for
+
+saving your work is to always save your workspace image at the end of an R session. If you
+would like to save your workspace image at some other time during your R session, you can use
+the save.image() function, which, when called with no arguments, will also save the current
+workspace to a file called .RData in the working directory.
+
+
+% %
+
+{Introduction to R (Continued) }
+
+\item[2.1] Three particularly useful commands    
+\item[2.2] Changing GUI options     
+\item[2.3] Colours      
+\item[2.4] Use of the Semi-Colon Operator     
+\item[2.5] The ``apropos()`` Function     
+\item[2.6] History       
+\item[2.7] The ``sessionInfo()`` Function     
+\item[2.8] Time and date functions     
+\item[2.9] Logical States      
+\item[2.10] Missing Data      
+\item[2.11] Files in the Working Directory     
+
+
+
+%===
+
+%    2 Introduction to R (Continued)
+{2.1 Some particularly useful commands}
+
+
+The Holy Trinity
+
+* ``help()``
+* ``summary()``
+* ``help.start()``
+* ``apropos()``
+
+
+
+%===
+
+{2.2 Changing GUI options}
+
+* We can change the GUI options using the GUI preferences option on the Edit menu.
+*  (Important
+when teaching R) 
+* A demonstration will be done in class.
+
+
+
+%===
+
+{2.3 Colours}
+
+* R supported a massive number of colours.
+* Type in colours() (or colors()) to see what colours
+are supported.
+
+
+
+
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/Rcolours}
+%\caption{}
+%\label{fig:Rcolours}
+\end{figure}
+
+
+
+%===
+
+{2.4 Use of the Semi-Colon Operator}
+
+* The semi-colon operator at the end of each line of code is not necessary in general, but using it
+overcomes errors due to copying and pasting from document soft copies. 
+* It is also useful for compacting multiple short statements onto a single line.
+* In other programming
+languages, such as Octave, using the semicolon in this way has a distinct purpose.
+
+
+%===
+
+{2.5 The ``apropos()`` Function}
+
+* This function is very useful for determining what functions are available for a particular topic,
+although the process requires a great deal of trial and error. 
+* Suppose we are looking for a
+command to print out the session information. 
+* We would use a very short string (e.g. \textbf{essio})
+that would plausibly be part of useful function names.
+
+
+
+%===
+
+% % SLIDE 1 - COVER SLIDE
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/Rapropos1}       
+\end{figure}
+   
+%===
+
+% % SLIDE 1 - COVER SLIDE
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/Rapropos2}       
+\end{figure}
+   
+%===
+
+{2.6 History}
+
+* The command ``history()`` is used to obtain the last 25 commands used by ``R}.
+* 25 is the default number, you can specify another number.
+
+
+
+
+%===
+
+% % SLIDE 1 - COVER SLIDE
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/Rhistory}        
+\end{figure}
+   
+%===
+
+{2.7 The ``sessionInfo()`` Function}
+To get a description of the version of R and its attached packages used in the current session,
+we can use the ``sessionInfo()`` function
+
+
+
+
+
+{2.7 The ``sessionInfo()`` Function}
+\begin{figure}
+\centering
+\includegraphics[width=0.99\linewidth]{images/sessionInfo}
+%\caption{}
+%\label{fig:sessionInfo}
+\end{figure}
+
+%===
+
+{2.8 Time and date functions}
+
+* The commands ``Sys.time()`` and ``Sys.Date()`` returns the system’s idea of the current date
+with and without time. 
+* We can perform some simple algebraic calculations to compute time
+differences (i.e. to find out how long some code took to compile).
+
+
+
+%===
+
+{System Time}
+\begin{figure}
+\centering
+\includegraphics[width=1.2\linewidth]{images/Systime}
+%\caption{}
+%\label{fig:Systime}
+\end{figure}
+
+
+%===
+ 
+{2.9 Logical States}
+
+* Logical states TRUE and FALSE are simply specified as such, all in capital letters. 
+* The
+shortcuts T and F are also recognized
+
+
