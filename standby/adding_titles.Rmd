@@ -1,0 +1,99 @@
+
+<p>
+### {Adding titles, lines, points to plots}
+
+
+ <code>
+library(MASS)
+# Colour points and choose plotting symbols according to a levels of a factor
+plot(Cars93$Weight, Cars93$EngineSize, col=as.numeric(Cars93$Type),
+pch=as.numeric(Cars93$Type))
+
+# Adds x and y axes labels and a title.
+plot(Cars93$Weight, Cars93$EngineSize, ylab="Engine Size",
+xlab="Weight", main="My plot")
+# Add lines to the plot.
+lines(x=c(min(Cars93$Weight), max(Cars93$Weight)), y=c(min(Cars93$EngineSize),
+max(Cars93$EngineSize)), lwd=4, lty=3, col="green")
+abline(h=3, lty=2)
+abline(v=1999, lty=4)
+# Add points to the plot.
+</code>
+
+
+chapter{Programming}
+
+
+
+
+
+
+
+%----------------------------------------------------%
+
+#### {Two Sample t test}
+
+The two-sample t test is used to test the hypothesis that two samples may
+be assumed to come from distributions with the same mean.
+
+The theory for the two-sample t test is not very different in principle from
+that of the one-sample test. Data are now from two groups, $x_{11}, . . . , x_{1n1}$
+and $x_{21}, . . . , x_{2n2}$ , which we assume are sampled from the normal distributions
+$N(µ_{1}, sigma^{1}_{2} )$ and
+$N(µ_{2}, sigma^{2}_{2} )$, and it is desired to test the null hypothesis
+$mu_{1} = mu_{2}$. You then calculate
+
+[
+t = frac{bar{X}_{1}-bar{X}_{2}}{S.E.(bar{X}_{1}-bar{X}_{2})}
+]
+
+
+
+
+%---------------------------------------------------%
+
+#### {slide234}
+The TS are <equation here>  
+The p-values for both of these tests are 0 and so there is enough evidence to reject $H_0$ and conclude that both 0 and 1 are not 0, i.e. there is a significant linear relationship between x and y. 
+Also given are the $R^2$ and $R^2$ adjusted values. Here $R^2 = SSR/SST = 0.8813$ and so $88.13%$ of the variation in y is being explained by x. 
+The final line gives the result of using the ANOVA table to assess the model t.
+
+%----------------------------------------------------%
+
+
+#### {slide235}
+
+In SLR, the ANOVA table tests <EQN>The TS is the F value and the critical value and p-values are found
+in the F tables with (p - 1) and (n - p) degrees of freedom.
+
+This output gives the p-value = 0, therefore there is enough evidence to reject H0 and conclude that there is a signicant linear relationship between y and x. The full ANOVA table can be accessed using :
+
+<TABLE HERE>
+
+
+
+
+#### {slide236}
+Once the model has been tted, must then check the residuals.
+The residuals should be independent and normally distributed with
+mean of 0 and constant variance.
+A Q-Q plot checks the assumption of normality (can also use a
+histogram as in MINITAB) while a, plot of the residuals versus fitted values gives an indication as to whether the assumption of constant variance holds.
+
+<HISTOGRAM>
+
+
+
+
+<p>
+### {Introduction to texttt{R}}
+texttt{R} consists of a base package and many additional packages
+texttt{R} was originally designed as a command language.  
+Commands were typed into a text-based input area on the computer screen and the program responded with a response to each command.
+The texttt{R} console opens with information and then a prompt mark  ``>"  it is ready to accept commands
+texttt{R}  is an open source software package, meaning that the code written to implement the various functions can be freely examined and modified.
+texttt{R} can be installed free of charge from the texttt{R}-project website.
+
+
+
+
