@@ -1,0 +1,89 @@
+
+### {Section 3 - Inspecting a Data Set }
+ 
+*  [3.1] Dimensions of a data set 
+*  [3.2] The texttt{summary()} command   
+*  [3.3] Structure of a Data Object 
+ 
+ 
+ % %============================================================================= %
+ %
+ %frametitle{Section 4 : Packages}
+ %
+ %  begin{semiverbatim}
+ %  4.1 Packages 
+ %  4.2 Using and Installing packages 
+ %  4.2.1 Version of R 
+ %  end{semiverbatim}
+ %
+ % 
+ %
+ %end{document}
+ 
+ 
+ %==============================================================================================%
+ 
+### {Section 3 Inspecting a Data Set}
+ large 
+ textbf{Summary of useful commands}
+ 
+*  texttt{dim()} and texttt{length()}
+*  texttt{nrow()} and texttt{ncol()}
+*  texttt{names()}
+*  texttt{summary()}
+*  texttt{tail()}
+*  texttt{head()}
+*  texttt{describe()} (from the textbf{psych} package)
+ 
+ 
+ %==============================================================================================%
+ 
+ 
+### {3.1 Dimensions of a data set}
+ 
+*  We have remarked that some data sets are very large. 
+*  This is perhaps a good place to consider
+ summary information about data objects. 
+*  For a simple vector, a useful command to determine
+ the length (remark: sample size) is the function texttt{length()}.
+ 
+ <pre>
+ texttt{Y=4:18}
+ texttt{length(Y)}
+ 
+ </pre>
+<p>
+ For more complex data sets ( and data frames which we will see later) , we have several
+ tools for assessing the size of data.
+ 
+ %==============================================================================================%
+ 
+ begin{figure}
+ centering
+ includegraphics[width=1.2linewidth]{images/dimsiris}
+ %caption{}
+ %label{fig:dimsiris}
+ end{figure}
+ 
+ 
+ 
+ 
+ %==============================================================================================%
+ 
+### {Column (Variable) names and Row names}
+ 
+*  We can also determine the row names and column names using the functions texttt{rownames()}
+ and texttt{colnames()}. 
+*  If there are no specific row or column names, the command will just return
+ the indices.
+ 
+ begin{figure}
+ centering
+ includegraphics[width=1.0linewidth]{images/colnamesiris}
+ %caption{}
+ %label{fig:colnamesiris}
+ end{figure}
+ 
+ 
+ %==============================================================================================%
+ 
