@@ -1,20 +1,19 @@
 
 <p>
-### {Basic R editing – Script Editor and texttt{edit()}}
-R has an inbuilt script editor. We will use it for this class, but there are plenty of top quality “Integrated Development Environments “ out there. (Read up about RStudio for  example.)
+### Basic R editing – Script Editor and ``edit()``
+R has an inbuilt script editor. We will use it for this class, but there are plenty of top quality “Integrated Development Environments “ out there. 
+  
+(Read up about RStudio for  example.)
 
 To start a new script, or open an existing script simply go to “File” on the menu bar and click the appropriate options.
 A new dialogue box will appear. You can write and edit code using this editor.
 To pass the code for compiling – press the “run line or selection” option (The third icon on the menu).
-Another way to edit code is to use the texttt{edit()} function – which operates directly from the command line.  To edit the code defining an object X, simply type edit(X).
+Another way to edit code is to use the ``edit()`` function – which operates directly from the command line.  
+To edit the code defining an object X, simply type ``edit(X)``.
 
-
-
-
-
-
+%------------------------------------------------------%
 <p>
 ### {Changing GUI options}
 We can change the GUI options using the “GUI preferences” option on the Edit menu. (Important when teaching R)
 A demonstration will be done in class. 
-%------------------------------------------------------%
+
