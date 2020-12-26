@@ -5,20 +5,8 @@ The R Programming Language is a statistical , data analysis , etc
 
 R is a free software environment for statistical computing and graphics.
 
-\section{Writing R scripts}
-Editing your R script ``R Editor".
-\begin{itemize}
-\item On the menu of the R console, click on file.
-\item Select open script or new script as appropriate.
-\item Navigate to your working directory and select your \texttt{.R} file
-\item A new dialogue box ``\texttt{the R editor}" will open up.
-\item Input or select code you wish to compile.
-\item To compile this code, highlight it. Click the edit button on the menu.
-\item Select either ``Run Line" or ``Run Selection or All".
-\item Your code should now compile.
-\item To save your code, clink on ``file" and then ``\texttt{save as}".
-\item Save the file with the ``\texttt{.R}" extension to your working directory.
-\end{itemize}
+----------------------------------------------------------------------------------
+
 
 \section{Vector types}
 \texttt{R} operates on named data structures. The simplest such structure is the
@@ -50,16 +38,7 @@ quotation marks.A logical vectors is a vector whose elements are TRUE, FALSE or 
 >LogVec<-c(TRUE, FALSE)
 \end{verbatim}
 
-\section{Graphical data entry interface}
-
-\texttt{Data.entry()} is a useful  command for inputting or editing data sets. Any
-changes are saved automatically (i.e. dont need to use the assignment
-operator). We can also used the \texttt{edit()} command, which calls the \texttt{R Editor}.
-
-\begin{verbatim}
->data.entry(NumVec)
->NumVec <- edit(NumVec)
-\end{verbatim}
+---------------------------------------
 
 Another method of creating vectors is to use the following
 \begin{verbatim}
