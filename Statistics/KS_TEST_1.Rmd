@@ -1,31 +1,5 @@
 
 
-
-\begin{itemize}
-\item Today's Class will look at some important significance tests
-\item Previously we have seen the test for slope and intercept estimates implemented using the ``summary()" command.
-\item We have also seen a significance test for Pearson's Correlation coefficient.
-\end{itemize}
-
-\end{slide}
-
-\begin{slide}{Today's Class}
-
-\begin{itemize}
-\item Inference tests .
-\begin{itemize}
-\item Kolmogorov Smirnov (K-S) test.
-\item Grubbs Test
-\item Anderson Darling Test
-\item Shapiro Wilk Test
-\item Chi Square test.
-\end{itemize}
-\item I will do the most important test, the ``t - test", in the next class.
-\end{itemize}
-
-\end{slide}
-
-
 %------------------------------------------
 \begin{slide}{K-S test: one sample test}
 
