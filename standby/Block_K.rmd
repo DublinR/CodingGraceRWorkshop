@@ -1,17 +1,5 @@
 
 
-\subsection{Subsetting datasets by rows}
-
-Suppose we wish to divide a data frame into two different section. The simplest approach we can take is to create two new data sets, each assigned data from the relevant rows of the original data set.
-
-Suppose our dataset ``Info" has the dimensions of 200 rows and 4 columns. We wish to separate "Info" into two subsets , with the first and second 100 rows respectively. ( We call these new subsets "Info.1" and "Info.2".)
-\begin{verbatim}
-Info.1 = Info[1:100,]#assigning "info" rows 1 to 100
-Info.2 = Info[101:200,]#assigning "info" rows 101 to 200
-\end{verbatim}
-
-More useful commands such as rbind() and cbind()  can be used to manipulate vectors.
-
 Part 2 Strategies for Data project
 \begin{itemize}
 *  Exploratory Data Analysis
