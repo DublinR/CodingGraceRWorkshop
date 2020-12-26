@@ -1,27 +1,3 @@
-\subsection{Subsetting datasets by rows}
-
-Suppose we wish to divide a data frame into two different section. 
-The simplest approach we can take is to create two new data sets, each assigned data from the relevant rows of the original data set.
-
-Suppose our dataset ``Info" has the dimensions of 200 rows and 4 columns. We wish to separate "Info" into two subsets , with the first and second 100 rows respectively. ( We call these new subsets "Info.1" and "Info.2".)
-\begin{verbatim}
-Info.1 = Info[1:100,]		#assigning "info" rows 1 to 100
-Info.2 = Info[101:200,]		#assigning "info" rows 101 to 200
-\end{verbatim}
-
-More useful commands such as rbind() and cbind()  can be used to manipulate vectors.
-
-Part 2 Strategies for Data project
-\begin{itemize}
-\item Exploratory Data Analysis
-
-The first part of your report should contain some descriptive statistics and summary values. Also include some tests for normality.
-
-\item{Regression}
-You should have a data set with multiple columns, suitable for regression analysis.
-Familiarize yourself with the data, and decide which variable is the dependent variable.
-
-Also determine the independent variables that you will use as part of your analysis.
 
 \item{Correlation Analysis}
 Compute the Pearson correlation for the dependent variable with the respective independent variables.  
@@ -135,36 +111,6 @@ t = \frac{\bar{X}_{1}-\bar{X}_{2}}{S.E.(\bar{X}_{1}-\bar{X}_{2})}
 
 
 
-%---------------------------------------------------%
-\subsubsection{slide234}
-The TS are <equation here>  
-The p-values for both of these tests are 0 and so there is enough evidence to reject $H_0$ and conclude that both 0 and 1 are not 0, i.e. there is a significant linear relationship between x and y. 
-Also given are the $R^2$ and $R^2$ adjusted values. Here $R^2 = SSR/SST = 0.8813$ and so $88.13\%$ of the variation in y is being explained by x. 
-The final line gives the result of using the ANOVA table to assess the model t.
-
-%----------------------------------------------------%
-
-\subsubsection{slide235}
-
-In SLR, the ANOVA table tests <EQN>The TS is the F value and the critical value and p-values are found
-in the F tables with (p - 1) and (n - p) degrees of freedom.
-
-This output gives the p-value = 0, therefore there is enough evidence to reject H0 and conclude that there is a signicant linear relationship between y and x. The full ANOVA table can be accessed using :
-
-<TABLE HERE>
-
-
-
-\subsubsection{slide236}
-Once the model has been tted, must then check the residuals.
-The residuals should be independent and normally distributed with
-mean of 0 and constant variance.
-A Q-Q plot checks the assumption of normality (can also use a
-histogram as in MINITAB) while a, plot of the residuals versus fitted values gives an indication as to whether the assumption of constant variance holds.
-
-<HISTOGRAM>
-
-
 
 
 \section{Introduction to \texttt{R}}
@@ -174,47 +120,4 @@ Commands were typed into a text-based input area on the computer screen and the 
 The \texttt{R} console opens with information and then a prompt mark  ``>"  it is ready to accept commands
 \texttt{R}  is an open source software package, meaning that the code written to implement the various functions can be freely examined and modified.
 \texttt{R} can be installed free of charge from the \texttt{R}-project website.
-
-%----------------------------------------------------%
-\subsubsection{slidename}
-
-\footnotesize \begin{verbatim}
-> xbar <- 83
-> sigma <- 12
-> n <- 5
-> sem <- sigma/sqrt(n)
-> sem
-[1] 5.366563
-> xbar + sem * qnorm(0.025)
-[1] 72.48173
-> xbar + sem * qnorm(0.975)
-[1] 93.51827
- \end{verbatim}\normalsize
-
-
-\subsubsection{Testing the slope (II)}
-
-You can compute a
-t test for that hypothesis simply by dividing the estimate by its standard
-error
-\begin{equation}
-t = \frac{\hat{\beta}}{S.E.(\hat{\beta})}
-\end{equation}
-which follows a t distribution on n - 2 degrees of freedom if the true $\beta$ is
-zero.
-
-
-%----------------------------------------------------%
-\begin{itemize}
-\item The standard $\chi^{2}$ test  in chisq.test works with data in matrix form, like fisher.test does.
-\item For a 2 by 2 table, the test is exactly equivalent to prop.test.
-\end{itemize}
-
-
-\footnotesize \begin{verbatim}
-> chisq.test(lewitt.machin)
-\end{verbatim}\normalsize
-
-
-
 
