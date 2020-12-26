@@ -1,0 +1,25 @@
+<h3>Relational and Logical Operators</h3>
+
+Relational operators allow for the comparison of values in vectors. 
+greater than	>
+less than	<
+equal to	==
+less than or equal to	<=
+greater than or equal to	>=
+not equal to	!=
+
+Note the difference of the equality operator “==” with assignment operator ”=”.
+
+“&” and “&&” indicate logical AND and “|” and “||” indicate logical OR. 
+The shorter form performs element-wise comparisons in much the same way as arithmetic operators. The longer form is appropriate for programming control-flow and typically preferred in "if" clauses. 
+We can use relational operators to subset vectors (as well as more complex data objects such as data frames, which we will meet later). 
+We specify the  relational condition in square brackets.
+We can construct compound relational conditions too, using logical operators
+
+<pre><code>
+> vec=1:19
+> vec[vec<5]
+[1] 1 2 3 4
+> vec[(vec<6)|(vec>16)]
+[1]  1  2  3  4  5 17 18 19
+</code></pre>

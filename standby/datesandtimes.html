@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="RWorkshop.GitHub.io : Website">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>RWorkshop.GitHub.io</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+          <h1 id="project_title">RWorkshop.GitHub.io</h1>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+  %---------------------------------------------------------------------------------%
+\begin{slide}{Times and Dates}
+\begin{itemize}
+\item Sys.time() gives the date and time of when the command is executed.
+
+\begin{verbatim}
+> Time1=Sys.time()
+> Time1
+[1] "2010-03-18 12:45:10 GMT"
+\end{verbatim}
+
+The difference between two times can be determined:
+
+\begin{verbatim}
+> Time2-Time1
+Time difference of 1.17775 mins
+\end{verbatim}
+
+This is useful in estimating the length of very long simulations.
+
+\end{itemize}
+\end{slide}
+
+
+
+%---------------------------------------------------------------------------------%
+\begin{slide}{Months}
+\begin{itemize}
+\item The command `month.name[]' returns the name of the month that corresponds to the
+argument.Please note that square brackets are used.
+
+\begin{verbatim}
+> month.name[3]
+[1] "March"
+\end{verbatim}
+
+\end{itemize}
+\end{slide}
+
+<h2> Date/Time </h2>
+R and its contributed packages have a number of datetime (i.e. date or date/time) classes:
+POSIX classes: POSIX classes refer to the two classes POSIXct, POSIXlt and their common super class POSIXt. These support times and dates including time zones and standard vs. daylight savings time.
+Date: Date is the newest R date class, introduced in R-1.9.0. It supports dates without times. Eliminating times simplifies dates substantially since not only are times, themselves, eliminated but the potential complications of timezones and daylight savings time vs. standard time need not be considered either. Date has an interface similar to the POSIX classes discussed below making it easy to move between them.
+
+chron: The CRAN-Package chron provides dates and times. There are no time zones or notion of daylight vs. standard time in chron which makes it simpler to use for most purposes than date/time packages that do employ time zones.
+References: R News, The Newsletter of the R Project, Volume 4/1, June 2004, ISSN 1609-3631, http://cran.r-project.org/doc/Rnews/Rnews_2004-1.pdf
+
+<h2> Parse a Date </h2>
+
+d1 <- as.Date("2008-05-18") class(d1) # Output: [1] "Date" d2 <- strptime("2008-01-01 14:30", "%Y-%m-%d %H:%M") class(d2) # Output: [1] "POSIXt" "POSIXlt" d3 <- as.POSIXct("2008-01-01 14:30", tz="GMT") class(d3) #Output: [1] "POSIXt" "POSIXct"
+See strptime for formatting details
+All functions also work for lists:
+
+strptime(c("2008-01-01 14:30","2008-02-02 0:30"), "%Y-%m-%d %H:%M")
+
+<h2>  Dates and data.frames </h2>
+If you want to store your date in a data.frame you will NOT be able to use POSIXlt. The reason for this is that a POSIXlt actually is a list with 9 elements. So if you want to add your dates to a data.frame you will need to convert your dates to POSIXct:
+
+data$time = as.POSIXct(strptime(data$time_string, "%H:%M:%S"))
+
+<h2> Format a Date </h2>
+format(d1, "%a %Y/%m/%d") #[1] "So 2008/05/18" format(d2, "%A %Y/%m/%d") # [1] "Dienstag 2008/01/01"
+
+<h2> Time Intervals </h2>
+
+<pre><code>
+b1 <- ISOdate(1977,7,13) 
+b2 <- ISOdate(2003,8,14) 
+b2 - b1 # Time difference of 9528 days 
+> class(b2-b1) 
+[1] "difftime"
+</code></pre>
+If an alternative unit of time is desired, the <tt>difftime</tt> function can be called, using the optional <tt>units=</tt> argument with any of the following values: "auto", "secs", "mins", "hours", "days", or "weeks".
+difftime(b2,b1,units="weeks") #Time difference of 1361.143 weeks
+
+<h2> Time Sequences </h2>
+The by=> argument to the seq function can be specified either as a difftime value, or in any units of time that the difftime function accepts, making it very easy to generate sequences of dates.
+<pre><code>
+seq(as.Date("1976-07-04"),by="days",length=10) 
+# 
+[1] "1976-07-04" "1976-07-05" "1976-07-06" "1976-07-07" "1976-07-08" 
+[6] "1976-07-09" "1976-07-10" "1976-07-11" "1976-07-12" "1976-07-13" 
+seq(as.Date("2000-06-01"),to=as.Date("2000-08-01"),by="2 weeks") 
+# 
+[1] "2000-06-01" "2000-06-15" "2000-06-29" "2000-07-13" "2000-07-27" 
+seq(as.POSIXct("2009-03-23 00:00:00", tz="GMT"), length=96, by="15 mins") 
+# 
+[1] "2009-03-23 00:00:00 GMT" "2009-03-23 00:15:00 GMT" 
+[3] "2009-03-23 00:30:00 GMT" "2009-03-23 00:45:00 GMT"
+</code></pre>

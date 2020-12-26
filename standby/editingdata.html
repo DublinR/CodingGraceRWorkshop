@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Rworkshop.GitHub.io : R Workshop">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Rworkshop.GitHub.io</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/RWorkshop">View on GitHub</a>
+
+          <h1 id="project_title">Rworkshop.GitHub.io</h1>
+          <h2 id="project_tagline">R Workshop</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+
+          <h4>CSV File</h4>
+The sample data can be in \textit{\textbf{comma separated values}} (CSV) format. Each cell inside such data file is separated by a special character, which usually is a comma, although other characters can be used as well. ( As it is vendor neutral, CSV is more versatile).
+The first row of the data file should contain the column names instead of the actual data. Here is a sample of the expected format.
+<pre><code>
+Col1,Col2,Col3
+100,a1,b1
+200,a2,b2
+300,a3,b3
+</code></pre>
+
+After we copy and paste the data above in a file named ``MyData.csv" with a text editor, we can read the data with the \texttt{read.csv()} function. (The file should be in the working directory).
+<pre><code>
+> mydata = read.csv("MyData.csv")  # read csv file
+> mydata                           # print data frame
+  Col1 Col2 Col3
+1  100   a1   b1
+2  200   a2   b2
+3  300   a3   b3
+</code></pre>
+(Remark: In various European locales, as the comma character serves as decimal point, the \texttt{read.csv2()} function should be used instead.)
+
+<b>Exercise:</b> Load the GNW dataset into the \texttt{R} Environment. (We will do more work with it shortly).
+          
+          <h4>Data export - \texttt{write.csv()}}</h4>
+The basic tool to produce output files is \texttt{write.csv()}.
+<p>
+The only two required arguments to <b><tt>write.csv()</tt></b> are ,firstly, the name of a dataset or matrix (with just a single argument) then the name (in quotations) of the file to be created.
+
+<pre><code>
+> getwd()
+[1] "C:/Users/Documents"
+> write.csv(iris,"iris2")
+> 
+</code></pre>
+Usually, the second argument, file= will be used to specify the destination as either a character string to represent a file, or a connection (i.e. database connectivity).
+<p>
+By default, character strings are surrounded by quotes by write.table(); use the quote=FALSE argument to suppress this feature. To suppress row names or column names from being written to the file, use the row.names=FALSE or col.names=FALSE arguments, respectively.
+<p>
+Note that col.names=TRUE (the default) produces the same sort of headers that are read using the header=TRUE argument of read.table().
+<p>
+The  \texttt{sep=} argument can be used to specify a separator other than a blank space. Using sep=',' (comma separated) or sep=`\textbackslash t' (tab-separated) are two common choices.
+
+
+
+<h4>Data export - <b><tt>sink()</tt></b></h4>
+
+
+          The code first instructs <tt>R</tt> to re-direct output away from the <tt>R</tt> terminal to the file "output.txt" and
+then the relevant output  (below the summary of the GNW data frame) which goes to the sink.
+To close the sink, use
+          <code>sink()</code> with no arguments.
+
+<code>
+ sink("GNW.txt")
+ summary(GNW)
+sink()
+</code>
+
+While a sink is open all output will go to it, replacing what is already in the file. To append output
+          to a file, use the <tt>append=TRUE}<tt> option with <tt>sink()</tt>. 
+
+          (Here we will use the <tt>describe()</tt> command from the <b><i>psych</i><b> packages)
+
+<pre><code>
+install.packages("psych")
+library(psych)
+ 
+sink("GNW.txt",append=TRUE)
+describe(GNW)
+sink()
+</code></pre>
+\subsection{Inputting an \texttt{R} script - the \texttt{source()} command}
+The \texttt{source()}function runs a previously written R script in the current session. If the filename does not include a path ( such as “C:/WorkArea”) the file is taken from the current working directory. This is a particularly useful for loading pre-written data or functions  (from  later on), and other items of code into the current session.
+
+<pre><code>
+# input a few scripts
+source("mypackages.R")
+source("myfunctions.R")
+source("mydata.R")
+</code></pre>
+<h3> Using the \texttt{scan()} command</h3>
+The <tt>scan()</tt>  function is a useful method of inputting data quickly. You can use to quickly copy and paste values into the R environment.
+It is best used in the manner as described in the following example.  Create a variable “X” and use the <tt>scan()</tt>  function to populate it with values.
+Type in a value, and then press return.<p>
+Once you have entered all the values, press return again to return to normal operation.
+<pre><code>
+> X=scan()
+1: 4
+2: 5
+3: 5
+4: 6
+5: 
+Read 4 items
+</code></pre>
+For the data that has been scanned,  equivalent code that would be used to define it can be retrieved and recorded using the \texttt{edit()} command. 
+
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>

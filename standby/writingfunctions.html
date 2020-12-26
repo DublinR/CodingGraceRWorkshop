@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Rworkshop.GitHub.io : R Workshop">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Rworkshop.GitHub.io</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/RWorkshop">View on GitHub</a>
+
+          <h1 id="project_title">Rworkshop.GitHub.io</h1>
+          <h2 id="project_tagline">R Workshop</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+
+
+<h5>Writing functions</h5> 
+
+
+The last thing we're going to look at is what really makes R powerful: writing your own functions. If you do something once it's not a problem to type in each command as we've done here. But if you frequently do some particular task, it would be nice to automate it so that it could be done with a single command. In calculating the y-values for the polynomial lines for our graph, we used the cbind() function with a term for each column. If you were going to do this a lot with large order polynomials, you might want to automate the task of creating this matrix. Open a text editor, such as Notepad, where you will write your function. Here is a listing of one way to write this function: 
+<pre><code>
+polymat <- function(x, deg) {
+	out <- numeric(0)
+	for(i in 0:deg) out <- cbind(out, x^i)
+	return(out)
+}	
+</code></pre>
+
+Type this into the script window exactly. Save the file in your working directory with a name like polymat.R. Now from the File menu in R, select Source R Code. Look at the command line window to see the function call and to check for any errors here. If there are errors, it's most likely that you typed something in wrong. Double check the syntax and try again. When it sources OK, use the function objects() to see that your function polymat() was really created. Here's how the function works. Give it a vector for x and the polynomial degree you want. It will return a matrix with all ones in the the first column, the second column equal to x, the third column equal to x2, etc. Try it out with a simple vector: 
+<pre><code>
+> polymat(1:5, 3)
+[,1] [,2] [,3] [,4] 
+[1,]    1    1    1    1
+[2,]    1    2    4    8
+[3,]    1    3    9   27
+[4,]    1    4   16   64
+[5,]    1    5   25  125
+</code></pre>
+Note the 1:5 used here. This is just a shorthand way of getting a vector of integers between two numbers. Now you can use this function when you want to create a vector of y-values to plot. This is how you would use it as an alternative to how you created y4 previously: 
+<pre><code>
+	> y4 <- polymat(x, 6) %*% coef6
+</code></pre>
+Now if you really want to automate the process, let's write a function that will fit whatever order polynomial you want and plot the graph all with one command. Open another text editor window and type in this function. 
+<pre><code>
+poly.fit <- function(deg=2, data=df) {
+	pfit <- lm(data$vel~polymat(data$conc,deg)[, -1])
+	pcoef <- coef(pfit)
+	x <- seq(0, 0.4, length=100)
+	y <- polymat(x, deg) %*% pcoef
+	plot(data$conc, data$vel, xlim=c(0,0.4), ylim=c(0,5),
+	xlab="Substrate Concentration", ylab="Reaction Rate")
+	lines(x,y)
+	invisible()
+}
+</code></pre>
+You should recognize most of the lines in this function The call to lm uses the polymat function we just wrote. However, we don't want the first column of 1's in the matrix here. We can remove it with polymat(data$conc,deg)[, -1]. Remember that within square brackets like this the first number references the rows and the second number references the columns. We don't identify any rows so by default we get them all. Instead of specifying which columns we want, we specify which we don't want by using the minus sign. The invisible() function is used because nothing is being returned from poly.fit() other than a graph. 
+It's important to note that you don't have to put everything in a single function. Here we wrote a smaller function to create the polynomial matrix and then we called it from within another function. It's usually more efficient to build a library of smaller functions that do specific tasks and then pull them together as needed. Notice also that the data frame is an argument to this function. This way the function is not specific to just one data set, although from the way the function is written, it must have columns labeled vel and conc. 
+Remember to source the function in order to use it. Notice that both arguments have defaults so you could use the function with no arguments within the parentheses. To try a 4th order polynomial and see the fit, use the function like this: 
+> poly.fit(4)
+That's all there is to it. Hopefully you can see the value of being able to write your own functions this easily. Can you modify the function so that it returns the coefficients? 
+
+%=========================================================================================== %
+
+\section{Functions}
+
+The function definition syntax of R is similar to that of other languages. For example:
+\begin{verbatim}
+func <- function(a, b) { 
+	return (a+b)
+}
+\end{verbatim}
+The function \texttt{function()} returns a function, which is usually assigned to a variable, \texttt{func} in this case, but need not be. You may use the function statement to create an anonymous function (lambda expression).
+
+Note that return is a function; its argument must be contained in parentheses ( unlike C where parentheses are optional). The use of return is optional; otherwise the value of the last line executed in a function is its return value.
+
+Default values can be defined . In the following example,a is set to 3 ad  b is set to 10 by default.
+\begin{verbatim}
+f <- function(a=3, b=10) 
+{
+	return (a+b)
+}
+\end{verbatim}
+So \texttt{f(5, 1)} would return 6, and f(5) would return 15. \texttt{R} allows more sophisticated default values than does C++. 
+C++ requires that if an argument has a default value then so do all values to the right. This is not the case in R, though it is still a good idea. The function definition
+
+<pre><code>
+f <- function(a=10, b) { return (a+b)}
+</code></pre>
+
+is legal, but calling f(5) would cause an error. The argument a would be assigned 5, but no value would be assigned to b. The reason such a function definition is not illegal is that one could still call the function with one named argument. For example, f(b=2) would return 12.
+<!-- ############################################################################### -->
+
+
+\subsection*{\texttt{sapply()}}
+<pre><code>
+> sapply(2:5,log)
+[1] 0.6931472 1.0986123 1.3862944 1.6094379
+>
+> sapply(2:5,log,2)
+[1] 1.000000 1.584963 2.000000 2.321928	
+	
+</code></pre>
+
+%=========================================================================================== %
+<h5>Functions</h5>
+<ul>
+<li>	We have already encountered quite a functions in R, e.g. mean(x), sd(x), matrix(x,…), sort(x).
+<li>	Functions have a name and a list of arguments or input objects. 
+<li>	For example, the argument to the function mean() is usually a vector x.
+<li>	Functions also have a list of output objects, i.e. objects that are returned once the function has been run.
+<li>	A function must be written and loaded into R before it can be used.
+</ul>
+
+<!-- ########################################### -->
+Functions are typically written if we need to compute the same thing for several data sets and what we want to calculate is not already implemented in the commercial software yet, as would be the case in many areas of research.
+Argument Matching ( Named arguments and defaults)
+As first noted in Generating regular sequences, if arguments to called functions are given in the “name=object” form, they may be given in any order. Furthermore the argument sequence may begin in the unnamed, positional form, and specify named arguments after the positional arguments. 
+Thus if there is a function fun1 defined by 
+<pre><code>
+     > fun1 <- function(data, data.frame, graph, limit) {
+         …
+         # [function body omitted]
+         …
+         }
+
+<\code><\pre>
+
+then the function may be invoked in several ways, for example 
+\begin{verbatim}
+> ans <- fun1(d, df, TRUE, 20)
+> ans <- fun1(d, df, graph=TRUE, limit=20)
+> ans <- fun1(data=d, limit=20, graph=TRUE, ata.frame=df)
+\end{verbatim}
+are all equivalent. 
+
+In many cases arguments can be given commonly appropriate default values, in which case they may be omitted altogether from the call when the defaults are appropriate. For example, if fun1 were defined as 
+> fun1 <- function(data, data.frame, graph=TRUE,  limit=20) { ... }
+
+Then it could be called as 
+> ans <- fun1(d, df)
+
+
+which is now equivalent to the three cases above, or as 
+> ans <- fun1(d, df, limit=10)
+
+
+which changes one of the defaults. 
+It is important to note that defaults may be arbitrary expressions, even involving other arguments to the same function; they are not restricted to be constants as in our simple example here. 
+%===========================================================================================================%
+\section{Writing Basic Functions}
+
+A simple function can be constructed as follows:
+
+\begin{framed}
+\begin{verbatim}
+function_name <- function(arg1, arg2, ...){
+commands
+output
+}
+\end{verbatim}
+\end{framed}
+<!-- ########################################### -->
+
+You decide on the name of the function. The function command shows R that you are writing a function. Inside the parenthesis you outline the input objects required and decide what to call them.
+
+\begin{itemize}
+\item	Default settings can be specified , but you do not need to use them.
+\item	The commands occur inside the $\{ \}$.
+\item	The name of whatever output you want goes at the end of the function. 
+\item	Comments lines (usually a description of what the function does is placed at the beginning) are denoted by #.
+\end{itemize}
+Let’s construct a function “powfunc” that computes XY for a specified value of X and optionally Y. If Y is not specified, the default value is 2 (i.e. X2 )
+The resulting value from the function is send back to the main script using the command \texttt{return()}.
+
+<pre><code>
+powfunc = function(X,pow=2){
+return(X^pow)
+}
+powfunc(4)
+# answer [1] 16
+powfunc(4,3)
+# answer [1] 64
+</code></pre>
+
+A set of such functions can be constructed as a package, and submitted to CRAN.
+
+
+Writing Basic Functions
+
+A simple function can be constructed as follows:
+
+<pre><code>
+function_name <- function(arg1, arg2, ...){
+	
+	commands
+	
+	output
+	
+}
+
+</code></pre>
+
+
+
+
+
+You decide on the name of the function. The function command shows R that you are writing a function. 
+
+Inside the parenthesis you outline the input objects required and decide what to call them. 
+
+The commands occur inside the { }.
+
+The name of whatever output you want goes at the end of the function. 
+
+Comments lines (usually a description of what the function does is placed at the beginning) are denoted by #.
+
+Example
+<pre><code>
+
+sqr <- function(x){
+	
+	
+	x^2
+	
+	
+}
+</code></pre>
+
+
+This function is called sqr. 
+
+It has one argument, called x.
+
+Whatever value is inputted for x will be squared and the result outputted to the screen. 
+
+This function must be loaded into R and can then be called.
+
+We can call the function using:
+<pre><code>
+sqr(x = 4)
+
+
+#sqr(4)
+
+
+[1] 16
+</code></pre>
+
+
+
+
+
+To store the result into a variable x.sq
+
+<pre><code>x.sq = sqr(x = 4)
+
+
+# x.sq = sqr(4)
+
+
+> x.sq
+
+
+[1] 16
+</code></pre>
+
+
+
+
+
+More Complicated Example
+
+<pre><code>
+sf2 <- function(a1, a2, a3){
+	
+	
+	x <- sqrt(a1^2 + a2^2 + a3^2)
+	
+	
+	return(x)
+	
+	
+}	
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+This function is called sf2 with 3 arguments. 
+
+The values inputted for a1, a2, a3 will be squared, summed and the square root of the sum calculated and stored in x. 
+
+(There will be no output to the screen as in the last example.)
+
+The return command specifies what the function returns, here the value of x. 
+
+We will not be able to view the result of the function unless we store it.
+
+
+
+
+
+
+<pre><code>
+sf2(a1=2, a2=3, a3=4)
+
+
+sf2(2, 3, 4)                                                 # Can't see result.
+
+
+res = sf2(a1=2, a2=3, a3=4)
+
+
+res = sf2(2, 3, 4)                                        # Need to use this.
+
+
+res
+
+
+[1] 5.385165</code></pre>
+
+
+
+
+
+
+
+We can also give some/all arguments default values.
+
+
+
+
+
+
+<pre><code>
+mypower <- function(x, pow=2){
+	
+	x^pow
+	
+}
+</code></pre>
+
+If a value for the argument pow is not specified in the function call, a value of 2 is used. If a value for “pow” is specified, that value is used.
+
+<pre><code>
+mypower(4)
+
+[1] 16
+
+mypower(4, 3)
+
+[1] 64
+
+mypower(pow=5, x=2)                                                         
+
+[1] 32	
+</code></pre>
+
+
+<h5>More Complex Functions</h5>
+
+The following function returns several values in the form of a list:
+
+
+myfunc <- function(x)
+
+{
+	
+	# x is expected to be a numeric vector
+	
+	# function returns the mean, sd, min, and max of the vector x
+	
+	the.mean <- mean(x)
+	
+	the.sd <- sd(x)
+	
+	the.min <- min(x)
+	
+	the.max <- max(x)
+	
+	return(list(average=the.mean,stand.dev=the.sd,minimum=the.min,
+	
+	maximum=the.max))
+	
+}
+
+
+<h6>Creating New Functions</6>
+
+A simple function can be constructed as follows:
+
+
+function_name <- function(arg1, arg2, ...){
+	commands
+	output
+}
+
+
+You decide on the name of the function.
+The function command shows R that you are writing a function.
+Inside the parenthesis you outline the input objects required and decide what to call them.
+The commands occur inside the { }.
+The name of whatever output you want goes at the end of the function.
+Comments lines (usually a description of what the function does is placed at the beginning) are denoted by #.
+
+
+
+sf1 <- function(x){
+	x^2
+}
+
+
+This function is called sf1. It has one argument, called x. Whatever value is inputted for x will be squared and the result outputted to the screen. This function must be loaded into R and can then be called.
+
+
+Load the function into R by highlighting the code and clicking the Paste button in RWinEdt.
+Type ls() into the console. Note that the function now appears. Can call the function using:
+
+
+
+sf1(x = 3) sf1(3)
+[1] 9 [1] 9
+
+
+
+
+To store the result into a variable x.sq
+
+
+
+x.sq <- sf1(x = 3) x.sq <- sf1(3)
+> x.sq
+[1] 9
+
+sf2 <- function(a1, a2, a3){
+	x <- sqrt(a1^2 + a2^2 + a3^2)
+	return(x)
+}
+
+
+
+
+This function is called sf2 with 3 arguments. The values inputted for a1, a2, a3 will be squared, summed and the square root of the sum calculated and stored in x. (There will be no output to the screen as in the last example.) The return command speci es what the function returns, here the value of x. Will not be able to view the result of the function unless you store it.
+
+sf2(a1=2, a2=3, a3=4) sf2(2, 3, 4) # Can't see result.
+res <- sf2(a1=2, a2=3, a3=4) res <- sf2(2, 3, 4) # Need to use this.
+res
+[1] 5.385165
+
+<p>
+<h3>Argument Matching</h3>
+
+How does R know which arguments are which? Uses argument matching.  Argument matching is done in a few different ways.
+
+The arguments are matched by their positions. The rst supplied argument is matched to the rst formal argument and so on, e.g. when writing sf2 we speci ed that a1 comes rst, a2 second and a3 third. Using sf2(2, 3, 4) assigns 2 to a1, 3 to a2 and 4 to a3.
+
+The arguments are matched by name. A named argument is matched to the formal argument with the same name, e.g.
+sf2 arguments have names a1, a2 and a3. Can do things like sf2(a1=2, a3=3, a2=4), sf2(a3=2, a1=3, a2=4), etc.
+
+Name matching happens first, then positional matching is used for any unmatched arguments.
+
+
+Can also give some/all arguments default values.
+
+mypower <- function(x, pow=2){
+	x^pow
+}
+
+If a value for the argument pow is not speci ed in the function call, a value of 2 is used.
+
+
+
+mypower(4)
+[1] 16
+
+
+
+
+
+If a value for pow is specified, that value is used.
+
+
+
+
+mypower(pow=5, x=2)
+[1] 32
+
+
+
+
+
+The following function returns several values in the form of a list:
+
+
+
+myfunc <- function(x)
+{
+	# x is expected to be a numeric vector
+	# function returns the mean, sd, min, and max of the vector x
+	the.mean <- mean(x)
+	the.sd <- sd(x)
+	the.min <- min(x)
+	the.max <- max(x)
+	return(list(average=the.mean,stand.dev=the.sd,minimum=the.min,
+	maximum=the.max))
+}
+
+
+
+
+x <- rnorm(40)
+res <- myfunc(x)
+res
+$average
+[1] 0.29713
+$stand.dev
+[1] 1.019685
+$minimum
+[1] -1.725289
+$maximum
+[1] 2.373015
+
+
+
+
+
+
+
+
+
+To access any particular value use:
+res$average
+[1] 0.29713
+res$stand.dev
+[1]1.019685
+
+
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
