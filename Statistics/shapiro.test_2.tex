@@ -1,24 +1,15 @@
-
-
-
-
-
-
-
-frametitle{Shapiro-Wilk Test(a)}
-
+Shapiro-Wilk Test 
+========================================
 
 
  * We will often be required to determine whether or not a data set is normally distributed.
  * This assumption underpins many statistical models.
  * The null hypothesis is that the data set is normally distributed.
  * The alternative hypothesis is that the data set is not normally distributed.
- * One procedure for testing these hypotheses is the Shapiro-Wilk test, implemented in texttt{R} using the command texttt{shapiro.test()}.
+ * One procedure for testing these hypotheses is the Shapiro-Wilk test, implemented in texttt{R} using the command ``shapiro.test()``.
  * (Remark: You will not be required to compute the test statistic for this test.)
 
-
-
-textbf{IMPORTANT}
+IMPORTANT
 
  * $H_0$ : The sample is drawn from a population that is normally distributed. 
  * $H_1$ : The sample is drawn from a population that is NOT normally distributed. 
@@ -27,6 +18,7 @@ textbf{IMPORTANT}
 
 
 For the data set used previously; $x$ and $y$, we use the Shapiro-Wilk test to determine that both data sets are normally distributed.
+<pre>
 <code>
 
 > shapiro.test(X)
@@ -43,7 +35,7 @@ W = 0.9474, p-value = 0.6378
 data:  y
 W = 0.9347, p-value = 0.5273
 </code>
-
+</pre>
 
 
  * If we fail to reject $H_0$ we are saying that there is not enough evidence to contradict the null hypothesis. smallskip
