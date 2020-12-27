@@ -1,0 +1,19 @@
+
+%----------------------------------------------------------------------------------------------------------------- %
+
+\section{Outliers}
+\subsection{Grubb's Test for Outliers}
+<pre>
+	<code>
+	library(outliers)
+	grubbs.test(X)
+	</code>
+</pre>
+\subsection{Dixon Test for Outliers}
+\subsection{Outliers on Boxplots}
+Boxplots can used to determine an outlie (we will refer to them as ``boxplot outliers")
+<pre>
+	<code>
+	boxplot(X, horizontal = TRUE)
+	</code>
+</pre>
