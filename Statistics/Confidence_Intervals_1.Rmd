@@ -1,0 +1,52 @@
+
+\section{Inference Procedures}
+\subsection{Confidence Interval }
+A confidence interval gives an estimated range of values which is likely to include an unknown population parameter, the estimated range being calculated from a given set of sample data. If independent samples are taken repeatedly from the same population, and a confidence interval calculated for each sample, then a certain percentage (confidence level) of the intervals will include the unknown population parameter. 
+
+Confidence intervals are usually calculated so that this percentage is $95\%$, but we can produce $90\%$, $99\%$, $99.9\%$ (or whatever) confidence intervals for the unknown parameter. The width of the confidence interval gives us some idea about how uncertain we are about the unknown parameter. A very wide interval may indicate that more data should be collected before anything very definite can be said about the parameter.
+\subsection{Power }
+The power of a statistical hypothesis test measures the test's ability to reject the null hypothesis when it is actually false - that is, to make a correct decision. In other words, the power of a hypothesis test is the probability of not committing a type II error. It is calculated by subtracting the probability of a type II error from 1, usually expressed as: 
+\[\mbox{Power} = 1 - \mbox{P(type II error) } = 1- \beta \]The maximum power a test can have is 1, the minimum is 0. Ideally we want a test to have high power, close to 1.
+
+\section{Single Sample Inference Procedures}
+If we have a single sample we might want to answer several
+questions:
+\begin{itemize}
+	* What is the mean value? * Is the mean value
+	significantly different from current theory? (Hypothesis test)
+	* What is the level of uncertainty associated with our
+	estimate of the mean value? (Confidence interval)
+\end{itemize}
+
+\begin{itemize}
+	* (Last week : confidence interval for a mean) * Revision:
+	For large samples ($n > 30$) and/or if the population standard
+	deviation ($\sigma$) is known, the usual test statistic is given
+	by: \[Z =\frac{\bar{X} - \mu}{SE(\bar{X})}\]
+	
+	* $S.E.(\bar{X}) = { \sigma \over \sqrt{n}} $ or ${s \over \sqrt{n}}$. 
+	* For small samples, use the $t-$distribution with $n-1$ degrees of freedom.
+	* Critical value from tables.
+	* Compare test statistics and critical values.
+\end{itemize}
+
+To ensure that our analysis is correct we need to check for
+outliers in the data (i.e. boxplots) and we also need to check
+whether the data are normally distributed or not.
+
+<pre>
+	<code>
+	> t.test(X,mu=10)
+	
+	One Sample t-test
+	
+	data:  X 
+	t = 14.1421, df = 4, p-value = 0.0001451
+	alternative hypothesis: true mean is not equal to 10 
+	95 percent confidence interval:
+	10.08037 10.11963 
+	sample estimates:
+	mean of x 
+	10.1 
+	</code>
+</pre>
