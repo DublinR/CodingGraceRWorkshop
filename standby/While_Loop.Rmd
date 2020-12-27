@@ -1,0 +1,74 @@
+
+
+
+<p>
+### {Programming Paradigms}
+<p>
+#### {While Loops}
+The while loop can be used if the number of iterations required is not known beforehand. For example, if we want to continue looping until a certain condition is met, a while loop is useful.
+
+The following is the syntax for a while loop:
+
+<code>
+while (condition){
+   command
+   command
+}
+</code>
+The loop continues while texttt{condition == TRUE}.
+
+
+Note: texttt{sample()} takes a sample of the specified size (here just one) from a range of values (here integers 1 to 100).
+<pre>
+<code>
+
+#initialise a counter to zero
+niter = 0		
+#initialize an empty vector
+numvec = numeric()
+
+
+num = sample(1:100, 1)
+
+#while loop
+while(num != 20)
+   {
+   num = sample(1:100, 1)
+   niter = niter + 1
+   numvec = c(numvec,num)
+   }
+numvec
+niter
+
+</code>
+</pre>
+<p>
+
+
+<p>
+#### {Nested Loops}
+
+<p>
+#### {Sums of two dice rolls}
+<pre>
+<code>
+#Set Up an Empty Matrix of 6 rows and 6 columns
+Dice = matrix(0,6,6)
+
+#Main Loop
+for(i in 1:6)
+	{
+    #Nested Loop
+	for(j in 1:6)
+		{
+		Dice[i,j] = i+j
+		}
+	}		
+Dice   # Print your Results
+</code>
+</pre>
+<p>
+<p>
+#### {Correlation Structure Example}
+
+

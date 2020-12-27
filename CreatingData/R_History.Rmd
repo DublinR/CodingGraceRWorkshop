@@ -1,14 +1,4 @@
-%-----------------------------------------------------------------%
-\subsection*{2.5 The apropos() Function}
-This function is very useful for determining what functions are available for a particular topic,
-although the process requires a great deal of trial and error. Suppose we are looking for a
-command to compute the correlation coefficient. We would use a very short string (e.g. cor)
-that would plausibly be part of useful function names.
-\begin{framed}
-\begin{verbatim}
-apropos("cor")
-\end{verbatim}
-\end{framed}
+
 %-----------------------------------------------------------------%
 \subsection*{2.6 History}
 The command \texttt{history()} is used to obtain the most recent commands typed into R. 

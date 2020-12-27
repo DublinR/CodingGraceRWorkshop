@@ -33,7 +33,7 @@ For character vectors, the values are simply characters, specified with quotatio
 ### {Graphical data entry interface}
 
 ``Data.entry()`` is a useful  command for inputting or editing data sets. 
-Any changes are saved automatically (i.e. dont need to use the assignment operator). 
+Any changes are saved automatically (i.e. don't need to use the assignment operator). 
 We can also used the ``edit()`` command, which calls the ``R Editor``.
 
 <code>
