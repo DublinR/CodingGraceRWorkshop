@@ -1,0 +1,31 @@
+
+<p>
+### {The Apply family}
+
+Sometimes want to apply a function to each element of a
+vector/data frame/list/array.
+
+Four members: lapply, sapply, tapply, apply
+
+lapply: takes any structure and gives a list of results (hence
+the `l')
+
+sapply: like lapply, but tries to simplify the result to a
+vector or matrix if possible (hence the `s')
+
+apply: only used for arrays/matrices
+
+tapply: allows you to create tables (hence the `t') of values
+from subgroups defined by one or more factors.
+
+
+<p>
+### {Plots}
+This <p>
+###  is an introduction for producing simple graphs with
+the R Programming Language.
+
+Line Charts  Bar Charts Histograms Pie
+Charts Dotcharts
+
+
