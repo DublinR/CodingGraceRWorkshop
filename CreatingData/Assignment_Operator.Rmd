@@ -1,11 +1,5 @@
 
-
-
-%---------------------------------------------------%
-\section{Data Creation and Transfer}
-
-%------------------------------------------------------%
-\subsection{The Assignment operator}
+### The Assignment operator
 The assignment operator is used to assign names to particular values. Historically the assign-
 ment operator was ) a "<-". 
 The assignment operator can also be =. This is valid as of R
@@ -69,6 +63,23 @@ Y 4 5 6
 \end{verbatim}
 
 
+\subsection*{Using the \texttt{scan()} command to input character data}
+Previously we have seen the \texttt{scan()} command used to quickly input numeric data. The command can also be used to input character data. The addition argument , \texttt{what=" "}, must be used.  
+Create a variable “grouping” that comprises, in order,  five “A”s and then six “B”s.
+
+\begin{verbatim}
+# inputting character data
+
+grouping = scan(what=" ")
+
+# Enter values
+# Hit return again when you have finished.
+
+\end{verbatim}
+
+
+
+
 
 \subsection*{Creating a Data Frame}
 \begin{framed}
@@ -87,17 +98,3 @@ A <- data.frame(
 \end{verbatim}
 \end{framed}
 %====================================================================================%
-
-\subsection*{Using the \texttt{scan()} command to input character data}
-Previously we have seen the \texttt{scan()} command used to quickly input numeric data. The command can also be used to input character data. The addition argument , \texttt{what=" "}, must be used.  
-Create a variable “grouping” that comprises, in order,  five “A”s and then six “B”s.
-
-\begin{verbatim}
-# inputting character data
-
-grouping = scan(what=" ")
-
-# Enter values
-# Hit return again when you have finished.
-
-\end{verbatim}
