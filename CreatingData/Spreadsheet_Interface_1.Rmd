@@ -1,0 +1,16 @@
+
+5.3 Using the data editor
+
+
+%===
+
+{5.4 Spreadsheet Interface}
+``R} provides a spreadsheet interface for editing the values of existing data sets. We use the
+command ``data.entry()``, and name of the data object as the argument. (Also try out the
+fix() command)
+%\begin{framed}
+%\begin{semiverbatim}
+%> data.entry(X) # Edit the data set and exit interface
+%> X
+%\end{semiverbatim}
+%\end{framed}
