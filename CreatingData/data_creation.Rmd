@@ -1,20 +1,4 @@
 
-       
-<h3>Data Entry, Data Import and Export</h3>
-
-The <code>scan()</code> function is a useful method of inputting data quickly. You can use to quickly copy and paste values into the R environment.
-It is best used in the manner as described in the following example.  Create a variable “X” and use the <code>scan()</code> function to populate it with values.
-Type in a value, and then press return.
-Once you have entered all the values, press return again to return to normal operation.
-<pre><code>
-> X=scan()
-1: 4
-2: 5
-3: 5
-4: 6
-5: 
-Read 4 items
-</code></pre>
 
 
 <h6>Spreadsheet Interface</h6>
