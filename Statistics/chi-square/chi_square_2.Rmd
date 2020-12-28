@@ -47,9 +47,8 @@ occured was recorded.\\
 \item Under the null hypothesis, any deviations from the expected values are attributable to random error.
 
 \end{itemize}
-\end{slide}
-%---------------------------------------------------------------------
-\begin{slide}{Chi Square tests}
+
+{Chi Square tests}
 
 
 \begin{verbatim}
@@ -64,9 +63,8 @@ p-value = 7.891e-14
 
 The p-value indicates that we should reject the hypothesis that there is an equal likely outcomes.
 
-\end{slide}
-%---------------------------------------------------------------------
-\begin{slide}{Chi Square test}
+
+{Chi Square test}
 \begin{itemize}
 \item If you do not want equal proportions, you need to give a set of
 proportions for each cell (using the `p' parameter).
@@ -89,10 +87,7 @@ X-squared = 5.6711, df = 3, p-value = 0.1288
 \item We would not reject the theoretical hypothesis with these data.
 \item Deviations from expected values are attributed to random error.
 \end{itemize}
-\end{slide}
 
-%--------------------------------------------------------------------
-\begin{slide}{Contingency Tables}
 
 \begin{itemize}
 \item We also use the Chi square test for testing association in two way
@@ -104,12 +99,6 @@ contingency tables.
 \item Independence or association?
 \end{itemize}
 
-\end{slide}
-
-
-%--------------------------------------------------------------------
-
-\begin{slide}{Chi Square: Contingency table}
 
 Example: Test the association between smoking and exercise.
 
@@ -126,9 +115,8 @@ Example: Test the association between smoking and exercise.
 
 
 \end{verbatim}
-\end{slide}
 
-\begin{slide}{Chi Square: Contingency table}
+
 Test the hypothesis whether the students smoking habit is independent of their exercise level at .05 significance level.
 \begin{verbatim}
 > chisq.test(tbl)
@@ -143,18 +131,10 @@ In chisq.test(tbl) : Chi-squared
 approximation may be incorrect
 
 \end{verbatim}
-\end{slide}
 
-
-
-%---------------------------------------------------------------------
-\begin{slide}{Chi Square: Contingency table}
-\begin{itemize}
 \item We have applied the chisq.test() function to the contingency table tbl, and found the p-value to be 0.4828.
 \item We fail to reject the null hypothesis.
 
 
 \item The warning message found in the solution above is due to the small cell values in the contingency table. \item To avoid such warning, we could combine the second and third columns of tbl.
-\end{itemize}
-\end{slide}
-\end{document}
+
