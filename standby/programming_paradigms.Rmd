@@ -1,0 +1,52 @@
+
+
+\newpage
+\section{Programming Paradigms}
+
+
+
+Note: ``sample()`` takes a sample of the specified size (here just one) from a range of values (here integers 1 to 100).
+\begin{framed}
+\begin{verbatim}
+
+#initialise a counter to zero
+niter = 0
+#initialize an empty vector
+numvec = numeric()
+
+
+num = sample(1:100, 1)
+
+#while loop
+while(num != 20)
+{
+num = sample(1:100, 1)
+niter = niter + 1
+numvec = c(numvec,num)
+}
+numvec
+niter
+
+\end{verbatim}
+\end{framed}
+
+
+\subsection{Sums of two dice rolls}
+\begin{framed}
+\begin{verbatim}
+#Set Up an Empty Matrix of 6 rows and 6 columns
+Dice = matrix(0,6,6)
+
+#Main Loop
+for(i in 1:6)
+{
+#Nested Loop
+for(j in 1:6)
+{
+Dice[i,j] = i+j
+}
+}
+Dice   # Print your Results
+\end{verbatim}
+\end{framed}
+\subsection{Correlation Structure Example}
