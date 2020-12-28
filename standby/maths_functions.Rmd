@@ -1,0 +1,29 @@
+
+%----------------------------------------------------------------%
+\section{Some Useful Operations}
+\subsection{Sampling}
+
+The ``sample()`` function.
+
+\subsection{Set Theory Operations}
+
+\subsection{Controlling Precision and Integerization}
+\begin{framed}
+\begin{verbatim}
+pi
+round(pi,3)
+round(pi,2)
+floor(pi)
+ceiling(pi)
+\end{verbatim}
+\end{framed}
+
+\subsection{Randomly Generated Numbers}
+With $a$ and $b$ as the lower and upper bound of the continous uniform distribution.
+\[X \sim U(a,b)\]
+
+\begin{framed}
+\begin{verbatim}
+framename = data.frame()
+\end{verbatim}
+\end{framed}
