@@ -1,25 +1,15 @@
-%-----------------------------------------------------------------%
-\section*{2 Introduction to R (Continued)}
-%-----------------------------------------------------------------%
-%-----------------------------------------------------------------%
+### 2 Introduction to R
+
 \subsection*{2.1 Three particularly useful commands}
 1. help()
 2. summary()
 3. help.start()
-%-----------------------------------------------------------------%
-%-----------------------------------------------------------------%
-\subsection*{2.2 Changing GUI options}
-We can change the GUI options using the GUI preferences option on the Edit menu. (Im-
-portant when teaching R) A demonstration will be done in class.
-%-----------------------------------------------------------------%
-%-----------------------------------------------------------------%
+
+### 2.2 Changing GUI options
+We can change the GUI options using the GUI preferences option on the Edit menu. (Important when teaching R) A demonstration will be done in class.
+
 \subsection*{2.3 Colours}
-R supported a massive number of colours. Type in colours() (or colors()) to see what colours
-are supported.
-%-----------------------------------------------------------------%
-%-----------------------------------------------------------------%
+R supported a massive number of colours. Type in colours() (or colors()) to see what colours are supported.
+
 \subsection*{2.4 Use of the Semi-Colon Operator}
-The semi-colon operator at the end of each line of code is not necessary in general, but using it
-overcomes errors due to copying and pasting from document soft copies. In other programming
-languages, such as Octave, using the semicolon in this way has a distinct purpose.
-%-----------------------------------------------------------------%
+The semi-colon operator at the end of each line of code is not necessary in general, but using it overcomes errors due to copying and pasting from document soft copies. In other programming languages, such as Octave, using the semicolon in this way has a distinct purpose.
