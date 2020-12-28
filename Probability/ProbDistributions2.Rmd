@@ -1,6 +1,5 @@
 
-The focus of the section is to develop programming skills
-related to probability distributions. With that in mind, we will take the opportunity
+The focus of the section is to develop programming skills related to probability distributions. With that in mind, we will take the opportunity
 to work with less-well known probability distributions
 
 
@@ -12,7 +11,7 @@ to work with less-well known probability distributions
 
 There will be no exercises that require an in-depth knowledge of this distributions.
 
-%---------------------------------------------%
+<p>
 
 ### The Weibull Distribution
 The Weibull distribution is used extensively in reliability applications to model failure times.
@@ -30,9 +29,9 @@ where \gamma is the shape parameter, \mu is the location parameter and \alpha is
 
 Since the general form of probability functions can be expressed in terms of the standard distribution, all subsequent formulas in this section are given for the standard form of the function.
 
-%--------------------------------------------%
 
-\section{The Beta Distribution}
+
+### The Beta Distribution
 
 % http://www.statlect.com/beta_distribution.htm
 
@@ -52,8 +51,7 @@ The Beta distribution is characterized as follows.
 %[eq3]
 %where  $Bleft( {}ight) $ is the Beta function.
 
-%------------------------------------------%
-#### {Expected Values and Variances}
+#### Expected Values and Variances
 
 * Expected value\\
 The expected value of a Beta random variable $X$ is
@@ -72,5 +70,3 @@ which is an unbounded integral. Thus if we sample from the Cauchy distribution a
 but its variance is infinite and its mean necessitates a more general definition of integration.
 
 
-
-\end{document}
