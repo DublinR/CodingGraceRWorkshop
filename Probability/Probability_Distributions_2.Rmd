@@ -1,8 +1,7 @@
-
-
-\begin{document}
-
-\section{Probability Distributions}
+Probability Distributions
+=====================================
+Column
+-------------------------------------
 A probability distribution describes how the values of a random variable are distributed. 
 
 For example, the collection of all possible outcomes of a sequence of coin tossing is known to follow the binomial distribution, whereas the means of sufficiently large samples of a data population are known to resemble the normal distribution (Central limit Theorem). Since the characteristics of these theoretical distributions are well understood, they can be used to make statistical inferences on the entire data population as a whole.
@@ -32,7 +31,7 @@ If you would like to know what distributions are available you can do a search u
 %The functions for different distributions are very similar where the differences are noted.
 
 
-\subsection{Probability Mass Functions} 
+#### Probability Mass Functions
 
 For a discrete distribution, the probability mass function (pmf) is the probability that the discrete random variable $X$ has some specified value (k) i.e. $P(X = k)$. Probability mass functions are determined using the \texttt{\textbf{d}} family of functions. 
 For example, for the binomial distribution, the command is \texttt{\textbf{dbinom()}}, for the Poisson distribution \texttt{\textbf{dpois()}}. 
@@ -41,20 +40,19 @@ For example, for the binomial distribution, the command is \texttt{\textbf{dbino
 For a discrete distribution, the probability density function (pdf) is the relative likelihood that the continuous random variable $X$ will have some specified value (k).
 Since for continuous distributions the probability at a single point is zero, it is \textbf{not} equivalent to $P(X = k)$.
 
-Rather the density function is the height of a ``density curve}} (such as the well-known Gaussian bell-curve) at point $k$.
+Rather the density function is the height of a ***density curve*** (such as the well-known Gaussian bell-curve) at point $k$.
 
 \begin{center}
 \includegraphics[scale=0.40]{6AFunction}
 % \caption{Some function f(x) evaluated at x=1}
 \end{center}
  
-%\end{document}
- 
+
 Probability density functions are determined using the \texttt{\textbf{d}} family of functions. 
 For example, for the normal distribution, the command is \texttt{\textbf{dnorm()}}. 
 Necessarily the ***d*** family of functions are more useful for discrete random variables than for continuous variables.
 
-\subsection{Cumulative Distribution Functions}
+#### Cumulative Distribution Functions
 
 The cumulative distribution function (cdf) is the probability that the variable takes a value less than or equal to $x$. 
 The cumulative density function is often denoted as $F(x)$.
@@ -66,7 +64,7 @@ Values for the cumulative distribution functioncan be determined using the ***p*
 
 It is possible to specify the complement probability of the cumulative distribution function (i.e $P(X \geq x)$) directly by additionally specifying the argument \texttt{\textbf{lower=FALSE}}.
  
-\subsection{Inverse Cumulative Distribution Functions}
+#### Inverse Cumulative Distribution Functions
 
 The inverse cumulative distribution function (otherwise known as the quantile function) is a function that yields the quantile $k$ for some specified probability $\alpha$ such that the variable takes a value less than or equal to $k$ with this probability (Recall that $p(X \leq x) = \alpha $).
 
