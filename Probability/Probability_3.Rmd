@@ -17,35 +17,27 @@ The normal distribution is perhaps the most widely known distribution.
 \end{framed} 
 
 
+### The exponential distribution}
 
 
-
-
-\subsection{The exponential distribution}
-
-\documentclass[11pt]{article} % use larger type; default would be 10pt
-
-
-
-\begin{itemize}
 \item Basics of Probability (some definitions, the \texttt{prob} package) 
 \item Dice Rolls and the Birthday Distribution ( histograms )
 \item Gambler's Ruin ( plotting functions )
 \item The Monty Hall Problem 
+
  % \item Probability Distributions (continuous and discrete distributions)
-\end{itemize}
+
 Book: \textbf{\textit{Introduction to Probability and Statistics using R}} by G Kerns \\ (downloadable for free online) We will use chapters 4,5 and 6. \\ \bigskip
 Packages: The \texttt{prob} package (for the first part only).
 
-\begin{framed}
+
 \begin{verbatim}
 install.packages("prob")
 library(prob)
 \end{verbatim}
-\end{framed}
-%-----------------------------------------------------------------------------------------------------------------------------------%
-\newpage
-\section{Basics of Probability}
+
+
+### Basics of Probability
 
 \begin{description}
 \item[Random Experiment] A random experiment is one whose outcome is determined by chance, with an outcome that may not be predicted with certainty beforehand. Common examples are coin tosses and dice rolls.
