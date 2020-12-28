@@ -1,9 +1,28 @@
-
-%-----------------------------------------------------------------%
-\subsection*{2.6 History}
+%==============================================================================================%
+ 
+### {2.6 History}
+ 
 The command \texttt{history()} is used to obtain the most recent commands typed into R. 
 By default the command returns the last 25 commands. To specify more (or less, simply type in the number your require as an argument to the function.
 history()
+
+
+*  The command texttt{history()} is used to obtain the last 25 commands used by ***R***.
+*  25 is the default number, you can specify another number.
+ 
+ 
+ 
+ 
+ %==============================================================================================%
+ 
+ % % SLIDE 1 - COVER SLIDE
+ begin{figure}
+ centering
+ includegraphics[width=1.2linewidth]{images/Rhistory}        
+ end{figure}
+    
+ 
+ 
 %-----------------------------------------------------------------%
 \subsection{2.7 The sessionInfo() Function}
 To get a description of the version of R and its attached packages used in the current session,
