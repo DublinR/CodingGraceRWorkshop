@@ -1,0 +1,45 @@
+
+%----------------------------------------------------------------%
+\section{Vector Operations}
+
+*  $R$ operates on named data structures. The simplest such
+structure is the vector, which is a single entity consisting of an
+ordered collection of numbers or characters.
+
+*  The most common types of vectors are:
+
+*  Numeric vectors *  Character vectors *  Logical
+vectors
+
+
+*  There are, of course, other types of vectors.
+
+*  Colour vectors - potentially useful later on.
+*  Order vectors - The rankings of items in a vector.
+*  Complex number vectors - not part of this course.
+
+
+\subsection{Ordering Vector Operations}
+\begin{framed}
+\begin{verbatim}
+sort(x)  # sort x into ascending order
+rev(x)
+rev(sort(x))
+\end{verbatim}
+\end{framed}
+
+\begin{framed}
+\begin{verbatim}
+x=c(15, 34, 7, 12, 18, 9, 1, 42, 56, 28, 13, 24, 35)
+
+length(x)         # How many items in x
+median(x)         # median of data set x
+sort(x)[7]        # 7th item when x is in ascending order
+quantile(x,0.75)  # Compute the third quartile
+quantile(x,0.25)  # Compute the first quartile
+IQR(x)            
+fivenum(x)
+
+# code is committed
+\end{verbatim}
+\end{framed}
