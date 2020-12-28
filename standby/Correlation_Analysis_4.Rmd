@@ -1,0 +1,30 @@
+
+%----------------------------------------------------------------%
+\section{Important Graphical Procedures}
+\begin{enumerate}
+*  Histograms
+*  Box-plots
+*  Scatter-plots
+\end{enumerate}
+
+\subsubsection{Correlation Coefficient}
+Strength of a linear relationship between $X$ and $Y$
+
+%\begin{framed}
+\begin{verbatim}
+M=1000
+CorrData=numeric(M)
+for (i in 1:M)
+{
+CorrData[i] = cor(rnorm(10),rnorm(10))
+}
+\end{verbatim}
+%\end{framed}
+The null hypothesis is that the correlation coefficient is zero. 
+
+The alternative hypothesis is that the correlation coefficients is greater than zero. 
+
+The slope and intercept estimates 
+
+These tests are given in the "Two Tailed" format. 
+The one tailed format compares a null hypothesis where the parameter of interest has a true value of less than or equalt to one versus an alternative hypothesis stating that it has a value greater than zero. 
