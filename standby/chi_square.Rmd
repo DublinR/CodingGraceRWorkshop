@@ -1,0 +1,38 @@
+\newpage
+%----------------------------------------------------------------------------------------------------------------------------%
+\section{Working with Categorical Data}
+\subsection{Chi-Square}
+
+The table below shows the relationship between gender and party identification in a US state.
+
+
+%   & Democrat &Independent & Republican & Total \\
+%Male   &279& 73  &225 &577 \\
+%Female &165& 47  & 191 &403 \\
+%Total  &444 & 120 &416&   980 \\
+
+Test for association between gender and party affiliation at two appropriate levels
+and comment on your results.
+
+Set out the null hypothesis that there is no association between method of computation
+and gender against the alternative, that there is. Be careful to get these the correct way
+round!
+
+H0: There is no association.
+H1: There is an association.
+
+Work out the expected values. For example, you should work out the expected value for
+the number of males who use no aids from the following: (95/195) × 22 = 10.7.
+
+
+\section{Probability Distributions}
+\subsection{Discrete Probability Distribution}
+
+
+The two most accessible discrete distributions are the binomial and \textbf{\emph{Poisson}} distributions
+
+
+
+
+
+
