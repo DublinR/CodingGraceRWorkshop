@@ -1,10 +1,12 @@
-\section{Exercise} The following are measurements (in mm) of a critical
+\section{Exercise} 
+The following are measurements (in mm) of a critical
 dimension on a sample of twelve engine crankshafts:
 
 \begin{verbatim}
 224.120 	224.001 	224.017 	223.982 	223.989 	223.961
 223.960 	224.089 	223.987 	223.976 	223.902 	223.980
 \end{verbatim}
+
 (a) Calculate the mean and standard deviation for these data.
 (b) The process mean is supposed to be ? = 224mm. Is this the
 case? Give reasons for your answer.
@@ -35,7 +37,9 @@ mean of x
   223.997
 
 \end{verbatim}
-\section{Exercise 2} 
+
+<p>
+#### Exercise 2
 The height of 12 Americans and 10 Japanese was measured. Test for a difference in the heights of both populations.
 \begin{verbatim}
 Americans
@@ -58,7 +62,7 @@ mean of x mean of y
  174.1425  161.4640
 \end{verbatim}
 
-\section{Exercise 3}
+#### Exercise 3
 
 A large group of students each took two exams. The marks obtained in both exams by a sample of eight students is given below
 
@@ -86,7 +90,7 @@ mean of x
        -5
 \end{verbatim}
 
-\section{Exercise 4}
+#### Exercise 4
 A poll on social issues interviewed 1025 people randomly selected from the United States. 450 of people said that they do not get enough time to themselves. A report claims that over 41\% of the population are not satisfied with personal time. Is this the case?
 
 \begin{verbatim}
@@ -105,7 +109,10 @@ sample estimates:
 0.4390244
 \end{verbatim}
 
-Exercise 23b:  A company wants to investigate the proportion of males and females promoted in the last year. 45 out of 400 female candidates were promoted, while 520 out of 3270 male candidates were promoted. Is there evidence of sexism in the company?
+<p>
+#### Exercise 23b:  
+        
+A company wants to investigate the proportion of males and females promoted in the last year. 45 out of 400 female candidates were promoted, while 520 out of 3270 male candidates were promoted. Is there evidence of sexism in the company?
 \begin{verbatim}
 > x.vec=c(45,520)
 > n.vec=c(400,3270)
