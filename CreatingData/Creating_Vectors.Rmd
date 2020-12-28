@@ -1,5 +1,4 @@
 
-%---------------------------------------------------------------------------------%
 ### 
 {Vectors: Creating and editing a vector}
 
@@ -20,12 +19,9 @@ entered are simply numbers.
 % </code>
 
 
-
-
-
-%---------------------------------------------------------------------------------%
-### 
-{Vectors: Character \& logical vector}
+<p>
+   
+###  {Vectors: Character \& logical vector}
 
 
 *  For character vectors, the values are simply characters,
@@ -51,13 +47,7 @@ Logvec <- c(TRUE, FALSE,TRUE,TRUE )
 </pre>
 
 
-
-
-
-
-%---------------------------------------------------------------------------------%
-
-### {Vectors: Empty vectors}
+### Vectors: Empty vectors
 
 
 *  Another method of creating vectors is to use the follow
@@ -81,9 +71,7 @@ kind, of length n.
 %*  You can use the graphical data entry interface to populate your data sets.
 
 
-
-%---------------------------------------------------------------------------------%
-### {Vectors: Characteristics}
+### Vectors: Characteristics
 
 
 *  We can use several $R$ commands to gather information about
