@@ -1,0 +1,422 @@
+
+
+<!--------------------------------------------------------------------------------------->	
+<h3>Vector Arithmetics</h3>
+
+Recall that the vector is a sequence of data elements of the same basic type. (Members in a vector are officially called components.)
+
+Arithmetic operations of vectors are performed member-by-member, i.e., memberwise. For example, suppose we have two vectors a and b.
+
+> a = c(1, 3, 5, 7) 
+> b = c(1, 2, 4, 8)
+
+Then, if we multiply a by 5, we would get a vector with each of its members multiplied by 5.
+
+> 5 * a 
+[1]  5 15 25 35
+
+And if we add a and b together, the sum would be a vector whose members are the sum of the corresponding members from a and b.
+
+> a + b 
+[1]  2  5  9 15
+
+Similarly for subtraction, multiplication and division, we get new vectors via memberwise operations.
+
+> a - b 
+[1]  0  1  1 -1 
+> a * b 
+[1]  1  6 20 56 
+> a / b 
+[1] 1.000 1.500 1.250 0.875
+
+Recycling Rule
+If two vectors are of unequal length, the shorter one will be recycled in order to match the longer vector. For example, the following vectors u and v have different lengths, and their sum is computed by recycling values of the shorter vector u.
+
+> u = c(10, 20, 30) 
+> v = c(1, 2, 3, 4, 5, 6, 7, 8, 9) 
+> u + v 
+
+Empty Vectors
+
+Often we would require to populate a vector dynamically ( specifically simulation studies) . But before such an operation takes place,  a variable must be created and structured, according to the type of operation. Once the operation commences, the vector is populated. 
+
+To construct an “empty” vector, we use the command numeric(). Alternatively we may require a numeric vector of specified length, initially populated with zeroes.
+
+X =  numeric()
+length(X)
+## Length 0
+
+X2 =  numeric(2)
+## 0 0 
+
+Later, we are going to use this function in computing the first 50 terms of Fibonacci Sequence.
+
+Similarly we can create “empty vectors” for logical and character data structures.
+
+Y=logical()
+Z=character()
+
+Vector Index
+
+We retrieve values in a vector by declaring an index inside a single square bracket "[]" operator.
+
+For example, the following shows how to retrieve a vector member. Since the vector index is 1-based, we use the index position 3 for retrieving the third member.
+
+> s = c("aa", "bb", "cc", "dd", "ee") 
+> s[3] 
+[1] "cc"
+
+Unlike other programming languages, the square bracket operator returns more than just individual members. In fact, the result of the square bracket operator is another vector, and s[3] is a vector slice containing a single member "cc".
+
+Negative Index
+If the index is negative, it would strip the member whose position has the same absolute value as the negative index. For example, the following creates a vector slice with the third member removed.
+
+> s[-3] 
+[1] "aa" "bb" "dd" "ee"
+
+Range Index
+To produce a vector slice between two indexes, we can use the colon operator ":". This is the same method that was used to computing a sequence of integers. This can be convenient for situations involving large vectors.
+
+> s[2:4] 
+[1] "bb" "cc" "dd"
+
+Out-of-Range Index
+If an index is out-of-range, a missing value will be reported via the symbol NA.
+
+> s[10] 
+[1] NA
+
+Named Vector Members
+
+We can assign names to vector members. For example, the following variable v is a character string vector with two members.
+
+> v = c("LouLou", "Oscar") 
+> v 
+[1] "LouLou" "Oscar"
+
+We now name the first member as One, and the second as Two.
+
+
+> names(v) = c("One", "Two") 
+> v 
+ One  Two 
+"LouLou"  "Oscar"
+
+
+Then we can retrieve the first member by its name.
+
+
+> v["One"] 
+[1] "LouLou"
+
+Furthermore, we can reverse the order with a character string index vector.
+
+> v[c("Two", "One")] 
+  Two  One 
+ "LouLou" "Oscar"
+
+
+
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------------------%
+\documentclass[KSmain.tex]{subfiles} 
+\begin{document} 
+
+<h3>Data Structures}
+
+pandas introduces two new data structures to Python - Series and DataFrame, both of which are built on top of NumPy (this means it's fast).
+
+\begin{framed}
+\begin{verbatim}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+pd.set_option('max_columns', 50)
+
+</code></pre>%-----------------------------------------%
+\subsection{Series}
+
+Series is a one-dimensional labeled array capable of holding any data type (integers, strings, floating point numbers, Python objects, etc.). The axis labels are collectively referred to as the index. The basic method to create a Series is to call:
+ 
+\begin{framed}
+\begin{verbatim}
+s = Series(data, index=index)
+
+\end{framed} 
+Here, data can be many different things:
+ 
+\begin{itemize}
+\item a Python dict
+\item an ndarray
+\item a scalar value (like 5)
+\end{itemize}
+
+%-----------------------------------------%
+A Series is a one-dimensional object similar to an array, list, or column in a table. It will assign a labeled index to each item in the Series. By default, each item will receive an index label from 0 to N, where N is the length of the Series minus one.
+
+\begin{framed}
+\begin{verbatim}
+# create a Series with an arbitrary list
+s = pd.Series([7, 'Heisenberg', 3.14, -1789710578, 'Happy Eating!'])
+s
+
+</code></pre>\begin{verbatim}
+0                7
+1       Heisenberg
+2             3.14
+3      -1789710578
+4    Happy Eating!
+dtype: object
+
+
+Alternatively, you can specify an index to use when creating the Series.
+
+\begin{framed}
+\begin{verbatim}
+s = pd.Series([7, 'Heisenberg', 3.14, -1789710578, 'Happy Eating!'],
+              index=['A', 'Z', 'C', 'Y', 'E'])
+s
+
+</code></pre>\begin{verbatim}
+A                7
+Z       Heisenberg
+C             3.14
+Y      -1789710578
+E    Happy Eating!
+dtype: object
+
+
+The Series constructor can convert a dictonary as well, using the keys of the dictionary as its index.
+
+\begin{framed}
+\begin{verbatim}
+d = {'Chicago': 1000, 'New York': 1300, 'Portland': 900, 'San Francisco': 1100,
+     'Austin': 450, 'Boston': None}
+cities = pd.Series(d)
+cities
+Out[4]:
+Austin            450
+Boston            NaN
+Chicago          1000
+New York         1300
+Portland          900
+San Francisco    1100
+dtype: float64
+
+</code></pre>You can use the index to select specific items from the Series ...
+
+\begin{framed}
+\begin{verbatim}
+cities['Chicago']
+Out[5]:
+1000.0
+
+</code></pre>
+\begin{framed}
+\begin{verbatim}
+cities[['Chicago', 'Portland', 'San Francisco']]
+Out[6]:
+Chicago          1000
+Portland          900
+San Francisco    1100
+dtype: float64
+
+</code></pre>Or you can use boolean indexing for selection.
+
+\begin{framed}
+\begin{verbatim}
+cities[cities < 1000]
+Out[7]:
+Austin      450
+Portland    900
+dtype: float64
+
+</code></pre>That last one might be a little strange, so let's make it more clear - \texttt{cities < 1000} returns a Series of \texttt{True/False} values, which we then pass to our Series cities, returning the corresponding \texttt{True} items.
+
+\begin{framed}
+\begin{verbatim}
+less_than_1000 = cities < 1000
+print less_than_1000
+print '\n'
+print cities[less_than_1000]
+Austin            True
+Boston           False
+Chicago          False
+New York         False
+Portland          True
+San Francisco    False
+dtype: bool
+
+
+Austin      450
+Portland    900
+dtype: float64
+
+
+</code></pre>You can also change the values in a Series on the fly.
+
+\begin{framed}
+\begin{verbatim}
+# changing based on the index
+print 'Old value:', cities['Chicago']
+cities['Chicago'] = 1400
+print 'New value:', cities['Chicago']
+Old value: 1000.0
+New value: 1400.0
+
+</code></pre>
+\begin{framed}
+\begin{verbatim}
+# changing values using boolean logic
+print cities[cities < 1000]
+print '\n'
+cities[cities < 1000] = 750
+
+print cities[cities < 1000]
+Austin      450
+Portland    900
+dtype: float64
+
+
+Austin      750
+Portland    750
+dtype: float64
+
+</code></pre>What if you aren't sure whether an item is in the Series? You can check using idiomatic Python.
+
+\begin{framed}
+\begin{verbatim}
+print 'Seattle' in cities
+print 'San Francisco' in cities
+False
+True
+
+</code></pre>Mathematical operations can be done using scalars and functions.
+
+\begin{framed}
+\begin{verbatim}
+# divide city values by 3
+cities / 3
+Out[12]:
+Austin           250.000000
+Boston                  NaN
+Chicago          466.666667
+New York         433.333333
+Portland         250.000000
+San Francisco    366.666667
+dtype: float64
+
+\begin{framed}
+\begin{verbatim}
+# square city values
+np.square(cities)
+Out[13]:
+Austin            562500
+Boston               NaN
+Chicago          1960000
+New York         1690000
+Portland          562500
+San Francisco    1210000
+dtype: float64
+
+</code></pre>You can add two Series together, which returns a union of the two Series with the addition occurring on the shared index values. Values on either Series that did not have a shared index will produce a NULL/NaN (not a number).
+
+\begin{framed}
+\begin{verbatim}
+print cities[['Chicago', 'New York', 'Portland']]
+print'\n'
+print cities[['Austin', 'New York']]
+print'\n'
+print cities[['Chicago', 'New York', 'Portland']] + cities[['Austin', 'New York']]
+
+</code></pre>\begin{verbatim}
+Chicago     1400
+New York    1300
+Portland     750
+dtype: float64
+
+
+Austin       750
+New York    1300
+dtype: float64
+
+
+Austin       NaN
+Chicago      NaN
+New York    2600
+Portland     NaN
+dtype: float64
+
+
+Notice that because Austin, Chicago, and Portland were not found in both Series, they were returned with NULL/NaN values.
+
+NULL checking can be performed with \texttt{isnull} and \texttt{notnull}.
+%----------------------------------------------------------------%
+\begin{framed}
+\begin{verbatim}
+# returns a boolean series indicating which values aren't NULL
+cities.notnull()
+Out[15]:
+Austin            True
+Boston           False
+Chicago           True
+New York          True
+Portland          True
+San Francisco     True
+dtype: bool
+In [16]:
+# use boolean logic to grab the NULL cities
+print cities.isnull()
+print '\n'
+print cities[cities.isnull()]
+Austin           False
+Boston            True
+Chicago          False
+New York         False
+Portland         False
+San Francisco    False
+dtype: bool
+
+
+Boston   NaN
+dtype: float64
+
+</code></pre>
+\end{document}
+
+%%---------------------------------------%
+%\newpage
+%\subsection{DataFrame}
+%
+%% pandas - chapter 5 - DataFrame
+%
+%A DataFrame is a tablular data structure comprised of rows and columns, akin to a spreadsheet, database table, or R's data.frame object. You can also think of a DataFrame as a group of Series objects that share an index (the column names).
+%
+%%For the rest of the tutorial, we'll be primarily working with DataFrames.
+%
+%%---------------------------------------%
+%\newpage
+%\subsection{Panel}
+%
+%
+% 
+%\texttt{Panel} is a somewhat less-used, but still important container for 3-dimensional data. 
+%The term panel data is derived from econometrics and is partially responsible for the name pandas: pan(el)-da(ta)-s. 
+%The names for the 3 axes are intended to give some semantic meaning to describing operations involving panel data and, 
+%in particular, econometric analysis of panel data. However, for the strict purposes of slicing and dicing a 
+%collection of DataFrame objects, you may find the axis names slightly arbitrary:
+% 
+%\begin{itemize}
+%\item items: axis 0, each item corresponds to a DataFrame contained inside
+%\item major\_axis: axis 1, it is the index (rows) of each of the DataFrames
+%\item minor\_axis: axis 2, it is the columns of each of the DataFrames
+%\end{itemize}
+%
+%\newpage
+%
+%\end{document}
